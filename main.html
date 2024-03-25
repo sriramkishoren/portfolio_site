@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kishore</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['ui-sans-serif', 'system-ui'],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .profile-circle {
+            clip-path: circle(50%);
+            max-width: 400px;
+            max-height: 400px;
+            margin-bottom: 2rem;
+        }
+
+        .profile-area,
+        .info-area {
+            padding: 2rem;
+        }
+
+        .line-spacing {
+            margin-bottom: 0.75rem;
+        }
+
+        .social-links a {
+            margin-right: 0.75rem;
+        }
+
+        @media (min-width: 1024px) {
+            .flex-row {
+                display: flex;
+                align-items: flex-start;
+                gap: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-800 font-sans leading-normal tracking-normal transition-colors duration-500">
+    <header class="sticky top-0 w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 z-10 shadow-md">
+        <nav class="flex justify-between items-center p-4">
+            <h1 class="text-lg font-bold">Sriramkishore Naraharisetti</h1>
+            <div>
+                <a href="#home" class="px-4 py-2 hover:underline">Home</a>
+                <a href="#about" class="px-4 py-2 hover:underline">About Me</a>
+                <button onclick="document.documentElement.classList.toggle('dark')"
+                    class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200">
+                    Toggle Dark Mode
+                </button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="min-h-screen p-12">
+            <!--<h2 class="text-3xl font-bold mb-4">Work</h2> -->
+            <div class="min-h-screen flex items-center justify-center p-4">
+                <div class="flex-row md:flex w-full">
+                    <div class="profile-area w-full md:w-1/3">
+                        <img class="profile-circle mx-auto" src="main_pic_web.png"
+                            alt="Profile picture of Sriramkishore Naraharisetti, Software Engineer">
+                        <div class="social-links text-center mt-4">
+                            <a href="mailto:sriramkishoren@outlook.com" aria-label="Email">
+                                <i class="fas fa-envelope fa-2x text-gray-800 dark:text-gray-200"></i>
+                            </a>
+                            <a href="https://twitter.com/kishore_tech_ai" target="_blank" aria-label="Twitter">
+                                <i class="fab fa-twitter fa-2x text-gray-800 dark:text-gray-200"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@kishore_tech" target="_blank" aria-label="Facebook">
+                                <i class="fab fa-youtube fa-2x text-gray-800 dark:text-gray-200"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/sriramkishoren/" target="_blank" aria-label="LinkedIn">
+                                <i class="fab fa-linkedin fa-2x text-gray-800 dark:text-gray-200"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="info-area w-full md:w-2/3 text-gray-900 dark:text-gray-100">
+                        <h1 class="text-4xl font-bold line-spacing">Hey! I'm Kishore</h1>
+                        <p class="text-2xl line-spacing">Sriramkishore Naraharisetti</p>
+                        <p class="text-2xl mb-20">Software Engineer</p>
+                        <ul class="text-lg list-disc pl-5">
+                            <li class="line-spacing">A solutions architect based in Bentonville, AR, USA</li>
+                            <li class="line-spacing">18 years of IT experience.</li>
+                            <li class="line-spacing">Working at world's largest retail giant Walmart as Staff Software
+                                Engineer</li>
+                            <li class="mb-20">Learning: AI & ML</li>
+                        </ul>
+
+                        <div class="buttons text-center md:text-left">
+                            <a href="mailto:sriramkishoren@outlook.com"
+                                class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-4 py-2 rounded inline-block mr-2">Email
+                                me</a>
+                            <a href="https://kishore.tiiny.site/" target="_blank"
+                                class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-4 py-2 rounded inline-block mr-2">Resume</a>
+                            <a href="https://medium.com/@kishoretech" target="_blank"
+                                class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-4 py-2 rounded inline-block">Blog</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="about" class="min-h-screen p-14">
+            <!-- <h2 class="text-3xl font-bold mb-4">About Me</h2> -->
+            <div class="container mx-auto p-4">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Left Section for Text -->
+                    <div class="md:col-span-2 text-gray-900 dark:text-gray-100">
+                        <h1 class="text-4xl font-bold mb-4">Hey there! I’m Kishore👋</h1>
+                        <p class="text-lg mb-8">I'm from Andhra Pradesh in <strong>India🇮🇳</strong>, now pursuing
+                            professional career
+                            in Bentonville, Arkansas,<strong>USA🇺🇸</strong>. Small town <strong>Bentonville</strong>
+                            is fast growing
+                            into cycling
+                            capital 🚴‍♀️ and a cool mix of different cultures, which I absolutely love❤️
+                        </p>
+
+                        <div class="text-lg mb-8">
+                            <p class="mt-4">My amazing wife,<strong>Srujana💍</strong>, and two awesome little girls,
+                                <strong>Adya</strong> who's 10, and <strong>Mitra</strong> who's
+                                3 👨‍👩‍👧‍👧 make my little space heavenly on earth.
+                            </p>
+                            <p class="mt-4">I'm a software engineer 💻 to make a living. Right now, I'm with Walmart,
+                                doing my thing as a Staff Software Engineer👨🏽‍💻.
+                            </p>
+                            <p class="mt-4">I'm super into trying out different foods 🍔 and love to go for a bike ride
+                                🚴‍♂️ when it's nice out🌞. After a busy day, I like to relax by watching a movie🎬.</p>
+                            <p class="mt-4">I am also a travel enthusiast🛩️, I've been to loads of places in India
+                                and
+                                US. Other countries I visited are Dubai, Bahamas and Mexico🌏.</p>
+                            <p class="mt-4">I speak 🗣️ Telugu as my first language, picked up Tamil from my engineering
+                                days in Chennai, and English, well, because it's a must for making a living.</p>
+                            <p class="mt-4">No matter where I am, a piece of my heart resides in Hyderabad, India with
+                                my parents👴👵.</p>
+                            <p class="mt-4">So that’s me in a nutshell—just a guy with a taste for life’s many flavors.
+                                Stick around, and let’s have some fun😎!</p>
+                        </div>
+
+                        <div class="mb-8">
+                            <p>If you are interested in chatting or working together, <a
+                                    href="mailto:sriramkishoren@outlook.com" class="text-blue-500 underline">email me
+                                    here!</a>
+                            </p>
+                        </div>
+
+                        <div class="mb-8">
+                            <h2 class="text-2xl font-semibold mb-4">What I am up to:</h2>
+                            <ul class="list-disc pl-5">
+                                <li>🤖 Learning a course: Artificial Intelligence </li>
+                                <li>📗 Reading a book: Fierce Conversations by Susan Scott</li>
+                                <li>✍️ Expressing my creativity through blogging</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right Section for Images -->
+                    <div class="space-y-4">
+                        <img src="kishore_family.png" alt="Placeholder image of kishore" class="w-full">
+                        <!-- ... Other placeholder images with descriptions in the alt text ... -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 text-center p-4">
+        © 2024 Sriramkishore Naraharisetti. All Rights Reserved.
+    </footer>
+</body>
+
+</html>
