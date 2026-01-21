@@ -11,7 +11,8 @@ This is a static personal portfolio website for Sriramkishore Naraharisetti. The
 - **Main site**: `index.html` - portfolio landing page
 - **Personal Blog**: `personal_blog/` - self-hosted blog section
   - `personal_blog/index.html` - blog listing page
-  - `personal_blog/[post-name].html` - individual blog post files
+  - `personal_blog/post.html` - blog post viewer (loads posts in iframe via `?article=` param)
+  - `personal_blog/[post-name].html` - individual blog post files (loaded via viewer)
 - **Styling**: Tailwind CSS loaded via CDN (with forms, typography, aspect-ratio, line-clamp plugins)
 - **Icons**: Font Awesome 5.15.3 via CDN
 - **Dark mode**: Implemented using Tailwind's `dark:` class variants with manual toggle (adds/removes `dark` class on `<html>`)
@@ -25,6 +26,7 @@ portfolio_site/
 ├── CLAUDE.md               # Claude Code guidance
 ├── personal_blog/
 │   ├── index.html          # Blog listing page
+│   ├── post.html           # Blog post viewer (iframe container with nav)
 │   └── [post-name].html    # Individual blog posts
 └── specs/                  # Feature specifications
 ```
@@ -42,8 +44,16 @@ The site deploys automatically to GitHub Pages when changes are pushed to the `m
 To add a new blog post:
 1. Create a new HTML file in `personal_blog/` (e.g., `my-post.html`)
 2. Use Tailwind CSS via CDN for styling
-3. Include consistent header/footer with dark mode support
-4. Add entry to `personal_blog/index.html` listing page
+3. No need to add navigation - posts are displayed via the viewer (`post.html`)
+4. Add entry to `personal_blog/index.html` with link: `post.html?article=my-post`
+
+## Blog Post Viewer Architecture
+
+Blog posts are displayed through a viewer page (`post.html`) that provides consistent navigation:
+- **URL pattern**: `post.html?article=[post-name]` (without `.html` extension)
+- **Navigation**: "← Back to Blog" link is in the viewer, not in individual posts
+- **Iframe**: Posts load inside an iframe within the viewer
+- **Fallback**: Invalid/missing article parameter shows a "Post Not Found" page
 
 # Feature Development Workflow (STRICT)
 
