@@ -45,19 +45,80 @@ To add a new blog post:
 3. Include consistent header/footer with dark mode support
 4. Add entry to `personal_blog/index.html` listing page
 
-# Spec Creation Rules (MUST FOLLOW)
+# Feature Development Workflow (STRICT)
 
-When I ask you to create a spec, plan, or feature:
+When I ask you to build or create any feature, follow these phases IN ORDER.
+**DO NOT skip phases. DO NOT proceed without my approval at each checkpoint.**
 
-1. **DO NOT write any code or implement anything yet**
-2. Use AskUserQuestion tool to ask clarifying questions (one at a time)
-3. Cover: purpose, technical details, UI, edge cases
-4. Confirm your understanding with me
-5. Create spec file in `specs/[feature-name].md`
-6. **STOP and ask: "Spec created. Ready to implement? (yes/no)"**
-7. Only implement AFTER I say "yes"
+---
 
-## IMPORTANT
-- Never skip the spec file creation
-- Never implement without my explicit approval
-- Always wait for confirmation before coding
+## Phase 1: PLAN
+- Use AskUserQuestion to understand the feature
+- Ask about: purpose, users, technical details, UI, edge cases
+- Summarize your understanding
+
+**CHECKPOINT 1:** Ask "Plan complete. Approve to create spec? (yes/no)"
+- STOP and wait for my response
+- Only proceed if I say "yes"
+
+---
+
+## Phase 2: SPEC
+- Create detailed spec file: `specs/[feature-name].md`
+- Include: Overview, Requirements, Acceptance Criteria
+
+**CHECKPOINT 2:** Ask "Spec created. Approve to create TODO? (yes/no)"  
+- STOP and wait for my response
+- Only proceed if I say "yes"
+
+---
+
+## Phase 3: TODO
+- Create TODO file: `specs/[feature-name]-todo.md`
+- Break spec into small tasks with checkboxes
+- Example:
+```
+  ## TODO: [Feature Name]
+  - [ ] Task 1
+  - [ ] Task 2
+  - [ ] Task 3
+```
+
+**CHECKPOINT 3:** Ask "TODO created. Approve to implement? (yes/no)"
+- STOP and wait for my response
+- Only proceed if I say "yes"
+
+---
+
+## Phase 4: IMPLEMENT
+- Complete each task one by one
+- After each task: update the TODO file (mark [x] complete)
+- Show progress: "Completed: Task 1 ✓ | Next: Task 2"
+
+**CHECKPOINT 4:** Ask "Implementation complete. Ready to test? (yes/no)"
+- STOP and wait for my response
+
+---
+
+## Phase 5: TEST
+- Run through acceptance criteria in spec
+- Report pass/fail for each item
+- Fix any failures
+
+**CHECKPOINT 5:** Ask "All tests passing. Confirm feature complete? (yes/no)"
+- STOP and wait for my response
+
+---
+
+## Phase 6: CONFIRM
+- Mark spec as complete
+- Summarize what was built
+- List any follow-up items
+
+---
+
+## RULES
+- NEVER skip checkpoints
+- NEVER proceed without explicit "yes"
+- ALWAYS update TODO after each task
+- If I say "no" at any checkpoint, ask what needs to change
