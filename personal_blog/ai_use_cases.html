@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Modern AI Landscape Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050A1F;
+            /* Deep Navy */
+            color: white;
+        }
+
+        .electric-blue {
+            color: #00F0FF;
+        }
+
+        .neon-purple {
+            color: #D946EF;
+        }
+
+        .border-neon-purple {
+            border-color: #D946EF;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(217, 70, 239, 0.15);
+        }
+
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050A1F;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #D946EF;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen p-4 md:p-8 lg:p-12">
+
+    <!-- Container -->
+    <div class="max-w-7xl mx-auto">
+
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <h1
+                class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#D946EF]">
+                The Modern AI Landscape
+            </h1>
+            <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-light">
+                A Guide to the 9 Pillars of Artificial Intelligence & Their Real-World Impact
+            </p>
+            <div class="h-1 w-24 bg-gradient-to-r from-[#00F0FF] to-[#D946EF] mx-auto mt-6 rounded-full"></div>
+        </header>
+
+        <!-- Grid Layout (3x3) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+
+            <!-- Card 1: Computer Vision -->
+            <div
+                class="bg-[#0F1635] border border-gray-800 rounded-xl p-6 transition-all duration-300 card-hover flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="eye" class="w-10 h-10 neon-purple mr-3"></i>
+                    <h2 class="text-xl font-bold electric-blue">Computer Vision</h2>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm text-gray-300 italic border-l-2 border-neon-purple pl-3">
+                        Enables machines to interpret and act on visual data using CNNs.
+                    </p>
+                </div>
+                <div class="mt-auto">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Top Use Cases</h3>
+                    <ul class="space-y-2 text-sm text-gray-200">
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Medical:</strong> Detecting tumors in X-rays with accuracy often
+                                exceeding humans.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Retail:</strong> Checkout-free stores tracking items
+                                automatically.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Safety:</strong> Construction site monitoring for hard
+                                hats.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 2: NLP -->
+            <div
+                class="bg-[#0F1635] border border-gray-800 rounded-xl p-6 transition-all duration-300 card-hover flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="message-square-text" class="w-10 h-10 neon-purple mr-3"></i>
+                    <h2 class="text-xl font-bold electric-blue">Natural Language Processing</h2>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm text-gray-300 italic border-l-2 border-neon-purple pl-3">
+                        Bridges the gap between raw text/speech and actionable intelligence using transformers.
+                    </p>
+                </div>
+                <div class="mt-auto">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Top Use Cases</h3>
+                    <ul class="space-y-2 text-sm text-gray-200">
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Global:</strong> Real-time translation breaking language
+                                barriers.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Finance:</strong> Analyzing earnings calls to predict stock
+                                movements.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Healthcare:</strong> Extracting diagnoses from physician
+                                notes.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 3: Graph Analytics -->
+            <div
+                class="bg-[#0F1635] border border-gray-800 rounded-xl p-6 transition-all duration-300 card-hover flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="network" class="w-10 h-10 neon-purple mr-3"></i>
+                    <h2 class="text-xl font-bold electric-blue">Graph Analytics</h2>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm text-gray-300 italic border-l-2 border-neon-purple pl-3">
+                        Models data as networks to reveal relationships traditional databases miss.
+                    </p>
+                </div>
+                <div class="mt-auto">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Top Use Cases</h3>
+                    <ul class="space-y-2 text-sm text-gray-200">
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Fraud:</strong> Detecting money laundering through circuitous
+                                routes.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Pharma:</strong> Identifying drug interactions and new
+                                therapeutics.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Supply Chain:</strong> Predicting disruption risks and
+                                dependencies.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 4: Data Classification -->
+            <div
+                class="bg-[#0F1635] border border-gray-800 rounded-xl p-6 transition-all duration-300 card-hover flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="folder-tree" class="w-10 h-10 neon-purple mr-3"></i>
+                    <h2 class="text-xl font-bold electric-blue">Data Classification</h2>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm text-gray-300 italic border-l-2 border-neon-purple pl-3">
+                        Automatically assigning data points to categories using supervised learning.
+                    </p>
+                </div>
+                <div class="mt-auto">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Top Use Cases</h3>
+                    <ul class="space-y-2 text-sm text-gray-200">
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Email:</strong> Spam filters achieving accuracy above 99%.</span>
+                        </li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Banking:</strong> Assessing credit risk for loan
+                                approvals.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">HR:</strong> Screening resumes to categorize candidates by
+                                fit.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 5: Forecasting -->
+            <div
+                class="bg-[#0F1635] border border-gray-800 rounded-xl p-6 transition-all duration-300 card-hover flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="trending-up" class="w-10 h-10 neon-purple mr-3"></i>
+                    <h2 class="text-xl font-bold electric-blue">Forecasting</h2>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm text-gray-300 italic border-l-2 border-neon-purple pl-3">
+                        Predicting future events based on historical time-series data.
+                    </p>
+                </div>
+                <div class="mt-auto">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Top Use Cases</h3>
+                    <ul class="space-y-2 text-sm text-gray-200">
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Manufacturing:</strong> Predictive maintenance cuts costs
+                                10-25%.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Energy:</strong> Predicting wind/solar generation for grid
+                                balance.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Retail:</strong> Preventing stockouts and overstock
+                                scenarios.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 6: Interactive Chat -->
+            <div
+                class="bg-[#0F1635] border border-gray-800 rounded-xl p-6 transition-all duration-300 card-hover flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="messages-square" class="w-10 h-10 neon-purple mr-3"></i>
+                    <h2 class="text-xl font-bold electric-blue">Interactive Chat</h2>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm text-gray-300 italic border-l-2 border-neon-purple pl-3">
+                        Engaging users in natural dialogue using Large Language Models (LLMs).
+                    </p>
+                </div>
+                <div class="mt-auto">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Top Use Cases</h3>
+                    <ul class="space-y-2 text-sm text-gray-200">
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Support:</strong> Resolving 30-40% of tickets without
+                                humans.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Education:</strong> Always-available AI tutors for
+                                students.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">E-commerce:</strong> Virtual shopping assistants guiding
+                                purchases.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 7: Autonomous Robots -->
+            <div
+                class="bg-[#0F1635] border border-gray-800 rounded-xl p-6 transition-all duration-300 card-hover flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="bot" class="w-10 h-10 neon-purple mr-3"></i>
+                    <h2 class="text-xl font-bold electric-blue">Autonomous Robots</h2>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm text-gray-300 italic border-l-2 border-neon-purple pl-3">
+                        Machines integrating perception, decision-making, and action to operate independently.
+                    </p>
+                </div>
+                <div class="mt-auto">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Top Use Cases</h3>
+                    <ul class="space-y-2 text-sm text-gray-200">
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Transport:</strong> Self-driving taxis operating in
+                                cities.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Surgery:</strong> Minimally invasive procedures via da Vinci
+                                system.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Logistics:</strong> 24/7 warehouse robots sorting
+                                packages.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 8: Generative AI -->
+            <div
+                class="bg-[#0F1635] border border-gray-800 rounded-xl p-6 transition-all duration-300 card-hover flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="sparkles" class="w-10 h-10 neon-purple mr-3"></i>
+                    <h2 class="text-xl font-bold electric-blue">Generative AI</h2>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm text-gray-300 italic border-l-2 border-neon-purple pl-3">
+                        Creating new content (code, images, text) rather than analyzing existing data.
+                    </p>
+                </div>
+                <div class="mt-auto">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Top Use Cases</h3>
+                    <ul class="space-y-2 text-sm text-gray-200">
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Coding:</strong> Tools like Copilot used by 50% of
+                                developers.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Pharma:</strong> Creating candidate molecules in weeks.</span>
+                        </li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Media:</strong> Generating reports and copy instantly.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 9: Symbolic AI -->
+            <div
+                class="bg-[#0F1635] border border-gray-800 rounded-xl p-6 transition-all duration-300 card-hover flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="brain-circuit" class="w-10 h-10 neon-purple mr-3"></i>
+                    <h2 class="text-xl font-bold electric-blue">Symbolic AI</h2>
+                </div>
+                <div class="mb-4">
+                    <p class="text-sm text-gray-300 italic border-l-2 border-neon-purple pl-3">
+                        Explicit representation of knowledge through logic and rules (IF/THEN).
+                    </p>
+                </div>
+                <div class="mt-auto">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Top Use Cases</h3>
+                    <ul class="space-y-2 text-sm text-gray-200">
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Compliance:</strong> Verifying flight plans against
+                                regulations.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Finance:</strong> Generating audit trails for regulatory
+                                approval.</span></li>
+                        <li class="flex items-start"><span class="mr-2 text-[#00F0FF]">•</span><span><strong
+                                    class="text-white">Automation:</strong> Strict rule-based payroll/accounting.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-[#0F1635] rounded-2xl p-8 text-center border-t border-[#D946EF]">
+            <h3 class="text-2xl font-bold mb-3 text-white">The Future is Hybrid</h3>
+            <p class="text-gray-300 max-w-4xl mx-auto italic text-lg leading-relaxed">
+                "The most powerful applications optimize performance by combining these technologies—such as Computer
+                Vision feeding Symbolic Systems, or Generative AI creating training data for Classifiers."
+            </p>
+        </footer>
+
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
