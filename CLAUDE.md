@@ -37,15 +37,6 @@ No build process required. Open `index.html` directly in a browser or use any lo
 
 The site deploys automatically to GitHub Pages when changes are pushed to the `main` branch. The custom domain `www.kishoretech.com` is configured via the `CNAME` file.
 
-## Spec Creation Rules
-
-When I ask you to create a spec or plan for a feature:
-1. Use AskUserQuestion tool to ask clarifying questions (one at a time)
-2. Cover: purpose, technical details, UI, edge cases
-3. Confirm your understanding with me before proceeding
-4. Create spec file in `specs/[feature-name].md`
-5. Ask if changes are needed
-
 ## Adding Blog Posts
 
 To add a new blog post:
@@ -53,3 +44,20 @@ To add a new blog post:
 2. Use Tailwind CSS via CDN for styling
 3. Include consistent header/footer with dark mode support
 4. Add entry to `personal_blog/index.html` listing page
+
+# Spec Creation Rules (MUST FOLLOW)
+
+When I ask you to create a spec, plan, or feature:
+
+1. **DO NOT write any code or implement anything yet**
+2. Use AskUserQuestion tool to ask clarifying questions (one at a time)
+3. Cover: purpose, technical details, UI, edge cases
+4. Confirm your understanding with me
+5. Create spec file in `specs/[feature-name].md`
+6. **STOP and ask: "Spec created. Ready to implement? (yes/no)"**
+7. Only implement AFTER I say "yes"
+
+## IMPORTANT
+- Never skip the spec file creation
+- Never implement without my explicit approval
+- Always wait for confirmation before coding
