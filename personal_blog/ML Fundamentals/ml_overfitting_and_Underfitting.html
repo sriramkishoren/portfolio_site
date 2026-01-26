@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overfitting & Underfitting: The Balance</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        underfit: { DEFAULT: '#EF4444', light: '#FEE2E2', deep: '#991B1B' },
+                        overfit: { DEFAULT: '#3B82F6', light: '#DBEAFE', deep: '#1E40AF' },
+                        goodfit: { DEFAULT: '#22C55E', light: '#DCFCE7', deep: '#166534' },
+                        slate: {
+                            850: '#1e293b',
+                            900: '#0f172a'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .card-hover {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .curve-path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw 2.5s ease-out forwards;
+        }
+
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        /* Dartboard Animations */
+        @keyframes dart-throw {
+            0% {
+                opacity: 0;
+                transform: scale(3) translate(20px, -20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1) translate(0, 0);
+            }
+        }
+
+        .dart {
+            animation: dart-throw 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            opacity: 0;
+        }
+
+        .dart:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .dart:nth-child(2) {
+            animation-delay: 0.7s;
+        }
+
+        .dart:nth-child(3) {
+            animation-delay: 0.9s;
+        }
+
+        .dart:nth-child(4) {
+            animation-delay: 1.1s;
+        }
+
+        .dart:nth-child(5) {
+            animation-delay: 1.3s;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 leading-relaxed">
+
+    <!-- HEADER SECTION -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 bg-opacity-95 backdrop-blur">
+        <div class="max-w-6xl mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-bold tracking-tight text-slate-900">
+                        Overfitting & Underfitting
+                    </h1>
+                    <p class="text-slate-500 font-medium mt-1">
+                        Striking the Balance for Better Machine Learning Models
+                    </p>
+                </div>
+                <div class="flex gap-2">
+                    <span
+                        class="bg-slate-100 text-slate-600 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider">
+                        Machine Learning Fundamentals
+                    </span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8 space-y-12">
+
+        <!-- INTRO & VISUAL HOOK -->
+        <section class="grid md:grid-cols-3 gap-6">
+            <!-- Underfit Visual -->
+            <div class="bg-white rounded-xl p-6 border-t-4 border-underfit shadow-sm text-center card-hover">
+                <div class="h-32 relative flex items-center justify-center mb-4 bg-slate-50 rounded-lg overflow-hidden">
+                    <!-- Simple Line -->
+                    <svg viewBox="0 0 100 60" class="w-full h-full p-4">
+                        <circle cx="10" cy="50" r="2" class="fill-slate-400" />
+                        <circle cx="20" cy="45" r="2" class="fill-slate-400" />
+                        <circle cx="30" cy="30" r="2" class="fill-slate-400" />
+                        <circle cx="40" cy="10" r="2" class="fill-slate-400" />
+                        <circle cx="60" cy="20" r="2" class="fill-slate-400" />
+                        <circle cx="80" cy="40" r="2" class="fill-slate-400" />
+                        <circle cx="90" cy="50" r="2" class="fill-slate-400" />
+                        <!-- Straight line missing points -->
+                        <line x1="10" y1="45" x2="90" y2="25" stroke="#EF4444" stroke-width="3" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-underfit">Underfitting</h3>
+                <p class="text-sm text-slate-500 mt-2">"Too Simple"</p>
+                <p class="text-xs text-slate-400 mt-1">Fails to capture patterns</p>
+            </div>
+
+            <!-- Good Fit Visual -->
+            <div class="bg-white rounded-xl p-6 border-t-4 border-goodfit shadow-sm text-center card-hover">
+                <div class="h-32 relative flex items-center justify-center mb-4 bg-slate-50 rounded-lg overflow-hidden">
+                    <svg viewBox="0 0 100 60" class="w-full h-full p-4">
+                        <circle cx="10" cy="50" r="2" class="fill-slate-400" />
+                        <circle cx="20" cy="45" r="2" class="fill-slate-400" />
+                        <circle cx="30" cy="30" r="2" class="fill-slate-400" />
+                        <circle cx="40" cy="10" r="2" class="fill-slate-400" />
+                        <circle cx="60" cy="20" r="2" class="fill-slate-400" />
+                        <circle cx="80" cy="40" r="2" class="fill-slate-400" />
+                        <circle cx="90" cy="50" r="2" class="fill-slate-400" />
+                        <!-- Smooth Curve -->
+                        <path d="M10,50 Q40,0 60,20 T90,50" fill="none" stroke="#22C55E" stroke-width="3" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-goodfit">Good Fit</h3>
+                <p class="text-sm text-slate-500 mt-2">"The Sweet Spot"</p>
+                <p class="text-xs text-slate-400 mt-1">Generalizes well</p>
+            </div>
+
+            <!-- Overfit Visual -->
+            <div class="bg-white rounded-xl p-6 border-t-4 border-overfit shadow-sm text-center card-hover">
+                <div class="h-32 relative flex items-center justify-center mb-4 bg-slate-50 rounded-lg overflow-hidden">
+                    <svg viewBox="0 0 100 60" class="w-full h-full p-4">
+                        <circle cx="10" cy="50" r="2" class="fill-slate-400" />
+                        <circle cx="20" cy="45" r="2" class="fill-slate-400" />
+                        <circle cx="30" cy="30" r="2" class="fill-slate-400" />
+                        <circle cx="40" cy="10" r="2" class="fill-slate-400" />
+                        <circle cx="60" cy="20" r="2" class="fill-slate-400" />
+                        <circle cx="80" cy="40" r="2" class="fill-slate-400" />
+                        <circle cx="90" cy="50" r="2" class="fill-slate-400" />
+                        <!-- Jagged Line -->
+                        <path d="M10,50 L20,45 L30,30 L40,10 L60,20 L80,40 L90,50" fill="none" stroke="#3B82F6"
+                            stroke-width="3" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold text-overfit">Overfitting</h3>
+                <p class="text-sm text-slate-500 mt-2">"Too Complex"</p>
+                <p class="text-xs text-slate-400 mt-1">Memorizes noise</p>
+            </div>
+        </section>
+
+        <!-- THE DARTBOARD ANALOGY (Replaces Regularization Deep Dive per Source Text Emphasis) -->
+        <section class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="bg-slate-900 text-white p-6">
+                <h2 class="text-2xl font-bold flex items-center gap-2">
+                    <i data-lucide="crosshair" class="w-6 h-6 text-orange-400"></i>
+                    The Dartboard Analogy: Bias vs. Variance
+                </h2>
+                <p class="text-slate-400 mt-2">
+                    Shooting darts at a target is a classic analogy to explain the relationship between bias (systematic
+                    error) and variance (sensitivity).
+                </p>
+            </div>
+
+            <div class="p-8 grid lg:grid-cols-3 gap-12">
+
+                <!-- Scenario 1: High Bias / Low Variance -->
+                <div class="flex flex-col items-center">
+                    <div class="relative w-48 h-48 mb-4">
+                        <!-- Dartboard -->
+                        <svg viewBox="0 0 100 100" class="w-full h-full shadow-inner rounded-full">
+                            <circle cx="50" cy="50" r="48" fill="#e2e8f0" stroke="#94a3b8" />
+                            <circle cx="50" cy="50" r="35" fill="white" stroke="#94a3b8" />
+                            <circle cx="50" cy="50" r="20" fill="#e2e8f0" stroke="#94a3b8" />
+                            <circle cx="50" cy="50" r="5" fill="#ef4444" />
+                            <!-- Darts (Clustered, Off Target) -->
+                            <g class="dart text-underfit" style="color: #EF4444">
+                                <circle cx="20" cy="20" r="2" fill="currentColor" />
+                                <path d="M20,20 L15,15" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M20,20 L25,15" stroke="currentColor" stroke-width="1.5" />
+                            </g>
+                            <g class="dart text-underfit" style="color: #EF4444">
+                                <circle cx="22" cy="18" r="2" fill="currentColor" />
+                                <path d="M22,18 L17,13" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M22,18 L27,13" stroke="currentColor" stroke-width="1.5" />
+                            </g>
+                            <g class="dart text-underfit" style="color: #EF4444">
+                                <circle cx="18" cy="22" r="2" fill="currentColor" />
+                                <path d="M18,22 L13,17" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M18,22 L23,17" stroke="currentColor" stroke-width="1.5" />
+                            </g>
+                        </svg>
+                    </div>
+                    <h4 class="font-bold text-lg">High Bias / Low Variance</h4>
+                    <span class="text-underfit font-bold text-sm mb-2">UNDERFITTING</span>
+                    <p class="text-sm text-center text-slate-600">
+                        "Darts are tight together, but nowhere near the bullseye."
+                    </p>
+                    <p class="text-xs text-center text-slate-500 mt-2">
+                        Systematically off-target. Model is too simple.
+                    </p>
+                </div>
+
+                <!-- Scenario 2: Low Bias / High Variance -->
+                <div class="flex flex-col items-center">
+                    <div class="relative w-48 h-48 mb-4">
+                        <!-- Dartboard -->
+                        <svg viewBox="0 0 100 100" class="w-full h-full shadow-inner rounded-full">
+                            <circle cx="50" cy="50" r="48" fill="#e2e8f0" stroke="#94a3b8" />
+                            <circle cx="50" cy="50" r="35" fill="white" stroke="#94a3b8" />
+                            <circle cx="50" cy="50" r="20" fill="#e2e8f0" stroke="#94a3b8" />
+                            <circle cx="50" cy="50" r="5" fill="#ef4444" />
+                            <!-- Darts (Scattered around center) -->
+                            <g class="dart text-overfit" style="color: #3B82F6">
+                                <circle cx="30" cy="40" r="2" fill="currentColor" />
+                                <path d="M30,40 L25,35" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M30,40 L35,35" stroke="currentColor" stroke-width="1.5" />
+                            </g>
+                            <g class="dart text-overfit" style="color: #3B82F6">
+                                <circle cx="70" cy="60" r="2" fill="currentColor" />
+                                <path d="M70,60 L65,55" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M70,60 L75,55" stroke="currentColor" stroke-width="1.5" />
+                            </g>
+                            <g class="dart text-overfit" style="color: #3B82F6">
+                                <circle cx="50" cy="20" r="2" fill="currentColor" />
+                                <path d="M50,20 L45,15" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M50,20 L55,15" stroke="currentColor" stroke-width="1.5" />
+                            </g>
+                            <g class="dart text-overfit" style="color: #3B82F6">
+                                <circle cx="60" cy="50" r="2" fill="currentColor" />
+                                <path d="M60,50 L55,45" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M60,50 L65,45" stroke="currentColor" stroke-width="1.5" />
+                            </g>
+                        </svg>
+                    </div>
+                    <h4 class="font-bold text-lg">Low Bias / High Variance</h4>
+                    <span class="text-overfit font-bold text-sm mb-2">OVERFITTING</span>
+                    <p class="text-sm text-center text-slate-600">
+                        "Darts are all over the place, but centered around the bullseye."
+                    </p>
+                    <p class="text-xs text-center text-slate-500 mt-2">
+                        Sensitive to fluctuations. Memorizes noise.
+                    </p>
+                </div>
+
+                <!-- Scenario 3: Ideal -->
+                <div class="flex flex-col items-center">
+                    <div class="relative w-48 h-48 mb-4">
+                        <!-- Dartboard -->
+                        <svg viewBox="0 0 100 100" class="w-full h-full shadow-inner rounded-full">
+                            <circle cx="50" cy="50" r="48" fill="#e2e8f0" stroke="#94a3b8" />
+                            <circle cx="50" cy="50" r="35" fill="white" stroke="#94a3b8" />
+                            <circle cx="50" cy="50" r="20" fill="#e2e8f0" stroke="#94a3b8" />
+                            <circle cx="50" cy="50" r="5" fill="#ef4444" />
+                            <!-- Darts (Bullseye) -->
+                            <g class="dart text-goodfit" style="color: #22C55E">
+                                <circle cx="50" cy="50" r="2" fill="currentColor" />
+                                <path d="M50,50 L45,45" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M50,50 L55,45" stroke="currentColor" stroke-width="1.5" />
+                            </g>
+                            <g class="dart text-goodfit" style="color: #22C55E">
+                                <circle cx="52" cy="48" r="2" fill="currentColor" />
+                                <path d="M52,48 L47,43" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M52,48 L57,43" stroke="currentColor" stroke-width="1.5" />
+                            </g>
+                            <g class="dart text-goodfit" style="color: #22C55E">
+                                <circle cx="48" cy="52" r="2" fill="currentColor" />
+                                <path d="M48,52 L43,47" stroke="currentColor" stroke-width="1.5" />
+                                <path d="M48,52 L53,47" stroke="currentColor" stroke-width="1.5" />
+                            </g>
+                        </svg>
+                    </div>
+                    <h4 class="font-bold text-lg">Low Bias / Low Variance</h4>
+                    <span class="text-goodfit font-bold text-sm mb-2">OPTIMAL FIT</span>
+                    <p class="text-sm text-center text-slate-600">
+                        "All darts land on the bullseye."
+                    </p>
+                    <p class="text-xs text-center text-slate-500 mt-2">
+                        Captures patterns, ignores noise.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- DETAILED COMPARISON -->
+        <section class="grid md:grid-cols-2 gap-8">
+
+            <!-- UNDERFITTING DETAILS -->
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+                <div class="bg-underfit-light p-4 border-b border-underfit/20 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="minus-circle" class="text-underfit w-6 h-6"></i>
+                        <h3 class="font-bold text-lg text-underfit-deep">Underfitting</h3>
+                    </div>
+                    <span
+                        class="text-xs font-bold uppercase tracking-wider text-underfit-deep bg-white/50 px-2 py-1 rounded">High
+                        Bias</span>
+                </div>
+                <div class="p-6 space-y-6">
+                    <div>
+                        <h4 class="font-semibold text-slate-900 mb-2">What is it?</h4>
+                        <p class="text-slate-600 text-sm">
+                            The model is too straightforward and lacks complexity. It struggles to capture nuanced
+                            relationships within the data. It is "systematically wrong."
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-slate-900 mb-2 text-sm">Typical Candidates</h4>
+                        <ul class="text-sm text-slate-600 space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-underfit mt-0.5"></i>
+                                <span>Linear Regression (too simple for curves)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check" class="w-4 h-4 text-underfit mt-0.5"></i>
+                                <span>Logistic Regression (simple classification)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-semibold text-slate-900 mb-2">Symptoms</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2 text-sm text-slate-700">
+                                <span class="w-2 h-2 rounded-full bg-underfit"></span>
+                                Poor performance on <strong>Training</strong> data
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-slate-700">
+                                <span class="w-2 h-2 rounded-full bg-underfit"></span>
+                                Poor performance on <strong>Test</strong> data
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-slate-700">
+                                <span class="w-2 h-2 rounded-full bg-underfit"></span>
+                                Fails to explain variance (High Bias)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OVERFITTING DETAILS -->
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm">
+                <div class="bg-overfit-light p-4 border-b border-overfit/20 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="plus-circle" class="text-overfit w-6 h-6"></i>
+                        <h3 class="font-bold text-lg text-overfit-deep">Overfitting</h3>
+                    </div>
+                    <span
+                        class="text-xs font-bold uppercase tracking-wider text-overfit-deep bg-white/50 px-2 py-1 rounded">High
+                        Variance</span>
+                </div>
+                <div class="p-6 space-y-6">
+                    <div>
+                        <h4 class="font-semibold text-slate-900 mb-2">What is it?</h4>
+                        <p class="text-slate-600 text-sm">
+                            The model becomes excessively intricate. It learns the training data "too well," including
+                            the noise, preventing it from generalizing to new, unseen data.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-lg">
+                        <h4 class="font-semibold text-slate-900 mb-2 text-sm">Typical Candidates</h4>
+                        <ul class="text-sm text-slate-600 space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="alert-triangle" class="w-4 h-4 text-overfit mt-0.5"></i>
+                                <span>Random Forests (if unchecked)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="alert-triangle" class="w-4 h-4 text-overfit mt-0.5"></i>
+                                <span>Neural Networks (Deep Learning)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="alert-triangle" class="w-4 h-4 text-overfit mt-0.5"></i>
+                                <span>XGBoost</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="font-semibold text-slate-900 mb-2">Symptoms</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center gap-2 text-sm text-slate-700">
+                                <span class="w-2 h-2 rounded-full bg-goodfit"></span>
+                                Great performance on <strong>Training</strong> data
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-slate-700">
+                                <span class="w-2 h-2 rounded-full bg-overfit"></span>
+                                Poor performance on <strong>Test</strong> data
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-slate-700">
+                                <span class="w-2 h-2 rounded-full bg-overfit"></span>
+                                Sensitive to small changes (High Variance)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- DIAGNOSIS: LEARNING CURVES -->
+        <section class="bg-white p-6 md:p-8 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="activity" class="text-slate-700"></i>
+                    Diagnosis: Reading Learning Curves
+                </h2>
+                <p class="text-slate-500 mb-4">
+                    Measuring the trade-off between overfitting and underfitting can be difficult, but monitoring error
+                    rates is key.
+                </p>
+
+                <!-- New Context Block -->
+                <div class="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-6 text-sm text-slate-700 flex gap-3">
+                    <i data-lucide="info" class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5"></i>
+                    <div>
+                        <strong class="font-semibold text-slate-900">What is Error/Loss?</strong>
+                        <p class="mt-1">
+                            "Loss" quantifies how far a model's predictions are from the actual values.
+                            For example, in predicting house prices, this might be the <em>Mean Squared Error</em>
+                            (average squared difference between predicted and actual price).
+                            <strong>Lower is always better.</strong>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <div class="flex gap-6 mt-4 text-sm font-medium">
+                    <div class="flex items-center gap-2">
+                        <span class="w-6 h-0.5 bg-slate-800"></span>
+                        <span class="text-slate-700">Training Loss</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-6 h-0.5 border-b-2 border-slate-400 border-dashed"></span>
+                        <span class="text-slate-500">Validation Loss</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Underfitting Curve -->
+                <div class="border border-slate-200 rounded-lg p-4 bg-slate-50">
+                    <h5 class="text-center font-bold text-underfit mb-4">Underfitting Pattern</h5>
+                    <div class="aspect-square bg-white border border-slate-200 rounded relative mb-4 shadow-inner">
+                        <div class="absolute inset-0 p-6">
+                            <!-- Graph Axes & Grid -->
+                            <div class="w-full h-full border-l border-b border-slate-300 relative grid grid-rows-4">
+                                <!-- Grid Lines -->
+                                <div class="border-b border-slate-100 w-full"></div>
+                                <div class="border-b border-slate-100 w-full"></div>
+                                <div class="border-b border-slate-100 w-full"></div>
+
+                                <!-- Labels -->
+                                <span class="absolute -left-6 top-0 text-[10px] text-slate-400 font-bold">High
+                                    Error</span>
+                                <span class="absolute -left-6 bottom-0 text-[10px] text-slate-400 font-bold">Low
+                                    Error</span>
+                                <span class="absolute right-0 -bottom-5 text-[10px] text-slate-400">Epochs</span>
+
+                                <!-- SVG Graph -->
+                                <svg class="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none">
+                                    <!-- Training Line (Stays High) -->
+                                    <path d="M0,20 Q40,35 100,40" fill="none" stroke="#EF4444" stroke-width="2.5"
+                                        vector-effect="non-scaling-stroke" />
+                                    <!-- Validation Line (Stays High, parallel) -->
+                                    <path d="M0,30 Q40,45 100,45" fill="none" stroke="#FCA5A5" stroke-width="2.5"
+                                        stroke-dasharray="6 4" vector-effect="non-scaling-stroke" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span class="inline-block bg-underfit/10 text-underfit text-xs px-2 py-1 rounded font-bold">High
+                            Bias</span>
+                        <p class="text-xs text-slate-500 mt-1">Both lines plateau at high error.</p>
+                    </div>
+                </div>
+
+                <!-- Good Fit Curve -->
+                <div class="border border-slate-200 rounded-lg p-4 bg-slate-50">
+                    <h5 class="text-center font-bold text-goodfit mb-4">Good Fit Pattern</h5>
+                    <div class="aspect-square bg-white border border-slate-200 rounded relative mb-4 shadow-inner">
+                        <div class="absolute inset-0 p-6">
+                            <!-- Graph Axes & Grid -->
+                            <div class="w-full h-full border-l border-b border-slate-300 relative grid grid-rows-4">
+                                <div class="border-b border-slate-100 w-full"></div>
+                                <div class="border-b border-slate-100 w-full"></div>
+                                <div class="border-b border-slate-100 w-full"></div>
+
+                                <!-- Labels -->
+                                <span class="absolute -left-6 top-0 text-[10px] text-slate-400 font-bold">High
+                                    Error</span>
+                                <span class="absolute -left-6 bottom-0 text-[10px] text-slate-400 font-bold">Low
+                                    Error</span>
+                                <span class="absolute right-0 -bottom-5 text-[10px] text-slate-400">Epochs</span>
+
+                                <!-- SVG Graph -->
+                                <svg class="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none">
+                                    <!-- Training Line (Drops Low) -->
+                                    <path d="M0,20 C30,20 40,85 100,92" fill="none" stroke="#22C55E" stroke-width="2.5"
+                                        vector-effect="non-scaling-stroke" />
+                                    <!-- Validation Line (Drops Low, close) -->
+                                    <path d="M0,25 C30,25 40,80 100,88" fill="none" stroke="#86EFAC" stroke-width="2.5"
+                                        stroke-dasharray="6 4" vector-effect="non-scaling-stroke" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span
+                            class="inline-block bg-goodfit/10 text-goodfit text-xs px-2 py-1 rounded font-bold">Balanced</span>
+                        <p class="text-xs text-slate-500 mt-1">Both converge to low error.</p>
+                    </div>
+                </div>
+
+                <!-- Overfitting Curve -->
+                <div class="border border-slate-200 rounded-lg p-4 bg-slate-50">
+                    <h5 class="text-center font-bold text-overfit mb-4">Overfitting Pattern</h5>
+                    <div class="aspect-square bg-white border border-slate-200 rounded relative mb-4 shadow-inner">
+                        <div class="absolute inset-0 p-6">
+                            <!-- Graph Axes & Grid -->
+                            <div class="w-full h-full border-l border-b border-slate-300 relative grid grid-rows-4">
+                                <div class="border-b border-slate-100 w-full"></div>
+                                <div class="border-b border-slate-100 w-full"></div>
+                                <div class="border-b border-slate-100 w-full"></div>
+
+                                <!-- Labels -->
+                                <span class="absolute -left-6 top-0 text-[10px] text-slate-400 font-bold">High
+                                    Error</span>
+                                <span class="absolute -left-6 bottom-0 text-[10px] text-slate-400 font-bold">Low
+                                    Error</span>
+                                <span class="absolute right-0 -bottom-5 text-[10px] text-slate-400">Epochs</span>
+
+                                <!-- SVG Graph -->
+                                <svg class="absolute inset-0 w-full h-full overflow-visible" preserveAspectRatio="none">
+                                    <!-- Gap Highlight -->
+                                    <path d="M60,60 L100,40 L100,95 L60,85 Z" fill="#DBEAFE" stroke="none"
+                                        opacity="0.5" />
+
+                                    <!-- Training Line (Drops to almost zero) -->
+                                    <path d="M0,20 C30,20 50,90 100,96" fill="none" stroke="#3B82F6" stroke-width="2.5"
+                                        vector-effect="non-scaling-stroke" />
+
+                                    <!-- Validation Line (The "U" Turn) -->
+                                    <!-- Starts high, drops to middle (y=60), then goes back UP (y=40) -->
+                                    <path d="M0,25 C30,25 50,60 60,60 S80,50 100,40" fill="none" stroke="#93C5FD"
+                                        stroke-width="2.5" stroke-dasharray="6 4" vector-effect="non-scaling-stroke" />
+                                </svg>
+
+                                <!-- Gap Annotation -->
+                                <div class="absolute right-2 top-1/2 flex flex-col items-center">
+                                    <div class="h-8 w-px bg-slate-400 border-l border-dashed"></div>
+                                    <span
+                                        class="text-[10px] font-bold text-overfit bg-white px-1 shadow-sm border border-overfit/20 rounded">GAP</span>
+                                    <div class="h-8 w-px bg-slate-400 border-l border-dashed"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <span class="inline-block bg-overfit/10 text-overfit text-xs px-2 py-1 rounded font-bold">High
+                            Variance</span>
+                        <p class="text-xs text-slate-500 mt-1">Validation improves, then gets worse.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SOLUTIONS TOOLBOX -->
+        <section>
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <i data-lucide="wrench" class="text-slate-700"></i>
+                Solutions & Remedies
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- Fixing Underfitting -->
+                <div class="bg-white rounded-xl shadow-sm border border-l-4 border-l-underfit p-6">
+                    <h3 class="font-bold text-lg text-slate-900 mb-4">How to Fix Underfitting</h3>
+                    <ul class="space-y-3">
+                        <li class="flex gap-3">
+                            <div class="bg-underfit/10 p-2 rounded-full h-fit">
+                                <i data-lucide="layers" class="w-4 h-4 text-underfit"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-slate-900">Increase Model Complexity</strong>
+                                <p class="text-sm text-slate-600">Switch from simple linear models to models that can
+                                    capture curves and nuances.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="bg-underfit/10 p-2 rounded-full h-fit">
+                                <i data-lucide="list-plus" class="w-4 h-4 text-underfit"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-slate-900">Add More Parameters/Features</strong>
+                                <p class="text-sm text-slate-600">Consider more variables (e.g., neighborhood, remodel
+                                    date) to capture the phenomenon.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Fixing Overfitting -->
+                <div class="bg-white rounded-xl shadow-sm border border-l-4 border-l-overfit p-6">
+                    <h3 class="font-bold text-lg text-slate-900 mb-4">How to Fix Overfitting</h3>
+                    <ul class="space-y-3">
+                        <li class="flex gap-3">
+                            <div class="bg-overfit/10 p-2 rounded-full h-fit">
+                                <i data-lucide="database" class="w-4 h-4 text-overfit"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-slate-900">Get More High-Quality Data</strong>
+                                <p class="text-sm text-slate-600">Ensure the complexity of the model is matched by the
+                                    quantity of data.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="bg-overfit/10 p-2 rounded-full h-fit">
+                                <i data-lucide="shield-check" class="w-4 h-4 text-overfit"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-slate-900">Cross-Fold Validation</strong>
+                                <p class="text-sm text-slate-600">Withhold data, train, and test with random
+                                    fluctuations to measure variance.</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-3">
+                            <div class="bg-overfit/10 p-2 rounded-full h-fit">
+                                <i data-lucide="scissors" class="w-4 h-4 text-overfit"></i>
+                            </div>
+                            <div>
+                                <strong class="block text-slate-900">Reduce Complexity</strong>
+                                <p class="text-sm text-slate-600">Don't use a Neural Network when a simpler model
+                                    generalizes better.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLOWCHART -->
+        <section class="bg-slate-900 rounded-2xl p-8 text-center text-white">
+            <h2 class="text-2xl font-bold mb-8">Diagnostic Decision Flow</h2>
+
+            <div class="flex flex-col items-center gap-6">
+                <!-- Step 1 -->
+                <div class="bg-slate-700 px-6 py-4 rounded-lg border border-slate-600 max-w-sm w-full">
+                    <p class="font-semibold">Does the model perform well on TRAINING data?</p>
+                </div>
+
+                <div class="flex w-full max-w-2xl justify-between px-12 relative">
+                    <!-- Lines -->
+                    <div class="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-0 border-l border-slate-500"></div>
+                    <div class="absolute top-6 left-[15%] right-[15%] h-0 border-t border-slate-500"></div>
+                    <div class="absolute top-6 left-[15%] h-6 border-l border-slate-500"></div>
+                    <div class="absolute top-6 right-[15%] h-6 border-l border-slate-500"></div>
+                </div>
+
+                <div class="flex w-full max-w-3xl justify-between gap-4">
+                    <!-- Path NO -->
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="bg-red-500/20 text-red-300 font-bold px-3 py-1 rounded mb-4">NO</div>
+                        <div class="bg-underfit text-white p-4 rounded-lg w-full">
+                            <h4 class="font-bold">Probable Underfitting</h4>
+                            <p class="text-xs mt-1 text-red-100">Model is too simple.</p>
+                        </div>
+                    </div>
+
+                    <!-- Path YES -->
+                    <div class="flex-1 flex flex-col items-center">
+                        <div class="bg-green-500/20 text-green-300 font-bold px-3 py-1 rounded mb-4">YES</div>
+                        <div class="bg-slate-700 px-6 py-4 rounded-lg border border-slate-600 w-full">
+                            <p class="font-semibold text-sm">Does it ALSO perform well on TEST data?</p>
+                        </div>
+
+                        <!-- Inner Branch -->
+                        <div class="flex w-full justify-between gap-4 mt-6">
+                            <!-- Path NO (Inner) -->
+                            <div class="flex-1 flex flex-col items-center">
+                                <div class="bg-blue-500/20 text-blue-300 font-bold px-2 py-0.5 text-xs rounded mb-2">NO
+                                </div>
+                                <div class="bg-overfit text-white p-3 rounded-lg w-full">
+                                    <h4 class="font-bold text-sm">Overfitting</h4>
+                                    <p class="text-[10px] mt-1 text-blue-100">Memorizing noise.</p>
+                                </div>
+                            </div>
+                            <!-- Path YES (Inner) -->
+                            <div class="flex-1 flex flex-col items-center">
+                                <div class="bg-green-500/20 text-green-300 font-bold px-2 py-0.5 text-xs rounded mb-2">
+                                    YES</div>
+                                <div class="bg-goodfit text-white p-3 rounded-lg w-full">
+                                    <h4 class="font-bold text-sm">Good Fit</h4>
+                                    <p class="text-[10px] mt-1 text-green-100">Deployment Ready.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER / TAKEAWAYS -->
+        <footer class="bg-white border-t border-slate-200 py-8">
+            <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-6 mb-8">
+                <h3 class="text-yellow-800 font-bold flex items-center gap-2 mb-2">
+                    <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                    Key Takeaway
+                </h3>
+                <p class="text-yellow-800 text-sm italic">
+                    "A model that is too simple won't detect fine patterns, while a model that is too complex will
+                    overcompensate... ideally, what we want is an equal matchup."
+                </p>
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

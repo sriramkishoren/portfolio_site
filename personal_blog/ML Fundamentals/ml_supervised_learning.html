@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervised Learning Infographic</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .step-connector::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 2rem;
+            background-color: #cbd5e1;
+            z-index: 0;
+        }
+
+        .last-step::after {
+            display: none;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased smooth-scroll">
+
+    <!-- HERO SECTION -->
+    <header class="bg-gradient-to-r from-blue-700 to-blue-900 text-white pt-20 pb-16 px-4 relative overflow-hidden">
+        <!-- Background decorative circles -->
+        <div
+            class="absolute top-0 left-0 w-64 h-64 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-20 -translate-x-1/2 -translate-y-1/2">
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-80 h-80 bg-teal-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 translate-x-1/3 translate-y-1/3">
+        </div>
+
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div
+                class="inline-flex items-center justify-center p-3 bg-blue-600/50 rounded-full mb-6 ring-2 ring-blue-400/30">
+                <i data-lucide="graduation-cap" class="w-10 h-10 text-blue-100"></i>
+            </div>
+            <h1 class="text-5xl font-extrabold tracking-tight mb-4">Supervised Learning</h1>
+            <p class="text-xl text-blue-100 max-w-2xl mx-auto font-light leading-relaxed">
+                The process of teaching a computer to predict outcomes using labeled data.
+                Think of it as learning with a teacher who provides both the questions and the answers.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 -mt-10 relative z-20 space-y-12 pb-20">
+
+        <!-- SECTION 1: WHAT IS IT? -->
+        <section class="grid md:grid-cols-2 gap-6">
+            <!-- Concept Card -->
+            <div class="glass-card bg-white p-8 rounded-2xl shadow-lg border-l-8 border-blue-600">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="bg-blue-100 p-3 rounded-lg text-blue-600">
+                        <i data-lucide="book-open" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800">The Core Concept</h2>
+                        <p class="text-slate-500 font-medium">Input Data + Labels = Prediction</p>
+                    </div>
+                </div>
+                <p class="text-slate-600 leading-relaxed">
+                    Supervised learning algorithms build a model by examining data where the "right answer" (the Label)
+                    is already known. The goal is to learn the correlation between the data features and the label so it
+                    can predict the label for new, unseen data.
+                </p>
+            </div>
+
+            <!-- Analogy Card -->
+            <div
+                class="bg-gradient-to-br from-slate-800 to-slate-900 text-white p-8 rounded-2xl shadow-lg relative overflow-hidden">
+                <i data-lucide="lightbulb" class="absolute top-4 right-4 w-24 h-24 text-white opacity-5"></i>
+                <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                    <i data-lucide="users" class="w-5 h-5 text-yellow-400"></i>
+                    The Teacher-Student Analogy
+                </h3>
+                <p class="text-slate-300 italic text-lg mb-4">
+                    "If you are learning math, the teacher gives you problems AND the answers to practice. Once you
+                    learn the patterns, you take a test where the answers are hidden."
+                </p>
+                <div class="flex gap-2 text-sm font-semibold text-blue-200 mt-4">
+                    <span class="px-2 py-1 bg-white/10 rounded">Teacher = Labeled Data</span>
+                    <span class="px-2 py-1 bg-white/10 rounded">Student = Algorithm</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: HOW IT WORKS (PIPELINE) -->
+        <section>
+            <div class="flex items-center gap-3 mb-8 justify-center">
+                <i data-lucide="workflow" class="w-8 h-8 text-blue-600"></i>
+                <h2 class="text-3xl font-bold text-slate-800">How It Works: The Pipeline</h2>
+            </div>
+
+            <div class="relative max-w-3xl mx-auto">
+                <!-- Step 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-6 mb-8 relative z-10">
+                    <div
+                        class="w-16 h-16 bg-blue-100 text-blue-700 rounded-2xl flex items-center justify-center shadow-sm shrink-0 font-bold text-xl step-connector">
+                        1</div>
+                    <div
+                        class="bg-white p-6 rounded-xl shadow-md border border-slate-100 flex-1 w-full relative group hover:-translate-y-1 transition-transform duration-300">
+                        <div
+                            class="absolute -left-3 top-6 w-3 h-3 bg-white border-l border-b border-slate-100 transform rotate-45 hidden md:block">
+                        </div>
+                        <h3 class="font-bold text-lg text-slate-800 mb-1">Identify Labels</h3>
+                        <p class="text-slate-600 text-sm">Define what you want to predict (e.g., "Is this email Spam?").
+                            These are the target answers.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col md:flex-row items-center gap-6 mb-8 relative z-10">
+                    <div
+                        class="w-16 h-16 bg-teal-100 text-teal-700 rounded-2xl flex items-center justify-center shadow-sm shrink-0 font-bold text-xl step-connector">
+                        2</div>
+                    <div
+                        class="bg-white p-6 rounded-xl shadow-md border border-slate-100 flex-1 w-full relative group hover:-translate-y-1 transition-transform duration-300">
+                        <h3 class="font-bold text-lg text-slate-800 mb-1">Prepare Training Data</h3>
+                        <p class="text-slate-600 text-sm">Clean the data (remove punctuation, format text) and feed the
+                            algorithm examples where the label is <span class="font-bold text-teal-600">KNOWN</span>.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col md:flex-row items-center gap-6 mb-8 relative z-10">
+                    <div
+                        class="w-16 h-16 bg-indigo-100 text-indigo-700 rounded-2xl flex items-center justify-center shadow-sm shrink-0 font-bold text-xl step-connector">
+                        3</div>
+                    <div
+                        class="bg-white p-6 rounded-xl shadow-md border border-slate-100 flex-1 w-full relative group hover:-translate-y-1 transition-transform duration-300">
+                        <h3 class="font-bold text-lg text-slate-800 mb-1">Train the Model</h3>
+                        <p class="text-slate-600 text-sm">The algorithm finds patterns. <br><span
+                                class="italic text-slate-500">"Oh, when the word 'Buy' appears, it's usually
+                                Spam."</span></p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex flex-col md:flex-row items-center gap-6 relative z-10">
+                    <div
+                        class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-2xl flex items-center justify-center shadow-sm shrink-0 font-bold text-xl last-step">
+                        4</div>
+                    <div
+                        class="bg-white p-6 rounded-xl shadow-md border-l-4 border-emerald-500 flex-1 w-full relative group hover:-translate-y-1 transition-transform duration-300">
+                        <h3 class="font-bold text-lg text-slate-800 mb-1">Test & Validate</h3>
+                        <p class="text-slate-600 text-sm">Give the model "Test Data" (new emails) <span
+                                class="font-bold text-emerald-600">WITHOUT</span> labels. Check if its predictions match
+                            the hidden reality.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: TYPES (CLASSIFICATION VS REGRESSION) -->
+        <section>
+            <div class="text-center mb-8">
+                <span
+                    class="bg-slate-200 text-slate-600 px-3 py-1 rounded-full text-sm font-semibold tracking-wide uppercase">The
+                    Two Main Types</span>
+                <h2 class="text-3xl font-bold text-slate-800 mt-2">Discrete vs. Continuous</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Classification -->
+                <div
+                    class="bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-teal-500 hover:shadow-xl transition-shadow">
+                    <div class="bg-teal-50 p-6 border-b border-teal-100">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i data-lucide="tags" class="text-teal-600 w-6 h-6"></i>
+                            <h3 class="text-2xl font-bold text-teal-800">Classification</h3>
+                        </div>
+                        <p class="text-teal-700 font-medium">Predicting a Category</p>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-600 mb-4">The output is a <strong>"Discrete"</strong> label (chunks). It
+                            puts data into specific buckets.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-2 text-sm text-slate-700">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-500"></i>
+                                Spam vs. Not Spam
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-slate-700">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-500"></i>
+                                Cat vs. Dog
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-slate-700">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-500"></i>
+                                Cancerous vs. Benign
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Regression -->
+                <div
+                    class="bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-indigo-500 hover:shadow-xl transition-shadow">
+                    <div class="bg-indigo-50 p-6 border-b border-indigo-100">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i data-lucide="trending-up" class="text-indigo-600 w-6 h-6"></i>
+                            <h3 class="text-2xl font-bold text-indigo-800">Regression</h3>
+                        </div>
+                        <p class="text-indigo-700 font-medium">Predicting a Number</p>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-slate-600 mb-4">The output is a <strong>"Continuous"</strong> variable. It
+                            predicts a value along a numerical range.</p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center gap-2 text-sm text-slate-700">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-500"></i>
+                                Temperature (e.g., 72.5°F)
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-slate-700">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-500"></i>
+                                House Prices
+                            </li>
+                            <li class="flex items-center gap-2 text-sm text-slate-700">
+                                <i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-500"></i>
+                                Stock Market Values
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: REAL WORLD APPLICATIONS -->
+        <section>
+            <h2 class="text-3xl font-bold text-slate-800 mb-8 flex items-center gap-3">
+                <i data-lucide="briefcase" class="text-blue-600"></i>
+                Real-World Applications
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- App Card 1 -->
+                <div
+                    class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 hover:border-blue-400 transition-colors">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="p-2 bg-yellow-100 rounded-lg text-yellow-600"><i data-lucide="cloud-sun"
+                                class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-slate-800">Weather Forecasting</h4>
+                    </div>
+                    <p class="text-sm text-slate-600">Predicting "Rainy/Sunny" (Classification) or exact degrees
+                        (Regression) based on humidity and wind.</p>
+                </div>
+                <!-- App Card 2 -->
+                <div
+                    class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 hover:border-blue-400 transition-colors">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="p-2 bg-red-100 rounded-lg text-red-600"><i data-lucide="activity"
+                                class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-slate-800">Healthcare</h4>
+                    </div>
+                    <p class="text-sm text-slate-600">Diagnosing disease states. E.g., analyzing scan tests to label a
+                        lesion as "Benign" or "Cancerous".</p>
+                </div>
+                <!-- App Card 3 -->
+                <div
+                    class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 hover:border-blue-400 transition-colors">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="p-2 bg-purple-100 rounded-lg text-purple-600"><i data-lucide="mail"
+                                class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-slate-800">Spam Detection</h4>
+                    </div>
+                    <p class="text-sm text-slate-600">Filters email into tabs (Promotion, Social, Spam) based on text
+                        patterns and sender info.</p>
+                </div>
+                <!-- App Card 4 -->
+                <div
+                    class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 hover:border-blue-400 transition-colors">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="p-2 bg-green-100 rounded-lg text-green-600"><i data-lucide="smile"
+                                class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-slate-800">Sentiment Analysis</h4>
+                    </div>
+                    <p class="text-sm text-slate-600">Reading social media text to label the writer's emotion as
+                        Positive, Negative, or Neutral.</p>
+                </div>
+                <!-- App Card 5 -->
+                <div
+                    class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 hover:border-blue-400 transition-colors">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="p-2 bg-orange-100 rounded-lg text-orange-600"><i data-lucide="wallet"
+                                class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-slate-800">Poverty Analysis</h4>
+                    </div>
+                    <p class="text-sm text-slate-600">Using income and nutrition data to label households as "Above" or
+                        "Below" the poverty line.</p>
+                </div>
+                <!-- App Card 6 -->
+                <div
+                    class="bg-white p-5 rounded-xl shadow-sm border border-slate-200 hover:border-blue-400 transition-colors">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="p-2 bg-cyan-100 rounded-lg text-cyan-600"><i data-lucide="image"
+                                class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-slate-800">Image Recognition</h4>
+                    </div>
+                    <p class="text-sm text-slate-600">Analyzing pixels to identify objects. E.g., "Is this an image of a
+                        cat or a dog?"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: GLOSSARY & KEY TERMS -->
+        <section class="bg-slate-800 rounded-3xl p-8 text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-12 bg-white/5 rounded-full blur-2xl"></div>
+
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 relative z-10">
+                <i data-lucide="key" class="text-yellow-400"></i>
+                Key Terminology
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6 relative z-10">
+                <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm">
+                    <h3 class="font-bold text-blue-300 mb-1">Labels</h3>
+                    <p class="text-sm text-slate-300">The "answers" or states we want to predict (e.g., Rain, Spam,
+                        Healthy).</p>
+                </div>
+                <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm">
+                    <h3 class="font-bold text-blue-300 mb-1">Features (Data)</h3>
+                    <p class="text-sm text-slate-300">The input information used to make predictions (e.g., temperature
+                        readings, pixels, email text).</p>
+                </div>
+                <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm">
+                    <h3 class="font-bold text-blue-300 mb-1">Training Data</h3>
+                    <p class="text-sm text-slate-300">Data where the label is <span
+                            class="text-white font-semibold">known</span>. Used to build the model.</p>
+                </div>
+                <div class="bg-white/10 p-4 rounded-xl backdrop-blur-sm">
+                    <h3 class="font-bold text-blue-300 mb-1">Test Data</h3>
+                    <p class="text-sm text-slate-300">Data where the label is <span
+                            class="text-white font-semibold">hidden</span> from the computer. Used to validate accuracy.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-200 py-12 text-center text-slate-600">
+        <div class="max-w-2xl mx-auto px-4">
+            <h3 class="font-bold text-slate-800 mb-4 uppercase tracking-widest text-sm">Summary Recap</h3>
+            <ul class="text-left space-y-2 inline-block mx-auto">
+                <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i>
+                    <span>Supervised Learning uses <strong>labeled data</strong> to train algorithms.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i>
+                    <span><strong>Classification</strong> predicts categories (Discrete).</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i>
+                    <span><strong>Regression</strong> predicts numbers (Continuous).</span>
+                </li>
+                <li class="flex items-start gap-2">
+                    <i data-lucide="check" class="w-5 h-5 text-green-600 shrink-0 mt-0.5"></i>
+                    <span>Success is measured by testing on new, unseen data.</span>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

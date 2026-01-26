@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Customer Segmentation Infographic</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Connection Line Animation */
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        .path-line {
+            stroke-dasharray: 10;
+            animation: dash 20s linear infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 pb-20">
+
+    <!-- Hero Section -->
+    <div class="bg-white border-b border-slate-200 pt-16 pb-12 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <div class="inline-flex items-center justify-center p-3 bg-indigo-100 rounded-full mb-6">
+                <i data-lucide="users" class="w-8 h-8 text-indigo-600"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-slate-900">
+                Retail Customer <span
+                    class="bg-gradient-to-r from-indigo-600 to-purple-600 gradient-text text-transparent">Segmentation</span>
+            </h1>
+            <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+                Leveraging data to move from generic interactions to personalized relationships.
+            </p>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-6 -mt-8">
+
+        <!-- The Purpose Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <!-- Card 1 -->
+            <div
+                class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 card-hover text-center relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-blue-600"></div>
+                <div class="mb-4 inline-block p-3 bg-blue-50 rounded-xl group-hover:scale-110 transition-transform">
+                    <i data-lucide="target" class="w-8 h-8 text-blue-600"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-2">Targeted Marketing</h3>
+                <p class="text-slate-500 text-sm">Tailoring the message to the specific needs of the individual.</p>
+            </div>
+            <!-- Card 2 -->
+            <div
+                class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 card-hover text-center relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-400 to-indigo-600"></div>
+                <div class="mb-4 inline-block p-3 bg-indigo-50 rounded-xl group-hover:scale-110 transition-transform">
+                    <i data-lucide="search" class="w-8 h-8 text-indigo-600"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-2">Understand Behavior</h3>
+                <p class="text-slate-500 text-sm">Analyzing what they buy, when they buy, and how much they spend.</p>
+            </div>
+            <!-- Card 3 -->
+            <div
+                class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 card-hover text-center relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-purple-600"></div>
+                <div class="mb-4 inline-block p-3 bg-purple-50 rounded-xl group-hover:scale-110 transition-transform">
+                    <i data-lucide="heart-handshake" class="w-8 h-8 text-purple-600"></i>
+                </div>
+                <h3 class="text-lg font-bold mb-2">Retention & CRM</h3>
+                <p class="text-slate-500 text-sm">Strategies to keep existing customers and build long-term value.</p>
+            </div>
+        </div>
+
+        <!-- The Two Objectives Section -->
+        <div class="mb-20">
+            <div class="flex items-center gap-4 mb-8 justify-center">
+                <span class="h-px w-16 bg-slate-300"></span>
+                <h2 class="text-2xl font-bold text-slate-800">Two Core Objectives</h2>
+                <span class="h-px w-16 bg-slate-300"></span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Objective 1: Prediction -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-lg relative overflow-hidden">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-green-100 rounded-full opacity-50"></div>
+                    <div class="flex items-start gap-6 relative z-10">
+                        <div class="p-4 bg-green-100 rounded-xl shrink-0">
+                            <i data-lucide="brain-circuit" class="w-8 h-8 text-green-700"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">1. The Predictive Dimension</h3>
+                            <p class="text-slate-600 mb-4">"Can I assign this customer to a segment?"</p>
+                            <ul class="space-y-2 text-sm text-slate-500">
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500"></i>
+                                    Identify likely high spenders
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500"></i>
+                                    Predict repeat purchases
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-green-500"></i>
+                                    Flag at-risk customers
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Objective 2: Profiling -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-lg relative overflow-hidden">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-orange-100 rounded-full opacity-50"></div>
+                    <div class="flex items-start gap-6 relative z-10">
+                        <div class="p-4 bg-orange-100 rounded-xl shrink-0">
+                            <i data-lucide="file-bar-chart" class="w-8 h-8 text-orange-700"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 mb-2">2. The Profiling Dimension</h3>
+                            <p class="text-slate-600 mb-4">"What characteristics define this segment?"</p>
+                            <ul class="space-y-2 text-sm text-slate-500">
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-orange-500"></i>
+                                    Understand key variables
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-orange-500"></i>
+                                    Discover differentiating traits
+                                </li>
+                                <li class="flex items-center gap-2">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4 text-orange-500"></i>
+                                    Inform actionable strategies
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Mechanics (Central Processor) -->
+        <div class="flex justify-center mb-16 relative">
+            <div class="bg-slate-900 text-white px-8 py-4 rounded-full shadow-2xl flex items-center gap-3 z-10">
+                <i data-lucide="cpu" class="w-6 h-6 text-indigo-400"></i>
+                <span class="font-bold tracking-wide">CLUSTERING ALGORITHMS</span>
+            </div>
+            <!-- Connector Line -->
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 w-0.5 h-24 bg-slate-300 -z-0"></div>
+        </div>
+
+        <!-- Business Gains Section -->
+        <div class="bg-gradient-to-b from-white to-slate-100 rounded-3xl p-8 md:p-12 border border-slate-200">
+            <h2 class="text-3xl font-bold text-center mb-12 text-slate-900">Measuring Success</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+                <!-- Scenario A -->
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-bold text-indigo-600 tracking-wider">SCENARIO A: DIGITAL
+                            RESPONSE</span>
+                        <i data-lucide="mouse-pointer-click" class="w-6 h-6 text-slate-400"></i>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <p class="text-slate-600 mb-4">If users see irrelevant info, they ignore it. By using segments
+                            to show relevant digital products/apps:</p>
+                        <div class="flex items-center gap-4 bg-green-50 p-4 rounded-lg border border-green-100">
+                            <div class="bg-white p-2 rounded shadow-sm">
+                                <i data-lucide="trending-up" class="w-6 h-6 text-green-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-green-800">Higher CTR</h4>
+                                <p class="text-xs text-green-700">Click-Through Rates improve with relevance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scenario B -->
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-sm font-bold text-indigo-600 tracking-wider">SCENARIO B: CHURN MGMT</span>
+                        <i data-lucide="user-minus" class="w-6 h-6 text-slate-400"></i>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <p class="text-slate-600 mb-4">"Churn" is losing a customer. By predicting churn risk and
+                            offering targeted incentives:</p>
+                        <div class="flex items-center gap-4 bg-blue-50 p-4 rounded-lg border border-blue-100">
+                            <div class="bg-white p-2 rounded shadow-sm">
+                                <i data-lucide="shield-check" class="w-6 h-6 text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-blue-800">Reduced Churn</h4>
+                                <p class="text-xs text-blue-700">Loyalty is retained through specific offers.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="text-center mt-16 text-slate-400 text-sm">
+        <p>Infographic generated based on Retail Segmentation Analysis text.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

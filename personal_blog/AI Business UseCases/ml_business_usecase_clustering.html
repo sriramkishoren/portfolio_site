@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clustering in Business: Use Cases & Applications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        /* Flip Card Styles */
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front,
+        .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .flip-card-front {
+            background-color: white;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+        }
+
+        .flip-card-back {
+            background-color: #0f172a;
+            color: white;
+            transform: rotateY(180deg);
+            text-align: left;
+            align-items: flex-start;
+            justify-content: flex-start;
+            overflow-y: auto;
+        }
+
+        /* Hide scrollbar for cleaner look */
+        .flip-card-back::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .flip-card-back::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        .flip-card-back::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 2px;
+        }
+
+        .category-btn.active {
+            background-color: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+    </style>
+</head>
+
+<body class="text-slate-800">
+
+    <!-- Hero Section -->
+    <header class="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-12 px-4 sm:px-6 lg:px-8 shadow-lg">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl sm:text-5xl font-bold mb-4 tracking-tight">Clustering Business Use Cases</h1>
+            <p class="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto mb-8">
+                Unlocking value by finding hidden groups in data. Clustering segments observations to solve complex
+                problems across Finance, Marketing, Healthcare, and Engineering.
+            </p>
+
+            <!-- Filter Controls -->
+            <div class="flex flex-wrap justify-center gap-2 mt-8" id="filters">
+                <button onclick="filterCards('all')"
+                    class="category-btn active px-4 py-2 rounded-full border border-slate-600 bg-slate-800 hover:bg-slate-700 transition-colors text-sm font-medium">All
+                    Industries</button>
+                <button onclick="filterCards('finance')"
+                    class="category-btn px-4 py-2 rounded-full border border-slate-600 bg-slate-800 hover:bg-slate-700 transition-colors text-sm font-medium">Finance</button>
+                <button onclick="filterCards('marketing')"
+                    class="category-btn px-4 py-2 rounded-full border border-slate-600 bg-slate-800 hover:bg-slate-700 transition-colors text-sm font-medium">Marketing
+                    & Retail</button>
+                <button onclick="filterCards('healthcare')"
+                    class="category-btn px-4 py-2 rounded-full border border-slate-600 bg-slate-800 hover:bg-slate-700 transition-colors text-sm font-medium">Healthcare</button>
+                <button onclick="filterCards('energy')"
+                    class="category-btn px-4 py-2 rounded-full border border-slate-600 bg-slate-800 hover:bg-slate-700 transition-colors text-sm font-medium">Energy
+                    & Engineering</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="card-grid">
+
+            <!-- FINANCE: Portfolio Management -->
+            <div class="flip-card perspective-1000 h-80" data-category="finance">
+                <div class="flip-card-inner group">
+                    <!-- Front -->
+                    <div class="flip-card-front">
+                        <div class="p-4 bg-blue-50 rounded-full mb-4 group-hover:bg-blue-100 transition-colors">
+                            <i data-lucide="pie-chart" class="w-10 h-10 text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Portfolio Management</h3>
+                        <span
+                            class="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded mb-4">FINANCE</span>
+                        <p class="text-sm text-slate-500 mb-4">Balancing risk and return across various asset classes.
+                        </p>
+                        <div class="text-xs text-slate-400 font-medium mt-auto flex items-center">
+                            <i data-lucide="rotate-3d" class="w-4 h-4 mr-1"></i> Click to flip
+                        </div>
+                    </div>
+                    <!-- Back -->
+                    <div class="flip-card-back border-l-4 border-blue-500">
+                        <h4 class="text-lg font-bold text-blue-400 mb-3 flex items-center">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 mr-2"></i> Application
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+                            Categorize assets based on <strong>risk and return profiles</strong>. Form portfolios by
+                            grouping similar assets or ensuring diversification by picking representatives from
+                            different clusters.
+                        </p>
+                        <h4 class="text-sm font-bold text-white mb-2 uppercase tracking-wide">Benefits</h4>
+                        <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+                            <li>Optimized Diversification</li>
+                            <li>Risk Management</li>
+                            <li>Strategic Asset Allocation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FINANCE: Fraud Detection -->
+            <div class="flip-card perspective-1000 h-80" data-category="finance">
+                <div class="flip-card-inner group">
+                    <div class="flip-card-front">
+                        <div class="p-4 bg-red-50 rounded-full mb-4 group-hover:bg-red-100 transition-colors">
+                            <i data-lucide="shield-alert" class="w-10 h-10 text-red-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Fraud Detection</h3>
+                        <span class="text-xs font-semibold text-red-600 bg-red-50 px-2 py-1 rounded mb-4">FINANCE</span>
+                        <p class="text-sm text-slate-500 mb-4">Identifying fraud without pre-labeled data examples.</p>
+                        <div class="text-xs text-slate-400 font-medium mt-auto flex items-center">
+                            <i data-lucide="rotate-3d" class="w-4 h-4 mr-1"></i> Click to flip
+                        </div>
+                    </div>
+                    <div class="flip-card-back border-l-4 border-red-500">
+                        <h4 class="text-lg font-bold text-red-400 mb-3 flex items-center">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 mr-2"></i> Application
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+                            Treats fraud as <strong>Anomaly Detection</strong>. Clustering identifies "standard"
+                            behavior patterns; observations that don't fit these clusters are flagged as potential
+                            fraud.
+                        </p>
+                        <h4 class="text-sm font-bold text-white mb-2 uppercase tracking-wide">Benefits</h4>
+                        <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+                            <li>Unsupervised detection</li>
+                            <li>Identifies new fraud patterns</li>
+                            <li>Enhanced security monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FINANCE: Insurance Product Bundling -->
+            <div class="flip-card perspective-1000 h-80" data-category="finance">
+                <div class="flip-card-inner group">
+                    <div class="flip-card-front">
+                        <div class="p-4 bg-blue-50 rounded-full mb-4 group-hover:bg-blue-100 transition-colors">
+                            <i data-lucide="briefcase" class="w-10 h-10 text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Insurance Bundling</h3>
+                        <span
+                            class="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded mb-4">FINANCE</span>
+                        <p class="text-sm text-slate-500 mb-4">Structuring financial products to match customer
+                            segments.</p>
+                        <div class="text-xs text-slate-400 font-medium mt-auto flex items-center">
+                            <i data-lucide="rotate-3d" class="w-4 h-4 mr-1"></i> Click to flip
+                        </div>
+                    </div>
+                    <div class="flip-card-back border-l-4 border-blue-500">
+                        <h4 class="text-lg font-bold text-blue-400 mb-3 flex items-center">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 mr-2"></i> Application
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+                            <strong>Market Basket Analysis</strong> for financial services. Analyzing premiums and
+                            deductibles to group products that appeal to specific customer profiles.
+                        </p>
+                        <h4 class="text-sm font-bold text-white mb-2 uppercase tracking-wide">Benefits</h4>
+                        <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+                            <li>Optimized product offerings</li>
+                            <li>Targeted sales strategies</li>
+                            <li>Better risk alignment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MARKETING: Customer Segmentation -->
+            <div class="flip-card perspective-1000 h-80" data-category="marketing">
+                <div class="flip-card-inner group">
+                    <div class="flip-card-front">
+                        <div class="p-4 bg-purple-50 rounded-full mb-4 group-hover:bg-purple-100 transition-colors">
+                            <i data-lucide="users" class="w-10 h-10 text-purple-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Customer Segmentation</h3>
+                        <span
+                            class="text-xs font-semibold text-purple-600 bg-purple-50 px-2 py-1 rounded mb-4">MARKETING</span>
+                        <p class="text-sm text-slate-500 mb-4">Moving away from generic "one-size-fits-all" strategies.
+                        </p>
+                        <div class="text-xs text-slate-400 font-medium mt-auto flex items-center">
+                            <i data-lucide="rotate-3d" class="w-4 h-4 mr-1"></i> Click to flip
+                        </div>
+                    </div>
+                    <div class="flip-card-back border-l-4 border-purple-500">
+                        <h4 class="text-lg font-bold text-purple-400 mb-3 flex items-center">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 mr-2"></i> Application
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+                            Group customers by buying behavior, <strong>Recency, Frequency, and Monetary (RFM)</strong>
+                            value. Enables targeted retention and acquisition strategies.
+                        </p>
+                        <h4 class="text-sm font-bold text-white mb-2 uppercase tracking-wide">Metrics & Benefits</h4>
+                        <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+                            <li>Increased Click-Through Rate (CTR)</li>
+                            <li>Reduced Churn Rate</li>
+                            <li>Better resource allocation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RETAIL: Store Layout & Recommendations -->
+            <div class="flip-card perspective-1000 h-80" data-category="marketing">
+                <div class="flip-card-inner group">
+                    <div class="flip-card-front">
+                        <div class="p-4 bg-indigo-50 rounded-full mb-4 group-hover:bg-indigo-100 transition-colors">
+                            <i data-lucide="layout-grid" class="w-10 h-10 text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Store Layout & Recs</h3>
+                        <span
+                            class="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2 py-1 rounded mb-4">RETAIL</span>
+                        <p class="text-sm text-slate-500 mb-4">Optimizing product placement and suggestions.</p>
+                        <div class="text-xs text-slate-400 font-medium mt-auto flex items-center">
+                            <i data-lucide="rotate-3d" class="w-4 h-4 mr-1"></i> Click to flip
+                        </div>
+                    </div>
+                    <div class="flip-card-back border-l-4 border-indigo-500">
+                        <h4 class="text-lg font-bold text-indigo-400 mb-3 flex items-center">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 mr-2"></i> Application
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+                            <strong>Market Basket Analysis:</strong> Clustering products frequently bought together
+                            (e.g., bread & butter). Used for store design and recommendation engines.
+                        </p>
+                        <h4 class="text-sm font-bold text-white mb-2 uppercase tracking-wide">Benefits</h4>
+                        <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+                            <li>Higher cross-sell revenue</li>
+                            <li>Optimized store layout</li>
+                            <li>Improved customer experience</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RETAIL: Supply Chain -->
+            <div class="flip-card perspective-1000 h-80" data-category="marketing">
+                <div class="flip-card-inner group">
+                    <div class="flip-card-front">
+                        <div class="p-4 bg-orange-50 rounded-full mb-4 group-hover:bg-orange-100 transition-colors">
+                            <i data-lucide="truck" class="w-10 h-10 text-orange-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Supply Chain</h3>
+                        <span
+                            class="text-xs font-semibold text-orange-600 bg-orange-50 px-2 py-1 rounded mb-4">RETAIL</span>
+                        <p class="text-sm text-slate-500 mb-4">Ensuring products arrive on time and in right quantities.
+                        </p>
+                        <div class="text-xs text-slate-400 font-medium mt-auto flex items-center">
+                            <i data-lucide="rotate-3d" class="w-4 h-4 mr-1"></i> Click to flip
+                        </div>
+                    </div>
+                    <div class="flip-card-back border-l-4 border-orange-500">
+                        <h4 class="text-lg font-bold text-orange-400 mb-3 flex items-center">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 mr-2"></i> Application
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+                            Cluster products by <strong>time sensitivity</strong> and demand predictability. Helps in
+                            assigning appropriate logistics and vehicle types to product groups.
+                        </p>
+                        <h4 class="text-sm font-bold text-white mb-2 uppercase tracking-wide">Benefits</h4>
+                        <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+                            <li>Logistics optimization</li>
+                            <li>Reduced stockouts</li>
+                            <li>Efficient vehicle allocation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HEALTHCARE: Personalized Medicine -->
+            <div class="flip-card perspective-1000 h-80" data-category="healthcare">
+                <div class="flip-card-inner group">
+                    <div class="flip-card-front">
+                        <div class="p-4 bg-teal-50 rounded-full mb-4 group-hover:bg-teal-100 transition-colors">
+                            <i data-lucide="dna" class="w-10 h-10 text-teal-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Personalized Medicine</h3>
+                        <span
+                            class="text-xs font-semibold text-teal-600 bg-teal-50 px-2 py-1 rounded mb-4">HEALTHCARE</span>
+                        <p class="text-sm text-slate-500 mb-4">Moving beyond generic treatment plans.</p>
+                        <div class="text-xs text-slate-400 font-medium mt-auto flex items-center">
+                            <i data-lucide="rotate-3d" class="w-4 h-4 mr-1"></i> Click to flip
+                        </div>
+                    </div>
+                    <div class="flip-card-back border-l-4 border-teal-500">
+                        <h4 class="text-lg font-bold text-teal-400 mb-3 flex items-center">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 mr-2"></i> Application
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+                            Analyze <strong>genetic profiles</strong> and biomarkers to cluster patients. Identifies
+                            high-risk groups and patterns associated with specific diseases.
+                        </p>
+                        <h4 class="text-sm font-bold text-white mb-2 uppercase tracking-wide">Benefits</h4>
+                        <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+                            <li>Targeted drug development</li>
+                            <li>Customized treatment plans</li>
+                            <li>Advanced medical research</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HEALTHCARE: Gene Clustering -->
+            <div class="flip-card perspective-1000 h-80" data-category="healthcare">
+                <div class="flip-card-inner group">
+                    <div class="flip-card-front">
+                        <div class="p-4 bg-teal-50 rounded-full mb-4 group-hover:bg-teal-100 transition-colors">
+                            <i data-lucide="microscope" class="w-10 h-10 text-teal-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Gene Clustering</h3>
+                        <span
+                            class="text-xs font-semibold text-teal-600 bg-teal-50 px-2 py-1 rounded mb-4">HEALTHCARE</span>
+                        <p class="text-sm text-slate-500 mb-4">Clustering data columns instead of rows.</p>
+                        <div class="text-xs text-slate-400 font-medium mt-auto flex items-center">
+                            <i data-lucide="rotate-3d" class="w-4 h-4 mr-1"></i> Click to flip
+                        </div>
+                    </div>
+                    <div class="flip-card-back border-l-4 border-teal-500">
+                        <h4 class="text-lg font-bold text-teal-400 mb-3 flex items-center">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 mr-2"></i> Application
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+                            Advanced research technique focusing on <strong>clustering genes</strong> (columns) to find
+                            those contributing to specific profiles, rather than just clustering patients (rows).
+                        </p>
+                        <h4 class="text-sm font-bold text-white mb-2 uppercase tracking-wide">Benefits</h4>
+                        <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+                            <li>Deeper biological insights</li>
+                            <li>Discovery of gene functions</li>
+                            <li>Multi-dimensional analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HEALTHCARE: Resource Allocation -->
+            <div class="flip-card perspective-1000 h-80" data-category="healthcare">
+                <div class="flip-card-inner group">
+                    <div class="flip-card-front">
+                        <div class="p-4 bg-cyan-50 rounded-full mb-4 group-hover:bg-cyan-100 transition-colors">
+                            <i data-lucide="activity" class="w-10 h-10 text-cyan-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Resource Allocation</h3>
+                        <span
+                            class="text-xs font-semibold text-cyan-600 bg-cyan-50 px-2 py-1 rounded mb-4">HEALTHCARE</span>
+                        <p class="text-sm text-slate-500 mb-4">Optimizing hospital operations and facilities.</p>
+                        <div class="text-xs text-slate-400 font-medium mt-auto flex items-center">
+                            <i data-lucide="rotate-3d" class="w-4 h-4 mr-1"></i> Click to flip
+                        </div>
+                    </div>
+                    <div class="flip-card-back border-l-4 border-cyan-500">
+                        <h4 class="text-lg font-bold text-cyan-400 mb-3 flex items-center">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 mr-2"></i> Application
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+                            Segment patients based on disease characteristics to predict resource needs. Optimizes
+                            billing processes by identifying complex cases early.
+                        </p>
+                        <h4 class="text-sm font-bold text-white mb-2 uppercase tracking-wide">Benefits</h4>
+                        <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+                            <li>Better bed allocation</li>
+                            <li>Streamlined billing</li>
+                            <li>Operational efficiency</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENERGY: Grid Stability -->
+            <div class="flip-card perspective-1000 h-80" data-category="energy">
+                <div class="flip-card-inner group">
+                    <div class="flip-card-front">
+                        <div class="p-4 bg-yellow-50 rounded-full mb-4 group-hover:bg-yellow-100 transition-colors">
+                            <i data-lucide="zap" class="w-10 h-10 text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Power Grid Stability</h3>
+                        <span
+                            class="text-xs font-semibold text-yellow-600 bg-yellow-50 px-2 py-1 rounded mb-4">ENERGY</span>
+                        <p class="text-sm text-slate-500 mb-4">Preventing failures and managing load.</p>
+                        <div class="text-xs text-slate-400 font-medium mt-auto flex items-center">
+                            <i data-lucide="rotate-3d" class="w-4 h-4 mr-1"></i> Click to flip
+                        </div>
+                    </div>
+                    <div class="flip-card-back border-l-4 border-yellow-500">
+                        <h4 class="text-lg font-bold text-yellow-400 mb-3 flex items-center">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 mr-2"></i> Application
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+                            Segregate <strong>geographical locations</strong> based on energy consumption patterns.
+                            Detect anomalies (e.g., unexpected demand spikes) to isolate issues.
+                        </p>
+                        <h4 class="text-sm font-bold text-white mb-2 uppercase tracking-wide">Benefits</h4>
+                        <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+                            <li>Prevent failure percolation</li>
+                            <li>Targeted maintenance</li>
+                            <li>Demand response management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENERGY: Household Consumption -->
+            <div class="flip-card perspective-1000 h-80" data-category="energy">
+                <div class="flip-card-inner group">
+                    <div class="flip-card-front">
+                        <div class="p-4 bg-yellow-50 rounded-full mb-4 group-hover:bg-yellow-100 transition-colors">
+                            <i data-lucide="home" class="w-10 h-10 text-yellow-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Home Energy Usage</h3>
+                        <span
+                            class="text-xs font-semibold text-yellow-600 bg-yellow-50 px-2 py-1 rounded mb-4">ENERGY</span>
+                        <p class="text-sm text-slate-500 mb-4">Detecting anomalies in individual households.</p>
+                        <div class="text-xs text-slate-400 font-medium mt-auto flex items-center">
+                            <i data-lucide="rotate-3d" class="w-4 h-4 mr-1"></i> Click to flip
+                        </div>
+                    </div>
+                    <div class="flip-card-back border-l-4 border-yellow-500">
+                        <h4 class="text-lg font-bold text-yellow-400 mb-3 flex items-center">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 mr-2"></i> Application
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+                            Identify when standard household patterns (e.g., winter heating) are violated. Helps
+                            identify system faults or unexpected usage behaviors.
+                        </p>
+                        <h4 class="text-sm font-bold text-white mb-2 uppercase tracking-wide">Benefits</h4>
+                        <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+                            <li>Anomaly/Fault detection</li>
+                            <li>Proactive customer service</li>
+                            <li>Safety monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ENERGY: EV Optimization -->
+            <div class="flip-card perspective-1000 h-80" data-category="energy">
+                <div class="flip-card-inner group">
+                    <div class="flip-card-front">
+                        <div class="p-4 bg-lime-50 rounded-full mb-4 group-hover:bg-lime-100 transition-colors">
+                            <i data-lucide="battery-charging" class="w-10 h-10 text-lime-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">EV Charging Opt.</h3>
+                        <span
+                            class="text-xs font-semibold text-lime-600 bg-lime-50 px-2 py-1 rounded mb-4">ENERGY</span>
+                        <p class="text-sm text-slate-500 mb-4">Determining where to place charging infrastructure.</p>
+                        <div class="text-xs text-slate-400 font-medium mt-auto flex items-center">
+                            <i data-lucide="rotate-3d" class="w-4 h-4 mr-1"></i> Click to flip
+                        </div>
+                    </div>
+                    <div class="flip-card-back border-l-4 border-lime-500">
+                        <h4 class="text-lg font-bold text-lime-400 mb-3 flex items-center">
+                            <i data-lucide="arrow-right-circle" class="w-5 h-5 mr-2"></i> Application
+                        </h4>
+                        <p class="text-sm text-slate-300 mb-4 leading-relaxed">
+                            Cluster vehicles by location and <strong>charging patterns</strong>. Identifies high-demand
+                            segments to strategically place charging stations.
+                        </p>
+                        <h4 class="text-sm font-bold text-white mb-2 uppercase tracking-wide">Benefits</h4>
+                        <ul class="text-sm text-slate-400 list-disc list-inside space-y-1">
+                            <li>Optimal station placement</li>
+                            <li>Improved service coverage</li>
+                            <li>Data-driven infrastructure planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Summary Section -->
+        <div class="mt-16 bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+            <div class="bg-slate-50 px-6 py-4 border-b border-slate-200">
+                <h2 class="text-xl font-bold flex items-center text-slate-800">
+                    <i data-lucide="lightbulb" class="w-6 h-6 mr-2 text-yellow-500"></i>
+                    Key Takeaways: Profiling vs. Prediction
+                </h2>
+            </div>
+            <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2 text-blue-600">Prediction</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        "Can I segment a new customer?" <br>
+                        This objective focuses on assigning new observations to existing segments to predict behavior
+                        (e.g., Will this person churn? Is this transaction fraudulent?).
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2 text-purple-600">Profiling</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        "What defines my customers?" <br>
+                        This objective is about understanding the characteristics that create the segments in the first
+                        place. It tells you <em>why</em> groups are different (e.g., Loyal customers buy weekly).
+                    </p>
+                </div>
+            </div>
+            <div class="bg-slate-900 text-white p-6 text-center">
+                <p class="font-medium">"The absence of a label in supervised learning is often an opportunity for
+                    unsupervised learning."</p>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-center text-slate-500 text-sm">
+        <p>Interactive Infographic generated based on "Business Problem Space Clustering"</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Flip Card Logic
+        const cards = document.querySelectorAll('.flip-card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('flipped');
+            });
+        });
+
+        // Filter Logic
+        function filterCards(category) {
+            const allCards = document.querySelectorAll('.flip-card');
+            const buttons = document.querySelectorAll('.category-btn');
+
+            // Update buttons state
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.innerText.toLowerCase().includes(category === 'all' ? 'all' : category)) {
+                    btn.classList.add('active');
+                }
+            });
+            // Handle specific case for combined Marketing & Retail button text match
+            if (category === 'marketing') {
+                buttons[2].classList.add('active');
+            }
+
+
+            // Filter cards with simple animation
+            allCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => card.style.opacity = '1', 50);
+                } else {
+                    card.style.opacity = '0';
+                    setTimeout(() => card.style.display = 'none', 300);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

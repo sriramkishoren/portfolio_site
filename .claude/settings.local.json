@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(for:*)",
+      "Bash(do)",
+      "Bash(if [ -f \"$f\" ])",
+      "Bash(then echo \"✓ $f\")",
+      "Bash(else echo \"✗ $f \\(MISSING\\)\")",
+      "Bash(fi)",
+      "Bash(done)"
+    ]
+  }
+}

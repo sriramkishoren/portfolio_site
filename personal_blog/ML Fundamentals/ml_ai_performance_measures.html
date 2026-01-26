@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Performance Measures - Interactive Guide</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* --- CUSTOM SLIDER STYLING --- */
+        /* We need to style the thumb explicitly because we remove default appearance */
+        input[type=range] {
+            -webkit-appearance: none;
+            /* Hides the slider so that custom slider can be made */
+            width: 100%;
+            /* Specific width is required for Firefox. */
+            background: transparent;
+            /* Otherwise white in Chrome */
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #2563eb;
+            /* Tailwind blue-600 */
+            cursor: pointer;
+            margin-top: -6px;
+            /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+        }
+
+        /* All the same stuff for Firefox */
+        input[type=range]::-moz-range-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #2563eb;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #e2e8f0;
+            /* Tailwind slate-200 */
+            border-radius: 9999px;
+        }
+
+        input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 8px;
+            cursor: pointer;
+            background: #e2e8f0;
+            border-radius: 9999px;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        /* --- VISUALS --- */
+        .loan-dot {
+            transition: background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+        }
+    </style>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        slate: { 50: '#f8fafc', 100: '#f1f5f9', 200: '#e2e8f0', 300: '#cbd5e1', 400: '#94a3b8', 500: '#64748b', 600: '#475569', 700: '#334155', 800: '#1e293b', 900: '#0f172a' },
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-900 selection:bg-blue-100 selection:text-blue-900 min-h-screen">
+
+    <!-- HEADER -->
+    <header class="bg-white border-b border-slate-200 pt-12 pb-8 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider mb-4 border border-blue-100">
+                <i data-lucide="book-open" class="w-3 h-3"></i>
+                Lecture Companion
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
+                AI Performance Measures
+            </h1>
+            <p class="text-xl text-slate-500 max-w-2xl leading-relaxed">
+                A complete guide to evaluating machine learning models.
+                <span class="block mt-2 text-slate-400 text-lg italic">
+                    "Choosing the right metric is as important as choosing the right algorithm."
+                </span>
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 py-10">
+
+        <!-- CATEGORY NAVIGATION -->
+        <div class="flex flex-wrap gap-2 mb-10 pb-4 border-b border-slate-200" id="nav-container">
+            <!-- Buttons injected by JS -->
+        </div>
+
+        <!-- SIMULATOR SECTION (Only for Classification) -->
+        <div id="simulator-container" class="animate-in fade-in slide-in-from-bottom-4 duration-500">
+
+            <!-- Simulator Card -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm my-8">
+                <div class="flex flex-col md:flex-row justify-between items-start mb-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                            <i data-lucide="mouse-pointer-2" class="w-5 h-5 text-blue-500"></i>
+                            Interactive Loan Threshold
+                        </h3>
+                        <p class="text-slate-600 text-sm mt-1">
+                            Drag the slider to change the credit score requirement. See how it impacts metrics.
+                        </p>
+                    </div>
+                    <div
+                        class="bg-slate-100 px-4 py-2 rounded-lg text-sm font-mono mt-4 md:mt-0 border border-slate-200">
+                        Threshold: <span id="threshold-display" class="font-bold text-blue-600">50</span>
+                    </div>
+                </div>
+
+                <!-- Visualizer Canvas -->
+                <div class="relative h-48 bg-slate-50 rounded-lg border border-slate-200 mb-6 overflow-hidden select-none"
+                    id="visualizer-area">
+                    <!-- Threshold Line -->
+                    <div id="threshold-line"
+                        class="absolute top-0 bottom-0 w-1 bg-blue-500 z-10 transition-none shadow-[0_0_10px_rgba(59,130,246,0.5)]"
+                        style="left: 50%;">
+                        <div
+                            class="absolute top-0 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-[10px] px-1 rounded-b">
+                            CUTOFF</div>
+                    </div>
+
+                    <!-- Labels -->
+                    <div class="absolute left-2 top-[30%] text-xs font-bold text-green-700 pointer-events-none">WILL PAY
+                    </div>
+                    <div class="absolute left-2 bottom-[30%] text-xs font-bold text-slate-500 pointer-events-none">WILL
+                        DEFAULT</div>
+
+                    <!-- Dots injected by JS -->
+                </div>
+
+                <!-- Slider Input -->
+                <input type="range" id="threshold-slider" min="0" max="100" value="50"
+                    class="w-full mb-8 focus:outline-none">
+
+                <!-- Real-time Metrics Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <!-- Metrics Injected Here -->
+                    <div
+                        class="metric-box p-3 rounded-lg border bg-blue-50 text-blue-700 border-blue-200 flex flex-col items-center justify-center text-center">
+                        <span class="text-xs uppercase font-bold opacity-70 mb-1">Precision</span>
+                        <span id="val-precision" class="text-2xl font-bold">0.0%</span>
+                        <span class="text-[10px] mt-1 opacity-80 leading-tight">Quality of Approved</span>
+                    </div>
+                    <div
+                        class="metric-box p-3 rounded-lg border bg-green-50 text-green-700 border-green-200 flex flex-col items-center justify-center text-center">
+                        <span class="text-xs uppercase font-bold opacity-70 mb-1">Recall</span>
+                        <span id="val-recall" class="text-2xl font-bold">0.0%</span>
+                        <span class="text-[10px] mt-1 opacity-80 leading-tight">Approved Qualified</span>
+                    </div>
+                    <div
+                        class="metric-box p-3 rounded-lg border bg-purple-50 text-purple-700 border-purple-200 flex flex-col items-center justify-center text-center">
+                        <span class="text-xs uppercase font-bold opacity-70 mb-1">Specificity</span>
+                        <span id="val-specificity" class="text-2xl font-bold">0.0%</span>
+                        <span class="text-[10px] mt-1 opacity-80 leading-tight">Denied Defaults</span>
+                    </div>
+                    <div
+                        class="metric-box p-3 rounded-lg border bg-slate-50 text-slate-700 border-slate-200 flex flex-col items-center justify-center text-center">
+                        <span class="text-xs uppercase font-bold opacity-70 mb-1">Accuracy</span>
+                        <span id="val-accuracy" class="text-2xl font-bold">0.0%</span>
+                        <span class="text-[10px] mt-1 opacity-80 leading-tight">Overall Correct</span>
+                    </div>
+                    <div
+                        class="metric-box p-3 rounded-lg border bg-amber-50 text-amber-700 border-amber-200 flex flex-col items-center justify-center text-center">
+                        <span class="text-xs uppercase font-bold opacity-70 mb-1">F1 Score</span>
+                        <span id="val-f1" class="text-2xl font-bold">0.0%</span>
+                        <span class="text-[10px] mt-1 opacity-80 leading-tight">Harmonic Mean</span>
+                    </div>
+                </div>
+
+                <!-- Mini Confusion Matrix -->
+                <div class="grid grid-cols-2 gap-2 mt-6 max-w-md mx-auto text-center text-xs">
+                    <div class="bg-green-100 p-2 rounded border border-green-200">
+                        <div id="count-tp" class="font-bold text-green-800 text-lg">0</div>
+                        <div class="text-green-600 uppercase tracking-tighter font-bold">True Positive</div>
+                    </div>
+                    <div class="bg-red-100 p-2 rounded border border-red-200">
+                        <div id="count-fp" class="font-bold text-red-800 text-lg">0</div>
+                        <div class="text-red-600 uppercase tracking-tighter font-bold">False Positive</div>
+                    </div>
+                    <div class="bg-amber-100 p-2 rounded border border-amber-200">
+                        <div id="count-fn" class="font-bold text-amber-800 text-lg">0</div>
+                        <div class="text-amber-600 uppercase tracking-tighter font-bold">False Negative</div>
+                    </div>
+                    <div class="bg-slate-100 p-2 rounded border border-slate-200">
+                        <div id="count-tn" class="font-bold text-slate-800 text-lg">0</div>
+                        <div class="text-slate-600 uppercase tracking-tighter font-bold">True Negative</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insights (Lecture Specific) -->
+            <div class="grid md:grid-cols-2 gap-6 mb-12">
+                <div class="bg-amber-50 border border-amber-200 p-6 rounded-xl">
+                    <div class="flex items-center gap-2 text-amber-800 font-bold mb-3">
+                        <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+                        The "Human Ceiling" Problem
+                    </div>
+                    <p class="text-amber-900/80 text-sm leading-relaxed mb-4">
+                        Dr. McCullough highlights that experts often disagree on labels.
+                        In an extremism classifier, humans disagreed <strong>32%</strong> of the time.
+                        If experts can't agree, an accuracy of 68% might actually be "perfect."
+                    </p>
+                    <div class="bg-white/60 p-3 rounded text-xs font-mono text-amber-900 border border-amber-100">
+                        Target: "Online Extremism" <br />
+                        Human Agreement: 68% <br />
+                        AI Accuracy: 64% (Functionally equivalent)
+                    </div>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 p-6 rounded-xl">
+                    <div class="flex items-center gap-2 text-blue-800 font-bold mb-3">
+                        <i data-lucide="check-circle" class="w-5 h-5"></i>
+                        Data Quality vs. Quantity
+                    </div>
+                    <p class="text-blue-900/80 text-sm leading-relaxed mb-4">
+                        <strong>Consistency improves Precision. Volume improves Recall.</strong>
+                        Cleaning the hypertension dataset (resolving implied diagnoses) boosted performance
+                        from 25% to 95% without changing the algorithm.
+                    </p>
+                    <div class="h-2 w-full bg-blue-200 rounded-full overflow-hidden flex mb-2">
+                        <div class="w-[25%] bg-blue-400 h-full"></div>
+                        <div class="w-[70%] bg-blue-600 h-full animate-pulse"></div>
+                    </div>
+                    <div class="flex justify-between text-[10px] text-blue-700 font-bold">
+                        <span>Initial: 25%</span>
+                        <span>Cleaned: 95%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- METRIC CARDS GRID -->
+        <div id="metrics-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 min-h-[400px]">
+            <!-- Cards Injected by JS -->
+        </div>
+
+        <!-- VISUAL TOOLS GALLERY -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8 flex items-center gap-2">
+                <i data-lucide="image" class="w-6 h-6 text-slate-400"></i>
+                Visual Tools Reference
+            </h2>
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- ROC Curve Viz -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-700 mb-4 flex items-center gap-2">
+                        <i data-lucide="activity" class="w-4 h-4"></i>
+                        ROC (Receiver Operating Characteristic) Curve
+                    </h3>
+                    <div class="relative h-64 w-full bg-slate-50 border border-slate-200 rounded flex items-end p-4">
+                        <div class="absolute left-4 top-4 text-xs font-bold text-slate-400">Recall (TPR)</div>
+                        <div class="absolute right-4 bottom-4 text-xs font-bold text-slate-400">1 - Specificity (FPR)
+                        </div>
+
+                        <!-- SVG Curve -->
+                        <svg class="absolute inset-0 w-full h-full p-4 overflow-visible" viewBox="0 0 100 100"
+                            preserveAspectRatio="none">
+                            <!-- Axes Lines -->
+                            <path d="M 0 0 L 0 100 L 100 100" fill="none" stroke="#94a3b8" stroke-width="0.5"
+                                vector-effect="non-scaling-stroke"></path>
+
+                            <!-- Random Guess (Diagonal) -->
+                            <path d="M 0 100 L 100 0" fill="none" stroke="#CBD5E1" stroke-width="2"
+                                stroke-dasharray="4 4" vector-effect="non-scaling-stroke"></path>
+
+                            <!-- ROC Curve (Blue) -->
+                            <path d="M 0 100 Q 10 10 100 0" fill="none" stroke="#3B82F6" stroke-width="3"
+                                vector-effect="non-scaling-stroke"></path>
+
+                            <!-- Area Shading -->
+                            <path d="M 0 100 Q 10 10 100 0 L 100 100 Z" fill="#3B82F6" fill-opacity="0.1" stroke="none">
+                            </path>
+                        </svg>
+
+                        <div
+                            class="absolute top-10 right-10 bg-white p-3 border border-slate-200 rounded shadow-sm text-xs z-10">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                <span>Good Model</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 bg-slate-300 rounded-full"></div>
+                                <span>Random Guess</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-4 leading-relaxed">
+                        AUC measures <strong>discriminative ability</strong>—how well the model separates positive and
+                        negative instances—not accuracy or a count of true positives. While ROC shows the trade-off
+                        between Recall and False Positive Rate, use a <strong>Precision-Recall curve</strong> to
+                        specifically address the precision-recall trade-off.
+                    </p>
+                </div>
+
+                <!-- Confusion Matrix Viz -->
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-700 mb-4 flex items-center gap-2">
+                        <i data-lucide="layout-grid" class="w-4 h-4"></i>
+                        Confusion Matrix
+                    </h3>
+                    <div class="grid grid-cols-2 gap-2 h-64">
+                        <div
+                            class="bg-green-50 border border-green-200 rounded flex flex-col items-center justify-center p-4 relative group hover:bg-green-100 transition-colors">
+                            <span class="text-3xl font-bold text-green-600">TP</span>
+                            <span class="text-xs font-bold text-green-800 mt-1">True Positive</span>
+                            <div class="absolute top-2 left-2 text-[10px] font-mono text-slate-400">PRED: YES</div>
+                        </div>
+                        <div
+                            class="bg-red-50 border border-red-200 rounded flex flex-col items-center justify-center p-4 relative group hover:bg-red-100 transition-colors">
+                            <span class="text-3xl font-bold text-red-600">FP</span>
+                            <span class="text-xs font-bold text-red-800 mt-1">False Positive</span>
+                            <div class="absolute top-2 left-2 text-[10px] font-mono text-slate-400">PRED: YES</div>
+                        </div>
+                        <div
+                            class="bg-amber-50 border border-amber-200 rounded flex flex-col items-center justify-center p-4 relative group hover:bg-amber-100 transition-colors">
+                            <span class="text-3xl font-bold text-amber-600">FN</span>
+                            <span class="text-xs font-bold text-amber-800 mt-1">False Negative</span>
+                            <div class="absolute top-2 left-2 text-[10px] font-mono text-slate-400">PRED: NO</div>
+                        </div>
+                        <div
+                            class="bg-slate-50 border border-slate-200 rounded flex flex-col items-center justify-center p-4 relative group hover:bg-slate-100 transition-colors">
+                            <span class="text-3xl font-bold text-slate-600">TN</span>
+                            <span class="text-xs font-bold text-slate-800 mt-1">True Negative</span>
+                            <div class="absolute top-2 left-2 text-[10px] font-mono text-slate-400">PRED: NO</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUMMARY FOOTER -->
+        <footer class="bg-slate-900 text-slate-400 rounded-2xl p-8 md:p-12 mb-10">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-white text-xl font-bold mb-4">Golden Rules</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 shrink-0 mt-0.5"></i>
+                            <span>Never use Accuracy alone for imbalanced datasets.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 shrink-0 mt-0.5"></i>
+                            <span>Check human agreement rates before setting model targets.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 shrink-0 mt-0.5"></i>
+                            <span>Align metrics with business costs (Cost of FP vs Cost of FN).</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-xl font-bold mb-4">Quick Selector</h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between border-b border-slate-800 pb-2">
+                            <span>Fraud Detection (High Cost of Miss)</span>
+                            <span class="text-white font-mono">Recall</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-2">
+                            <span>Spam Filter (High Cost of False Alarm)</span>
+                            <span class="text-white font-mono">Precision</span>
+                        </div>
+                        <div class="flex justify-between border-b border-slate-800 pb-2">
+                            <span>Search Engine Ranking</span>
+                            <span class="text-white font-mono">NDCG / MRR</span>
+                        </div>
+                        <div class="flex justify-between pb-2">
+                            <span>House Price Prediction</span>
+                            <span class="text-white font-mono">RMSE / MAE</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-slate-800 text-center text-xs opacity-50">
+                Generated based on lecture materials by Dr. Ian McCullough, Johns Hopkins University.
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- MAIN JAVASCRIPT LOGIC -->
+    <script>
+        // --- DATA CONSTANTS ---
+        const CATEGORIES = [
+            { id: 'classification', name: 'Classification', color: 'blue', icon: 'layers' },
+            { id: 'regression', name: 'Regression', color: 'green', icon: 'trending-up' },
+            { id: 'ranking', name: 'Ranking', color: 'purple', icon: 'activity' },
+            { id: 'nlp', name: 'NLP', color: 'amber', icon: 'type' },
+            { id: 'cv', name: 'Computer Vision', color: 'pink', icon: 'image' },
+        ];
+
+        const METRICS_DATA = {
+            classification: [
+                {
+                    name: 'Accuracy',
+                    formula: '(TP + TN) / Total',
+                    direction: '↑ Higher is better',
+                    description: 'The percentage of correct predictions overall.',
+                    bestFor: 'Balanced datasets where all classes are equally important.',
+                    limitations: 'Misleading when classes are imbalanced (e.g., 99% accuracy on a dataset with 1% fraud is useless).',
+                    insight: 'Postal worker agreement (83%) matched the AI accuracy (83%), suggesting the model reached a "human ceiling".'
+                },
+                {
+                    name: 'Precision',
+                    formula: 'TP / (TP + FP)',
+                    direction: '↑ Higher is better',
+                    description: 'When the model predicts Positive, how often is it correct? (Quality of positive predictions).',
+                    bestFor: 'High cost of False Positives (e.g., Spam filters, recommending a high-risk loan).',
+                    limitations: 'Does not account for missed positive cases (False Negatives).',
+                    insight: 'Lecture Note: "Inconsistent labels harm precision." Cleaning hypertension data boosted accuracy from 25% to 95%.'
+                },
+                {
+                    name: 'Recall (Sensitivity)',
+                    formula: 'TP / (TP + FN)',
+                    direction: '↑ Higher is better',
+                    description: 'Out of all actual Positives, how many did the model find? (Quantity of positives found).',
+                    bestFor: 'High cost of False Negatives (e.g., Cancer detection, finding all qualified loan applicants).',
+                    limitations: 'Can be easily maximized by predicting everything as Positive (reducing Precision).',
+                    insight: 'Lecture Note: "Volume of data improves recall." Noisy data is okay for recall, but bad for precision.'
+                },
+                {
+                    name: 'Specificity',
+                    formula: 'TN / (TN + FP)',
+                    direction: '↑ Higher is better',
+                    description: 'How well does the model reject negative cases? (True Negative Rate).',
+                    bestFor: 'Situations where mistakenly flagging a negative as positive is costly.',
+                    limitations: 'Inverse of the False Positive Rate used in ROC curves.',
+                    insight: 'Lecture Example: "Do we deny all of the bad loans?" Critical for risk avoidance.'
+                },
+                {
+                    name: 'F1 Score',
+                    formula: '2 * (P * R) / (P + R)',
+                    direction: '↑ Higher is better',
+                    description: 'The harmonic mean of Precision and Recall.',
+                    bestFor: 'Comparing models when you need a balance between Precision and Recall.',
+                    limitations: 'Treats Precision and Recall as equally important, which may not fit business needs.',
+                    insight: 'Lecture Note: "Sensitive to trade-offs." If one value is low, the F1 score drops significantly.'
+                }
+            ],
+            regression: [
+                { name: 'MSE (Mean Squared Error)', formula: 'Mean((Actual - Pred)²)', direction: '↓ Lower is better', description: 'Average of squared errors. Penalizes large errors heavily.', bestFor: 'Discouraging large outliers.', limitations: 'Not in original units.' },
+                { name: 'RMSE (Root Mean Squared Error)', formula: '√MSE', direction: '↓ Lower is better', description: 'Square root of MSE. Brings error back to original unit scale.', bestFor: 'General regression problems.', limitations: 'Sensitive to outliers.' },
+                { name: 'MAE (Mean Absolute Error)', formula: 'Mean(|Actual - Pred|)', direction: '↓ Lower is better', description: 'Average of absolute errors.', bestFor: 'When outliers should not be penalized excessively.', limitations: 'Gradients not continuous at zero.' }
+            ],
+            ranking: [
+                { name: 'NDCG (Normalized Discounted Cumulative Gain)', formula: 'Discounted Cumulative Gain', direction: '↑ Higher is better', description: 'Measures ranking quality considering position and relevance.', bestFor: 'Search engines, Recommender systems.', limitations: 'Complex calculation.' },
+                { name: 'MRR (Mean Reciprocal Rank)', formula: 'Mean(1 / Rank)', direction: '↑ Higher is better', description: 'Evaluates how high the first relevant item appears.', bestFor: 'Systems where only the top result matters.', limitations: 'Ignores other relevant items further down.' }
+            ],
+            nlp: [
+                { name: 'BLEU (Bilingual Evaluation Understudy)', formula: 'Geometric Mean of N-gram Precision', direction: '↑ Higher is better', description: 'Precision-based overlap between machine output and references.', bestFor: 'Machine Translation.', limitations: 'Focuses on exact phrasing not meaning.' },
+                { name: 'ROUGE (Recall-Oriented Understudy)', formula: 'N-gram Recall', direction: '↑ Higher is better', description: 'Recall-based overlap. How much of the reference summary did the model capture?', bestFor: 'Text Summarization.', limitations: 'Favors lexical overlap over coherence.' },
+                { name: 'Perplexity', formula: 'Exp(Cross Entropy)', direction: '↓ Lower is better', description: 'How "confused" the model is when predicting the next token.', bestFor: 'Language Modeling (LLMs).', limitations: 'Lower perplexity doesn\'t always mean better generation quality.' },
+                { name: 'WER (Word Error Rate)', formula: '(Subs + Dels + Ins) / N', direction: '↓ Lower is better', description: 'Edit distance between hypothesis and reference transcripts.', bestFor: 'Speech Recognition (ASR).', limitations: 'Penalizes valid rephrasings heavily.' }
+            ],
+            cv: [
+                { name: 'IoU (Intersection over Union)', formula: 'Area Overlap / Union', direction: '↑ Higher is better', description: 'Measures overlap between predicted box and ground truth.', bestFor: 'Object Detection.', limitations: 'Requires precise annotations.' }
+            ]
+        };
+
+        // --- GLOBAL STATE ---
+        let currentCategory = 'classification';
+        let threshold = 50;
+        const loans = []; // Will be populated on load
+
+        // --- DOM ELEMENTS ---
+        const navContainer = document.getElementById('nav-container');
+        const metricsGrid = document.getElementById('metrics-grid');
+        const simulatorContainer = document.getElementById('simulator-container');
+        const visualizerArea = document.getElementById('visualizer-area');
+        const thresholdLine = document.getElementById('threshold-line');
+        const thresholdSlider = document.getElementById('threshold-slider');
+        const thresholdDisplay = document.getElementById('threshold-display');
+
+        // Metric Value Elements
+        const elPrecision = document.getElementById('val-precision');
+        const elRecall = document.getElementById('val-recall');
+        const elSpecificity = document.getElementById('val-specificity');
+        const elAccuracy = document.getElementById('val-accuracy');
+        const elF1 = document.getElementById('val-f1');
+
+        // Count Elements
+        const elTp = document.getElementById('count-tp');
+        const elFp = document.getElementById('count-fp');
+        const elFn = document.getElementById('count-fn');
+        const elTn = document.getElementById('count-tn');
+
+        // --- SIMULATOR LOGIC ---
+        function initSimulatorData() {
+            // Generate 100 deterministic loans
+            // 50 bad (skew low), 50 good (skew high)
+            for (let i = 0; i < 50; i++) {
+                loans.push({
+                    id: `bad-${i}`,
+                    score: Math.min(Math.floor(Math.random() * 70), 90),
+                    type: 'bad'
+                });
+            }
+            for (let i = 0; i < 50; i++) {
+                loans.push({
+                    id: `good-${i}`,
+                    score: Math.max(Math.floor(Math.random() * 70) + 30, 10),
+                    type: 'good'
+                });
+            }
+
+            // Render dots initially
+            loans.forEach(loan => {
+                const dot = document.createElement('div');
+                dot.className = 'absolute w-3 h-3 rounded-full loan-dot border';
+                dot.style.left = `${loan.score}%`;
+                // Visual separation: Good loans on top half, bad on bottom half
+                dot.style.bottom = loan.type === 'good' ? '60%' : '20%';
+                // Random Y jitter
+                dot.style.transform = `translate(-50%, ${Math.random() * 20 - 10}px)`;
+                dot.dataset.score = loan.score;
+                dot.dataset.type = loan.type;
+                dot.id = `loan-${loan.id}`;
+                visualizerArea.appendChild(dot);
+            });
+        }
+
+        function updateSimulator() {
+            const t = parseInt(thresholdSlider.value);
+            threshold = t;
+            thresholdDisplay.textContent = t;
+            thresholdLine.style.left = `${t}%`;
+
+            let tp = 0, fp = 0, tn = 0, fn = 0;
+
+            // Update stats and visuals
+            loans.forEach(loan => {
+                const dot = document.getElementById(`loan-${loan.id}`);
+                const predictedGood = loan.score >= t;
+
+                if (loan.type === 'good') {
+                    if (predictedGood) {
+                        tp++; // True Positive
+                        dot.className = 'absolute w-3 h-3 rounded-full loan-dot border bg-green-500 border-green-600 z-10';
+                    } else {
+                        fn++; // False Negative (Missed)
+                        dot.className = 'absolute w-3 h-3 rounded-full loan-dot border bg-green-200 border-green-300 opacity-60 z-0';
+                    }
+                } else {
+                    if (predictedGood) {
+                        fp++; // False Positive (False Alarm)
+                        dot.className = 'absolute w-3 h-3 rounded-full loan-dot border bg-red-400 border-red-500 z-10';
+                    } else {
+                        tn++; // True Negative (Correctly Rejected)
+                        dot.className = 'absolute w-3 h-3 rounded-full loan-dot border bg-slate-300 border-slate-400 opacity-40 z-0';
+                    }
+                }
+            });
+
+            // Calculate Metrics
+            const total = loans.length;
+            const accuracy = (tp + tn) / total;
+            const precision = (tp + fp) === 0 ? 0 : tp / (tp + fp);
+            const recall = (tp + fn) === 0 ? 0 : tp / (tp + fn);
+            const specificity = (tn + fp) === 0 ? 0 : tn / (tn + fp);
+            const f1 = (precision + recall) === 0 ? 0 : 2 * (precision * recall) / (precision + recall);
+
+            // Update DOM
+            elPrecision.textContent = (precision * 100).toFixed(1) + '%';
+            elRecall.textContent = (recall * 100).toFixed(1) + '%';
+            elSpecificity.textContent = (specificity * 100).toFixed(1) + '%';
+            elAccuracy.textContent = (accuracy * 100).toFixed(1) + '%';
+            elF1.textContent = (f1 * 100).toFixed(1) + '%';
+
+            elTp.textContent = tp;
+            elFp.textContent = fp;
+            elFn.textContent = fn;
+            elTn.textContent = tn;
+        }
+
+        // --- APP LOGIC ---
+
+        function renderNav() {
+            navContainer.innerHTML = '';
+            CATEGORIES.forEach(cat => {
+                const btn = document.createElement('button');
+                const isActive = currentCategory === cat.id;
+
+                // Tailwind classes logic
+                let classes = 'flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 border ';
+                if (isActive) {
+                    classes += `bg-${cat.color}-600 text-white shadow-md shadow-${cat.color}-200 scale-105 border-${cat.color}-600`;
+                } else {
+                    classes += 'bg-white text-slate-600 hover:bg-slate-100 border-slate-200';
+                }
+                btn.className = classes;
+                btn.innerHTML = `<i data-lucide="${cat.icon}" class="w-4 h-4"></i> ${cat.name}`;
+
+                btn.onclick = () => switchCategory(cat.id);
+                navContainer.appendChild(btn);
+            });
+            lucide.createIcons();
+        }
+
+        function renderCards() {
+            metricsGrid.innerHTML = '';
+            const data = METRICS_DATA[currentCategory] || [];
+
+            data.forEach(metric => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col p-6 group";
+
+                // Color lookup
+                const catInfo = CATEGORIES.find(c => c.id === currentCategory);
+                const color = catInfo ? catInfo.color : 'slate';
+                const isPositive = metric.direction.includes('↑');
+
+                let html = `
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 rounded-lg bg-${color}-100 text-${color}-600">
+                                <i data-lucide="${catInfo.icon}" class="w-5 h-5"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-800">${metric.name}</h3>
+                        </div>
+                        <div class="text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-wide ${isPositive ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}">
+                            ${metric.direction}
+                        </div>
+                    </div>
+
+                    <p class="text-slate-600 text-sm leading-relaxed mb-6 flex-1">
+                        ${metric.description}
+                    </p>
+
+                    <div class="bg-slate-50 rounded-lg p-3 font-mono text-xs text-slate-700 border border-slate-200 mb-4 overflow-x-auto">
+                        ${metric.formula}
+                    </div>
+
+                    <div class="space-y-3 mt-auto">
+                         <div class="flex gap-2 text-xs">
+                            <i data-lucide="target" class="w-4 h-4 text-slate-400 shrink-0"></i>
+                            <span class="text-slate-500 font-medium">Best For:</span>
+                            <span class="text-slate-700">${metric.bestFor}</span>
+                         </div>
+                         <div class="flex gap-2 text-xs">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-slate-400 shrink-0"></i>
+                            <span class="text-slate-500 font-medium">Watch Out:</span>
+                            <span class="text-slate-700">${metric.limitations}</span>
+                         </div>
+                `;
+
+                if (metric.insight) {
+                    html += `
+                        <div class="mt-4 pt-4 border-t border-slate-100 flex gap-2 text-xs bg-yellow-50 -mx-6 px-6 -mb-6 py-3 rounded-b-xl">
+                            <i data-lucide="info" class="w-4 h-4 text-amber-500 shrink-0"></i>
+                            <span class="text-amber-900 italic">"${metric.insight}"</span>
+                        </div>
+                    `;
+                }
+
+                html += `</div>`; // Close space-y-3
+                card.innerHTML = html;
+                metricsGrid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function switchCategory(id) {
+            currentCategory = id;
+            renderNav();
+            renderCards();
+
+            // Toggle Simulator Visibility
+            if (id === 'classification') {
+                simulatorContainer.classList.remove('hidden');
+            } else {
+                simulatorContainer.classList.add('hidden');
+            }
+        }
+
+        // --- INITIALIZATION ---
+        window.addEventListener('DOMContentLoaded', () => {
+            initSimulatorData();
+            updateSimulator(); // Initial calc
+
+            renderNav();
+            renderCards();
+
+            // Explicitly force visibility logic on load
+            if (currentCategory === 'classification') {
+                simulatorContainer.classList.remove('hidden');
+            }
+
+            // Slider Listener
+            thresholdSlider.addEventListener('input', updateSimulator);
+        });
+
+    </script>
+</body>
+
+</html>

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Blog - Kishore</title>
+    <meta name="description" content="Blog posts about AI, Machine Learning, and Project Management by Sriramkishore Naraharisetti">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <script>
         tailwind.config = {
@@ -19,65 +20,478 @@
         }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Smooth transitions for filtering */
+        .post-card {
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .post-card.hidden-filter {
+            display: none;
+        }
+        /* Custom scrollbar for sidebar */
+        .sidebar-scroll::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar-scroll::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .sidebar-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 2px;
+        }
+        .dark .sidebar-scroll::-webkit-scrollbar-thumb {
+            background: #475569;
+        }
+    </style>
 </head>
 
-<body class="bg-gray-100 dark:bg-gray-800 font-sans leading-normal tracking-normal transition-colors duration-500">
-    <header class="sticky top-0 w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 z-10 shadow-md">
-        <nav class="flex justify-between items-center p-4">
+<body class="bg-gray-100 dark:bg-gray-900 font-sans leading-normal tracking-normal transition-colors duration-300">
+
+    <!-- Blog Configuration -->
+    <script>
+        const blogConfig = {
+            categories: [
+                {
+                    id: "ai-business",
+                    name: "AI Business UseCases",
+                    folder: "AI Business UseCases",
+                    icon: "fa-briefcase",
+                    color: "blue"
+                },
+                {
+                    id: "ai-pm",
+                    name: "AI Project Management",
+                    folder: "AI Project Management",
+                    icon: "fa-project-diagram",
+                    color: "purple"
+                },
+                {
+                    id: "ml-fundamentals",
+                    name: "ML Fundamentals",
+                    folder: "ML Fundamentals",
+                    icon: "fa-brain",
+                    color: "green"
+                }
+            ],
+            posts: [
+                // AI Business UseCases
+                {
+                    id: "ai_use_cases",
+                    title: "The Modern AI Landscape Infographic",
+                    excerpt: "A guide to the 9 pillars of Artificial Intelligence and their real-world impact across industries.",
+                    category: "ai-business",
+                    date: "2025-01-20",
+                    file: "AI Business UseCases/ai_use_cases.html"
+                },
+                {
+                    id: "ml_ai_problem_space",
+                    title: "AI Problem Space & Use Cases",
+                    excerpt: "Crucial concepts for designing the AI problem space and understanding learning paradigms.",
+                    category: "ai-business",
+                    date: "2025-01-25",
+                    file: "AI Business UseCases/ml_ai_problem_space.html"
+                },
+                {
+                    id: "ml_business_usecase_classification",
+                    title: "Classification Business Use Cases",
+                    excerpt: "Explore how classification algorithms power credit assessment, fraud detection, and more.",
+                    category: "ai-business",
+                    date: "2025-01-24",
+                    file: "AI Business UseCases/ml_business_usecase_classification.html"
+                },
+                {
+                    id: "ml_business_usecase_clustering",
+                    title: "Clustering in Business: Use Cases & Applications",
+                    excerpt: "How clustering helps with portfolio optimization, fraud detection, and customer segmentation.",
+                    category: "ai-business",
+                    date: "2025-01-22",
+                    file: "AI Business UseCases/ml_business_usecase_clustering.html"
+                },
+                {
+                    id: "ml_business_usecase_clustering_retail",
+                    title: "Retail Customer Segmentation Infographic",
+                    excerpt: "Understanding customer behavior through purchase patterns and personalized marketing.",
+                    category: "ai-business",
+                    date: "2025-01-22",
+                    file: "AI Business UseCases/ml_business_usecase_clustering_retail.html"
+                },
+                {
+                    id: "ml_business_usecase_regression",
+                    title: "Business Applications of Linear Regression",
+                    excerpt: "Forecasting numbers, understanding relationships, and defining the problem space in industry.",
+                    category: "ai-business",
+                    date: "2025-01-24",
+                    file: "AI Business UseCases/ml_business_usecase_regression.html"
+                },
+                // AI Project Management
+                {
+                    id: "road_framework",
+                    title: "A Leader's Guide to the R.O.A.D. Framework",
+                    excerpt: "A comprehensive guide to the R.O.A.D. framework for effective AI/ML project leadership.",
+                    category: "ai-pm",
+                    date: "2025-01-20",
+                    file: "AI Project Management/road_framework.html"
+                },
+                {
+                    id: "ml_al_life_cycle",
+                    title: "AI/ML Project Life Cycle - ROAD Framework",
+                    excerpt: "Navigate the complete AI/ML project lifecycle from requirements to deployment.",
+                    category: "ai-pm",
+                    date: "2025-01-24",
+                    file: "AI Project Management/ml_al_life_cycle.html"
+                },
+                // ML Fundamentals
+                {
+                    id: "ml_definition",
+                    title: "What is Machine Learning?",
+                    excerpt: "A beginner's guide to how computers get smart through learning from data.",
+                    category: "ml-fundamentals",
+                    date: "2025-01-22",
+                    file: "ML Fundamentals/ml_definition.html"
+                },
+                {
+                    id: "ml_three_types",
+                    title: "Types of Machine Learning",
+                    excerpt: "Understanding the three main types: supervised, unsupervised, and reinforcement learning.",
+                    category: "ml-fundamentals",
+                    date: "2025-01-22",
+                    file: "ML Fundamentals/ml_three_types.html"
+                },
+                {
+                    id: "ml_concepts",
+                    title: "Core Machine Learning Concepts",
+                    excerpt: "Essential concepts every ML practitioner needs to know.",
+                    category: "ml-fundamentals",
+                    date: "2025-01-22",
+                    file: "ML Fundamentals/ml_concepts.html"
+                },
+                {
+                    id: "ml_supervised_learning",
+                    title: "Supervised Learning Infographic",
+                    excerpt: "Visual guide to supervised learning: training with labeled data for predictions.",
+                    category: "ml-fundamentals",
+                    date: "2025-01-22",
+                    file: "ML Fundamentals/ml_supervised_learning.html"
+                },
+                {
+                    id: "ml_unsupervised_learning",
+                    title: "Unsupervised Learning Infographic",
+                    excerpt: "Discover patterns and structures in data without explicit labels.",
+                    category: "ml-fundamentals",
+                    date: "2025-01-22",
+                    file: "ML Fundamentals/ml_unsupervised_learning.html"
+                },
+                {
+                    id: "ml_ai_performance_measures",
+                    title: "AI Performance Measures - Interactive Guide",
+                    excerpt: "Understanding accuracy, precision, recall, F1-score, and other key metrics.",
+                    category: "ml-fundamentals",
+                    date: "2025-01-25",
+                    file: "ML Fundamentals/ml_ai_performance_measures.html"
+                },
+                {
+                    id: "ml_overfitting_underfitting",
+                    title: "Overfitting & Underfitting: The Balance",
+                    excerpt: "Learn to identify and address the fundamental challenges in model training.",
+                    category: "ml-fundamentals",
+                    date: "2025-01-25",
+                    file: "ML Fundamentals/ml_overfitting_and_Underfitting.html"
+                }
+            ]
+        };
+    </script>
+
+    <!-- Header -->
+    <header class="sticky top-0 w-full bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 z-20 shadow-md">
+        <nav class="flex justify-between items-center p-4 max-w-7xl mx-auto">
             <h1 class="text-lg font-bold">Sriramkishore Naraharisetti</h1>
-            <div>
-                <a href="../index.html" class="px-4 py-2 hover:underline">Home</a>
-                <a href="../index.html#about" class="px-4 py-2 hover:underline">About Me</a>
+            <div class="flex items-center gap-2">
+                <a href="../index.html" class="px-4 py-2 hover:underline hidden sm:inline">Home</a>
+                <a href="../index.html#about" class="px-4 py-2 hover:underline hidden sm:inline">About Me</a>
                 <button onclick="document.documentElement.classList.toggle('dark')"
-                    class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200">
-                    Toggle Dark Mode
+                    class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 transition-colors"
+                    aria-label="Toggle dark mode">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:inline"></i>
                 </button>
             </div>
         </nav>
     </header>
 
-    <main class="min-h-screen p-8 md:p-12">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl font-bold mb-8 text-gray-900 dark:text-gray-100">Personal Blog</h1>
+    <!-- Mobile Category Pills -->
+    <div class="lg:hidden sticky top-[64px] z-10 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
+        <div class="flex gap-2 p-3" id="mobile-filters">
+            <!-- Populated by JavaScript -->
+        </div>
+    </div>
 
-            <div class="space-y-6">
-                <!-- Blog Post: R.O.A.D. Framework -->
-                <article class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                    <a href="post.html?article=road_framework" class="block">
-                        <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2 hover:text-blue-600 dark:hover:text-blue-400">
-                            A Leader's Guide to the R.O.A.D. Framework
-                        </h2>
-                        <p class="text-gray-600 dark:text-gray-400">
-                            A comprehensive guide to the R.O.A.D. framework for effective leadership and decision-making.
-                        </p>
-                    </a>
-                </article>
+    <div class="max-w-7xl mx-auto flex">
+        <!-- Desktop Sidebar -->
+        <aside class="hidden lg:block w-64 flex-shrink-0 p-6 sticky top-[72px] h-[calc(100vh-72px)] sidebar-scroll overflow-y-auto">
+            <nav aria-label="Blog categories">
+                <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Categories</h2>
+                <div class="space-y-2" id="desktop-filters">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </nav>
+        </aside>
 
-                <!-- Blog Post: AI Use Cases -->
-                <article class="bg-white dark:bg-gray-900 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow">
-                    <a href="post.html?article=ai_use_cases" class="block">
-                        <h2 class="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2 hover:text-blue-600 dark:hover:text-blue-400">
-                            AI Use Cases
-                        </h2>
-                        <p class="text-gray-600 dark:text-gray-400">
-                            Exploring practical applications of Artificial Intelligence in various domains.
-                        </p>
-                    </a>
-                </article>
+        <!-- Main Content -->
+        <main class="flex-1 p-4 lg:p-8 min-w-0">
+            <!-- Page Title -->
+            <div class="mb-8">
+                <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">
+                    Personal Blog
+                </h1>
+                <p class="text-gray-600 dark:text-gray-400" id="post-count">
+                    <!-- Populated by JavaScript -->
+                </p>
             </div>
 
+            <!-- Posts Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6" id="posts-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+
+            <!-- Back to Home -->
             <div class="mt-12">
                 <a href="../index.html"
-                    class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-4 py-2 rounded inline-block hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors">
+                    class="inline-flex items-center bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-800 px-4 py-2 rounded hover:bg-gray-700 dark:hover:bg-gray-300 transition-colors">
                     <i class="fas fa-arrow-left mr-2"></i>Back to Home
                 </a>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 
-    <footer class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 text-center p-4">
-        © 2025 Sriramkishore Naraharisetti. All Rights Reserved.
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 text-center p-4 mt-8 border-t border-gray-200 dark:border-gray-700">
+        &copy; 2025 Sriramkishore Naraharisetti. All Rights Reserved.
     </footer>
+
+    <script>
+        (function() {
+            // Color mappings for categories
+            const colorClasses = {
+                blue: {
+                    badge: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
+                    button: 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800',
+                    buttonActive: 'bg-blue-600 text-white border-blue-600 dark:bg-blue-600 dark:border-blue-600',
+                    pill: 'bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300',
+                    pillActive: 'bg-blue-600 text-white'
+                },
+                purple: {
+                    badge: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+                    button: 'bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-900/30 dark:text-purple-300 dark:border-purple-800',
+                    buttonActive: 'bg-purple-600 text-white border-purple-600 dark:bg-purple-600 dark:border-purple-600',
+                    pill: 'bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300',
+                    pillActive: 'bg-purple-600 text-white'
+                },
+                green: {
+                    badge: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+                    button: 'bg-green-50 text-green-700 border-green-200 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800',
+                    buttonActive: 'bg-green-600 text-white border-green-600 dark:bg-green-600 dark:border-green-600',
+                    pill: 'bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300',
+                    pillActive: 'bg-green-600 text-white'
+                },
+                gray: {
+                    button: 'bg-gray-100 text-gray-700 border-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600',
+                    buttonActive: 'bg-gray-800 text-white border-gray-800 dark:bg-gray-200 dark:text-gray-800 dark:border-gray-200',
+                    pill: 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300',
+                    pillActive: 'bg-gray-800 text-white dark:bg-gray-200 dark:text-gray-800'
+                }
+            };
+
+            // Get post count per category
+            function getPostCount(categoryId) {
+                if (categoryId === 'all') return blogConfig.posts.length;
+                return blogConfig.posts.filter(p => p.category === categoryId).length;
+            }
+
+            // Get category by ID
+            function getCategoryById(id) {
+                return blogConfig.categories.find(c => c.id === id);
+            }
+
+            // Format date
+            function formatDate(dateStr) {
+                const date = new Date(dateStr);
+                return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+            }
+
+            // Sort posts by date (newest first)
+            function getSortedPosts() {
+                return [...blogConfig.posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+            }
+
+            // Create post card HTML
+            function createPostCard(post) {
+                const category = getCategoryById(post.category);
+                const colors = colorClasses[category.color];
+                const encodedPath = post.file.split('/').map(part => encodeURIComponent(part)).join('/').replace('.html', '');
+
+                return `
+                    <article class="post-card bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group" data-category="${post.category}">
+                        <a href="post.html?article=${encodedPath}" class="block p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${colors.badge}">
+                                    <i class="fas ${category.icon} mr-1.5 text-[10px]"></i>
+                                    ${category.name}
+                                </span>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
+                                ${post.title}
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                                ${post.excerpt}
+                            </p>
+                            <div class="flex items-center text-xs text-gray-500 dark:text-gray-500">
+                                <i class="far fa-calendar-alt mr-1.5"></i>
+                                <time datetime="${post.date}">${formatDate(post.date)}</time>
+                            </div>
+                        </a>
+                    </article>
+                `;
+            }
+
+            // Create desktop filter button
+            function createDesktopButton(id, name, icon, color, count) {
+                const colors = colorClasses[color];
+                const isAll = id === 'all';
+                return `
+                    <button
+                        class="filter-btn w-full flex items-center justify-between px-4 py-3 rounded-lg border text-left transition-all duration-200 ${colors.button}"
+                        data-category="${id}"
+                        data-color="${color}"
+                    >
+                        <span class="flex items-center">
+                            <i class="fas ${icon} mr-3 w-4 text-center"></i>
+                            <span class="font-medium">${name}</span>
+                        </span>
+                        <span class="text-sm opacity-70">${count}</span>
+                    </button>
+                `;
+            }
+
+            // Create mobile filter pill
+            function createMobilePill(id, name, color, count) {
+                const colors = colorClasses[color];
+                return `
+                    <button
+                        class="filter-pill whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${colors.pill}"
+                        data-category="${id}"
+                        data-color="${color}"
+                    >
+                        ${name} (${count})
+                    </button>
+                `;
+            }
+
+            // Update post count display
+            function updatePostCount(categoryId) {
+                const count = getPostCount(categoryId);
+                const categoryName = categoryId === 'all' ? '' : getCategoryById(categoryId).name + ' - ';
+                document.getElementById('post-count').textContent = `${categoryName}${count} post${count !== 1 ? 's' : ''}`;
+            }
+
+            // Filter posts
+            function filterPosts(categoryId) {
+                const cards = document.querySelectorAll('.post-card');
+                cards.forEach(card => {
+                    if (categoryId === 'all' || card.dataset.category === categoryId) {
+                        card.classList.remove('hidden-filter');
+                    } else {
+                        card.classList.add('hidden-filter');
+                    }
+                });
+                updatePostCount(categoryId);
+            }
+
+            // Update active button states
+            function updateActiveStates(categoryId) {
+                // Desktop buttons
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    const color = btn.dataset.color;
+                    const colors = colorClasses[color];
+                    const isActive = btn.dataset.category === categoryId;
+
+                    btn.className = `filter-btn w-full flex items-center justify-between px-4 py-3 rounded-lg border text-left transition-all duration-200 ${isActive ? colors.buttonActive : colors.button}`;
+                });
+
+                // Mobile pills
+                document.querySelectorAll('.filter-pill').forEach(pill => {
+                    const color = pill.dataset.color;
+                    const colors = colorClasses[color];
+                    const isActive = pill.dataset.category === categoryId;
+
+                    pill.className = `filter-pill whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${isActive ? colors.pillActive : colors.pill}`;
+                });
+            }
+
+            // Handle filter click
+            function handleFilterClick(categoryId) {
+                filterPosts(categoryId);
+                updateActiveStates(categoryId);
+
+                // Update URL hash
+                if (categoryId === 'all') {
+                    history.replaceState(null, '', window.location.pathname);
+                } else {
+                    history.replaceState(null, '', `#category=${categoryId}`);
+                }
+            }
+
+            // Initialize
+            function init() {
+                const desktopFilters = document.getElementById('desktop-filters');
+                const mobileFilters = document.getElementById('mobile-filters');
+                const postsGrid = document.getElementById('posts-grid');
+
+                // Build desktop filters
+                let desktopHTML = createDesktopButton('all', 'All Posts', 'fa-th-large', 'gray', getPostCount('all'));
+                blogConfig.categories.forEach(cat => {
+                    desktopHTML += createDesktopButton(cat.id, cat.name, cat.icon, cat.color, getPostCount(cat.id));
+                });
+                desktopFilters.innerHTML = desktopHTML;
+
+                // Build mobile filters
+                let mobileHTML = createMobilePill('all', 'All', 'gray', getPostCount('all'));
+                blogConfig.categories.forEach(cat => {
+                    mobileHTML += createMobilePill(cat.id, cat.name, cat.color, getPostCount(cat.id));
+                });
+                mobileFilters.innerHTML = mobileHTML;
+
+                // Build posts grid
+                const sortedPosts = getSortedPosts();
+                postsGrid.innerHTML = sortedPosts.map(createPostCard).join('');
+
+                // Add click handlers
+                document.querySelectorAll('.filter-btn, .filter-pill').forEach(btn => {
+                    btn.addEventListener('click', () => handleFilterClick(btn.dataset.category));
+                });
+
+                // Check for hash on load
+                const hash = window.location.hash;
+                let initialCategory = 'all';
+                if (hash.startsWith('#category=')) {
+                    const catId = hash.replace('#category=', '');
+                    if (catId === 'all' || blogConfig.categories.some(c => c.id === catId)) {
+                        initialCategory = catId;
+                    }
+                }
+
+                // Apply initial filter
+                filterPosts(initialCategory);
+                updateActiveStates(initialCategory);
+            }
+
+            // Run on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
 </body>
 
 </html>

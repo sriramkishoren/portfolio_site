@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Problem Space & Use Cases</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            primary: '#3b82f6',
+                            secondary: '#64748b',
+                        },
+                        paradigm: {
+                            supervised: '#3B82F6', // Blue
+                            unsupervised: '#10B981', // Emerald
+                            reinforcement: '#8B5CF6', // Purple
+                            anomaly: '#F43F5E', // Rose
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        .tree-line {
+            position: absolute;
+            background-color: #cbd5e1;
+            z-index: 0;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .shadow-lg {
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- NAVIGATION / HEADER -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i data-lucide="brain-circuit" class="w-8 h-8 text-blue-600"></i>
+                <span class="font-bold text-xl tracking-tight text-slate-900">AI Problem Space</span>
+            </div>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
+                <a href="#taxonomy" class="hover:text-blue-600 transition-colors">Taxonomy</a>
+                <a href="#matrix" class="hover:text-blue-600 transition-colors">Industry Matrix</a>
+                <a href="#flowchart" class="hover:text-blue-600 transition-colors">Decision Guide</a>
+                <a href="#cases" class="hover:text-blue-600 transition-colors">Success Stories</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-24">
+
+        <!-- SECTION A: HERO & VALUE PROP -->
+        <section class="text-center space-y-8 max-w-4xl mx-auto">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold uppercase tracking-wide border border-blue-100">
+                Course Lecture Series
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold tracking-tight text-slate-900 leading-tight">
+                Mapping Business Problems to <span class="text-blue-600">Machine Learning</span> Solutions
+            </h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                As discussed by Dr. Ian McCullough, problems in Healthcare, Defense, and Banking are interconnected.
+                Success isn't just about the algorithm—it's about correctly framing the problem as
+                <strong>Decision Support</strong>, <strong>Automation</strong>, or <strong>Personalized
+                    Interaction</strong>.
+            </p>
+
+            <!-- Key Question Visual -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 mt-8">
+                <h3 class="text-xl font-semibold mb-6">What kind of AI problem do I have?</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div
+                        class="p-4 rounded-xl bg-blue-50 border border-blue-100 flex flex-col items-center gap-3 text-center group cursor-default hover:bg-blue-100 transition-colors">
+                        <div
+                            class="p-3 bg-white rounded-full shadow-sm text-blue-600 group-hover:scale-110 transition-transform">
+                            <i data-lucide="target"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-900">Predict a Label</div>
+                            <div class="text-xs text-slate-500 uppercase tracking-wide mt-1 font-semibold">
+                                Classification</div>
+                        </div>
+                    </div>
+                    <div
+                        class="p-4 rounded-xl bg-indigo-50 border border-indigo-100 flex flex-col items-center gap-3 text-center group cursor-default hover:bg-indigo-100 transition-colors">
+                        <div
+                            class="p-3 bg-white rounded-full shadow-sm text-indigo-600 group-hover:scale-110 transition-transform">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-900">Predict a Number</div>
+                            <div class="text-xs text-slate-500 uppercase tracking-wide mt-1 font-semibold">Regression
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="p-4 rounded-xl bg-emerald-50 border border-emerald-100 flex flex-col items-center gap-3 text-center group cursor-default hover:bg-emerald-100 transition-colors">
+                        <div
+                            class="p-3 bg-white rounded-full shadow-sm text-emerald-600 group-hover:scale-110 transition-transform">
+                            <i data-lucide="git-branch"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-900">Find Groups</div>
+                            <div class="text-xs text-slate-500 uppercase tracking-wide mt-1 font-semibold">Clustering
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="p-4 rounded-xl bg-purple-50 border border-purple-100 flex flex-col items-center gap-3 text-center group cursor-default hover:bg-purple-100 transition-colors">
+                        <div
+                            class="p-3 bg-white rounded-full shadow-sm text-purple-600 group-hover:scale-110 transition-transform">
+                            <i data-lucide="bot"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-slate-900">Automate Action</div>
+                            <div class="text-xs text-slate-500 uppercase tracking-wide mt-1 font-semibold">Reinforcement
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CORE PRINCIPLES (UPDATED WITH STRUCTURING INFO) -->
+        <section class="max-w-4xl mx-auto">
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-6 rounded-r-lg shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="p-2 bg-amber-100 rounded-full text-amber-600 shrink-0">
+                        <i data-lucide="lightbulb" class="w-6 h-6"></i>
+                    </div>
+                    <div class="w-full">
+                        <h3 class="text-lg font-bold text-amber-900 mb-2">Why Structure Matters: Key Principles</h3>
+                        <p class="text-sm text-amber-800/80 mb-4">Crucial concepts for designing the AI problem space.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-6">
+
+                            <!-- Principle 1 -->
+                            <div class="bg-white/60 p-4 rounded-md border border-amber-100 flex flex-col h-full">
+                                <h4 class="font-bold text-amber-900 text-sm mb-2 flex items-center gap-2">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4"></i> Success Factor
+                                </h4>
+                                <div class="mb-3">
+                                    <p class="text-slate-700 text-sm leading-relaxed mb-3">
+                                        Structuring determines the <strong>success</strong> of the algorithm, not just
+                                        its speed.
+                                    </p>
+                                    <div
+                                        class="bg-amber-100/50 p-2 rounded text-xs text-amber-900 border border-amber-200">
+                                        <strong>What is Structuring?</strong><br>
+                                        Translating a vague real-world problem into a specific mathematical task (Input
+                                        → Output → Goal).
+                                    </div>
+                                </div>
+                                <div class="mt-auto pt-3 border-t border-rose-100">
+                                    <div class="text-[10px] font-bold text-rose-600 uppercase tracking-wide mb-1">Common
+                                        Misconception</div>
+                                    <div class="text-xs text-rose-800/70 flex items-center gap-2">
+                                        <i data-lucide="x-circle" class="w-3 h-3"></i>
+                                        <span class="line-through decoration-rose-400">"Structuring eliminates the need
+                                            for data"</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Principle 2 -->
+                            <div class="bg-white/60 p-4 rounded-md border border-amber-100 flex flex-col h-full">
+                                <h4 class="font-bold text-amber-900 text-sm mb-2 flex items-center gap-2">
+                                    <i data-lucide="check-circle-2" class="w-4 h-4"></i> Design Priority
+                                </h4>
+                                <div class="mb-3">
+                                    <p class="text-slate-700 text-sm leading-relaxed">
+                                        The most influential factor is the <strong>clarity of objectives</strong>.
+                                        Without clear success criteria, the problem space cannot be structured
+                                        correctly.
+                                    </p>
+                                </div>
+                                <div class="mt-auto pt-3 border-t border-rose-100">
+                                    <div class="text-[10px] font-bold text-rose-600 uppercase tracking-wide mb-1">Common
+                                        Misconception</div>
+                                    <div class="text-xs text-rose-800/70 flex items-center gap-2">
+                                        <i data-lucide="x-circle" class="w-3 h-3"></i>
+                                        <span class="line-through decoration-rose-400">"Dataset size is the primary
+                                            factor"</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION B: TAXONOMY TREE -->
+        <section id="taxonomy" class="space-y-12">
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-slate-900">The Machine Learning Landscape</h2>
+                <p class="text-slate-500 mt-2">A hierarchical view of learning paradigms mentioned in the lecture</p>
+            </div>
+
+            <div class="relative max-w-5xl mx-auto pt-8 pb-12">
+                <!-- Root -->
+                <div class="flex justify-center relative z-10 mb-12">
+                    <div
+                        class="bg-slate-900 text-white px-8 py-3 rounded-lg shadow-lg font-bold text-lg flex items-center gap-2">
+                        <i data-lucide="cpu"></i> Machine Learning
+                    </div>
+                </div>
+
+                <!-- Connectors -->
+                <div
+                    class="absolute top-[3.5rem] left-1/2 -translate-x-1/2 w-[66%] h-12 border-t-2 border-l-2 border-r-2 border-slate-300 rounded-t-xl hidden md:block">
+                </div>
+                <div
+                    class="absolute top-[3.5rem] left-1/2 -translate-x-1/2 h-12 border-l-2 border-slate-300 hidden md:block">
+                </div>
+
+                <!-- Level 2: Paradigms -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+
+                    <!-- Supervised -->
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="bg-blue-600 text-white px-6 py-2 rounded-full font-semibold shadow-md mb-6 w-full text-center max-w-[200px]">
+                            Supervised
+                            <span class="block text-[10px] font-normal opacity-90">Labeled Data</span>
+                        </div>
+                        <div class="w-full space-y-3">
+                            <div
+                                class="bg-white p-4 rounded-lg border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="font-bold text-slate-800 flex items-center gap-2">
+                                    <i data-lucide="tags" class="w-4 h-4 text-blue-500"></i> Classification
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">Predict categories (e.g., Disease Diagnosis,
+                                    Spam)</p>
+                            </div>
+                            <div
+                                class="bg-white p-4 rounded-lg border-l-4 border-blue-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="font-bold text-slate-800 flex items-center gap-2">
+                                    <i data-lucide="line-chart" class="w-4 h-4 text-blue-500"></i> Regression
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">Predict values (e.g., Patient Risk Score, Demand)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Unsupervised -->
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="bg-emerald-500 text-white px-6 py-2 rounded-full font-semibold shadow-md mb-6 w-full text-center max-w-[200px]">
+                            Unsupervised
+                            <span class="block text-[10px] font-normal opacity-90">Unlabeled Data</span>
+                        </div>
+                        <div class="w-full space-y-3">
+                            <div
+                                class="bg-white p-4 rounded-lg border-l-4 border-emerald-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="font-bold text-slate-800 flex items-center gap-2">
+                                    <i data-lucide="scatter-chart" class="w-4 h-4 text-emerald-500"></i> Clustering
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">Find structure (e.g., Patient Social Groups)</p>
+                            </div>
+                            <div
+                                class="bg-white p-4 rounded-lg border-l-4 border-emerald-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="font-bold text-slate-800 flex items-center gap-2">
+                                    <i data-lucide="alert-triangle" class="w-4 h-4 text-emerald-500"></i> Anomaly
+                                    Detection
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">Identify outliers (e.g., Fraud, Rare Disease)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reinforcement -->
+                    <div class="flex flex-col items-center">
+                        <div
+                            class="bg-purple-600 text-white px-6 py-2 rounded-full font-semibold shadow-md mb-6 w-full text-center max-w-[200px]">
+                            Reinforcement
+                            <span class="block text-[10px] font-normal opacity-90">Rewards & Penalties</span>
+                        </div>
+                        <div class="w-full space-y-3">
+                            <div
+                                class="bg-white p-4 rounded-lg border-l-4 border-purple-500 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="font-bold text-slate-800 flex items-center gap-2">
+                                    <i data-lucide="gamepad-2" class="w-4 h-4 text-purple-500"></i> Control & Robotics
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">Autonomous actions (e.g., Drone Defeat Systems)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION C: INDUSTRY MATRIX -->
+        <section id="matrix" class="space-y-8 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-slate-900">Industry Use Case Matrix</h2>
+                    <p class="text-slate-500 mt-1">Cross-referencing industries with functional problem types</p>
+                </div>
+                <div class="flex gap-4 text-sm">
+                    <div class="flex items-center gap-2"><span
+                            class="w-3 h-3 rounded-full bg-blue-100 border border-blue-500"></span> Decision Support
+                    </div>
+                    <div class="flex items-center gap-2"><span
+                            class="w-3 h-3 rounded-full bg-indigo-100 border border-indigo-500"></span> Automation</div>
+                    <div class="flex items-center gap-2"><span
+                            class="w-3 h-3 rounded-full bg-purple-100 border border-purple-500"></span> Personalized
+                        Interaction</div>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto hide-scrollbar">
+                <table class="w-full min-w-[800px] border-collapse">
+                    <thead>
+                        <tr>
+                            <th
+                                class="text-left p-4 text-xs font-semibold text-slate-400 uppercase tracking-wider w-32">
+                                Industry</th>
+                            <th
+                                class="text-left p-4 text-xs font-semibold text-slate-400 uppercase tracking-wider w-1/3">
+                                <div class="flex items-center gap-2"><i data-lucide="microscope" class="w-4 h-4"></i>
+                                    Decision Support</div>
+                            </th>
+                            <th
+                                class="text-left p-4 text-xs font-semibold text-slate-400 uppercase tracking-wider w-1/3">
+                                <div class="flex items-center gap-2"><i data-lucide="settings-2" class="w-4 h-4"></i>
+                                    Automation</div>
+                            </th>
+                            <th
+                                class="text-left p-4 text-xs font-semibold text-slate-400 uppercase tracking-wider w-1/3">
+                                <div class="flex items-center gap-2"><i data-lucide="users" class="w-4 h-4"></i>
+                                    Personalized Interaction</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <!-- HEALTHCARE -->
+                        <tr class="group hover:bg-slate-50 transition-colors">
+                            <td class="p-4 align-top">
+                                <div class="font-bold text-slate-800 flex items-center gap-2">
+                                    <span class="p-1.5 bg-blue-50 text-blue-600 rounded-md"><i data-lucide="activity"
+                                            class="w-4 h-4"></i></span>
+                                    Healthcare
+                                </div>
+                            </td>
+                            <td class="p-4 align-top">
+                                <div
+                                    class="bg-blue-50 border border-blue-100 rounded-lg p-3 hover:bg-blue-100 transition-colors cursor-pointer">
+                                    <div class="text-sm font-semibold text-blue-900">Disease Diagnosis</div>
+                                    <div class="text-xs text-blue-700 mt-1 mb-2">Deep Learning (CNNs)</div>
+                                    <p class="text-xs text-slate-600 leading-relaxed">Analyzing medical imaging (X-rays,
+                                        MRIs) to detect rare conditions, tumors, or fractures.</p>
+                                </div>
+                            </td>
+                            <td class="p-4 align-top">
+                                <div
+                                    class="bg-indigo-50 border border-indigo-100 rounded-lg p-3 hover:bg-indigo-100 transition-colors cursor-pointer">
+                                    <div class="text-sm font-semibold text-indigo-900">Hospital Operations</div>
+                                    <div class="text-xs text-indigo-700 mt-1 mb-2">Optimization / Graph</div>
+                                    <p class="text-xs text-slate-600 leading-relaxed">Tracking infusion pumps and
+                                        mapping staff social ties to reduce equipment shortages.</p>
+                                </div>
+                            </td>
+                            <td class="p-4 align-top">
+                                <div
+                                    class="bg-purple-50 border border-purple-100 rounded-lg p-3 hover:bg-purple-100 transition-colors cursor-pointer">
+                                    <div class="text-sm font-semibold text-purple-900">Patient Risk Prediction</div>
+                                    <div class="text-xs text-purple-700 mt-1 mb-2">Gradient Boosting (XGBoost)</div>
+                                    <p class="text-xs text-slate-600 leading-relaxed">Analyzing demographics & history
+                                        to predict readmission likelihood for early intervention.</p>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- DEFENSE -->
+                        <tr class="group hover:bg-slate-50 transition-colors">
+                            <td class="p-4 align-top">
+                                <div class="font-bold text-slate-800 flex items-center gap-2">
+                                    <span class="p-1.5 bg-slate-100 text-slate-600 rounded-md"><i data-lucide="shield"
+                                            class="w-4 h-4"></i></span>
+                                    Defense
+                                </div>
+                            </td>
+                            <td class="p-4 align-top">
+                                <div
+                                    class="bg-blue-50 border border-blue-100 rounded-lg p-3 hover:bg-blue-100 transition-colors cursor-pointer">
+                                    <div class="text-sm font-semibold text-blue-900">Threat Detection</div>
+                                    <div class="text-xs text-blue-700 mt-1 mb-2">Computer Vision / Networks</div>
+                                    <p class="text-xs text-slate-600 leading-relaxed">Identifying IED supply chains and
+                                        terrorist planning using drone imagery and post-blast data.</p>
+                                </div>
+                            </td>
+                            <td class="p-4 align-top">
+                                <div
+                                    class="bg-indigo-50 border border-indigo-100 rounded-lg p-3 hover:bg-indigo-100 transition-colors cursor-pointer">
+                                    <div class="text-sm font-semibold text-indigo-900">Autonomous Systems</div>
+                                    <div class="text-xs text-indigo-700 mt-1 mb-2">Robotics / RL</div>
+                                    <p class="text-xs text-slate-600 leading-relaxed">Robots for demining and bomb
+                                        defusal to separate humans from immediate danger.</p>
+                                </div>
+                            </td>
+                            <td class="p-4 align-top">
+                                <div
+                                    class="bg-purple-50 border border-purple-100 rounded-lg p-3 hover:bg-purple-100 transition-colors cursor-pointer">
+                                    <div class="text-sm font-semibold text-purple-900">Soldier Performance</div>
+                                    <div class="text-xs text-purple-700 mt-1 mb-2">Time Series (LSTM)</div>
+                                    <p class="text-xs text-slate-600 leading-relaxed">Monitoring physiological sensors
+                                        (heart rate, O2) to predict fatigue and injury.</p>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <!-- BANKING -->
+                        <tr class="group hover:bg-slate-50 transition-colors">
+                            <td class="p-4 align-top">
+                                <div class="font-bold text-slate-800 flex items-center gap-2">
+                                    <span class="p-1.5 bg-emerald-50 text-emerald-600 rounded-md"><i
+                                            data-lucide="landmark" class="w-4 h-4"></i></span>
+                                    Banking
+                                </div>
+                            </td>
+                            <td class="p-4 align-top">
+                                <div
+                                    class="bg-blue-50 border border-blue-100 rounded-lg p-3 hover:bg-blue-100 transition-colors cursor-pointer">
+                                    <div class="text-sm font-semibold text-blue-900">Fraud Detection</div>
+                                    <div class="text-xs text-blue-700 mt-1 mb-2">Anomaly Detection</div>
+                                    <p class="text-xs text-slate-600 leading-relaxed">Balancing false positives
+                                        (customer irritation) vs financial loss using custom ML models.</p>
+                                </div>
+                            </td>
+                            <td class="p-4 align-top">
+                                <div
+                                    class="bg-indigo-50 border border-indigo-100 rounded-lg p-3 hover:bg-indigo-100 transition-colors cursor-pointer">
+                                    <div class="text-sm font-semibold text-indigo-900">Credit Scoring</div>
+                                    <div class="text-xs text-indigo-700 mt-1 mb-2">Decision Trees</div>
+                                    <p class="text-xs text-slate-600 leading-relaxed">Assessing creditworthiness for
+                                        undocumented (ITIN) populations to ensure financial equity.</p>
+                                </div>
+                            </td>
+                            <td class="p-4 align-top">
+                                <div
+                                    class="bg-purple-50 border border-purple-100 rounded-lg p-3 hover:bg-purple-100 transition-colors cursor-pointer">
+                                    <div class="text-sm font-semibold text-purple-900">Customer Retention</div>
+                                    <div class="text-xs text-purple-700 mt-1 mb-2">Predictive Analytics</div>
+                                    <p class="text-xs text-slate-600 leading-relaxed">Optimizing call centers and
+                                        pre-authenticating users to reduce churn (approx 15-20%/yr).</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION D: DECISION FLOWCHART -->
+        <section id="flowchart" class="space-y-12">
+            <div class="text-center max-w-2xl mx-auto">
+                <h2 class="text-3xl font-bold text-slate-900">Problem Identification Guide</h2>
+                <p class="text-slate-500 mt-2">Start here to select the right approach for your business problem.</p>
+            </div>
+
+            <div class="flex flex-col items-center max-w-4xl mx-auto relative text-sm">
+
+                <!-- Step 1 -->
+                <div
+                    class="z-10 bg-slate-900 text-white px-8 py-4 rounded-xl shadow-lg text-center w-64 border-2 border-slate-900">
+                    <div class="font-bold text-base mb-1">Do you have labeled data?</div>
+                    <div class="text-xs text-slate-300">(Historical outcomes)</div>
+                </div>
+
+                <!-- Vertical Line -->
+                <div class="h-12 w-0.5 bg-slate-300"></div>
+
+                <!-- Branching Lines -->
+                <div class="w-full max-w-xl border-t-2 border-slate-300 h-8 flex justify-between relative">
+                    <div class="absolute -top-3 left-1/4 bg-white px-2 text-slate-500 font-semibold text-xs">YES
+                        (Supervised)</div>
+                    <div class="absolute -top-3 right-1/4 bg-white px-2 text-slate-500 font-semibold text-xs">NO
+                        (Unsupervised/RL)</div>
+                    <div class="h-full border-l-2 border-slate-300 absolute left-0"></div>
+                    <div class="h-full border-r-2 border-slate-300 absolute right-0"></div>
+                </div>
+
+                <!-- Level 2 Nodes -->
+                <div class="w-full max-w-xl flex justify-between gap-8 mb-8">
+                    <!-- Left Side (Supervised) -->
+                    <div class="flex flex-col items-center w-1/2">
+                        <div
+                            class="bg-white border-2 border-blue-500 text-slate-800 px-6 py-3 rounded-lg shadow-sm text-center w-full mb-8">
+                            <div class="font-bold">What is the output?</div>
+                        </div>
+
+                        <div class="flex justify-between w-full gap-2 text-center">
+                            <div class="flex flex-col items-center w-1/2">
+                                <div class="h-8 w-0.5 bg-slate-300 mb-2"></div>
+                                <div
+                                    class="bg-blue-50 p-3 rounded-lg border border-blue-200 w-full hover:bg-blue-100 transition-colors">
+                                    <div class="font-bold text-blue-700 mb-1">Category</div>
+                                    <div class="text-xs text-slate-600 mb-2">"Is this a tumor?"</div>
+                                    <div class="bg-blue-600 text-white text-xs py-1 px-2 rounded font-mono">
+                                        Classification</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center w-1/2">
+                                <div class="h-8 w-0.5 bg-slate-300 mb-2"></div>
+                                <div
+                                    class="bg-blue-50 p-3 rounded-lg border border-blue-200 w-full hover:bg-blue-100 transition-colors">
+                                    <div class="font-bold text-blue-700 mb-1">Number</div>
+                                    <div class="text-xs text-slate-600 mb-2">"Credit Score?"</div>
+                                    <div class="bg-blue-600 text-white text-xs py-1 px-2 rounded font-mono">Regression
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Side (Unsupervised) -->
+                    <div class="flex flex-col items-center w-1/2">
+                        <div
+                            class="bg-white border-2 border-emerald-500 text-slate-800 px-6 py-3 rounded-lg shadow-sm text-center w-full mb-8">
+                            <div class="font-bold">What is the goal?</div>
+                        </div>
+
+                        <div class="flex justify-between w-full gap-2 text-center">
+                            <div class="flex flex-col items-center w-1/2">
+                                <div class="h-8 w-0.5 bg-slate-300 mb-2"></div>
+                                <div
+                                    class="bg-emerald-50 p-3 rounded-lg border border-emerald-200 w-full hover:bg-emerald-100 transition-colors">
+                                    <div class="font-bold text-emerald-700 mb-1">Group Items</div>
+                                    <div class="text-xs text-slate-600 mb-2">"Social ties?"</div>
+                                    <div class="bg-emerald-600 text-white text-xs py-1 px-2 rounded font-mono">
+                                        Clustering</div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center w-1/2">
+                                <div class="h-8 w-0.5 bg-slate-300 mb-2"></div>
+                                <div
+                                    class="bg-purple-50 p-3 rounded-lg border border-purple-200 w-full hover:bg-purple-100 transition-colors">
+                                    <div class="font-bold text-purple-700 mb-1">Automate</div>
+                                    <div class="text-xs text-slate-600 mb-2">"Defuse Bomb"</div>
+                                    <div class="bg-purple-600 text-white text-xs py-1 px-2 rounded font-mono">
+                                        Reinforcement</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION E: REAL WORLD SUCCESS STORIES -->
+        <section id="cases" class="space-y-8">
+            <h2 class="text-3xl font-bold text-slate-900">Success Stories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Story 1: Infusion Pumps -->
+                <article
+                    class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col h-full card-hover">
+                    <div class="h-2 bg-indigo-500"></div>
+                    <div class="p-6 flex-1">
+                        <div class="flex items-center gap-2 mb-4">
+                            <i data-lucide="hospital" class="text-indigo-500"></i>
+                            <span class="text-xs font-bold text-indigo-500 uppercase tracking-wide">Healthcare
+                                Operations</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">The Infusion Pump Shortage</h3>
+                        <p class="text-sm text-slate-600 mb-4">
+                            <strong>Problem:</strong> Hospital staff couldn't find infusion pumps, leading to perceived
+                            shortages and expensive new purchases.
+                        </p>
+                        <p class="text-sm text-slate-600 mb-4">
+                            <strong>Solution:</strong> Mapped the "social journey" of pumps. Realized shortages were due
+                            to lack of social ties between departments. Created training classes mixing nurses from
+                            different wards.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-slate-50 border-t border-slate-100 text-xs font-medium text-slate-500">
+                        Result: Automated "sharing economy" without orderlies.
+                    </div>
+                </article>
+
+                <!-- Story 2: ITIN Loans -->
+                <article
+                    class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col h-full card-hover">
+                    <div class="h-2 bg-emerald-500"></div>
+                    <div class="p-6 flex-1">
+                        <div class="flex items-center gap-2 mb-4">
+                            <i data-lucide="credit-card" class="text-emerald-500"></i>
+                            <span class="text-xs font-bold text-emerald-500 uppercase tracking-wide">Financial
+                                Equity</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Loans for the Undocumented</h3>
+                        <p class="text-sm text-slate-600 mb-4">
+                            <strong>Problem:</strong> ITIN applicants (undocumented immigrants) lack standard credit
+                            history/driver's licenses but need business loans.
+                        </p>
+                        <p class="text-sm text-slate-600 mb-4">
+                            <strong>Solution:</strong> A credit union built a custom credit scoring model using
+                            alternative data points specific to this population.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-slate-50 border-t border-slate-100 text-xs font-medium text-slate-500">
+                        Result: Zero defaults in 2 years of the program.
+                    </div>
+                </article>
+
+                <!-- Story 3: IED Detection -->
+                <article
+                    class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden flex flex-col h-full card-hover">
+                    <div class="h-2 bg-slate-600"></div>
+                    <div class="p-6 flex-1">
+                        <div class="flex items-center gap-2 mb-4">
+                            <i data-lucide="bomb" class="text-slate-600"></i>
+                            <span class="text-xs font-bold text-slate-600 uppercase tracking-wide">Defense /
+                                Counter-Terrorism</span>
+                        </div>
+                        <h3 class="font-bold text-lg mb-2">Left-of-Boom Detection</h3>
+                        <p class="text-sm text-slate-600 mb-4">
+                            <strong>Problem:</strong> Attacks happen after planning. Detecting the explosion is too
+                            late.
+                        </p>
+                        <p class="text-sm text-slate-600 mb-4">
+                            <strong>Solution:</strong> Used post-blast data (fingerprints, electronics) to map "illicit
+                            supply chains" and social networks of bomb makers.
+                        </p>
+                    </div>
+                    <div class="p-4 bg-slate-50 border-t border-slate-100 text-xs font-medium text-slate-500">
+                        Result: Disrupted networks during planning phase.
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="border-t border-slate-200 pt-8 pb-12 text-center text-slate-500 text-sm">
+            <p>© 2025 AI Problem Space Infographic. Based on the lecture by Dr. Ian McCullough.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

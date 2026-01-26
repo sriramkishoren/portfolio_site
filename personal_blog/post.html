@@ -73,11 +73,14 @@
             const fallback = document.getElementById('fallback');
 
             if (article) {
-                // Sanitize the article parameter (only allow alphanumeric, hyphens, underscores)
-                const sanitized = article.replace(/[^a-zA-Z0-9_-]/g, '');
+                // Decode URL-encoded path and sanitize
+                // Allow: alphanumeric, hyphens, underscores, slashes, spaces
+                const decoded = decodeURIComponent(article);
+                const sanitized = decoded.replace(/[^a-zA-Z0-9_\-\/ ]/g, '');
 
                 if (sanitized) {
-                    const postUrl = sanitized + '.html';
+                    // Build the post URL - encode spaces for the URL
+                    const postUrl = sanitized.split('/').map(part => encodeURIComponent(part)).join('/') + '.html';
                     iframe.src = postUrl;
 
                     // Handle iframe load error

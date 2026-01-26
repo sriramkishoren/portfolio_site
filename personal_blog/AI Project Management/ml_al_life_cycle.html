@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI/ML Project Life Cycle - ROAD Framework</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        roadR: '#2563EB', // Blue for Requirements
+                        roadO: '#059669', // Green for Operationalize
+                        roadA: '#7C3AED', // Purple for Analytics
+                        roadD: '#DC2626', // Red for Deployment
+                        slate: {
+                            850: '#1e293b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+
+        .road-pillar {
+            transition: all 0.3s ease;
+        }
+
+        .road-pillar:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-connector::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 2rem;
+            height: 2px;
+            background-color: #CBD5E1;
+            z-index: 0;
+        }
+
+        .last-connector::after {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .step-connector::after {
+                display: none;
+            }
+        }
+
+        /* Print adjustments */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .shadow-xl,
+            .shadow-lg,
+            .shadow-sm {
+                box-shadow: none !important;
+                border: 1px solid #ccc;
+            }
+
+            .no-print {
+                display: none;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased">
+
+    <!-- HEADER SECTION -->
+    <header class="bg-slate-900 text-white border-b border-slate-700 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div>
+                    <div class="flex items-center gap-3">
+                        <div class="bg-blue-500 p-2 rounded-lg">
+                            <i data-lucide="map" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h1 class="text-2xl md:text-3xl font-bold tracking-tight">The ROAD to AI</h1>
+                    </div>
+                    <p class="mt-2 text-slate-400 text-sm md:text-base">Requirements &bull; Operationalize Data &bull;
+                        Analytic Method &bull; Deployment</p>
+                </div>
+                <div class="mt-4 md:mt-0 text-right hidden md:block">
+                    <span
+                        class="bg-slate-800 text-slate-300 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">End-to-End
+                        Life Cycle</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+
+        <!-- INTRO: THE 3 BUCKETS (USE CASES) -->
+        <!-- Moved up to clearly segregate "What we are building" vs "How we build it" -->
+        <section>
+            <div class="flex items-center gap-2 mb-6">
+                <i data-lucide="lightbulb" class="w-6 h-6 text-yellow-500"></i>
+                <h2 class="text-2xl font-bold text-gray-900">AI Use Case Categories</h2>
+            </div>
+            <p class="text-gray-600 mb-6 max-w-3xl">Before starting the lifecycle, understand which of the three common
+                buckets your problem falls into. AI is either making decisions, automating processes, or personalizing
+                interactions.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Use Case 1 -->
+                <div class="bg-white p-6 rounded-xl border-t-4 border-blue-500 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600">
+                        <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900">Decision Support</h3>
+                    <p class="mt-2 text-sm text-gray-600">Enhancing human decision making with data-driven insights
+                        (e.g., Strategic forecasting, Risk assessment).</p>
+                </div>
+                <!-- Use Case 2 -->
+                <div class="bg-white p-6 rounded-xl border-t-4 border-green-500 shadow-sm hover:shadow-md transition">
+                    <div
+                        class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mb-4 text-green-600">
+                        <i data-lucide="bot" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900">Process Automation</h3>
+                    <p class="mt-2 text-sm text-gray-600">Automating physical or office processes (e.g., Claims
+                        processing automation, Robotic Process Automation).</p>
+                </div>
+                <!-- Use Case 3 -->
+                <div class="bg-white p-6 rounded-xl border-t-4 border-purple-500 shadow-sm hover:shadow-md transition">
+                    <div
+                        class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4 text-purple-600">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900">Personalized Interaction</h3>
+                    <p class="mt-2 text-sm text-gray-600">Tailoring experiences to individuals (e.g., Recommender
+                        systems, Chatbots, Search applications).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN FRAMEWORK: THE ROAD MAP -->
+        <section aria-label="ROAD Framework Mapping">
+            <div class="flex items-center justify-between mb-8">
+                <div>
+                    <h2 class="text-2xl font-bold text-gray-900">The ROAD Framework & Lifecycle Mapping</h2>
+                    <p class="text-gray-500 mt-1">Mapping the 7 Life Cycle Phases to the 4 Strategic Pillars.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
+                <!-- COLUMN R: REQUIREMENTS -->
+                <div class="flex flex-col h-full">
+                    <!-- Header -->
+                    <div class="bg-roadR text-white p-4 rounded-t-xl text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-white opacity-20"></div>
+                        <h3 class="text-2xl font-extrabold tracking-widest">R</h3>
+                        <div class="text-xs font-semibold uppercase tracking-wide mt-1">Requirements</div>
+                    </div>
+                    <!-- Body -->
+                    <div class="bg-blue-50 p-4 border-x border-b border-blue-200 rounded-b-xl flex-grow space-y-4">
+                        <div class="text-xs text-blue-800 mb-2 font-medium uppercase text-center">Led by Domain Expert
+                        </div>
+
+                        <!-- Phase Card 1 -->
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-roadR hover:shadow-md transition cursor-pointer"
+                            onclick="document.getElementById('phase1-detail').scrollIntoView({behavior: 'smooth'})">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-blue-100 p-2 rounded text-roadR"><i data-lucide="target"
+                                        class="w-4 h-4"></i></div>
+                                <div>
+                                    <div class="text-xs text-gray-400 font-bold uppercase">Phase 1</div>
+                                    <div class="font-bold text-gray-900 text-sm">Problem Definition</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-blue-100/50 rounded text-xs text-blue-900 italic border border-blue-200">
+                            "Align with business strategy. Define success metrics."
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMN O: OPERATIONALIZE -->
+                <div class="flex flex-col h-full">
+                    <div class="bg-roadO text-white p-4 rounded-t-xl text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-white opacity-20"></div>
+                        <h3 class="text-2xl font-extrabold tracking-widest">O</h3>
+                        <div class="text-xs font-semibold uppercase tracking-wide mt-1">Operationalize Data</div>
+                    </div>
+                    <div class="bg-green-50 p-4 border-x border-b border-green-200 rounded-b-xl flex-grow space-y-4">
+                        <div class="text-xs text-green-800 mb-2 font-medium uppercase text-center">Data Engineers /
+                            Architects</div>
+
+                        <!-- Phase Card 2 -->
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-roadO hover:shadow-md transition cursor-pointer"
+                            onclick="document.getElementById('phase2-detail').scrollIntoView({behavior: 'smooth'})">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-green-100 p-2 rounded text-roadO"><i data-lucide="database"
+                                        class="w-4 h-4"></i></div>
+                                <div>
+                                    <div class="text-xs text-gray-400 font-bold uppercase">Phase 2</div>
+                                    <div class="font-bold text-gray-900 text-sm">Data Collection</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase Card 3 -->
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-roadO hover:shadow-md transition cursor-pointer"
+                            onclick="document.getElementById('phase3-detail').scrollIntoView({behavior: 'smooth'})">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-green-100 p-2 rounded text-roadO"><i data-lucide="settings-2"
+                                        class="w-4 h-4"></i></div>
+                                <div>
+                                    <div class="text-xs text-gray-400 font-bold uppercase">Phase 3</div>
+                                    <div class="font-bold text-gray-900 text-sm">Data Prep</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-3 bg-green-100/50 rounded text-xs text-green-900 italic border border-green-200">
+                            "Is data generalizable? Are we addressing privacy?"
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMN A: ANALYTICS -->
+                <div class="flex flex-col h-full">
+                    <div class="bg-roadA text-white p-4 rounded-t-xl text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-white opacity-20"></div>
+                        <h3 class="text-2xl font-extrabold tracking-widest">A</h3>
+                        <div class="text-xs font-semibold uppercase tracking-wide mt-1">Analytic Method</div>
+                    </div>
+                    <div class="bg-purple-50 p-4 border-x border-b border-purple-200 rounded-b-xl flex-grow space-y-4">
+                        <div class="text-xs text-purple-800 mb-2 font-medium uppercase text-center">Data Scientists
+                        </div>
+
+                        <!-- Phase Card 4 -->
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-roadA hover:shadow-md transition cursor-pointer"
+                            onclick="document.getElementById('phase4-detail').scrollIntoView({behavior: 'smooth'})">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-purple-100 p-2 rounded text-roadA"><i data-lucide="cpu"
+                                        class="w-4 h-4"></i></div>
+                                <div>
+                                    <div class="text-xs text-gray-400 font-bold uppercase">Phase 4</div>
+                                    <div class="font-bold text-gray-900 text-sm">Model Building</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase Card 5 -->
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-roadA hover:shadow-md transition cursor-pointer"
+                            onclick="document.getElementById('phase5-detail').scrollIntoView({behavior: 'smooth'})">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-purple-100 p-2 rounded text-roadA"><i data-lucide="check-circle"
+                                        class="w-4 h-4"></i></div>
+                                <div>
+                                    <div class="text-xs text-gray-400 font-bold uppercase">Phase 5</div>
+                                    <div class="font-bold text-gray-900 text-sm">Model Evaluation</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMN D: DEPLOYMENT -->
+                <div class="flex flex-col h-full">
+                    <div class="bg-roadD text-white p-4 rounded-t-xl text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-white opacity-20"></div>
+                        <h3 class="text-2xl font-extrabold tracking-widest">D</h3>
+                        <div class="text-xs font-semibold uppercase tracking-wide mt-1">Deployment</div>
+                    </div>
+                    <div class="bg-red-50 p-4 border-x border-b border-red-200 rounded-b-xl flex-grow space-y-4">
+                        <div class="text-xs text-red-800 mb-2 font-medium uppercase text-center">DevOps / Business
+                            Leaders</div>
+
+                        <!-- Phase Card 6 -->
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-roadD hover:shadow-md transition cursor-pointer"
+                            onclick="document.getElementById('phase6-detail').scrollIntoView({behavior: 'smooth'})">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-red-100 p-2 rounded text-roadD"><i data-lucide="rocket"
+                                        class="w-4 h-4"></i></div>
+                                <div>
+                                    <div class="text-xs text-gray-400 font-bold uppercase">Phase 6</div>
+                                    <div class="font-bold text-gray-900 text-sm">Deployment</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Phase Card 7 -->
+                        <div class="bg-white p-4 rounded shadow-sm border-l-4 border-roadD hover:shadow-md transition cursor-pointer"
+                            onclick="document.getElementById('phase7-detail').scrollIntoView({behavior: 'smooth'})">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-red-100 p-2 rounded text-roadD"><i data-lucide="activity"
+                                        class="w-4 h-4"></i></div>
+                                <div>
+                                    <div class="text-xs text-gray-400 font-bold uppercase">Phase 7</div>
+                                    <div class="font-bold text-gray-900 text-sm">Monitoring</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-red-100/50 rounded text-xs text-red-900 italic border border-red-200">
+                            "Change management. ROI measurement. Retraining."
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- STRATEGIC EXECUTION STEPS -->
+        <!-- Segregated Key Steps as requested -->
+        <section class="border-t border-gray-200 pt-12">
+            <div class="flex items-center gap-2 mb-8">
+                <i data-lucide="clipboard-list" class="w-6 h-6 text-slate-700"></i>
+                <h2 class="text-2xl font-bold text-gray-900">Key Execution Steps</h2>
+            </div>
+
+            <div class="relative">
+                <!-- Line connecting steps on desktop -->
+                <div class="hidden md:block absolute top-12 left-0 w-full h-1 bg-gray-200 -z-10"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+                    <!-- Step 1: Ideation -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 relative">
+                        <div
+                            class="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center font-bold absolute -top-4 left-6 border-4 border-white">
+                            1</div>
+                        <h3 class="font-bold text-lg mb-2 mt-2">Ideation</h3>
+                        <ul class="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                            <li>Design thinking approaches</li>
+                            <li>Cognitively diverse teams</li>
+                            <li>Identify pain points & wins</li>
+                            <li>Clarify business strategy</li>
+                        </ul>
+                    </div>
+
+                    <!-- Step 2: Environment -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 relative">
+                        <div
+                            class="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center font-bold absolute -top-4 left-6 border-4 border-white">
+                            2</div>
+                        <h3 class="font-bold text-lg mb-2 mt-2">Environment & Access</h3>
+                        <ul class="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                            <li>Set up IT infrastructure</li>
+                            <li>Create testing sandboxes</li>
+                            <li>Secure data permissions</li>
+                            <li>Check privacy classifications</li>
+                        </ul>
+                    </div>
+
+                    <!-- Step 3: Collaboration -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 relative">
+                        <div
+                            class="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center font-bold absolute -top-4 left-6 border-4 border-white">
+                            3</div>
+                        <h3 class="font-bold text-lg mb-2 mt-2">Collaboration</h3>
+                        <ul class="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                            <li>Agile methodology (Sprints)</li>
+                            <li>Integrate domain experts</li>
+                            <li>Demos to leadership</li>
+                            <li>Foster cross-company relations</li>
+                        </ul>
+                    </div>
+
+                    <!-- Step 4: Deployment (Process) -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 relative">
+                        <div
+                            class="w-8 h-8 bg-slate-800 text-white rounded-full flex items-center justify-center font-bold absolute -top-4 left-6 border-4 border-white">
+                            4</div>
+                        <h3 class="font-bold text-lg mb-2 mt-2">Deployment Strategy</h3>
+                        <ul class="text-sm text-gray-600 space-y-1 list-disc list-inside">
+                            <li>Process engineering</li>
+                            <li>Change management</li>
+                            <li>Integration plans</li>
+                            <li>Measure ROI</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- DETAILED PHASE CARDS (Grouped by ROAD for clarity) -->
+        <section class="border-t border-gray-200 pt-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Phase Deep Dives</h2>
+
+            <div class="space-y-12">
+
+                <!-- R: Requirements -->
+                <div id="phase1-detail" class="bg-white rounded-xl shadow border-l-8 border-roadR p-6 md:p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-blue-100 p-3 rounded-full text-roadR"><i data-lucide="target"
+                                class="w-8 h-8"></i></div>
+                        <div>
+                            <span class="text-sm font-bold text-roadR tracking-wider uppercase">Requirements
+                                Phase</span>
+                            <h3 class="text-2xl font-bold text-gray-900">1. Problem Definition / Business Understanding
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Key Activities</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-roadR shrink-0"></i>
+                                    Align requirements with business strategy</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-roadR shrink-0"></i>
+                                    Define decision support vs automation vs interaction</li>
+                                <li class="flex gap-2"><i data-lucide="check" class="w-5 h-5 text-roadR shrink-0"></i>
+                                    Identify gaps or inefficiencies in business</li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-blue-900 mb-2 text-sm uppercase">Critical Question</h4>
+                            <p class="text-blue-800 italic">"Is this a problem AI can actually solve, and does it align
+                                with our strategic vision?"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- O: Operationalize -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div id="phase2-detail" class="bg-white rounded-xl shadow border-l-8 border-roadO p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="database" class="w-6 h-6 text-roadO"></i>
+                            <h3 class="text-xl font-bold">2. Data Collection</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li>• Operationalize collection & storage</li>
+                            <li>• <strong>Generalizability Check:</strong> Does external data (e.g., Chicago crime)
+                                apply to our context (Baltimore)?</li>
+                            <li>• Address privacy & security permissions</li>
+                        </ul>
+                    </div>
+
+                    <div id="phase3-detail" class="bg-white rounded-xl shadow border-l-8 border-roadO p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="settings-2" class="w-6 h-6 text-roadO"></i>
+                            <h3 class="text-xl font-bold">3. Data Prep & Engineering</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li>• <strong>ETL:</strong> Extract, Transform, Load</li>
+                            <li>• <strong>Harmonization:</strong> Integrating disparate data sources</li>
+                            <li>• <strong>Feature Extraction:</strong> Creating meaning from raw inputs</li>
+                            <li>• <strong>Labeling:</strong> Ensuring consistent annotation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- A: Analytic Method -->
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div id="phase4-detail" class="bg-white rounded-xl shadow border-l-8 border-roadA p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="cpu" class="w-6 h-6 text-roadA"></i>
+                            <h3 class="text-xl font-bold">4. Model Building</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li>• Algorithm Selection</li>
+                            <li>• Parameter Tuning</li>
+                            <li>• <strong>The Black Box:</strong> Writing the ML code (Small part of total effort)</li>
+                        </ul>
+                    </div>
+
+                    <div id="phase5-detail" class="bg-white rounded-xl shadow border-l-8 border-roadA p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="check-circle" class="w-6 h-6 text-roadA"></i>
+                            <h3 class="text-xl font-bold">5. Model Evaluation</h3>
+                        </div>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li>• Verification & Validation</li>
+                            <li>• Assessing Bias</li>
+                            <li>• Interpreting Results</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- D: Deployment -->
+                <div id="phase6-detail" class="bg-white rounded-xl shadow border-l-8 border-roadD p-6 md:p-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-red-100 p-3 rounded-full text-roadD"><i data-lucide="rocket" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <span class="text-sm font-bold text-roadD tracking-wider uppercase">Deployment Phase</span>
+                            <h3 class="text-2xl font-bold text-gray-900">6. Deployment & 7. Monitoring</h3>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Deployment Activities</h4>
+                            <ul class="space-y-2 text-gray-600 mb-6">
+                                <li class="flex gap-2"><i data-lucide="arrow-right"
+                                        class="w-5 h-5 text-roadD shrink-0"></i> <strong>Process Engineering:</strong>
+                                    Changing workflows to accommodate AI</li>
+                                <li class="flex gap-2"><i data-lucide="arrow-right"
+                                        class="w-5 h-5 text-roadD shrink-0"></i> <strong>Change Management:</strong>
+                                    Ensuring staff buy-in</li>
+                                <li class="flex gap-2"><i data-lucide="arrow-right"
+                                        class="w-5 h-5 text-roadD shrink-0"></i> <strong>Output Visualization:</strong>
+                                    Making results usable</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-900 mb-2">Monitoring & Maintenance</h4>
+                            <ul class="space-y-2 text-gray-600">
+                                <li class="flex gap-2"><i data-lucide="activity"
+                                        class="w-5 h-5 text-roadD shrink-0"></i> <strong>Drift Detection:</strong>
+                                    Ensuring model stays accurate</li>
+                                <li class="flex gap-2"><i data-lucide="activity"
+                                        class="w-5 h-5 text-roadD shrink-0"></i> <strong>Retraining Strategy:</strong>
+                                    Periodic updates</li>
+                                <li class="flex gap-2"><i data-lucide="activity"
+                                        class="w-5 h-5 text-roadD shrink-0"></i> <strong>Resource Management:</strong>
+                                    Controlling costs/compute</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FOOTER: Responsible AI -->
+        <footer class="bg-slate-900 text-slate-400 py-12 rounded-t-3xl mt-12">
+            <div class="max-w-4xl mx-auto px-6 text-center">
+                <i data-lucide="shield-check" class="w-12 h-12 mx-auto text-blue-500 mb-4"></i>
+                <h3 class="text-xl font-bold text-white mb-2">Foundation: Responsible AI</h3>
+                <p class="mb-6">Underlie all activities with Responsible AI from a human baseline perspective, not an
+                    overly fearful risk-based approach. Ensure AI supports business value, not the other way around.</p>
+                <div class="text-sm border-t border-slate-700 pt-6">
+                    &copy; 2024 AI/ML Life Cycle Infographic. Generated from course materials.
+                </div>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Script to Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Types of Machine Learning</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+    <!-- Header Section -->
+    <header class="w-full py-12 px-4 text-center">
+        <div class="max-w-4xl mx-auto">
+            <div class="inline-block p-3 rounded-full bg-blue-100 mb-4">
+                <i data-lucide="brain-circuit" class="w-8 h-8 text-blue-600"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Types of <span class="gradient-text">Machine
+                    Learning</span></h1>
+            <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                Machine learning empowers computers to learn from data without explicit programming. Based on how they
+                learn, algorithms are categorized into three main types.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="flex-grow container mx-auto px-4 pb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+
+            <!-- Card 1: Supervised Learning -->
+            <div
+                class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 card-hover transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-cyan-400"></div>
+
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800">Supervised Learning</h2>
+                    <div
+                        class="p-3 bg-blue-50 rounded-lg text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <i data-lucide="clipboard-check" class="w-6 h-6"></i>
+                    </div>
+                </div>
+
+                <div class="mb-6 flex-grow">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Definition</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        The algorithm learns from a labeled dataset, using "supervisory" input data to predict specific
+                        outputs. It’s like learning with a teacher who provides the correct answers key.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 mb-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-blue-600 mb-2 flex items-center">
+                        <i data-lucide="zap" class="w-3 h-3 mr-1"></i> Real-World Example
+                    </h3>
+                    <p class="text-sm text-slate-700 font-medium">
+                        Loan Default Prediction: A bank uses historical customer data (income, credit score) labeled
+                        with outcomes (defaulted/paid) to predict if a new applicant is risky.
+                    </p>
+                </div>
+
+                <div class="mt-auto pt-4 border-t border-slate-100">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">When to use</h3>
+                    <p class="text-sm text-slate-500">
+                        When you have historical data with known outcomes (labels) and want to predict numbers
+                        (Regression) or categories (Classification).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2: Unsupervised Learning -->
+            <div
+                class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 card-hover transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-500 to-pink-400"></div>
+
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800">Unsupervised Learning</h2>
+                    <div
+                        class="p-3 bg-purple-50 rounded-lg text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors">
+                        <i data-lucide="scan-search" class="w-6 h-6"></i>
+                    </div>
+                </div>
+
+                <div class="mb-6 flex-grow">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Definition</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        The algorithm analyzes raw, unlabeled data to discover hidden patterns, structures, or groups on
+                        its own. There is no "teacher" or predefined answer key.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 mb-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-purple-600 mb-2 flex items-center">
+                        <i data-lucide="zap" class="w-3 h-3 mr-1"></i> Real-World Example
+                    </h3>
+                    <p class="text-sm text-slate-700 font-medium">
+                        Customer Segmentation: Grouping customers based on purchasing behavior (e.g., frequent small
+                        buyers vs. one-time luxury buyers) without predefined categories.
+                    </p>
+                </div>
+
+                <div class="mt-auto pt-4 border-t border-slate-100">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">When to use</h3>
+                    <p class="text-sm text-slate-500">
+                        To simplify complex data (Dimension Reduction) or find natural groupings (Clustering) when you
+                        don't know the specific outcome you are looking for.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 3: Reinforcement Learning -->
+            <div
+                class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 card-hover transition-all duration-300 flex flex-col h-full relative overflow-hidden group">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-500 to-amber-400"></div>
+
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold text-slate-800">Reinforcement Learning</h2>
+                    <div
+                        class="p-3 bg-orange-50 rounded-lg text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                        <i data-lucide="trophy" class="w-6 h-6"></i>
+                    </div>
+                </div>
+
+                <div class="mb-6 flex-grow">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Definition</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        An agent learns to make decisions by interacting with an environment. It learns the "best
+                        action" through a system of trial and error, maximizing rewards and minimizing penalties.
+                    </p>
+                </div>
+
+                <div class="bg-slate-50 rounded-xl p-4 border border-slate-100 mb-4">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-orange-600 mb-2 flex items-center">
+                        <i data-lucide="zap" class="w-3 h-3 mr-1"></i> Real-World Example
+                    </h3>
+                    <p class="text-sm text-slate-700 font-medium">
+                        Self-Driving Cars: The car learns to stay in its lane and stop at red lights by receiving
+                        "rewards" for safe driving and "penalties" for rule violations.
+                    </p>
+                </div>
+
+                <div class="mt-auto pt-4 border-t border-slate-100">
+                    <h3 class="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">When to use</h3>
+                    <p class="text-sm text-slate-500">
+                        When an automated agent needs to make a sequence of decisions in a dynamic environment to
+                        achieve a long-term goal (e.g., robotics, games).
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer / Logic Flow -->
+    <footer class="bg-white border-t border-slate-200 py-10 mt-auto">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-lg font-bold text-slate-800 mb-8">How to Choose?</h3>
+
+            <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-12 max-w-4xl mx-auto">
+
+                <!-- Flow Step 1 -->
+                <div class="flex flex-col items-center">
+                    <div class="bg-slate-100 p-4 rounded-full mb-3">
+                        <i data-lucide="database" class="w-6 h-6 text-slate-600"></i>
+                    </div>
+                    <span class="text-sm font-medium text-slate-600">Have labeled data?</span>
+                    <div class="h-8 w-0.5 bg-slate-300 my-2"></div>
+                    <span class="text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded">Yes &rarr;
+                        Supervised</span>
+                </div>
+
+                <div class="hidden md:block h-0.5 w-12 bg-slate-300 self-center mt-[-40px]"></div>
+
+                <!-- Flow Step 2 -->
+                <div class="flex flex-col items-center">
+                    <div class="bg-slate-100 p-4 rounded-full mb-3">
+                        <i data-lucide="search" class="w-6 h-6 text-slate-600"></i>
+                    </div>
+                    <span class="text-sm font-medium text-slate-600">Exploring patterns?</span>
+                    <div class="h-8 w-0.5 bg-slate-300 my-2"></div>
+                    <span class="text-xs font-bold text-purple-600 bg-purple-50 px-2 py-1 rounded">Yes &rarr;
+                        Unsupervised</span>
+                </div>
+
+                <div class="hidden md:block h-0.5 w-12 bg-slate-300 self-center mt-[-40px]"></div>
+
+                <!-- Flow Step 3 -->
+                <div class="flex flex-col items-center">
+                    <div class="bg-slate-100 p-4 rounded-full mb-3">
+                        <i data-lucide="gamepad-2" class="w-6 h-6 text-slate-600"></i>
+                    </div>
+                    <span class="text-sm font-medium text-slate-600">Interacting with environment?</span>
+                    <div class="h-8 w-0.5 bg-slate-300 my-2"></div>
+                    <span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded">Yes &rarr;
+                        Reinforcement</span>
+                </div>
+
+            </div>
+
+            <p class="text-xs text-slate-400 mt-12">Generated based on "Machine Learning_intro.docx"</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
