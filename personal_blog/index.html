@@ -62,21 +62,24 @@
                     name: "AI Business UseCases",
                     folder: "AI Business UseCases",
                     icon: "fa-briefcase",
-                    color: "blue"
+                    color: "blue",
+                    order: 2
                 },
                 {
                     id: "ai-pm",
                     name: "AI Project Management",
                     folder: "AI Project Management",
                     icon: "fa-project-diagram",
-                    color: "purple"
+                    color: "purple",
+                    order: 3
                 },
                 {
                     id: "ml-fundamentals",
                     name: "ML Fundamentals",
                     folder: "ML Fundamentals",
                     icon: "fa-brain",
-                    color: "green"
+                    color: "green",
+                    order: 1
                 }
             ],
             posts: [
@@ -484,16 +487,19 @@
                 const mobileFilters = document.getElementById('mobile-filters');
                 const postsGrid = document.getElementById('posts-grid');
 
+                // Sort categories by order
+                const sortedCategories = [...blogConfig.categories].sort((a, b) => a.order - b.order);
+
                 // Build desktop filters
                 let desktopHTML = createDesktopButton('all', 'All Posts', 'fa-th-large', 'gray', getPostCount('all'));
-                blogConfig.categories.forEach(cat => {
+                sortedCategories.forEach(cat => {
                     desktopHTML += createDesktopButton(cat.id, cat.name, cat.icon, cat.color, getPostCount(cat.id));
                 });
                 desktopFilters.innerHTML = desktopHTML;
 
                 // Build mobile filters
                 let mobileHTML = createMobilePill('all', 'All', 'gray', getPostCount('all'));
-                blogConfig.categories.forEach(cat => {
+                sortedCategories.forEach(cat => {
                     mobileHTML += createMobilePill(cat.id, cat.name, cat.color, getPostCount(cat.id));
                 });
                 mobileFilters.innerHTML = mobileHTML;
