@@ -9,10 +9,14 @@ This is a static personal portfolio website for Sriramkishore Naraharisetti. The
 ## Architecture
 
 - **Main site**: `index.html` - portfolio landing page
-- **Personal Blog**: `personal_blog/` - self-hosted blog section
-  - `personal_blog/index.html` - blog listing page
+- **Personal Blog**: `personal_blog/` - self-hosted blog section with category-based organization
+  - `personal_blog/index.html` - blog listing page with sidebar filtering and card layout
   - `personal_blog/post.html` - blog post viewer (loads posts in iframe via `?article=` param)
-  - `personal_blog/[post-name].html` - individual blog post files (loaded via viewer)
+  - `personal_blog/[Category]/[post-name].html` - individual blog posts organized by category
+- **Blog Categories**:
+  - `AI Business UseCases/` - 6 posts about AI applications in business
+  - `AI Project Management/` - 2 posts about managing AI/ML projects
+  - `ML Fundamentals/` - 7 posts about machine learning basics
 - **Styling**: Tailwind CSS loaded via CDN (with forms, typography, aspect-ratio, line-clamp plugins)
 - **Icons**: Font Awesome 5.15.3 via CDN
 - **Dark mode**: Implemented using Tailwind's `dark:` class variants with manual toggle (adds/removes `dark` class on `<html>`)
@@ -25,9 +29,16 @@ portfolio_site/
 ├── CNAME                   # Custom domain config
 ├── CLAUDE.md               # Claude Code guidance
 ├── personal_blog/
-│   ├── index.html          # Blog listing page
+│   ├── index.html          # Blog listing page (category sidebar + post cards)
 │   ├── post.html           # Blog post viewer (iframe container with nav)
-│   └── [post-name].html    # Individual blog posts
+│   ├── metadata-report.json # SEO metadata summary for all posts
+│   ├── tags-index.json     # Tag-to-posts mapping index
+│   ├── AI Business UseCases/
+│   │   └── [post].html     # Business-focused AI posts
+│   ├── AI Project Management/
+│   │   └── [post].html     # AI/ML project lifecycle posts
+│   └── ML Fundamentals/
+│       └── [post].html     # Machine learning basics posts
 └── specs/                  # Feature specifications
 ```
 
@@ -42,18 +53,102 @@ The site deploys automatically to GitHub Pages when changes are pushed to the `m
 ## Adding Blog Posts
 
 To add a new blog post:
-1. Create a new HTML file in `personal_blog/` (e.g., `my-post.html`)
+1. Create a new HTML file in the appropriate category folder (e.g., `personal_blog/ML Fundamentals/my-post.html`)
 2. Use Tailwind CSS via CDN for styling
-3. No need to add navigation - posts are displayed via the viewer (`post.html`)
-4. Add entry to `personal_blog/index.html` with link: `post.html?article=my-post`
+3. Add SEO metadata in the `<head>` section (see SEO Metadata section below)
+4. No need to add navigation - posts are displayed via the viewer (`post.html`)
+5. Add entry to the `blogConfig.posts` array in `personal_blog/index.html`:
+   ```javascript
+   {
+       id: "my_post",
+       title: "My Post Title",
+       excerpt: "Brief description of the post.",
+       category: "ml-fundamentals",  // Must match a category id
+       date: "2025-01-25",
+       file: "ML Fundamentals/my-post.html"
+   }
+   ```
+6. Update `metadata-report.json` and `tags-index.json` with the new post
+
+**Category IDs:**
+- `ai-business` - AI Business UseCases
+- `ai-pm` - AI Project Management
+- `ml-fundamentals` - ML Fundamentals
+
+## SEO & GEO Metadata
+
+All blog posts include SEO metadata for search engine optimization and GEO (Generative Engine Optimization) for AI search tools.
+
+**Required metadata in each post's `<head>` section:**
+
+```html
+<!-- SEO Meta Tags -->
+<meta name="title" content="Post Title">
+<meta name="description" content="150-160 character description">
+<meta name="author" content="Sriramkishore Naraharisetti">
+<meta name="category" content="ML Fundamentals">
+<meta name="tags" content="Tag1, Tag2, Tag3">
+<meta name="robots" content="index, follow">
+<meta name="ai-summary" content="Concise summary for AI search tools">
+<link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=Category/post-name">
+
+<!-- Open Graph Tags -->
+<meta property="og:title" content="Post Title">
+<meta property="og:description" content="Description for social sharing">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=Category/post-name">
+<meta property="og:site_name" content="Kishore's Blog">
+<meta property="article:author" content="Sriramkishore Naraharisetti">
+<meta property="article:published_time" content="YYYY-MM-DD">
+<meta property="article:section" content="Category Name">
+<meta property="article:tag" content="Tag1">
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Post Title",
+    "description": "Post description",
+    "datePublished": "YYYY-MM-DD",
+    "author": {
+        "@type": "Person",
+        "name": "Sriramkishore Naraharisetti",
+        "url": "https://www.kishoretech.com"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "kishoretech.com",
+        "url": "https://www.kishoretech.com"
+    },
+    "keywords": ["Tag1", "Tag2"],
+    "articleSection": "Category Name"
+}
+</script>
+```
+
+**Generated metadata files:**
+- `metadata-report.json` - Summary of all posts with titles, descriptions, tags, and URLs
+- `tags-index.json` - Mapping of tags to posts for content discovery
 
 ## Blog Post Viewer Architecture
 
 Blog posts are displayed through a viewer page (`post.html`) that provides consistent navigation:
-- **URL pattern**: `post.html?article=[post-name]` (without `.html` extension)
+- **URL pattern**: `post.html?article=[Category]/[post-name]` (without `.html` extension)
+  - Example: `post.html?article=ML%20Fundamentals/ml_definition`
+  - Spaces in folder names are URL-encoded as `%20`
 - **Navigation**: "← Back to Blog" link is in the viewer, not in individual posts
 - **Iframe**: Posts load inside an iframe within the viewer
 - **Fallback**: Invalid/missing article parameter shows a "Post Not Found" page
+
+## Blog Index Features
+
+The blog index (`personal_blog/index.html`) includes:
+- **Sidebar filtering**: Desktop shows category buttons; mobile shows horizontal pills
+- **Post cards**: Display title, excerpt, date, and category badge
+- **Date sorting**: Posts sorted newest first
+- **Deep linking**: URL hash (`#category=ml-fundamentals`) preserves filter state
+- **Dark mode**: Full support with toggle button
 
 # Feature Development Workflow (STRICT)
 
