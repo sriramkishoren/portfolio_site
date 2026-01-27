@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Blog - Kishore</title>
-    <meta name="description" content="Blog posts about AI, Machine Learning, and Project Management by Sriramkishore Naraharisetti">
+    <meta name="description"
+        content="Blog posts about AI, Machine Learning, and Project Management by Sriramkishore Naraharisetti">
     <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <script>
         tailwind.config = {
@@ -25,20 +26,25 @@
         .post-card {
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
+
         .post-card.hidden-filter {
             display: none;
         }
+
         /* Custom scrollbar for sidebar */
         .sidebar-scroll::-webkit-scrollbar {
             width: 4px;
         }
+
         .sidebar-scroll::-webkit-scrollbar-track {
             background: transparent;
         }
+
         .sidebar-scroll::-webkit-scrollbar-thumb {
             background: #cbd5e1;
             border-radius: 2px;
         }
+
         .dark .sidebar-scroll::-webkit-scrollbar-thumb {
             background: #475569;
         }
@@ -81,7 +87,8 @@
                     excerpt: "A guide to the 9 pillars of Artificial Intelligence and their real-world impact across industries.",
                     category: "ai-business",
                     date: "2025-01-20",
-                    file: "AI Business UseCases/ai_use_cases.html"
+                    file: "AI Business UseCases/ai_use_cases.html",
+                    order: 8
                 },
                 {
                     id: "ml_ai_problem_space",
@@ -89,7 +96,8 @@
                     excerpt: "Crucial concepts for designing the AI problem space and understanding learning paradigms.",
                     category: "ai-business",
                     date: "2025-01-25",
-                    file: "AI Business UseCases/ml_ai_problem_space.html"
+                    file: "AI Business UseCases/ml_ai_problem_space.html",
+                    order: 9
                 },
                 {
                     id: "ml_business_usecase_classification",
@@ -97,7 +105,8 @@
                     excerpt: "Explore how classification algorithms power credit assessment, fraud detection, and more.",
                     category: "ai-business",
                     date: "2025-01-24",
-                    file: "AI Business UseCases/ml_business_usecase_classification.html"
+                    file: "AI Business UseCases/ml_business_usecase_classification.html",
+                    order: 10
                 },
                 {
                     id: "ml_business_usecase_clustering",
@@ -105,7 +114,8 @@
                     excerpt: "How clustering helps with portfolio optimization, fraud detection, and customer segmentation.",
                     category: "ai-business",
                     date: "2025-01-22",
-                    file: "AI Business UseCases/ml_business_usecase_clustering.html"
+                    file: "AI Business UseCases/ml_business_usecase_clustering.html",
+                    order: 12
                 },
                 {
                     id: "ml_business_usecase_clustering_retail",
@@ -113,7 +123,8 @@
                     excerpt: "Understanding customer behavior through purchase patterns and personalized marketing.",
                     category: "ai-business",
                     date: "2025-01-22",
-                    file: "AI Business UseCases/ml_business_usecase_clustering_retail.html"
+                    file: "AI Business UseCases/ml_business_usecase_clustering_retail.html",
+                    order: 13
                 },
                 {
                     id: "ml_business_usecase_regression",
@@ -121,7 +132,8 @@
                     excerpt: "Forecasting numbers, understanding relationships, and defining the problem space in industry.",
                     category: "ai-business",
                     date: "2025-01-24",
-                    file: "AI Business UseCases/ml_business_usecase_regression.html"
+                    file: "AI Business UseCases/ml_business_usecase_regression.html",
+                    order: 11
                 },
                 // AI Project Management
                 {
@@ -130,7 +142,8 @@
                     excerpt: "A comprehensive guide to the R.O.A.D. framework for effective AI/ML project leadership.",
                     category: "ai-pm",
                     date: "2025-01-20",
-                    file: "AI Project Management/road_framework.html"
+                    file: "AI Project Management/road_framework.html",
+                    order: 14
                 },
                 {
                     id: "ml_al_life_cycle",
@@ -138,7 +151,8 @@
                     excerpt: "Navigate the complete AI/ML project lifecycle from requirements to deployment.",
                     category: "ai-pm",
                     date: "2025-01-24",
-                    file: "AI Project Management/ml_al_life_cycle.html"
+                    file: "AI Project Management/ml_al_life_cycle.html",
+                    order: 15
                 },
                 // ML Fundamentals
                 {
@@ -147,7 +161,8 @@
                     excerpt: "A beginner's guide to how computers get smart through learning from data.",
                     category: "ml-fundamentals",
                     date: "2025-01-22",
-                    file: "ML Fundamentals/ml_definition.html"
+                    file: "ML Fundamentals/ml_definition.html",
+                    order: 1
                 },
                 {
                     id: "ml_three_types",
@@ -155,7 +170,8 @@
                     excerpt: "Understanding the three main types: supervised, unsupervised, and reinforcement learning.",
                     category: "ml-fundamentals",
                     date: "2025-01-22",
-                    file: "ML Fundamentals/ml_three_types.html"
+                    file: "ML Fundamentals/ml_three_types.html",
+                    order: 2
                 },
                 {
                     id: "ml_concepts",
@@ -163,7 +179,8 @@
                     excerpt: "Essential concepts every ML practitioner needs to know.",
                     category: "ml-fundamentals",
                     date: "2025-01-22",
-                    file: "ML Fundamentals/ml_concepts.html"
+                    file: "ML Fundamentals/ml_concepts.html",
+                    order: 3
                 },
                 {
                     id: "ml_supervised_learning",
@@ -171,7 +188,8 @@
                     excerpt: "Visual guide to supervised learning: training with labeled data for predictions.",
                     category: "ml-fundamentals",
                     date: "2025-01-22",
-                    file: "ML Fundamentals/ml_supervised_learning.html"
+                    file: "ML Fundamentals/ml_supervised_learning.html",
+                    order: 4
                 },
                 {
                     id: "ml_unsupervised_learning",
@@ -179,7 +197,8 @@
                     excerpt: "Discover patterns and structures in data without explicit labels.",
                     category: "ml-fundamentals",
                     date: "2025-01-22",
-                    file: "ML Fundamentals/ml_unsupervised_learning.html"
+                    file: "ML Fundamentals/ml_unsupervised_learning.html",
+                    order: 5
                 },
                 {
                     id: "ml_ai_performance_measures",
@@ -187,7 +206,8 @@
                     excerpt: "Understanding accuracy, precision, recall, F1-score, and other key metrics.",
                     category: "ml-fundamentals",
                     date: "2025-01-25",
-                    file: "ML Fundamentals/ml_ai_performance_measures.html"
+                    file: "ML Fundamentals/ml_ai_performance_measures.html",
+                    order: 6
                 },
                 {
                     id: "ml_overfitting_underfitting",
@@ -195,7 +215,8 @@
                     excerpt: "Learn to identify and address the fundamental challenges in model training.",
                     category: "ml-fundamentals",
                     date: "2025-01-25",
-                    file: "ML Fundamentals/ml_overfitting_and_Underfitting.html"
+                    file: "ML Fundamentals/ml_overfitting_and_Underfitting.html",
+                    order: 7
                 }
             ]
         };
@@ -219,7 +240,8 @@
     </header>
 
     <!-- Mobile Category Pills -->
-    <div class="lg:hidden sticky top-[64px] z-10 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
+    <div
+        class="lg:hidden sticky top-[64px] z-10 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
         <div class="flex gap-2 p-3" id="mobile-filters">
             <!-- Populated by JavaScript -->
         </div>
@@ -227,9 +249,11 @@
 
     <div class="max-w-7xl mx-auto flex">
         <!-- Desktop Sidebar -->
-        <aside class="hidden lg:block w-64 flex-shrink-0 p-6 sticky top-[72px] h-[calc(100vh-72px)] sidebar-scroll overflow-y-auto">
+        <aside
+            class="hidden lg:block w-64 flex-shrink-0 p-6 sticky top-[72px] h-[calc(100vh-72px)] sidebar-scroll overflow-y-auto">
             <nav aria-label="Blog categories">
-                <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">Categories</h2>
+                <h2 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-4">
+                    Categories</h2>
                 <div class="space-y-2" id="desktop-filters">
                     <!-- Populated by JavaScript -->
                 </div>
@@ -264,12 +288,13 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 text-center p-4 mt-8 border-t border-gray-200 dark:border-gray-700">
+    <footer
+        class="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-200 text-center p-4 mt-8 border-t border-gray-200 dark:border-gray-700">
         &copy; 2025 Sriramkishore Naraharisetti. All Rights Reserved.
     </footer>
 
     <script>
-        (function() {
+        (function () {
             // Color mappings for categories
             const colorClasses = {
                 blue: {
@@ -318,9 +343,22 @@
                 return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
             }
 
-            // Sort posts by date (newest first)
+            // Sort posts by order (if specified), then by date (newest first)
             function getSortedPosts() {
-                return [...blogConfig.posts].sort((a, b) => new Date(b.date) - new Date(a.date));
+                return [...blogConfig.posts].sort((a, b) => {
+                    const aHasOrder = typeof a.order === 'number';
+                    const bHasOrder = typeof b.order === 'number';
+
+                    // Posts with order come before posts without order
+                    if (aHasOrder && !bHasOrder) return -1;
+                    if (!aHasOrder && bHasOrder) return 1;
+
+                    // Both have order: sort by order ascending (lower = higher priority)
+                    if (aHasOrder && bHasOrder) return a.order - b.order;
+
+                    // Neither has order: sort by date descending (newest first)
+                    return new Date(b.date) - new Date(a.date);
+                });
             }
 
             // Create post card HTML
