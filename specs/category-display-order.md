@@ -1,5 +1,7 @@
 # Feature Spec: Category Display Order Control
 
+## Status: COMPLETE ✓
+
 ## Overview
 
 Add the ability to manually control the display order of blog categories in the sidebar and mobile filter pills. This allows customizing category prominence regardless of their position in the config array.
@@ -45,11 +47,11 @@ Add order values to all 3 categories:
 
 ## Acceptance Criteria
 
-- [ ] All categories have `order` field
-- [ ] Categories sorted by order (ascending) in desktop sidebar
-- [ ] Categories sorted by order (ascending) in mobile pills
-- [ ] "All Posts" button remains first (before any category)
-- [ ] Category filtering still works correctly
+- [x] All categories have `order` field
+- [x] Categories sorted by order (ascending) in desktop sidebar
+- [x] Categories sorted by order (ascending) in mobile pills
+- [x] "All Posts" button remains first (before any category)
+- [x] Category filtering still works correctly
 
 ## Files to Modify
 

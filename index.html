@@ -57,6 +57,29 @@
             margin-right: 0.75rem;
         }
 
+        /* Visitor count styles */
+        .visitor-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.875rem;
+            color: #666;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .visitor-count {
+            color: #9ca3af;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .visitor-count .visitor-icon {
+            width: 14px;
+            height: 14px;
+            opacity: 0.7;
+        }
+
         @media (min-width: 1024px) {
             .flex-row {
                 display: flex;
@@ -200,8 +223,38 @@
         </section>
     </main>
     <footer class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 text-center p-4">
+        <div class="visitor-count mx-auto mb-2">
+            <svg class="visitor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span id="page-views">—</span> views
+        </div>
         © 2025 Sriramkishore Naraharisetti. All Rights Reserved.
     </footer>
+
+    <!-- Visitor Count Script -->
+    <script>
+    (function() {
+        // Homepage: Fetch TOTAL site visitors
+        fetch('https://kishoretech.goatcounter.com/counter/TOTAL.json')
+            .then(function(response) {
+                if (!response.ok) throw new Error('Not found');
+                return response.json();
+            })
+            .then(function(data) {
+                var count = data.count_unique || data.count || 0;
+                document.getElementById('page-views').textContent = count.toLocaleString();
+            })
+            .catch(function() {
+                document.getElementById('page-views').textContent = '0';
+            });
+    })();
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
 </body>
 
 </html>

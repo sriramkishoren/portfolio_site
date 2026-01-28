@@ -25,6 +25,29 @@
             height: 100%;
             margin: 0;
         }
+
+        /* Visitor count styles */
+        .visitor-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.875rem;
+            color: #666;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .visitor-count {
+            color: #9ca3af;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .visitor-count .visitor-icon {
+            width: 14px;
+            height: 14px;
+            opacity: 0.7;
+        }
     </style>
 </head>
 
@@ -36,7 +59,14 @@
                 <i class="fas fa-arrow-left mr-2"></i>
                 <span class="font-medium">Back to Blog</span>
             </a>
-            <div>
+            <div class="flex items-center gap-3">
+                <div class="visitor-count" id="visitor-count-container" style="display: none;">
+                    <svg class="visitor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <span id="page-views">—</span> views
+                </div>
                 <a href="../index.html" class="px-4 py-2 hover:underline">Home</a>
                 <button onclick="document.documentElement.classList.toggle('dark')"
                     class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200">
@@ -115,6 +145,43 @@
             }
         })();
     </script>
+
+    <!-- Visitor Count Script -->
+    <script>
+    (function() {
+        // Post Viewer: Fetch views for the specific blog post from ?article= param
+        var urlParams = new URLSearchParams(window.location.search);
+        var article = urlParams.get('article');
+
+        if (article) {
+            // Decode and construct the full path to the blog post
+            var decoded = decodeURIComponent(article);
+            // Build the path: /personal_blog/{article}.html
+            var postPath = '/personal_blog/' + decoded + '.html';
+            var encodedPath = encodeURIComponent(postPath);
+
+            // Show the visitor count container
+            document.getElementById('visitor-count-container').style.display = 'inline-flex';
+
+            fetch('https://kishoretech.goatcounter.com/counter/' + encodedPath + '.json')
+                .then(function(response) {
+                    if (!response.ok) throw new Error('Not found');
+                    return response.json();
+                })
+                .then(function(data) {
+                    var count = data.count_unique || data.count || 0;
+                    document.getElementById('page-views').textContent = count.toLocaleString();
+                })
+                .catch(function() {
+                    document.getElementById('page-views').textContent = '0';
+                });
+        }
+    })();
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
 </body>
 
 </html>

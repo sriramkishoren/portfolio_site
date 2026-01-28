@@ -65,7 +65,8 @@ To add a new blog post:
        excerpt: "Brief description of the post.",
        category: "ml-fundamentals",  // Must match a category id
        date: "2025-01-25",
-       file: "ML Fundamentals/my-post.html"
+       file: "ML Fundamentals/my-post.html",
+       order: 1  // Optional: lower number = higher priority
    }
    ```
 6. Update `metadata-report.json` and `tags-index.json` with the new post
@@ -146,9 +147,41 @@ Blog posts are displayed through a viewer page (`post.html`) that provides consi
 The blog index (`personal_blog/index.html`) includes:
 - **Sidebar filtering**: Desktop shows category buttons; mobile shows horizontal pills
 - **Post cards**: Display title, excerpt, date, and category badge
-- **Date sorting**: Posts sorted newest first
+- **Custom ordering**: Posts and categories support `order` field for manual sorting
 - **Deep linking**: URL hash (`#category=ml-fundamentals`) preserves filter state
 - **Dark mode**: Full support with toggle button
+
+## Display Order Configuration
+
+Both posts and categories support custom display ordering via an optional `order` field.
+
+**Post Ordering:**
+- Add `order` field to posts in `blogConfig.posts`
+- Lower number = higher priority (appears first)
+- Posts with `order` appear before posts without `order`
+- Posts without `order` fall back to date sorting (newest first)
+
+**Category Ordering:**
+- Add `order` field to categories in `blogConfig.categories`
+- Lower number = higher priority (appears first in sidebar/pills)
+- "All Posts" button always appears first, before any category
+
+**Example:**
+```javascript
+// Categories
+categories: [
+    { id: "ml-fundamentals", name: "ML Fundamentals", ..., order: 1 },
+    { id: "ai-business", name: "AI Business UseCases", ..., order: 2 },
+    { id: "ai-pm", name: "AI Project Management", ..., order: 3 }
+]
+
+// Posts
+posts: [
+    { id: "intro_post", title: "Start Here", ..., order: 1 },  // Always first
+    { id: "featured", title: "Featured Post", ..., order: 2 }, // Second
+    { id: "regular", title: "Regular Post", ... }              // Falls back to date sorting
+]
+```
 
 # Feature Development Workflow (STRICT)
 
