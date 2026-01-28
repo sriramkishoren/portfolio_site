@@ -1,5 +1,7 @@
 # Feature Spec: GoatCounter Visitor Count
 
+> **STATUS: COMPLETE** ✓ (Implemented 2025-01-27)
+
 ## Overview
 
 Add page-specific visitor count tracking to the portfolio website using GoatCounter analytics. Each page displays view counts with an eye icon, providing visitors insight into page popularity.
