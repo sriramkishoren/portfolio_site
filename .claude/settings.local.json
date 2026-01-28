@@ -11,7 +11,8 @@
       "Bash(echo:*)",
       "Bash(curl:*)",
       "Bash(grep:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(ls:*)"
     ]
   }
 }

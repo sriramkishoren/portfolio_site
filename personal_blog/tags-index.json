@@ -1,204 +1,204 @@
 {
-  "generated": "2025-01-26",
+  "generated": "2025-01-27",
   "totalTags": 45,
   "tags": {
     "Machine Learning": [
-      "ML Fundamentals/ml_definition.html",
-      "ML Fundamentals/ml_three_types.html",
-      "ML Fundamentals/ml_concepts.html"
+      "ml-fundamentals/what-is-machine-learning.html",
+      "ml-fundamentals/types-of-machine-learning.html",
+      "ml-fundamentals/core-ml-concepts.html"
     ],
     "AI": [
-      "ML Fundamentals/ml_definition.html"
+      "ml-fundamentals/what-is-machine-learning.html"
     ],
     "Beginner": [
-      "ML Fundamentals/ml_definition.html"
+      "ml-fundamentals/what-is-machine-learning.html"
     ],
     "Data Science": [
-      "ML Fundamentals/ml_definition.html"
+      "ml-fundamentals/what-is-machine-learning.html"
     ],
     "Supervised Learning": [
-      "ML Fundamentals/ml_definition.html",
-      "ML Fundamentals/ml_three_types.html",
-      "ML Fundamentals/ml_supervised_learning.html"
+      "ml-fundamentals/what-is-machine-learning.html",
+      "ml-fundamentals/types-of-machine-learning.html",
+      "ml-fundamentals/supervised-learning-guide.html"
     ],
     "Unsupervised Learning": [
-      "ML Fundamentals/ml_definition.html",
-      "ML Fundamentals/ml_three_types.html"
+      "ml-fundamentals/what-is-machine-learning.html",
+      "ml-fundamentals/types-of-machine-learning.html"
     ],
     "Reinforcement Learning": [
-      "ML Fundamentals/ml_definition.html",
-      "ML Fundamentals/ml_three_types.html"
+      "ml-fundamentals/what-is-machine-learning.html",
+      "ml-fundamentals/types-of-machine-learning.html"
     ],
     "Regression": [
-      "ML Fundamentals/ml_concepts.html",
-      "ML Fundamentals/ml_supervised_learning.html",
-      "AI Business UseCases/ml_ai_problem_space.html"
+      "ml-fundamentals/core-ml-concepts.html",
+      "ml-fundamentals/supervised-learning-guide.html",
+      "ai-business-usecases/ai-problem-space-usecases.html"
     ],
     "Classification": [
-      "ML Fundamentals/ml_concepts.html",
-      "ML Fundamentals/ml_supervised_learning.html",
-      "AI Business UseCases/ml_ai_problem_space.html",
-      "AI Business UseCases/ml_business_usecase_classification.html"
+      "ml-fundamentals/core-ml-concepts.html",
+      "ml-fundamentals/supervised-learning-guide.html",
+      "ai-business-usecases/ai-problem-space-usecases.html",
+      "ai-business-usecases/classification-business-usecases.html"
     ],
     "Clustering": [
-      "ML Fundamentals/ml_concepts.html",
-      "ML Fundamentals/ml_unsupervised_learning.html",
-      "AI Business UseCases/ml_ai_problem_space.html",
-      "AI Business UseCases/ml_business_usecase_clustering.html",
-      "AI Business UseCases/ml_business_usecase_clustering_retail.html"
+      "ml-fundamentals/core-ml-concepts.html",
+      "ml-fundamentals/unsupervised-learning-guide.html",
+      "ai-business-usecases/ai-problem-space-usecases.html",
+      "ai-business-usecases/clustering-business-applications.html",
+      "ai-business-usecases/retail-customer-segmentation.html"
     ],
     "Dimension Reduction": [
-      "ML Fundamentals/ml_concepts.html"
+      "ml-fundamentals/core-ml-concepts.html"
     ],
     "Labeled Data": [
-      "ML Fundamentals/ml_supervised_learning.html"
+      "ml-fundamentals/supervised-learning-guide.html"
     ],
     "Decision Trees": [
-      "ML Fundamentals/ml_supervised_learning.html",
-      "AI Business UseCases/ml_business_usecase_classification.html"
+      "ml-fundamentals/supervised-learning-guide.html",
+      "ai-business-usecases/classification-business-usecases.html"
     ],
     "Dimensionality Reduction": [
-      "ML Fundamentals/ml_unsupervised_learning.html"
+      "ml-fundamentals/unsupervised-learning-guide.html"
     ],
     "K-Means": [
-      "ML Fundamentals/ml_unsupervised_learning.html",
-      "AI Business UseCases/ml_business_usecase_clustering.html"
+      "ml-fundamentals/unsupervised-learning-guide.html",
+      "ai-business-usecases/clustering-business-applications.html"
     ],
     "PCA": [
-      "ML Fundamentals/ml_unsupervised_learning.html"
+      "ml-fundamentals/unsupervised-learning-guide.html"
     ],
     "Anomaly Detection": [
-      "ML Fundamentals/ml_unsupervised_learning.html"
+      "ml-fundamentals/unsupervised-learning-guide.html"
     ],
     "AI Metrics": [
-      "ML Fundamentals/ml_ai_performance_measures.html"
+      "ml-fundamentals/ai-performance-metrics.html"
     ],
     "Precision": [
-      "ML Fundamentals/ml_ai_performance_measures.html"
+      "ml-fundamentals/ai-performance-metrics.html"
     ],
     "Recall": [
-      "ML Fundamentals/ml_ai_performance_measures.html"
+      "ml-fundamentals/ai-performance-metrics.html"
     ],
     "F1 Score": [
-      "ML Fundamentals/ml_ai_performance_measures.html"
+      "ml-fundamentals/ai-performance-metrics.html"
     ],
     "Accuracy": [
-      "ML Fundamentals/ml_ai_performance_measures.html"
+      "ml-fundamentals/ai-performance-metrics.html"
     ],
     "ROC Curve": [
-      "ML Fundamentals/ml_ai_performance_measures.html"
+      "ml-fundamentals/ai-performance-metrics.html"
     ],
     "Overfitting": [
-      "ML Fundamentals/ml_overfitting_and_Underfitting.html"
+      "ml-fundamentals/overfitting-underfitting-balance.html"
     ],
     "Underfitting": [
-      "ML Fundamentals/ml_overfitting_and_Underfitting.html"
+      "ml-fundamentals/overfitting-underfitting-balance.html"
     ],
     "Bias-Variance Tradeoff": [
-      "ML Fundamentals/ml_overfitting_and_Underfitting.html"
+      "ml-fundamentals/overfitting-underfitting-balance.html"
     ],
     "Cross-Validation": [
-      "ML Fundamentals/ml_overfitting_and_Underfitting.html"
+      "ml-fundamentals/overfitting-underfitting-balance.html"
     ],
     "Regularization": [
-      "ML Fundamentals/ml_overfitting_and_Underfitting.html"
+      "ml-fundamentals/overfitting-underfitting-balance.html"
     ],
     "Computer Vision": [
-      "AI Business UseCases/ai_use_cases.html"
+      "ai-business-usecases/modern-ai-landscape.html"
     ],
     "NLP": [
-      "AI Business UseCases/ai_use_cases.html"
+      "ai-business-usecases/modern-ai-landscape.html"
     ],
     "Generative AI": [
-      "AI Business UseCases/ai_use_cases.html"
+      "ai-business-usecases/modern-ai-landscape.html"
     ],
     "AI Applications": [
-      "AI Business UseCases/ai_use_cases.html"
+      "ai-business-usecases/modern-ai-landscape.html"
     ],
     "Business AI": [
-      "AI Business UseCases/ai_use_cases.html"
+      "ai-business-usecases/modern-ai-landscape.html"
     ],
     "AI Problem Space": [
-      "AI Business UseCases/ml_ai_problem_space.html"
+      "ai-business-usecases/ai-problem-space-usecases.html"
     ],
     "Problem Framing": [
-      "AI Business UseCases/ml_ai_problem_space.html"
+      "ai-business-usecases/ai-problem-space-usecases.html"
     ],
     "Credit Scoring": [
-      "AI Business UseCases/ml_business_usecase_classification.html"
+      "ai-business-usecases/classification-business-usecases.html"
     ],
     "Fraud Detection": [
-      "AI Business UseCases/ml_business_usecase_classification.html"
+      "ai-business-usecases/classification-business-usecases.html"
     ],
     "Churn Prediction": [
-      "AI Business UseCases/ml_business_usecase_classification.html"
+      "ai-business-usecases/classification-business-usecases.html"
     ],
     "Customer Segmentation": [
-      "AI Business UseCases/ml_business_usecase_clustering.html",
-      "AI Business UseCases/ml_business_usecase_clustering_retail.html"
+      "ai-business-usecases/clustering-business-applications.html",
+      "ai-business-usecases/retail-customer-segmentation.html"
     ],
     "Portfolio Management": [
-      "AI Business UseCases/ml_business_usecase_clustering.html"
+      "ai-business-usecases/clustering-business-applications.html"
     ],
     "Market Analysis": [
-      "AI Business UseCases/ml_business_usecase_clustering.html"
+      "ai-business-usecases/clustering-business-applications.html"
     ],
     "Retail Analytics": [
-      "AI Business UseCases/ml_business_usecase_clustering_retail.html"
+      "ai-business-usecases/retail-customer-segmentation.html"
     ],
     "Marketing": [
-      "AI Business UseCases/ml_business_usecase_clustering_retail.html"
+      "ai-business-usecases/retail-customer-segmentation.html"
     ],
     "Churn Management": [
-      "AI Business UseCases/ml_business_usecase_clustering_retail.html"
+      "ai-business-usecases/retail-customer-segmentation.html"
     ],
     "CRM": [
-      "AI Business UseCases/ml_business_usecase_clustering_retail.html"
+      "ai-business-usecases/retail-customer-segmentation.html"
     ],
     "Linear Regression": [
-      "AI Business UseCases/ml_business_usecase_regression.html"
+      "ai-business-usecases/regression-business-applications.html"
     ],
     "Sales Forecasting": [
-      "AI Business UseCases/ml_business_usecase_regression.html"
+      "ai-business-usecases/regression-business-applications.html"
     ],
     "Credit Limit": [
-      "AI Business UseCases/ml_business_usecase_regression.html"
+      "ai-business-usecases/regression-business-applications.html"
     ],
     "Insurance Premium": [
-      "AI Business UseCases/ml_business_usecase_regression.html"
+      "ai-business-usecases/regression-business-applications.html"
     ],
     "Price Optimization": [
-      "AI Business UseCases/ml_business_usecase_regression.html"
+      "ai-business-usecases/regression-business-applications.html"
     ],
     "ROAD Framework": [
-      "AI Project Management/road_framework.html",
-      "AI Project Management/ml_al_life_cycle.html"
+      "ai-project-management/road-framework-guide.html",
+      "ai-project-management/ai-ml-project-lifecycle.html"
     ],
     "AI Project Management": [
-      "AI Project Management/road_framework.html"
+      "ai-project-management/road-framework-guide.html"
     ],
     "AI Governance": [
-      "AI Project Management/road_framework.html"
+      "ai-project-management/road-framework-guide.html"
     ],
     "Data Engineering": [
-      "AI Project Management/road_framework.html",
-      "AI Project Management/ml_al_life_cycle.html"
+      "ai-project-management/road-framework-guide.html",
+      "ai-project-management/ai-ml-project-lifecycle.html"
     ],
     "MLOps": [
-      "AI Project Management/road_framework.html",
-      "AI Project Management/ml_al_life_cycle.html"
+      "ai-project-management/road-framework-guide.html",
+      "ai-project-management/ai-ml-project-lifecycle.html"
     ],
     "AI Lifecycle": [
-      "AI Project Management/ml_al_life_cycle.html"
+      "ai-project-management/ai-ml-project-lifecycle.html"
     ],
     "ML Pipeline": [
-      "AI Project Management/ml_al_life_cycle.html"
+      "ai-project-management/ai-ml-project-lifecycle.html"
     ],
     "Model Building": [
-      "AI Project Management/ml_al_life_cycle.html"
+      "ai-project-management/ai-ml-project-lifecycle.html"
     ],
     "Model Deployment": [
-      "AI Project Management/ml_al_life_cycle.html"
+      "ai-project-management/ai-ml-project-lifecycle.html"
     ]
   }
 }

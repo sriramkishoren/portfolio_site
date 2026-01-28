@@ -13,10 +13,10 @@ This is a static personal portfolio website for Sriramkishore Naraharisetti. The
   - `personal_blog/index.html` - blog listing page with sidebar filtering and card layout
   - `personal_blog/post.html` - blog post viewer (loads posts in iframe via `?article=` param)
   - `personal_blog/[Category]/[post-name].html` - individual blog posts organized by category
-- **Blog Categories**:
-  - `AI Business UseCases/` - 6 posts about AI applications in business
-  - `AI Project Management/` - 2 posts about managing AI/ML projects
-  - `ML Fundamentals/` - 7 posts about machine learning basics
+- **Blog Categories** (lowercase with hyphens):
+  - `ai-business-usecases/` - 6 posts about AI applications in business
+  - `ai-project-management/` - 2 posts about managing AI/ML projects
+  - `ml-fundamentals/` - 7 posts about machine learning basics
 - **Styling**: Tailwind CSS loaded via CDN (with forms, typography, aspect-ratio, line-clamp plugins)
 - **Icons**: Font Awesome 5.15.3 via CDN
 - **Dark mode**: Implemented using Tailwind's `dark:` class variants with manual toggle (adds/removes `dark` class on `<html>`)
@@ -33,11 +33,11 @@ portfolio_site/
 │   ├── post.html           # Blog post viewer (iframe container with nav)
 │   ├── metadata-report.json # SEO metadata summary for all posts
 │   ├── tags-index.json     # Tag-to-posts mapping index
-│   ├── AI Business UseCases/
+│   ├── ai-business-usecases/
 │   │   └── [post].html     # Business-focused AI posts
-│   ├── AI Project Management/
+│   ├── ai-project-management/
 │   │   └── [post].html     # AI/ML project lifecycle posts
-│   └── ML Fundamentals/
+│   └── ml-fundamentals/
 │       └── [post].html     # Machine learning basics posts
 └── specs/                  # Feature specifications
 ```
@@ -53,23 +53,27 @@ The site deploys automatically to GitHub Pages when changes are pushed to the `m
 ## Adding Blog Posts
 
 To add a new blog post:
-1. Create a new HTML file in the appropriate category folder (e.g., `personal_blog/ML Fundamentals/my-post.html`)
+1. Create a new HTML file in the appropriate category folder using **lowercase with hyphens** (e.g., `personal_blog/ml-fundamentals/my-new-post.html`)
 2. Use Tailwind CSS via CDN for styling
 3. Add SEO metadata in the `<head>` section (see SEO Metadata section below)
 4. No need to add navigation - posts are displayed via the viewer (`post.html`)
 5. Add entry to the `blogConfig.posts` array in `personal_blog/index.html`:
    ```javascript
    {
-       id: "my_post",
+       id: "my-new-post",
        title: "My Post Title",
        excerpt: "Brief description of the post.",
        category: "ml-fundamentals",  // Must match a category id
        date: "2025-01-25",
-       file: "ML Fundamentals/my-post.html",
+       file: "ml-fundamentals/my-new-post.html",
        order: 1  // Optional: lower number = higher priority
    }
    ```
 6. Update `metadata-report.json` and `tags-index.json` with the new post
+
+**Naming Conventions:**
+- Folders: lowercase with hyphens (e.g., `ml-fundamentals`, `ai-business-usecases`)
+- Files: descriptive, lowercase with hyphens (e.g., `what-is-machine-learning.html`)
 
 **Category IDs:**
 - `ai-business` - AI Business UseCases
@@ -135,9 +139,9 @@ All blog posts include SEO metadata for search engine optimization and GEO (Gene
 ## Blog Post Viewer Architecture
 
 Blog posts are displayed through a viewer page (`post.html`) that provides consistent navigation:
-- **URL pattern**: `post.html?article=[Category]/[post-name]` (without `.html` extension)
-  - Example: `post.html?article=ML%20Fundamentals/ml_definition`
-  - Spaces in folder names are URL-encoded as `%20`
+- **URL pattern**: `post.html?article=[category]/[post-name]` (without `.html` extension)
+  - Example: `post.html?article=ml-fundamentals/what-is-machine-learning`
+  - No URL encoding needed (folder names use hyphens, no spaces)
 - **Navigation**: "← Back to Blog" link is in the viewer, not in individual posts
 - **Iframe**: Posts load inside an iframe within the viewer
 - **Fallback**: Invalid/missing article parameter shows a "Post Not Found" page

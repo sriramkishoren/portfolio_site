@@ -1,5 +1,5 @@
 {
-  "generated": "2025-01-26",
+  "generated": "2025-01-27",
   "totalPosts": 15,
   "baseUrl": "https://www.kishoretech.com",
   "author": "Sriramkishore Naraharisetti",
@@ -10,139 +10,139 @@
   },
   "posts": [
     {
-      "file": "ML Fundamentals/ml_definition.html",
+      "file": "ml-fundamentals/what-is-machine-learning.html",
       "title": "What is Machine Learning?",
       "description": "Learn what machine learning is and how computers learn from data to make predictions. Beginner-friendly guide covering ML types and real-world examples.",
       "category": "ML Fundamentals",
       "datePublished": "2025-01-20",
       "tags": ["Machine Learning", "AI", "Beginner", "Data Science", "Supervised Learning", "Unsupervised Learning", "Reinforcement Learning"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ML%20Fundamentals/ml_definition"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-fundamentals/what-is-machine-learning"
     },
     {
-      "file": "ML Fundamentals/ml_three_types.html",
+      "file": "ml-fundamentals/types-of-machine-learning.html",
       "title": "Three Types of Machine Learning",
       "description": "Explore the three main types of machine learning: supervised, unsupervised, and reinforcement learning. Visual guide with real-world examples and use cases.",
       "category": "ML Fundamentals",
       "datePublished": "2025-01-20",
       "tags": ["Machine Learning", "Supervised Learning", "Unsupervised Learning", "Reinforcement Learning"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ML%20Fundamentals/ml_three_types"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-fundamentals/types-of-machine-learning"
     },
     {
-      "file": "ML Fundamentals/ml_concepts.html",
+      "file": "ml-fundamentals/core-ml-concepts.html",
       "title": "Core Machine Learning Concepts",
       "description": "Master core machine learning concepts including regression, classification, clustering, and dimensionality reduction. Visual infographic with practical examples.",
       "category": "ML Fundamentals",
       "datePublished": "2025-01-20",
       "tags": ["Regression", "Classification", "Clustering", "Dimension Reduction", "Machine Learning"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ML%20Fundamentals/ml_concepts"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-fundamentals/core-ml-concepts"
     },
     {
-      "file": "ML Fundamentals/ml_supervised_learning.html",
+      "file": "ml-fundamentals/supervised-learning-guide.html",
       "title": "Supervised Learning Explained",
       "description": "Deep dive into supervised learning with labeled data. Learn classification vs regression, common algorithms, and real-world applications in this visual guide.",
       "category": "ML Fundamentals",
       "datePublished": "2025-01-20",
       "tags": ["Supervised Learning", "Classification", "Regression", "Labeled Data", "Decision Trees"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ML%20Fundamentals/ml_supervised_learning"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-fundamentals/supervised-learning-guide"
     },
     {
-      "file": "ML Fundamentals/ml_unsupervised_learning.html",
+      "file": "ml-fundamentals/unsupervised-learning-guide.html",
       "title": "Unsupervised Learning Explained",
       "description": "Explore unsupervised learning techniques: clustering, dimensionality reduction, and anomaly detection. Learn K-Means, PCA, and real-world applications.",
       "category": "ML Fundamentals",
       "datePublished": "2025-01-20",
       "tags": ["Clustering", "Dimensionality Reduction", "K-Means", "PCA", "Anomaly Detection"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ML%20Fundamentals/ml_unsupervised_learning"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-fundamentals/unsupervised-learning-guide"
     },
     {
-      "file": "ML Fundamentals/ml_ai_performance_measures.html",
+      "file": "ml-fundamentals/ai-performance-metrics.html",
       "title": "AI Performance Measures",
       "description": "Master AI model evaluation metrics: accuracy, precision, recall, F1 score, and ROC curves. Learn when to use each metric for classification and regression.",
       "category": "ML Fundamentals",
       "datePublished": "2025-01-21",
       "tags": ["AI Metrics", "Precision", "Recall", "F1 Score", "Accuracy", "ROC Curve"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ML%20Fundamentals/ml_ai_performance_measures"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-fundamentals/ai-performance-metrics"
     },
     {
-      "file": "ML Fundamentals/ml_overfitting_and_Underfitting.html",
+      "file": "ml-fundamentals/overfitting-underfitting-balance.html",
       "title": "Overfitting and Underfitting",
       "description": "Understand overfitting and underfitting in machine learning. Learn the bias-variance tradeoff, detection methods, and solutions like cross-validation and regularization.",
       "category": "ML Fundamentals",
       "datePublished": "2025-01-21",
       "tags": ["Overfitting", "Underfitting", "Bias-Variance Tradeoff", "Cross-Validation", "Regularization"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ML%20Fundamentals/ml_overfitting_and_Underfitting"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-fundamentals/overfitting-underfitting-balance"
     },
     {
-      "file": "AI Business UseCases/ai_use_cases.html",
+      "file": "ai-business-usecases/modern-ai-landscape.html",
       "title": "AI Use Cases Overview",
       "description": "Comprehensive overview of AI use cases across industries: computer vision, NLP, generative AI, and more. Learn how AI transforms business operations.",
       "category": "AI Business UseCases",
       "datePublished": "2025-01-21",
       "tags": ["Computer Vision", "NLP", "Generative AI", "AI Applications", "Business AI"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=AI%20Business%20UseCases/ai_use_cases"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-business-usecases/modern-ai-landscape"
     },
     {
-      "file": "AI Business UseCases/ml_ai_problem_space.html",
+      "file": "ai-business-usecases/ai-problem-space-usecases.html",
       "title": "AI Problem Space",
       "description": "Navigate the AI problem space to identify the right ML approach. Learn when to use classification, regression, clustering, or deep learning for your business problem.",
       "category": "AI Business UseCases",
       "datePublished": "2025-01-21",
       "tags": ["AI Problem Space", "Classification", "Regression", "Clustering", "Problem Framing"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=AI%20Business%20UseCases/ml_ai_problem_space"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-business-usecases/ai-problem-space-usecases"
     },
     {
-      "file": "AI Business UseCases/ml_business_usecase_classification.html",
+      "file": "ai-business-usecases/classification-business-usecases.html",
       "title": "Business Applications of Classification",
       "description": "Explore business applications of classification in ML: credit scoring, fraud detection, customer churn prediction, and medical diagnosis with decision trees.",
       "category": "AI Business UseCases",
       "datePublished": "2025-01-22",
       "tags": ["Classification", "Credit Scoring", "Fraud Detection", "Decision Trees", "Churn Prediction"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=AI%20Business%20UseCases/ml_business_usecase_classification"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-business-usecases/classification-business-usecases"
     },
     {
-      "file": "AI Business UseCases/ml_business_usecase_clustering.html",
+      "file": "ai-business-usecases/clustering-business-applications.html",
       "title": "Business Applications of Clustering",
       "description": "Discover business applications of clustering: customer segmentation, portfolio management, market basket analysis, and anomaly detection using K-Means.",
       "category": "AI Business UseCases",
       "datePublished": "2025-01-22",
       "tags": ["Clustering", "Customer Segmentation", "Portfolio Management", "K-Means", "Market Analysis"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=AI%20Business%20UseCases/ml_business_usecase_clustering"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-business-usecases/clustering-business-applications"
     },
     {
-      "file": "AI Business UseCases/ml_business_usecase_clustering_retail.html",
+      "file": "ai-business-usecases/retail-customer-segmentation.html",
       "title": "Retail Customer Segmentation Infographic",
       "description": "Visual guide to retail customer segmentation using clustering. Learn predictive and profiling approaches for targeted marketing, churn reduction, and CRM strategies.",
       "category": "AI Business UseCases",
       "datePublished": "2025-01-22",
       "tags": ["Customer Segmentation", "Retail Analytics", "Clustering", "Marketing", "Churn Management", "CRM"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=AI%20Business%20UseCases/ml_business_usecase_clustering_retail"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-business-usecases/retail-customer-segmentation"
     },
     {
-      "file": "AI Business UseCases/ml_business_usecase_regression.html",
+      "file": "ai-business-usecases/regression-business-applications.html",
       "title": "Business Applications of Linear Regression",
       "description": "Explore business applications of regression analysis. Learn how to forecast sales, predict credit limits, optimize pricing, and model insurance premiums using linear regression.",
       "category": "AI Business UseCases",
       "datePublished": "2025-01-22",
       "tags": ["Linear Regression", "Sales Forecasting", "Credit Limit", "Insurance Premium", "Price Optimization"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=AI%20Business%20UseCases/ml_business_usecase_regression"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-business-usecases/regression-business-applications"
     },
     {
-      "file": "AI Project Management/road_framework.html",
+      "file": "ai-project-management/road-framework-guide.html",
       "title": "A Leader's Guide to the R.O.A.D. Framework",
       "description": "Learn the R.O.A.D. framework for AI project management: Requirements, Operationalize, Analytic Method, and Deployment. A strategic methodology for scoping and executing AI at scale.",
       "category": "AI Project Management",
       "datePublished": "2025-01-24",
       "tags": ["ROAD Framework", "AI Project Management", "AI Governance", "Data Engineering", "MLOps"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=AI%20Project%20Management/road_framework"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/road-framework-guide"
     },
     {
-      "file": "AI Project Management/ml_al_life_cycle.html",
+      "file": "ai-project-management/ai-ml-project-lifecycle.html",
       "title": "AI/ML Project Life Cycle - ROAD Framework",
       "description": "Complete guide to the AI/ML project life cycle using the ROAD framework. Learn the 7 phases: problem definition, data collection, data prep, model building, evaluation, deployment, and monitoring.",
       "category": "AI Project Management",
       "datePublished": "2025-01-24",
       "tags": ["AI Lifecycle", "ML Pipeline", "ROAD Framework", "Model Building", "Model Deployment", "MLOps"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=AI%20Project%20Management/ml_al_life_cycle"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-ml-project-lifecycle"
     }
   ]
 }
