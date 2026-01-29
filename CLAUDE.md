@@ -20,6 +20,9 @@ This is a static personal portfolio website for Sriramkishore Naraharisetti. The
 - **Styling**: Tailwind CSS loaded via CDN (with forms, typography, aspect-ratio, line-clamp plugins)
 - **Icons**: Font Awesome 5.15.3 via CDN
 - **Dark mode**: Implemented using Tailwind's `dark:` class variants with manual toggle (adds/removes `dark` class on `<html>`)
+- **Analytics**: GoatCounter (privacy-friendly, GDPR compliant, no cookies)
+  - Site code: `kishoretech`
+  - Dashboard: https://kishoretech.goatcounter.com
 
 ## Folder Structure
 
@@ -69,7 +72,12 @@ To add a new blog post:
        order: 1  // Optional: lower number = higher priority
    }
    ```
-6. Update `metadata-report.json` and `tags-index.json` with the new post
+6. Add GoatCounter tracking script before `</body>`:
+   ```html
+   <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+           async src="//gc.zgo.at/count.js"></script>
+   ```
+7. Update `metadata-report.json` and `tags-index.json` with the new post
 
 **Naming Conventions:**
 - Folders: lowercase with hyphens (e.g., `ml-fundamentals`, `ai-business-usecases`)
@@ -95,13 +103,13 @@ All blog posts include SEO metadata for search engine optimization and GEO (Gene
 <meta name="tags" content="Tag1, Tag2, Tag3">
 <meta name="robots" content="index, follow">
 <meta name="ai-summary" content="Concise summary for AI search tools">
-<link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=Category/post-name">
+<link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=category-folder/post-name">
 
 <!-- Open Graph Tags -->
 <meta property="og:title" content="Post Title">
 <meta property="og:description" content="Description for social sharing">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=Category/post-name">
+<meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=category-folder/post-name">
 <meta property="og:site_name" content="Kishore's Blog">
 <meta property="article:author" content="Sriramkishore Naraharisetti">
 <meta property="article:published_time" content="YYYY-MM-DD">
@@ -154,6 +162,32 @@ The blog index (`personal_blog/index.html`) includes:
 - **Custom ordering**: Posts and categories support `order` field for manual sorting
 - **Deep linking**: URL hash (`#category=ml-fundamentals`) preserves filter state
 - **Dark mode**: Full support with toggle button
+
+## GoatCounter Analytics
+
+All pages include GoatCounter for privacy-friendly visitor tracking (no cookies, GDPR compliant).
+
+**Tracking Script (on ALL 18 HTML pages):**
+```html
+<script data-goatcounter="https://kishoretech.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+```
+
+**Visitor Count Display (on 3 pages only):**
+
+| Page | What it Displays |
+|------|-----------------|
+| `index.html` | TOTAL site visitors (all pages combined) |
+| `personal_blog/index.html` | Page-specific views |
+| `personal_blog/post.html` | Views for the specific blog post loaded via `?article=` param |
+
+Individual blog posts (15 files) have the tracking script but no visible counter (the post viewer shows the count instead).
+
+**API Endpoints:**
+- Total site views: `https://kishoretech.goatcounter.com/counter/TOTAL.json`
+- Page-specific: `https://kishoretech.goatcounter.com/counter/{encoded-path}.json`
+
+**Dashboard:** https://kishoretech.goatcounter.com
 
 ## Display Order Configuration
 
