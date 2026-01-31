@@ -1,29 +1,42 @@
 {
   "generated": "2025-01-27",
-  "totalTags": 45,
+  "totalTags": 93,
   "tags": {
     "Machine Learning": [
       "ml-fundamentals/what-is-machine-learning.html",
       "ml-fundamentals/types-of-machine-learning.html",
-      "ml-fundamentals/core-ml-concepts.html"
+      "ml-fundamentals/core-ml-concepts.html",
+      "ml-algorithms/decision-tree.html",
+      "ml-algorithms/naive-bayes.html",
+      "ml-algorithms/support-vector-machines.html",
+      "ml-algorithms/random-forest.html",
+      "ml-algorithms/neural-networks.html",
+      "ml-algorithms/dimension-reduction.html",
+      "ml-algorithms/ml-algorithm-selection-guide.html"
     ],
     "AI": [
-      "ml-fundamentals/what-is-machine-learning.html"
+      "ml-fundamentals/what-is-machine-learning.html",
+      "ml-algorithms/neural-networks.html"
     ],
     "Beginner": [
       "ml-fundamentals/what-is-machine-learning.html"
     ],
     "Data Science": [
-      "ml-fundamentals/what-is-machine-learning.html"
+      "ml-fundamentals/what-is-machine-learning.html",
+      "ml-algorithms/ml-algorithm-selection-guide.html"
     ],
     "Supervised Learning": [
       "ml-fundamentals/what-is-machine-learning.html",
       "ml-fundamentals/types-of-machine-learning.html",
-      "ml-fundamentals/supervised-learning-guide.html"
+      "ml-fundamentals/supervised-learning-guide.html",
+      "ml-algorithms/support-vector-machines.html",
+      "ml-algorithms/ml-algorithm-selection-guide.html"
     ],
     "Unsupervised Learning": [
       "ml-fundamentals/what-is-machine-learning.html",
-      "ml-fundamentals/types-of-machine-learning.html"
+      "ml-fundamentals/types-of-machine-learning.html",
+      "ml-algorithms/dimension-reduction.html",
+      "ml-algorithms/ml-algorithm-selection-guide.html"
     ],
     "Reinforcement Learning": [
       "ml-fundamentals/what-is-machine-learning.html",
@@ -32,13 +45,19 @@
     "Regression": [
       "ml-fundamentals/core-ml-concepts.html",
       "ml-fundamentals/supervised-learning-guide.html",
-      "ai-business-usecases/ai-problem-space-usecases.html"
+      "ai-business-usecases/ai-problem-space-usecases.html",
+      "ml-algorithms/decision-tree.html",
+      "ml-algorithms/random-forest.html"
     ],
     "Classification": [
       "ml-fundamentals/core-ml-concepts.html",
       "ml-fundamentals/supervised-learning-guide.html",
       "ai-business-usecases/ai-problem-space-usecases.html",
-      "ai-business-usecases/classification-business-usecases.html"
+      "ai-business-usecases/classification-business-usecases.html",
+      "ml-algorithms/decision-tree.html",
+      "ml-algorithms/naive-bayes.html",
+      "ml-algorithms/support-vector-machines.html",
+      "ml-algorithms/random-forest.html"
     ],
     "Clustering": [
       "ml-fundamentals/core-ml-concepts.html",
@@ -48,7 +67,8 @@
       "ai-business-usecases/retail-customer-segmentation.html"
     ],
     "Dimension Reduction": [
-      "ml-fundamentals/core-ml-concepts.html"
+      "ml-fundamentals/core-ml-concepts.html",
+      "ml-algorithms/dimension-reduction.html"
     ],
     "Labeled Data": [
       "ml-fundamentals/supervised-learning-guide.html"
@@ -65,7 +85,8 @@
       "ai-business-usecases/clustering-business-applications.html"
     ],
     "PCA": [
-      "ml-fundamentals/unsupervised-learning-guide.html"
+      "ml-fundamentals/unsupervised-learning-guide.html",
+      "ml-algorithms/dimension-reduction.html"
     ],
     "Anomaly Detection": [
       "ml-fundamentals/unsupervised-learning-guide.html"
@@ -199,6 +220,109 @@
     ],
     "Model Deployment": [
       "ai-project-management/ai-ml-project-lifecycle.html"
+    ],
+    "Decision Tree": [
+      "ml-algorithms/decision-tree.html"
+    ],
+    "CART": [
+      "ml-algorithms/decision-tree.html"
+    ],
+    "Entropy": [
+      "ml-algorithms/decision-tree.html"
+    ],
+    "Gini Index": [
+      "ml-algorithms/decision-tree.html"
+    ],
+    "Pruning": [
+      "ml-algorithms/decision-tree.html"
+    ],
+    "Ensemble Methods": [
+      "ml-algorithms/decision-tree.html",
+      "ml-algorithms/random-forest.html"
+    ],
+    "Naive Bayes": [
+      "ml-algorithms/naive-bayes.html"
+    ],
+    "Bayes Theorem": [
+      "ml-algorithms/naive-bayes.html"
+    ],
+    "Probabilistic Learning": [
+      "ml-algorithms/naive-bayes.html"
+    ],
+    "Text Classification": [
+      "ml-algorithms/naive-bayes.html"
+    ],
+    "Spam Detection": [
+      "ml-algorithms/naive-bayes.html"
+    ],
+    "SVM": [
+      "ml-algorithms/support-vector-machines.html"
+    ],
+    "Support Vector Machines": [
+      "ml-algorithms/support-vector-machines.html"
+    ],
+    "Kernel Trick": [
+      "ml-algorithms/support-vector-machines.html"
+    ],
+    "Hyperplane": [
+      "ml-algorithms/support-vector-machines.html"
+    ],
+    "Margin": [
+      "ml-algorithms/support-vector-machines.html"
+    ],
+    "Random Forest": [
+      "ml-algorithms/random-forest.html"
+    ],
+    "Ensemble Learning": [
+      "ml-algorithms/random-forest.html"
+    ],
+    "Bagging": [
+      "ml-algorithms/random-forest.html"
+    ],
+    "Feature Importance": [
+      "ml-algorithms/random-forest.html"
+    ],
+    "Neural Networks": [
+      "ml-algorithms/neural-networks.html"
+    ],
+    "Deep Learning": [
+      "ml-algorithms/neural-networks.html"
+    ],
+    "CNN": [
+      "ml-algorithms/neural-networks.html"
+    ],
+    "RNN": [
+      "ml-algorithms/neural-networks.html"
+    ],
+    "Transformers": [
+      "ml-algorithms/neural-networks.html"
+    ],
+    "GANs": [
+      "ml-algorithms/neural-networks.html"
+    ],
+    "Backpropagation": [
+      "ml-algorithms/neural-networks.html"
+    ],
+    "t-SNE": [
+      "ml-algorithms/dimension-reduction.html"
+    ],
+    "UMAP": [
+      "ml-algorithms/dimension-reduction.html"
+    ],
+    "LDA": [
+      "ml-algorithms/dimension-reduction.html"
+    ],
+    "Autoencoders": [
+      "ml-algorithms/dimension-reduction.html"
+    ],
+    "Algorithm Selection": [
+      "ml-algorithms/ml-algorithm-selection-guide.html"
+    ],
+    "Model Selection": [
+      "ml-algorithms/ml-algorithm-selection-guide.html"
+    ],
+    "Interpretability": [
+      "ml-algorithms/ml-algorithm-selection-guide.html"
     ]
   }
 }

@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Forest Algorithm - Complete Guide</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Random Forest Algorithm - Complete Guide">
+    <meta name="description" content="Complete guide to Random Forest covering ensemble learning, bagging, feature randomization, hyperparameter tuning, and real-world applications with visual explanations.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="ML Algorithms">
+    <meta name="tags" content="Random Forest, Ensemble Learning, Bagging, Decision Tree, Classification, Regression, Feature Importance, Machine Learning">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Random Forest is an ensemble learning method that builds multiple decision trees using bagging and feature randomization, combining their predictions for more accurate and stable results than individual trees.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/random-forest">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Random Forest Algorithm - Complete Guide">
+    <meta property="og:description" content="Complete guide to Random Forest covering ensemble learning, bagging, feature randomization, hyperparameter tuning, and real-world applications.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/random-forest">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-01-31">
+    <meta property="article:section" content="ML Algorithms">
+    <meta property="article:tag" content="Random Forest">
+    <meta property="article:tag" content="Ensemble Learning">
+    <meta property="article:tag" content="Machine Learning">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Random Forest Algorithm - Complete Guide",
+        "description": "Complete guide to Random Forest covering ensemble learning, bagging, feature randomization, hyperparameter tuning, and real-world applications.",
+        "datePublished": "2025-01-31",
+        "dateModified": "2025-01-31",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/random-forest"
+        },
+        "keywords": ["Random Forest", "Ensemble Learning", "Bagging", "Decision Tree", "Classification", "Regression", "Feature Importance", "Machine Learning"],
+        "articleSection": "ML Algorithms",
+        "about": [
+            {"@type": "Thing", "name": "Random Forest"},
+            {"@type": "Thing", "name": "Ensemble Learning"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "Decision Tree"},
+            {"@type": "Thing", "name": "Bootstrap Aggregating"},
+            {"@type": "Thing", "name": "Feature Importance"}
+        ]
+    }
+    </script>
+
+    <!--
+    blog-metadata:
+      title: "Random Forest Algorithm - Complete Guide"
+      category: "ML Algorithms"
+      pillar: "ML Algorithms"
+      tags:
+        - Random Forest
+        - Ensemble Learning
+        - Bagging
+        - Decision Tree
+      connectors: "ML Fundamentals, AI Business UseCases"
+    -->
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Config & Styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        forest: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#16a34a', // Primary Green
+                            700: '#15803d',
+                            800: '#166534', // Dark Header
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+            }
+
+            .no-print {
+                display: none;
+            }
+
+            .break-inside-avoid {
+                page-break-inside: avoid;
+            }
+
+            .shadow-lg,
+            .shadow-md,
+            .shadow-xl {
+                box-shadow: none !important;
+            }
+        }
+
+        .hover-scale {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.02);
+        }
+
+        .bg-pattern {
+            background-image: radial-gradient(#22c55e 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+    <!-- HEADER SECTION -->
+    <header
+        class="bg-forest-800 text-white py-12 px-4 sm:px-6 lg:px-8 border-b-8 border-forest-500 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-pattern"></div>
+        <div class="max-w-6xl mx-auto relative z-10 text-center">
+            <div class="flex justify-center mb-4">
+                <i data-lucide="trees" class="w-16 h-16 text-forest-300"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Random Forest Algorithm</h1>
+            <p class="text-xl md:text-2xl text-forest-100 max-w-3xl mx-auto font-light">
+                An ensemble learning method that builds a "forest" of decision trees to improve accuracy, stability, and
+                reduce overfitting.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+
+        <!-- 1. CORE CONCEPT VISUALIZATION -->
+        <section class="break-inside-avoid">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl font-bold text-forest-800 flex items-center justify-center gap-3">
+                    <i data-lucide="layers" class="w-8 h-8"></i> The Core Concept
+                </h2>
+                <p class="text-slate-600 mt-2">From a single noisy tree to a robust forest consensus</p>
+            </div>
+
+            <div class="bg-white rounded-2xl shadow-xl p-8 border border-slate-200">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                    <!-- Input -->
+                    <div class="flex flex-col items-center text-center w-full md:w-1/6">
+                        <div class="bg-slate-100 p-4 rounded-xl border-2 border-slate-300 mb-2">
+                            <i data-lucide="database" class="w-10 h-10 text-slate-600"></i>
+                        </div>
+                        <span class="font-bold text-slate-700">Training Data</span>
+                    </div>
+
+                    <div class="hidden md:block text-slate-400"><i data-lucide="arrow-right" class="w-8 h-8"></i></div>
+                    <div class="md:hidden text-slate-400 my-2"><i data-lucide="arrow-down" class="w-8 h-8"></i></div>
+
+                    <!-- The Forest -->
+                    <div class="flex-1 bg-forest-50 rounded-xl p-6 border-2 border-dashed border-forest-300 w-full">
+                        <div class="text-center mb-4 font-semibold text-forest-700">Ensemble of Trees (The Forest)</div>
+                        <div class="flex justify-around items-end h-32 gap-2">
+                            <div class="flex flex-col items-center animate-pulse" style="animation-delay: 0s;">
+                                <div class="text-xs text-forest-600 mb-1">Tree 1</div>
+                                <i data-lucide="git-branch" class="w-12 h-12 text-forest-500"></i>
+                                <div class="h-8 w-0.5 bg-forest-300 mt-1"></div>
+                            </div>
+                            <div class="flex flex-col items-center animate-pulse" style="animation-delay: 0.5s;">
+                                <div class="text-xs text-forest-600 mb-1">Tree 2</div>
+                                <i data-lucide="git-branch" class="w-12 h-12 text-forest-600"></i>
+                                <div class="h-8 w-0.5 bg-forest-300 mt-1"></div>
+                            </div>
+                            <div class="flex flex-col items-center animate-pulse" style="animation-delay: 1s;">
+                                <div class="text-xs text-forest-600 mb-1">Tree N</div>
+                                <i data-lucide="git-branch" class="w-12 h-12 text-forest-500"></i>
+                                <div class="h-8 w-0.5 bg-forest-300 mt-1"></div>
+                            </div>
+                        </div>
+                        <div
+                            class="text-center text-xs text-forest-600 mt-2 bg-white inline-block px-3 py-1 rounded-full shadow-sm mx-auto">
+                            Diversity via Bootstrap Sampling & Feature Randomization
+                        </div>
+                    </div>
+
+                    <div class="hidden md:block text-slate-400"><i data-lucide="arrow-right" class="w-8 h-8"></i></div>
+                    <div class="md:hidden text-slate-400 my-2"><i data-lucide="arrow-down" class="w-8 h-8"></i></div>
+
+                    <!-- Output -->
+                    <div class="flex flex-col items-center text-center w-full md:w-1/6">
+                        <div class="bg-blue-50 p-4 rounded-xl border-2 border-blue-200 mb-2">
+                            <i data-lucide="target" class="w-10 h-10 text-blue-600"></i>
+                        </div>
+                        <span class="font-bold text-blue-700">Final Prediction</span>
+                        <span class="text-xs text-slate-500 mt-1">Majority Vote (Class)<br>or Average (Reg)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. HOW IT WORKS: 4 STEPS -->
+        <section class="break-inside-avoid">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <i data-lucide="workflow" class="w-6 h-6 text-forest-600"></i> How It Works: Step-by-Step
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Step 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-teal-500 hover-scale">
+                    <div
+                        class="bg-teal-100 w-12 h-12 rounded-full flex items-center justify-center mb-4 text-teal-700 font-bold text-xl">
+                        1</div>
+                    <h3 class="font-bold text-lg mb-2">Bootstrap Sampling</h3>
+                    <p class="text-sm text-slate-600">
+                        Create multiple datasets by sampling with replacement from original data.
+                        <br><br>
+                        <span class="bg-teal-50 text-teal-700 px-2 py-1 rounded text-xs font-semibold">Key: ~63.2%
+                            unique data per sample</span>
+                    </p>
+                </div>
+                <!-- Step 2 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-indigo-500 hover-scale">
+                    <div
+                        class="bg-indigo-100 w-12 h-12 rounded-full flex items-center justify-center mb-4 text-indigo-700 font-bold text-xl">
+                        2</div>
+                    <h3 class="font-bold text-lg mb-2">Build Trees</h3>
+                    <p class="text-sm text-slate-600">
+                        Grow a decision tree for each sample. Do not prune.
+                        <br><br>
+                        <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded text-xs font-semibold">Key: Random
+                            subset of features at each split</span>
+                    </p>
+                </div>
+                <!-- Step 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-amber-500 hover-scale">
+                    <div
+                        class="bg-amber-100 w-12 h-12 rounded-full flex items-center justify-center mb-4 text-amber-700 font-bold text-xl">
+                        3</div>
+                    <h3 class="font-bold text-lg mb-2">Predict</h3>
+                    <p class="text-sm text-slate-600">
+                        Pass new data through every single tree in the forest. Each tree gives its own independent
+                        prediction.
+                    </p>
+                </div>
+                <!-- Step 4 -->
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-forest-500 hover-scale">
+                    <div
+                        class="bg-forest-100 w-12 h-12 rounded-full flex items-center justify-center mb-4 text-forest-700 font-bold text-xl">
+                        4</div>
+                    <h3 class="font-bold text-lg mb-2">Aggregate</h3>
+                    <p class="text-sm text-slate-600">
+                        Combine all predictions.
+                        <br><br>
+                        <strong>Classification:</strong> Majority Vote<br>
+                        <strong>Regression:</strong> Average
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TECHNICAL DEEP DIVES (Grid) -->
+        <section>
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Technical Mechanics</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Card: Bagging -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border border-slate-100 flex gap-4">
+                    <div class="shrink-0 bg-blue-100 p-3 rounded-lg h-fit">
+                        <i data-lucide="copy" class="w-6 h-6 text-blue-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Bagging (Bootstrap Aggregating)</h3>
+                        <p class="text-slate-600 text-sm mb-3">
+                            The method of training models on different subsets of data to reduce variance.
+                        </p>
+                        <ul class="text-sm space-y-2 text-slate-700">
+                            <li class="flex items-center gap-2"><i data-lucide="check"
+                                    class="w-4 h-4 text-forest-500"></i> Sampling <strong>with replacement</strong></li>
+                            <li class="flex items-center gap-2"><i data-lucide="check"
+                                    class="w-4 h-4 text-forest-500"></i> Reduces overfitting ("averaging reduces risk")
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Card: Feature Randomization -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border border-slate-100 flex gap-4">
+                    <div class="shrink-0 bg-purple-100 p-3 rounded-lg h-fit">
+                        <i data-lucide="shuffle" class="w-6 h-6 text-purple-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Feature Randomization</h3>
+                        <p class="text-slate-600 text-sm mb-3">
+                            At every node split, the algorithm only considers a random subset of features.
+                        </p>
+                        <div class="bg-slate-50 p-3 rounded border border-slate-200 text-sm font-mono">
+                            <div class="mb-1"><span class="font-bold text-purple-600">Classification:</span> √n_features
+                            </div>
+                            <div><span class="font-bold text-purple-600">Regression:</span> n_features / 3</div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card: OOB Error -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border border-slate-100 flex gap-4">
+                    <div class="shrink-0 bg-orange-100 p-3 rounded-lg h-fit">
+                        <i data-lucide="eye-off" class="w-6 h-6 text-orange-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Out-of-Bag (OOB) Error</h3>
+                        <p class="text-slate-600 text-sm mb-3">
+                            Validation built into the training process. ~36.8% of data is not seen by a specific tree.
+                        </p>
+                        <ul class="text-sm space-y-2 text-slate-700">
+                            <li class="flex items-center gap-2"><i data-lucide="check"
+                                    class="w-4 h-4 text-forest-500"></i> Acts as validation without separate test set
+                            </li>
+                            <li class="flex items-center gap-2"><i data-lucide="check"
+                                    class="w-4 h-4 text-forest-500"></i> Unbiased error estimate</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Card: Feature Importance -->
+                <div class="bg-white rounded-xl shadow-lg p-6 border border-slate-100 flex gap-4">
+                    <div class="shrink-0 bg-pink-100 p-3 rounded-lg h-fit">
+                        <i data-lucide="bar-chart-2" class="w-6 h-6 text-pink-600"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Feature Importance</h3>
+                        <p class="text-slate-600 text-sm mb-3">
+                            Calculates which features contribute most to the predictive power.
+                        </p>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex flex-col">
+                                <span class="font-semibold text-slate-700">Gini Importance (MDI)</span>
+                                <span class="text-slate-500 text-xs">Fast, but biased toward high-cardinality
+                                    features.</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-semibold text-slate-700">Permutation Importance</span>
+                                <span class="text-slate-500 text-xs">Slower, more reliable. Shuffles data to test
+                                    impact.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. HYPERPARAMETERS TABLE -->
+        <section class="break-inside-avoid">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <i data-lucide="sliders" class="w-6 h-6 text-slate-600"></i> Key Hyperparameters
+            </h2>
+            <div class="overflow-x-auto bg-white rounded-xl shadow border border-slate-200">
+                <table class="min-w-full divide-y divide-slate-200">
+                    <thead class="bg-slate-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                Parameter</th>
+                            <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                Description</th>
+                            <th class="px-6 py-3 text-left text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                Impact</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-slate-200 text-sm">
+                        <tr>
+                            <td class="px-6 py-4 font-mono font-semibold text-forest-700">n_estimators</td>
+                            <td class="px-6 py-4 text-slate-600">Number of trees in the forest.</td>
+                            <td class="px-6 py-4">More is better (up to a point), but slower.</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 font-mono font-semibold text-forest-700">max_features</td>
+                            <td class="px-6 py-4 text-slate-600">Max features considered per split.</td>
+                            <td class="px-6 py-4">Controls diversity. Lower = more diverse trees.</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 font-mono font-semibold text-forest-700">max_depth</td>
+                            <td class="px-6 py-4 text-slate-600">Maximum levels in each tree.</td>
+                            <td class="px-6 py-4">Controls complexity. Prevents overfitting.</td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 font-mono font-semibold text-forest-700">min_samples_split</td>
+                            <td class="px-6 py-4 text-slate-600">Min samples required to split.</td>
+                            <td class="px-6 py-4">Higher values = more generalized trees.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 5. PROS & CONS + BIAS VARIANCE -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 break-inside-avoid">
+
+            <!-- Pros & Cons -->
+            <section>
+                <h2 class="text-2xl font-bold text-slate-800 mb-6">Pros & Cons</h2>
+                <div class="space-y-4">
+                    <!-- Advantages -->
+                    <div class="bg-forest-50 border border-forest-200 rounded-xl p-5">
+                        <h3 class="font-bold text-forest-800 mb-3 flex items-center gap-2">
+                            <i data-lucide="thumbs-up" class="w-5 h-5"></i> Advantages
+                        </h3>
+                        <ul class="space-y-2 text-sm text-forest-900">
+                            <li class="flex items-start gap-2"><span class="font-bold text-forest-600">+</span> Reduces
+                                overfitting (vs single tree)</li>
+                            <li class="flex items-start gap-2"><span class="font-bold text-forest-600">+</span> Robust
+                                to noise and outliers</li>
+                            <li class="flex items-start gap-2"><span class="font-bold text-forest-600">+</span> Handles
+                                missing data well</li>
+                            <li class="flex items-start gap-2"><span class="font-bold text-forest-600">+</span> Good
+                                performance out-of-the-box</li>
+                        </ul>
+                    </div>
+
+                    <!-- Disadvantages -->
+                    <div class="bg-red-50 border border-red-200 rounded-xl p-5">
+                        <h3 class="font-bold text-red-800 mb-3 flex items-center gap-2">
+                            <i data-lucide="alert-triangle" class="w-5 h-5"></i> Disadvantages
+                        </h3>
+                        <ul class="space-y-2 text-sm text-red-900">
+                            <li class="flex items-start gap-2"><span class="font-bold text-red-600">-</span> Requires
+                                tuning of additional parameters (e.g., # of trees)</li>
+                            <li class="flex items-start gap-2"><span class="font-bold text-red-600">-</span>
+                                Computationally intensive (slow training/pred)</li>
+                            <li class="flex items-start gap-2"><span class="font-bold text-red-600">-</span> Hard to
+                                interpret (Black Box)</li>
+                            <li class="flex items-start gap-2"><span class="font-bold text-red-600">-</span> Large
+                                memory footprint</li>
+                            <li class="flex items-start gap-2"><span class="font-bold text-red-600">-</span>
+                                <strong>Limitations:</strong> High Cardinality & Extrapolation (See Below)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bias-Variance Tradeoff -->
+            <section class="flex flex-col">
+                <h2 class="text-2xl font-bold text-slate-800 mb-6">Bias-Variance Tradeoff</h2>
+                <div
+                    class="bg-slate-900 text-white p-6 rounded-xl flex-1 flex flex-col justify-center relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-20"><i data-lucide="scale" class="w-24 h-24"></i>
+                    </div>
+
+                    <div class="mb-6 z-10">
+                        <h3 class="text-lg font-bold text-forest-400 mb-1">Single Decision Tree</h3>
+                        <div class="flex gap-4 text-sm">
+                            <div class="bg-slate-800 px-3 py-1 rounded border border-slate-700">Low Bias</div>
+                            <div class="bg-red-900/50 px-3 py-1 rounded border border-red-800 text-red-300">High
+                                Variance</div>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">Prone to overfitting (memorizing data).</p>
+                    </div>
+
+                    <div class="flex justify-center my-2 text-slate-500"><i data-lucide="arrow-down"
+                            class="w-6 h-6"></i></div>
+
+                    <div class="z-10">
+                        <h3 class="text-lg font-bold text-forest-400 mb-1">Random Forest</h3>
+                        <div class="flex gap-4 text-sm">
+                            <div class="bg-slate-800 px-3 py-1 rounded border border-slate-700">Low Bias</div>
+                            <div class="bg-forest-900/50 px-3 py-1 rounded border border-forest-800 text-forest-300">
+                                Reduced Variance</div>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-2">
+                            Averaging decorrelated trees cancels out errors.<br>
+                            <span class="italic text-slate-500">"Diversity creates stability."</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- 6. NEW SECTION: LIMITATION DEEP DIVE (Merged from v2) -->
+        <section class="break-inside-avoid">
+            <div class="flex items-center gap-3 mb-6 bg-slate-800 text-white p-4 rounded-xl shadow-md">
+                <i data-lucide="microscope" class="w-6 h-6 text-amber-400"></i>
+                <h2 class="text-xl font-bold">Deep Dive: Critical Limitations</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <!-- Limitation 1: Categorical Variables -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200 flex flex-col">
+                    <div class="bg-orange-50 p-4 border-b border-orange-100">
+                        <h3 class="font-bold text-orange-900 flex items-center gap-2">
+                            <i data-lucide="tag" class="w-5 h-5 text-orange-600"></i> 1. High Cardinality Bias
+                        </h3>
+                    </div>
+                    <div class="p-6 flex-1">
+                        <p class="text-sm text-slate-600 mb-4">Random Forest struggles with categorical variables that
+                            have many unique values (High Cardinality), like UserIDs or Zip Codes.</p>
+
+                        <div class="space-y-4">
+                            <div class="bg-slate-50 p-3 rounded border border-slate-200">
+                                <strong class="text-xs uppercase text-slate-500 tracking-wider">The Splitting
+                                    Problem</strong>
+                                <p class="text-sm mt-1">High cardinality features create extremely fragmented splits,
+                                    leading to overfitting on rare categories.</p>
+                            </div>
+
+                            <div class="bg-slate-50 p-3 rounded border border-slate-200">
+                                <strong class="text-xs uppercase text-slate-500 tracking-wider">The Importance
+                                    Bias</strong>
+                                <p class="text-sm mt-1">Gini importance is biased toward features with more unique
+                                    values because they offer more "split points."</p>
+                            </div>
+                        </div>
+
+                        <!-- Visual Example -->
+                        <div class="mt-6 border-t border-slate-100 pt-4">
+                            <div class="text-xs font-bold text-slate-400 mb-2 uppercase">Bias Example</div>
+                            <div class="flex items-center gap-4 text-sm">
+                                <div class="flex-1 text-center">
+                                    <div class="bg-green-100 text-green-800 py-1 rounded mb-1">Feature A</div>
+                                    <div class="text-xs text-slate-500">Binary (Yes/No)</div>
+                                    <div class="font-bold text-slate-700">1 Split Point</div>
+                                </div>
+                                <div class="text-slate-300"><i data-lucide="arrow-right" class="w-5 h-5"></i></div>
+                                <div class="flex-1 text-center opacity-50">
+                                    <div class="bg-red-100 text-red-800 py-1 rounded mb-1">Feature B</div>
+                                    <div class="text-xs text-slate-500">50 Categories</div>
+                                    <div class="font-bold text-red-600">Many Splits</div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-center mt-2 text-red-600 italic">Feature B looks "more important"
+                                artificially.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Limitation 2: Extrapolation -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-slate-200 flex flex-col">
+                    <div class="bg-blue-50 p-4 border-b border-blue-100">
+                        <h3 class="font-bold text-blue-900 flex items-center gap-2">
+                            <i data-lucide="trending-up" class="w-5 h-5 text-blue-600"></i> 2. No Extrapolation
+                        </h3>
+                    </div>
+                    <div class="p-6 flex-1">
+                        <p class="text-sm text-slate-600 mb-4">Unlike linear regression, Random Forest cannot predict
+                            values outside the range of the training data. It will "plateau" at the boundaries.</p>
+
+                        <!-- Visual Graph -->
+                        <div class="bg-slate-900 p-4 rounded-lg mb-4 relative h-40 flex items-end justify-center">
+                            <!-- Axis -->
+                            <div class="absolute bottom-2 left-2 right-2 h-px bg-slate-600"></div>
+                            <div class="absolute top-2 bottom-2 left-2 w-px bg-slate-600"></div>
+
+                            <!-- Linear Line (Dotted) -->
+                            <div
+                                class="absolute bottom-2 left-2 w-full h-full border-t border-dashed border-slate-500 origin-bottom-left transform -rotate-12 translate-y-12 opacity-50">
+                            </div>
+                            <div class="absolute top-4 right-4 text-xs text-slate-500">Linear Model</div>
+
+                            <!-- RF Data Points -->
+                            <div class="absolute bottom-8 left-8 w-2 h-2 bg-blue-400 rounded-full"></div>
+                            <div class="absolute bottom-16 left-16 w-2 h-2 bg-blue-400 rounded-full"></div>
+                            <div
+                                class="absolute bottom-24 left-24 w-2 h-2 bg-blue-400 rounded-full text-xs text-white whitespace-nowrap pl-3">
+                                Training Max (100)</div>
+
+                            <!-- RF Plateau -->
+                            <div class="absolute bottom-24 left-24 right-0 h-0.5 bg-red-500"></div>
+                            <div class="absolute top-10 right-2 text-xs text-red-400 font-bold">RF Plateau</div>
+                        </div>
+
+                        <div class="bg-slate-50 p-3 rounded border border-slate-200">
+                            <strong class="text-xs uppercase text-slate-500 tracking-wider">The Problem</strong>
+                            <p class="text-sm mt-1">If you train on house prices $100k-$500k, the model can
+                                <strong>never</strong> predict $600k. It assigns the average of the closest "leaf" node,
+                                which is max $500k.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 7. COMPARISON TABLE -->
+        <section class="break-inside-avoid">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6">Algorithm Comparison</h2>
+            <div
+                class="grid grid-cols-1 md:grid-cols-3 gap-0 md:gap-4 bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden text-sm">
+
+                <!-- Random Forest -->
+                <div class="p-6 bg-forest-50 border-b md:border-b-0 border-slate-200">
+                    <h3 class="font-bold text-lg text-forest-800 mb-2 flex items-center gap-2">
+                        <i data-lucide="trees" class="w-5 h-5"></i> Random Forest
+                    </h3>
+                    <p class="mb-4 text-slate-600 italic">Best for general purpose tabular data.</p>
+                    <ul class="space-y-2">
+                        <li class="text-green-700 font-semibold">✓ Parallel Training</li>
+                        <li class="text-green-700 font-semibold">✓ Robust to Overfitting</li>
+                        <li class="text-red-600">✗ Slow Prediction</li>
+                    </ul>
+                </div>
+
+                <!-- Gradient Boosting -->
+                <div class="p-6 bg-white border-b md:border-b-0 border-slate-200">
+                    <h3 class="font-bold text-lg text-slate-800 mb-2 flex items-center gap-2">
+                        <i data-lucide="zap" class="w-5 h-5 text-amber-500"></i> XGBoost/GBM
+                    </h3>
+                    <p class="mb-4 text-slate-600 italic">Sequential improvement.</p>
+                    <ul class="space-y-2">
+                        <li class="text-green-700 font-semibold">✓ Higher Accuracy Potential</li>
+                        <li class="text-red-600">✗ Sequential (Slower Training)</li>
+                        <li class="text-red-600">✗ Harder to Tune</li>
+                    </ul>
+                </div>
+
+                <!-- Neural Networks -->
+                <div class="p-6 bg-white">
+                    <h3 class="font-bold text-lg text-slate-800 mb-2 flex items-center gap-2">
+                        <i data-lucide="brain" class="w-5 h-5 text-purple-500"></i> Neural Networks
+                    </h3>
+                    <p class="mb-4 text-slate-600 italic">Unstructured data (Images, Text).</p>
+                    <ul class="space-y-2">
+                        <li class="text-green-700 font-semibold">✓ Handles Perceptual Data</li>
+                        <li class="text-red-600">✗ Needs Massive Data</li>
+                        <li class="text-red-600">✗ Black Box / Computation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. WHEN TO USE -->
+        <section class="bg-slate-800 rounded-2xl p-8 text-white break-inside-avoid">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="flex-1">
+                    <h2 class="text-2xl font-bold mb-4 text-forest-300">When to use Random Forest?</h2>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-3">
+                            <div class="bg-forest-600 p-1 rounded-full"><i data-lucide="check"
+                                    class="w-4 h-4 text-white"></i></div>
+                            <span>Structured / Tabular Data</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="bg-forest-600 p-1 rounded-full"><i data-lucide="check"
+                                    class="w-4 h-4 text-white"></i></div>
+                            <span>Medium to Large datasets (thousands of rows)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="bg-forest-600 p-1 rounded-full"><i data-lucide="check"
+                                    class="w-4 h-4 text-white"></i></div>
+                            <span>When you need Feature Importance insights</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="bg-forest-600 p-1 rounded-full"><i data-lucide="check"
+                                    class="w-4 h-4 text-white"></i></div>
+                            <span>As a strong baseline model</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="hidden md:block w-px h-40 bg-slate-600"></div>
+                <div class="flex-1 opacity-80">
+                    <h3 class="text-xl font-bold mb-4 text-red-300">Avoid When:</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="x" class="w-4 h-4 text-red-400"></i>
+                            <span>Real-time latency is critical (prediction is slow)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="x" class="w-4 h-4 text-red-400"></i>
+                            <span>Data is very sparse / high-dimensional (text)</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="x" class="w-4 h-4 text-red-400"></i>
+                            <span>You need to predict values outside training range</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-8 text-center border-t border-slate-800 mt-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <p class="mb-2">Generated for Learning • Random Forest Algorithm Guide</p>
+            <p class="text-xs opacity-60">Visualizations are conceptual representations.</p>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

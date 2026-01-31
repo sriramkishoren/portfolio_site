@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimension Reduction - Interactive Infographic</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Dimension Reduction - Interactive Infographic">
+    <meta name="description" content="Explore dimension reduction techniques including PCA, t-SNE, UMAP, LDA, and autoencoders. Visual guide with algorithm comparison and real-world MNIST example.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="ML Algorithms">
+    <meta name="tags" content="Dimension Reduction, PCA, t-SNE, UMAP, LDA, Autoencoders, Unsupervised Learning, Machine Learning">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Dimension reduction simplifies high-dimensional data using techniques like PCA, t-SNE, UMAP, LargeVis, and autoencoders to reveal hidden patterns while balancing information loss and computational efficiency.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/dimension-reduction">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Dimension Reduction - Interactive Infographic">
+    <meta property="og:description" content="Explore dimension reduction techniques including PCA, t-SNE, UMAP, LDA, and autoencoders. Visual guide with algorithm comparison and real-world MNIST example.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/dimension-reduction">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-01-31">
+    <meta property="article:section" content="ML Algorithms">
+    <meta property="article:tag" content="Dimension Reduction">
+    <meta property="article:tag" content="PCA">
+    <meta property="article:tag" content="Unsupervised Learning">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Dimension Reduction - Interactive Infographic",
+        "description": "Explore dimension reduction techniques including PCA, t-SNE, UMAP, LDA, and autoencoders. Visual guide with algorithm comparison and real-world MNIST example.",
+        "datePublished": "2025-01-31",
+        "dateModified": "2025-01-31",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/dimension-reduction"
+        },
+        "keywords": ["Dimension Reduction", "PCA", "t-SNE", "UMAP", "LDA", "Autoencoders", "Unsupervised Learning", "Machine Learning"],
+        "articleSection": "ML Algorithms",
+        "about": [
+            {"@type": "Thing", "name": "Dimension Reduction"},
+            {"@type": "Thing", "name": "Unsupervised Learning"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "Principal Component Analysis"},
+            {"@type": "Thing", "name": "MNIST Dataset"},
+            {"@type": "Thing", "name": "Data Visualization"}
+        ]
+    }
+    </script>
+
+    <!--
+    blog-metadata:
+      title: "Dimension Reduction - Interactive Infographic"
+      category: "ML Algorithms"
+      pillar: "ML Algorithms"
+      tags:
+        - Dimension Reduction
+        - PCA
+        - t-SNE
+        - UMAP
+        - Unsupervised Learning
+      connectors: "ML Fundamentals, AI Business UseCases"
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ============================================
+           BASE STYLES & CSS VARIABLES
+           ============================================ */
+        :root {
+            --color-deep: #ffffff;
+            --color-surface: #f8fafc;
+            --color-surface-light: #f1f5f9;
+            --color-border: #e2e8f0;
+            --color-border-light: #cbd5e1;
+            --color-text: #1e293b;
+            --color-text-muted: #64748b;
+            --color-text-light: #94a3b8;
+            --color-primary: #6366f1;
+            --color-pca: #3b82f6;
+            --color-tsne: #8b5cf6;
+            --color-umap: #14b8a6;
+            --color-largevis: #06b6d4;
+            --color-autoenc: #ec4899;
+            --color-lda: #f59e0b;
+            --color-success: #10b981;
+            --color-warning: #f59e0b;
+            --color-accent: #7c3aed;
+            --color-danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--color-deep);
+            color: var(--color-text);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ============================================
+           LAYOUT
+           ============================================ */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding: 3rem 1.5rem;
+            }
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .grid-5 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        @media (min-width: 640px) {
+            .grid-5 {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flex-between {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .gap-2 {
+            gap: 0.5rem;
+        }
+
+        .gap-3 {
+            gap: 0.75rem;
+        }
+
+        .gap-4 {
+            gap: 1rem;
+        }
+
+        .gap-8 {
+            gap: 2rem;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        /* ============================================
+           TYPOGRAPHY
+           ============================================ */
+        .text-center {
+            text-align: center;
+        }
+
+        .text-sm {
+            font-size: 0.875rem;
+        }
+
+        .text-xs {
+            font-size: 0.75rem;
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+        }
+
+        .text-4xl {
+            font-size: 2.25rem;
+        }
+
+        .text-5xl {
+            font-size: 3rem;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .font-semibold {
+            font-weight: 600;
+        }
+
+        .font-medium {
+            font-weight: 500;
+        }
+
+        .leading-relaxed {
+            line-height: 1.625;
+        }
+
+        /* ============================================
+           COLORS
+           ============================================ */
+        .text-white {
+            color: #ffffff;
+        }
+
+        .text-muted {
+            color: var(--color-text-muted);
+        }
+
+        .text-light {
+            color: var(--color-text-light);
+        }
+
+        .text-primary {
+            color: var(--color-primary);
+        }
+
+        .text-pca {
+            color: var(--color-pca);
+        }
+
+        .text-tsne {
+            color: var(--color-tsne);
+        }
+
+        .text-umap {
+            color: var(--color-umap);
+        }
+
+        .text-largevis {
+            color: var(--color-largevis);
+        }
+
+        .text-autoenc {
+            color: var(--color-autoenc);
+        }
+
+        .text-lda {
+            color: var(--color-lda);
+        }
+
+        .text-success {
+            color: var(--color-success);
+        }
+
+        .text-warning {
+            color: var(--color-warning);
+        }
+
+        .text-accent {
+            color: var(--color-accent);
+        }
+
+        .text-danger {
+            color: var(--color-danger);
+        }
+
+        .bg-surface {
+            background-color: var(--color-surface);
+        }
+
+        .bg-surface-light {
+            background-color: var(--color-surface-light);
+        }
+
+        /* ============================================
+           SPACING
+           ============================================ */
+        .mb-1 {
+            margin-bottom: 0.25rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 0.75rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-6 {
+            margin-bottom: 1.5rem;
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+
+        .mb-12 {
+            margin-bottom: 3rem;
+        }
+
+        .mb-16 {
+            margin-bottom: 4rem;
+        }
+
+        .mt-4 {
+            margin-top: 1rem;
+        }
+
+        .mt-6 {
+            margin-top: 1.5rem;
+        }
+
+        .p-3 {
+            padding: 0.75rem;
+        }
+
+        .p-4 {
+            padding: 1rem;
+        }
+
+        .p-6 {
+            padding: 1.5rem;
+        }
+
+        .p-8 {
+            padding: 2rem;
+        }
+
+        .px-2 {
+            padding-left: 0.5rem;
+            padding-right: 0.5rem;
+        }
+
+        .px-3 {
+            padding-left: 0.75rem;
+            padding-right: 0.75rem;
+        }
+
+        .px-4 {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        .py-1 {
+            padding-top: 0.25rem;
+            padding-bottom: 0.25rem;
+        }
+
+        .py-2 {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        /* ============================================
+           COMPONENTS
+           ============================================ */
+        .card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.15);
+        }
+
+        .card-success {
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .card-warning {
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .algo-card {
+            background: linear-gradient(145deg, var(--color-surface), var(--color-surface-light));
+            border: 1px solid var(--color-border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .algo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.15);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+        }
+
+        .badge-primary {
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            color: var(--color-primary);
+        }
+
+        .tag {
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .icon-box {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .icon-box-lg {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+        }
+
+        .icon-circle {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ============================================
+           HEADER
+           ============================================ */
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 50%, var(--color-umap) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @media (min-width: 640px) {
+            .header-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header-title {
+                font-size: 3.75rem;
+            }
+        }
+
+        .glow-line {
+            background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+            height: 2px;
+            width: 8rem;
+            margin: 1.5rem auto 0;
+        }
+
+        /* ============================================
+           PROGRESS BARS
+           ============================================ */
+        .progress-track {
+            flex: 1;
+            height: 0.5rem;
+            background: var(--color-border);
+            border-radius: 9999px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 9999px;
+        }
+
+        /* ============================================
+           TABLE
+           ============================================ */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .comparison-table th {
+            text-align: center;
+            padding: 0.75rem 1rem;
+            font-weight: 600;
+            color: var(--color-text-muted);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .comparison-table th:first-child {
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--color-border-light);
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 500;
+        }
+
+        .comparison-table td:not(:first-child) {
+            text-align: center;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(99, 102, 241, 0.03);
+        }
+
+        /* ============================================
+           VISUALIZATION BOXES
+           ============================================ */
+        .viz-box {
+            background: var(--color-surface-light);
+            border: 1px solid var(--color-border);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            height: 16rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .viz-label {
+            position: absolute;
+            top: 0.5rem;
+            left: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .viz-caption {
+            position: absolute;
+            bottom: 0.5rem;
+            left: 0.5rem;
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ============================================
+           DIMENSION VISUAL
+           ============================================ */
+        .dim-box {
+            width: 8rem;
+            height: 8rem;
+            position: relative;
+        }
+
+        @media (min-width: 640px) {
+            .dim-box {
+                width: 10rem;
+                height: 10rem;
+            }
+        }
+
+        .dim-box-bg {
+            position: absolute;
+            inset: 0;
+            border-radius: 0.5rem;
+            transform: rotate(12deg);
+            filter: blur(4px);
+        }
+
+        .dim-box-content {
+            position: absolute;
+            inset: 0.5rem;
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dim-value {
+            font-size: 1.875rem;
+            font-weight: 700;
+        }
+
+        .dim-label {
+            font-size: 0.75rem;
+            color: var(--color-text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ============================================
+           WORKFLOW
+           ============================================ */
+        .workflow-step {
+            background: white;
+            border: 1px solid var(--color-border);
+            border-radius: 0.75rem;
+            padding: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .workflow-step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(99, 102, 241, 0.15);
+        }
+
+        .step-number {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 9999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.75rem;
+            font-weight: 700;
+        }
+
+        /* ============================================
+           INFO BOXES
+           ============================================ */
+        .info-row {
+            display: flex;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            align-items: flex-start;
+        }
+
+        .info-row-success {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+        }
+
+        .info-row-warning {
+            background: rgba(245, 158, 11, 0.05);
+            border: 1px solid rgba(245, 158, 11, 0.1);
+        }
+
+        .info-row-neutral {
+            background: rgba(99, 102, 241, 0.03);
+        }
+
+        .callout {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 0.75rem;
+        }
+
+        .callout-accent {
+            background: rgba(124, 58, 237, 0.05);
+            border: 1px solid rgba(124, 58, 237, 0.15);
+        }
+
+        .callout-primary {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.15);
+        }
+
+        .callout-gradient {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(20, 184, 166, 0.08));
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+        footer {
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--color-text-muted);
+            border-top: 1px solid var(--color-border);
+            padding-top: 2rem;
+        }
+
+        /* ============================================
+           UTILITY
+           ============================================ */
+        .rounded-full {
+            border-radius: 9999px;
+        }
+
+        .rounded-xl {
+            border-radius: 0.75rem;
+        }
+
+        .rounded-2xl {
+            border-radius: 1rem;
+        }
+
+        .overflow-x-auto {
+            overflow-x: auto;
+        }
+
+        .flex-shrink-0 {
+            flex-shrink: 0;
+        }
+
+        .inline-block {
+            display: inline-block;
+        }
+
+        .inline-flex {
+            display: inline-flex;
+        }
+
+        .italic {
+            font-style: italic;
+        }
+
+        .space-y-2>*+* {
+            margin-top: 0.5rem;
+        }
+
+        .space-y-3>*+* {
+            margin-top: 0.75rem;
+        }
+
+        .space-y-4>*+* {
+            margin-top: 1rem;
+        }
+
+        .h-full {
+            height: 100%;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        /* ============================================
+           ANIMATIONS
+           ============================================ */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+            }
+        }
+
+        .cluster-dot {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* ============================================
+           PRINT STYLES
+           ============================================ */
+        @media print {
+
+            .card:hover,
+            .algo-card:hover,
+            .workflow-step:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- SECTION A: HEADER -->
+        <header class="text-center mb-12 animate-in">
+            <div class="badge badge-primary mb-6">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z" />
+                    <path d="M12 9v6" />
+                    <path d="M12 9a3 3 0 0 0-3 3" />
+                    <path d="M12 9a3 3 0 0 1 3 3" />
+                </svg>
+                <span class="font-mono">UNSUPERVISED LEARNING</span>
+            </div>
+            <h1 class="header-title mb-4">Dimension Reduction</h1>
+            <p class="text-lg text-muted" style="max-width: 48rem; margin: 0 auto;">
+                Simplifying High-Dimensional Data for Pattern Discovery
+            </p>
+            <div class="glow-line"></div>
+        </header>
+
+        <!-- SECTION B: WHAT IS DIMENSION REDUCTION -->
+        <section class="mb-16 animate-in" style="animation-delay: 0.1s;">
+            <div class="card">
+                <div class="grid-2 gap-8" style="align-items: center;">
+                    <div>
+                        <h2 class="text-2xl font-bold mb-4" style="display: flex; align-items: center; gap: 0.75rem;">
+                            <span class="icon-box" style="background: rgba(99, 102, 241, 0.1);">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                    stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path
+                                        d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" />
+                                    <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
+                                    <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
+                                </svg>
+                            </span>
+                            What is Dimension Reduction?
+                        </h2>
+                        <p class="leading-relaxed mb-4">
+                            An <strong class="text-primary">unsupervised learning technique</strong> that attempts to
+                            detect patterns in data by reducing the number of input features while preserving the most
+                            important information.
+                        </p>
+                        <p class="text-muted leading-relaxed mb-6">
+                            It transforms high-dimensional data into a lower-dimensional representation, making it
+                            possible to visualize, analyze, and process complex datasets more efficiently.
+                        </p>
+                        <div class="callout callout-accent">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                                <path d="M12 17h.01" />
+                            </svg>
+                            <p class="text-sm">
+                                <strong class="text-accent">Key Question:</strong> "What hidden patterns exist in my
+                                high-dimensional data?"
+                            </p>
+                        </div>
+                    </div>
+                    <!-- Visual: High-dim to Low-dim -->
+                    <div>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
+                            <!-- High dimensional cube -->
+                            <div class="dim-box">
+                                <div class="dim-box-bg"
+                                    style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));">
+                                </div>
+                                <div class="dim-box-content" style="border-color: rgba(99, 102, 241, 0.3);">
+                                    <div class="text-center">
+                                        <div class="dim-value text-primary">784</div>
+                                        <div class="dim-label">dimensions</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div class="text-center">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                                    stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M5 12h14" />
+                                    <path d="m12 5 7 7-7 7" />
+                                </svg>
+                                <div class="text-xs text-light font-mono">REDUCE</div>
+                            </div>
+
+                            <!-- Low dimensional -->
+                            <div class="dim-box">
+                                <div class="dim-box-bg"
+                                    style="background: linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(16, 185, 129, 0.2));">
+                                </div>
+                                <div class="dim-box-content" style="border-color: rgba(20, 184, 166, 0.3);">
+                                    <div class="text-center">
+                                        <div class="dim-value text-umap">2-3</div>
+                                        <div class="dim-label">dimensions</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-center text-sm text-muted font-mono mt-4">
+                            Like projecting a 3D shadow onto 2D paper
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION C: ADVANTAGES vs DISADVANTAGES -->
+        <section class="mb-16 animate-in" style="animation-delay: 0.2s;">
+            <h2 class="text-2xl font-bold mb-6 text-center">Trade-offs to Consider</h2>
+            <div class="grid-2">
+                <!-- Advantages -->
+                <div class="card card-success">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;" class="mb-6">
+                        <span class="icon-box" style="background: rgba(16, 185, 129, 0.1);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <path d="m9 11 3 3L22 4" />
+                            </svg>
+                        </span>
+                        <h3 class="text-xl font-bold text-success">Advantages</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="info-row info-row-success">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"
+                                style="margin-top: 2px;">
+                                <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold">Efficient</h4>
+                                <p class="text-sm text-muted">Smaller storage and computational cost</p>
+                            </div>
+                        </div>
+                        <div class="info-row info-row-success">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"
+                                style="margin-top: 2px;">
+                                <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold">Visualization</h4>
+                                <p class="text-sm text-muted">Easier to identify patterns, clusters and anomalies</p>
+                            </div>
+                        </div>
+                        <div class="info-row info-row-success">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"
+                                style="margin-top: 2px;">
+                                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold">Noise Reduction</h4>
+                                <p class="text-sm text-muted">Filters noise for improved performance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Disadvantages -->
+                <div class="card card-warning">
+                    <div style="display: flex; align-items: center; gap: 0.75rem;" class="mb-6">
+                        <span class="icon-box" style="background: rgba(245, 158, 11, 0.1);">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                                <path d="M12 9v4" />
+                                <path d="M12 17h.01" />
+                            </svg>
+                        </span>
+                        <h3 class="text-xl font-bold text-warning">Disadvantages</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="info-row info-row-warning">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"
+                                style="margin-top: 2px;">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 8v4" />
+                                <path d="M12 16h.01" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold">Information Loss</h4>
+                                <p class="text-sm text-muted">Valuable details may inadvertently be lost</p>
+                            </div>
+                        </div>
+                        <div class="info-row info-row-warning">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"
+                                style="margin-top: 2px;">
+                                <path
+                                    d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.98.98 0 0 1-.837.276c-.47-.07-.802-.48-.968-.925a2.501 2.501 0 1 0-3.214 3.214c.446.166.855.497.925.968a.979.979 0 0 1-.276.837l-1.61 1.61a2.404 2.404 0 0 1-1.705.707 2.402 2.402 0 0 1-1.704-.706l-1.568-1.568a1.026 1.026 0 0 0-.877-.29c-.493.074-.84.504-1.02.968a2.5 2.5 0 1 1-3.237-3.237c.464-.18.894-.527.967-1.02a1.026 1.026 0 0 0-.289-.877l-1.568-1.568A2.402 2.402 0 0 1 1.998 12c0-.617.236-1.234.706-1.704L4.23 8.77c.24-.24.581-.353.917-.303.515.077.877.528 1.073 1.01a2.5 2.5 0 1 0 3.259-3.259c-.482-.196-.933-.558-1.01-1.073-.05-.336.062-.676.303-.917l1.525-1.525A2.402 2.402 0 0 1 12 1.998c.617 0 1.234.236 1.704.706l1.568 1.568c.23.23.556.338.877.29.493-.074.84-.504 1.02-.968a2.5 2.5 0 1 1 3.237 3.237c-.464.18-.894.527-.967 1.02Z" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold">Complexity</h4>
+                                <p class="text-sm text-muted">Different algorithms have different strengths; requires
+                                    experimentation</p>
+                            </div>
+                        </div>
+                        <div class="info-row info-row-warning">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"
+                                style="margin-top: 2px;">
+                                <circle cx="11" cy="11" r="8" />
+                                <path d="m21 21-4.3-4.3" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold">Interpretability</h4>
+                                <p class="text-sm text-muted">Combined features make interpretation difficult</p>
+                            </div>
+                        </div>
+                        <div class="info-row info-row-warning">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"
+                                style="margin-top: 2px;">
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold">Computational Cost</h4>
+                                <p class="text-sm text-muted">Some algorithms like t-SNE are time intensive</p>
+                            </div>
+                        </div>
+                        <div class="info-row info-row-warning">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"
+                                style="margin-top: 2px;">
+                                <line x1="4" x2="4" y1="21" y2="14" />
+                                <line x1="4" x2="4" y1="10" y2="3" />
+                                <line x1="12" x2="12" y1="21" y2="12" />
+                                <line x1="12" x2="12" y1="8" y2="3" />
+                                <line x1="20" x2="20" y1="21" y2="16" />
+                                <line x1="20" x2="20" y1="12" y2="3" />
+                                <line x1="2" x2="6" y1="14" y2="14" />
+                                <line x1="10" x2="14" y1="8" y2="8" />
+                                <line x1="18" x2="22" y1="16" y2="16" />
+                            </svg>
+                            <div>
+                                <h4 class="font-semibold">Parameter Sensitive</h4>
+                                <p class="text-sm text-muted">Incorrect parameters can create suboptimal results</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION D: KEY ALGORITHMS -->
+        <section class="mb-16 animate-in" style="animation-delay: 0.3s;">
+            <h2 class="text-2xl font-bold mb-2 text-center">Key Algorithms</h2>
+            <p class="text-muted text-center mb-8">Choose based on your data characteristics and goals</p>
+
+            <div class="grid-3">
+                <!-- PCA -->
+                <div class="algo-card">
+                    <div class="flex-between mb-4">
+                        <span class="icon-box-lg icon-box" style="background: rgba(59, 130, 246, 0.1);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-pca)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="6" x2="6" y1="3" y2="15" />
+                                <circle cx="18" cy="6" r="3" />
+                                <circle cx="6" cy="18" r="3" />
+                                <path d="M18 9a9 9 0 0 1-9 9" />
+                            </svg>
+                        </span>
+                        <span class="tag"
+                            style="background: rgba(59, 130, 246, 0.1); color: var(--color-pca);">LINEAR</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">PCA</h3>
+                    <p class="text-sm text-muted mb-4">Principal Component Analysis</p>
+                    <p class="text-sm mb-4">
+                        Finds orthogonal directions that capture maximum variance in the data.
+                    </p>
+                    <div class="text-xs text-muted mb-3">Best for: Initial exploration, linear data</div>
+                    <div class="space-y-2">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Speed</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 95%; background: var(--color-pca);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Local</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 30%; background: var(--color-pca);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Global</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 85%; background: var(--color-pca);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- t-SNE -->
+                <div class="algo-card">
+                    <div class="flex-between mb-4">
+                        <span class="icon-box-lg icon-box" style="background: rgba(139, 92, 246, 0.1);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-tsne)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <circle cx="12" cy="12" r="6" />
+                                <circle cx="12" cy="12" r="2" />
+                            </svg>
+                        </span>
+                        <span class="tag"
+                            style="background: rgba(139, 92, 246, 0.1); color: var(--color-tsne);">NON-LINEAR</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">t-SNE</h3>
+                    <p class="text-sm text-muted mb-4">t-Distributed Stochastic Neighbor Embedding</p>
+                    <p class="text-sm mb-4">
+                        Converts similarities to probabilities, minimizes KL divergence in lower dimensions.
+                    </p>
+                    <div class="text-xs text-muted mb-3">Best for: Visualization of complex data</div>
+                    <div class="space-y-2">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Speed</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 25%; background: var(--color-tsne);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Local</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 95%; background: var(--color-tsne);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Global</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 35%; background: var(--color-tsne);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UMAP -->
+                <div class="algo-card">
+                    <div class="flex-between mb-4">
+                        <span class="icon-box-lg icon-box" style="background: rgba(20, 184, 166, 0.1);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-umap)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="16" y="16" width="6" height="6" rx="1" />
+                                <rect x="2" y="16" width="6" height="6" rx="1" />
+                                <rect x="9" y="2" width="6" height="6" rx="1" />
+                                <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" />
+                                <path d="M12 12V8" />
+                            </svg>
+                        </span>
+                        <span class="tag"
+                            style="background: rgba(20, 184, 166, 0.1); color: var(--color-umap);">NON-LINEAR</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">UMAP</h3>
+                    <p class="text-sm text-muted mb-4">Uniform Manifold Approximation & Projection</p>
+                    <p class="text-sm mb-4">
+                        Uses topological data analysis to preserve both local and global structure.
+                    </p>
+                    <div class="text-xs text-muted mb-3">Best for: Large datasets, global structure</div>
+                    <div class="space-y-2">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Speed</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 80%; background: var(--color-umap);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Local</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 90%; background: var(--color-umap);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Global</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 75%; background: var(--color-umap);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LargeVis -->
+                <div class="algo-card">
+                    <div class="flex-between mb-4">
+                        <span class="icon-box-lg icon-box" style="background: rgba(6, 182, 212, 0.1);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-largevis)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="15 3 21 3 21 9" />
+                                <polyline points="9 21 3 21 3 15" />
+                                <line x1="21" x2="14" y1="3" y2="10" />
+                                <line x1="3" x2="10" y1="21" y2="14" />
+                            </svg>
+                        </span>
+                        <span class="tag"
+                            style="background: rgba(6, 182, 212, 0.1); color: var(--color-largevis);">GRAPH-BASED</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">LargeVis</h3>
+                    <p class="text-sm text-muted mb-4">Large-scale Visualization</p>
+                    <p class="text-sm mb-4">
+                        Builds k-NN graph with edge sampling for efficient large-scale embedding.
+                    </p>
+                    <div class="text-xs text-muted mb-3">Best for: Very large datasets</div>
+                    <div class="space-y-2">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Speed</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 85%; background: var(--color-largevis);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Local</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 70%; background: var(--color-largevis);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Global</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 55%; background: var(--color-largevis);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Autoencoders -->
+                <div class="algo-card">
+                    <div class="flex-between mb-4">
+                        <span class="icon-box-lg icon-box" style="background: rgba(236, 72, 153, 0.1);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-autoenc)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="16" height="16" x="4" y="4" rx="2" />
+                                <rect width="6" height="6" x="9" y="9" rx="1" />
+                                <path d="M15 2v2" />
+                                <path d="M15 20v2" />
+                                <path d="M2 15h2" />
+                                <path d="M2 9h2" />
+                                <path d="M20 15h2" />
+                                <path d="M20 9h2" />
+                                <path d="M9 2v2" />
+                                <path d="M9 20v2" />
+                            </svg>
+                        </span>
+                        <span class="tag" style="background: rgba(236, 72, 153, 0.1); color: var(--color-autoenc);">DEEP
+                            LEARNING</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">Autoencoders</h3>
+                    <p class="text-sm text-muted mb-4">Neural Network Compression</p>
+                    <p class="text-sm mb-4">
+                        Encoder compresses data; bottleneck layer provides reduced representation.
+                    </p>
+                    <div class="text-xs text-muted mb-3">Best for: Complex data, sufficient samples</div>
+                    <div class="space-y-2">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Speed</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 50%; background: var(--color-autoenc);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Local</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 70%; background: var(--color-autoenc);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Global</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 70%; background: var(--color-autoenc);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- LDA -->
+                <div class="algo-card">
+                    <div class="flex-between mb-4">
+                        <span class="icon-box-lg icon-box" style="background: rgba(245, 158, 11, 0.1);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-lda)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                            </svg>
+                        </span>
+                        <span class="tag"
+                            style="background: rgba(245, 158, 11, 0.1); color: var(--color-lda);">SUPERVISED</span>
+                    </div>
+                    <h3 class="text-lg font-bold mb-1">LDA</h3>
+                    <p class="text-sm text-muted mb-4">Linear Discriminant Analysis</p>
+                    <p class="text-sm mb-4">
+                        Finds projections that maximize class separability using labels.
+                    </p>
+                    <div class="text-xs text-muted mb-3">Best for: Classification preprocessing</div>
+                    <div class="space-y-2">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Speed</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 90%; background: var(--color-lda);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Local</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 40%; background: var(--color-lda);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <span class="text-xs text-muted" style="width: 4rem;">Global</span>
+                            <div class="progress-track">
+                                <div class="progress-fill" style="width: 65%; background: var(--color-lda);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION E: ALGORITHM COMPARISON CHART -->
+        <section class="mb-16 animate-in" style="animation-delay: 0.4s;">
+            <div class="card">
+                <h2 class="text-2xl font-bold mb-6 text-center">Quick Comparison</h2>
+                <div class="overflow-x-auto">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Algorithm</th>
+                                <th>Speed</th>
+                                <th>Local Structure</th>
+                                <th>Global Structure</th>
+                                <th>Scalability</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-pca">PCA</td>
+                                <td><span class="text-success">●●●●●</span></td>
+                                <td><span class="text-warning">●●○○○</span></td>
+                                <td><span class="text-success">●●●●○</span></td>
+                                <td><span class="text-success">●●●●●</span></td>
+                            </tr>
+                            <tr>
+                                <td class="text-tsne">t-SNE</td>
+                                <td><span class="text-danger">●○○○○</span></td>
+                                <td><span class="text-success">●●●●●</span></td>
+                                <td><span class="text-warning">●●○○○</span></td>
+                                <td><span class="text-danger">●●○○○</span></td>
+                            </tr>
+                            <tr>
+                                <td class="text-umap">UMAP</td>
+                                <td><span class="text-success">●●●●○</span></td>
+                                <td><span class="text-success">●●●●●</span></td>
+                                <td><span class="text-success">●●●●○</span></td>
+                                <td><span class="text-success">●●●●○</span></td>
+                            </tr>
+                            <tr>
+                                <td class="text-largevis">LargeVis</td>
+                                <td><span class="text-success">●●●●○</span></td>
+                                <td><span class="text-success">●●●○○</span></td>
+                                <td><span class="text-warning">●●●○○</span></td>
+                                <td><span class="text-success">●●●●●</span></td>
+                            </tr>
+                            <tr>
+                                <td class="text-autoenc">Autoencoder</td>
+                                <td><span class="text-warning">●●●○○</span></td>
+                                <td><span class="text-success">●●●○○</span></td>
+                                <td><span class="text-success">●●●○○</span></td>
+                                <td><span class="text-success">●●●●○</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION F: MNIST EXAMPLE -->
+        <section class="mb-16 animate-in" style="animation-delay: 0.5s;">
+            <h2 class="text-2xl font-bold mb-2 text-center">Real-World Example: MNIST Digits</h2>
+            <p class="text-muted text-center mb-8">Classifying handwritten digits (0-9) from 784-dimensional pixel data
+            </p>
+
+            <div class="card">
+                <div class="grid-2 gap-8">
+                    <!-- Before: LargeVis visualization -->
+                    <div class="viz-box">
+                        <div class="viz-label"
+                            style="background: rgba(6, 182, 212, 0.1); color: var(--color-largevis);">LargeVis</div>
+                        <svg viewBox="0 0 200 150" style="width: 100%; height: 100%;">
+                            <!-- Cluster 1 - Blue -->
+                            <circle cx="60" cy="40" r="4" fill="#3b82f6" opacity="0.7" />
+                            <circle cx="65" cy="45" r="3" fill="#3b82f6" opacity="0.6" />
+                            <circle cx="55" cy="42" r="3.5" fill="#3b82f6" opacity="0.8" />
+                            <circle cx="70" cy="38" r="3" fill="#3b82f6" opacity="0.7" />
+                            <circle cx="58" cy="48" r="4" fill="#3b82f6" opacity="0.6" />
+                            <!-- Cluster 2 - Red/Pink -->
+                            <circle cx="130" cy="35" r="4" fill="#ef4444" opacity="0.7" />
+                            <circle cx="125" cy="40" r="3.5" fill="#ef4444" opacity="0.6" />
+                            <circle cx="135" cy="32" r="3" fill="#ef4444" opacity="0.8" />
+                            <circle cx="140" cy="42" r="4" fill="#ef4444" opacity="0.7" />
+                            <!-- Cluster 3 - Green -->
+                            <circle cx="45" cy="100" r="3.5" fill="#10b981" opacity="0.7" />
+                            <circle cx="50" cy="95" r="4" fill="#10b981" opacity="0.6" />
+                            <circle cx="40" cy="105" r="3" fill="#10b981" opacity="0.8" />
+                            <circle cx="55" cy="102" r="3.5" fill="#10b981" opacity="0.7" />
+                            <!-- Cluster 4 - Yellow -->
+                            <circle cx="100" cy="120" r="3" fill="#f59e0b" opacity="0.7" />
+                            <circle cx="105" cy="115" r="4" fill="#f59e0b" opacity="0.6" />
+                            <circle cx="95" cy="125" r="3.5" fill="#f59e0b" opacity="0.8" />
+                            <!-- Cluster 5 - Purple/Magenta -->
+                            <circle cx="85" cy="75" r="4" fill="#ec4899" opacity="0.7" />
+                            <circle cx="90" cy="70" r="3" fill="#ec4899" opacity="0.6" />
+                            <circle cx="80" cy="80" r="3.5" fill="#ec4899" opacity="0.8" />
+                            <circle cx="95" cy="78" r="3" fill="#ec4899" opacity="0.7" />
+                            <!-- Cluster 6 - Cyan -->
+                            <circle cx="160" cy="90" r="3.5" fill="#06b6d4" opacity="0.7" />
+                            <circle cx="155" cy="95" r="4" fill="#06b6d4" opacity="0.6" />
+                            <circle cx="165" cy="85" r="3" fill="#06b6d4" opacity="0.8" />
+                            <!-- Overlap noise -->
+                            <circle cx="75" cy="60" r="2" fill="#8b5cf6" opacity="0.4" />
+                            <circle cx="110" cy="55" r="2" fill="#14b8a6" opacity="0.4" />
+                            <circle cx="120" cy="80" r="2" fill="#f59e0b" opacity="0.4" />
+                        </svg>
+                        <div class="viz-caption">Some overlap visible</div>
+                    </div>
+
+                    <!-- After: UMAP visualization -->
+                    <div class="viz-box">
+                        <div class="viz-label" style="background: rgba(20, 184, 166, 0.1); color: var(--color-umap);">
+                            UMAP</div>
+                        <svg viewBox="0 0 200 150" style="width: 100%; height: 100%;">
+                            <!-- Clear separated clusters with digit labels -->
+                            <!-- 0 -->
+                            <circle cx="30" cy="110" r="12" fill="#854d0e" opacity="0.2" />
+                            <text x="30" y="114" text-anchor="middle" fill="#854d0e" font-size="12"
+                                font-weight="bold">0</text>
+                            <!-- 1 -->
+                            <circle cx="170" cy="25" r="12" fill="#c2410c" opacity="0.2" />
+                            <text x="170" y="29" text-anchor="middle" fill="#c2410c" font-size="12"
+                                font-weight="bold">1</text>
+                            <!-- 2 -->
+                            <circle cx="120" cy="55" r="12" fill="#166534" opacity="0.2" />
+                            <text x="120" y="59" text-anchor="middle" fill="#166534" font-size="12"
+                                font-weight="bold">2</text>
+                            <!-- 3 -->
+                            <circle cx="175" cy="115" r="12" fill="#be185d" opacity="0.2" />
+                            <text x="175" y="119" text-anchor="middle" fill="#be185d" font-size="12"
+                                font-weight="bold">3</text>
+                            <!-- 4 -->
+                            <circle cx="40" cy="60" r="12" fill="#a16207" opacity="0.2" />
+                            <text x="40" y="64" text-anchor="middle" fill="#a16207" font-size="12"
+                                font-weight="bold">4</text>
+                            <!-- 5 -->
+                            <circle cx="105" cy="90" r="12" fill="#047857" opacity="0.2" />
+                            <text x="105" y="94" text-anchor="middle" fill="#047857" font-size="12"
+                                font-weight="bold">5</text>
+                            <!-- 6 -->
+                            <circle cx="140" cy="130" r="12" fill="#1d4ed8" opacity="0.2" />
+                            <text x="140" y="134" text-anchor="middle" fill="#1d4ed8" font-size="12"
+                                font-weight="bold">6</text>
+                            <!-- 7 -->
+                            <circle cx="90" cy="20" r="12" fill="#7e22ce" opacity="0.2" />
+                            <text x="90" y="24" text-anchor="middle" fill="#7e22ce" font-size="12"
+                                font-weight="bold">7</text>
+                            <!-- 8 -->
+                            <circle cx="170" cy="70" r="12" fill="#0f766e" opacity="0.2" />
+                            <text x="170" y="74" text-anchor="middle" fill="#0f766e" font-size="12"
+                                font-weight="bold">8</text>
+                            <!-- 9 -->
+                            <circle cx="55" cy="30" r="12" fill="#be123c" opacity="0.2" />
+                            <text x="55" y="34" text-anchor="middle" fill="#be123c" font-size="12"
+                                font-weight="bold">9</text>
+                        </svg>
+                        <div class="viz-caption">Clear 10 clusters</div>
+                    </div>
+                </div>
+
+                <!-- Key insight -->
+                <div class="callout callout-primary mt-6" style="justify-content: center;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+                        <path d="M9 18h6" />
+                        <path d="M10 22h4" />
+                    </svg>
+                    <span class="italic text-muted">
+                        "If we didn't know anything about digits to start, we'd at least have a sense there are 10 of
+                        them"
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION G: WORKFLOW -->
+        <section class="mb-16 animate-in" style="animation-delay: 0.6s;">
+            <h2 class="text-2xl font-bold mb-2 text-center">How to Apply Dimension Reduction</h2>
+            <p class="text-muted text-center mb-8">An iterative process requiring experimentation</p>
+
+            <div class="grid-5">
+                <!-- Step 1 -->
+                <div class="workflow-step">
+                    <div class="step-number" style="background: rgba(99, 102, 241, 0.1); color: var(--color-primary);">1
+                    </div>
+                    <h4 class="font-semibold mb-2">Data Prep</h4>
+                    <p class="text-xs text-muted">Standardize & normalize features</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="workflow-step">
+                    <div class="step-number" style="background: rgba(99, 102, 241, 0.1); color: var(--color-primary);">2
+                    </div>
+                    <h4 class="font-semibold mb-2">Select Algorithm</h4>
+                    <p class="text-xs text-muted">Consider data size & goals</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="workflow-step">
+                    <div class="step-number" style="background: rgba(245, 158, 11, 0.1); color: var(--color-warning);">3
+                    </div>
+                    <h4 class="font-semibold mb-2">Tune Parameters</h4>
+                    <p class="text-xs text-muted">"Playing around with variables"</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="workflow-step">
+                    <div class="step-number" style="background: rgba(99, 102, 241, 0.1); color: var(--color-primary);">4
+                    </div>
+                    <h4 class="font-semibold mb-2">Evaluate</h4>
+                    <p class="text-xs text-muted">Visual inspection & metrics</p>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="workflow-step" style="border-color: rgba(20, 184, 166, 0.3);">
+                    <div class="step-number" style="background: rgba(20, 184, 166, 0.1); color: var(--color-umap);">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m17 2 4 4-4 4" />
+                            <path d="M3 11v-1a4 4 0 0 1 4-4h14" />
+                            <path d="m7 22-4-4 4-4" />
+                            <path d="M21 13v1a4 4 0 0 1-4 4H3" />
+                        </svg>
+                    </div>
+                    <h4 class="font-semibold mb-2">Iterate</h4>
+                    <p class="text-xs text-muted">Trial and error is part of the game</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION H: USE CASES & KEY TAKEAWAYS -->
+        <section class="mb-12 animate-in" style="animation-delay: 0.7s;">
+            <div class="grid-2">
+                <!-- Use Cases -->
+                <div class="card">
+                    <h3 class="text-xl font-bold mb-4" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            <rect width="20" height="14" x="2" y="6" rx="2" />
+                        </svg>
+                        Common Use Cases
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="info-row info-row-neutral"
+                            style="display: flex; align-items: center; gap: 0.75rem;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-umap)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="18" x2="18" y1="20" y2="10" />
+                                <line x1="12" x2="12" y1="20" y2="4" />
+                                <line x1="6" x2="6" y1="20" y2="14" />
+                            </svg>
+                            <span>Data Visualization & Exploration</span>
+                        </div>
+                        <div class="info-row info-row-neutral"
+                            style="display: flex; align-items: center; gap: 0.75rem;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-pca)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" />
+                                <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
+                                <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
+                            </svg>
+                            <span>Feature Preprocessing for ML</span>
+                        </div>
+                        <div class="info-row info-row-neutral"
+                            style="display: flex; align-items: center; gap: 0.75rem;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-success)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" />
+                                <line x1="22" x2="16" y1="9" y2="15" />
+                                <line x1="16" x2="22" y1="9" y2="15" />
+                            </svg>
+                            <span>Noise Reduction & Filtering</span>
+                        </div>
+                        <div class="info-row info-row-neutral"
+                            style="display: flex; align-items: center; gap: 0.75rem;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-largevis)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" x2="2" y1="12" y2="12" />
+                                <path
+                                    d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
+                                <line x1="6" x2="6.01" y1="16" y2="16" />
+                                <line x1="10" x2="10.01" y1="16" y2="16" />
+                            </svg>
+                            <span>Data Compression & Storage</span>
+                        </div>
+                        <div class="info-row info-row-neutral"
+                            style="display: flex; align-items: center; gap: 0.75rem;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-warning)"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 8v4" />
+                                <path d="M12 16h.01" />
+                            </svg>
+                            <span>Anomaly & Outlier Detection</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Key Takeaways -->
+                <div class="card callout-gradient">
+                    <h3 class="text-xl font-bold mb-4" style="display: flex; align-items: center; gap: 0.5rem;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                        Key Takeaways
+                    </h3>
+                    <ul class="space-y-3">
+                        <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                            <span class="text-primary" style="margin-top: 0.25rem;">→</span>
+                            <span>Use <strong>PCA</strong> for fast initial exploration; <strong>UMAP</strong> for
+                                better cluster preservation</span>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                            <span class="text-primary" style="margin-top: 0.25rem;">→</span>
+                            <span>Always consider the <strong class="text-warning">trade-off</strong> between
+                                information loss and simplification</span>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                            <span class="text-primary" style="margin-top: 0.25rem;">→</span>
+                            <span>Parameter tuning requires <strong>experimentation</strong>—this is normal and
+                                expected</span>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                            <span class="text-primary" style="margin-top: 0.25rem;">→</span>
+                            <span>Reduced dimensions can reveal hidden <strong class="text-umap">patterns and
+                                    clusters</strong> in your data</span>
+                        </li>
+                        <li style="display: flex; align-items: flex-start; gap: 0.75rem;">
+                            <span class="text-primary" style="margin-top: 0.25rem;">→</span>
+                            <span><strong>Correlated features</strong> become entangled—interpretability can be
+                                challenging</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER / REFERENCE -->
+        <footer>
+            <p class="mb-2">
+                Reference: LeCun, Y., Bengio, Y., & Hinton, G. (2015). Deep learning. <em>Nature, 521</em>(7553),
+                436-444.
+            </p>
+            <p class="font-mono text-xs text-light">
+                Dimension Reduction • Unsupervised Learning • ML Fundamentals
+            </p>
+        </footer>
+
+    </div>
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

@@ -1,12 +1,13 @@
 {
   "generated": "2025-01-27",
-  "totalPosts": 15,
+  "totalPosts": 22,
   "baseUrl": "https://www.kishoretech.com",
   "author": "Sriramkishore Naraharisetti",
   "categories": {
     "ML Fundamentals": 7,
     "AI Business UseCases": 6,
-    "AI Project Management": 2
+    "AI Project Management": 2,
+    "ML Algorithms": 7
   },
   "posts": [
     {
@@ -143,6 +144,69 @@
       "datePublished": "2025-01-24",
       "tags": ["AI Lifecycle", "ML Pipeline", "ROAD Framework", "Model Building", "Model Deployment", "MLOps"],
       "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-ml-project-lifecycle"
+    },
+    {
+      "file": "ml-algorithms/ml-algorithm-selection-guide.html",
+      "title": "ML Algorithm Selection Guide",
+      "description": "A decision framework for choosing the right ML algorithm. Covers 10 key considerations including data size, interpretability, speed, and accuracy trade-offs.",
+      "category": "ML Algorithms",
+      "datePublished": "2025-01-31",
+      "tags": ["Algorithm Selection", "Machine Learning", "Model Selection", "Data Science", "Supervised Learning", "Unsupervised Learning", "Interpretability"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/ml-algorithm-selection-guide"
+    },
+    {
+      "file": "ml-algorithms/decision-tree.html",
+      "title": "Decision Tree - Interactive Infographic",
+      "description": "Visual guide to decision tree algorithms covering classification, regression, CART, entropy, Gini index, pruning, and ensemble methods with examples.",
+      "category": "ML Algorithms",
+      "datePublished": "2025-01-31",
+      "tags": ["Decision Tree", "Classification", "Regression", "CART", "Entropy", "Gini Index", "Pruning", "Ensemble Methods", "Machine Learning"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/decision-tree"
+    },
+    {
+      "file": "ml-algorithms/naive-bayes.html",
+      "title": "Naive Bayes: Interactive Infographic",
+      "description": "Visual guide to Naive Bayes classifier covering Bayes theorem, probabilistic learning, algorithm variants (Gaussian, Multinomial, Bernoulli), and real-world applications.",
+      "category": "ML Algorithms",
+      "datePublished": "2025-01-31",
+      "tags": ["Naive Bayes", "Classification", "Bayes Theorem", "Probabilistic Learning", "Text Classification", "Spam Detection", "Machine Learning"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/naive-bayes"
+    },
+    {
+      "file": "ml-algorithms/support-vector-machines.html",
+      "title": "Support Vector Machines: Interactive Infographic",
+      "description": "Interactive guide to Support Vector Machines covering hyperplane optimization, kernel trick, margin maximization, SVM variants, and practical implementation tips.",
+      "category": "ML Algorithms",
+      "datePublished": "2025-01-31",
+      "tags": ["SVM", "Support Vector Machines", "Classification", "Kernel Trick", "Hyperplane", "Margin", "Supervised Learning", "Machine Learning"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/support-vector-machines"
+    },
+    {
+      "file": "ml-algorithms/random-forest.html",
+      "title": "Random Forest Algorithm - Complete Guide",
+      "description": "Complete guide to Random Forest covering ensemble learning, bagging, feature randomization, hyperparameter tuning, and real-world applications with visual explanations.",
+      "category": "ML Algorithms",
+      "datePublished": "2025-01-31",
+      "tags": ["Random Forest", "Ensemble Learning", "Bagging", "Decision Tree", "Classification", "Regression", "Feature Importance", "Machine Learning"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/random-forest"
+    },
+    {
+      "file": "ml-algorithms/neural-networks.html",
+      "title": "Neural Networks: The Brain-Inspired Foundation of AI",
+      "description": "Comprehensive guide to neural networks covering architectures (CNN, RNN, Transformers, GANs), deep learning concepts, ImageNet history, and biological inspiration.",
+      "category": "ML Algorithms",
+      "datePublished": "2025-01-31",
+      "tags": ["Neural Networks", "Deep Learning", "CNN", "RNN", "Transformers", "GANs", "Backpropagation", "Machine Learning", "AI"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/neural-networks"
+    },
+    {
+      "file": "ml-algorithms/dimension-reduction.html",
+      "title": "Dimension Reduction - Interactive Infographic",
+      "description": "Explore dimension reduction techniques including PCA, t-SNE, UMAP, LDA, and autoencoders. Visual guide with algorithm comparison and real-world MNIST example.",
+      "category": "ML Algorithms",
+      "datePublished": "2025-01-31",
+      "tags": ["Dimension Reduction", "PCA", "t-SNE", "UMAP", "LDA", "Autoencoders", "Unsupervised Learning", "Machine Learning"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/dimension-reduction"
     }
   ]
 }

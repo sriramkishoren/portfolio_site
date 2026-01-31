@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naive Bayes: Interactive Infographic</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Naive Bayes: Interactive Infographic">
+    <meta name="description" content="Visual guide to Naive Bayes classifier covering Bayes theorem, probabilistic learning, algorithm variants (Gaussian, Multinomial, Bernoulli), and real-world applications.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="ML Algorithms">
+    <meta name="tags" content="Naive Bayes, Classification, Bayes Theorem, Probabilistic Learning, Text Classification, Spam Detection, Machine Learning">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Naive Bayes is a probabilistic classifier based on Bayes theorem that assumes feature independence, offering fast training and strong performance for text classification, spam detection, and sentiment analysis.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/naive-bayes">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Naive Bayes: Interactive Infographic">
+    <meta property="og:description" content="Visual guide to Naive Bayes classifier covering Bayes theorem, probabilistic learning, algorithm variants, and real-world applications.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/naive-bayes">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-01-31">
+    <meta property="article:section" content="ML Algorithms">
+    <meta property="article:tag" content="Naive Bayes">
+    <meta property="article:tag" content="Classification">
+    <meta property="article:tag" content="Machine Learning">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Naive Bayes: Interactive Infographic",
+        "description": "Visual guide to Naive Bayes classifier covering Bayes theorem, probabilistic learning, algorithm variants, and real-world applications.",
+        "datePublished": "2025-01-31",
+        "dateModified": "2025-01-31",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/naive-bayes"
+        },
+        "keywords": ["Naive Bayes", "Classification", "Bayes Theorem", "Probabilistic Learning", "Text Classification", "Spam Detection", "Machine Learning"],
+        "articleSection": "ML Algorithms",
+        "about": [
+            {"@type": "Thing", "name": "Naive Bayes"},
+            {"@type": "Thing", "name": "Probabilistic Learning"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "Bayes Theorem"},
+            {"@type": "Thing", "name": "Text Classification"},
+            {"@type": "Thing", "name": "Spam Detection"}
+        ]
+    }
+    </script>
+
+    <!--
+    blog-metadata:
+      title: "Naive Bayes: Interactive Infographic"
+      category: "ML Algorithms"
+      pillar: "ML Algorithms"
+      tags:
+        - Naive Bayes
+        - Classification
+        - Bayes Theorem
+        - Probabilistic Learning
+      connectors: "ML Fundamentals, AI Business UseCases"
+    -->
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Config & Styles -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#8B5CF6',
+                            teal: '#14B8A6',
+                            green: '#10B981',
+                            blue: '#3B82F6',
+                            orange: '#F97316',
+                            dark: '#1E293B',
+                            light: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+                color: black;
+            }
+
+            .no-print {
+                display: none;
+            }
+
+            .card-hover {
+                box-shadow: none;
+                border: 1px solid #ddd;
+                page-break-inside: avoid;
+            }
+
+            h1,
+            h2,
+            h3 {
+                color: black !important;
+            }
+
+            .bg-slate-900 {
+                background-color: white !important;
+                color: black !important;
+            }
+
+            .text-white {
+                color: black !important;
+            }
+        }
+
+        .math-symbol {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-purple selection:text-white">
+
+    <!-- HERO SECTION -->
+    <header class="bg-slate-900 text-white pt-16 pb-24 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-12 opacity-10">
+            <i data-lucide="network" class="w-64 h-64"></i>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <div
+                    class="inline-flex items-center justify-center p-2 bg-brand-purple/20 rounded-full mb-4 px-4 border border-brand-purple/30">
+                    <span class="text-brand-purple font-semibold tracking-wide uppercase text-sm">Machine Learning
+                        Algorithm Profile</span>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-4">
+                    Naive Bayes
+                </h1>
+                <p class="text-xl text-slate-300 max-w-2xl mx-auto font-light">
+                    A fast, efficient probabilistic classifier based on Bayes' Theorem with strong (naive) independence
+                    assumptions.
+                </p>
+
+                <!-- Quick Stats Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 text-left">
+                    <div class="bg-slate-800/50 p-4 rounded-lg border border-slate-700 backdrop-blur-sm">
+                        <div class="text-brand-teal mb-1"><i data-lucide="zap" class="w-5 h-5"></i></div>
+                        <div class="text-2xl font-bold">Fast</div>
+                        <div class="text-xs text-slate-400">Training & Prediction</div>
+                    </div>
+                    <div class="bg-slate-800/50 p-4 rounded-lg border border-slate-700 backdrop-blur-sm">
+                        <div class="text-brand-purple mb-1"><i data-lucide="database" class="w-5 h-5"></i></div>
+                        <div class="text-2xl font-bold">Small Data</div>
+                        <div class="text-xs text-slate-400">Effective on limited sets</div>
+                    </div>
+                    <div class="bg-slate-800/50 p-4 rounded-lg border border-slate-700 backdrop-blur-sm">
+                        <div class="text-brand-green mb-1"><i data-lucide="list" class="w-5 h-5"></i></div>
+                        <div class="text-2xl font-bold">Categorical</div>
+                        <div class="text-xs text-slate-400">Handles discrete data well</div>
+                    </div>
+                    <div class="bg-slate-800/50 p-4 rounded-lg border border-slate-700 backdrop-blur-sm">
+                        <div class="text-brand-orange mb-1"><i data-lucide="git-branch" class="w-5 h-5"></i></div>
+                        <div class="text-2xl font-bold">Linear</div>
+                        <div class="text-xs text-slate-400">Decision Boundaries</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT CONTAINER -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-20 pb-20">
+
+        <!-- SECTION: THE FORMULA (Visual Breakdown) -->
+        <section class="bg-white rounded-2xl shadow-xl p-8 mb-12 border-t-4 border-brand-purple">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                    <i data-lucide="scale" class="text-brand-purple"></i> The Foundation: Bayes' Theorem
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Formula Visual -->
+                <div class="lg:col-span-7 bg-slate-50 rounded-xl p-8 border border-slate-100">
+                    <div class="flex flex-col items-center justify-center space-y-6">
+                        <div
+                            class="text-4xl md:text-5xl font-mono font-bold flex items-center flex-wrap justify-center gap-4">
+                            <span class="text-brand-green relative group cursor-help">
+                                P(A|B)
+                                <span
+                                    class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-sans font-normal text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Posterior</span>
+                            </span>
+                            <span class="text-slate-400">=</span>
+                            <div class="flex flex-col items-center">
+                                <div class="border-b-4 border-slate-800 px-4 pb-2 mb-2 flex items-center gap-2">
+                                    <span class="text-brand-teal relative group cursor-help">
+                                        P(B|A)
+                                        <span
+                                            class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-sans font-normal text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Likelihood</span>
+                                    </span>
+                                    <span class="text-slate-400">×</span>
+                                    <span class="text-brand-purple relative group cursor-help">
+                                        P(A)
+                                        <span
+                                            class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-sans font-normal text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Prior</span>
+                                    </span>
+                                </div>
+                                <span class="text-brand-orange relative group cursor-help">
+                                    P(B)
+                                    <span
+                                        class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs font-sans font-normal text-slate-500 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">Evidence</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-center text-sm text-slate-500">
+                        <p class="italic">Hover over the terms to see their names</p>
+                    </div>
+                </div>
+
+                <!-- Explanation Cards -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors">
+                        <div class="bg-brand-green/10 p-2 rounded text-brand-green mt-1 font-bold whitespace-nowrap">
+                            P(A|B)</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Posterior Probability</h4>
+                            <p class="text-sm text-slate-600">The updated probability of class A given the new evidence
+                                B.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors">
+                        <div class="bg-brand-teal/10 p-2 rounded text-brand-teal mt-1 font-bold whitespace-nowrap">
+                            P(B|A)</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Likelihood</h4>
+                            <p class="text-sm text-slate-600">Probability of seeing features B given that the class is
+                                A.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors">
+                        <div class="bg-brand-purple/10 p-2 rounded text-brand-purple mt-1 font-bold whitespace-nowrap">
+                            P(A)</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Prior Probability</h4>
+                            <p class="text-sm text-slate-600">Initial belief about class A before seeing any data.</p>
+                        </div>
+                    </div>
+                    <!-- Added P(B) Explanation -->
+                    <div
+                        class="flex items-start gap-4 p-4 rounded-lg hover:bg-slate-50 transition-colors border-l-4 border-brand-orange bg-brand-orange/5">
+                        <div class="bg-brand-orange/10 p-2 rounded text-brand-orange mt-1 font-bold whitespace-nowrap">
+                            P(B)</div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Evidence</h4>
+                            <p class="text-sm text-slate-600">The total probability of observing the features B. It acts
+                                as a normalizing constant.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: THE NAIVE ASSUMPTION -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <i data-lucide="alert-triangle" class="text-brand-orange"></i> The "Naive" Assumption
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Why Naive? -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-brand-orange">Independence Assumption</h3>
+                    <p class="text-slate-600 mb-4">
+                        Naive Bayes assumes that <strong>all features are independent</strong> of each other given the
+                        class.
+                    </p>
+                    <div
+                        class="bg-slate-50 p-4 rounded-lg border border-slate-200 font-mono text-xs md:text-sm text-slate-700 mb-4">
+                        P(Feature1, Feature2 | Class) <br>
+                        ≈ P(Feature1 | Class) × P(Feature2 | Class)
+                    </div>
+                    <p class="text-sm text-slate-500">
+                        In reality, this is rarely true (hence "Naive"), but it simplifies computation drastically and
+                        often works surprisingly well.
+                    </p>
+                </div>
+
+                <!-- Real World Examples (From Document) -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 card-hover">
+                    <h3 class="font-bold text-lg mb-4 text-slate-900">Where it Fails (Dependencies)</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="trending-up" class="w-5 h-5 text-red-500 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <span class="font-semibold text-slate-900">Time-Series Data (Stock Prices)</span>
+                                <p class="text-sm text-slate-600">Previous observations influence current ones. Data is
+                                    not independent over time.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-red-500 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <span class="font-semibold text-slate-900">Spatial Data (Housing/Zillow)</span>
+                                <p class="text-sm text-slate-600">Real estate prices depend on neighborhoods. A house
+                                    price is not independent of its neighbors.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: HOW IT LEARNS -->
+        <section class="mb-16">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                <i data-lucide="brain-circuit" class="text-brand-blue"></i> Bayesian Learning Process
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Step 1 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-brand-blue card-hover">
+                    <div class="text-brand-blue font-bold text-4xl mb-2 opacity-20">01</div>
+                    <h3 class="font-bold text-lg mb-2">Prior Assumption</h3>
+                    <p class="text-sm text-slate-600 mb-4">
+                        The model starts with an initial guess (prior) about how the data is distributed.
+                    </p>
+                    <div class="bg-blue-50 p-2 rounded text-xs font-mono text-blue-800">
+                        Example: "I think the mean is 5.0"
+                    </div>
+                </div>
+
+                <!-- Step 2: UPDATED per instructions -->
+                <div
+                    class="bg-blue-50/50 p-6 rounded-xl shadow-md border-2 border-brand-blue card-hover transform md:-translate-y-2">
+                    <div class="text-brand-blue font-bold text-4xl mb-2 opacity-20">02</div>
+                    <h3 class="font-bold text-lg mb-2 text-brand-blue">Parameter Updating</h3>
+                    <p class="text-sm text-slate-700 mb-4 font-medium">
+                        "Naive Bayes is designed to update parameters as new data is introduced."
+                    </p>
+                    <p class="text-xs text-slate-500 mb-3">
+                        Unlike models that need full retraining, it simply adjusts its estimates as new evidence
+                        arrives.
+                    </p>
+                    <div class="bg-white p-2 rounded text-xs font-mono text-blue-800 border border-blue-100 shadow-sm">
+                        New data arrives... <br />
+                        Estimate update: 5.0 → <span class="font-bold">5.1</span>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-brand-blue card-hover">
+                    <div class="text-brand-blue font-bold text-4xl mb-2 opacity-20">03</div>
+                    <h3 class="font-bold text-lg mb-2">Weighting & Boundaries</h3>
+                    <p class="text-sm text-slate-600 mb-4">
+                        New data can be weighted differently than old data, causing the decision boundary to shift
+                        dynamically.
+                    </p>
+                    <div class="bg-blue-50 p-2 rounded text-xs font-mono text-blue-800">
+                        Dynamic Adaptation
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: TYPES & DECISION BOUNDARIES -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+
+            <!-- Variants -->
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                    <i data-lucide="layers" class="text-slate-700"></i> NB Variants
+                </h2>
+                <div class="space-y-4">
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-blue-100 p-2 rounded text-blue-600"><i data-lucide="activity"
+                                    class="w-4 h-4"></i></div>
+                            <h3 class="font-bold">Gaussian NB</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 ml-11">For <strong>continuous</strong> data. Assumes features
+                            follow a normal (bell curve) distribution.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-green-100 p-2 rounded text-green-600"><i data-lucide="file-text"
+                                    class="w-4 h-4"></i></div>
+                            <h3 class="font-bold">Multinomial NB</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 ml-11">For <strong>counts</strong> (e.g., word frequencies).
+                            Best for text classification/spam filtering.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div class="bg-orange-100 p-2 rounded text-orange-600"><i data-lucide="toggle-right"
+                                    class="w-4 h-4"></i></div>
+                            <h3 class="font-bold">Bernoulli NB</h3>
+                        </div>
+                        <p class="text-sm text-slate-600 ml-11">For <strong>binary</strong> data (0/1, Yes/No). Good for
+                            checking presence/absence of words.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Boundaries -->
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                    <i data-lucide="git-commit" class="text-slate-700"></i> Decision Boundaries
+                </h2>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 h-full">
+                    <div class="mb-4">
+                        <span
+                            class="bg-slate-100 text-slate-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Limitation</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Linear Separation</h3>
+                    <p class="text-slate-600 mb-6">
+                        Naive Bayes is generally limited to <strong>linear decision boundaries</strong>. It draws
+                        straight lines (or hyperplanes) to separate classes.
+                    </p>
+
+                    <!-- Simple SVG Visual -->
+                    <div
+                        class="w-full h-48 bg-slate-50 rounded-lg border border-slate-200 relative overflow-hidden flex items-center justify-center">
+                        <svg viewBox="0 0 200 100" class="w-full h-full">
+                            <!-- Points Class A -->
+                            <circle cx="30" cy="30" r="3" fill="#3B82F6" opacity="0.7" />
+                            <circle cx="45" cy="20" r="3" fill="#3B82F6" opacity="0.7" />
+                            <circle cx="40" cy="45" r="3" fill="#3B82F6" opacity="0.7" />
+                            <circle cx="20" cy="50" r="3" fill="#3B82F6" opacity="0.7" />
+
+                            <!-- Points Class B -->
+                            <circle cx="150" cy="80" r="3" fill="#F97316" opacity="0.7" />
+                            <circle cx="170" cy="70" r="3" fill="#F97316" opacity="0.7" />
+                            <circle cx="160" cy="90" r="3" fill="#F97316" opacity="0.7" />
+                            <circle cx="140" cy="60" r="3" fill="#F97316" opacity="0.7" />
+
+                            <!-- Linear Boundary -->
+                            <line x1="80" y1="100" x2="120" y2="0" stroke="#1E293B" stroke-width="2"
+                                stroke-dasharray="5,5" />
+                        </svg>
+                        <div class="absolute bottom-2 right-2 text-xs text-slate-400">Simplified 2D view</div>
+                    </div>
+                    <p class="text-sm text-slate-500 mt-4 italic">
+                        "If there is more complex separation (curvy spaces), Support Vector Machines (SVM) might perform
+                        better."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: IMPLEMENTATION & COMPARISON -->
+        <section class="bg-slate-900 rounded-2xl p-8 mb-16 text-white">
+            <div class="flex flex-col md:flex-row gap-8">
+                <!-- Implementation -->
+                <div class="flex-1">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-brand-teal">
+                        <i data-lucide="code" class="w-6 h-6"></i> Implementation Guide
+                    </h2>
+                    <div class="bg-slate-800 rounded-lg p-4 font-mono text-sm overflow-x-auto">
+                        <pre><span class="text-brand-purple">from</span> sklearn.naive_bayes <span class="text-brand-purple">import</span> GaussianNB
+<span class="text-brand-purple">from</span> sklearn.metrics <span class="text-brand-purple">import</span> precision_score, recall_score
+
+<span class="text-slate-400"># 1. Initialize</span>
+model = GaussianNB()
+
+<span class="text-slate-400"># 2. Train (Very Fast)</span>
+model.fit(X_train, y_train)
+
+<span class="text-slate-400"># 3. Predict</span>
+y_pred = model.predict(X_test)
+
+<span class="text-slate-400"># 4. Evaluate (Crucial!)</span>
+<span class="text-brand-orange">print</span>(f"Precision: {precision_score(y_test, y_pred)}")
+<span class="text-brand-orange">print</span>(f"Recall: {recall_score(y_test, y_pred)}")</pre>
+                    </div>
+                </div>
+
+                <!-- Comparison Table -->
+                <div class="flex-1">
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2 text-brand-teal">
+                        <i data-lucide="arrow-left-right" class="w-6 h-6"></i> Algorithm Showdown
+                    </h2>
+                    <div class="overflow-hidden rounded-lg border border-slate-700">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-slate-800 text-slate-300">
+                                <tr>
+                                    <th class="p-3">Feature</th>
+                                    <th class="p-3">Naive Bayes</th>
+                                    <th class="p-3">SVM</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-700">
+                                <tr class="bg-slate-800/50">
+                                    <td class="p-3 font-semibold text-slate-400">Speed</td>
+                                    <td class="p-3 text-brand-green">Very Fast</td>
+                                    <td class="p-3 text-brand-orange">Slower (esp large datasets)</td>
+                                </tr>
+                                <tr class="bg-slate-800/50">
+                                    <td class="p-3 font-semibold text-slate-400">Data Size</td>
+                                    <td class="p-3">Great for small data</td>
+                                    <td class="p-3">Needs more data</td>
+                                </tr>
+                                <tr class="bg-slate-800/50">
+                                    <td class="p-3 font-semibold text-slate-400">Boundary</td>
+                                    <td class="p-3">Linear</td>
+                                    <td class="p-3 text-brand-green">Linear & Non-Linear (Kernels)</td>
+                                </tr>
+                                <tr class="bg-slate-800/50">
+                                    <td class="p-3 font-semibold text-slate-400">Complexity</td>
+                                    <td class="p-3">Simple</td>
+                                    <td class="p-3">Complex optimization</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="mt-4 text-xs text-slate-400 italic">
+                        Tip: Always test both. Check Precision & Recall, not just Accuracy. Watch out for data labeling
+                        biases.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: PROS & CONS GRID -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div class="bg-green-50 rounded-xl p-6 border border-green-100">
+                <h3 class="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
+                    <i data-lucide="thumbs-up" class="w-5 h-5"></i> Advantages
+                </h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-green-600 mt-1"></i>
+                        <span class="text-green-900 text-sm">Simple and fast to implement</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-green-600 mt-1"></i>
+                        <span class="text-green-900 text-sm">Computationally efficient (Linear scaling)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-green-600 mt-1"></i>
+                        <span class="text-green-900 text-sm">Great for small datasets</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-green-600 mt-1"></i>
+                        <span class="text-green-900 text-sm">Excellent with categorical data</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-red-50 rounded-xl p-6 border border-red-100">
+                <h3 class="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
+                    <i data-lucide="thumbs-down" class="w-5 h-5"></i> Disadvantages
+                </h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="x" class="w-4 h-4 text-red-600 mt-1"></i>
+                        <span class="text-red-900 text-sm">Independence assumption rarely holds</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="x" class="w-4 h-4 text-red-600 mt-1"></i>
+                        <span class="text-red-900 text-sm">Fails on time-series (stock prices)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="x" class="w-4 h-4 text-red-600 mt-1"></i>
+                        <span class="text-red-900 text-sm">Fails on spatial data (housing)</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i data-lucide="x" class="w-4 h-4 text-red-600 mt-1"></i>
+                        <span class="text-red-900 text-sm">Limited to linear boundaries</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- SECTION: APPLICATIONS -->
+        <section class="mb-20">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8 text-center">Common Applications</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div
+                    class="flex flex-col items-center text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 card-hover">
+                    <div class="bg-blue-100 p-3 rounded-full text-blue-600 mb-3"><i data-lucide="mail"
+                            class="w-6 h-6"></i></div>
+                    <h4 class="font-bold text-slate-900">Spam Filtering</h4>
+                    <p class="text-xs text-slate-500 mt-1">The classic use case. analyzing word probabilities.</p>
+                </div>
+                <div
+                    class="flex flex-col items-center text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 card-hover">
+                    <div class="bg-purple-100 p-3 rounded-full text-purple-600 mb-3"><i data-lucide="smile"
+                            class="w-6 h-6"></i></div>
+                    <h4 class="font-bold text-slate-900">Sentiment Analysis</h4>
+                    <p class="text-xs text-slate-500 mt-1">Classifying reviews as positive or negative.</p>
+                </div>
+                <div
+                    class="flex flex-col items-center text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 card-hover">
+                    <div class="bg-orange-100 p-3 rounded-full text-orange-600 mb-3"><i data-lucide="file-text"
+                            class="w-6 h-6"></i></div>
+                    <h4 class="font-bold text-slate-900">Doc Categorization</h4>
+                    <p class="text-xs text-slate-500 mt-1">Sorting news articles into topics (Sports, Politics).</p>
+                </div>
+                <div
+                    class="flex flex-col items-center text-center p-4 bg-white rounded-xl shadow-sm border border-slate-100 card-hover">
+                    <div class="bg-red-100 p-3 rounded-full text-red-600 mb-3"><i data-lucide="stethoscope"
+                            class="w-6 h-6"></i></div>
+                    <h4 class="font-bold text-slate-900">Medical Diagnosis</h4>
+                    <p class="text-xs text-slate-500 mt-1">Predicting disease based on symptom presence.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="mb-4 text-sm">
+                Generated for educational purposes based on uploaded course material.
+            </p>
+            <div class="flex justify-center gap-4 text-xs uppercase tracking-widest opacity-50">
+                <span>Version 2.0</span>
+                <span>•</span>
+                <span>AI/ML Infographics</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script to Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Networks: The Brain-Inspired Foundation of AI</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Neural Networks: The Brain-Inspired Foundation of AI">
+    <meta name="description" content="Comprehensive guide to neural networks covering architectures (CNN, RNN, Transformers, GANs), deep learning concepts, ImageNet history, and biological inspiration.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="ML Algorithms">
+    <meta name="tags" content="Neural Networks, Deep Learning, CNN, RNN, Transformers, GANs, Backpropagation, Machine Learning, AI">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Neural networks are brain-inspired computational models organized in layers that learn complex patterns through backpropagation, powering architectures like CNNs, RNNs, Transformers, and GANs for tasks from image recognition to language generation.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/neural-networks">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Neural Networks: The Brain-Inspired Foundation of AI">
+    <meta property="og:description" content="Comprehensive guide to neural networks covering architectures (CNN, RNN, Transformers, GANs), deep learning concepts, and biological inspiration.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/neural-networks">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-01-31">
+    <meta property="article:section" content="ML Algorithms">
+    <meta property="article:tag" content="Neural Networks">
+    <meta property="article:tag" content="Deep Learning">
+    <meta property="article:tag" content="Machine Learning">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Neural Networks: The Brain-Inspired Foundation of AI",
+        "description": "Comprehensive guide to neural networks covering architectures (CNN, RNN, Transformers, GANs), deep learning concepts, and biological inspiration.",
+        "datePublished": "2025-01-31",
+        "dateModified": "2025-01-31",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/neural-networks"
+        },
+        "keywords": ["Neural Networks", "Deep Learning", "CNN", "RNN", "Transformers", "GANs", "Backpropagation", "Machine Learning", "AI"],
+        "articleSection": "ML Algorithms",
+        "about": [
+            {"@type": "Thing", "name": "Neural Networks"},
+            {"@type": "Thing", "name": "Deep Learning"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "Convolutional Neural Networks"},
+            {"@type": "Thing", "name": "Recurrent Neural Networks"},
+            {"@type": "Thing", "name": "Transformers"},
+            {"@type": "Thing", "name": "ImageNet"}
+        ]
+    }
+    </script>
+
+    <!--
+    blog-metadata:
+      title: "Neural Networks: The Brain-Inspired Foundation of AI"
+      category: "ML Algorithms"
+      pillar: "ML Algorithms"
+      tags:
+        - Neural Networks
+        - Deep Learning
+        - CNN
+        - RNN
+        - Transformers
+      connectors: "ML Fundamentals, AI Business UseCases"
+    -->
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neural: {
+                            blue: '#3B82F6',
+                            purple: '#8B5CF6',
+                            cyan: '#06B6D4',
+                            green: '#10B981',
+                            orange: '#F59E0B',
+                            red: '#EF4444',
+                            gold: '#FBBF24',
+                            dark: '#1E293B',
+                            slate: '#64748B',
+                            light: '#F8FAFC'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'flow': 'flowAnimation 2s infinite linear',
+                    },
+                    keyframes: {
+                        flowAnimation: {
+                            '0%': { strokeDashoffset: '24' },
+                            '100%': { strokeDashoffset: '0' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for Interactivity */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .neuron-node {
+            transition: all 0.3s ease;
+        }
+
+        .neuron-node:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+        }
+
+        /* OCR Pixel Grid */
+        .pixel-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            /* Simplified 8x8 for visual clarity */
+            gap: 1px;
+            background: #e2e8f0;
+            padding: 2px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .pixel {
+            background-color: white;
+            transition: background-color 0.2s;
+        }
+
+        .pixel.active {
+            background-color: #1E293B;
+        }
+
+        /* Timeline Connector */
+        .timeline-line {
+            position: absolute;
+            top: 24px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #E2E8F0;
+            z-index: 0;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .card-hover {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SECTION A: HEADER -->
+    <header class="bg-gradient-to-r from-slate-900 to-slate-800 text-white py-16 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <!-- Decorative Background Pattern -->
+            <svg width="100%" height="100%">
+                <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1" />
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#grid)" />
+            </svg>
+        </div>
+
+        <div class="max-w-6xl mx-auto relative z-10 text-center">
+            <div class="inline-flex items-center justify-center p-3 bg-white/10 rounded-full mb-6 backdrop-blur-sm">
+                <i data-lucide="brain" class="w-8 h-8 text-neural-cyan mr-3"></i>
+                <span class="text-neural-cyan font-bold tracking-wider">MACHINE LEARNING FUNDAMENTALS</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Neural Networks</h1>
+            <p class="text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto font-light">
+                The brain-inspired foundation of modern AI that powers everything from computer vision to generative
+                models.
+            </p>
+        </div>
+    </header>
+
+    <!-- SECTION B: BIOLOGICAL INSPIRATION -->
+    <section class="py-16 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-800">From Biology to Silicon</h2>
+            <p class="text-slate-600 mt-2">Modeled after the human brain's interconnected neurons.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <!-- Biological Neuron -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 bg-neural-green/10 rounded-bl-2xl">
+                    <span class="text-neural-green font-bold text-sm">BIOLOGICAL</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 flex items-center">
+                    <i data-lucide="activity" class="text-neural-green mr-2"></i> The Neuron
+                </h3>
+                <div class="flex justify-center mb-6">
+                    <!-- Simple SVG representation of a biological neuron -->
+                    <svg width="300" height="150" viewBox="0 0 300 150">
+                        <!-- Dendrites -->
+                        <path d="M50 75 L20 40 M50 75 L20 110 M50 75 L10 75" stroke="#10B981" stroke-width="2" />
+                        <!-- Cell Body -->
+                        <circle cx="80" cy="75" r="30" fill="#D1FAE5" stroke="#10B981" stroke-width="2" />
+                        <circle cx="80" cy="75" r="10" fill="#10B981" />
+                        <!-- Axon -->
+                        <path d="M110 75 L250 75" stroke="#10B981" stroke-width="4" />
+                        <!-- Myelin Sheath -->
+                        <rect x="130" y="65" width="30" height="20" rx="5" fill="#A7F3D0" />
+                        <rect x="170" y="65" width="30" height="20" rx="5" fill="#A7F3D0" />
+                        <rect x="210" y="65" width="30" height="20" rx="5" fill="#A7F3D0" />
+                        <!-- Synapse -->
+                        <path d="M250 75 L280 50 M250 75 L280 100" stroke="#10B981" stroke-width="2" />
+                    </svg>
+                </div>
+                <ul class="space-y-2 text-sm text-slate-600">
+                    <li class="flex items-center"><span
+                            class="w-2 h-2 bg-neural-green rounded-full mr-2"></span><b>Dendrites:</b> Receive chemical
+                        signals</li>
+                    <li class="flex items-center"><span class="w-2 h-2 bg-neural-green rounded-full mr-2"></span><b>Cell
+                            Body:</b> Processes information</li>
+                    <li class="flex items-center"><span
+                            class="w-2 h-2 bg-neural-green rounded-full mr-2"></span><b>Axon:</b> Transmits electrical
+                        output</li>
+                </ul>
+            </div>
+
+            <!-- Artificial Neuron -->
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 card-hover relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-4 bg-neural-blue/10 rounded-bl-2xl">
+                    <span class="text-neural-blue font-bold text-sm">ARTIFICIAL</span>
+                </div>
+                <h3 class="text-xl font-bold mb-6 flex items-center">
+                    <i data-lucide="cpu" class="text-neural-blue mr-2"></i> The Perceptron
+                </h3>
+                <div class="flex justify-center mb-6">
+                    <!-- SVG representation of artificial neuron -->
+                    <svg width="300" height="150" viewBox="0 0 300 150">
+                        <!-- Inputs -->
+                        <circle cx="30" cy="40" r="15" fill="#E0F2FE" stroke="#3B82F6" stroke-width="2" />
+                        <text x="30" y="45" text-anchor="middle" font-size="12" fill="#3B82F6">x₁</text>
+                        <circle cx="30" cy="75" r="15" fill="#E0F2FE" stroke="#3B82F6" stroke-width="2" />
+                        <text x="30" y="80" text-anchor="middle" font-size="12" fill="#3B82F6">x₂</text>
+                        <circle cx="30" cy="110" r="15" fill="#E0F2FE" stroke="#3B82F6" stroke-width="2" />
+                        <text x="30" y="115" text-anchor="middle" font-size="12" fill="#3B82F6">x₃</text>
+
+                        <!-- Weights Lines -->
+                        <line x1="45" y1="40" x2="130" y2="75" stroke="#94A3B8" stroke-width="1" />
+                        <line x1="45" y1="75" x2="130" y2="75" stroke="#94A3B8" stroke-width="3" />
+                        <line x1="45" y1="110" x2="130" y2="75" stroke="#94A3B8" stroke-width="1" />
+
+                        <!-- Summation Node -->
+                        <circle cx="160" cy="75" r="30" fill="#DBEAFE" stroke="#3B82F6" stroke-width="2" />
+                        <text x="160" y="80" text-anchor="middle" font-size="16" font-weight="bold" fill="#3B82F6">Σ +
+                            f</text>
+
+                        <!-- Output -->
+                        <line x1="190" y1="75" x2="250" y2="75" stroke="#3B82F6" stroke-width="2"
+                            marker-end="url(#arrowhead)" />
+                        <text x="270" y="80" text-anchor="middle" font-size="14" font-weight="bold"
+                            fill="#3B82F6">y</text>
+                    </svg>
+                </div>
+                <ul class="space-y-2 text-sm text-slate-600">
+                    <li class="flex items-center"><span
+                            class="w-2 h-2 bg-neural-blue rounded-full mr-2"></span><b>Inputs (x):</b> Data features
+                        (numbers)</li>
+                    <li class="flex items-center"><span
+                            class="w-2 h-2 bg-neural-blue rounded-full mr-2"></span><b>Weights (w):</b> Importance of
+                        each input</li>
+                    <li class="flex items-center"><span
+                            class="w-2 h-2 bg-neural-blue rounded-full mr-2"></span><b>Activation (f):</b> Non-linear
+                        decision function</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION C: INTERACTIVE ARCHITECTURE -->
+    <section class="bg-white py-16 px-6 border-y border-slate-200">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-10">
+                <span class="text-neural-purple font-semibold tracking-wider text-sm uppercase">Core Mechanism</span>
+                <h2 class="text-3xl font-bold text-slate-900 mt-2">The Architecture of Thought</h2>
+                <p class="text-slate-600 mt-2 max-w-2xl mx-auto">Neural networks consist of layers of nodes. Data flows
+                    forward, errors flow backward.</p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-12">
+                <!-- Visual Diagram -->
+                <div class="flex-1 w-full max-w-2xl bg-slate-50 rounded-2xl p-8 border border-slate-200 relative">
+                    <div class="flex justify-between items-center relative z-10">
+                        <!-- Input Layer -->
+                        <div class="flex flex-col gap-4 items-center group">
+                            <span class="text-xs font-bold text-slate-500 uppercase mb-2">Input Layer</span>
+                            <div
+                                class="w-12 h-12 rounded-full bg-white border-4 border-neural-blue shadow-md neuron-node flex items-center justify-center text-xs font-mono">
+                                x₁</div>
+                            <div
+                                class="w-12 h-12 rounded-full bg-white border-4 border-neural-blue shadow-md neuron-node flex items-center justify-center text-xs font-mono">
+                                x₂</div>
+                            <div
+                                class="w-12 h-12 rounded-full bg-white border-4 border-neural-blue shadow-md neuron-node flex items-center justify-center text-xs font-mono">
+                                x₃</div>
+                            <div class="mt-2 text-xs text-center text-slate-500 bg-white px-2 py-1 rounded border">Raw
+                                Data</div>
+                        </div>
+
+                        <!-- Connector Lines (SVG Overlay) -->
+                        <svg class="absolute inset-0 w-full h-full pointer-events-none" style="z-index: -1;">
+                            <!-- Input to Hidden 1 -->
+                            <line x1="15%" y1="35%" x2="50%" y2="25%" stroke="#CBD5E1" stroke-width="2" />
+                            <line x1="15%" y1="35%" x2="50%" y2="50%" stroke="#CBD5E1" stroke-width="1" />
+                            <line x1="15%" y1="35%" x2="50%" y2="75%" stroke="#CBD5E1" stroke-width="3" />
+
+                            <line x1="15%" y1="50%" x2="50%" y2="25%" stroke="#CBD5E1" stroke-width="1" />
+                            <line x1="15%" y1="50%" x2="50%" y2="50%" stroke="#CBD5E1" stroke-width="4" />
+                            <line x1="15%" y1="50%" x2="50%" y2="75%" stroke="#CBD5E1" stroke-width="1" />
+
+                            <line x1="15%" y1="65%" x2="50%" y2="25%" stroke="#CBD5E1" stroke-width="2" />
+                            <line x1="15%" y1="65%" x2="50%" y2="50%" stroke="#CBD5E1" stroke-width="1" />
+                            <line x1="15%" y1="65%" x2="50%" y2="75%" stroke="#CBD5E1" stroke-width="2" />
+
+                            <!-- Hidden 1 to Output -->
+                            <line x1="50%" y1="25%" x2="85%" y2="50%" stroke="#CBD5E1" stroke-width="2" />
+                            <line x1="50%" y1="50%" x2="85%" y2="50%" stroke="#CBD5E1" stroke-width="4" />
+                            <line x1="50%" y1="75%" x2="85%" y2="50%" stroke="#CBD5E1" stroke-width="1" />
+                        </svg>
+
+                        <!-- Hidden Layer -->
+                        <div class="flex flex-col gap-4 items-center">
+                            <span class="text-xs font-bold text-slate-500 uppercase mb-2">Hidden Layer</span>
+                            <div
+                                class="w-12 h-12 rounded-full bg-neural-purple text-white shadow-md neuron-node flex items-center justify-center opacity-90">
+                                <i data-lucide="zap" class="w-4 h-4"></i></div>
+                            <div
+                                class="w-12 h-12 rounded-full bg-neural-purple text-white shadow-md neuron-node flex items-center justify-center opacity-90">
+                                <i data-lucide="zap" class="w-4 h-4"></i></div>
+                            <div
+                                class="w-12 h-12 rounded-full bg-neural-purple text-white shadow-md neuron-node flex items-center justify-center opacity-90">
+                                <i data-lucide="zap" class="w-4 h-4"></i></div>
+                            <div class="mt-2 text-xs text-center text-slate-500 bg-white px-2 py-1 rounded border">
+                                Features</div>
+                        </div>
+
+                        <!-- Output Layer -->
+                        <div class="flex flex-col gap-4 items-center">
+                            <span class="text-xs font-bold text-slate-500 uppercase mb-2">Output Layer</span>
+                            <div class="h-12 w-0"></div> <!-- Spacer -->
+                            <div
+                                class="w-14 h-14 rounded-full bg-neural-green text-white shadow-lg neuron-node flex items-center justify-center border-4 border-white text-sm font-bold">
+                                95%</div>
+                            <div class="h-12 w-0"></div> <!-- Spacer -->
+                            <div class="mt-2 text-xs text-center text-slate-500 bg-white px-2 py-1 rounded border">
+                                Prediction</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Explanation Box -->
+                <div class="flex-1 space-y-6">
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-2 rounded-lg mr-4">
+                            <span class="font-bold text-blue-600">1</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Forward Propagation</h4>
+                            <p class="text-sm text-slate-600">Data enters the input layer. Neurons multiply inputs by
+                                <strong>weights</strong> (strength of connection), add them up, and pass them through an
+                                <strong>activation function</strong>.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="bg-purple-100 p-2 rounded-lg mr-4">
+                            <span class="font-bold text-purple-600">2</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Deep Learning</h4>
+                            <p class="text-sm text-slate-600">Hidden layers extract features. Early layers find edges;
+                                deeper layers find shapes and objects. The more layers, the "deeper" the network.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <div class="bg-orange-100 p-2 rounded-lg mr-4">
+                            <span class="font-bold text-orange-600">3</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800">Backpropagation (Learning)</h4>
+                            <p class="text-sm text-slate-600">The network compares its guess to the answer. It
+                                calculates the error and adjusts the weights backwards to improve accuracy next time.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION D: ARCHITECTURES GRID -->
+    <section class="py-16 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-900">Types of Neural Networks</h2>
+            <p class="text-slate-600">Different architectures for different problems.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Card 1: CNN -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 card-hover">
+                <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-4">
+                    <i data-lucide="grid-3x3" class="text-blue-600 w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Convolutional (CNN)</h3>
+                <p class="text-sm text-slate-600 mb-4 h-16">Scans data using filters. Passes data layer-to-layer to
+                    progressively extract features (Edges → Shapes → Objects).</p>
+                <div class="bg-slate-50 p-3 rounded text-xs text-slate-500">
+                    <strong>Best for:</strong> Images, Computer Vision, Facial Recognition
+                </div>
+                <div class="mt-3 text-xs text-blue-600 font-semibold">
+                    Key to ImageNet success (AlexNet)
+                </div>
+            </div>
+
+            <!-- Card 2: RNN -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 card-hover">
+                <div class="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center mb-4">
+                    <i data-lucide="repeat" class="text-purple-600 w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Recurrent (RNN/LSTM)</h3>
+                <p class="text-sm text-slate-600 mb-4 h-16">Has a "memory" loop. The output of the previous step is fed
+                    as input to the current step.</p>
+                <div class="bg-slate-50 p-3 rounded text-xs text-slate-500">
+                    <strong>Best for:</strong> Sequential data, Time Series, Speech, Text
+                </div>
+            </div>
+
+            <!-- Card 3: Transformer -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 card-hover">
+                <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center mb-4">
+                    <i data-lucide="sparkles" class="text-green-600 w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Transformers</h3>
+                <p class="text-sm text-slate-600 mb-4 h-16">Uses "Attention" mechanisms to weigh the importance of
+                    different parts of input data simultaneously. Highly scalable.</p>
+                <div class="bg-slate-50 p-3 rounded text-xs text-slate-500">
+                    <strong>Best for:</strong> Generative AI, Large Language Models (LLMs)
+                </div>
+            </div>
+
+            <!-- Card 4: GANs -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 card-hover">
+                <div class="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center mb-4">
+                    <i data-lucide="copy" class="text-orange-600 w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Generative Adversarial</h3>
+                <p class="text-sm text-slate-600 mb-4 h-16">Two networks competing: A Generator creates fakes, a
+                    Discriminator detects them. Result is hyper-realism.</p>
+                <div class="bg-slate-50 p-3 rounded text-xs text-slate-500">
+                    <strong>Best for:</strong> Creating realistic images, Style transfer
+                </div>
+            </div>
+
+            <!-- Card 5: Feedforward -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 card-hover">
+                <div class="w-12 h-12 bg-gray-50 rounded-lg flex items-center justify-center mb-4">
+                    <i data-lucide="arrow-right-circle" class="text-gray-600 w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Feedforward</h3>
+                <p class="text-sm text-slate-600 mb-4 h-16">The "Vanilla" neural network. Data moves in one direction
+                    from input to output without looping.</p>
+                <div class="bg-slate-50 p-3 rounded text-xs text-slate-500">
+                    <strong>Best for:</strong> Simple classification, Regression
+                </div>
+            </div>
+
+            <!-- Card 6: Transfer Learning (Concept) -->
+            <div
+                class="bg-white p-6 rounded-xl border border-slate-200 card-hover bg-gradient-to-br from-white to-blue-50">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                    <i data-lucide="share-2" class="text-blue-700 w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-slate-800 mb-2">Transfer Learning</h3>
+                <p class="text-sm text-slate-600 mb-4 h-16">Taking a pre-trained model (e.g., trained on ImageNet) and
+                    "fine-tuning" the last layers for a specific new task.</p>
+                <div class="bg-blue-100 p-3 rounded text-xs text-blue-800 border border-blue-200">
+                    <strong>Benefit:</strong> Requires way less data than starting from scratch.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW SECTION: DEEP DIVE GENERATION & ARCHITECTURE -->
+    <section class="bg-neural-light border-y border-slate-200 py-16 px-6" id="deep-dive-generation">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center justify-center mb-10">
+                <span
+                    class="px-3 py-1 bg-neural-purple/10 text-neural-purple font-bold text-xs rounded-full uppercase tracking-wider">Deep
+                    Dive</span>
+            </div>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">From Classification to Creation</h2>
+                <p class="text-slate-600 mt-2 max-w-3xl mx-auto">
+                    Understanding how models "go backwards" to generate content and clarifying the relationship between
+                    CNNs and Transformers.
+                </p>
+            </div>
+
+            <!-- CONCEPT 1: THE BACKWARDS FLOW -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8 mb-12">
+                <h3 class="text-2xl font-bold text-slate-800 mb-6 flex items-center">
+                    <i data-lucide="refresh-ccw" class="mr-3 text-neural-cyan"></i> The "Backwards" Flow: Generating New
+                    Content
+                </h3>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-slate-600 mb-4">
+                            In traditional classification (Forward Flow), a model takes complex data (an image) and
+                            reduces it to a simple label (e.g., "Cat"). This is <strong>Discriminative</strong>.
+                        </p>
+                        <p class="text-slate-600 mb-4">
+                            When we say "go backwards to generate," we refer to <strong>Generative Modeling</strong>. We
+                            start with a concept, a label, or random noise, and ask the network to expand it into full,
+                            complex data (like a new image of a cat).
+                        </p>
+                        <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                            <p class="text-sm text-yellow-800">
+                                <strong>Think of it this way:</strong> If a classifier is a critic looking at a painting
+                                and saying "This is a sunset," a generative model is the artist taking the prompt
+                                "sunset" and painting it from scratch.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Visualization of Forward vs Backward -->
+                    <div class="bg-slate-50 rounded-xl p-6 flex flex-col gap-6">
+                        <!-- Forward -->
+                        <div class="flex items-center justify-between opacity-50">
+                            <div class="text-center"><i data-lucide="image" class="mx-auto mb-1"></i><span
+                                    class="text-xs">Image</span></div>
+                            <div class="flex-1 h-1 bg-slate-300 mx-4 relative"><i data-lucide="arrow-right"
+                                    class="absolute -top-2 right-0 w-4 h-4"></i></div>
+                            <div class="text-center">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-slate-200 mx-auto flex items-center justify-center text-xs font-bold">
+                                    NN</div>
+                            </div>
+                            <div class="flex-1 h-1 bg-slate-300 mx-4 relative"><i data-lucide="arrow-right"
+                                    class="absolute -top-2 right-0 w-4 h-4"></i></div>
+                            <div class="text-center"><span
+                                    class="text-xs font-bold border px-2 py-1 bg-white">"Cat"</span></div>
+                        </div>
+
+                        <!-- Backward (Generative) -->
+                        <div class="flex items-center justify-between">
+                            <div class="text-center"><span
+                                    class="text-xs font-bold border px-2 py-1 bg-neural-cyan text-white">"Cat"</span>
+                            </div>
+                            <div class="flex-1 h-1 bg-neural-cyan mx-4 relative"><i data-lucide="arrow-right"
+                                    class="absolute -top-2 right-0 w-4 h-4 text-neural-cyan"></i></div>
+                            <div class="text-center">
+                                <div
+                                    class="w-8 h-8 rounded-full bg-neural-cyan text-white mx-auto flex items-center justify-center text-xs font-bold animate-pulse">
+                                    NN</div>
+                            </div>
+                            <div class="flex-1 h-1 bg-neural-cyan mx-4 relative"><i data-lucide="arrow-right"
+                                    class="absolute -top-2 right-0 w-4 h-4 text-neural-cyan"></i></div>
+                            <div class="text-center"><i data-lucide="image"
+                                    class="mx-auto mb-1 text-neural-cyan"></i><span
+                                    class="text-xs font-bold text-neural-cyan">New Image</span></div>
+                        </div>
+                        <p class="text-center text-xs text-slate-500 mt-2">The Generative Flow expands a concept into
+                            data.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONCEPT 2: CNN VS TRANSFORMER SHOWDOWN -->
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+
+                <!-- CNN Visual -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-slate-800">CNN</h3>
+                        <span class="text-xs font-mono bg-blue-100 text-blue-800 px-2 py-1 rounded">Spatial Focus</span>
+                    </div>
+
+                    <div
+                        class="h-48 bg-slate-50 rounded-xl mb-6 relative flex items-center justify-center overflow-hidden">
+                        <!-- Grid representation -->
+                        <div class="grid grid-cols-6 gap-1 p-2 bg-white border border-slate-200">
+                            <!-- Just creating a grid visual -->
+                            <div class="w-4 h-4 bg-slate-100"></div>
+                            <div class="w-4 h-4 bg-slate-200"></div>
+                            <div class="w-4 h-4 bg-slate-100"></div>
+                            <div class="w-4 h-4 bg-slate-100"></div>
+                            <div class="w-4 h-4 bg-slate-200"></div>
+                            <div class="w-4 h-4 bg-slate-100"></div>
+                            <div class="w-4 h-4 bg-slate-200"></div>
+                            <div class="w-4 h-4 bg-slate-300"></div>
+                            <div class="w-4 h-4 bg-slate-200"></div>
+                            <div class="w-4 h-4 bg-slate-100"></div>
+                            <div class="w-4 h-4 bg-slate-100"></div>
+                            <div class="w-4 h-4 bg-slate-200"></div>
+                            <div class="w-4 h-4 bg-slate-100"></div>
+                            <div class="w-4 h-4 bg-slate-200"></div>
+                            <div class="w-4 h-4 bg-slate-100"></div>
+                            <div class="w-4 h-4 bg-slate-200"></div>
+                            <div class="w-4 h-4 bg-slate-300"></div>
+                            <div class="w-4 h-4 bg-slate-200"></div>
+                            <div class="w-4 h-4 bg-slate-100"></div>
+                            <div class="w-4 h-4 bg-slate-100"></div>
+                            <div class="w-4 h-4 bg-slate-200"></div>
+                            <div class="w-4 h-4 bg-slate-100"></div>
+                            <div class="w-4 h-4 bg-slate-200"></div>
+                            <div class="w-4 h-4 bg-slate-100"></div>
+                        </div>
+
+                        <!-- The "Filter" Scanner -->
+                        <div
+                            class="absolute w-16 h-16 border-4 border-blue-500 bg-blue-500/20 shadow-[0_0_15px_rgba(59,130,246,0.5)] rounded flex items-center justify-center top-1/3 left-1/3">
+                            <span class="text-[10px] font-bold text-blue-800 bg-white/80 px-1 rounded">Filter</span>
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-slate-600 mb-4">
+                        <strong>How it works:</strong> A CNN looks at the world through a small window (filter). It
+                        slides this window over the image to find local patterns like edges or curves.
+                    </p>
+                    <p class="text-sm text-slate-600">
+                        <strong>Is it part of Transformer?</strong> <span class="text-red-500 font-bold">No.</span> They
+                        are distinct architectures. While they can be combined (Hybrid models), a standard Transformer
+                        does not use convolution filters.
+                    </p>
+                </div>
+
+                <!-- Transformer Visual -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-8">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-xl font-bold text-slate-800">Transformer</h3>
+                        <span class="text-xs font-mono bg-green-100 text-green-800 px-2 py-1 rounded">Context
+                            Focus</span>
+                    </div>
+
+                    <div class="h-48 bg-slate-50 rounded-xl mb-6 relative flex items-center justify-center">
+                        <!-- Tokens -->
+                        <div class="flex gap-8 items-center">
+                            <div class="relative group">
+                                <div
+                                    class="w-12 h-12 rounded bg-white border border-slate-300 flex items-center justify-center font-bold text-slate-700 z-10 relative">
+                                    The</div>
+                            </div>
+                            <div class="relative group">
+                                <div
+                                    class="w-12 h-12 rounded bg-green-100 border-2 border-green-500 flex items-center justify-center font-bold text-green-800 z-10 relative shadow-lg">
+                                    Cat</div>
+                                <!-- Attention Lines -->
+                                <div
+                                    class="absolute top-1/2 left-1/2 w-32 h-0.5 bg-green-400 -translate-x-full -translate-y-1/2 opacity-50">
+                                </div>
+                                <div
+                                    class="absolute top-1/2 left-1/2 w-32 h-0.5 bg-green-400 -translate-y-1/2 opacity-50">
+                                </div>
+                            </div>
+                            <div class="relative group">
+                                <div
+                                    class="w-12 h-12 rounded bg-white border border-slate-300 flex items-center justify-center font-bold text-slate-700 z-10 relative">
+                                    Sat</div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-4 text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded">
+                            Attention Mechanism</div>
+                    </div>
+
+                    <p class="text-sm text-slate-600 mb-4">
+                        <strong>How it works:</strong> A Transformer looks at everything at once. It uses
+                        "Self-Attention" to calculate how much every word (or image patch) relates to every other word,
+                        regardless of distance.
+                    </p>
+                    <p class="text-sm text-slate-600">
+                        <strong>The Combination:</strong> Modern systems often use both! A CNN might "see" the image
+                        features, and a Transformer might "write" the description based on those features.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CONCEPT 3: THE HOW - COMBINING POWERS -->
+            <div
+                class="bg-gradient-to-br from-neural-dark to-slate-900 rounded-2xl shadow-lg border border-slate-700 p-8 text-white relative overflow-hidden">
+                <div class="relative z-10">
+                    <h3 class="text-2xl font-bold mb-6 flex items-center">
+                        <i data-lucide="layers" class="mr-3 text-neural-gold"></i> The "How": Combining Powers (Hybrid
+                        Models)
+                    </h3>
+                    <p class="text-slate-300 mb-8 max-w-2xl">
+                        You asked: <em>"Is generation achieved by combining CNN and Transformers?"</em> <br>
+                        <strong>Yes, often!</strong> While they can work alone, combining them creates a "Hybrid
+                        Architecture" that uses the best of both worlds. This is common in Image Captioning or
+                        Text-to-Image generation.
+                    </p>
+
+                    <!-- The Hybrid Diagram -->
+                    <div class="bg-white/5 rounded-xl p-6 border border-white/10 overflow-x-auto">
+                        <div class="flex items-center justify-center min-w-[600px] gap-4">
+
+                            <!-- STEP 1: INPUT -->
+                            <div class="flex flex-col items-center">
+                                <div
+                                    class="w-24 h-16 bg-white/10 rounded-lg flex items-center justify-center border border-white/20 mb-2">
+                                    <span class="text-xs font-mono">"A cute robot"</span>
+                                </div>
+                                <span class="text-xs text-slate-400 font-bold">1. INPUT TEXT</span>
+                            </div>
+
+                            <!-- Arrow -->
+                            <i data-lucide="arrow-right" class="text-slate-500 w-6 h-6"></i>
+
+                            <!-- STEP 2: TRANSFORMER -->
+                            <div class="flex flex-col items-center relative group">
+                                <div
+                                    class="w-32 h-24 bg-green-500/20 rounded-lg flex flex-col items-center justify-center border-2 border-green-500 mb-2 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+                                    <i data-lucide="sparkles" class="text-green-400 mb-1"></i>
+                                    <span class="font-bold text-green-400 text-sm">Transformer</span>
+                                    <span class="text-[10px] text-green-300">Understanding</span>
+                                </div>
+                                <span class="text-xs text-green-400 font-bold">2. PROCESS CONTEXT</span>
+                                <!-- Tooltip -->
+                                <div
+                                    class="absolute -bottom-12 w-48 text-[10px] bg-black p-2 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                                    Understands the meaning of "robot" and "cute"
+                                </div>
+                            </div>
+
+                            <!-- Arrow -->
+                            <i data-lucide="arrow-right" class="text-slate-500 w-6 h-6"></i>
+
+                            <!-- STEP 3: INVERTED CNN -->
+                            <div class="flex flex-col items-center relative group">
+                                <div
+                                    class="w-32 h-24 bg-blue-500/20 rounded-lg flex flex-col items-center justify-center border-2 border-blue-500 mb-2 shadow-[0_0_20px_rgba(59,130,246,0.2)]">
+                                    <i data-lucide="grid-3x3" class="text-blue-400 mb-1"></i>
+                                    <span class="font-bold text-blue-400 text-sm">Inverted CNN</span>
+                                    <span class="text-[10px] text-blue-300">Upscaling</span>
+                                </div>
+                                <span class="text-xs text-blue-400 font-bold">3. GENERATE PIXELS</span>
+                                <!-- Tooltip -->
+                                <div
+                                    class="absolute -bottom-12 w-48 text-[10px] bg-black p-2 rounded text-center opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                                    Turns concepts into actual image pixels (Deconvolution)
+                                </div>
+                            </div>
+
+                            <!-- Arrow -->
+                            <i data-lucide="arrow-right" class="text-slate-500 w-6 h-6"></i>
+
+                            <!-- STEP 4: OUTPUT -->
+                            <div class="flex flex-col items-center">
+                                <div
+                                    class="w-24 h-16 bg-white rounded-lg flex items-center justify-center border-4 border-neural-gold mb-2 overflow-hidden relative">
+                                    <!-- Simple CSS Robot Face -->
+                                    <div class="w-8 h-8 bg-slate-800 rounded flex items-center justify-center gap-1">
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                                        <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+                                    </div>
+                                </div>
+                                <span class="text-xs text-neural-gold font-bold">4. OUTPUT IMAGE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 text-sm text-slate-400 text-center italic">
+                        "The Transformer understands <strong>what</strong> to draw. The CNN understands
+                        <strong>how</strong> to draw it."
+                    </div>
+                </div>
+
+                <!-- Background Glow -->
+                <div
+                    class="absolute top-0 right-0 w-64 h-64 bg-neural-purple/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION G: HISTORY (ImageNet) -->
+    <section class="bg-slate-900 text-white py-16 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row items-center justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl font-bold">The ImageNet Moment</h2>
+                    <p class="text-slate-400 mt-2">The competition that launched the Deep Learning era.</p>
+                </div>
+                <div class="mt-4 md:mt-0 text-right">
+                    <span class="block text-4xl font-bold text-neural-green">&lt; 5%</span>
+                    <span class="text-sm text-slate-400">Human Error Rate (Benchmark)</span>
+                </div>
+            </div>
+
+            <div class="relative py-10">
+                <!-- Line Connector -->
+                <div class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-slate-700 -translate-y-1/2"></div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                    <!-- Milestone 1 -->
+                    <div class="text-center md:text-left">
+                        <div
+                            class="w-4 h-4 bg-slate-500 rounded-full mx-auto md:mx-0 mb-4 border-4 border-slate-900 relative">
+                            <div class="absolute w-1 h-8 bg-slate-700 -top-8 left-1.5 md:hidden"></div>
+                        </div>
+                        <h3 class="text-xl font-bold">2011</h3>
+                        <div class="text-2xl font-mono text-red-400 mb-1">~25%</div>
+                        <p class="text-xs text-slate-400">Error Rate</p>
+                        <p class="text-sm mt-2 text-slate-300">Traditional computer vision methods struggling.</p>
+                    </div>
+
+                    <!-- Milestone 2 -->
+                    <div class="text-center md:text-left">
+                        <div class="w-4 h-4 bg-slate-500 rounded-full mx-auto md:mx-0 mb-4 border-4 border-slate-900">
+                        </div>
+                        <h3 class="text-xl font-bold">2012</h3>
+                        <div class="text-2xl font-mono text-red-400 mb-1">~25%</div>
+                        <p class="text-xs text-slate-400">Error Rate</p>
+                        <p class="text-sm mt-2 text-slate-300">Marginal improvements seen year-over-year.</p>
+                    </div>
+
+                    <!-- Milestone 3 -->
+                    <div class="text-center md:text-left">
+                        <div
+                            class="w-6 h-6 bg-neural-blue rounded-full mx-auto md:mx-0 mb-4 border-4 border-slate-900 shadow-[0_0_15px_rgba(59,130,246,0.5)]">
+                        </div>
+                        <h3 class="text-xl font-bold text-neural-blue">2013</h3>
+                        <div class="text-3xl font-mono text-neural-blue mb-1 font-bold">~16%</div>
+                        <p class="text-xs text-slate-400">AlexNet</p>
+                        <p class="text-sm mt-2 text-slate-300"><strong>The Turning Point.</strong> Introduction of CNNs
+                            causes a massive drop in error.</p>
+                    </div>
+
+                    <!-- Milestone 4 -->
+                    <div class="text-center md:text-left">
+                        <div
+                            class="w-6 h-6 bg-neural-green rounded-full mx-auto md:mx-0 mb-4 border-4 border-slate-900 shadow-[0_0_15px_rgba(16,185,129,0.5)]">
+                        </div>
+                        <h3 class="text-xl font-bold text-neural-green">2015</h3>
+                        <div class="text-3xl font-mono text-neural-green mb-1 font-bold">&lt; 5%</div>
+                        <p class="text-xs text-slate-400">ResNet</p>
+                        <p class="text-sm mt-2 text-slate-300"><strong>Superhuman Performance.</strong> AI surpasses
+                            human error rate for the first time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION I: APPLICATIONS & OCR DEMO -->
+    <section class="py-16 px-6 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16">
+
+            <!-- Left: OCR Demo -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6">How it Sees: OCR Example</h3>
+                <p class="text-slate-600 mb-6">Standard digit recognition uses a 24x24 pixel grid. Darker pixels
+                    activate input neurons, leading to a classification.</p>
+
+                <div
+                    class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row items-center gap-8">
+                    <!-- Input Grid (Mockup of digit 3) -->
+                    <div class="text-center">
+                        <div class="mb-2 text-xs font-bold text-slate-500">INPUT (24x24)</div>
+                        <div class="bg-slate-900 p-2 rounded inline-block">
+                            <!-- Simplified 8x8 grid for CSS drawing of '3' -->
+                            <div class="grid grid-cols-8 gap-px bg-slate-700 w-32 h-32 border border-slate-600">
+                                <!-- Row 1 -->
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <!-- Row 2 -->
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <!-- Row 3 -->
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <!-- Row 4 -->
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <!-- Row 5 -->
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <!-- Row 6 -->
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <!-- Row 7 -->
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-white"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <!-- Row 8 -->
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                                <div class="bg-slate-900"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Arrow -->
+                    <i data-lucide="arrow-right" class="text-slate-400 hidden md:block"></i>
+
+                    <!-- Classification -->
+                    <div class="flex-1 space-y-2 w-full">
+                        <div class="mb-2 text-xs font-bold text-slate-500">PROBABILITY OUTPUT</div>
+
+                        <div class="flex items-center justify-between text-sm">
+                            <span>2</span>
+                            <div class="w-full mx-2 h-2 bg-slate-100 rounded-full">
+                                <div class="h-2 bg-slate-300 rounded-full" style="width: 5%"></div>
+                            </div> <span class="text-xs text-slate-400">5%</span>
+                        </div>
+                        <div class="flex items-center justify-between text-sm font-bold text-neural-blue">
+                            <span>3</span>
+                            <div class="w-full mx-2 h-2 bg-slate-100 rounded-full">
+                                <div class="h-2 bg-neural-blue rounded-full" style="width: 92%"></div>
+                            </div> <span class="text-xs text-neural-blue">92%</span>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span>8</span>
+                            <div class="w-full mx-2 h-2 bg-slate-100 rounded-full">
+                                <div class="h-2 bg-slate-300 rounded-full" style="width: 3%"></div>
+                            </div> <span class="text-xs text-slate-400">3%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Advantages/Disadvantages -->
+            <div>
+                <h3 class="text-2xl font-bold mb-6">The Trade-Offs</h3>
+                <div class="space-y-4">
+                    <!-- Pros -->
+                    <div class="flex gap-4">
+                        <div class="w-1 bg-neural-green rounded-full shrink-0"></div>
+                        <div class="pb-4">
+                            <h4 class="font-bold text-slate-800 flex items-center"><i data-lucide="thumbs-up"
+                                    class="w-4 h-4 mr-2 text-neural-green"></i> Strengths</h4>
+                            <ul class="mt-2 text-sm text-slate-600 space-y-2 list-disc list-inside">
+                                <li>Highly accurate on unstructured data (images, text)</li>
+                                <li>Models extremely complex non-linear relationships</li>
+                                <li>Performance scales up with more data</li>
+                                <li>Flexible architectures for various domains</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Cons -->
+                    <div class="flex gap-4">
+                        <div class="w-1 bg-neural-orange rounded-full shrink-0"></div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 flex items-center"><i data-lucide="alert-triangle"
+                                    class="w-4 h-4 mr-2 text-neural-orange"></i> Limitations</h4>
+                            <ul class="mt-2 text-sm text-slate-600 space-y-2 list-disc list-inside">
+                                <li><strong>Data Hungry:</strong> Requires massive datasets</li>
+                                <li><strong>Black Box:</strong> Hard to explain <em>why</em> a decision was made
+                                    (critical for medical/finance)</li>
+                                <li><strong>Expensive:</strong> High computational cost (GPUs required)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION J: FOOTER & TOOLS -->
+    <footer class="bg-slate-50 border-t border-slate-200 py-12 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <h3 class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-6">Powered By Modern Frameworks</h3>
+
+            <div
+                class="flex flex-wrap justify-center gap-8 mb-12 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 bg-orange-500 rounded-full"></div> <span
+                        class="font-bold text-slate-700">TensorFlow</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 bg-red-500 rounded-full"></div> <span
+                        class="font-bold text-slate-700">PyTorch</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 bg-red-600 rounded-full"></div> <span
+                        class="font-bold text-slate-700">Keras</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <div class="w-3 h-3 bg-green-500 rounded-full"></div> <span class="font-bold text-slate-700">NVIDIA
+                        CUDA</span>
+                </div>
+            </div>
+
+            <div class="text-xs text-slate-400 max-w-2xl mx-auto border-t border-slate-200 pt-8">
+                <p>Based on document analysis: "Neural Networks.docx". Information covers biological inspiration,
+                    CNN/RNN architectures, ImageNet history, and applications in computer vision and generative AI.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Init Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>
