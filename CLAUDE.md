@@ -16,6 +16,7 @@ This is a static personal portfolio website for Sriramkishore Naraharisetti. The
 - **Blog Categories** (lowercase with hyphens):
   - `ai-business-usecases/` - 6 posts about AI applications in business
   - `ai-project-management/` - 2 posts about managing AI/ML projects
+  - `ml-algorithms/` - 7 posts about ML algorithm deep-dives
   - `ml-fundamentals/` - 7 posts about machine learning basics
 - **Styling**: Tailwind CSS loaded via CDN (with forms, typography, aspect-ratio, line-clamp plugins)
 - **Icons**: Font Awesome 5.15.3 via CDN
@@ -40,6 +41,8 @@ portfolio_site/
 │   │   └── [post].html     # Business-focused AI posts
 │   ├── ai-project-management/
 │   │   └── [post].html     # AI/ML project lifecycle posts
+│   ├── ml-algorithms/
+│   │   └── [post].html     # ML algorithm deep-dive posts
 │   └── ml-fundamentals/
 │       └── [post].html     # Machine learning basics posts
 └── specs/                  # Feature specifications
@@ -86,6 +89,7 @@ To add a new blog post:
 **Category IDs:**
 - `ai-business` - AI Business UseCases
 - `ai-pm` - AI Project Management
+- `ml-algorithms` - ML Algorithms
 - `ml-fundamentals` - ML Fundamentals
 
 ## SEO & GEO Metadata
@@ -167,7 +171,7 @@ The blog index (`personal_blog/index.html`) includes:
 
 All pages include GoatCounter for privacy-friendly visitor tracking (no cookies, GDPR compliant).
 
-**Tracking Script (on ALL 18 HTML pages):**
+**Tracking Script (on ALL 25 HTML pages):**
 ```html
 <script data-goatcounter="https://kishoretech.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
@@ -181,7 +185,7 @@ All pages include GoatCounter for privacy-friendly visitor tracking (no cookies,
 | `personal_blog/index.html` | Page-specific views |
 | `personal_blog/post.html` | Views for the specific blog post loaded via `?article=` param |
 
-Individual blog posts (15 files) have the tracking script but no visible counter (the post viewer shows the count instead).
+Individual blog posts (22 files) have the tracking script but no visible counter (the post viewer shows the count instead).
 
 **API Endpoints:**
 - Total site views: `https://kishoretech.goatcounter.com/counter/TOTAL.json`
@@ -210,7 +214,8 @@ Both posts and categories support custom display ordering via an optional `order
 categories: [
     { id: "ml-fundamentals", name: "ML Fundamentals", ..., order: 1 },
     { id: "ai-business", name: "AI Business UseCases", ..., order: 2 },
-    { id: "ai-pm", name: "AI Project Management", ..., order: 3 }
+    { id: "ai-pm", name: "AI Project Management", ..., order: 3 },
+    { id: "ml-algorithms", name: "ML Algorithms", ..., order: 4 }
 ]
 
 // Posts
