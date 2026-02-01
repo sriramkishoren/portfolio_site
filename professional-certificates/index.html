@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Certifications | Sriramkishore Naraharisetti</title>
+    <meta name="description"
+        content="Professional certifications and awards earned by Sriramkishore Naraharisetti, including AI/ML, Azure, and industry recognitions.">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['ui-sans-serif', 'system-ui'],
+                    },
+                },
+            },
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        .cert-card img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .cert-card img:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 20px -4px rgba(0, 0, 0, 0.2);
+        }
+        #lightbox {
+            transition: opacity 0.3s ease;
+        }
+        #lightbox.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        #lightbox.visible {
+            opacity: 1;
+        }
+        #lightbox img {
+            max-height: 90vh;
+            max-width: 90vw;
+        }
+        .cert-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+        .cert-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-800 font-sans leading-normal tracking-normal transition-colors duration-500">
+    <!-- Header -->
+    <header class="sticky top-0 w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 z-10 shadow-md">
+        <nav class="flex justify-between items-center p-4">
+            <h1 class="text-lg font-bold">Sriramkishore Naraharisetti</h1>
+            <div class="flex items-center gap-2">
+                <a href="../index.html" class="px-4 py-2 hover:underline text-sm md:text-base">
+                    <i class="fas fa-arrow-left mr-1"></i> Back to Home
+                </a>
+                <button onclick="document.documentElement.classList.toggle('dark')"
+                    class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 text-sm md:text-base">
+                    Toggle Dark Mode
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-10">
+        <!-- Page Title -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-3">Professional Certifications & Awards</h2>
+            <p class="text-lg text-gray-600 dark:text-gray-400">A collection of certifications, recognitions, and achievements earned throughout my career.</p>
+        </div>
+
+        <!-- Hero Section: 2 Featured Certifications -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-14">
+            <!-- Featured Card 1: UTA PG AI/ML -->
+            <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden cert-card">
+                <div class="p-4">
+                    <img src="images/1-2024-uta_pg_ai_ml.webp"
+                        alt="UTA Post Graduate Program in AI and ML certification"
+                        class="w-full rounded-xl cert-image-hero">
+                </div>
+                <div class="px-6 pb-6">
+                    <span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-semibold px-3 py-1 rounded-full mb-3">Featured</span>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Post Graduate Program in AI & Machine Learning</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-2">
+                        <i class="fas fa-university mr-1"></i> University of Texas at Austin
+                    </p>
+                    <p class="text-gray-500 dark:text-gray-500 mb-3">
+                        <i class="fas fa-calendar-alt mr-1"></i> 2024
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                        Completed an intensive post-graduate program covering advanced AI and machine learning concepts, including deep learning, NLP, computer vision, and real-world AI applications.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Featured Card 2: Microsoft Azure Fundamentals -->
+            <div class="bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden cert-card">
+                <div class="p-4">
+                    <img src="images/2-2020-microsoft-azure-fundamentals.webp"
+                        alt="Microsoft Azure Fundamentals certification"
+                        class="w-full rounded-xl cert-image-hero">
+                </div>
+                <div class="px-6 pb-6">
+                    <span class="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-semibold px-3 py-1 rounded-full mb-3">Featured</span>
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2">Microsoft Azure Fundamentals (AZ-900)</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-2">
+                        <i class="fab fa-microsoft mr-1"></i> Microsoft
+                    </p>
+                    <p class="text-gray-500 dark:text-gray-500 mb-3">
+                        <i class="fas fa-calendar-alt mr-1"></i> 2020
+                    </p>
+                    <p class="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                        Demonstrated foundational knowledge of cloud services and how those services are provided with Microsoft Azure, covering core Azure concepts, services, security, privacy, and pricing.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="flex items-center mb-10">
+            <div class="flex-grow border-t border-gray-300 dark:border-gray-600"></div>
+            <span class="px-4 text-gray-500 dark:text-gray-400 font-semibold text-sm uppercase tracking-wider">More Awards & Recognitions</span>
+            <div class="flex-grow border-t border-gray-300 dark:border-gray-600"></div>
+        </div>
+
+        <!-- Grid Section: 5 Additional Certifications -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
+            <!-- Card 3: JPMC Five Keys Award 2017 -->
+            <div class="bg-white dark:bg-gray-900 rounded-xl shadow-md overflow-hidden cert-card">
+                <div class="p-3">
+                    <img src="images/3-2017-jpmc-five-keys-award.webp"
+                        alt="JPMC Five Keys Award 2017"
+                        class="w-full rounded-lg">
+                </div>
+                <div class="px-4 pb-4">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">Five Keys Award</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">
+                        <i class="fas fa-building mr-1"></i> JPMorgan Chase
+                    </p>
+                    <p class="text-gray-500 dark:text-gray-500 text-sm">
+                        <i class="fas fa-calendar-alt mr-1"></i> 2017
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 4: JPMC Technology Ace Award 2016 -->
+            <div class="bg-white dark:bg-gray-900 rounded-xl shadow-md overflow-hidden cert-card">
+                <div class="p-3">
+                    <img src="images/4-2016-jpmc-technology-ace-award.webp"
+                        alt="JPMC Technology Ace Award 2016"
+                        class="w-full rounded-lg">
+                </div>
+                <div class="px-4 pb-4">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">Technology Ace Award</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">
+                        <i class="fas fa-building mr-1"></i> JPMorgan Chase
+                    </p>
+                    <p class="text-gray-500 dark:text-gray-500 text-sm">
+                        <i class="fas fa-calendar-alt mr-1"></i> 2016
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 5: JPMC Technology Ace Award 2015 -->
+            <div class="bg-white dark:bg-gray-900 rounded-xl shadow-md overflow-hidden cert-card">
+                <div class="p-3">
+                    <img src="images/5-2015-jpmc-technology-ace-award.webp"
+                        alt="JPMC Technology Ace Award 2015"
+                        class="w-full rounded-lg">
+                </div>
+                <div class="px-4 pb-4">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">Technology Ace Award</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">
+                        <i class="fas fa-building mr-1"></i> JPMorgan Chase
+                    </p>
+                    <p class="text-gray-500 dark:text-gray-500 text-sm">
+                        <i class="fas fa-calendar-alt mr-1"></i> 2015
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 6: TCS Faculty Award 2013 -->
+            <div class="bg-white dark:bg-gray-900 rounded-xl shadow-md overflow-hidden cert-card">
+                <div class="p-3">
+                    <img src="images/6-2013-tcs-faculty-award.webp"
+                        alt="TCS Faculty Award 2013"
+                        class="w-full rounded-lg">
+                </div>
+                <div class="px-4 pb-4">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">Faculty Award</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">
+                        <i class="fas fa-building mr-1"></i> Tata Consultancy Services
+                    </p>
+                    <p class="text-gray-500 dark:text-gray-500 text-sm">
+                        <i class="fas fa-calendar-alt mr-1"></i> 2013
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 7: CMMI Level 3 SCAMPI Audit 2011 -->
+            <div class="bg-white dark:bg-gray-900 rounded-xl shadow-md overflow-hidden cert-card">
+                <div class="p-3">
+                    <img src="images/7-2011-ccmi-level3-scampi-audit.webp"
+                        alt="CMMI Level 3 SCAMPI Audit 2011"
+                        class="w-full rounded-lg">
+                </div>
+                <div class="px-4 pb-4">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-1">CMMI Level 3 SCAMPI Audit</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">
+                        <i class="fas fa-building mr-1"></i> CMMI Institute
+                    </p>
+                    <p class="text-gray-500 dark:text-gray-500 text-sm">
+                        <i class="fas fa-calendar-alt mr-1"></i> 2011
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 text-center p-4">
+        &copy; 2025 Sriramkishore Naraharisetti. All Rights Reserved.
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80" onclick="closeLightbox()">
+        <button onclick="closeLightbox()" class="absolute top-4 right-4 text-white text-3xl font-bold hover:text-gray-300 leading-none">&times;</button>
+        <img id="lightbox-img" src="" alt="" class="rounded-lg shadow-2xl" onclick="event.stopPropagation()">
+    </div>
+
+    <script>
+    (function() {
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = document.getElementById('lightbox-img');
+
+        document.querySelectorAll('.cert-card img').forEach(function(img) {
+            img.addEventListener('click', function() {
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt;
+                lightbox.classList.remove('hidden');
+                requestAnimationFrame(function() {
+                    lightbox.classList.add('visible');
+                });
+            });
+        });
+
+        window.closeLightbox = function() {
+            lightbox.classList.remove('visible');
+            lightbox.classList.add('hidden');
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+    })();
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>
