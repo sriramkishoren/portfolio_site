@@ -93,20 +93,20 @@
 
 <body class="bg-gray-100 dark:bg-gray-800 font-sans leading-normal tracking-normal transition-colors duration-500">
     <header class="sticky top-0 w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 z-10 shadow-md">
-        <nav class="flex justify-between items-center p-4">
+        <nav class="flex flex-wrap justify-between items-center p-4 gap-2">
             <h1 class="text-lg font-bold">Sriramkishore Naraharisetti</h1>
-            <div>
-                <a href="#home" class="px-4 py-2 hover:underline">Home</a>
-                <a href="#about" class="px-4 py-2 hover:underline">About Me</a>
+            <div class="flex items-center gap-1 sm:gap-2 flex-wrap">
+                <a href="#home" class="px-2 sm:px-4 py-2 hover:underline text-sm sm:text-base">Home</a>
+                <a href="#about" class="px-2 sm:px-4 py-2 hover:underline text-sm sm:text-base">About Me</a>
                 <button onclick="document.documentElement.classList.toggle('dark')"
-                    class="px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200">
+                    class="px-2 sm:px-4 py-2 bg-gray-200 dark:bg-gray-600 rounded-full text-gray-800 dark:text-gray-200 text-sm sm:text-base">
                     Toggle Dark Mode
                 </button>
             </div>
         </nav>
     </header>
     <main>
-        <section id="home" class="min-h-screen p-12">
+        <section id="home" class="min-h-screen p-4 sm:p-8 md:p-12">
             <!--<h2 class="text-3xl font-bold mb-4">Work</h2> -->
             <div class="min-h-screen flex items-center justify-center p-4">
                 <div class="flex-row md:flex w-full">
@@ -114,7 +114,7 @@
                         <img class="profile-circle mx-auto" src="main_pic_web.png"
                             alt="Profile picture of Sriramkishore Naraharisetti, Software Engineer">
                         <div class="social-links text-center mt-4">
-                            <a href="mailto:sriramkishoren@outlook.com" aria-label="Email">
+                            <a href="mailto:sriramkishoren@outlook.com" aria-label="Email" onclick="handleEmail(event)">
                                 <i class="fas fa-envelope fa-2x text-gray-800 dark:text-gray-200"></i>
                             </a>
                             <a href="https://twitter.com/kishore_tech_ai" target="_blank" aria-label="Twitter">
@@ -130,44 +130,44 @@
 
                     </div>
                     <div class="info-area w-full md:w-2/3 text-gray-900 dark:text-gray-100">
-                        <h1 class="text-4xl font-bold line-spacing">Hey! I'm Kishore</h1>
-                        <p class="text-2xl line-spacing">Sriramkishore Naraharisetti</p>
-                        <p class="text-2xl mb-20">Tech Leader & Staff Software Engineer</p>
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold line-spacing">Hey! I'm Kishore</h1>
+                        <p class="text-lg sm:text-xl md:text-2xl line-spacing">Sriramkishore Naraharisetti</p>
+                        <p class="text-lg sm:text-xl md:text-2xl mb-8 md:mb-20">Tech Leader & Staff Software Engineer</p>
                         <ul class="text-lg list-disc pl-5">
                             <li class="line-spacing">Solutions architect based in Bentonville, AR, USA</li>
                             <li class="line-spacing">20+ years leading teams and building scalable systems</li>
                             <li class="line-spacing">Staff Software Engineer at Walmart, driving technical strategy and
                                 mentoring engineers</li>
-                            <li class="mb-20">Exploring: AI & Machine Learning</li>
+                            <li class="mb-8 md:mb-20">Exploring: AI & Machine Learning</li>
                         </ul>
 
-                        <div class="buttons text-center md:text-left">
-                            <a href="mailto:sriramkishoren@outlook.com"
-                                class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-4 py-2 rounded inline-block mr-2">Email
+                        <div class="buttons text-center md:text-left flex flex-wrap gap-2 justify-center md:justify-start">
+                            <a href="mailto:sriramkishoren@outlook.com" onclick="handleEmail(event)"
+                                class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-3 sm:px-4 py-2 rounded text-sm sm:text-base">Email
                                 me</a>
                             <a href="https://kishore.tiiny.site/" target="_blank"
-                                class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-4 py-2 rounded inline-block mr-2">Resume</a>
+                                class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-3 sm:px-4 py-2 rounded text-sm sm:text-base">Resume</a>
+                            <a href="professional-certificates/index.html"
+                                class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-3 sm:px-4 py-2 rounded text-sm sm:text-base">Certifications</a>
                             <a href="https://medium.com/@kishoretech" target="_blank"
-                                class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-4 py-2 rounded inline-block mr-2">Medium
+                                class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-3 sm:px-4 py-2 rounded text-sm sm:text-base">Medium
                                 Blog</a>
                             <a href="personal_blog/index.html"
-                                class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-4 py-2 rounded inline-block mr-2">Personal
+                                class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-3 sm:px-4 py-2 rounded text-sm sm:text-base">Personal
                                 Blog</a>
-                            <a href="professional-certificates/index.html"
-                                class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-4 py-2 rounded inline-block">Certifications</a>
                         </div>
 
                     </div>
                 </div>
             </div>
         </section>
-        <section id="about" class="min-h-screen p-14">
+        <section id="about" class="min-h-screen p-4 sm:p-8 md:p-14">
             <!-- <h2 class="text-3xl font-bold mb-4">About Me</h2> -->
             <div class="container mx-auto p-4">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <!-- Left Section for Text -->
                     <div class="md:col-span-2 text-gray-900 dark:text-gray-100">
-                        <h1 class="text-4xl font-bold mb-4">A Bit More About Me👋</h1>
+                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">A Bit More About Me👋</h1>
                         <p class="text-lg mb-8">I'm from Andhra Pradesh in <strong>India🇮🇳</strong>, now pursuing
                             professional career
                             in Bentonville, Arkansas,<strong>USA🇺🇸</strong>. Small town <strong>Bentonville</strong>
@@ -200,7 +200,7 @@
 
                         <div class="mb-8">
                             <p>If you are interested in chatting or working together, <a
-                                    href="mailto:sriramkishoren@outlook.com" class="text-blue-500 underline">email me
+                                    href="mailto:sriramkishoren@outlook.com" onclick="handleEmail(event)" class="text-blue-500 underline">email me
                                     here!</a>
                             </p>
                         </div>
@@ -234,6 +234,37 @@
         </div>
         © 2025 Sriramkishore Naraharisetti. All Rights Reserved.
     </footer>
+
+    <!-- Email toast notification -->
+    <div id="email-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-black px-5 py-3 rounded-lg shadow-lg text-sm transition-opacity duration-300 opacity-0 pointer-events-none z-50">
+        Email copied: sriramkishoren@outlook.com
+    </div>
+
+    <!-- Email handler script -->
+    <script>
+    function handleEmail(e) {
+        var email = 'sriramkishoren@outlook.com';
+        var mailtoWorked = false;
+
+        // Try opening mailto in a hidden iframe to detect if it works
+        var w = window.open('mailto:' + email, '_self');
+
+        // Fallback: copy email to clipboard and show toast
+        setTimeout(function() {
+            navigator.clipboard.writeText(email).then(function() {
+                var toast = document.getElementById('email-toast');
+                toast.classList.remove('opacity-0');
+                toast.classList.add('opacity-100');
+                setTimeout(function() {
+                    toast.classList.remove('opacity-100');
+                    toast.classList.add('opacity-0');
+                }, 3000);
+            });
+        }, 300);
+
+        e.preventDefault();
+    }
+    </script>
 
     <!-- Visitor Count Script -->
     <script>
