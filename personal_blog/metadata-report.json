@@ -1,15 +1,34 @@
 {
-  "generated": "2025-01-27",
-  "totalPosts": 22,
+  "generated": "2025-02-01",
+  "totalPosts": 24,
   "baseUrl": "https://www.kishoretech.com",
   "author": "Sriramkishore Naraharisetti",
   "categories": {
+    "AI Introduction": 2,
     "ML Fundamentals": 7,
     "AI Business UseCases": 6,
     "AI Project Management": 2,
     "ML Algorithms": 7
   },
   "posts": [
+    {
+      "file": "ai-introduction/introduction-to-ai.html",
+      "title": "Introduction to Artificial Intelligence - Infographic",
+      "description": "A comprehensive infographic covering the foundations, definitions, and applications of Artificial Intelligence.",
+      "category": "AI Introduction",
+      "datePublished": "2025-01-18",
+      "tags": ["Artificial Intelligence", "AI Fundamentals", "Machine Learning", "Deep Learning", "AI Definitions", "AI Types", "Gartner Hype Cycle", "Data Science"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-introduction/introduction-to-ai"
+    },
+    {
+      "file": "ai-introduction/history-of-ai.html",
+      "title": "History of AI: From Dreams to Reality",
+      "description": "An interactive timeline covering seven decades of AI innovation from pre-1950 foundations through the generative AI era, featuring key pioneers and milestones.",
+      "category": "AI Introduction",
+      "datePublished": "2025-01-19",
+      "tags": ["AI History", "Artificial Intelligence", "Turing Test", "Deep Learning", "Generative AI", "Machine Learning History", "AI Winters", "Expert Systems", "Neural Networks"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-introduction/history-of-ai"
+    },
     {
       "file": "ml-fundamentals/what-is-machine-learning.html",
       "title": "What is Machine Learning?",

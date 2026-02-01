@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History of AI: From Dreams to Reality</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="History of AI: From Dreams to Reality">
+    <meta name="description" content="An interactive timeline covering seven decades of AI innovation from pre-1950 foundations through the generative AI era, featuring key pioneers and milestones.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Introduction">
+    <meta name="tags" content="AI History, Artificial Intelligence, Turing Test, Deep Learning, Generative AI, Machine Learning History, AI Winters, Expert Systems, Neural Networks">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="An interactive historical timeline of Artificial Intelligence covering pre-1950 foundations, the 1956 birth of AI, golden years, two AI winters, expert systems boom, and the modern era including deep learning, transformers, and generative AI. Features key pioneers like Alan Turing, John McCarthy, and Geoffrey Hinton.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ai-introduction/history-of-ai">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="History of AI: From Dreams to Reality">
+    <meta property="og:description" content="An interactive timeline covering seven decades of AI innovation from pre-1950 foundations through the generative AI era.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ai-introduction/history-of-ai">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-01-19">
+    <meta property="article:section" content="AI Introduction">
+    <meta property="article:tag" content="AI History">
+    <meta property="article:tag" content="Artificial Intelligence">
+    <meta property="article:tag" content="Turing Test">
+    <meta property="article:tag" content="Deep Learning">
+    <meta property="article:tag" content="Generative AI">
+    <meta property="article:tag" content="Machine Learning History">
+    <meta property="article:tag" content="AI Winters">
+    <meta property="article:tag" content="Expert Systems">
+    <meta property="article:tag" content="Neural Networks">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "History of AI: From Dreams to Reality",
+        "description": "An interactive timeline covering seven decades of AI innovation from pre-1950 foundations through the generative AI era, featuring key pioneers and milestones.",
+        "datePublished": "2025-01-19",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "keywords": ["AI History", "Artificial Intelligence", "Turing Test", "Deep Learning", "Generative AI", "Machine Learning History", "AI Winters", "Expert Systems", "Neural Networks"],
+        "articleSection": "AI Introduction"
+    }
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&family=Roboto+Slab:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Updated Error Handling: Hide image if it fails -->
+    <script>
+        function handleImageError(img) {
+            // Simply hide the image element if it fails to load to avoid broken icons
+            img.style.display = 'none';
+            console.warn('Image failed to load and was hidden:', img.src);
+        }
+    </script>
+
+    <style>
+        :root {
+            --primary: #1E3A5F;
+            --secondary: #4ECDC4;
+            --accent1: #FF6B6B;
+            --accent2: #F7DC6F;
+            --bg: #F8F9FA;
+            --text-primary: #2C3E50;
+            --text-secondary: #6C757D;
+            --timeline-track: #3498DB;
+            --winter: #95A5A6;
+            --boom: #27AE60;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--primary);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Hero Title Fix */
+        .hero h1 {
+            color: var(--white) !important;
+        }
+
+        h2 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid var(--secondary);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), #162a45);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+        }
+
+        .hero-subtitle {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-top: 10px;
+        }
+
+        /* --- Learning Objectives --- */
+        .objectives-section {
+            background: var(--white);
+            margin: -40px auto 40px;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            max-width: 1000px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .collapsible-content.active {
+            max-height: 500px;
+            margin-top: 20px;
+        }
+
+        .objective-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .objective-list li {
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .objective-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--secondary);
+            position: absolute;
+            left: 0;
+        }
+
+        /* --- Word Cloud / Buzzwords --- */
+        .buzzwords-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 40px 0;
+        }
+
+        .tag {
+            background: rgba(78, 205, 196, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tag:hover {
+            background: var(--secondary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* CSS for Tooltips */
+        .tag::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2C3E50;
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 400;
+            white-space: normal;
+            width: max-content;
+            max-width: 250px;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            pointer-events: none;
+            z-index: 100;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .tag::before {
+            content: '';
+            position: absolute;
+            bottom: 115%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: #2C3E50 transparent transparent transparent;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            z-index: 100;
+        }
+
+        .tag:hover::after,
+        .tag:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* --- Timeline Base --- */
+        .timeline-section {
+            padding: 60px 0;
+        }
+
+        /* Content Wrapper to manage line position */
+        .timeline-body {
+            position: relative;
+            padding-top: 20px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--timeline-track);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* --- Eras (Winter/Boom) Backgrounds --- */
+        .era-marker {
+            position: relative;
+            margin: 40px auto;
+            width: 80%;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 700;
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .era-winter {
+            background: var(--winter);
+            color: var(--white);
+            border: 2px solid #7f8c8d;
+        }
+
+        .era-winter::after {
+            content: '\f2dc';
+            /* Snowflake */
+            font-family: 'Font Awesome 6 Free';
+            margin-left: 10px;
+        }
+
+        .era-boom {
+            background: var(--boom);
+            color: var(--white);
+            border: 2px solid #219150;
+        }
+
+        .era-boom::after {
+            content: '\f201';
+            /* Chart line */
+            font-family: 'Font Awesome 6 Free';
+            margin-left: 10px;
+        }
+
+        .era-golden {
+            background: var(--accent2);
+            color: var(--text-primary);
+            border: 2px solid #f1c40f;
+        }
+
+        /* --- Timeline Nodes --- */
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            width: 50%;
+            padding: 0 40px;
+            z-index: 5;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 20px;
+            width: 24px;
+            height: 24px;
+            background: var(--white);
+            border: 4px solid var(--secondary);
+            border-radius: 50%;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -12px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -12px;
+        }
+
+        .timeline-item:hover .timeline-dot {
+            background: var(--accent1);
+            transform: scale(1.2);
+        }
+
+        .timeline-content {
+            background: var(--white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: transform 0.3s ease;
+            text-align: left;
+            /* Reset text align for content inside card */
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            text-align: right;
+            /* Re-apply for odd items */
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Authentic Image Styling */
+        .timeline-img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            /* Respect aspect ratio */
+            background-color: #f8f9fa;
+            /* Match page bg */
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: block;
+            border: 1px solid #eee;
+        }
+
+        /* New Double Image Row Class */
+        .image-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            justify-content: center;
+        }
+
+        .image-row .timeline-img {
+            width: 48%;
+            height: 160px;
+            /* Slightly shorter for side-by-side */
+            margin-bottom: 0;
+        }
+
+        .timeline-date {
+            color: var(--secondary);
+            font-weight: 800;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            display: block;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .timeline-icon {
+            font-size: 2rem;
+            color: rgba(30, 58, 95, 0.1);
+            position: absolute;
+            bottom: 15px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-icon {
+            left: 20px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-icon {
+            right: 20px;
+        }
+
+        /* --- Pioneers --- */
+        .pioneers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .pioneer-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .pioneer-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .pioneer-icon {
+            width: 80px;
+            height: 80px;
+            background: #eef2f7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            color: var(--primary);
+            font-size: 2rem;
+        }
+
+        /* --- Three Pillars --- */
+        .pillars-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .pillar-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+        }
+
+        .pillar-card.data::before {
+            background: var(--secondary);
+        }
+
+        .pillar-card.compute::before {
+            background: var(--accent1);
+        }
+
+        .pillar-card.cloud::before {
+            background: var(--timeline-track);
+        }
+
+        .pillar-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .pillar-card.data .pillar-icon {
+            color: var(--secondary);
+        }
+
+        .pillar-card.compute .pillar-icon {
+            color: var(--accent1);
+        }
+
+        .pillar-card.cloud .pillar-icon {
+            color: var(--timeline-track);
+        }
+
+        /* --- Hype Cycle SVG --- */
+        .hype-cycle-container {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .hype-cycle-svg {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+        }
+
+        /* --- Ethics Section --- */
+        .ethics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .ethics-item {
+            background: #fff0f0;
+            border-left: 5px solid var(--accent1);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--primary);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--secondary);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 100;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        /* --- Responsiveness --- */
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+                text-align: left !important;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                text-align: left;
+                /* Ensure text is always left aligned on mobile */
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 18px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-icon,
+            .timeline-item:nth-child(even) .timeline-icon {
+                right: 20px;
+                left: auto;
+            }
+
+            .pillars-container {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .image-row {
+                flex-direction: column;
+            }
+
+            .image-row .timeline-img {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>History of AI</h1>
+            <div class="hero-subtitle">From Dreams to Reality: A Journey Through Seven Decades of Innovation</div>
+        </div>
+    </header>
+
+    <!-- Learning Objectives -->
+    <div class="container">
+        <section class="objectives-section">
+            <div class="collapsible-header" onclick="toggleObjectives()">
+                <h3><i class="fas fa-bullseye" style="color: var(--accent1); margin-right: 10px;"></i> Learning
+                    Objectives</h3>
+                <i class="fas fa-chevron-down" id="obj-chevron"></i>
+            </div>
+            <div class="collapsible-content active" id="obj-content">
+                <ul class="objective-list">
+                    <li>Define foundational vocabulary and buzzwords in AI</li>
+                    <li>Trace the evolution from concepts to modern apps</li>
+                    <li>Identify key milestones and pioneers</li>
+                    <li>Understand the "Booms" and "Winters" cycle</li>
+                    <li>Recognize the 3 pillars: Data, Compute, Cloud</li>
+                    <li>Appreciate ethical considerations</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Buzzwords -->
+        <section style="text-align: center; margin-bottom: 60px;">
+            <h2>Key Vocabulary</h2>
+            <p style="font-size: 0.9rem; color: var(--text-secondary);">Hover over terms to see definitions</p>
+            <div class="buzzwords-container">
+                <span class="tag" data-tooltip="Simulation of human intelligence processes by machines.">Artificial
+                    Intelligence</span>
+                <span class="tag"
+                    data-tooltip="Algorithms that improve automatically through experience and data.">Machine
+                    Learning</span>
+                <span class="tag" data-tooltip="ML based on artificial neural networks with multiple layers.">Deep
+                    Learning</span>
+                <span class="tag"
+                    data-tooltip="Computing systems loosely inspired by the biological neural networks of animal brains.">Neural
+                    Networks</span>
+                <span class="tag"
+                    data-tooltip="Natural Language Processing: Interaction between computers and human language.">NLP</span>
+                <span class="tag"
+                    data-tooltip="A computer system emulating the decision-making ability of a human expert.">Expert
+                    Systems</span>
+                <span class="tag"
+                    data-tooltip="AI capable of generating new content like text, images, or audio.">Generative
+                    AI</span>
+                <span class="tag"
+                    data-tooltip="Large Language Models: Models trained on vast text data to understand/generate language.">LLMs</span>
+                <span class="tag"
+                    data-tooltip="Deep learning model that handles sequential data; key to modern LLMs.">Transformers</span>
+                <span class="tag" data-tooltip="The art of crafting inputs to guide Generative AI outputs.">Prompt
+                    Engineering</span>
+                <span class="tag"
+                    data-tooltip="Field enabling computers to derive meaningful information from digital images.">Computer
+                    Vision</span>
+            </div>
+        </section>
+
+        <!-- TIMELINE START -->
+        <section class="timeline-section" id="timeline">
+            <!-- Timeline Header -->
+            <div style="text-align: center; margin-bottom: 50px; position: relative; z-index: 2;">
+                <h2>Tracing the Evolution</h2>
+                <p style="color: var(--text-secondary);">A timeline of major milestones</p>
+            </div>
+
+            <!-- Content Wrapper to manage line position -->
+            <div class="timeline-body">
+                <div class="timeline-line"></div>
+
+                <!-- Pre-1950 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- Alan Turing -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Alan_Turing_Aged_16.jpg/400px-Alan_Turing_Aged_16.jpg"
+                            alt="Alan Turing" class="timeline-img" onerror="handleImageError(this)">
+                        <span class="timeline-date">Pre-1950</span>
+                        <h3>Foundations</h3>
+                        <p>From Aristotle's logic to Ada Lovelace's first algorithm. The theoretical groundwork was laid
+                            by mathematicians.</p>
+                        <small><strong>Key Event:</strong> 1950 - Alan Turing proposes the "Turing Test".</small>
+                        <i class="fas fa-scroll timeline-icon"></i>
+                    </div>
+                </div>
+
+                <!-- 1956: Birth -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- Dartmouth Conference Group Photo (Direct URL) -->
+                        <img src="https://home.dartmouth.edu/sites/home/files/styles/media_grid_landscape/public/2022-10/artificial-intelligence.png"
+                            alt="Dartmouth Conference 1956" class="timeline-img" onerror="handleImageError(this)">
+                        <span class="timeline-date">1956</span>
+                        <h3>The Birth of AI</h3>
+                        <p>The term "Artificial Intelligence" is coined at the Dartmouth Conference by John McCarthy,
+                            Marvin Minsky, and others.</p>
+                        <i class="fas fa-baby timeline-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Golden Years Era Marker -->
+                <div class="era-marker era-golden">The Golden Years (1956-1974)</div>
+
+                <!-- 1959 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- Arthur Samuel (Stanford Archive Source) -->
+                        <!-- Note: Uses HTTP. If blocked by browser security in preview, download file to view. -->
+                        <img src="http://infolab.stanford.edu/pub/voy/museum/pictures/faculty/ArtSamuelPlus.jpg"
+                            alt="Arthur Samuel (circa 1964)" class="timeline-img" onerror="handleImageError(this)">
+                        <span class="timeline-date">1959</span>
+                        <h3>Machine Learning Coined</h3>
+                        <p>Arthur Samuel (IBM) teaches a computer (IBM 701) to play checkers. It plays thousands of
+                            games against itself to learn winning strategies.</p>
+                        <i class="fas fa-chess-board timeline-icon"></i>
+                    </div>
+                </div>
+
+                <!-- 1966 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- Shakey the Robot -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Shakey_The_Robot_SRI_International.jpg/400px-Shakey_The_Robot_SRI_International.jpg"
+                            alt="Shakey the Robot" class="timeline-img" onerror="handleImageError(this)">
+                        <span class="timeline-date">1966</span>
+                        <h3>ELIZA & Shakey</h3>
+                        <p><strong>ELIZA:</strong> The first chatbot therapist.</p>
+                        <p><strong>Shakey:</strong> The first mobile robot capable of perceiving its surroundings.</p>
+                        <i class="fas fa-robot timeline-icon"></i>
+                    </div>
+                </div>
+
+                <!-- First Winter Era Marker -->
+                <div class="era-marker era-winter">First AI Winter (1974-1980)</div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- PDP-10 -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/PDP-10_1090.jpg/640px-PDP-10_1090.jpg"
+                            alt="PDP-10 Mainframe" class="timeline-img" onerror="handleImageError(this)">
+                        <span class="timeline-date">1974-1980</span>
+                        <h3>The Trough of Disillusionment</h3>
+                        <p>Funding dried up as promises of human-level AI failed to materialize. Limitations in
+                            computing power and logic stalled progress.</p>
+                        <i class="fas fa-snowflake timeline-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Expert Systems Boom Era Marker -->
+                <div class="era-marker era-boom">Expert Systems Boom (1980-1987)</div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- Symbolics 3600 -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Symbolics_3600.jpg/440px-Symbolics_3600.jpg"
+                            alt="Symbolics Lisp Machine" class="timeline-img" onerror="handleImageError(this)">
+                        <span class="timeline-date">1980s</span>
+                        <h3>Expert Systems</h3>
+                        <p>AI found use in industry (e.g., XCON) using "If-Then" rule-based systems for specific tasks
+                            like medical diagnosis and circuit design.</p>
+                        <i class="fas fa-network-wired timeline-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Second Winter Era Marker -->
+                <div class="era-marker era-winter">Second AI Winter (1987-1993)</div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- CM-1 -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/CM-1_at_CHM.jpg/640px-CM-1_at_CHM.jpg"
+                            alt="Thinking Machines CM-1" class="timeline-img" onerror="handleImageError(this)">
+                        <span class="timeline-date">1987-1993</span>
+                        <h3>Market Collapse</h3>
+                        <p>Specialized LISP machines became too expensive compared to desktop PCs. Maintenance of expert
+                            systems proved difficult.</p>
+                        <i class="fas fa-money-bill-wave timeline-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Modern Era Era Marker -->
+                <div class="era-marker era-golden">The Modern Era (1993-Present)</div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- Deep Blue -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Deep_Blue.jpg/400px-Deep_Blue.jpg"
+                            alt="IBM Deep Blue" class="timeline-img" onerror="handleImageError(this)">
+                        <span class="timeline-date">1997</span>
+                        <h3>Deep Blue vs. Kasparov</h3>
+                        <p>IBM's Deep Blue defeats the world chess champion, marking a symbolic victory for AI
+                            capabilities.</p>
+                        <i class="fas fa-chess-king timeline-icon"></i>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- Hinton -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Geoffrey_Hinton_at_TechCrunch_Disrupt_SF_2017_%28cropped%29.jpg/440px-Geoffrey_Hinton_at_TechCrunch_Disrupt_SF_2017_%28cropped%29.jpg"
+                            alt="Geoffrey Hinton" class="timeline-img" onerror="handleImageError(this)">
+                        <span class="timeline-date">2012</span>
+                        <h3>Deep Learning Explosion</h3>
+                        <p><strong>AlexNet</strong> wins the ImageNet competition using Neural Networks (Deep Learning),
+                            reducing error rates dramatically and sparking the current boom.</p>
+                        <i class="fas fa-images timeline-icon"></i>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- TPU -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Google_Tensor_Processing_Unit_3.0.jpg/640px-Google_Tensor_Processing_Unit_3.0.jpg"
+                            alt="Google TPU" class="timeline-img" onerror="handleImageError(this)">
+                        <span class="timeline-date">2017</span>
+                        <h3>Transformers & Deepfakes</h3>
+                        <p>Introduction of the "Transformer" architecture (Google) which powers modern LLMs. Rise of
+                            "Deepfakes" raises ethical questions.</p>
+                        <i class="fas fa-mask timeline-icon"></i>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <!-- ChatGPT -->
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/240px-ChatGPT_logo.svg.png"
+                            alt="ChatGPT Logo" class="timeline-img" onerror="handleImageError(this)">
+                        <span class="timeline-date">2022-Present</span>
+                        <h3>Generative AI</h3>
+                        <p>ChatGPT, DALL-E, and others bring AI to the masses. Systems can now generate code, art, and
+                            human-like text.</p>
+                        <i class="fas fa-pen-nib timeline-icon"></i>
+                    </div>
+                </div>
+            </div> <!-- End Timeline Body -->
+        </section>
+        <!-- TIMELINE END -->
+
+        <!-- Three Pillars Section -->
+        <section style="margin: 80px 0;">
+            <h2>The Three Pillars of Modern AI</h2>
+            <p>Why is AI succeeding now after two winters? The convergence of these three factors.</p>
+            <div class="pillars-container">
+                <div class="pillar-card data">
+                    <i class="fas fa-database pillar-icon"></i>
+                    <h3>Data</h3>
+                    <p>Explosion of data from IoT, social media, and mobile devices provides the raw material for
+                        training massive models.</p>
+                </div>
+                <div class="pillar-card compute">
+                    <i class="fas fa-microchip pillar-icon"></i>
+                    <h3>Compute</h3>
+                    <p>Advancements in GPUs (NVIDIA) and specialized chips (TPUs) allow for parallel processing of
+                        complex algorithms.</p>
+                </div>
+                <div class="pillar-card cloud">
+                    <i class="fas fa-cloud pillar-icon"></i>
+                    <h3>Cloud</h3>
+                    <p>Democratized access. Startups and students can rent supercomputer power without owning the
+                        hardware.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hype Cycle -->
+        <section style="margin: 80px 0;">
+            <h2>The Gartner Hype Cycle</h2>
+            <div class="hype-cycle-container">
+                <svg class="hype-cycle-svg" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Axes -->
+                    <line x1="50" y1="350" x2="750" y2="350" stroke="#2C3E50" stroke-width="2" />
+                    <line x1="50" y1="350" x2="50" y2="50" stroke="#2C3E50" stroke-width="2" />
+
+                    <!-- Labels -->
+                    <text x="30" y="40" font-family="sans-serif" font-size="12" fill="#2C3E50"
+                        transform="rotate(-90 40,40)">Expectations</text>
+                    <text x="700" y="380" font-family="sans-serif" font-size="12" fill="#2C3E50">Time</text>
+
+                    <!-- Curve -->
+                    <path d="M50,350 C100,350 150,50 200,50 C250,50 300,300 350,300 C400,300 500,150 750,150"
+                        fill="none" stroke="#3498DB" stroke-width="4" stroke-linecap="round" />
+
+                    <!-- Points -->
+                    <circle cx="200" cy="50" r="8" fill="#FF6B6B" />
+                    <text x="200" y="30" font-family="sans-serif" font-size="14" text-anchor="middle"
+                        font-weight="bold">Peak of Inflated Expectations</text>
+
+                    <circle cx="350" cy="300" r="8" fill="#95A5A6" />
+                    <text x="350" y="330" font-family="sans-serif" font-size="14" text-anchor="middle"
+                        font-weight="bold">Trough of Disillusionment</text>
+
+                    <circle cx="750" cy="150" r="8" fill="#27AE60" />
+                    <text x="700" y="130" font-family="sans-serif" font-size="14" text-anchor="middle"
+                        font-weight="bold">Plateau of Productivity</text>
+                </svg>
+                <p><em>Goal: Manage expectations to avoid the next "Trough" and reach the Plateau responsibly.</em></p>
+            </div>
+        </section>
+
+        <!-- Pioneers -->
+        <section style="margin: 80px 0;">
+            <h2>Key Pioneers</h2>
+            <div class="pioneers-grid">
+                <div class="pioneer-card">
+                    <div class="pioneer-icon"><i class="fas fa-code"></i></div>
+                    <h3>Alan Turing</h3>
+                    <p class="text-secondary">Father of Computer Science</p>
+                    <p style="font-size: 0.9rem;">Proposed the Turing Test (1950): "Can machines think?"</p>
+                </div>
+                <div class="pioneer-card">
+                    <div class="pioneer-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3>John McCarthy</h3>
+                    <p class="text-secondary">Father of AI</p>
+                    <p style="font-size: 0.9rem;">Coined "Artificial Intelligence" (1956) and created LISP.</p>
+                </div>
+                <div class="pioneer-card">
+                    <div class="pioneer-icon"><i class="fas fa-layer-group"></i></div>
+                    <h3>Geoffrey Hinton</h3>
+                    <p class="text-secondary">Godfather of Deep Learning</p>
+                    <p style="font-size: 0.9rem;">Pioneered Backpropagation and modern Neural Networks.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ethics -->
+        <section style="margin: 80px 0;">
+            <h2>Ethical Considerations</h2>
+            <div class="ethics-grid">
+                <div class="ethics-item">
+                    <h3><i class="fas fa-balance-scale"></i> Bias & Fairness</h3>
+                    <p>AI models can amplify societal biases found in training data.</p>
+                </div>
+                <div class="ethics-item">
+                    <h3><i class="fas fa-briefcase"></i> Job Displacement</h3>
+                    <p>Automation threatens specific sectors, requiring workforce reskilling.</p>
+                </div>
+                <div class="ethics-item">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Misinformation</h3>
+                    <p>Deepfakes and generated text can spread false information rapidly.</p>
+                </div>
+                <div class="ethics-item">
+                    <h3><i class="fas fa-eye-slash"></i> The "Black Box"</h3>
+                    <p>Difficulty in explaining how deep learning models arrive at specific decisions.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <h3>The Future of AI</h3>
+            <p>Will we reach Artificial General Intelligence (AGI)? Or are we heading for another winter?<br>The answer
+                lies in responsible innovation.</p>
+            <p style="font-size: 0.8rem; opacity: 0.7; margin-top: 20px;">Created for AI Foundations Course • 2024</p>
+        </div>
+    </footer>
+
+    <div class="back-to-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Collapsible Learning Objectives
+        function toggleObjectives() {
+            const content = document.getElementById('obj-content');
+            const chevron = document.getElementById('obj-chevron');
+            content.classList.toggle('active');
+
+            if (content.classList.contains('active')) {
+                chevron.classList.remove('fa-chevron-down');
+                chevron.classList.add('fa-chevron-up');
+            } else {
+                chevron.classList.remove('fa-chevron-up');
+                chevron.classList.add('fa-chevron-down');
+            }
+        }
+
+        // Scroll to Top
+        window.onscroll = function () {
+            const btn = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+
+            // Timeline Animation on Scroll
+            revealTimeline();
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Timeline Scroll Reveal Animation
+        function revealTimeline() {
+            const items = document.querySelectorAll('.timeline-item, .era-marker');
+            const windowHeight = window.innerHeight;
+            const elementVisible = 150;
+
+            items.forEach((item) => {
+                const elementTop = item.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    item.style.opacity = "1";
+                    item.style.transform = "translateY(0)";
+                } else {
+                    item.style.opacity = "0";
+                    item.style.transform = "translateY(50px)";
+                    item.style.transition = "all 0.6s ease";
+                }
+            });
+        }
+
+        // Initialize reveal state
+        document.addEventListener('DOMContentLoaded', revealTimeline);
+
+    </script>
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

@@ -1,8 +1,9 @@
 {
-  "generated": "2025-01-27",
-  "totalTags": 93,
+  "generated": "2025-02-01",
+  "totalTags": 102,
   "tags": {
     "Machine Learning": [
+      "ai-introduction/introduction-to-ai.html",
       "ml-fundamentals/what-is-machine-learning.html",
       "ml-fundamentals/types-of-machine-learning.html",
       "ml-fundamentals/core-ml-concepts.html",
@@ -18,10 +19,42 @@
       "ml-fundamentals/what-is-machine-learning.html",
       "ml-algorithms/neural-networks.html"
     ],
+    "Artificial Intelligence": [
+      "ai-introduction/introduction-to-ai.html",
+      "ai-introduction/history-of-ai.html"
+    ],
+    "AI Fundamentals": [
+      "ai-introduction/introduction-to-ai.html"
+    ],
+    "AI Definitions": [
+      "ai-introduction/introduction-to-ai.html"
+    ],
+    "AI Types": [
+      "ai-introduction/introduction-to-ai.html"
+    ],
+    "Gartner Hype Cycle": [
+      "ai-introduction/introduction-to-ai.html"
+    ],
+    "AI History": [
+      "ai-introduction/history-of-ai.html"
+    ],
+    "Turing Test": [
+      "ai-introduction/history-of-ai.html"
+    ],
+    "Machine Learning History": [
+      "ai-introduction/history-of-ai.html"
+    ],
+    "AI Winters": [
+      "ai-introduction/history-of-ai.html"
+    ],
+    "Expert Systems": [
+      "ai-introduction/history-of-ai.html"
+    ],
     "Beginner": [
       "ml-fundamentals/what-is-machine-learning.html"
     ],
     "Data Science": [
+      "ai-introduction/introduction-to-ai.html",
       "ml-fundamentals/what-is-machine-learning.html",
       "ml-algorithms/ml-algorithm-selection-guide.html"
     ],
@@ -131,6 +164,7 @@
       "ai-business-usecases/modern-ai-landscape.html"
     ],
     "Generative AI": [
+      "ai-introduction/history-of-ai.html",
       "ai-business-usecases/modern-ai-landscape.html"
     ],
     "AI Applications": [
@@ -283,9 +317,12 @@
       "ml-algorithms/random-forest.html"
     ],
     "Neural Networks": [
+      "ai-introduction/history-of-ai.html",
       "ml-algorithms/neural-networks.html"
     ],
     "Deep Learning": [
+      "ai-introduction/introduction-to-ai.html",
+      "ai-introduction/history-of-ai.html",
       "ml-algorithms/neural-networks.html"
     ],
     "CNN": [

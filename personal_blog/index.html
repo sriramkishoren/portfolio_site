@@ -81,6 +81,14 @@
         const blogConfig = {
             categories: [
                 {
+                    id: "ai-intro",
+                    name: "AI Introduction",
+                    folder: "ai-introduction",
+                    icon: "fa-lightbulb",
+                    color: "teal",
+                    order: 0
+                },
+                {
                     id: "ai-business",
                     name: "AI Business UseCases",
                     folder: "ai-business-usecases",
@@ -114,6 +122,25 @@
                 }
             ],
             posts: [
+                // AI Introduction
+                {
+                    id: "introduction-to-ai",
+                    title: "Introduction to Artificial Intelligence - Infographic",
+                    excerpt: "A comprehensive infographic covering the foundations, definitions, and applications of Artificial Intelligence.",
+                    category: "ai-intro",
+                    date: "2025-01-18",
+                    file: "ai-introduction/introduction-to-ai.html",
+                    order: 2
+                },
+                {
+                    id: "history-of-ai",
+                    title: "History of AI: From Dreams to Reality",
+                    excerpt: "An interactive timeline covering seven decades of AI innovation from pre-1950 foundations through the generative AI era.",
+                    category: "ai-intro",
+                    date: "2025-01-19",
+                    file: "ai-introduction/history-of-ai.html",
+                    order: 1
+                },
                 // AI Business UseCases
                 {
                     id: "modern-ai-landscape",
@@ -269,7 +296,7 @@
                     category: "ml-algorithms",
                     date: "2025-01-31",
                     file: "ml-algorithms/decision-tree.html",
-                    order: 17
+                    order: 19
                 },
                 {
                     id: "naive-bayes",
@@ -287,7 +314,7 @@
                     category: "ml-algorithms",
                     date: "2025-01-31",
                     file: "ml-algorithms/support-vector-machines.html",
-                    order: 19
+                    order: 17
                 },
                 {
                     id: "random-forest",
@@ -403,6 +430,13 @@
         (function () {
             // Color mappings for categories
             const colorClasses = {
+                teal: {
+                    badge: 'bg-teal-100 text-teal-800 dark:bg-teal-900 dark:text-teal-200',
+                    button: 'bg-teal-50 text-teal-700 border-teal-200 dark:bg-teal-900/30 dark:text-teal-300 dark:border-teal-800',
+                    buttonActive: 'bg-teal-600 text-white border-teal-600 dark:bg-teal-600 dark:border-teal-600',
+                    pill: 'bg-teal-100 text-teal-700 dark:bg-teal-900 dark:text-teal-300',
+                    pillActive: 'bg-teal-600 text-white'
+                },
                 blue: {
                     badge: 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200',
                     button: 'bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800',
