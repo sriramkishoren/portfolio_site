@@ -9,6 +9,11 @@ This is a static personal portfolio website for Sriramkishore Naraharisetti. The
 ## Architecture
 
 - **Main site**: `index.html` - portfolio landing page
+- **Professional Certifications**: `professional-certificates/index.html` - certifications & awards showcase
+  - Hero + Grid layout: 2 featured certifications at top, 5 compact cards in grid below
+  - Image lightbox: click any image to view full-size in a popup overlay (close via X, backdrop click, or Escape)
+  - Hover effects: gentle zoom + shadow on images, card lift on hover
+  - 7 certifications with images in `professional-certificates/images/`
 - **Personal Blog**: `personal_blog/` - self-hosted blog section with category-based organization
   - `personal_blog/index.html` - blog listing page with sidebar filtering and card layout
   - `personal_blog/post.html` - blog post viewer (loads posts in iframe via `?article=` param)
@@ -32,6 +37,9 @@ portfolio_site/
 ├── index.html              # Main portfolio page
 ├── CNAME                   # Custom domain config
 ├── CLAUDE.md               # Claude Code guidance
+├── professional-certificates/
+│   ├── index.html          # Certifications showcase (hero + grid layout with lightbox)
+│   └── images/             # Certification/award images (.webp)
 ├── personal_blog/
 │   ├── index.html          # Blog listing page (category sidebar + post cards)
 │   ├── post.html           # Blog post viewer (iframe container with nav)
@@ -171,7 +179,7 @@ The blog index (`personal_blog/index.html`) includes:
 
 All pages include GoatCounter for privacy-friendly visitor tracking (no cookies, GDPR compliant).
 
-**Tracking Script (on ALL 25 HTML pages):**
+**Tracking Script (on ALL 26 HTML pages):**
 ```html
 <script data-goatcounter="https://kishoretech.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
