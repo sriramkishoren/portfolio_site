@@ -123,8 +123,8 @@
                         try {
                             // Try to access iframe content to verify it loaded
                             const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                            // If we get here and the body is empty or has error content, show fallback
-                            if (!iframeDoc.body || iframeDoc.body.innerHTML.includes('404')) {
+                            // If the body is empty or the page title contains '404', show fallback
+                            if (!iframeDoc.body || !iframeDoc.body.children.length || (iframeDoc.title && iframeDoc.title.includes('404'))) {
                                 showFallback();
                             }
                         } catch (e) {
