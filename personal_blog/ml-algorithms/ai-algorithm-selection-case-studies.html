@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Algorithm Selection Guide: 6 Industry Case Studies</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="AI Algorithm Selection Guide: 6 Industry Case Studies">
+    <meta name="description" content="Strategic guide to selecting ML algorithms across 6 industries: banking, e-commerce, retail, energy, manufacturing, and legal. Covers Decision Trees, SVM, Random Forest, Neural Networks, CNN, and Naive Bayes.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="ML Algorithms">
+    <meta name="tags" content="Algorithm Selection, Case Studies, Decision Tree, SVM, Random Forest, Neural Networks, CNN, Naive Bayes, Industry Applications, Machine Learning">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Six industry case studies demonstrating how to select the right ML algorithm: Decision Trees for banking loan eligibility, SVM for e-commerce text classification, Random Forest for retail demand forecasting, Neural Networks for energy grid fault detection, CNN for manufacturing defect detection, and Naive Bayes for legal document classification.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/ai-algorithm-selection-case-studies">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="AI Algorithm Selection Guide: 6 Industry Case Studies">
+    <meta property="og:description" content="Strategic guide to selecting ML algorithms across 6 industries: banking, e-commerce, retail, energy, manufacturing, and legal services.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/ai-algorithm-selection-case-studies">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-02-01">
+    <meta property="article:section" content="ML Algorithms">
+    <meta property="article:tag" content="Algorithm Selection">
+    <meta property="article:tag" content="Case Studies">
+    <meta property="article:tag" content="Machine Learning">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "AI Algorithm Selection Guide: 6 Industry Case Studies",
+        "description": "Strategic guide to selecting ML algorithms across 6 industries: banking, e-commerce, retail, energy, manufacturing, and legal. Covers Decision Trees, SVM, Random Forest, Neural Networks, CNN, and Naive Bayes.",
+        "datePublished": "2025-02-01",
+        "dateModified": "2025-02-01",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/ai-algorithm-selection-case-studies"
+        },
+        "keywords": ["Algorithm Selection", "Case Studies", "Decision Tree", "SVM", "Random Forest", "Neural Networks", "CNN", "Naive Bayes", "Industry Applications", "Machine Learning"],
+        "articleSection": "ML Algorithms",
+        "about": [
+            {"@type": "Thing", "name": "Algorithm Selection"},
+            {"@type": "Thing", "name": "Machine Learning Case Studies"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "Decision Tree"},
+            {"@type": "Thing", "name": "Support Vector Machine"},
+            {"@type": "Thing", "name": "Random Forest"},
+            {"@type": "Thing", "name": "Neural Networks"},
+            {"@type": "Thing", "name": "Convolutional Neural Network"},
+            {"@type": "Thing", "name": "Naive Bayes"}
+        ]
+    }
+    </script>
+
+    <!--
+    blog-metadata:
+      title: "AI Algorithm Selection Guide: 6 Industry Case Studies"
+      category: "ML Algorithms"
+      pillar: "ML Algorithms"
+      tags:
+        - Algorithm Selection
+        - Case Studies
+        - Decision Tree
+        - SVM
+        - Random Forest
+      connectors: "ML Fundamentals, AI Business UseCases"
+    -->
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom Animations & Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .card-transition {
+            transition: all 0.3s ease;
+        }
+
+        .card-transition:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+            opacity: 0;
+        }
+
+        .expandable-content.open {
+            max-height: 1000px;
+            /* Arbitrary large height */
+            opacity: 1;
+        }
+
+        .chevron-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .chevron-icon.rotate {
+            transform: rotate(180deg);
+        }
+
+        .pulse-animation {
+            animation: pulse-bg 1s ease-in-out;
+        }
+
+        @keyframes pulse-bg {
+            0% {
+                background-color: transparent;
+            }
+
+            50% {
+                background-color: rgba(255, 255, 255, 0.5);
+            }
+
+            100% {
+                background-color: transparent;
+            }
+        }
+
+        /* Specific Industry Theme Utilities */
+        .theme-banking {
+            --main: #FF9800;
+            --light: #FFF3E0;
+            --dark: #E65100;
+        }
+
+        .theme-ecommerce {
+            --main: #2196F3;
+            --light: #E3F2FD;
+            --dark: #0D47A1;
+        }
+
+        .theme-retail {
+            --main: #4CAF50;
+            --light: #E8F5E9;
+            --dark: #1B5E20;
+        }
+
+        .theme-energy {
+            --main: #F44336;
+            --light: #FFEBEE;
+            --dark: #B71C1C;
+        }
+
+        .theme-manufacturing {
+            --main: #9C27B0;
+            --light: #F3E5F5;
+            --dark: #4A148C;
+        }
+
+        .theme-legal {
+            --main: #3F51B5;
+            --light: #E8EAF6;
+            --dark: #1A237E;
+        }
+
+        @media print {
+            .expandable-content {
+                max-height: none !important;
+                opacity: 1 !important;
+                display: block !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 min-h-screen p-4 md:p-8">
+
+    <!-- Main Header -->
+    <header class="max-w-7xl mx-auto mb-10 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-800 mb-4 tracking-tight">
+            AI Algorithm Selection Guide: <span class="text-indigo-600">6 Industry Case Studies</span>
+        </h1>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            A strategic overview of algorithmic solutions across six major industries, analyzing problem statements,
+            technical considerations, and business impact.
+        </p>
+    </header>
+
+    <!-- Grid Layout -->
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+
+        <!-- CASE STUDY 1: BANKING -->
+        <div class="card-transition bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-orange-500">
+            <!-- Header -->
+            <div class="bg-orange-50 p-6 border-b border-orange-100 flex justify-between items-start">
+                <div>
+                    <div class="inline-flex items-center gap-2 mb-1">
+                        <i data-lucide="landmark" class="w-5 h-5 text-orange-600"></i>
+                        <span class="text-sm font-bold text-orange-600 uppercase tracking-wider">Retail Banking</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 leading-tight">Loan Eligibility Prediction</h2>
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-sm border border-orange-100">
+                    <i data-lucide="git-fork" class="w-6 h-6 text-orange-500"></i>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 space-y-6">
+                <!-- Problem -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 uppercase mb-2">Problem Statement</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Mid-sized retail bank struggling with slow, inconsistent, and error-prone manual loan approval
+                        processes. Officers need an automated way to screen applicants while maintaining regulatory
+                        transparency.
+                    </p>
+                </div>
+
+                <!-- Metrics Box -->
+                <div class="bg-gray-50 rounded-xl p-4 grid grid-cols-2 gap-4 border border-gray-100">
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Process Time</p>
+                        <p class="text-lg font-bold text-orange-600">Days → Hours</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Consistency</p>
+                        <p class="text-lg font-bold text-orange-600">100%</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Audit Trail</p>
+                        <p class="text-lg font-bold text-orange-600">Full</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">ROI Timeline</p>
+                        <p class="text-lg font-bold text-orange-600">3-6 Months</p>
+                    </div>
+                </div>
+
+                <!-- Before/After -->
+                <div class="border border-orange-200 rounded-lg overflow-hidden text-sm">
+                    <div class="bg-red-50 p-2 flex justify-between items-center border-b border-orange-100">
+                        <span class="font-semibold text-red-700"><i data-lucide="x-circle"
+                                class="w-3 h-3 inline mr-1"></i> Before</span>
+                        <span class="text-gray-600">Slow, Subjective, Manual</span>
+                    </div>
+                    <div class="bg-green-50 p-2 flex justify-between items-center">
+                        <span class="font-semibold text-green-700"><i data-lucide="check-circle"
+                                class="w-3 h-3 inline mr-1"></i> After</span>
+                        <span class="text-gray-600">Fast, Consistent, Transparent</span>
+                    </div>
+                </div>
+
+                <!-- Algorithm Section -->
+                <div class="bg-orange-50 rounded-xl p-5 border border-orange-100 relative group">
+                    <div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="git-fork" class="w-16 h-16 text-orange-500"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-orange-800 mb-3 cursor-pointer" onclick="highlightAlgo(this)">
+                        Recommended: Decision Tree</h4>
+                    <ul class="space-y-2 text-sm text-gray-700 relative z-10">
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-orange-500 mt-0.5"></i> <span><strong>Interpretability:</strong>
+                                Decisions translate to clear rules (If Income > X).</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-orange-500 mt-0.5"></i> <span><strong>Compliance:</strong> Fully
+                                explainable for auditors/regulators.</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-orange-500 mt-0.5"></i> <span><strong>Structure:</strong> Handles
+                                categorical & numerical data well.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Considerations -->
+                <button onclick="toggleSection('cons-1')"
+                    class="w-full flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors group">
+                    <span class="font-semibold text-gray-600 group-hover:text-orange-600">Technical
+                        Considerations</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-300 rotate"
+                        id="icon-cons-1"></i>
+                </button>
+                <div id="cons-1"
+                    class="expandable-content open bg-gray-50 rounded-lg text-sm border-l-4 border-orange-400">
+                    <div class="p-4 grid grid-cols-1 gap-3">
+                        <div><span class="font-bold text-gray-700">Interpretability:</span> <span
+                                class="text-red-500 font-bold">CRITICAL</span></div>
+                        <div><span class="font-bold text-gray-700">Accuracy Goal:</span> Moderate (80-85%) - Initial
+                            Screening</div>
+                        <div><span class="font-bold text-gray-700">Training Speed:</span> Fast, low cost</div>
+                        <div><span class="font-bold text-gray-700">Bias-Variance:</span> Pruning needed to prevent
+                            overfitting</div>
+                        <div><span class="font-bold text-gray-700">Data:</span> Structured (Income, Credit Score, Debt)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CASE STUDY 2: E-COMMERCE -->
+        <div class="card-transition bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-blue-500">
+            <!-- Header -->
+            <div class="bg-blue-50 p-6 border-b border-blue-100 flex justify-between items-start">
+                <div>
+                    <div class="inline-flex items-center gap-2 mb-1">
+                        <i data-lucide="shopping-cart" class="w-5 h-5 text-blue-600"></i>
+                        <span class="text-sm font-bold text-blue-600 uppercase tracking-wider">E-Commerce</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 leading-tight">Real-Time Text Classification</h2>
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-sm border border-blue-100">
+                    <i data-lucide="message-square" class="w-6 h-6 text-blue-500"></i>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 space-y-6">
+                <!-- Problem -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 uppercase mb-2">Problem Statement</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Platform overwhelmed by customer support messages. Manual routing causes hours of delay. Need
+                        automated categorization (Billing vs Tech vs Returns) to speed up resolution.
+                    </p>
+                </div>
+
+                <!-- Metrics Box -->
+                <div class="bg-gray-50 rounded-xl p-4 grid grid-cols-2 gap-4 border border-gray-100">
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Routing Time</p>
+                        <p class="text-lg font-bold text-blue-600">&lt; 1 Second</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Manual Work</p>
+                        <p class="text-lg font-bold text-blue-600">-90%</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Target Accuracy</p>
+                        <p class="text-lg font-bold text-blue-600">95%+</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Annual Savings</p>
+                        <p class="text-lg font-bold text-blue-600">$500k+</p>
+                    </div>
+                </div>
+
+                <!-- Before/After -->
+                <div class="border border-blue-200 rounded-lg overflow-hidden text-sm">
+                    <div class="bg-red-50 p-2 flex justify-between items-center border-b border-blue-100">
+                        <span class="font-semibold text-red-700"><i data-lucide="x-circle"
+                                class="w-3 h-3 inline mr-1"></i> Before</span>
+                        <span class="text-gray-600">High delay, human error</span>
+                    </div>
+                    <div class="bg-green-50 p-2 flex justify-between items-center">
+                        <span class="font-semibold text-green-700"><i data-lucide="check-circle"
+                                class="w-3 h-3 inline mr-1"></i> After</span>
+                        <span class="text-gray-600">Instant routing, high CSAT</span>
+                    </div>
+                </div>
+
+                <!-- Algorithm Section -->
+                <div class="bg-blue-50 rounded-xl p-5 border border-blue-100 relative group">
+                    <div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="divide-circle" class="w-16 h-16 text-blue-500"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-blue-800 mb-3 cursor-pointer" onclick="highlightAlgo(this)">
+                        Recommended: SVM</h4>
+                    <ul class="space-y-2 text-sm text-gray-700 relative z-10">
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-blue-500 mt-0.5"></i> <span><strong>High Dimensionality:</strong>
+                                Excellent for text where every word is a feature.</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-blue-500 mt-0.5"></i> <span><strong>Accuracy:</strong> Margin
+                                maximization minimizes false positives.</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-blue-500 mt-0.5"></i> <span><strong>Speed:</strong> Fast inference
+                                suitable for real-time volume.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Considerations -->
+                <button onclick="toggleSection('cons-2')"
+                    class="w-full flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors group">
+                    <span class="font-semibold text-gray-600 group-hover:text-blue-600">Technical Considerations</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-300 rotate"
+                        id="icon-cons-2"></i>
+                </button>
+                <div id="cons-2"
+                    class="expandable-content open bg-gray-50 rounded-lg text-sm border-l-4 border-blue-400">
+                    <div class="p-4 grid grid-cols-1 gap-3">
+                        <div><span class="font-bold text-gray-700">Complexity:</span> High (Subtle language differences)
+                        </div>
+                        <div><span class="font-bold text-gray-700">Interpretability:</span> Low Priority (Black box
+                            acceptable)</div>
+                        <div><span class="font-bold text-gray-700">Scalability:</span> Critical for peak traffic</div>
+                        <div><span class="font-bold text-gray-700">Training:</span> Offline training, higher cost
+                            acceptable</div>
+                        <div><span class="font-bold text-gray-700">Data:</span> Unstructured Text (Chat, Email, Social)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CASE STUDY 3: RETAIL -->
+        <div class="card-transition bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-green-500">
+            <!-- Header -->
+            <div class="bg-green-50 p-6 border-b border-green-100 flex justify-between items-start">
+                <div>
+                    <div class="inline-flex items-center gap-2 mb-1">
+                        <i data-lucide="store" class="w-5 h-5 text-green-600"></i>
+                        <span class="text-sm font-bold text-green-600 uppercase tracking-wider">Retail Chain</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 leading-tight">Demand Forecasting</h2>
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-sm border border-green-100">
+                    <i data-lucide="bar-chart-3" class="w-6 h-6 text-green-500"></i>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 space-y-6">
+                <!-- Problem -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 uppercase mb-2">Problem Statement</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Retail chain faces $2M/yr loss due to stockouts and overstock. Manual forecasting fails to
+                        account for promotions, weather, and seasonality across hundreds of stores.
+                    </p>
+                </div>
+
+                <!-- Metrics Box -->
+                <div class="bg-gray-50 rounded-xl p-4 grid grid-cols-2 gap-4 border border-gray-100">
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Holding Costs</p>
+                        <p class="text-lg font-bold text-green-600">-20%</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Availability</p>
+                        <p class="text-lg font-bold text-green-600">95%+</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Target MAPE</p>
+                        <p class="text-lg font-bold text-green-600">&lt; 5%</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">ROI Timeline</p>
+                        <p class="text-lg font-bold text-green-600">6-12 Months</p>
+                    </div>
+                </div>
+
+                <!-- Before/After -->
+                <div class="border border-green-200 rounded-lg overflow-hidden text-sm">
+                    <div class="bg-red-50 p-2 flex justify-between items-center border-b border-green-100">
+                        <span class="font-semibold text-red-700"><i data-lucide="x-circle"
+                                class="w-3 h-3 inline mr-1"></i> Before</span>
+                        <span class="text-gray-600">Reactive, High Waste</span>
+                    </div>
+                    <div class="bg-green-50 p-2 flex justify-between items-center">
+                        <span class="font-semibold text-green-700"><i data-lucide="check-circle"
+                                class="w-3 h-3 inline mr-1"></i> After</span>
+                        <span class="text-gray-600">Optimized, High Availability</span>
+                    </div>
+                </div>
+
+                <!-- Algorithm Section -->
+                <div class="bg-green-50 rounded-xl p-5 border border-green-100 relative group">
+                    <div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="network" class="w-16 h-16 text-green-500"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-green-800 mb-3 cursor-pointer" onclick="highlightAlgo(this)">
+                        Recommended: Random Forest</h4>
+                    <ul class="space-y-2 text-sm text-gray-700 relative z-10">
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-green-500 mt-0.5"></i> <span><strong>Complex Interactions:</strong>
+                                Captures seasonality vs. promotions automatically.</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-green-500 mt-0.5"></i> <span><strong>Robustness:</strong> Handles
+                                outliers (e.g., product recalls) effectively.</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-green-500 mt-0.5"></i> <span><strong>Feature Importance:</strong>
+                                Tells managers "Why" (e.g., Weather drove 20% of sales).</span></li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Considerations -->
+                <button onclick="toggleSection('cons-3')"
+                    class="w-full flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors group">
+                    <span class="font-semibold text-gray-600 group-hover:text-green-600">Technical Considerations</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-300 rotate"
+                        id="icon-cons-3"></i>
+                </button>
+                <div id="cons-3"
+                    class="expandable-content open bg-gray-50 rounded-lg text-sm border-l-4 border-green-400">
+                    <div class="p-4 grid grid-cols-1 gap-3">
+                        <div><span class="font-bold text-gray-700">Complexity:</span> Very High (Multi-factor
+                            interactions)</div>
+                        <div><span class="font-bold text-gray-700">Interpretability:</span> Moderate (Feature importance
+                            needed)</div>
+                        <div><span class="font-bold text-gray-700">Scalability:</span> Critical (100+ stores, thousands
+                            of SKUs)</div>
+                        <div><span class="font-bold text-gray-700">Robustness:</span> Must handle missing data/outliers
+                        </div>
+                        <div><span class="font-bold text-gray-700">Data:</span> Sales History, Promotions, Competitor
+                            Data</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CASE STUDY 4: ENERGY -->
+        <div class="card-transition bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-red-500">
+            <!-- Header -->
+            <div class="bg-red-50 p-6 border-b border-red-100 flex justify-between items-start">
+                <div>
+                    <div class="inline-flex items-center gap-2 mb-1">
+                        <i data-lucide="zap" class="w-5 h-5 text-red-600"></i>
+                        <span class="text-sm font-bold text-red-600 uppercase tracking-wider">Energy & Utilities</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 leading-tight">Grid Fault Detection</h2>
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-sm border border-red-100">
+                    <i data-lucide="activity" class="w-6 h-6 text-red-500"></i>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 space-y-6">
+                <!-- Problem -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 uppercase mb-2">Problem Statement</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Utility faces $1M+ outages and safety risks due to reactive maintenance. Needs to detect
+                        equipment faults 24-48 hours before failure using massive sensor streams.
+                    </p>
+                </div>
+
+                <!-- Metrics Box -->
+                <div class="bg-gray-50 rounded-xl p-4 grid grid-cols-2 gap-4 border border-gray-100">
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Detection Lead Time</p>
+                        <p class="text-lg font-bold text-red-600">24-48 Hrs</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Downtime</p>
+                        <p class="text-lg font-bold text-red-600">Days → Hrs</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Accuracy Goal</p>
+                        <p class="text-lg font-bold text-red-600">99%+</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Incident Cost</p>
+                        <p class="text-lg font-bold text-red-600">-90%</p>
+                    </div>
+                </div>
+
+                <!-- Before/After -->
+                <div class="border border-red-200 rounded-lg overflow-hidden text-sm">
+                    <div class="bg-red-50 p-2 flex justify-between items-center border-b border-red-100">
+                        <span class="font-semibold text-red-700"><i data-lucide="x-circle"
+                                class="w-3 h-3 inline mr-1"></i> Before</span>
+                        <span class="text-gray-600">Reactive, Hazardous</span>
+                    </div>
+                    <div class="bg-green-50 p-2 flex justify-between items-center">
+                        <span class="font-semibold text-green-700"><i data-lucide="check-circle"
+                                class="w-3 h-3 inline mr-1"></i> After</span>
+                        <span class="text-gray-600">Predictive, Safe</span>
+                    </div>
+                </div>
+
+                <!-- Algorithm Section -->
+                <div class="bg-red-50 rounded-xl p-5 border border-red-100 relative group">
+                    <div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="brain-circuit" class="w-16 h-16 text-red-500"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-red-800 mb-3 cursor-pointer" onclick="highlightAlgo(this)">
+                        Recommended: Neural Network</h4>
+                    <ul class="space-y-2 text-sm text-gray-700 relative z-10">
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-red-500 mt-0.5"></i> <span><strong>Pattern Recognition:</strong>
+                                Detects subtle non-linear sensor correlations.</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-red-500 mt-0.5"></i> <span><strong>Noise Tolerance:</strong> Robust
+                                against noisy sensor environments.</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-red-500 mt-0.5"></i> <span><strong>Adaptability:</strong> Continuous
+                                learning for aging equipment.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Considerations -->
+                <button onclick="toggleSection('cons-4')"
+                    class="w-full flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors group">
+                    <span class="font-semibold text-gray-600 group-hover:text-red-600">Technical Considerations</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-300 rotate"
+                        id="icon-cons-4"></i>
+                </button>
+                <div id="cons-4"
+                    class="expandable-content open bg-gray-50 rounded-lg text-sm border-l-4 border-red-400">
+                    <div class="p-4 grid grid-cols-1 gap-3">
+                        <div><span class="font-bold text-gray-700">Deployment:</span> Edge / On-device (limited
+                            capacity)</div>
+                        <div><span class="font-bold text-gray-700">Accuracy:</span> Critical (False negatives are
+                            dangerous)</div>
+                        <div><span class="font-bold text-gray-700">Data Volume:</span> Massive (Continuous streams)
+                        </div>
+                        <div><span class="font-bold text-gray-700">Latency:</span> Sub-second response required</div>
+                        <div><span class="font-bold text-gray-700">Interpretability:</span> Low priority compared to
+                            accuracy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CASE STUDY 5: MANUFACTURING -->
+        <div class="card-transition bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-purple-500">
+            <!-- Header -->
+            <div class="bg-purple-50 p-6 border-b border-purple-100 flex justify-between items-start">
+                <div>
+                    <div class="inline-flex items-center gap-2 mb-1">
+                        <i data-lucide="factory" class="w-5 h-5 text-purple-600"></i>
+                        <span class="text-sm font-bold text-purple-600 uppercase tracking-wider">Manufacturing</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 leading-tight">Automated Defect Detection</h2>
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-sm border border-purple-100">
+                    <i data-lucide="scan-eye" class="w-6 h-6 text-purple-500"></i>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 space-y-6">
+                <!-- Problem -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 uppercase mb-2">Problem Statement</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Manual inspection of electronics is slow (100 units/day) and error-prone (70% accuracy). High
+                        warranty claims due to missed micro-defects like cracks or solder issues.
+                    </p>
+                </div>
+
+                <!-- Metrics Box -->
+                <div class="bg-gray-50 rounded-xl p-4 grid grid-cols-2 gap-4 border border-gray-100">
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Detection Rate</p>
+                        <p class="text-lg font-bold text-purple-600">70% → 99%+</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Throughput</p>
+                        <p class="text-lg font-bold text-purple-600">10x Increase</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Labor Cost</p>
+                        <p class="text-lg font-bold text-purple-600">-70%</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">ROI Timeline</p>
+                        <p class="text-lg font-bold text-purple-600">6-12 Months</p>
+                    </div>
+                </div>
+
+                <!-- Before/After -->
+                <div class="border border-purple-200 rounded-lg overflow-hidden text-sm">
+                    <div class="bg-red-50 p-2 flex justify-between items-center border-b border-purple-100">
+                        <span class="font-semibold text-red-700"><i data-lucide="x-circle"
+                                class="w-3 h-3 inline mr-1"></i> Before</span>
+                        <span class="text-gray-600">Bottleneck, Inaccurate</span>
+                    </div>
+                    <div class="bg-green-50 p-2 flex justify-between items-center">
+                        <span class="font-semibold text-green-700"><i data-lucide="check-circle"
+                                class="w-3 h-3 inline mr-1"></i> After</span>
+                        <span class="text-gray-600">Real-time, Precise</span>
+                    </div>
+                </div>
+
+                <!-- Algorithm Section -->
+                <div class="bg-purple-50 rounded-xl p-5 border border-purple-100 relative group">
+                    <div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="image" class="w-16 h-16 text-purple-500"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-purple-800 mb-3 cursor-pointer" onclick="highlightAlgo(this)">
+                        Recommended: CNN</h4>
+                    <ul class="space-y-2 text-sm text-gray-700 relative z-10">
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-purple-500 mt-0.5"></i> <span><strong>Visual Learning:</strong>
+                                Automatically extracts features (edges, textures).</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-purple-500 mt-0.5"></i> <span><strong>Precision:</strong> Detects
+                                micro-defects invisible to the human eye.</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-purple-500 mt-0.5"></i> <span><strong>Speed:</strong> Processes
+                                images in milliseconds for production lines.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Considerations -->
+                <button onclick="toggleSection('cons-5')"
+                    class="w-full flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors group">
+                    <span class="font-semibold text-gray-600 group-hover:text-purple-600">Technical
+                        Considerations</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-300 rotate"
+                        id="icon-cons-5"></i>
+                </button>
+                <div id="cons-5"
+                    class="expandable-content open bg-gray-50 rounded-lg text-sm border-l-4 border-purple-400">
+                    <div class="p-4 grid grid-cols-1 gap-3">
+                        <div><span class="font-bold text-gray-700">Complexity:</span> Very High (High-res image
+                            analysis)</div>
+                        <div><span class="font-bold text-gray-700">Training Res:</span> High (GPU intensive)</div>
+                        <div><span class="font-bold text-gray-700">Verification:</span> Use Grad-CAM for technicians
+                        </div>
+                        <div><span class="font-bold text-gray-700">Data:</span> Thousands of labeled 4K images</div>
+                        <div><span class="font-bold text-gray-700">Robustness:</span> Handle lighting/orientation
+                            variances</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CASE STUDY 6: LEGAL -->
+        <div class="card-transition bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-indigo-500">
+            <!-- Header -->
+            <div class="bg-indigo-50 p-6 border-b border-indigo-100 flex justify-between items-start">
+                <div>
+                    <div class="inline-flex items-center gap-2 mb-1">
+                        <i data-lucide="scale" class="w-5 h-5 text-indigo-600"></i>
+                        <span class="text-sm font-bold text-indigo-600 uppercase tracking-wider">Legal Services</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-gray-800 leading-tight">Document Classification</h2>
+                </div>
+                <div class="bg-white p-2 rounded-lg shadow-sm border border-indigo-100">
+                    <i data-lucide="file-text" class="w-6 h-6 text-indigo-500"></i>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6 space-y-6">
+                <!-- Problem -->
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 uppercase mb-2">Problem Statement</h3>
+                    <p class="text-gray-700 leading-relaxed">
+                        Senior lawyers waste billable hours sorting thousands of documents. Manual retrieval is
+                        inefficient, leading to duplicated work and slow client response times.
+                    </p>
+                </div>
+
+                <!-- Metrics Box -->
+                <div class="bg-gray-50 rounded-xl p-4 grid grid-cols-2 gap-4 border border-gray-100">
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Automation</p>
+                        <p class="text-lg font-bold text-indigo-600">80%+</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Retrieval</p>
+                        <p class="text-lg font-bold text-indigo-600">Instant</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Accuracy</p>
+                        <p class="text-lg font-bold text-indigo-600">95%+</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-xs text-gray-500 uppercase">Deployment</p>
+                        <p class="text-lg font-bold text-indigo-600">Days</p>
+                    </div>
+                </div>
+
+                <!-- Before/After -->
+                <div class="border border-indigo-200 rounded-lg overflow-hidden text-sm">
+                    <div class="bg-red-50 p-2 flex justify-between items-center border-b border-indigo-100">
+                        <span class="font-semibold text-red-700"><i data-lucide="x-circle"
+                                class="w-3 h-3 inline mr-1"></i> Before</span>
+                        <span class="text-gray-600">Admin-heavy, Costly</span>
+                    </div>
+                    <div class="bg-green-50 p-2 flex justify-between items-center">
+                        <span class="font-semibold text-green-700"><i data-lucide="check-circle"
+                                class="w-3 h-3 inline mr-1"></i> After</span>
+                        <span class="text-gray-600">Efficient, Billable Focus</span>
+                    </div>
+                </div>
+
+                <!-- Algorithm Section -->
+                <div class="bg-indigo-50 rounded-xl p-5 border border-indigo-100 relative group">
+                    <div class="absolute top-0 right-0 p-3 opacity-10 group-hover:opacity-20 transition-opacity">
+                        <i data-lucide="mails" class="w-16 h-16 text-indigo-500"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-indigo-800 mb-3 cursor-pointer" onclick="highlightAlgo(this)">
+                        Recommended: Naïve Bayes</h4>
+                    <ul class="space-y-2 text-sm text-gray-700 relative z-10">
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-indigo-500 mt-0.5"></i> <span><strong>Interpretability:</strong>
+                                Lawyers trust it because it shows keywords (e.g., "Plaintiff" = Case Law).</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-indigo-500 mt-0.5"></i> <span><strong>Efficiency:</strong> Fast
+                                training on standard servers.</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="check"
+                                class="w-4 h-4 text-indigo-500 mt-0.5"></i> <span><strong>Scalability:</strong> Easily
+                                handles new document categories.</span></li>
+                    </ul>
+                </div>
+
+                <!-- Interactive Considerations -->
+                <button onclick="toggleSection('cons-6')"
+                    class="w-full flex items-center justify-between p-3 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors group">
+                    <span class="font-semibold text-gray-600 group-hover:text-indigo-600">Technical
+                        Considerations</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 transition-transform duration-300 rotate"
+                        id="icon-cons-6"></i>
+                </button>
+                <div id="cons-6"
+                    class="expandable-content open bg-gray-50 rounded-lg text-sm border-l-4 border-indigo-400">
+                    <div class="p-4 grid grid-cols-1 gap-3">
+                        <div><span class="font-bold text-gray-700">Interpretability:</span> Critical (Must justify
+                            categorization)</div>
+                        <div><span class="font-bold text-gray-700">Speed:</span> Quick deployment required</div>
+                        <div><span class="font-bold text-gray-700">Complexity:</span> Moderate (Text-heavy but clear
+                            vocabulary)</div>
+                        <div><span class="font-bold text-gray-700">Data:</span> Categorized historical documents</div>
+                        <div><span class="font-bold text-gray-700">Scalability:</span> High (Growing repository)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="max-w-7xl mx-auto mt-12 text-center text-gray-500 text-sm pb-8">
+        <p>© 2026 AI/ML Business Case Study Overview. Generated for educational analysis.</p>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Toggle Section Function
+        function toggleSection(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+
+            content.classList.toggle('open');
+            icon.classList.toggle('rotate');
+        }
+
+        // Highlight Animation Function
+        function highlightAlgo(element) {
+            const parent = element.parentElement;
+            parent.classList.remove('pulse-animation'); // reset
+            void parent.offsetWidth; // trigger reflow
+            parent.classList.add('pulse-animation');
+        }
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

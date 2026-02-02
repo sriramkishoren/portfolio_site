@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applying ML Algorithms to Real-World Applications</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Applying ML Algorithms to Real-World Applications">
+    <meta name="description" content="Decision frameworks for applying ML algorithms to real-world problems. Covers bias-variance tradeoff, algorithm comparison matrix, MLOps pipeline, deployment options, and 6 industry case studies.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="ML Algorithms">
+    <meta name="tags" content="Machine Learning Applications, Bias-Variance Tradeoff, MLOps, Model Deployment, Algorithm Comparison, Real-World ML, SVM, Decision Tree, Random Forest, Neural Networks">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Practical guide to applying ML algorithms covering the bias-variance tradeoff, model explainability vs performance, algorithm comparison matrix (SVM, Naive Bayes, Decision Trees, Random Forest, Neural Networks), MLOps pipeline stages, deployment options (real-time, batch, edge), algorithm selection framework, and best practices for production ML systems.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/applying-ml-algorithms-to-real-world-applications">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Applying ML Algorithms to Real-World Applications">
+    <meta property="og:description" content="Decision frameworks for applying ML algorithms: bias-variance tradeoff, algorithm comparison, MLOps pipeline, deployment options, and industry case studies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/applying-ml-algorithms-to-real-world-applications">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-02-01">
+    <meta property="article:section" content="ML Algorithms">
+    <meta property="article:tag" content="Machine Learning Applications">
+    <meta property="article:tag" content="MLOps">
+    <meta property="article:tag" content="Algorithm Comparison">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Applying ML Algorithms to Real-World Applications",
+        "description": "Decision frameworks for applying ML algorithms to real-world problems. Covers bias-variance tradeoff, algorithm comparison matrix, MLOps pipeline, deployment options, and 6 industry case studies.",
+        "datePublished": "2025-02-01",
+        "dateModified": "2025-02-01",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/applying-ml-algorithms-to-real-world-applications"
+        },
+        "keywords": ["Machine Learning Applications", "Bias-Variance Tradeoff", "MLOps", "Model Deployment", "Algorithm Comparison", "Real-World ML", "SVM", "Decision Tree", "Random Forest", "Neural Networks"],
+        "articleSection": "ML Algorithms",
+        "about": [
+            {"@type": "Thing", "name": "Machine Learning Applications"},
+            {"@type": "Thing", "name": "MLOps"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "Bias-Variance Tradeoff"},
+            {"@type": "Thing", "name": "Model Deployment"},
+            {"@type": "Thing", "name": "Algorithm Selection"},
+            {"@type": "Thing", "name": "Edge Computing"}
+        ]
+    }
+    </script>
+
+    <!--
+    blog-metadata:
+      title: "Applying ML Algorithms to Real-World Applications"
+      category: "ML Algorithms"
+      pillar: "ML Algorithms"
+      tags:
+        - Machine Learning Applications
+        - MLOps
+        - Bias-Variance Tradeoff
+        - Model Deployment
+        - Algorithm Comparison
+      connectors: "ML Fundamentals, AI Business UseCases, AI Project Management"
+    -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* Custom Gradients */
+        .bg-gradient-header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        /* Smooth Scroll & Transitions */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Chart Styles */
+        .chart-line {
+            fill: none;
+            stroke-width: 3;
+            stroke-linecap: round;
+        }
+
+        .chart-axis {
+            stroke: #94a3b8;
+            stroke-width: 2;
+        }
+
+        .chart-grid {
+            stroke: #e2e8f0;
+            stroke-width: 1;
+            stroke-dasharray: 4;
+        }
+
+        /* Print Specifics */
+        @media print {
+            body {
+                background: white;
+                font-size: 12px;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .print-break-inside {
+                page-break-inside: avoid;
+            }
+
+            .print-break-before {
+                page-break-before: always;
+            }
+
+            .shadow-lg,
+            .shadow-md,
+            .shadow-xl {
+                box-shadow: none !important;
+                border: 1px solid #cbd5e1;
+            }
+
+            .text-white {
+                color: #000 !important;
+            }
+
+            .bg-slate-900 {
+                background-color: #f1f5f9 !important;
+                color: #000 !important;
+            }
+
+            .bg-blue-600 {
+                background-color: #e2e8f0 !important;
+                color: #0f172a !important;
+                font-weight: bold;
+                border: 1px solid #000;
+            }
+
+            a {
+                text-decoration: none;
+                color: #000;
+            }
+
+            /* Ensure graphs print reasonably well */
+            svg {
+                break-inside: avoid;
+            }
+        }
+
+        /* Mechanics Visuals */
+        .node {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            z-index: 10;
+        }
+
+        .connection {
+            position: absolute;
+            background: #cbd5e1;
+            z-index: 0;
+            transform-origin: 0 50%;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header Section -->
+    <header class="bg-gradient-header text-white py-16 px-4 mb-12">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex justify-center mb-6">
+                <i data-lucide="brain-circuit" class="w-16 h-16 text-blue-400"></i>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+                Applying ML to Real-World Applications
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 font-light max-w-3xl mx-auto">
+                Decision Frameworks, Algorithms, and Real-World Applications
+            </p>
+            <div class="mt-8 flex flex-wrap justify-center gap-4 text-sm font-medium text-slate-400">
+                <span class="flex items-center gap-2"><i data-lucide="scale" class="w-4 h-4"></i> Trade-offs</span>
+                <span class="flex items-center gap-2"><i data-lucide="cpu" class="w-4 h-4"></i> Algorithms</span>
+                <span class="flex items-center gap-2"><i data-lucide="infinity" class="w-4 h-4"></i> MLOps</span>
+                <span class="flex items-center gap-2"><i data-lucide="briefcase" class="w-4 h-4"></i> Use Cases</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 pb-20 space-y-24">
+
+        <!-- SECTION 1: CORE CONCEPTS -->
+        <section id="concepts" class="print-break-inside">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-2 bg-blue-100 rounded-lg"><i data-lucide="scale" class="w-6 h-6 text-blue-600"></i></div>
+                <h2 class="text-3xl font-bold text-slate-900">1. Core Concepts & Frameworks</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- A. Bias vs Variance Tradeoff (Visual) -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <span class="w-2 h-8 bg-rose-500 rounded-full"></span>
+                        Bias vs Variance Tradeoff
+                    </h3>
+
+                    <div class="relative h-64 w-full">
+                        <svg viewBox="0 0 400 250" class="w-full h-full overflow-visible">
+                            <!-- ... existing SVG code ... -->
+                            <defs>
+                                <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"
+                                    markerUnits="strokeWidth">
+                                    <path d="M0,0 L0,6 L9,3 z" fill="#64748b" />
+                                </marker>
+                            </defs>
+
+                            <!-- Zones Background -->
+                            <!-- Left: Underfitting -->
+                            <rect x="42" y="20" width="108" height="200" fill="#f3f4f6" />
+                            <!-- Middle: Optimal -->
+                            <rect x="150" y="20" width="100" height="200" fill="#dcfce7" />
+                            <!-- Right: Overfitting -->
+                            <rect x="250" y="20" width="138" height="200" fill="#f3f4f6" />
+
+                            <!-- Zone Dividers -->
+                            <line x1="150" y1="20" x2="150" y2="220" stroke="#94a3b8" stroke-width="1" />
+                            <line x1="250" y1="20" x2="250" y2="220" stroke="#94a3b8" stroke-width="1" />
+
+                            <!-- Axes -->
+                            <!-- Y Axis -->
+                            <line x1="40" y1="220" x2="40" y2="10" stroke="#64748b" stroke-width="2"
+                                marker-end="url(#arrow)" />
+                            <text x="35" y="15" class="text-xs fill-slate-600 font-bold" text-anchor="end">High</text>
+                            <text x="25" y="120" transform="rotate(-90, 25, 120)"
+                                class="text-sm fill-slate-700 font-bold" text-anchor="middle">Error Rate</text>
+
+                            <!-- X Axis -->
+                            <line x1="40" y1="220" x2="390" y2="220" stroke="#64748b" stroke-width="2"
+                                marker-end="url(#arrow)" />
+                            <text x="390" y="235" class="text-xs fill-slate-600 font-bold"
+                                text-anchor="middle">High</text>
+                            <text x="215" y="245" class="text-sm fill-slate-700 font-bold" text-anchor="middle">Model
+                                Complexity</text>
+
+                            <!-- Curve (Validation Error) -->
+                            <!-- Quadratic Bezier Curve -->
+                            <path d="M 45 90 Q 200 280 360 120" stroke="#f59e0b" stroke-width="4" fill="none" />
+
+                            <!-- Labels -->
+                            <!-- Zone 1 -->
+                            <text x="96" y="50" class="text-[10px] fill-slate-600 font-bold" text-anchor="middle">High
+                                Bias, Low</text>
+                            <text x="96" y="65" class="text-[10px] fill-slate-600 font-bold"
+                                text-anchor="middle">Variance</text>
+                            <text x="96" y="80" class="text-[10px] fill-slate-500"
+                                text-anchor="middle">(Underfitting)</text>
+
+                            <!-- Zone 2 -->
+                            <text x="200" y="60" class="text-sm fill-emerald-800 font-bold"
+                                text-anchor="middle">Optimal</text>
+                            <text x="200" y="75" class="text-sm fill-emerald-800 font-bold"
+                                text-anchor="middle">Solution</text>
+
+                            <!-- Zone 3 -->
+                            <text x="320" y="50" class="text-[10px] fill-slate-600 font-bold" text-anchor="middle">Low
+                                Bias, High</text>
+                            <text x="320" y="65" class="text-[10px] fill-slate-600 font-bold"
+                                text-anchor="middle">Variance</text>
+                            <text x="320" y="80" class="text-[10px] fill-slate-500"
+                                text-anchor="middle">(Overfitting)</text>
+
+                            <!-- Curve Label -->
+                            <text x="380" y="110" class="text-xs fill-slate-700 font-semibold"
+                                text-anchor="end">Validation Error</text>
+                            <line x1="320" y1="125" x2="370" y2="112" stroke="#64748b" stroke-width="1" />
+                        </svg>
+                    </div>
+
+                    <!-- Added Explanation Section -->
+                    <div class="mt-6 grid grid-cols-2 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-100">
+                            <h4 class="font-bold text-blue-800 text-sm mb-2 flex items-center gap-2">
+                                <i data-lucide="minus-circle" class="w-4 h-4"></i> High Bias (Underfitting)
+                            </h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                <strong class="text-slate-800">The "Simple" Assumption:</strong> The model assumes the
+                                relationship is too simple (e.g., a straight line for complex data). It fails to capture
+                                the underlying pattern.
+                            </p>
+                            <p
+                                class="text-[10px] text-slate-500 mt-2 italic bg-white p-2 rounded border border-blue-50">
+                                <strong>Analogy:</strong> Studying only the chapter titles before an exam. You miss the
+                                details.
+                            </p>
+                        </div>
+                        <div class="bg-rose-50 p-4 rounded-lg border border-rose-100">
+                            <h4 class="font-bold text-rose-800 text-sm mb-2 flex items-center gap-2">
+                                <i data-lucide="maximize-2" class="w-4 h-4"></i> High Variance (Overfitting)
+                            </h4>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                <strong class="text-slate-800">The "Noise" Learner:</strong> The model learns the
+                                training data <em>too well</em>, including random noise and outliers. It fails to
+                                generalize to new, unseen data.
+                            </p>
+                            <p
+                                class="text-[10px] text-slate-500 mt-2 italic bg-white p-2 rounded border border-rose-50">
+                                <strong>Analogy:</strong> Memorizing the textbook word-for-word but failing questions
+                                that require understanding.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-emerald-50 border border-emerald-100 rounded-lg">
+                        <p class="text-xs text-emerald-800 text-center">
+                            <strong class="font-bold">The Goal:</strong> Balance complexity to find the <span
+                                class="underline decoration-wavy">Optimal Solution</span> where total error (Bias +
+                            Variance) is minimized.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- B. Interpretability vs Performance -->
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-lg border border-slate-100 col-span-1 lg:col-span-1 flex flex-col">
+                    <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                        <span class="w-2 h-8 bg-emerald-500 rounded-full"></span>
+                        Model Explainability vs Performance Tradeoff
+                    </h3>
+
+                    <div class="flex flex-col md:flex-row gap-6 h-full">
+                        <!-- Chart Area -->
+                        <div class="relative h-80 w-full md:w-3/4 bg-white">
+                            <svg viewBox="0 0 400 300" class="w-full h-full overflow-visible">
+                                <defs>
+                                    <marker id="arrow-chart" markerWidth="10" markerHeight="10" refX="9" refY="3"
+                                        orient="auto" markerUnits="strokeWidth">
+                                        <path d="M0,0 L0,6 L9,3 z" fill="#64748b" />
+                                    </marker>
+                                </defs>
+
+                                <!-- Axes -->
+                                <!-- Y Axis -->
+                                <line x1="40" y1="280" x2="40" y2="20" stroke="#64748b" stroke-width="2"
+                                    marker-end="url(#arrow-chart)" />
+                                <text x="30" y="30" class="text-xs fill-slate-600 font-bold"
+                                    text-anchor="end">High</text>
+                                <text x="25" y="150" transform="rotate(-90, 25, 150)"
+                                    class="text-sm fill-slate-700 font-bold" text-anchor="middle">Performance</text>
+
+                                <!-- X Axis -->
+                                <line x1="40" y1="280" x2="380" y2="280" stroke="#64748b" stroke-width="2"
+                                    marker-end="url(#arrow-chart)" />
+                                <text x="380" y="295" class="text-xs fill-slate-600 font-bold"
+                                    text-anchor="middle">High</text>
+                                <text x="210" y="300" class="text-sm fill-slate-700 font-bold" text-anchor="middle"
+                                    dy="10">Interpretability/Explainability</text>
+
+                                <!-- Data Bubbles -->
+                                <!-- NN: Top Left -->
+                                <circle cx="80" cy="60" r="28" fill="#e9d5da" stroke="#9ca3af" stroke-width="1" />
+                                <text x="80" y="65" text-anchor="middle"
+                                    class="text-sm font-bold fill-slate-900">NN</text>
+
+                                <!-- RF: Mid-High Left -->
+                                <circle cx="130" cy="90" r="28" fill="#d4d4e8" stroke="#9ca3af" stroke-width="1" />
+                                <text x="130" y="95" text-anchor="middle"
+                                    class="text-sm font-bold fill-slate-900">RF</text>
+
+                                <!-- SVM: Mid Center -->
+                                <circle cx="180" cy="120" r="28" fill="#dbeafe" stroke="#9ca3af" stroke-width="1" />
+                                <text x="180" y="125" text-anchor="middle"
+                                    class="text-sm font-bold fill-slate-900">SVM</text>
+
+                                <!-- Ideal: Top Right -->
+                                <circle cx="340" cy="50" r="28" fill="#fde68a" stroke="#d97706" stroke-width="1" />
+                                <text x="340" y="55" text-anchor="middle"
+                                    class="text-sm font-bold fill-slate-900">Ideal</text>
+
+                                <!-- DT: Mid-Low Right -->
+                                <circle cx="230" cy="150" r="28" fill="#bfdbfe" stroke="#9ca3af" stroke-width="1" />
+                                <text x="230" y="155" text-anchor="middle"
+                                    class="text-sm font-bold fill-slate-900">DT</text>
+
+                                <!-- NB: Low Right (Raised further) -->
+                                <circle cx="280" cy="165" r="28" fill="#dcfce7" stroke="#9ca3af" stroke-width="1" />
+                                <text x="280" y="170" text-anchor="middle"
+                                    class="text-sm font-bold fill-slate-900">NB</text>
+                            </svg>
+                        </div>
+
+                        <!-- Legend Area -->
+                        <div
+                            class="w-full md:w-1/4 flex flex-col justify-center space-y-3 text-sm text-slate-700 border-l border-slate-100 pl-4">
+                            <div>
+                                <span class="font-bold text-slate-900">NN:</span> Neural Networks
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-900">RF:</span> Random Forest
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-900">SVM:</span> Support Vector Machines
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-900">DT:</span> Decision Trees
+                            </div>
+                            <div>
+                                <span class="font-bold text-slate-900">NB:</span> Naive Bayes
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ALGORITHM COMPARISON MATRIX -->
+        <section id="matrix" class="print-break-inside">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-2 bg-indigo-100 rounded-lg"><i data-lucide="table" class="w-6 h-6 text-indigo-600"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900">2. Algorithm Comparison Matrix</h2>
+            </div>
+
+            <div class="overflow-x-auto rounded-xl shadow-lg border border-slate-200">
+                <table class="w-full text-sm text-left">
+                    <thead class="text-xs text-white uppercase bg-slate-800">
+                        <tr>
+                            <th scope="col" class="px-6 py-4 rounded-tl-xl">Algorithm</th>
+                            <th scope="col" class="px-6 py-4">Bias-Variance</th>
+                            <th scope="col" class="px-6 py-4">Explainability</th>
+                            <th scope="col" class="px-6 py-4">Data Needed</th>
+                            <th scope="col" class="px-6 py-4">Training Time</th>
+                            <th scope="col" class="px-6 py-4 bg-slate-700">Scalability</th>
+                            <th scope="col" class="px-6 py-4">Accuracy</th>
+                            <th scope="col" class="px-6 py-4 bg-slate-700">Robustness</th>
+                            <th scope="col" class="px-6 py-4 rounded-tr-xl">Best For</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-slate-100">
+                        <!-- SVM -->
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 font-bold text-blue-700">SVM</td>
+                            <td class="px-6 py-4 text-slate-600">High Bias<br>Low Variance</td>
+                            <td class="px-6 py-4"><span
+                                    class="px-2 py-1 bg-red-100 text-red-700 rounded text-xs font-bold">Low</span></td>
+                            <td class="px-6 py-4 text-slate-600">Moderate</td>
+                            <td class="px-6 py-4 text-slate-600">Moderate-High</td>
+                            <td class="px-6 py-4 text-slate-600 bg-slate-50 font-medium">Moderate</td>
+                            <td class="px-6 py-4 font-bold text-emerald-600">High</td>
+                            <td class="px-6 py-4 text-emerald-600 bg-slate-50 font-bold">High</td>
+                            <td class="px-6 py-4 text-slate-600 italic">High-dimensional data, text classification</td>
+                        </tr>
+                        <!-- Naive Bayes -->
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 font-bold text-emerald-700">Naive Bayes</td>
+                            <td class="px-6 py-4 text-slate-600">High Bias<br>Low Variance</td>
+                            <td class="px-6 py-4"><span
+                                    class="px-2 py-1 bg-emerald-100 text-emerald-700 rounded text-xs font-bold">High</span>
+                            </td>
+                            <td class="px-6 py-4 text-slate-600">Moderate</td>
+                            <td class="px-6 py-4 text-slate-600">Low</td>
+                            <td class="px-6 py-4 text-emerald-600 bg-slate-50 font-bold">High</td>
+                            <td class="px-6 py-4 text-yellow-600">Moderate-High</td>
+                            <td class="px-6 py-4 text-slate-600 bg-slate-50">Low to Moderate</td>
+                            <td class="px-6 py-4 text-slate-600 italic">Text classification, document sorting</td>
+                        </tr>
+                        <!-- Decision Trees -->
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 font-bold text-emerald-700">Decision Trees</td>
+                            <td class="px-6 py-4 text-slate-600">Low Bias<br>High Variance</td>
+                            <td class="px-6 py-4"><span
+                                    class="px-2 py-1 bg-emerald-100 text-emerald-700 rounded text-xs font-bold">High</span>
+                            </td>
+                            <td class="px-6 py-4 text-slate-600">Low-Moderate</td>
+                            <td class="px-6 py-4 text-slate-600">Low-Moderate</td>
+                            <td class="px-6 py-4 text-slate-600 bg-slate-50 font-medium">Moderate</td>
+                            <td class="px-6 py-4 text-yellow-600">Moderate-High</td>
+                            <td class="px-6 py-4 text-slate-600 bg-slate-50 font-medium">Moderate</td>
+                            <td class="px-6 py-4 text-slate-600 italic">Structured data, explainability required</td>
+                        </tr>
+                        <!-- Random Forest -->
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 font-bold text-indigo-700">Random Forest</td>
+                            <td class="px-6 py-4 text-slate-600">Low Bias<br>Low Variance</td>
+                            <td class="px-6 py-4"><span
+                                    class="px-2 py-1 bg-red-100 text-red-700 rounded text-xs font-bold">Low</span></td>
+                            <td class="px-6 py-4 text-slate-600">Moderate-High</td>
+                            <td class="px-6 py-4 text-slate-600">Moderate-High</td>
+                            <td class="px-6 py-4 text-emerald-600 bg-slate-50 font-bold">High</td>
+                            <td class="px-6 py-4 font-bold text-emerald-600">High</td>
+                            <td class="px-6 py-4 text-emerald-600 bg-slate-50 font-bold">High</td>
+                            <td class="px-6 py-4 text-slate-600 italic">Complex patterns, multiple variables</td>
+                        </tr>
+                        <!-- Neural Networks -->
+                        <tr class="hover:bg-slate-50 transition-colors">
+                            <td class="px-6 py-4 font-bold text-indigo-700">Neural Networks</td>
+                            <td class="px-6 py-4 text-slate-600">Low Bias<br>High Variance</td>
+                            <td class="px-6 py-4"><span
+                                    class="px-2 py-1 bg-red-100 text-red-700 rounded text-xs font-bold">Low</span></td>
+                            <td class="px-6 py-4 text-slate-600">High</td>
+                            <td class="px-6 py-4 text-slate-600">High</td>
+                            <td class="px-6 py-4 text-emerald-600 bg-slate-50 font-bold">High</td>
+                            <td class="px-6 py-4 font-bold text-emerald-600">High</td>
+                            <td class="px-6 py-4 text-emerald-600 bg-slate-50 font-bold">High</td>
+                            <td class="px-6 py-4 text-slate-600 italic">Images, sequences, complex relationships</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- SECTION 3: MLOPS PIPELINE -->
+        <section id="mlops" class="print-break-inside">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-2 bg-amber-100 rounded-lg"><i data-lucide="infinity" class="w-6 h-6 text-amber-600"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900">3. Machine Learning Operations (MLOps) Pipeline</h2>
+            </div>
+
+            <div class="relative py-8 overflow-hidden">
+                <!-- Connecting Line -->
+                <div
+                    class="absolute top-1/2 left-0 w-full h-1 bg-slate-200 -z-10 hidden lg:block transform -translate-y-1/2">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-6">
+                    <!-- Stage 1 -->
+                    <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200 relative hover-scale">
+                        <div
+                            class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm mb-3 absolute -top-4 left-1/2 transform -translate-x-1/2 border-4 border-slate-50">
+                            1</div>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center mb-2 text-blue-600">
+                                <i data-lucide="database"></i>
+                            </div>
+                            <h4 class="font-bold text-sm mb-1">Data Collection</h4>
+                            <p class="text-xs text-slate-500">Warehouse, CRM, Analytics</p>
+                            <span
+                                class="inline-block mt-2 px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] rounded font-medium">IT
+                                / Data Eng</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 2 -->
+                    <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200 relative hover-scale">
+                        <div
+                            class="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-sm mb-3 absolute -top-4 left-1/2 transform -translate-x-1/2 border-4 border-slate-50">
+                            2</div>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto bg-blue-50 w-12 h-12 rounded-full flex items-center justify-center mb-2 text-blue-600">
+                                <i data-lucide="filter"></i>
+                            </div>
+                            <h4 class="font-bold text-sm mb-1">Preparation</h4>
+                            <p class="text-xs text-slate-500">Cleaning, Feature Eng.</p>
+                            <span
+                                class="inline-block mt-2 px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] rounded font-medium">Data
+                                Eng</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 3 -->
+                    <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200 relative hover-scale">
+                        <div
+                            class="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-sm mb-3 absolute -top-4 left-1/2 transform -translate-x-1/2 border-4 border-slate-50">
+                            3</div>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto bg-indigo-50 w-12 h-12 rounded-full flex items-center justify-center mb-2 text-indigo-600">
+                                <i data-lucide="brain"></i>
+                            </div>
+                            <h4 class="font-bold text-sm mb-1">Model Training</h4>
+                            <p class="text-xs text-slate-500">Algorithms, Tuning</p>
+                            <span
+                                class="inline-block mt-2 px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] rounded font-medium">Data
+                                Scientist</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 4 -->
+                    <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200 relative hover-scale">
+                        <div
+                            class="w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold text-sm mb-3 absolute -top-4 left-1/2 transform -translate-x-1/2 border-4 border-slate-50">
+                            4</div>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto bg-indigo-50 w-12 h-12 rounded-full flex items-center justify-center mb-2 text-indigo-600">
+                                <i data-lucide="check-circle-2"></i>
+                            </div>
+                            <h4 class="font-bold text-sm mb-1">Evaluation</h4>
+                            <p class="text-xs text-slate-500">Train/Test/Val Split</p>
+                            <span
+                                class="inline-block mt-2 px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] rounded font-medium">Data
+                                Scientist</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 5 -->
+                    <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200 relative hover-scale">
+                        <div
+                            class="w-8 h-8 bg-emerald-600 text-white rounded-full flex items-center justify-center font-bold text-sm mb-3 absolute -top-4 left-1/2 transform -translate-x-1/2 border-4 border-slate-50">
+                            5</div>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto bg-emerald-50 w-12 h-12 rounded-full flex items-center justify-center mb-2 text-emerald-600">
+                                <i data-lucide="rocket"></i>
+                            </div>
+                            <h4 class="font-bold text-sm mb-1">Deployment</h4>
+                            <p class="text-xs text-slate-500">Web, Edge, Batch</p>
+                            <span
+                                class="inline-block mt-2 px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] rounded font-medium">ML
+                                Engineer</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 6 -->
+                    <div class="bg-white p-4 rounded-xl shadow-md border border-slate-200 relative hover-scale">
+                        <div
+                            class="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center font-bold text-sm mb-3 absolute -top-4 left-1/2 transform -translate-x-1/2 border-4 border-slate-50">
+                            6</div>
+                        <div class="text-center">
+                            <div
+                                class="mx-auto bg-amber-50 w-12 h-12 rounded-full flex items-center justify-center mb-2 text-amber-600">
+                                <i data-lucide="activity"></i>
+                            </div>
+                            <h4 class="font-bold text-sm mb-1">Monitoring</h4>
+                            <p class="text-xs text-slate-500">V0 &rarr; V1 &rarr; V2</p>
+                            <span
+                                class="inline-block mt-2 px-2 py-0.5 bg-slate-100 text-slate-600 text-[10px] rounded font-medium">MLOps</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: DEPLOYMENT OPTIONS -->
+        <section id="deployment" class="print-break-inside">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-2 bg-emerald-100 rounded-lg"><i data-lucide="server" class="w-6 h-6 text-emerald-600"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900">4. Model Inference Deployment Options</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Web Deployment -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border-t-4 border-blue-500 hover-scale">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600">
+                        <i data-lucide="globe" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Real-Time Web</h3>
+                    <div class="text-sm text-slate-600 space-y-3">
+                        <p><span class="font-semibold text-slate-900">Example:</span> Amazon.com recommendations,
+                            Chatbots</p>
+                        <p><span class="font-semibold text-slate-900">Characteristic:</span> Immediate user interaction,
+                            instant response required.</p>
+                        <p class="text-xs bg-slate-100 p-2 rounded">Challenge: Must handle high traffic loads with low
+                            latency.</p>
+                    </div>
+                </div>
+
+                <!-- Offline/Batch -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border-t-4 border-purple-500 hover-scale">
+                    <div
+                        class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4 text-purple-600">
+                        <i data-lucide="clock" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Offline / Batch</h3>
+                    <div class="text-sm text-slate-600 space-y-3">
+                        <p><span class="font-semibold text-slate-900">Example:</span> Netflix nightly recommendations,
+                            Marketing emails</p>
+                        <p><span class="font-semibold text-slate-900">Characteristic:</span> Pre-computed, time-delayed
+                            delivery.</p>
+                        <p class="text-xs bg-slate-100 p-2 rounded">Advantage: High throughput, lower real-time cost.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Edge Device -->
+                <div class="bg-white rounded-2xl p-6 shadow-lg border-t-4 border-emerald-500 hover-scale">
+                    <div
+                        class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4 text-emerald-600">
+                        <i data-lucide="cpu" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Edge Device</h3>
+                    <div class="text-sm text-slate-600 space-y-3">
+                        <p><span class="font-semibold text-slate-900">Example:</span> Ring Doorbell, Manufacturing
+                            sensors, FaceID</p>
+                        <p><span class="font-semibold text-slate-900">Characteristic:</span> Model runs directly on
+                            hardware (No internet).</p>
+                        <p class="text-xs bg-slate-100 p-2 rounded">Advantage: Privacy, Speed, Works offline.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: CASE STUDIES -->
+        <section id="cases" class="print-break-inside">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-2 bg-rose-100 rounded-lg"><i data-lucide="briefcase" class="w-6 h-6 text-rose-600"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900">5. Real-World Applications</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Case 1 -->
+                <div
+                    class="bg-white rounded-xl shadow border border-slate-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                        <h4 class="font-bold text-slate-800">Loan Eligibility</h4>
+                        <i data-lucide="landmark" class="text-slate-400"></i>
+                    </div>
+                    <div class="p-6 space-y-3 text-sm">
+                        <p class="text-xs font-semibold text-blue-600 uppercase tracking-wide">Retail Banking</p>
+                        <p><span class="font-bold">Algorithm:</span> Decision Tree</p>
+                        <p><span class="font-bold">Why:</span> Strict need for interpretability and regulatory
+                            compliance.</p>
+                        <p><span class="font-bold text-slate-500">Value:</span> Faster approvals, consistent decisions.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div
+                    class="bg-white rounded-xl shadow border border-slate-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                        <h4 class="font-bold text-slate-800">Text Classification</h4>
+                        <i data-lucide="message-square" class="text-slate-400"></i>
+                    </div>
+                    <div class="p-6 space-y-3 text-sm">
+                        <p class="text-xs font-semibold text-blue-600 uppercase tracking-wide">E-commerce Support</p>
+                        <p><span class="font-bold">Algorithm:</span> SVM</p>
+                        <p><span class="font-bold">Why:</span> High-dimensional text data, high accuracy required.</p>
+                        <p><span class="font-bold text-slate-500">Value:</span> Fast routing, improved CSAT.</p>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div
+                    class="bg-white rounded-xl shadow border border-slate-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                        <h4 class="font-bold text-slate-800">Demand Forecast</h4>
+                        <i data-lucide="shopping-cart" class="text-slate-400"></i>
+                    </div>
+                    <div class="p-6 space-y-3 text-sm">
+                        <p class="text-xs font-semibold text-blue-600 uppercase tracking-wide">Retail Inventory</p>
+                        <p><span class="font-bold">Algorithm:</span> Random Forest</p>
+                        <p><span class="font-bold">Why:</span> Complex non-linear relationships, robust to noise.</p>
+                        <p><span class="font-bold text-slate-500">Value:</span> Reduced stockouts & storage costs.</p>
+                    </div>
+                </div>
+
+                <!-- Case 4 -->
+                <div
+                    class="bg-white rounded-xl shadow border border-slate-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                        <h4 class="font-bold text-slate-800">Fault Detection</h4>
+                        <i data-lucide="zap" class="text-slate-400"></i>
+                    </div>
+                    <div class="p-6 space-y-3 text-sm">
+                        <p class="text-xs font-semibold text-blue-600 uppercase tracking-wide">Power Grid</p>
+                        <p><span class="font-bold">Algorithm:</span> Neural Network</p>
+                        <p><span class="font-bold">Why:</span> Complex sensor patterns, accuracy is critical.</p>
+                        <p><span class="font-bold text-slate-500">Value:</span> Proactive maintenance, reliability.</p>
+                    </div>
+                </div>
+
+                <!-- Case 5 -->
+                <div
+                    class="bg-white rounded-xl shadow border border-slate-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                        <h4 class="font-bold text-slate-800">Defect Detection</h4>
+                        <i data-lucide="microchip" class="text-slate-400"></i>
+                    </div>
+                    <div class="p-6 space-y-3 text-sm">
+                        <p class="text-xs font-semibold text-blue-600 uppercase tracking-wide">Manufacturing</p>
+                        <p><span class="font-bold">Algorithm:</span> CNN (Deep Learning)</p>
+                        <p><span class="font-bold">Why:</span> Image-based high-resolution data.</p>
+                        <p><span class="font-bold text-slate-500">Value:</span> Automated inspection, consistent
+                            quality.</p>
+                    </div>
+                </div>
+
+                <!-- Case 6 -->
+                <div
+                    class="bg-white rounded-xl shadow border border-slate-100 overflow-hidden hover:shadow-md transition-shadow">
+                    <div class="bg-slate-50 px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                        <h4 class="font-bold text-slate-800">Doc Classification</h4>
+                        <i data-lucide="file-text" class="text-slate-400"></i>
+                    </div>
+                    <div class="p-6 space-y-3 text-sm">
+                        <p class="text-xs font-semibold text-blue-600 uppercase tracking-wide">Legal Services</p>
+                        <p><span class="font-bold">Algorithm:</span> Naive Bayes</p>
+                        <p><span class="font-bold">Why:</span> Text-based, fast training, high interpretability.</p>
+                        <p><span class="font-bold text-slate-500">Value:</span> Efficient workflow, fast retrieval.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: DECISION FRAMEWORK (Renumbered from 7) -->
+        <section id="framework" class="print-break-inside">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="p-2 bg-blue-100 rounded-lg"><i data-lucide="git-branch" class="w-6 h-6 text-blue-600"></i>
+                </div>
+                <h2 class="text-3xl font-bold text-slate-900">6. Algorithm Selection Framework</h2>
+            </div>
+
+            <div class="bg-slate-900 text-white p-8 rounded-3xl shadow-xl overflow-x-auto">
+                <div class="flex flex-col items-center min-w-[800px]">
+                    <!-- Step 1 -->
+                    <div class="bg-blue-600 px-6 py-3 rounded-full font-bold text-lg mb-6 shadow-lg shadow-blue-500/30">
+                        Start: What type of data?</div>
+                    <div class="h-8 w-0.5 bg-slate-600 mb-6"></div>
+
+                    <div class="grid grid-cols-4 gap-4 w-full text-center">
+                        <!-- Branch 1: Images -->
+                        <div class="flex flex-col items-center relative">
+                            <div class="h-0.5 w-1/2 bg-slate-600 absolute top-0 right-0 -mt-6"></div>
+                            <div class="bg-slate-700 px-4 py-2 rounded-lg text-sm mb-4">Images</div>
+                            <div class="h-4 w-0.5 bg-slate-600 mb-2"></div>
+                            <div class="bg-emerald-500 px-4 py-2 rounded-lg font-bold shadow-lg shadow-emerald-500/30">
+                                CNN / Deep Learning</div>
+                        </div>
+
+                        <!-- Branch 2: Text -->
+                        <div class="flex flex-col items-center relative">
+                            <div class="h-0.5 w-full bg-slate-600 absolute top-0 -mt-6"></div>
+                            <div class="h-6 w-0.5 bg-slate-600 absolute top-0 -mt-6"></div>
+                            <div class="bg-slate-700 px-4 py-2 rounded-lg text-sm mb-4">Text</div>
+                            <div class="h-4 w-0.5 bg-slate-600 mb-2"></div>
+                            <div class="bg-emerald-500 px-4 py-2 rounded-lg font-bold shadow-lg shadow-emerald-500/30">
+                                SVM / Naive Bayes / LLMs</div>
+                        </div>
+
+                        <!-- Branch 3: Structured -->
+                        <div class="flex flex-col items-center relative col-span-2">
+                            <div class="h-0.5 w-1/2 bg-slate-600 absolute top-0 left-0 -mt-6"></div>
+                            <div class="bg-slate-700 px-4 py-2 rounded-lg text-sm mb-4">Structured / Tabular</div>
+                            <div class="h-4 w-0.5 bg-slate-600 mb-4"></div>
+
+                            <!-- Sub Decision -->
+                            <div class="bg-slate-600 px-4 py-2 rounded-full text-xs mb-4">Is interpretability critical?
+                            </div>
+                            <div class="flex justify-center gap-12 w-full relative">
+                                <div class="h-4 w-0.5 bg-slate-600 absolute top-0 -mt-4"></div>
+                                <div class="h-0.5 w-1/2 bg-slate-600 absolute top-0 -mt-4"></div>
+
+                                <!-- Yes -->
+                                <div class="flex flex-col items-center">
+                                    <span class="text-xs text-blue-300 mb-1">YES</span>
+                                    <div
+                                        class="bg-emerald-500 px-4 py-2 rounded-lg font-bold shadow-lg shadow-emerald-500/30">
+                                        Decision Trees</div>
+                                </div>
+                                <!-- No -->
+                                <div class="flex flex-col items-center">
+                                    <span class="text-xs text-rose-300 mb-1">NO</span>
+                                    <div class="h-4 w-0.5 bg-slate-600 mb-2"></div>
+                                    <div class="bg-slate-600 px-4 py-2 rounded-full text-xs mb-4">Data Size?</div>
+                                    <div class="flex gap-4">
+                                        <div class="bg-emerald-500 px-2 py-1 rounded text-xs font-bold">Small: SVM</div>
+                                        <div class="bg-emerald-500 px-2 py-1 rounded text-xs font-bold">Large: Random
+                                            Forest</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: BEST PRACTICES (Renumbered from 8) -->
+        <section id="practices" class="print-break-inside">
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 flex items-center gap-3">
+                <i data-lucide="check-square" class="w-8 h-8 text-slate-800"></i>
+                7. Common Pitfalls & Best Practices
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Pitfalls -->
+                <div class="bg-rose-50 border border-rose-200 rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-6 border-b border-rose-200 pb-4">
+                        <div class="bg-rose-100 p-2 rounded-full"><i data-lucide="x-circle"
+                                class="w-6 h-6 text-rose-600"></i></div>
+                        <h3 class="text-xl font-bold text-rose-800">Avoid These Pitfalls</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="x" class="w-5 h-5 text-rose-500 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-slate-700 text-sm">Using overly complex models (like Deep Learning) for
+                                simple problems.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="x" class="w-5 h-5 text-rose-500 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-slate-700 text-sm">Ignoring data quality; "Garbage In, Garbage
+                                Out".</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="x" class="w-5 h-5 text-rose-500 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-slate-700 text-sm">Choosing algorithms based on hype rather than specific
+                                requirements.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="x" class="w-5 h-5 text-rose-500 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-slate-700 text-sm">Deploying models without a plan for continuous
+                                monitoring.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Best Practices -->
+                <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-6">
+                    <div class="flex items-center gap-3 mb-6 border-b border-emerald-200 pb-4">
+                        <div class="bg-emerald-100 p-2 rounded-full"><i data-lucide="check-circle"
+                                class="w-6 h-6 text-emerald-600"></i></div>
+                        <h3 class="text-xl font-bold text-emerald-800">Best Practices</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-slate-700 text-sm">Match algorithm complexity to the problem and available
+                                data.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-slate-700 text-sm">Invest heavily in feature engineering and data
+                                cleaning.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-slate-700 text-sm">Clearly define interpretability vs accuracy needs
+                                before starting.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check" class="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                            <span class="text-slate-700 text-sm">Implement MLOps for automated retraining and version
+                                control.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 8: GLOSSARY (Renumbered from 9) -->
+        <section id="glossary" class="print-break-inside">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">8. Key Terminology Glossary</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100">
+                    <div class="text-xs font-bold text-blue-600 uppercase mb-1">Inference</div>
+                    <p class="text-[11px] text-slate-600">Making predictions using a trained model.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100">
+                    <div class="text-xs font-bold text-rose-600 uppercase mb-1">Overfitting</div>
+                    <p class="text-[11px] text-slate-600">Model memorizes training data, fails on new data.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100">
+                    <div class="text-xs font-bold text-purple-600 uppercase mb-1">Hyperparameter</div>
+                    <p class="text-[11px] text-slate-600">Configuration settings used to tune model performance.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100">
+                    <div class="text-xs font-bold text-indigo-600 uppercase mb-1">Explainability</div>
+                    <p class="text-[11px] text-slate-600">Ability to understand why a model made a decision.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100">
+                    <div class="text-xs font-bold text-amber-600 uppercase mb-1">MLOps</div>
+                    <p class="text-[11px] text-slate-600">DevOps for Machine Learning; continuous lifecycle management.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 9: TECH STACK (Renumbered from 10) -->
+        <section id="stack" class="bg-slate-900 text-slate-300 p-8 rounded-2xl print-break-inside">
+            <div class="flex items-center gap-3 mb-6">
+                <i data-lucide="layers" class="w-6 h-6 text-blue-400"></i>
+                <h2 class="text-xl font-bold text-white">9. Recommended Technology Stack</h2>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
+                <div>
+                    <h5 class="font-bold text-white mb-3 border-b border-slate-700 pb-2">Development</h5>
+                    <ul class="space-y-1">
+                        <li>Python</li>
+                        <li>Scikit-learn</li>
+                        <li>TensorFlow / PyTorch</li>
+                        <li>Jupyter Notebooks</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-white mb-3 border-b border-slate-700 pb-2">Data</h5>
+                    <ul class="space-y-1">
+                        <li>Pandas / NumPy</li>
+                        <li>SQL Data Warehouse</li>
+                        <li>Apache Spark</li>
+                        <li>Data Lakes</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-white mb-3 border-b border-slate-700 pb-2">Deployment</h5>
+                    <ul class="space-y-1">
+                        <li>AWS SageMaker</li>
+                        <li>Docker / Kubernetes</li>
+                        <li>FastAPI / Flask</li>
+                        <li>Edge Hardware</li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-bold text-white mb-3 border-b border-slate-700 pb-2">Ops & Labeling</h5>
+                    <ul class="space-y-1">
+                        <li>MLflow</li>
+                        <li>Label Studio</li>
+                        <li>Snorkel</li>
+                        <li>Prometheus</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 text-center border-t border-slate-800 print:hidden">
+        <p class="mb-2">AI and ML Technologies Infographic</p>
+        <p class="text-xs text-slate-600">&copy; 2026 Education Series. Generated for educational purposes.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 {
   "generated": "2025-02-01",
-  "totalPosts": 24,
+  "totalPosts": 27,
   "baseUrl": "https://www.kishoretech.com",
   "author": "Sriramkishore Naraharisetti",
   "categories": {
@@ -8,7 +8,7 @@
     "ML Fundamentals": 7,
     "AI Business UseCases": 6,
     "AI Project Management": 2,
-    "ML Algorithms": 7
+    "ML Algorithms": 10
   },
   "posts": [
     {
@@ -226,6 +226,33 @@
       "datePublished": "2025-01-31",
       "tags": ["Dimension Reduction", "PCA", "t-SNE", "UMAP", "LDA", "Autoencoders", "Unsupervised Learning", "Machine Learning"],
       "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/dimension-reduction"
+    },
+    {
+      "file": "ml-algorithms/algorithm-paradigm-mapping.html",
+      "title": "The Machine Learning Landscape: Algorithm-Paradigm Mapping",
+      "description": "Comprehensive map of ML algorithms organized by learning paradigms: supervised, unsupervised, and reinforcement learning. Covers SVM, Naive Bayes, Decision Trees, Random Forest, Neural Networks, and Dimension Reduction.",
+      "category": "ML Algorithms",
+      "datePublished": "2025-02-01",
+      "tags": ["Machine Learning", "Algorithm Mapping", "Supervised Learning", "Unsupervised Learning", "Reinforcement Learning", "SVM", "Naive Bayes", "Decision Tree", "Random Forest", "Neural Networks", "Dimension Reduction"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/algorithm-paradigm-mapping"
+    },
+    {
+      "file": "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html",
+      "title": "Applying ML Algorithms to Real-World Applications",
+      "description": "Decision frameworks for applying ML algorithms to real-world problems. Covers bias-variance tradeoff, algorithm comparison matrix, MLOps pipeline, deployment options, and 6 industry case studies.",
+      "category": "ML Algorithms",
+      "datePublished": "2025-02-01",
+      "tags": ["Machine Learning Applications", "Bias-Variance Tradeoff", "MLOps", "Model Deployment", "Algorithm Comparison", "Real-World ML", "SVM", "Decision Tree", "Random Forest", "Neural Networks"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/applying-ml-algorithms-to-real-world-applications"
+    },
+    {
+      "file": "ml-algorithms/ai-algorithm-selection-case-studies.html",
+      "title": "AI Algorithm Selection Guide: 6 Industry Case Studies",
+      "description": "Strategic guide to selecting ML algorithms across 6 industries: banking, e-commerce, retail, energy, manufacturing, and legal. Covers Decision Trees, SVM, Random Forest, Neural Networks, CNN, and Naive Bayes.",
+      "category": "ML Algorithms",
+      "datePublished": "2025-02-01",
+      "tags": ["Algorithm Selection", "Case Studies", "Decision Tree", "SVM", "Random Forest", "Neural Networks", "CNN", "Naive Bayes", "Industry Applications", "Machine Learning"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/ai-algorithm-selection-case-studies"
     }
   ]
 }

@@ -1,6 +1,6 @@
 {
   "generated": "2025-02-01",
-  "totalTags": 102,
+  "totalTags": 110,
   "tags": {
     "Machine Learning": [
       "ai-introduction/introduction-to-ai.html",
@@ -13,7 +13,9 @@
       "ml-algorithms/random-forest.html",
       "ml-algorithms/neural-networks.html",
       "ml-algorithms/dimension-reduction.html",
-      "ml-algorithms/ml-algorithm-selection-guide.html"
+      "ml-algorithms/ml-algorithm-selection-guide.html",
+      "ml-algorithms/algorithm-paradigm-mapping.html",
+      "ml-algorithms/ai-algorithm-selection-case-studies.html"
     ],
     "AI": [
       "ml-fundamentals/what-is-machine-learning.html",
@@ -63,17 +65,20 @@
       "ml-fundamentals/types-of-machine-learning.html",
       "ml-fundamentals/supervised-learning-guide.html",
       "ml-algorithms/support-vector-machines.html",
-      "ml-algorithms/ml-algorithm-selection-guide.html"
+      "ml-algorithms/ml-algorithm-selection-guide.html",
+      "ml-algorithms/algorithm-paradigm-mapping.html"
     ],
     "Unsupervised Learning": [
       "ml-fundamentals/what-is-machine-learning.html",
       "ml-fundamentals/types-of-machine-learning.html",
       "ml-algorithms/dimension-reduction.html",
-      "ml-algorithms/ml-algorithm-selection-guide.html"
+      "ml-algorithms/ml-algorithm-selection-guide.html",
+      "ml-algorithms/algorithm-paradigm-mapping.html"
     ],
     "Reinforcement Learning": [
       "ml-fundamentals/what-is-machine-learning.html",
-      "ml-fundamentals/types-of-machine-learning.html"
+      "ml-fundamentals/types-of-machine-learning.html",
+      "ml-algorithms/algorithm-paradigm-mapping.html"
     ],
     "Regression": [
       "ml-fundamentals/core-ml-concepts.html",
@@ -101,7 +106,8 @@
     ],
     "Dimension Reduction": [
       "ml-fundamentals/core-ml-concepts.html",
-      "ml-algorithms/dimension-reduction.html"
+      "ml-algorithms/dimension-reduction.html",
+      "ml-algorithms/algorithm-paradigm-mapping.html"
     ],
     "Labeled Data": [
       "ml-fundamentals/supervised-learning-guide.html"
@@ -149,7 +155,8 @@
       "ml-fundamentals/overfitting-underfitting-balance.html"
     ],
     "Bias-Variance Tradeoff": [
-      "ml-fundamentals/overfitting-underfitting-balance.html"
+      "ml-fundamentals/overfitting-underfitting-balance.html",
+      "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html"
     ],
     "Cross-Validation": [
       "ml-fundamentals/overfitting-underfitting-balance.html"
@@ -241,7 +248,8 @@
     ],
     "MLOps": [
       "ai-project-management/road-framework-guide.html",
-      "ai-project-management/ai-ml-project-lifecycle.html"
+      "ai-project-management/ai-ml-project-lifecycle.html",
+      "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html"
     ],
     "AI Lifecycle": [
       "ai-project-management/ai-ml-project-lifecycle.html"
@@ -253,10 +261,14 @@
       "ai-project-management/ai-ml-project-lifecycle.html"
     ],
     "Model Deployment": [
-      "ai-project-management/ai-ml-project-lifecycle.html"
+      "ai-project-management/ai-ml-project-lifecycle.html",
+      "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html"
     ],
     "Decision Tree": [
-      "ml-algorithms/decision-tree.html"
+      "ml-algorithms/decision-tree.html",
+      "ml-algorithms/algorithm-paradigm-mapping.html",
+      "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html",
+      "ml-algorithms/ai-algorithm-selection-case-studies.html"
     ],
     "CART": [
       "ml-algorithms/decision-tree.html"
@@ -275,7 +287,9 @@
       "ml-algorithms/random-forest.html"
     ],
     "Naive Bayes": [
-      "ml-algorithms/naive-bayes.html"
+      "ml-algorithms/naive-bayes.html",
+      "ml-algorithms/algorithm-paradigm-mapping.html",
+      "ml-algorithms/ai-algorithm-selection-case-studies.html"
     ],
     "Bayes Theorem": [
       "ml-algorithms/naive-bayes.html"
@@ -290,7 +304,10 @@
       "ml-algorithms/naive-bayes.html"
     ],
     "SVM": [
-      "ml-algorithms/support-vector-machines.html"
+      "ml-algorithms/support-vector-machines.html",
+      "ml-algorithms/algorithm-paradigm-mapping.html",
+      "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html",
+      "ml-algorithms/ai-algorithm-selection-case-studies.html"
     ],
     "Support Vector Machines": [
       "ml-algorithms/support-vector-machines.html"
@@ -305,7 +322,10 @@
       "ml-algorithms/support-vector-machines.html"
     ],
     "Random Forest": [
-      "ml-algorithms/random-forest.html"
+      "ml-algorithms/random-forest.html",
+      "ml-algorithms/algorithm-paradigm-mapping.html",
+      "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html",
+      "ml-algorithms/ai-algorithm-selection-case-studies.html"
     ],
     "Ensemble Learning": [
       "ml-algorithms/random-forest.html"
@@ -318,7 +338,10 @@
     ],
     "Neural Networks": [
       "ai-introduction/history-of-ai.html",
-      "ml-algorithms/neural-networks.html"
+      "ml-algorithms/neural-networks.html",
+      "ml-algorithms/algorithm-paradigm-mapping.html",
+      "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html",
+      "ml-algorithms/ai-algorithm-selection-case-studies.html"
     ],
     "Deep Learning": [
       "ai-introduction/introduction-to-ai.html",
@@ -326,7 +349,8 @@
       "ml-algorithms/neural-networks.html"
     ],
     "CNN": [
-      "ml-algorithms/neural-networks.html"
+      "ml-algorithms/neural-networks.html",
+      "ml-algorithms/ai-algorithm-selection-case-studies.html"
     ],
     "RNN": [
       "ml-algorithms/neural-networks.html"
@@ -353,13 +377,35 @@
       "ml-algorithms/dimension-reduction.html"
     ],
     "Algorithm Selection": [
-      "ml-algorithms/ml-algorithm-selection-guide.html"
+      "ml-algorithms/ml-algorithm-selection-guide.html",
+      "ml-algorithms/ai-algorithm-selection-case-studies.html"
     ],
     "Model Selection": [
       "ml-algorithms/ml-algorithm-selection-guide.html"
     ],
     "Interpretability": [
       "ml-algorithms/ml-algorithm-selection-guide.html"
+    ],
+    "Algorithm Mapping": [
+      "ml-algorithms/algorithm-paradigm-mapping.html"
+    ],
+    "Learning Paradigms": [
+      "ml-algorithms/algorithm-paradigm-mapping.html"
+    ],
+    "Machine Learning Applications": [
+      "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html"
+    ],
+    "Algorithm Comparison": [
+      "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html"
+    ],
+    "Real-World ML": [
+      "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html"
+    ],
+    "Case Studies": [
+      "ml-algorithms/ai-algorithm-selection-case-studies.html"
+    ],
+    "Industry Applications": [
+      "ml-algorithms/ai-algorithm-selection-case-studies.html"
     ]
   }
 }
