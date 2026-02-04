@@ -132,16 +132,19 @@
                     <div class="info-area w-full md:w-2/3 text-gray-900 dark:text-gray-100">
                         <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold line-spacing">Hey! I'm Kishore</h1>
                         <p class="text-lg sm:text-xl md:text-2xl line-spacing">Sriramkishore Naraharisetti</p>
-                        <p class="text-lg sm:text-xl md:text-2xl mb-8 md:mb-20">Tech Leader & Staff Software Engineer</p>
+                        <p class="text-lg sm:text-xl md:text-2xl mb-8 md:mb-20">Tech Leader & Staff Software Engineer
+                        </p>
                         <ul class="text-lg list-disc pl-5">
                             <li class="line-spacing">Solutions architect based in Bentonville, AR, USA</li>
-                            <li class="line-spacing">20+ years leading teams and building scalable systems</li>
+                            <li class="line-spacing">20+ years in software engineering—building scalable systems and
+                                leading teams</li>
                             <li class="line-spacing">Staff Software Engineer at Walmart, driving technical strategy and
                                 mentoring engineers</li>
                             <li class="mb-8 md:mb-20">Exploring: AI & Machine Learning</li>
                         </ul>
 
-                        <div class="buttons text-center md:text-left flex flex-wrap gap-2 justify-center md:justify-start">
+                        <div
+                            class="buttons text-center md:text-left flex flex-wrap gap-2 justify-center md:justify-start">
                             <a href="mailto:sriramkishoren@outlook.com" onclick="handleEmail(event)"
                                 class="bg-gray-800 dark:bg-gray-200 text-white dark:text-black px-3 sm:px-4 py-2 rounded text-sm sm:text-base">Email
                                 me</a>
@@ -200,7 +203,8 @@
 
                         <div class="mb-8">
                             <p>If you are interested in chatting or working together, <a
-                                    href="mailto:sriramkishoren@outlook.com" onclick="handleEmail(event)" class="text-blue-500 underline">email me
+                                    href="mailto:sriramkishoren@outlook.com" onclick="handleEmail(event)"
+                                    class="text-blue-500 underline">email me
                                     here!</a>
                             </p>
                         </div>
@@ -226,7 +230,8 @@
     </main>
     <footer class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 text-center p-4">
         <div class="visitor-count mx-auto mb-2">
-            <svg class="visitor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg class="visitor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                 <circle cx="12" cy="12" r="3"></circle>
             </svg>
@@ -236,58 +241,58 @@
     </footer>
 
     <!-- Email toast notification -->
-    <div id="email-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-black px-5 py-3 rounded-lg shadow-lg text-sm transition-opacity duration-300 opacity-0 pointer-events-none z-50">
+    <div id="email-toast"
+        class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 dark:bg-gray-100 text-white dark:text-black px-5 py-3 rounded-lg shadow-lg text-sm transition-opacity duration-300 opacity-0 pointer-events-none z-50">
         Email copied: sriramkishoren@outlook.com
     </div>
 
     <!-- Email handler script -->
     <script>
-    function handleEmail(e) {
-        var email = 'sriramkishoren@outlook.com';
-        var mailtoWorked = false;
+        function handleEmail(e) {
+            var email = 'sriramkishoren@outlook.com';
+            var mailtoWorked = false;
 
-        // Try opening mailto in a hidden iframe to detect if it works
-        var w = window.open('mailto:' + email, '_self');
+            // Try opening mailto in a hidden iframe to detect if it works
+            var w = window.open('mailto:' + email, '_self');
 
-        // Fallback: copy email to clipboard and show toast
-        setTimeout(function() {
-            navigator.clipboard.writeText(email).then(function() {
-                var toast = document.getElementById('email-toast');
-                toast.classList.remove('opacity-0');
-                toast.classList.add('opacity-100');
-                setTimeout(function() {
-                    toast.classList.remove('opacity-100');
-                    toast.classList.add('opacity-0');
-                }, 3000);
-            });
-        }, 300);
+            // Fallback: copy email to clipboard and show toast
+            setTimeout(function () {
+                navigator.clipboard.writeText(email).then(function () {
+                    var toast = document.getElementById('email-toast');
+                    toast.classList.remove('opacity-0');
+                    toast.classList.add('opacity-100');
+                    setTimeout(function () {
+                        toast.classList.remove('opacity-100');
+                        toast.classList.add('opacity-0');
+                    }, 3000);
+                });
+            }, 300);
 
-        e.preventDefault();
-    }
+            e.preventDefault();
+        }
     </script>
 
     <!-- Visitor Count Script -->
     <script>
-    (function() {
-        // Homepage: Fetch TOTAL site visitors
-        fetch('https://kishoretech.goatcounter.com/counter/TOTAL.json')
-            .then(function(response) {
-                if (!response.ok) throw new Error('Not found');
-                return response.json();
-            })
-            .then(function(data) {
-                var count = data.count_unique || data.count || 0;
-                document.getElementById('page-views').textContent = count.toLocaleString();
-            })
-            .catch(function() {
-                document.getElementById('page-views').textContent = '0';
-            });
-    })();
+        (function () {
+            // Homepage: Fetch TOTAL site visitors
+            fetch('https://kishoretech.goatcounter.com/counter/TOTAL.json')
+                .then(function (response) {
+                    if (!response.ok) throw new Error('Not found');
+                    return response.json();
+                })
+                .then(function (data) {
+                    var count = data.count_unique || data.count || 0;
+                    document.getElementById('page-views').textContent = count.toLocaleString();
+                })
+                .catch(function () {
+                    document.getElementById('page-views').textContent = '0';
+                });
+        })();
     </script>
 
     <!-- GoatCounter Analytics -->
-    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 
 </html>
