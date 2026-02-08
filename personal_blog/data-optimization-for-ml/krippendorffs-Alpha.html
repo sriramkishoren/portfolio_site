@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krippendorff's Alpha: The Gold Standard for Inter-Annotator Agreement</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Krippendorff's Alpha: The Gold Standard for Inter-Annotator Agreement">
+    <meta name="description" content="Deep dive into Krippendorff's Alpha for measuring inter-annotator agreement: mathematical foundation, calculation methods, interpretation guidelines, and comparison with Cohen's and Fleiss' Kappa.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Data Optimization for ML">
+    <meta name="tags" content="Krippendorff's Alpha, Inter-Annotator Agreement, Reliability, Statistical Methods, Data Quality, Annotation Metrics, IAA">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Krippendorff's Alpha is the gold standard metric for inter-annotator agreement, handling any number of raters, various data types (nominal, ordinal, interval, ratio), and missing data. Alpha >= 0.80 indicates reliable annotation, 0.667-0.80 allows tentative conclusions. Calculated using observed vs expected disagreement.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/krippendorffs-Alpha">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Krippendorff's Alpha: The Gold Standard for Inter-Annotator Agreement">
+    <meta property="og:description" content="Deep dive into Krippendorff's Alpha: mathematical foundation, calculation, interpretation, and comparison with other IAA metrics.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/krippendorffs-Alpha">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-02-07">
+    <meta property="article:section" content="Data Optimization for ML">
+    <meta property="article:tag" content="Krippendorff's Alpha">
+    <meta property="article:tag" content="Inter-Annotator Agreement">
+    <meta property="article:tag" content="Data Quality">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Krippendorff's Alpha: The Gold Standard for Inter-Annotator Agreement",
+        "description": "Deep dive into Krippendorff's Alpha for measuring inter-annotator agreement: mathematical foundation, calculation methods, and interpretation guidelines.",
+        "datePublished": "2025-02-07",
+        "dateModified": "2025-02-07",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/krippendorffs-Alpha"
+        },
+        "keywords": ["Krippendorff's Alpha", "Inter-Annotator Agreement", "Reliability", "Statistical Methods", "Data Quality", "Annotation Metrics"],
+        "articleSection": "Data Optimization for ML",
+        "about": [
+            {"@type": "Thing", "name": "Krippendorff's Alpha"},
+            {"@type": "Thing", "name": "Inter-Annotator Agreement"}
+        ]
+    }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        recog: '#3B82F6', // Blue
+                        misclass: '#F43F5E', // Rose
+                        lowdata: '#F59E0B', // Amber
+                        scale: '#8B5CF6', // Purple
+                        within: '#14B8A6', // Teal
+                        between: '#6366F1', // Indigo
+                        vitality: '#10B981', // Emerald
+                        alpha: '#4F46E5', // Deep Indigo
+                        good: '#22C55E', // Green
+                        ok: '#84CC16', // Lime
+                        tentative: '#F59E0B', // Amber
+                        bad: '#EF4444', // Red
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .matrix-cell {
+            transition: all 0.2s ease;
+        }
+
+        .matrix-cell:hover {
+            transform: scale(1.05);
+            font-weight: bold;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-card {
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+
+            .break-inside-avoid {
+                break-inside: avoid;
+            }
+
+            body {
+                background: white;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed">
+
+    <!-- HEADER SECTION -->
+    <header class="bg-slate-900 text-white py-12 px-4 sm:px-6 lg:px-8 border-b-4 border-alpha">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 tracking-tight">Krippendorff's Alpha (α)</h1>
+            <p class="text-xl md:text-2xl text-slate-300 font-light mb-8">The Gold Standard for Measuring
+                Inter-Annotator Agreement</p>
+
+            <div class="bg-slate-800/50 p-6 rounded-xl border border-slate-700 max-w-4xl mx-auto relative">
+                <i data-lucide="quote" class="absolute top-4 left-4 text-alpha opacity-30 w-8 h-8"></i>
+                <p class="text-lg italic text-slate-200">
+                    "I generally want to get a score over <span class="text-good font-bold">0.8</span> before I go to
+                    the cost of developing a machine learning model. Otherwise, I don't feel that I have really
+                    consistent labeled data."
+                </p>
+                <div class="mt-4 text-sm text-slate-400 font-semibold uppercase tracking-wider">
+                    Based on insights from Dr. Ian McCullough, Johns Hopkins University
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
+
+        <!-- SECTION: WHY IT MATTERS -->
+        <section class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="space-y-6">
+                <h2 class="text-3xl font-bold text-slate-900 flex items-center gap-3">
+                    <span class="bg-alpha text-white p-2 rounded-lg"><i data-lucide="shield-check"></i></span>
+                    Why Krippendorff's Alpha?
+                </h2>
+                <p class="text-lg text-slate-600">
+                    It is the most robust statistic for assessing agreement because it handles the messy reality of data
+                    annotation projects where others fail.
+                </p>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="text-good w-6 h-6 shrink-0 mt-0.5"></i>
+                        <span><strong>Handles Missing Data:</strong> Annotators don't have to label every single
+                            document.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="text-good w-6 h-6 shrink-0 mt-0.5"></i>
+                        <span><strong>Variable Annotators:</strong> Works if Document A has 2 raters and Document B has
+                            5.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="text-good w-6 h-6 shrink-0 mt-0.5"></i>
+                        <span><strong>Any Scale Type:</strong> Works for nominal (categories), ordinal (ranks),
+                            interval, and ratio data.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="text-good w-6 h-6 shrink-0 mt-0.5"></i>
+                        <span><strong>Corrects for Chance:</strong> Distinguishes true agreement from random
+                            guessing.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-lg border border-slate-200">
+                <h3 class="text-lg font-bold mb-4 text-slate-700 border-b pb-2">Technical Debt in AI</h3>
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center text-bad">
+                        <i data-lucide="trending-down" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-800">Low Agreement = Low Performance</div>
+                        <div class="text-sm text-slate-500">Inconsistent training data teaches models contradictory
+                            patterns.</div>
+                    </div>
+                </div>
+                <div class="text-sm bg-slate-50 p-4 rounded-lg text-slate-600">
+                    <strong>Managerial Insight:</strong> If your team isn't measuring Alpha, you are likely building
+                    "technical debt" into your model that will require costly retraining and relabeling later.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: SOURCES OF ERROR -->
+        <section>
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">The 6 Sources of Annotation Error</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Card 1 -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-recog hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-3 text-recog">
+                        <i data-lucide="search" class="w-6 h-6"></i>
+                        <h3 class="font-bold text-lg">Recognition Errors</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-3">Annotators miss items entirely (e.g., failing to see a car in
+                        the background).</p>
+                    <span class="text-xs font-semibold bg-blue-50 text-blue-700 px-2 py-1 rounded">Missing Data</span>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-misclass hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-3 text-misclass">
+                        <i data-lucide="tag" class="w-6 h-6"></i>
+                        <h3 class="font-bold text-lg">Misclassification</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-3">Seeing the item but giving it the wrong label (e.g., labeling
+                        a truck as a car).</p>
+                    <span class="text-xs font-semibold bg-rose-50 text-rose-700 px-2 py-1 rounded">Critical Error</span>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-lowdata hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-3 text-lowdata">
+                        <i data-lucide="database" class="w-6 h-6"></i>
+                        <h3 class="font-bold text-lg">Low Data by Class</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-3">Rare classes create imbalance. Annotators forget rules for
+                        items they rarely see.</p>
+                    <span class="text-xs font-semibold bg-amber-50 text-amber-700 px-2 py-1 rounded">Class
+                        Imbalance</span>
+                </div>
+
+                <!-- Card 4 -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-scale hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-3 text-scale">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                        <h3 class="font-bold text-lg">Scale Complexity</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-3">Too many fine-grained categories increase cognitive load and
+                        error rates.</p>
+                    <span class="text-xs font-semibold bg-purple-50 text-purple-700 px-2 py-1 rounded">Cognitive
+                        Load</span>
+                </div>
+
+                <!-- Card 5 -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-within hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-3 text-within">
+                        <i data-lucide="user" class="w-6 h-6"></i>
+                        <h3 class="font-bold text-lg">Within-Rater</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-3">Inconsistency of a single person over time (e.g., fatigue,
+                        mood changes).</p>
+                    <span
+                        class="text-xs font-semibold bg-teal-50 text-teal-700 px-2 py-1 rounded">Self-Consistency</span>
+                </div>
+
+                <!-- Card 6 -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm border-t-4 border-between hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-3 text-between">
+                        <i data-lucide="users" class="w-6 h-6"></i>
+                        <h3 class="font-bold text-lg">Between-Rater</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-3">Disagreement between different independent annotators.</p>
+                    <span class="text-xs font-semibold bg-indigo-50 text-indigo-700 px-2 py-1 rounded">Consensus</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: METRICS SPECTRUM -->
+        <section class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-2xl font-bold mb-6 text-center">The Hierarchy of Agreement Metrics</h2>
+            <div class="relative pt-8 pb-4">
+                <!-- Line -->
+                <div
+                    class="absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-slate-200 via-blue-200 to-alpha -translate-y-1/2 rounded-full hidden md:block">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-7 gap-4 text-center">
+                    <div class="relative bg-white p-2 rounded border border-slate-200 z-10 md:shadow-lg">
+                        <div class="font-bold text-slate-500 text-sm">Percent Agreement</div>
+                        <div class="text-xs text-slate-400 mt-1">Basic</div>
+                    </div>
+                    <div class="relative bg-white p-2 rounded border border-slate-200 z-10">
+                        <div class="font-semibold text-slate-600 text-sm">Scott's Pi</div>
+                    </div>
+                    <div class="relative bg-white p-2 rounded border border-slate-200 z-10">
+                        <div class="font-semibold text-slate-600 text-sm">Cohen's Kappa</div>
+                    </div>
+                    <div class="relative bg-white p-2 rounded border border-slate-200 z-10">
+                        <div class="font-semibold text-slate-600 text-sm">Fleiss' Kappa</div>
+                    </div>
+                    <div class="relative bg-white p-2 rounded border border-slate-200 z-10">
+                        <div class="font-semibold text-slate-600 text-sm">Gwet's AC</div>
+                    </div>
+                    <div class="relative bg-white p-2 rounded border border-slate-200 z-10">
+                        <div class="font-semibold text-slate-600 text-sm">Bangdiwala's B</div>
+                    </div>
+                    <div
+                        class="relative bg-alpha text-white p-3 rounded-lg shadow-xl z-20 scale-110 transform border-2 border-indigo-300">
+                        <div class="font-bold text-sm">Krippendorff's α</div>
+                        <div class="text-xs text-indigo-200 mt-1">Gold Standard</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ALERT BOX -->
+            <div class="mt-8 bg-red-50 border-l-4 border-bad p-4 rounded-r-lg flex items-start gap-4">
+                <i data-lucide="alert-triangle" class="text-bad w-6 h-6 shrink-0"></i>
+                <div>
+                    <h4 class="font-bold text-bad">CRITICAL WARNING: The F-Measure Fallacy</h4>
+                    <p class="text-sm text-red-800 mt-1">
+                        Never use F-Measure for Inter-Annotator Agreement. F-Measure measures <em>classifier
+                            performance</em> (Machine vs. Truth), not <em>annotator consistency</em> (Human vs. Human).
+                        It is mathematically invalid for this purpose.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CALCULATION DEEP DIVE -->
+        <section class="space-y-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-slate-900">How to Calculate Alpha</h2>
+                <p class="text-slate-600 mt-2">A step-by-step worked example with 3 Coders, 15 Units, and 4 Categories.
+                </p>
+            </div>
+
+            <!-- STEP 1: DATA MATRIX -->
+            <div class="step-card bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200">
+                <div class="bg-slate-100 p-4 border-b border-slate-200 flex justify-between items-center">
+                    <h3 class="font-bold text-lg text-slate-800">Step 1: The Reliability Data Matrix</h3>
+                    <span class="bg-white px-3 py-1 rounded-full text-xs font-mono text-slate-500 border">Input
+                        Data</span>
+                </div>
+                <div class="p-6 overflow-x-auto">
+                    <table class="w-full text-center text-sm border-collapse min-w-max">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-500 font-semibold">
+                                <th
+                                    class="p-3 text-left border-b border-r bg-slate-200 w-32 md:w-48 sticky left-0 z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">
+                                    Units (u)</th>
+                                <th class="p-3 border-b border-r">1</th>
+                                <th class="p-3 border-b border-r">2</th>
+                                <th class="p-3 border-b border-r">3</th>
+                                <th class="p-3 border-b border-r">4</th>
+                                <th class="p-3 border-b border-r">5</th>
+                                <th
+                                    class="p-3 border-b border-r bg-indigo-100 text-indigo-900 ring-2 ring-inset ring-indigo-200">
+                                    6</th>
+                                <th class="p-3 border-b border-r">7</th>
+                                <th class="p-3 border-b border-r">8</th>
+                                <th class="p-3 border-b border-r">9</th>
+                                <th class="p-3 border-b border-r">10</th>
+                                <th class="p-3 border-b border-r">11</th>
+                                <th class="p-3 border-b border-r">12</th>
+                                <th class="p-3 border-b border-r">13</th>
+                                <th class="p-3 border-b border-r">14</th>
+                                <th class="p-3 border-b">15</th>
+                            </tr>
+                        </thead>
+                        <tbody class="font-mono font-bold text-base">
+                            <tr class="border-b hover:bg-slate-50">
+                                <td
+                                    class="p-3 text-left font-sans font-semibold text-slate-700 bg-slate-50 border-r sticky left-0 z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">
+                                    Coder A</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r bg-indigo-50 text-amber-600 ring-2 ring-inset ring-indigo-100">3
+                                </td>
+                                <td class="p-3 border-r text-rose-600">4</td>
+                                <td class="p-3 border-r text-sky-600">1</td>
+                                <td class="p-3 border-r text-purple-600">2</td>
+                                <td class="p-3 border-r text-sky-600">1</td>
+                                <td class="p-3 border-r text-sky-600">1</td>
+                                <td class="p-3 border-r text-amber-600">3</td>
+                                <td class="p-3 border-r text-amber-600">3</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 text-amber-600">3</td>
+                            </tr>
+                            <tr class="border-b hover:bg-slate-50">
+                                <td
+                                    class="p-3 text-left font-sans font-semibold text-slate-700 bg-slate-50 border-r sticky left-0 z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">
+                                    Coder B</td>
+                                <td class="p-3 border-r text-sky-600">1</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r text-purple-600">2</td>
+                                <td class="p-3 border-r text-sky-600">1</td>
+                                <td class="p-3 border-r text-amber-600">3</td>
+                                <td class="p-3 border-r bg-indigo-50 text-amber-600 ring-2 ring-inset ring-indigo-100">3
+                                </td>
+                                <td class="p-3 border-r text-rose-600">4</td>
+                                <td class="p-3 border-r text-amber-600">3</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 text-slate-300 font-light">*</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50">
+                                <td
+                                    class="p-3 text-left font-sans font-semibold text-slate-700 bg-slate-50 border-r sticky left-0 z-10 shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]">
+                                    Coder C</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r text-purple-600">2</td>
+                                <td class="p-3 border-r text-sky-600">1</td>
+                                <td class="p-3 border-r text-amber-600">3</td>
+                                <td class="p-3 border-r bg-indigo-50 text-rose-600 ring-2 ring-inset ring-indigo-100">4
+                                </td>
+                                <td class="p-3 border-r text-rose-600">4</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 border-r text-purple-600">2</td>
+                                <td class="p-3 border-r text-sky-600">1</td>
+                                <td class="p-3 border-r text-sky-600">1</td>
+                                <td class="p-3 border-r text-amber-600">3</td>
+                                <td class="p-3 border-r text-amber-600">3</td>
+                                <td class="p-3 border-r text-slate-300 font-light">*</td>
+                                <td class="p-3 text-rose-600">4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div
+                        class="mt-4 text-xs font-semibold text-slate-500 flex flex-wrap gap-4 items-center justify-center">
+                        <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-sky-600"></span>
+                            Value 1</span>
+                        <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-purple-600"></span>
+                            Value 2</span>
+                        <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-amber-600"></span>
+                            Value 3</span>
+                        <span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-rose-600"></span>
+                            Value 4</span>
+                        <span class="flex items-center gap-2 text-slate-400 font-normal ml-4"><span
+                                class="w-2 h-2 rounded-full bg-slate-300"></span> * = Missing</span>
+                        <span
+                            class="flex items-center gap-2 ml-4 p-1 bg-indigo-50 rounded border border-indigo-100 text-indigo-700"><span
+                                class="w-4 h-4 rounded bg-indigo-100 border border-indigo-200"></span> Unit 6
+                            Highlighted (Example)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- STEP 2: COINCIDENCE MATRIX CALC -->
+                <div class="step-card bg-white rounded-2xl shadow-lg p-6 border border-slate-200">
+                    <h3 class="font-bold text-lg text-slate-800 mb-4 border-b pb-2">Step 2: Build Coincidence Matrix
+                        (O<sub>vv'</sub>)</h3>
+                    <p class="text-sm text-slate-600 mb-4">We count agreements weighted by the number of raters (n).
+                        Formula: <code class="bg-slate-100 p-1 rounded">Agreements / (n-1)</code></p>
+
+                    <div class="space-y-4 text-sm font-mono">
+                        <div class="bg-green-50 p-3 rounded-lg border border-green-100">
+                            <div class="font-bold text-green-800 mb-1">Calculating O<sub>11</sub> (1 with 1)</div>
+                            <div class="text-green-700">
+                                <div>Unit 4 (B,C): 2/(2-1) = 2</div>
+                                <div>Unit 10 (A,C): 2/(2-1) = 2</div>
+                                <div>Unit 11 (A,C): 2/(2-1) = 2</div>
+                                <div class="border-t border-green-200 mt-1 pt-1 font-bold">Total = 6</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 p-3 rounded-lg border border-blue-100">
+                            <div class="font-bold text-blue-800 mb-1">Calculating O<sub>33</sub> (3 with 3)</div>
+                            <div class="text-blue-700">
+                                <div>Unit 5 (B,C): 2/(2-1) = 2</div>
+                                <div>Unit 6 (A,B,C): 2/(3-1) = 1 (A&B agree)</div>
+                                <div>Unit 12 (A,C): 2/(2-1) = 2</div>
+                                <div>Unit 13 (A,C): 2/(2-1) = 2</div>
+                                <div class="border-t border-blue-200 mt-1 pt-1 font-bold">Total = 7</div>
+                            </div>
+                        </div>
+
+                        <div class="bg-red-50 p-3 rounded-lg border border-red-100">
+                            <div class="font-bold text-red-800 mb-1">Calculating O<sub>34</sub> (3 with 4)</div>
+                            <div class="text-red-700">
+                                <div>Unit 6: A(3) vs C(4) → 1/(3-1) = 0.5</div>
+                                <div>Unit 6: B(3) vs C(4) → 1/(3-1) = 0.5</div>
+                                <div>Unit 15: A(3) vs C(4) → 1/(2-1) = 1.0</div>
+                                <div class="border-t border-red-200 mt-1 pt-1 font-bold">Total = 2.0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- STEP 3: VISUAL MATRICES -->
+                <div class="step-card bg-white rounded-2xl shadow-lg p-6 border border-slate-200">
+                    <h3 class="font-bold text-lg text-slate-800 mb-4 border-b pb-2">Step 3: The Resulting Matrices</h3>
+
+                    <div class="mb-6">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Contingency Table
+                        </h4>
+                        <table class="w-full text-center border text-sm">
+                            <tr class="bg-slate-100 font-bold text-slate-600">
+                                <td class="p-2 border">v \ v'</td>
+                                <td class="p-2 border">1</td>
+                                <td class="p-2 border">2</td>
+                                <td class="p-2 border">3</td>
+                                <td class="p-2 border">4</td>
+                                <td class="p-2 border bg-slate-200">Total</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border font-bold bg-slate-50">1</td>
+                                <td class="p-2 border bg-green-100 font-bold text-green-800 matrix-cell">6</td>
+                                <td class="p-2 border text-slate-300">0</td>
+                                <td class="p-2 border bg-red-100 font-bold text-red-800 matrix-cell">1</td>
+                                <td class="p-2 border text-slate-300">0</td>
+                                <td class="p-2 border font-mono">7</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border font-bold bg-slate-50">2</td>
+                                <td class="p-2 border text-slate-300">0</td>
+                                <td class="p-2 border bg-green-100 font-bold text-green-800 matrix-cell">4</td>
+                                <td class="p-2 border text-slate-300">0</td>
+                                <td class="p-2 border text-slate-300">0</td>
+                                <td class="p-2 border font-mono">4</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border font-bold bg-slate-50">3</td>
+                                <td class="p-2 border bg-red-100 font-bold text-red-800 matrix-cell">1</td>
+                                <td class="p-2 border text-slate-300">0</td>
+                                <td class="p-2 border bg-green-100 font-bold text-green-800 matrix-cell">7</td>
+                                <td class="p-2 border bg-red-100 font-bold text-red-800 matrix-cell">2</td>
+                                <td class="p-2 border font-mono">10</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2 border font-bold bg-slate-50">4</td>
+                                <td class="p-2 border text-slate-300">0</td>
+                                <td class="p-2 border text-slate-300">0</td>
+                                <td class="p-2 border bg-red-100 font-bold text-red-800 matrix-cell">2</td>
+                                <td class="p-2 border bg-green-100 font-bold text-green-800 matrix-cell">3</td>
+                                <td class="p-2 border font-mono">5</td>
+                            </tr>
+                            <tr class="font-mono bg-slate-50">
+                                <td class="p-2 border font-bold">Total</td>
+                                <td class="p-2 border">7</td>
+                                <td class="p-2 border">4</td>
+                                <td class="p-2 border">10</td>
+                                <td class="p-2 border">5</td>
+                                <td class="p-2 border bg-slate-200 font-bold">26</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="flex justify-between text-xs font-semibold">
+                        <span class="text-green-700 flex items-center gap-1"><span
+                                class="w-3 h-3 bg-green-100 border border-green-200"></span> Diagonal =
+                            Agreements</span>
+                        <span class="text-red-700 flex items-center gap-1"><span
+                                class="w-3 h-3 bg-red-100 border border-red-200"></span> Off-Diagonal =
+                            Disagreements</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 4: De CALCULATION (NEW) -->
+            <div class="step-card bg-white rounded-2xl shadow-lg p-6 border border-slate-200">
+                <h3 class="font-bold text-lg text-slate-800 mb-4 border-b pb-2">Step 4: Calculate Expected Disagreement
+                    (D<sub>e</sub>)</h3>
+                <p class="text-sm text-slate-600 mb-4">
+                    D<sub>e</sub> simulates the disagreement we would see by pure chance. We calculate this by taking
+                    the total count of each value (n<sub>c</sub>) and multiplying it against every <em>other</em>
+                    value's total.
+                </p>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <!-- Left: The Inputs -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <h4 class="font-bold text-xs uppercase text-slate-500 mb-3 flex items-center gap-2">
+                            <i data-lucide="calculator" class="w-4 h-4"></i> 1. Get Totals (n)
+                        </h4>
+                        <div class="grid grid-cols-4 gap-2 text-center text-sm">
+                            <div class="bg-sky-100 p-2 rounded shadow-sm border border-sky-200">
+                                <div class="font-bold text-sky-800 text-xs uppercase mb-1">Value 1</div>
+                                <div class="font-mono font-bold text-lg">7</div>
+                            </div>
+                            <div class="bg-purple-100 p-2 rounded shadow-sm border border-purple-200">
+                                <div class="font-bold text-purple-800 text-xs uppercase mb-1">Value 2</div>
+                                <div class="font-mono font-bold text-lg">4</div>
+                            </div>
+                            <div class="bg-amber-100 p-2 rounded shadow-sm border border-amber-200">
+                                <div class="font-bold text-amber-800 text-xs uppercase mb-1">Value 3</div>
+                                <div class="font-mono font-bold text-lg">10</div>
+                            </div>
+                            <div class="bg-rose-100 p-2 rounded shadow-sm border border-rose-200">
+                                <div class="font-bold text-rose-800 text-xs uppercase mb-1">Value 4</div>
+                                <div class="font-mono font-bold text-lg">5</div>
+                            </div>
+                        </div>
+                        <div class="mt-3 text-center text-xs text-slate-500 font-mono bg-slate-200 py-1 rounded">Total n
+                            = 26</div>
+                    </div>
+
+                    <!-- Right: The Calculation -->
+                    <div class="bg-cyan-50 p-4 rounded-xl border border-cyan-200">
+                        <h4 class="font-bold text-xs uppercase text-cyan-800 mb-3 flex items-center gap-2">
+                            <i data-lucide="sigma" class="w-4 h-4"></i> 2. Sum of Pair Products
+                        </h4>
+                        <div class="font-mono text-xs space-y-3 text-cyan-900">
+                            <div>
+                                <span class="opacity-60 block text-[10px] uppercase mb-1">Formula logic: (n₁×n₂) +
+                                    (n₁×n₃) + ...</span>
+                                <div class="pl-3 border-l-2 border-cyan-300">
+                                    <div class="flex flex-wrap gap-x-3 gap-y-1">
+                                        <span>(7 × 4)</span> <span class="opacity-50">+</span>
+                                        <span>(7 × 10)</span> <span class="opacity-50">+</span>
+                                        <span>(7 × 5)</span> <span class="opacity-50">+</span>
+                                    </div>
+                                    <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1">
+                                        <span>(4 × 10)</span> <span class="opacity-50">+</span>
+                                        <span>(4 × 5)</span> <span class="opacity-50">+</span>
+                                    </div>
+                                    <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1">
+                                        <span>(10 × 5)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center justify-between border-t border-cyan-200 pt-2 font-bold">
+                                <span>Sum of Products:</span>
+                                <span class="text-lg">243</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Formula Row -->
+                <div
+                    class="mt-6 bg-slate-900 text-white p-5 rounded-xl flex flex-col md:flex-row items-center justify-between gap-4 shadow-inner">
+                    <div class="text-sm opacity-80 flex items-center gap-2">
+                        <i data-lucide="arrow-right-circle" class="w-4 h-4"></i> Final D<sub>e</sub> Calculation:
+                    </div>
+                    <div class="font-mono text-xl font-bold flex items-center gap-3">
+                        <div class="flex flex-col items-center">
+                            <span class="text-cyan-400">243</span>
+                            <span class="border-t border-slate-600 text-xs text-slate-400 w-full text-center">Sum</span>
+                        </div>
+                        <span>/</span>
+                        <div class="flex flex-col items-center">
+                            <span class="text-slate-200">25</span>
+                            <span class="border-t border-slate-600 text-xs text-slate-400 w-full text-center">n -
+                                1</span>
+                        </div>
+                        <span>=</span>
+                        <span class="text-cyan-400 bg-cyan-900/50 px-3 py-1 rounded border border-cyan-700">9.72</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STEP 5: FINAL FORMULA -->
+            <div class="bg-slate-900 text-white rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-32 bg-alpha opacity-20 rounded-full blur-3xl -mr-16 -mt-16"></div>
+
+                <h3 class="text-2xl font-bold mb-8 relative z-10">Step 5: The Final Calculation</h3>
+
+                <div class="grid md:grid-cols-2 gap-12 relative z-10">
+                    <div>
+                        <div class="text-slate-400 text-sm font-bold uppercase tracking-widest mb-2">The Logic</div>
+                        <div class="text-4xl font-mono font-bold mb-6">
+                            α = 1 - <span class="text-rose-400">D<sub>o</sub></span> / <span
+                                class="text-cyan-400">D<sub>e</sub></span>
+                        </div>
+                        <ul class="space-y-4">
+                            <li class="flex items-center gap-3">
+                                <span class="text-rose-400 font-bold text-xl">D<sub>o</sub></span>
+                                <span>Observed Disagreement (Upper triangle sum = 1 + 2 = 3)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <span class="text-cyan-400 font-bold text-xl">D<sub>e</sub></span>
+                                <span>Expected Disagreement by Chance (9.72)</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-white/10 p-6 rounded-xl border border-white/10 backdrop-blur-sm">
+                        <div class="text-slate-300 text-xs mb-2">SUBSTITUTING VALUES</div>
+                        <div class="font-mono text-lg space-y-2">
+                            <div>α = 1 - (3 / 9.72)</div>
+                            <div>α = 1 - 0.309</div>
+                            <div class="text-3xl font-bold text-tentative mt-4">α = 0.691</div>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-white/10 text-sm text-slate-300">
+                            <strong>Verdict:</strong> <span class="text-tentative">Tentative.</span> Needs improvement
+                            before ML deployment.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: INTERPRETATION GAUGE -->
+        <section class="max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 text-center">Interpreting the Score</h2>
+
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
+                <div class="flex flex-col space-y-2">
+                    <!-- Gauge Bar -->
+                    <div class="h-12 w-full bg-slate-100 rounded-full relative overflow-hidden flex">
+                        <div class="w-[67%] bg-bad h-full border-r border-white/20"></div>
+                        <div class="w-[3%] bg-tentative h-full border-r border-white/20"></div>
+                        <div class="w-[10%] bg-ok h-full border-r border-white/20"></div>
+                        <div class="w-[20%] bg-good h-full"></div>
+
+                        <!-- Marker -->
+                        <div class="absolute top-0 bottom-0 border-l-4 border-slate-900 z-10" style="left: 69.1%">
+                            <div
+                                class="absolute -top-1 -left-[14px] bg-slate-900 text-white text-xs font-bold px-2 py-1 rounded">
+                                0.691</div>
+                        </div>
+                    </div>
+
+                    <!-- Labels -->
+                    <div class="flex justify-between text-xs font-bold text-slate-500 pt-2 uppercase tracking-wide">
+                        <div class="text-bad w-[67%]">Inadequate (&lt;0.67)</div>
+                        <div class="text-tentative w-[3%] text-center">Tent.</div>
+                        <div class="text-ok w-[10%] text-center">Accept</div>
+                        <div class="text-good w-[20%] text-right">Good (&gt;0.8)</div>
+                    </div>
+
+                    <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+                        <div class="p-3 bg-red-50 rounded-lg border border-red-100">
+                            <div class="font-bold text-bad text-lg">&lt; 0.67</div>
+                            <div class="text-xs text-slate-600">Discard Data</div>
+                        </div>
+                        <div class="p-3 bg-lime-50 rounded-lg border border-lime-100">
+                            <div class="font-bold text-ok text-lg">0.67 - 0.80</div>
+                            <div class="text-xs text-slate-600">Use with Caution</div>
+                        </div>
+                        <div class="p-3 bg-green-50 rounded-lg border border-green-100">
+                            <div class="font-bold text-good text-lg">&gt; 0.80</div>
+                            <div class="text-xs text-slate-600">ML Ready</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: IMPROVEMENT STRATEGIES -->
+        <section class="grid md:grid-cols-2 gap-8">
+            <div>
+                <h2 class="text-2xl font-bold text-slate-900 mb-6">How to Improve Scores</h2>
+                <div class="space-y-4">
+                    <!-- Strategy 1 -->
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100 flex gap-4">
+                        <div class="bg-purple-100 p-3 rounded-lg text-purple-600 h-min">
+                            <i data-lucide="git-merge" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800">Use "Ancestor" Categories</h3>
+                            <p class="text-sm text-slate-600 mt-1">
+                                Instead of <span class="bg-red-100 text-red-800 px-1 rounded text-xs">Honda vs
+                                    Toyota</span> (High Error),
+                                use <span class="bg-green-100 text-green-800 px-1 rounded text-xs">Car</span>.
+                                Reduces granularity but ensures reliable data.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Strategy 2 -->
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-slate-100 flex gap-4">
+                        <div class="bg-emerald-100 p-3 rounded-lg text-emerald-600 h-min">
+                            <i data-lucide="activity" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800">Check Annotator Vitality</h3>
+                            <p class="text-sm text-slate-600 mt-1">
+                                Formula: <code
+                                    class="text-xs bg-slate-100 p-1 rounded">Vitality = α(total) - α(without_person)</code>
+                                <br>If removing them increases Alpha, retrain or remove them.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Managerial Checklist -->
+            <div class="bg-slate-800 text-slate-200 p-6 rounded-2xl">
+                <h2 class="text-xl font-bold text-white mb-6 flex items-center gap-2">
+                    <i data-lucide="clipboard-check"></i> Manager's Checklist
+                </h2>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <input type="checkbox" checked disabled class="mt-1 accent-alpha w-4 h-4">
+                        <span>Require <strong>10-20% overlap</strong> on all annotation tasks.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <input type="checkbox" checked disabled class="mt-1 accent-alpha w-4 h-4">
+                        <span>Ask team: "What metric are you using?" (Accept only Alpha/Kappa, reject F-measure).</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <input type="checkbox" checked disabled class="mt-1 accent-alpha w-4 h-4">
+                        <span>Set a hard gate: <strong>No ML development until α ≥ 0.8</strong>.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <input type="checkbox" checked disabled class="mt-1 accent-alpha w-4 h-4">
+                        <span>Use Vitality scores to identify specific training needs (Recognition vs.
+                            Classification).</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-100 py-8 text-center text-slate-500 text-sm border-t border-slate-200 print:hidden">
+        <p>Generated for educational purposes based on lecture materials by Dr. Ian McCullough.</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

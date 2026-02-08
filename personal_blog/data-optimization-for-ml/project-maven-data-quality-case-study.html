@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Maven: Data Quality Case Study</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Project Maven: Data Quality Case Study">
+    <meta name="description" content="Case study analyzing data quality challenges in Project Maven's military object detection system. Lessons learned about annotation quality, labeling consistency, and data pipeline optimization for computer vision.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Data Optimization for ML">
+    <meta name="tags" content="Project Maven, Object Detection, Case Study, Data Quality, Computer Vision, Military AI, Annotation, Data Pipeline">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Project Maven was a DoD initiative using AI for military drone footage analysis. This case study examines data quality challenges: inconsistent object labeling, ambiguous categories, insufficient annotator training, and the critical importance of clear Terms of Reference. Key lessons for real-world computer vision deployments.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/project-maven-data-quality-case-study">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Project Maven: Data Quality Case Study">
+    <meta property="og:description" content="Case study on data quality challenges in Project Maven's object detection system with lessons for computer vision deployments.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/project-maven-data-quality-case-study">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-02-08">
+    <meta property="article:section" content="Data Optimization for ML">
+    <meta property="article:tag" content="Project Maven">
+    <meta property="article:tag" content="Data Quality">
+    <meta property="article:tag" content="Computer Vision">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Project Maven: Data Quality Case Study",
+        "description": "Case study analyzing data quality challenges in Project Maven's military object detection system with lessons for computer vision deployments.",
+        "datePublished": "2025-02-08",
+        "dateModified": "2025-02-08",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/project-maven-data-quality-case-study"
+        },
+        "keywords": ["Project Maven", "Object Detection", "Case Study", "Data Quality", "Computer Vision", "Military AI", "Annotation", "Data Pipeline"],
+        "articleSection": "Data Optimization for ML",
+        "about": [
+            {"@type": "Thing", "name": "Data Quality"},
+            {"@type": "Thing", "name": "Object Detection"}
+        ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-line {
+            background: linear-gradient(to bottom, #3b82f6, #ef4444, #22c55e);
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .no-print {
+                display: none;
+            }
+
+            .print-break {
+                page-break-before: always;
+            }
+
+            .card-hover {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                transform: none !important;
+            }
+
+            .bg-slate-900 {
+                background-color: #fff !important;
+                color: #000 !important;
+            }
+
+            .text-white {
+                color: #000 !important;
+            }
+
+            .bg-slate-800 {
+                background-color: #f8fafc !important;
+                color: #000 !important;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#3B82F6',   // Size/Volume
+                            green: '#10B981',  // Consistency
+                            amber: '#F59E0B',  // Quality
+                            red: '#EF4444',    // Failure/Bad
+                            rose: '#F43F5E',   // Recall
+                            emerald: '#059669', // Precision
+                            purple: '#8B5CF6', // Vitality
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-blue selection:text-white">
+
+    <!-- HERO SECTION -->
+    <header class="bg-slate-900 text-white pt-20 pb-24 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/graphy.png')]">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+                <div>
+                    <div
+                        class="inline-flex items-center space-x-2 bg-brand-blue/20 text-brand-blue px-3 py-1 rounded-full text-sm font-semibold mb-4 border border-brand-blue/30">
+                        <i data-lucide="file-text" class="w-4 h-4"></i>
+                        <span>Case Study: Project Maven</span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-4">Object Detection <br><span
+                            class="text-brand-blue">Success & Failure</span></h1>
+                    <p class="text-xl text-slate-400 max-w-2xl">How annotation quality, consistency, and volume
+                        trade-offs determine the fate of AI initiatives.</p>
+                </div>
+                <div class="mt-8 md:mt-0 bg-slate-800 p-6 rounded-xl border border-slate-700 max-w-md shadow-2xl">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <div class="p-3 bg-red-500/20 rounded-lg">
+                            <i data-lucide="alert-triangle" class="w-8 h-8 text-red-500"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-400 uppercase font-semibold tracking-wider">The Cost of
+                                Oversight</p>
+                            <p class="text-3xl font-bold text-white">~$100 Million</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-400 italic">"Wasted on unusable data and models due to annotation
+                        quality oversight."</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+                <blockquote class="bg-slate-800/50 p-6 rounded-lg border-l-4 border-brand-green italic">
+                    "You don't get good autonomous vehicles by training them on lots and lots of bad drivers. What you
+                    need to do is train them on a few good drivers."
+                </blockquote>
+                <blockquote class="bg-slate-800/50 p-6 rounded-lg border-l-4 border-brand-rose italic">
+                    "If you do not get the consistency right up front and early, you can't fix precision. It's been
+                    trained on inconsistent data."
+                </blockquote>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-16 relative z-20 space-y-24 pb-24">
+
+        <!-- TIMELINE SECTION -->
+        <section id="timeline" class="bg-white rounded-2xl shadow-xl p-8 animate-fade-in">
+            <div class="flex items-center space-x-3 mb-8">
+                <i data-lucide="history" class="w-6 h-6 text-brand-blue"></i>
+                <h2 class="text-2xl font-bold">The Project Maven Timeline</h2>
+            </div>
+
+            <div class="relative">
+                <!-- Mobile Vertical / Desktop Horizontal Layout logic handled via Flex/Grid -->
+                <div
+                    class="hidden md:block absolute top-1/2 left-0 w-full h-1 timeline-line transform -translate-y-1/2 rounded-full opacity-20">
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                    <!-- 2017 Start -->
+                    <div class="relative bg-slate-50 p-6 rounded-xl border border-slate-100 card-hover group">
+                        <div
+                            class="hidden md:block absolute top-1/2 left-1/2 w-4 h-4 bg-brand-blue rounded-full transform -translate-x-1/2 -translate-y-[calc(50%+2.5rem)] border-4 border-white shadow-sm z-10">
+                        </div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-2xl font-bold text-brand-blue">2017</span>
+                            <i data-lucide="rocket" class="w-5 h-5 text-slate-400"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">Launch & $16M Investment</h3>
+                        <p class="text-sm text-slate-600">DOD launches Project Maven to use AI for battlefield
+                            awareness. Johns Hopkins consulted.</p>
+                    </div>
+
+                    <!-- The Critical Mistake -->
+                    <div class="relative bg-red-50 p-6 rounded-xl border border-red-100 card-hover group">
+                        <div
+                            class="hidden md:block absolute top-1/2 left-1/2 w-4 h-4 bg-red-500 rounded-full transform -translate-x-1/2 -translate-y-[calc(50%+2.5rem)] border-4 border-white shadow-sm z-10">
+                        </div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-2xl font-bold text-brand-red">2017-18</span>
+                            <i data-lucide="x-circle" class="w-5 h-5 text-brand-red"></i>
+                        </div>
+                        <h3 class="font-bold mb-2 text-brand-red">The Volume Mistake</h3>
+                        <p class="text-sm text-slate-700">Leadership rejects consistency checks for volume. Military
+                            quotas imposed. Quality collapses.</p>
+                    </div>
+
+                    <!-- Failure -->
+                    <div class="relative bg-slate-50 p-6 rounded-xl border border-slate-100 card-hover group">
+                        <div
+                            class="hidden md:block absolute top-1/2 left-1/2 w-4 h-4 bg-slate-400 rounded-full transform -translate-x-1/2 -translate-y-[calc(50%+2.5rem)] border-4 border-white shadow-sm z-10">
+                        </div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-2xl font-bold text-slate-500">End 2018</span>
+                            <i data-lucide="alert-octagon" class="w-5 h-5 text-slate-400"></i>
+                        </div>
+                        <h3 class="font-bold mb-2">System Failure</h3>
+                        <p class="text-sm text-slate-600">Models perform poorly. Data is unusable. <strong>$100M
+                                wasted</strong> due to technical debt.</p>
+                    </div>
+
+                    <!-- Adaptation -->
+                    <div class="relative bg-green-50 p-6 rounded-xl border border-green-100 card-hover group">
+                        <div
+                            class="hidden md:block absolute top-1/2 left-1/2 w-4 h-4 bg-brand-green rounded-full transform -translate-x-1/2 -translate-y-[calc(50%+2.5rem)] border-4 border-white shadow-sm z-10">
+                        </div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-2xl font-bold text-brand-green">2019+</span>
+                            <i data-lucide="trending-up" class="w-5 h-5 text-brand-green"></i>
+                        </div>
+                        <h3 class="font-bold mb-2 text-brand-green">Lessons & Scale</h3>
+                        <p class="text-sm text-slate-700">Investment grows to $250M. Focus shifts to better practices
+                            and annotation vitality.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VISUAL COMPARISON SECTION -->
+        <section id="visual-comparison" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Introduction Text -->
+            <div class="lg:col-span-2">
+                <h2 class="text-3xl font-bold mb-4">The "Quota" Effect: Good vs. Bad Annotation</h2>
+                <p class="text-lg text-slate-600">When military units were forced to meet quotas (e.g., "label 3 images
+                    before login"), quality suffered. Inconsistent bounding boxes destroy model precision.</p>
+            </div>
+
+            <!-- GOOD Annotation -->
+            <div class="bg-white rounded-2xl shadow-lg border-2 border-brand-green overflow-hidden flex flex-col">
+                <div class="bg-brand-green/10 p-4 border-b border-brand-green flex justify-between items-center">
+                    <h3 class="font-bold text-brand-green flex items-center gap-2">
+                        <i data-lucide="check-circle-2" class="w-5 h-5"></i> Good Annotation
+                    </h3>
+                    <span class="text-xs bg-brand-green text-white px-2 py-1 rounded">High Consistency</span>
+                </div>
+                <div class="p-6 flex-grow flex items-center justify-center bg-slate-100">
+                    <!-- SVG Scene: Good -->
+                    <svg viewBox="0 0 400 300" class="w-full h-auto drop-shadow-md rounded bg-slate-300">
+                        <!-- Background: Pavement -->
+                        <rect width="400" height="300" fill="#94a3b8" />
+                        <!-- Parking Lines -->
+                        <line x1="100" y1="50" x2="100" y2="250" stroke="white" stroke-width="2"
+                            stroke-dasharray="10,5" />
+                        <line x1="200" y1="50" x2="200" y2="250" stroke="white" stroke-width="2"
+                            stroke-dasharray="10,5" />
+                        <line x1="300" y1="50" x2="300" y2="250" stroke="white" stroke-width="2"
+                            stroke-dasharray="10,5" />
+
+                        <!-- Building -->
+                        <rect x="0" y="0" width="150" height="80" fill="#78350f" />
+                        <text x="10" y="45" fill="#fef3c7" font-size="12" opacity="0.7">Brick Building</text>
+
+                        <!-- Objects & Good Boxes -->
+
+                        <!-- Car -->
+                        <rect x="220" y="120" width="80" height="40" rx="4" fill="#1e293b" /> <!-- The Car Object -->
+                        <rect x="220" y="120" width="80" height="40" fill="none" stroke="#ef4444" stroke-width="2" />
+                        <!-- Tight Red Box -->
+
+                        <!-- People Group (Left) -->
+                        <circle cx="60" cy="150" r="6" fill="#1e293b" /> <!-- Person 1 -->
+                        <rect x="52" y="142" width="16" height="16" fill="none" stroke="#3b82f6" stroke-width="2" />
+                        <!-- Tight Blue Box -->
+
+                        <circle cx="80" cy="160" r="6" fill="#1e293b" /> <!-- Person 2 -->
+                        <rect x="72" y="152" width="16" height="16" fill="none" stroke="#3b82f6" stroke-width="2" />
+                        <!-- Tight Blue Box -->
+
+                        <!-- Person near Car -->
+                        <circle cx="210" cy="130" r="6" fill="#1e293b" /> <!-- Person 3 -->
+                        <rect x="202" y="122" width="16" height="16" fill="none" stroke="#3b82f6" stroke-width="2" />
+                        <!-- Tight Blue Box -->
+
+                        <text x="10" y="285" fill="white" font-size="12">Red = Vehicle, Blue = Person</text>
+                    </svg>
+                </div>
+                <div class="p-4 bg-slate-50 text-sm text-slate-600">
+                    <ul class="list-disc pl-4 space-y-1">
+                        <li>Each object has its own box.</li>
+                        <li>Boxes are "tight" to the object boundaries.</li>
+                        <li>No overlap between the person and the car.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- BAD Annotation -->
+            <div class="bg-white rounded-2xl shadow-lg border-2 border-brand-red overflow-hidden flex flex-col">
+                <div class="bg-brand-red/10 p-4 border-b border-brand-red flex justify-between items-center">
+                    <h3 class="font-bold text-brand-red flex items-center gap-2">
+                        <i data-lucide="x-circle" class="w-5 h-5"></i> Bad Annotation
+                    </h3>
+                    <span class="text-xs bg-brand-red text-white px-2 py-1 rounded">Quota Driven</span>
+                </div>
+                <div class="p-6 flex-grow flex items-center justify-center bg-slate-100">
+                    <!-- SVG Scene: Bad -->
+                    <svg viewBox="0 0 400 300" class="w-full h-auto drop-shadow-md rounded bg-slate-300">
+                        <!-- Background: Pavement (Identical) -->
+                        <rect width="400" height="300" fill="#94a3b8" />
+                        <line x1="100" y1="50" x2="100" y2="250" stroke="white" stroke-width="2"
+                            stroke-dasharray="10,5" />
+                        <line x1="200" y1="50" x2="200" y2="250" stroke="white" stroke-width="2"
+                            stroke-dasharray="10,5" />
+                        <line x1="300" y1="50" x2="300" y2="250" stroke="white" stroke-width="2"
+                            stroke-dasharray="10,5" />
+
+                        <!-- Building -->
+                        <rect x="0" y="0" width="150" height="80" fill="#78350f" />
+
+                        <!-- Objects (Identical placement) -->
+                        <rect x="220" y="120" width="80" height="40" rx="4" fill="#1e293b" />
+                        <circle cx="60" cy="150" r="6" fill="#1e293b" />
+                        <circle cx="80" cy="160" r="6" fill="#1e293b" />
+                        <circle cx="210" cy="130" r="6" fill="#1e293b" />
+
+                        <!-- BAD Annotations -->
+
+                        <!-- Car Box (Sloppy, wide, overlaps person) -->
+                        <rect x="190" y="110" width="130" height="60" fill="none" stroke="#ef4444" stroke-width="2"
+                            stroke-dasharray="4" />
+                        <text x="250" y="105" fill="#ef4444" font-size="10" text-anchor="middle">Loose &
+                            Overlapping</text>
+
+                        <!-- Group Box (Covers 2 people) -->
+                        <rect x="50" y="140" width="45" height="35" fill="none" stroke="#3b82f6" stroke-width="2"
+                            stroke-dasharray="4" />
+                        <text x="70" y="135" fill="#3b82f6" font-size="10" text-anchor="middle">Grouped</text>
+
+                        <!-- Person Box (Overlapped by car) -->
+                        <rect x="200" y="120" width="20" height="20" fill="none" stroke="#3b82f6" stroke-width="2"
+                            stroke-dasharray="4" />
+
+                    </svg>
+                </div>
+                <div class="p-4 bg-slate-50 text-sm text-slate-600">
+                    <ul class="list-disc pl-4 space-y-1">
+                        <li>Two people grouped in one box (confuses count).</li>
+                        <li>Car box is too wide and overlaps the person.</li>
+                        <li><strong>Result:</strong> Model learns that "Cars" include "People".</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIMENT DATA SECTION -->
+        <section class="bg-white rounded-2xl shadow-xl p-8">
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/3">
+                    <div class="inline-block p-3 rounded-lg bg-brand-purple/10 text-brand-purple mb-4">
+                        <i data-lucide="activity" class="w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-4">Annotation Vitality</h2>
+                    <p class="text-slate-600 mb-6">
+                        A method to measure annotator quality. We drop one annotator at a time and see how the model
+                        consensus changes.
+                    </p>
+                    <div class="bg-slate-50 p-4 rounded-lg border-l-4 border-brand-purple">
+                        <p class="font-bold text-sm mb-2">The Golden Rule:</p>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="trending-up" class="w-4 h-4 text-brand-green mt-1"></i>
+                                <span>If consensus <strong>improves</strong> when dropped: Bad Annotator.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="trending-down" class="w-4 h-4 text-brand-red mt-1"></i>
+                                <span>If consensus <strong>worsens</strong> when dropped: Good Annotator.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="md:w-2/3">
+                    <h3 class="text-xl font-bold mb-4">The 4-Annotator Experiment Results</h3>
+                    <p class="text-sm text-slate-500 mb-4">All scenarios aligned on F-Score to compare trade-offs.</p>
+
+                    <div class="overflow-hidden rounded-xl border border-slate-200 shadow-sm">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-brand-blue text-white">
+                                <tr>
+                                    <th class="p-4">Scenario</th>
+                                    <th class="p-4 text-right">Precision</th>
+                                    <th class="p-4 text-right">Recall</th>
+                                    <th class="p-4 text-right">F1 Score</th>
+                                    <th class="p-4 text-right">Miss-Classify</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <!-- Row 1: The Key Insight -->
+                                <tr class="bg-orange-50 hover:bg-orange-100 transition-colors">
+                                    <td class="p-4 font-bold text-brand-red flex items-center gap-2">
+                                        Drop Annotator 1
+                                        <i data-lucide="alert-circle" class="w-4 h-4"></i>
+                                    </td>
+                                    <td class="p-4 text-right font-bold text-brand-emerald">0.70</td>
+                                    <td class="p-4 text-right text-brand-red">0.57</td>
+                                    <td class="p-4 text-right text-slate-600">0.63</td>
+                                    <td class="p-4 text-right font-bold text-brand-green">375</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-slate-50">
+                                    <td class="p-4 text-slate-600">Drop Annotator 2</td>
+                                    <td class="p-4 text-right text-slate-600">0.60</td>
+                                    <td class="p-4 text-right text-slate-600">0.66</td>
+                                    <td class="p-4 text-right text-slate-600">0.63</td>
+                                    <td class="p-4 text-right text-brand-red">847</td>
+                                </tr>
+                                <tr class="bg-blue-50 hover:bg-blue-100">
+                                    <td class="p-4 text-slate-600">Drop Annotator 3</td>
+                                    <td class="p-4 text-right text-brand-red">0.59</td>
+                                    <td class="p-4 text-right text-slate-600">0.65</td>
+                                    <td class="p-4 text-right text-brand-red">0.62</td>
+                                    <td class="p-4 text-right text-slate-600">814</td>
+                                </tr>
+                                <tr class="bg-white hover:bg-slate-50">
+                                    <td class="p-4 text-slate-600">Drop Annotator 4</td>
+                                    <td class="p-4 text-right text-slate-600">0.63</td>
+                                    <td class="p-4 text-right font-bold text-brand-blue">0.67</td>
+                                    <td class="p-4 text-right font-bold text-brand-blue">0.65</td>
+                                    <td class="p-4 text-right text-slate-600">711</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div
+                        class="mt-4 p-4 bg-indigo-50 rounded-lg border border-indigo-100 text-indigo-900 flex gap-4 items-start">
+                        <i data-lucide="lightbulb" class="w-6 h-6 flex-shrink-0 mt-1"></i>
+                        <div>
+                            <h4 class="font-bold">Key Insight: The Trade-off</h4>
+                            <p>Dropping Annotator 1 (the inconsistent one) gave the <strong>Highest Precision</strong>
+                                (0.70) and lowest errors (375), but the <strong>Lowest Recall</strong> (0.57) because
+                                the total data volume decreased.</p>
+                            <p class="font-bold mt-2 text-lg">"Precision requires consistency. Recall requires volume."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRECISION VS RECALL CARDS -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Precision Card -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-brand-emerald card-hover">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-slate-800">Precision</h3>
+                    <span
+                        class="bg-brand-emerald/10 text-brand-emerald px-3 py-1 rounded-full text-xs font-bold tracking-wide">CORRECTNESS</span>
+                </div>
+                <div class="text-4xl font-mono mb-4 text-brand-emerald">TP / (TP + FP)</div>
+                <p class="text-slate-600 italic mb-4">"When I say it's a vehicle, is it actually a vehicle?"</p>
+                <div class="bg-slate-50 p-4 rounded text-sm space-y-2">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-brand-emerald"></i>
+                        <span>Driven by <strong>Consistency</strong></span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="alert-triangle" class="w-4 h-4 text-brand-red"></i>
+                        <span>Cannot be fixed if trained on bad data.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recall Card -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-brand-rose card-hover">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="text-2xl font-bold text-slate-800">Recall</h3>
+                    <span
+                        class="bg-brand-rose/10 text-brand-rose px-3 py-1 rounded-full text-xs font-bold tracking-wide">COMPLETENESS</span>
+                </div>
+                <div class="text-4xl font-mono mb-4 text-brand-rose">TP / (TP + FN)</div>
+                <p class="text-slate-600 italic mb-4">"Did I find ALL the vehicles in the image?"</p>
+                <div class="bg-slate-50 p-4 rounded text-sm space-y-2">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="database" class="w-4 h-4 text-brand-rose"></i>
+                        <span>Driven by <strong>Data Volume</strong></span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-brand-green"></i>
+                        <span>Can be improved later by adding more data.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RARE CLASS PROBLEM VISUALIZER -->
+        <section class="bg-slate-900 text-white rounded-2xl shadow-2xl p-8 overflow-hidden relative">
+            <div class="absolute top-0 right-0 p-32 bg-brand-blue/10 rounded-full blur-3xl"></div>
+
+            <div class="relative z-10 mb-12">
+                <h2 class="text-3xl font-bold mb-4">The Rare Class Paradox</h2>
+                <p class="text-slate-300 max-w-3xl">
+                    Why 95% accuracy can be misleading. Imagine bicycles appear in only 1% of images.
+                    Even with a decent detector (2% False Negative, 5% False Positive), the math is shocking.
+                </p>
+            </div>
+
+            <!-- Decision Tree Viz (UPDATED: Fixed broken connector lines) -->
+            <div class="flex flex-col items-center gap-4 relative">
+
+                <!-- ROW 1: ROOT -->
+                <div class="bg-white text-slate-900 px-6 py-3 rounded-lg font-bold shadow-lg z-10 w-64 text-center">
+                    Any Data Point
+                </div>
+
+                <!-- CONNECTOR 1: Root to Split -->
+                <svg width="300" height="40" class="text-slate-500 z-0">
+                    <!-- Vertical Line Down -->
+                    <line x1="150" y1="0" x2="150" y2="20" stroke="currentColor" stroke-width="2" />
+                    <!-- Horizontal Split -->
+                    <line x1="75" y1="20" x2="225" y2="20" stroke="currentColor" stroke-width="2" />
+                    <!-- Vertical Lines to Children -->
+                    <line x1="75" y1="20" x2="75" y2="40" stroke="currentColor" stroke-width="2" />
+                    <line x1="225" y1="20" x2="225" y2="40" stroke="currentColor" stroke-width="2" />
+                </svg>
+
+                <!-- ROW 2: CATEGORIES -->
+                <div class="flex justify-between w-full max-w-3xl px-4 gap-8">
+                    <!-- Left: Rare -->
+                    <div class="flex flex-col items-center w-1/2">
+                        <span class="text-brand-blue font-mono text-sm mb-2">1% (Rare)</span>
+                        <div
+                            class="bg-brand-blue/20 border border-brand-blue px-4 py-2 rounded text-sm w-full text-center">
+                            True Positive
+                        </div>
+                    </div>
+                    <!-- Right: Common -->
+                    <div class="flex flex-col items-center w-1/2">
+                        <span class="text-slate-400 font-mono text-sm mb-2">99% (Common)</span>
+                        <div class="bg-slate-700 border border-slate-600 px-4 py-2 rounded text-sm w-full text-center">
+                            False Positive
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONNECTOR 2: Splits to Outcomes -->
+                <div class="flex justify-between w-full max-w-3xl px-4 gap-8">
+                    <!-- Left Connector -->
+                    <div class="w-1/2 flex justify-center">
+                        <svg width="150" height="40" class="text-slate-500">
+                            <line x1="75" y1="0" x2="75" y2="15" stroke="currentColor" stroke-width="2" />
+                            <line x1="30" y1="15" x2="120" y2="15" stroke="currentColor" stroke-width="2" />
+                            <line x1="30" y1="15" x2="30" y2="40" stroke="currentColor" stroke-width="2" />
+                            <line x1="120" y1="15" x2="120" y2="40" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                    </div>
+                    <!-- Right Connector -->
+                    <div class="w-1/2 flex justify-center">
+                        <svg width="150" height="40" class="text-slate-500">
+                            <line x1="75" y1="0" x2="75" y2="15" stroke="currentColor" stroke-width="2" />
+                            <line x1="30" y1="15" x2="120" y2="15" stroke="currentColor" stroke-width="2" />
+                            <line x1="30" y1="15" x2="30" y2="40" stroke="currentColor" stroke-width="2" />
+                            <line x1="120" y1="15" x2="120" y2="40" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- ROW 3: OUTCOMES -->
+                <div class="flex justify-between w-full max-w-3xl px-4 gap-8">
+
+                    <!-- Left Outcomes (Rare) -->
+                    <div class="w-1/2 flex justify-center gap-2 sm:gap-8">
+                        <!-- TP -->
+                        <div class="flex flex-col items-center">
+                            <div class="text-xs text-slate-400 mb-1">98%</div>
+                            <div
+                                class="bg-green-500/20 text-green-400 px-2 py-1 rounded text-xs border border-green-500/50 w-16 text-center">
+                                Correct</div>
+                            <div class="text-xs font-mono mt-1 text-green-400">0.98%</div>
+                        </div>
+                        <!-- FN -->
+                        <div class="flex flex-col items-center">
+                            <div class="text-xs text-slate-400 mb-1">2%</div>
+                            <div
+                                class="bg-red-500/20 text-red-400 px-2 py-1 rounded text-xs border border-red-500/50 w-16 text-center">
+                                Miss</div>
+                            <div class="text-xs font-mono mt-1 text-red-400">0.02%</div>
+                        </div>
+                    </div>
+
+                    <!-- Right Outcomes (Common) -->
+                    <div class="w-1/2 flex justify-center gap-2 sm:gap-8">
+                        <!-- TN -->
+                        <div class="flex flex-col items-center">
+                            <div class="text-xs text-slate-400 mb-1">95%</div>
+                            <div
+                                class="bg-green-500/20 text-green-400 px-2 py-1 rounded text-xs border border-green-500/50 w-16 text-center">
+                                Correct</div>
+                            <div class="text-xs font-mono mt-1 text-green-400">94.05%</div>
+                        </div>
+                        <!-- FP -->
+                        <div class="flex flex-col items-center">
+                            <div class="text-xs text-slate-400 mb-1">5%</div>
+                            <div
+                                class="bg-red-500/20 text-red-400 px-2 py-1 rounded text-xs border border-red-500/50 w-16 text-center">
+                                False Pos</div>
+                            <div class="text-xs font-mono mt-1 text-red-400">4.95%</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- The Result Box -->
+            <div
+                class="mt-12 bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 text-center max-w-2xl mx-auto">
+                <h3 class="text-xl font-bold mb-2">The Shocking Result</h3>
+                <p class="mb-4 text-slate-300">If the model flags an image as containing the rare object, what is the
+                    probability it's actually there?</p>
+                <div class="text-5xl font-bold text-brand-blue mb-2">16.5%</div>
+                <p class="text-xs text-slate-400 font-mono">Calculation: 0.98% / (0.98% + 4.95%)</p>
+                <div class="mt-4 pt-4 border-t border-white/10">
+                    <p class="text-sm italic">"You cannot support an ontology class with insufficient data."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- STRATEGIES GRID -->
+        <section>
+            <div class="flex items-center space-x-3 mb-8">
+                <i data-lucide="layers" class="w-6 h-6 text-brand-blue"></i>
+                <h2 class="text-2xl font-bold">Strategies for Success</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- High Overlap First -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-purple hover:shadow-xl transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-purple-100 p-2 rounded-lg text-brand-purple"><i data-lucide="users"
+                                class="w-5 h-5"></i></div>
+                        <h3 class="font-bold">High Overlap First</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">Start pilots with 30-50% overlap (multiple annotators per
+                        image). Measure agreement strictly.</p>
+                    <div class="text-xs font-bold text-brand-purple bg-purple-50 inline-block px-2 py-1 rounded">Project
+                        Maven Lesson</div>
+                </div>
+
+                <!-- Active Learning -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-blue hover:shadow-xl transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-blue-100 p-2 rounded-lg text-brand-blue"><i data-lucide="refresh-cw"
+                                class="w-5 h-5"></i></div>
+                        <h3 class="font-bold">Active Learning</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">Train a model, find where it is uncertain, and only annotate
+                        those specific high-value images.</p>
+                </div>
+
+                <!-- Synthetic Data -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-md border-l-4 border-brand-green hover:shadow-xl transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-green-100 p-2 rounded-lg text-brand-green"><i data-lucide="image"
+                                class="w-5 h-5"></i></div>
+                        <h3 class="font-bold">Augmentation</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4">Use geometric flips, color jitters, or Generative AI to boost
+                        volume without losing consistency.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- LEADERSHIP SECTION -->
+        <section class="bg-slate-800 text-white rounded-2xl p-8 md:p-12">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                        <i data-lucide="briefcase" class="w-8 h-8 text-brand-amber"></i>
+                        For Leadership
+                    </h2>
+                    <p class="text-lg text-slate-300 mb-6">Annotation quality is not just a technical detail—it is a
+                        strategic asset. Neglecting it creates permanent technical debt.</p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-square" class="w-5 h-5 text-brand-green mt-1"></i>
+                            <span><strong>Reject Volume-First:</strong> Do not approve scaling until consistency is
+                                proven.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-square" class="w-5 h-5 text-brand-green mt-1"></i>
+                            <span><strong>Budget for Redundancy:</strong> Allocate funds for multiple annotators per
+                                image.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-square" class="w-5 h-5 text-brand-green mt-1"></i>
+                            <span><strong>Beware False Metrics:</strong> Pilot F-scores can be manipulated via synthetic
+                                data.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:w-1/2 bg-white/5 p-6 rounded-xl border border-white/10">
+                    <h3 class="font-bold text-brand-amber mb-4 uppercase tracking-wider text-sm">Key Principles Summary
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-slate-900/50 p-4 rounded border-l-2 border-brand-blue">
+                            <h4 class="font-bold text-white text-sm">1. Asymmetry of Recovery</h4>
+                            <p class="text-xs text-slate-400 mt-1">You will naturally get more data (volume) over time.
+                                You cannot easily fix inconsistent data (quality) later.</p>
+                        </div>
+                        <div class="bg-slate-900/50 p-4 rounded border-l-2 border-brand-emerald">
+                            <h4 class="font-bold text-white text-sm">2. Vitality Logic</h4>
+                            <p class="text-xs text-slate-400 mt-1">Wrong annotations are worse than missing annotations.
+                                If removing a person improves the model, remove them.</p>
+                        </div>
+                        <div class="bg-slate-900/50 p-4 rounded border-l-2 border-brand-rose">
+                            <h4 class="font-bold text-white text-sm">3. Technical Debt</h4>
+                            <p class="text-xs text-slate-400 mt-1">Inconsistent data is permanent debt. Fix it early or
+                                pay 10x later.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 text-slate-500 py-12 text-center border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="mb-2">Based on the Case Study by Dr. Ian McCullough, Johns Hopkins University</p>
+            <p class="text-sm opacity-50">&copy; Project Maven Case Study Interactive</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Simple Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            observer.observe(section);
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

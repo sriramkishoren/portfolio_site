@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Labeling Considerations for ML Projects</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Data Labeling Considerations for ML Projects">
+    <meta name="description" content="Key considerations for data labeling in ML projects: consistency, scalability, subjectivity management, privacy compliance, scheduling, and error handling across image, text, audio, video, and 3D data types.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Data Optimization for ML">
+    <meta name="tags" content="Data Labeling, Annotation Guidelines, Data Quality, Privacy, GDPR, Scalability, Consistency, Subjectivity">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Data labeling considerations span consistency (inter-annotator agreement), scalability (automation vs manual), subjectivity management (clear guidelines), privacy (PII handling, GDPR/HIPAA compliance), and project scheduling. Each data modality has unique challenges requiring specialized approaches.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/data-labeling-considerations">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Data Labeling Considerations for ML Projects">
+    <meta property="og:description" content="Essential considerations for data labeling in ML: consistency, scalability, subjectivity, privacy compliance, and scheduling.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/data-labeling-considerations">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-02-05">
+    <meta property="article:section" content="Data Optimization for ML">
+    <meta property="article:tag" content="Data Labeling">
+    <meta property="article:tag" content="Data Quality">
+    <meta property="article:tag" content="Privacy">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Data Labeling Considerations for ML Projects",
+        "description": "Key considerations for data labeling in ML projects: consistency, scalability, subjectivity management, privacy compliance, and scheduling.",
+        "datePublished": "2025-02-05",
+        "dateModified": "2025-02-05",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/data-labeling-considerations"
+        },
+        "keywords": ["Data Labeling", "Annotation Guidelines", "Data Quality", "Privacy", "GDPR", "Scalability", "Consistency"],
+        "articleSection": "Data Optimization for ML",
+        "about": [
+            {"@type": "Thing", "name": "Data Labeling"},
+            {"@type": "Thing", "name": "Data Privacy"}
+        ]
+    }
+    </script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        consistency: '#3B82F6', // Blue
+                        scalability: '#10B981', // Green
+                        subjectivity: '#8B5CF6', // Purple
+                        privacy: '#F59E0B',     // Orange
+                        scheduling: '#14B8A6',  // Teal
+                        management: '#4F46E5',  // Indigo
+                        error: '#DC2626',       // Red
+                        warning: '#D97706',     // Amber
+                        image: '#0EA5E9',       // Sky
+                        text: '#10B981',        // Emerald
+                        audio: '#8B5CF6',       // Violet
+                        video: '#F59E0B',       // Amber
+                        data3d: '#F43F5E',      // Rose
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #F8FAFC;
+            color: #1E293B;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: white;
+            }
+
+            .no-print {
+                display: none;
+            }
+
+            .break-inside-avoid {
+                page-break-inside: avoid;
+            }
+
+            .card-hover {
+                box-shadow: none !important;
+                transform: none !important;
+                border: 1px solid #e2e8f0;
+            }
+        }
+    </style>
+</head>
+
+<body class="p-4 md:p-8 max-w-[1400px] mx-auto">
+
+    <!-- HEADER SECTION -->
+    <header class="mb-12 text-center border-b-4 border-slate-800 pb-8">
+        <div class="inline-flex items-center justify-center p-3 bg-slate-800 rounded-full mb-4 text-white">
+            <i data-lucide="tag" class="w-8 h-8"></i>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-2 tracking-tight">DATA LABELING CONSIDERATIONS
+        </h1>
+        <p class="text-xl text-slate-600 font-medium mb-4">Quality, Consistency, Privacy, and Management Practices for
+            AI Training Data</p>
+        <p class="text-sm text-slate-500 uppercase tracking-widest font-bold">Based on the lecture by Dr. Ian
+            McCullough, Johns Hopkins University</p>
+
+        <div
+            class="mt-8 max-w-4xl mx-auto bg-indigo-50 border-l-4 border-indigo-600 p-6 rounded-r-lg shadow-sm text-left relative">
+            <i data-lucide="quote" class="absolute top-4 right-4 text-indigo-200 w-12 h-12 opacity-50"></i>
+            <p class="text-lg md:text-xl font-semibold text-indigo-900 italic pr-8">
+                "This is possibly one of the most important topics for a manager to understand... This is something that
+                the business has to engage in with the technical team to make sure that you're building an AI solution
+                that is performative."
+            </p>
+        </div>
+    </header>
+
+    <!-- SECTION B: THE FIVE KEY CONSIDERATIONS -->
+    <section class="mb-16">
+        <div class="flex items-center gap-3 mb-6">
+            <h2 class="text-2xl font-bold text-slate-800">The 5 Pillars of Labeling Strategy</h2>
+            <div class="h-1 bg-slate-200 flex-grow rounded"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+
+            <!-- Consistency & Quality -->
+            <div
+                class="bg-white rounded-xl p-6 border-t-4 border-consistency shadow-sm card-hover flex flex-col h-full">
+                <div class="flex items-center gap-3 mb-4 text-consistency">
+                    <i data-lucide="shield-check" class="w-8 h-8"></i>
+                    <h3 class="font-bold text-lg leading-tight">Consistency & Quality</h3>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-600 flex-grow">
+                    <li class="flex gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 mt-0.5 text-consistency flex-shrink-0"></i><span>Foundation of
+                            high-performing AI systems.</span></li>
+                    <li class="flex gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 mt-0.5 text-consistency flex-shrink-0"></i><span>Requires clear,
+                            management-approved guidelines.</span></li>
+                    <li class="flex gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 mt-0.5 text-consistency flex-shrink-0"></i><span>Objective criteria to drive
+                            annotator agreement.</span></li>
+                </ul>
+            </div>
+
+            <!-- Scalability -->
+            <div
+                class="bg-white rounded-xl p-6 border-t-4 border-scalability shadow-sm card-hover flex flex-col h-full">
+                <div class="flex items-center gap-3 mb-4 text-scalability">
+                    <i data-lucide="trending-up" class="w-8 h-8"></i>
+                    <h3 class="font-bold text-lg leading-tight">Scalability</h3>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-600 flex-grow">
+                    <li class="flex gap-2"><i data-lucide="scale"
+                            class="w-4 h-4 mt-0.5 text-scalability flex-shrink-0"></i><span>Balance between volume vs.
+                            monitoring overlap.</span></li>
+                    <li class="flex gap-2"><i data-lucide="layers"
+                            class="w-4 h-4 mt-0.5 text-scalability flex-shrink-0"></i><span><strong>Strategy:</strong>
+                            High overlap initially to identify issues, reduce as consistency stabilizes.</span></li>
+                </ul>
+            </div>
+
+            <!-- Subjectivity -->
+            <div
+                class="bg-white rounded-xl p-6 border-t-4 border-subjectivity shadow-sm card-hover flex flex-col h-full">
+                <div class="flex items-center gap-3 mb-4 text-subjectivity">
+                    <i data-lucide="git-merge" class="w-8 h-8"></i>
+                    <h3 class="font-bold text-lg leading-tight">Subjectivity</h3>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-600 flex-grow">
+                    <li class="flex gap-2"><i data-lucide="users"
+                            class="w-4 h-4 mt-0.5 text-subjectivity flex-shrink-0"></i><span>Diverse opinions are good,
+                            but must converge on a standard.</span></li>
+                    <li class="flex gap-2"><i data-lucide="compass"
+                            class="w-4 h-4 mt-0.5 text-subjectivity flex-shrink-0"></i><span><strong>Example:</strong>
+                            Defining "extremist" vs "negative" sentiment requires business decisions, not just labeler
+                            opinion.</span></li>
+                </ul>
+            </div>
+
+            <!-- Data Privacy -->
+            <div class="bg-white rounded-xl p-6 border-t-4 border-privacy shadow-sm card-hover flex flex-col h-full">
+                <div class="flex items-center gap-3 mb-4 text-privacy">
+                    <i data-lucide="lock" class="w-8 h-8"></i>
+                    <h3 class="font-bold text-lg leading-tight">Data Privacy</h3>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-600 flex-grow">
+                    <li class="flex gap-2"><i data-lucide="eye-off"
+                            class="w-4 h-4 mt-0.5 text-privacy flex-shrink-0"></i><span>Protection of PII, Medical,
+                            Financial, and HR records.</span></li>
+                    <li class="flex gap-2"><i data-lucide="shield"
+                            class="w-4 h-4 mt-0.5 text-privacy flex-shrink-0"></i><span>Requires anonymization, masking,
+                            and strict access controls before labeling starts.</span></li>
+                </ul>
+            </div>
+
+            <!-- Scheduling & Cost -->
+            <div class="bg-white rounded-xl p-6 border-t-4 border-scheduling shadow-sm card-hover flex flex-col h-full">
+                <div class="flex items-center gap-3 mb-4 text-scheduling">
+                    <i data-lucide="clock" class="w-8 h-8"></i>
+                    <h3 class="font-bold text-lg leading-tight">Scheduling & Cost</h3>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-600 flex-grow">
+                    <li class="flex gap-2"><i data-lucide="dollar-sign"
+                            class="w-4 h-4 mt-0.5 text-scheduling flex-shrink-0"></i><span>Labeling is not free. Budget
+                            for labor + tech resources.</span></li>
+                    <li class="flex gap-2"><i data-lucide="calendar"
+                            class="w-4 h-4 mt-0.5 text-scheduling flex-shrink-0"></i><span>Plan for contingencies.
+                            Cutting quality control to save money = <strong>Project Failure</strong>.</span></li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION C: MANAGEMENT ENGAGEMENT (CRITICAL) -->
+    <section class="mb-16 grid grid-cols-1 lg:grid-cols-12 gap-6 break-inside-avoid">
+        <!-- Management Responsibilities -->
+        <div class="lg:col-span-7 bg-indigo-900 rounded-2xl p-8 text-white relative overflow-hidden">
+            <div class="absolute top-0 right-0 opacity-10 transform translate-x-10 -translate-y-10">
+                <i data-lucide="briefcase" class="w-64 h-64"></i>
+            </div>
+
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                <i data-lucide="users-cog" class="w-8 h-8 text-indigo-300"></i>
+                The Management Mandate
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-8 relative z-10">
+                <div>
+                    <h3
+                        class="text-indigo-200 font-bold uppercase tracking-wider text-sm mb-4 border-b border-indigo-700 pb-2">
+                        Cannot Delegate To</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2 text-indigo-100"><i data-lucide="x-circle"
+                                class="w-5 h-5 text-red-400 mt-0.5"></i> <span>Silicon Valley solutions</span></li>
+                        <li class="flex items-start gap-2 text-indigo-100"><i data-lucide="x-circle"
+                                class="w-5 h-5 text-red-400 mt-0.5"></i> <span>Vendors / Software providers</span></li>
+                        <li class="flex items-start gap-2 text-indigo-100"><i data-lucide="x-circle"
+                                class="w-5 h-5 text-red-400 mt-0.5"></i> <span>Lower-level team members</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3
+                        class="text-indigo-200 font-bold uppercase tracking-wider text-sm mb-4 border-b border-indigo-700 pb-2">
+                        Must Own</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-2 text-white font-medium"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-green-400 mt-0.5"></i> <span>Labeling Standards</span></li>
+                        <li class="flex items-start gap-2 text-white font-medium"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-green-400 mt-0.5"></i> <span>Guidelines Approval</span></li>
+                        <li class="flex items-start gap-2 text-white font-medium"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-green-400 mt-0.5"></i> <span>Subjective Judgment Calls</span></li>
+                        <li class="flex items-start gap-2 text-white font-medium"><i data-lucide="check-circle"
+                                class="w-5 h-5 text-green-400 mt-0.5"></i> <span>Aligning Labels to Biz Values</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Rescue Warning -->
+        <div
+            class="lg:col-span-5 bg-red-50 rounded-2xl p-8 border-2 border-red-200 flex flex-col justify-center relative">
+            <div class="absolute top-4 right-4">
+                <i data-lucide="alert-triangle" class="w-12 h-12 text-red-500 opacity-20"></i>
+            </div>
+            <h3 class="text-red-800 font-bold text-lg mb-4 uppercase flex items-center gap-2">
+                <i data-lucide="alert-triangle" class="w-6 h-6 text-red-600"></i>
+                Project Rescue Warning
+            </h3>
+            <p class="italic text-slate-700 mb-6 text-lg leading-relaxed">
+                "All of the project rescue issues I ever did when I was an executive at a Fortune 500 company was going
+                in and looking at problems of labeling consistency and where quality control might have been cut in an
+                unwise fashion."
+            </p>
+            <div class="bg-white p-4 rounded-lg border-l-4 border-red-500 shadow-sm">
+                <p class="font-bold text-red-900">LESSON: Never cut quality control measures to save budget.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION D & E: QUALITY METRICS & ERRORS -->
+    <section class="mb-16">
+        <div class="grid lg:grid-cols-2 gap-8">
+
+            <!-- Quality Metrics -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 break-inside-avoid">
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+                    <div class="p-2 bg-slate-100 rounded-lg"><i data-lucide="bar-chart-2"
+                            class="w-6 h-6 text-slate-700"></i></div>
+                    <h2 class="text-xl font-bold text-slate-800">Quality Metrics: Measuring Agreement</h2>
+                </div>
+
+                <!-- K-Alpha Visual -->
+                <div class="mb-8">
+                    <h4 class="font-bold text-slate-700 mb-2">K-Alpha Score (Krippendorff's Alpha)</h4>
+                    <div
+                        class="relative h-12 w-full bg-gradient-to-r from-red-200 via-yellow-100 to-green-200 rounded-lg flex items-center px-4">
+                        <div class="absolute left-2 text-xs font-bold text-slate-600">-1.0<br>Disagree</div>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 text-xs font-bold text-slate-600">
+                            0.0<br>Random</div>
+
+                        <!-- Target Marker -->
+                        <div
+                            class="absolute right-[15%] h-full border-l-2 border-dashed border-slate-800 flex flex-col justify-center items-center">
+                            <span class="bg-slate-800 text-white text-[10px] px-2 py-0.5 rounded -mt-8">Target >
+                                0.7</span>
+                        </div>
+
+                        <div class="absolute right-2 text-xs font-bold text-slate-600 text-right">1.0<br>Perfect</div>
+                    </div>
+                </div>
+
+                <!-- K-Vitality -->
+                <div class="bg-slate-50 p-4 rounded-lg">
+                    <h4 class="font-bold text-slate-700 mb-2 flex items-center gap-2">
+                        K-Vitality Score
+                        <span class="text-xs font-normal text-slate-500 bg-white border px-2 py-0.5 rounded">Annotator
+                            Performance</span>
+                    </h4>
+                    <div
+                        class="text-sm font-mono bg-white p-2 rounded border border-slate-200 mb-3 text-center text-slate-600">
+                        Vitality = (K-Alpha) - (K-Alpha without Annotator X)
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 text-center text-sm">
+                        <div class="p-2 rounded bg-green-100 text-green-800 font-bold">Positive (+)<br><span
+                                class="text-xs font-normal">Helps Consensus</span></div>
+                        <div class="p-2 rounded bg-gray-100 text-gray-800 font-bold">Zero (0)<br><span
+                                class="text-xs font-normal">Neutral</span></div>
+                        <div class="p-2 rounded bg-red-100 text-red-800 font-bold">Negative (-)<br><span
+                                class="text-xs font-normal">Harms Consensus</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Types -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 break-inside-avoid">
+                <div class="flex items-center gap-3 mb-6 border-b border-slate-100 pb-4">
+                    <div class="p-2 bg-slate-100 rounded-lg"><i data-lucide="alert-octagon"
+                            class="w-6 h-6 text-slate-700"></i></div>
+                    <h2 class="text-xl font-bold text-slate-800">Types of Errors</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Recognition Error -->
+                    <div class="flex gap-4 p-4 rounded-lg bg-orange-50 border-l-4 border-orange-400">
+                        <div class="mt-1"><i data-lucide="eye-off" class="w-6 h-6 text-orange-500"></i></div>
+                        <div>
+                            <h4 class="font-bold text-orange-900">Type 1: Recognition Error</h4>
+                            <p class="text-sm text-orange-800 mb-1">Failing to identify an item that should be labeled.
+                            </p>
+                            <div
+                                class="inline-block bg-white text-orange-800 text-xs px-2 py-1 rounded border border-orange-200 font-bold">
+                                Outcome: Incomplete but usable data
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Classification Error -->
+                    <div class="flex gap-4 p-4 rounded-lg bg-red-50 border-l-4 border-red-600">
+                        <div class="mt-1"><i data-lucide="x-circle" class="w-6 h-6 text-red-600"></i></div>
+                        <div>
+                            <h4 class="font-bold text-red-900">Type 2: Classification Error (SEVERE)</h4>
+                            <p class="text-sm text-red-800 mb-1">Recognizing an item but applying the wrong label.</p>
+                            <div
+                                class="inline-block bg-red-600 text-white text-xs px-2 py-1 rounded font-bold shadow-sm">
+                                Outcome: Untrustworthy data (Discard)
+                            </div>
+                            <p class="text-xs text-red-700 mt-2 italic">"You can't trust the data... much worse than
+                                recognition errors."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION F: BEST PRACTICES -->
+    <section class="mb-16">
+        <div class="flex items-center gap-3 mb-6">
+            <h2 class="text-2xl font-bold text-slate-800">6 Best Practices for Success</h2>
+            <div class="h-1 bg-slate-200 flex-grow rounded"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Practice 1 -->
+            <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm flex gap-4 items-start">
+                <div class="bg-blue-100 p-2 rounded-full text-blue-600 font-bold">1</div>
+                <div>
+                    <h4 class="font-bold text-slate-800">Clear Guidelines</h4>
+                    <p class="text-sm text-slate-600">Must be written, detailed, and formally approved by management to
+                        align with company values.</p>
+                </div>
+            </div>
+            <!-- Practice 2 -->
+            <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm flex gap-4 items-start">
+                <div class="bg-blue-100 p-2 rounded-full text-blue-600 font-bold">2</div>
+                <div>
+                    <h4 class="font-bold text-slate-800">Continuous QC</h4>
+                    <p class="text-sm text-slate-600">Never sacrifice quality control. Sample work regularly with a
+                        trusted annotation manager.</p>
+                </div>
+            </div>
+            <!-- Practice 3 -->
+            <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm flex gap-4 items-start">
+                <div class="bg-blue-100 p-2 rounded-full text-blue-600 font-bold">3</div>
+                <div>
+                    <h4 class="font-bold text-slate-800">Training & Calibration</h4>
+                    <p class="text-sm text-slate-600">Train all annotators. Run calibration sessions to ensure everyone
+                        applies labels identically.</p>
+                </div>
+            </div>
+            <!-- Practice 4 (Standardized) -->
+            <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm flex gap-4 items-start">
+                <div class="bg-blue-100 p-2 rounded-full text-blue-600 font-bold">4</div>
+                <div>
+                    <h4 class="font-bold text-slate-800">Iterative Labeling</h4>
+                    <p class="text-sm text-slate-600 mb-2">Do multiple passes to prevent detail errors.</p>
+                    <div class="text-xs bg-slate-50 p-2 rounded border border-slate-200 text-slate-600 font-mono">
+                        Pass 1: Nouns &rarr; Pass 2: People &rarr; Pass 3: Actions
+                    </div>
+                </div>
+            </div>
+            <!-- Practice 5 -->
+            <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm flex gap-4 items-start">
+                <div class="bg-blue-100 p-2 rounded-full text-blue-600 font-bold">5</div>
+                <div>
+                    <h4 class="font-bold text-slate-800">Use Technology</h4>
+                    <p class="text-sm text-slate-600">Use AI to mitigate human bias and attention fatigue where
+                        practical.</p>
+                </div>
+            </div>
+            <!-- Practice 6 -->
+            <div class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm flex gap-4 items-start">
+                <div class="bg-blue-100 p-2 rounded-full text-blue-600 font-bold">6</div>
+                <div>
+                    <h4 class="font-bold text-slate-800">Overlap Strategy</h4>
+                    <p class="text-sm text-slate-600">Start with high overlap to catch issues, reduce overlap as
+                        consistency is proven.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION G: TAXONOMY (Visual Tree) -->
+    <section class="mb-16 break-inside-avoid">
+        <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">Data Labeling Taxonomy</h2>
+
+        <div class="flex flex-wrap justify-center gap-4">
+
+            <!-- Image Column -->
+            <div class="flex-1 min-w-[200px] bg-sky-50 rounded-xl p-4 border-t-4 border-sky-500">
+                <div class="flex items-center gap-2 mb-4 text-sky-700 font-bold border-b border-sky-200 pb-2">
+                    <i data-lucide="image" class="w-5 h-5"></i> IMAGE
+                </div>
+                <ul class="space-y-2 text-sm text-sky-900">
+                    <li>Object Detection (Box)</li>
+                    <li>Image Classification</li>
+                    <li>Semantic Segmentation</li>
+                    <li>Instance Segmentation</li>
+                    <li>Panoptic Segmentation</li>
+                    <li>Keypoint/Landmark</li>
+                </ul>
+            </div>
+
+            <!-- Text Column -->
+            <div class="flex-1 min-w-[200px] bg-emerald-50 rounded-xl p-4 border-t-4 border-emerald-500">
+                <div class="flex items-center gap-2 mb-4 text-emerald-700 font-bold border-b border-emerald-200 pb-2">
+                    <i data-lucide="file-text" class="w-5 h-5"></i> TEXT
+                </div>
+                <ul class="space-y-2 text-sm text-emerald-900">
+                    <li>Named Entity (NER)</li>
+                    <li>Sentiment Analysis</li>
+                    <li>POS Tagging</li>
+                    <li>Intent Classification</li>
+                    <li>Relation Extraction</li>
+                    <li>Coreference Resolution</li>
+                </ul>
+            </div>
+
+            <!-- Audio Column -->
+            <div class="flex-1 min-w-[200px] bg-violet-50 rounded-xl p-4 border-t-4 border-violet-500">
+                <div class="flex items-center gap-2 mb-4 text-violet-700 font-bold border-b border-violet-200 pb-2">
+                    <i data-lucide="mic" class="w-5 h-5"></i> AUDIO
+                </div>
+                <ul class="space-y-2 text-sm text-violet-900">
+                    <li>Speech Recognition</li>
+                    <li>Speaker ID (Diarization)</li>
+                    <li>Event Detection</li>
+                    <li>Emotion Recognition</li>
+                    <li>Language ID</li>
+                </ul>
+            </div>
+
+            <!-- Video Column -->
+            <div class="flex-1 min-w-[200px] bg-amber-50 rounded-xl p-4 border-t-4 border-amber-500">
+                <div class="flex items-center gap-2 mb-4 text-amber-700 font-bold border-b border-amber-200 pb-2">
+                    <i data-lucide="video" class="w-5 h-5"></i> VIDEO
+                </div>
+                <ul class="space-y-2 text-sm text-amber-900">
+                    <li>Object Tracking</li>
+                    <li>Action Recognition</li>
+                    <li>Temporal Annotation</li>
+                    <li>Video Segmentation</li>
+                </ul>
+            </div>
+
+            <!-- 3D Column -->
+            <div class="flex-1 min-w-[200px] bg-rose-50 rounded-xl p-4 border-t-4 border-rose-500">
+                <div class="flex items-center gap-2 mb-4 text-rose-700 font-bold border-b border-rose-200 pb-2">
+                    <i data-lucide="box" class="w-5 h-5"></i> 3D DATA
+                </div>
+                <ul class="space-y-2 text-sm text-rose-900">
+                    <li>Point Cloud (LiDAR)</li>
+                    <li>Depth Map Annotation</li>
+                    <li>3D Mesh Annotation</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION H: METHODS COMPARISON -->
+    <section class="mb-16">
+        <div class="grid md:grid-cols-3 gap-0 rounded-xl overflow-hidden shadow-sm border border-slate-200 text-center">
+
+            <div class="bg-white p-6 border-b md:border-b-0 md:border-r border-slate-200">
+                <h3 class="font-bold text-slate-800 mb-2">MANUAL</h3>
+                <p class="text-xs text-slate-500 mb-4 uppercase tracking-wide">Human Only</p>
+                <div class="text-sm space-y-2">
+                    <div class="text-green-600 font-medium">High Accuracy (Context)</div>
+                    <div class="text-red-500">High Cost & Time</div>
+                    <div class="text-red-500">Prone to Bias/Fatigue</div>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 p-6 border-b md:border-b-0 md:border-r border-slate-200 relative">
+                <div class="absolute top-0 left-0 w-full bg-blue-600 text-white text-[10px] font-bold py-1 uppercase">
+                    Recommended Balance</div>
+                <h3 class="font-bold text-slate-800 mb-2 mt-2">SEMI-AUTOMATIC</h3>
+                <p class="text-xs text-slate-500 mb-4 uppercase tracking-wide">AI + Human Verify</p>
+                <div class="text-sm space-y-2">
+                    <div class="text-green-600 font-medium">Balanced Speed/Quality</div>
+                    <div class="text-green-600">Reduces Fatigue</div>
+                    <div class="text-yellow-600">Risk: Pre-label bias</div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6">
+                <h3 class="font-bold text-slate-800 mb-2">AUTOMATIC</h3>
+                <p class="text-xs text-slate-500 mb-4 uppercase tracking-wide">Programmatic</p>
+                <div class="text-sm space-y-2">
+                    <div class="text-green-600 font-medium">Massive Scalability</div>
+                    <div class="text-green-600">Lowest Cost</div>
+                    <div class="text-red-500">Error Propagation Risk</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER / TAKEAWAYS -->
+    <footer class="bg-slate-900 text-slate-300 p-8 rounded-2xl break-inside-avoid">
+        <h2 class="text-white text-xl font-bold mb-6 flex items-center gap-2">
+            <i data-lucide="check-square" class="w-6 h-6"></i>
+            Final Takeaways
+        </h2>
+        <div class="grid md:grid-cols-2 gap-x-12 gap-y-4 text-sm">
+            <div class="flex items-center gap-3">
+                <i data-lucide="chevron-right" class="text-indigo-400"></i>
+                <span>Quality of data > Quantity of data.</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <i data-lucide="chevron-right" class="text-indigo-400"></i>
+                <span>Bias usually comes from labeling, not the algorithm.</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <i data-lucide="chevron-right" class="text-indigo-400"></i>
+                <span>Measure K-Alpha & Vitality constantly. Target > 0.7.</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <i data-lucide="chevron-right" class="text-indigo-400"></i>
+                <span>Classification errors are fatal to model trust.</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <i data-lucide="chevron-right" class="text-indigo-400"></i>
+                <span>Management MUST set the subjectivity standards.</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <i data-lucide="chevron-right" class="text-indigo-400"></i>
+                <span>Always plan for "Recognition Errors" vs "Classification Errors".</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 {
-  "generated": "2025-02-01",
-  "totalTags": 110,
+  "generated": "2025-02-08",
+  "totalTags": 165,
   "tags": {
     "Machine Learning": [
       "ai-introduction/introduction-to-ai.html",
@@ -15,7 +15,12 @@
       "ml-algorithms/dimension-reduction.html",
       "ml-algorithms/ml-algorithm-selection-guide.html",
       "ml-algorithms/algorithm-paradigm-mapping.html",
-      "ml-algorithms/ai-algorithm-selection-case-studies.html"
+      "ml-algorithms/ai-algorithm-selection-case-studies.html",
+      "data-optimization-for-ml/data-types-for-ml.html",
+      "data-optimization-for-ml/data-labeling-for-ml.html",
+      "data-optimization-for-ml/data-labeling-challenges.html",
+      "data-optimization-for-ml/inter-annotator-agreement.html",
+      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html"
     ],
     "AI": [
       "ml-fundamentals/what-is-machine-learning.html",
@@ -165,7 +170,8 @@
       "ml-fundamentals/overfitting-underfitting-balance.html"
     ],
     "Computer Vision": [
-      "ai-business-usecases/modern-ai-landscape.html"
+      "ai-business-usecases/modern-ai-landscape.html",
+      "data-optimization-for-ml/project-maven-data-quality-case-study.html"
     ],
     "NLP": [
       "ai-business-usecases/modern-ai-landscape.html"
@@ -402,10 +408,189 @@
       "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html"
     ],
     "Case Studies": [
-      "ml-algorithms/ai-algorithm-selection-case-studies.html"
+      "ml-algorithms/ai-algorithm-selection-case-studies.html",
+      "data-optimization-for-ml/project-maven-data-quality-case-study.html"
     ],
     "Industry Applications": [
       "ml-algorithms/ai-algorithm-selection-case-studies.html"
+    ],
+    "Data Types": [
+      "data-optimization-for-ml/data-types-for-ml.html"
+    ],
+    "Qualitative Data": [
+      "data-optimization-for-ml/data-types-for-ml.html"
+    ],
+    "Quantitative Data": [
+      "data-optimization-for-ml/data-types-for-ml.html"
+    ],
+    "Data Preprocessing": [
+      "data-optimization-for-ml/data-types-for-ml.html"
+    ],
+    "Feature Engineering": [
+      "data-optimization-for-ml/data-types-for-ml.html"
+    ],
+    "Data Encoding": [
+      "data-optimization-for-ml/data-types-for-ml.html"
+    ],
+    "Data Scaling": [
+      "data-optimization-for-ml/data-types-for-ml.html"
+    ],
+    "Nominal Data": [
+      "data-optimization-for-ml/data-types-for-ml.html"
+    ],
+    "Ordinal Data": [
+      "data-optimization-for-ml/data-types-for-ml.html"
+    ],
+    "Data Labeling": [
+      "data-optimization-for-ml/data-labeling-for-ml.html",
+      "data-optimization-for-ml/data-labeling-considerations.html",
+      "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
+    ],
+    "Annotation": [
+      "data-optimization-for-ml/data-labeling-for-ml.html",
+      "data-optimization-for-ml/project-maven-data-quality-case-study.html"
+    ],
+    "Image Annotation": [
+      "data-optimization-for-ml/data-labeling-for-ml.html"
+    ],
+    "Text Labeling": [
+      "data-optimization-for-ml/data-labeling-for-ml.html"
+    ],
+    "Audio Labeling": [
+      "data-optimization-for-ml/data-labeling-for-ml.html"
+    ],
+    "Video Annotation": [
+      "data-optimization-for-ml/data-labeling-for-ml.html"
+    ],
+    "3D Data": [
+      "data-optimization-for-ml/data-labeling-for-ml.html"
+    ],
+    "Quality Assurance": [
+      "data-optimization-for-ml/data-labeling-for-ml.html"
+    ],
+    "Data Labeling Challenges": [
+      "data-optimization-for-ml/data-labeling-challenges.html"
+    ],
+    "Annotation Errors": [
+      "data-optimization-for-ml/data-labeling-challenges.html"
+    ],
+    "Data Quality": [
+      "data-optimization-for-ml/data-labeling-challenges.html",
+      "data-optimization-for-ml/data-labeling-considerations.html",
+      "data-optimization-for-ml/inter-annotator-agreement.html",
+      "data-optimization-for-ml/krippendorffs-Alpha.html",
+      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html",
+      "data-optimization-for-ml/project-maven-data-quality-case-study.html"
+    ],
+    "Active Learning": [
+      "data-optimization-for-ml/data-labeling-challenges.html"
+    ],
+    "Data Augmentation": [
+      "data-optimization-for-ml/data-labeling-challenges.html"
+    ],
+    "Transfer Learning": [
+      "data-optimization-for-ml/data-labeling-challenges.html"
+    ],
+    "Scalability": [
+      "data-optimization-for-ml/data-labeling-challenges.html",
+      "data-optimization-for-ml/data-labeling-considerations.html"
+    ],
+    "Annotation Guidelines": [
+      "data-optimization-for-ml/data-labeling-considerations.html"
+    ],
+    "Privacy": [
+      "data-optimization-for-ml/data-labeling-considerations.html"
+    ],
+    "GDPR": [
+      "data-optimization-for-ml/data-labeling-considerations.html"
+    ],
+    "Consistency": [
+      "data-optimization-for-ml/data-labeling-considerations.html"
+    ],
+    "Subjectivity": [
+      "data-optimization-for-ml/data-labeling-considerations.html"
+    ],
+    "Cognitive Limits": [
+      "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
+    ],
+    "Terms of Reference": [
+      "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
+    ],
+    "Working Memory": [
+      "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
+    ],
+    "Attention Span": [
+      "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
+    ],
+    "Cognitive Load": [
+      "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
+    ],
+    "Annotation Quality": [
+      "data-optimization-for-ml/cognitive-limits-terms-of-reference.html",
+      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html"
+    ],
+    "ToR": [
+      "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
+    ],
+    "Inter-Annotator Agreement": [
+      "data-optimization-for-ml/inter-annotator-agreement.html",
+      "data-optimization-for-ml/krippendorffs-Alpha.html"
+    ],
+    "IAA": [
+      "data-optimization-for-ml/inter-annotator-agreement.html",
+      "data-optimization-for-ml/krippendorffs-Alpha.html"
+    ],
+    "Cohen's Kappa": [
+      "data-optimization-for-ml/inter-annotator-agreement.html"
+    ],
+    "Fleiss' Kappa": [
+      "data-optimization-for-ml/inter-annotator-agreement.html"
+    ],
+    "Krippendorff's Alpha": [
+      "data-optimization-for-ml/inter-annotator-agreement.html",
+      "data-optimization-for-ml/krippendorffs-Alpha.html"
+    ],
+    "Annotation Reliability": [
+      "data-optimization-for-ml/inter-annotator-agreement.html"
+    ],
+    "Reliability": [
+      "data-optimization-for-ml/krippendorffs-Alpha.html"
+    ],
+    "Statistical Methods": [
+      "data-optimization-for-ml/krippendorffs-Alpha.html"
+    ],
+    "Annotation Metrics": [
+      "data-optimization-for-ml/krippendorffs-Alpha.html"
+    ],
+    "Dataset Size": [
+      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html"
+    ],
+    "Data Consistency": [
+      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html"
+    ],
+    "Data Strategy": [
+      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html"
+    ],
+    "Tradeoffs": [
+      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html"
+    ],
+    "Data Optimization": [
+      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html"
+    ],
+    "Project Maven": [
+      "data-optimization-for-ml/project-maven-data-quality-case-study.html"
+    ],
+    "Object Detection": [
+      "data-optimization-for-ml/project-maven-data-quality-case-study.html"
+    ],
+    "Case Study": [
+      "data-optimization-for-ml/project-maven-data-quality-case-study.html"
+    ],
+    "Military AI": [
+      "data-optimization-for-ml/project-maven-data-quality-case-study.html"
+    ],
+    "Data Pipeline": [
+      "data-optimization-for-ml/project-maven-data-quality-case-study.html"
     ]
   }
 }

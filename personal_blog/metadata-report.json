@@ -1,6 +1,6 @@
 {
-  "generated": "2025-02-01",
-  "totalPosts": 27,
+  "generated": "2025-02-08",
+  "totalPosts": 36,
   "baseUrl": "https://www.kishoretech.com",
   "author": "Sriramkishore Naraharisetti",
   "categories": {
@@ -8,7 +8,8 @@
     "ML Fundamentals": 7,
     "AI Business UseCases": 6,
     "AI Project Management": 2,
-    "ML Algorithms": 10
+    "ML Algorithms": 10,
+    "Data Optimization for ML": 9
   },
   "posts": [
     {
@@ -253,6 +254,87 @@
       "datePublished": "2025-02-01",
       "tags": ["Algorithm Selection", "Case Studies", "Decision Tree", "SVM", "Random Forest", "Neural Networks", "CNN", "Naive Bayes", "Industry Applications", "Machine Learning"],
       "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ml-algorithms/ai-algorithm-selection-case-studies"
+    },
+    {
+      "file": "data-optimization-for-ml/data-types-for-ml.html",
+      "title": "Optimizing Data – Data Types for AI",
+      "description": "Comprehensive guide to data types for machine learning: qualitative vs quantitative, discrete vs continuous, nominal, ordinal, interval, and ratio scales. Learn data encoding and scaling techniques for ML preprocessing.",
+      "category": "Data Optimization for ML",
+      "datePublished": "2025-02-04",
+      "tags": ["Data Types", "Qualitative Data", "Quantitative Data", "Machine Learning", "Data Preprocessing", "Feature Engineering", "Data Encoding", "Data Scaling", "Nominal Data", "Ordinal Data"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/data-types-for-ml"
+    },
+    {
+      "file": "data-optimization-for-ml/data-labeling-for-ml.html",
+      "title": "Data Labeling for Machine Learning - Interactive Infographic",
+      "description": "Interactive infographic on data labeling for machine learning covering image annotation, text labeling, audio transcription, video annotation, and 3D data labeling with quality assurance methods.",
+      "category": "Data Optimization for ML",
+      "datePublished": "2025-02-04",
+      "tags": ["Data Labeling", "Annotation", "Machine Learning", "Image Annotation", "Text Labeling", "Audio Labeling", "Video Annotation", "3D Data", "Quality Assurance"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/data-labeling-for-ml"
+    },
+    {
+      "file": "data-optimization-for-ml/data-labeling-challenges.html",
+      "title": "Data Labeling Challenges in Machine Learning",
+      "description": "Explore key challenges in data labeling for ML: recognition errors, misclassification, low-data scenarios, scalability issues, and quality control strategies for building reliable training datasets.",
+      "category": "Data Optimization for ML",
+      "datePublished": "2025-02-05",
+      "tags": ["Data Labeling Challenges", "Annotation Errors", "Data Quality", "Machine Learning", "Active Learning", "Data Augmentation", "Transfer Learning", "Scalability"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/data-labeling-challenges"
+    },
+    {
+      "file": "data-optimization-for-ml/data-labeling-considerations.html",
+      "title": "Data Labeling Considerations for ML Projects",
+      "description": "Key considerations for data labeling in ML projects: consistency, scalability, subjectivity management, privacy compliance, scheduling, and error handling across image, text, audio, video, and 3D data types.",
+      "category": "Data Optimization for ML",
+      "datePublished": "2025-02-05",
+      "tags": ["Data Labeling", "Annotation Guidelines", "Data Quality", "Privacy", "GDPR", "Scalability", "Consistency", "Subjectivity"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/data-labeling-considerations"
+    },
+    {
+      "file": "data-optimization-for-ml/cognitive-limits-terms-of-reference.html",
+      "title": "Cognitive Limits & Terms of Reference in Data Labeling",
+      "description": "How cognitive limits affect data labeling quality: working memory constraints, attention span, cognitive load theory, and how Terms of Reference documentation improves annotation consistency.",
+      "category": "Data Optimization for ML",
+      "datePublished": "2025-02-05",
+      "tags": ["Cognitive Limits", "Terms of Reference", "Data Labeling", "Working Memory", "Attention Span", "Cognitive Load", "Annotation Quality", "ToR"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/cognitive-limits-terms-of-reference"
+    },
+    {
+      "file": "data-optimization-for-ml/inter-annotator-agreement.html",
+      "title": "Inter-Annotator Agreement: A Guide for AI Quality",
+      "description": "Complete guide to inter-annotator agreement (IAA) for AI data quality: Cohen's Kappa, Fleiss' Kappa, Krippendorff's Alpha, and practical strategies for measuring and improving annotation reliability.",
+      "category": "Data Optimization for ML",
+      "datePublished": "2025-02-06",
+      "tags": ["Inter-Annotator Agreement", "IAA", "Cohen's Kappa", "Fleiss' Kappa", "Krippendorff's Alpha", "Data Quality", "Annotation Reliability", "Machine Learning"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/inter-annotator-agreement"
+    },
+    {
+      "file": "data-optimization-for-ml/krippendorffs-Alpha.html",
+      "title": "Krippendorff's Alpha: The Gold Standard for Inter-Annotator Agreement",
+      "description": "Deep dive into Krippendorff's Alpha for measuring inter-annotator agreement: mathematical foundation, calculation methods, interpretation guidelines, and comparison with Cohen's and Fleiss' Kappa.",
+      "category": "Data Optimization for ML",
+      "datePublished": "2025-02-07",
+      "tags": ["Krippendorff's Alpha", "Inter-Annotator Agreement", "Reliability", "Statistical Methods", "Data Quality", "Annotation Metrics", "IAA"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/krippendorffs-Alpha"
+    },
+    {
+      "file": "data-optimization-for-ml/size-consistency-quality-tradeoffs.html",
+      "title": "Size-Consistency-Quality Tradeoffs in AI Data",
+      "description": "Understanding the tradeoffs between dataset size, annotation consistency, and data quality in machine learning. Framework for optimizing data strategies across different ML project constraints.",
+      "category": "Data Optimization for ML",
+      "datePublished": "2025-02-07",
+      "tags": ["Data Quality", "Dataset Size", "Data Consistency", "Machine Learning", "Data Strategy", "Annotation Quality", "Tradeoffs", "Data Optimization"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/size-consistency-quality-tradeoffs"
+    },
+    {
+      "file": "data-optimization-for-ml/project-maven-data-quality-case-study.html",
+      "title": "Project Maven: Data Quality Case Study",
+      "description": "Case study analyzing data quality challenges in Project Maven's military object detection system. Lessons learned about annotation quality, labeling consistency, and data pipeline optimization for computer vision.",
+      "category": "Data Optimization for ML",
+      "datePublished": "2025-02-08",
+      "tags": ["Project Maven", "Object Detection", "Case Study", "Data Quality", "Computer Vision", "Military AI", "Annotation", "Data Pipeline"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/project-maven-data-quality-case-study"
     }
   ]
 }

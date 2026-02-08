@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Size-Consistency-Quality Tradeoffs in AI Data</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Size-Consistency-Quality Tradeoffs in AI Data">
+    <meta name="description" content="Understanding the tradeoffs between dataset size, annotation consistency, and data quality in machine learning. Framework for optimizing data strategies across different ML project constraints.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Data Optimization for ML">
+    <meta name="tags" content="Data Quality, Dataset Size, Data Consistency, Machine Learning, Data Strategy, Annotation Quality, Tradeoffs, Data Optimization">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="ML data optimization involves balancing three dimensions: size (more data vs diminishing returns), consistency (inter-annotator agreement vs coverage), and quality (accuracy vs cost). The optimal balance depends on model complexity, task difficulty, and resource constraints.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/size-consistency-quality-tradeoffs">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Size-Consistency-Quality Tradeoffs in AI Data">
+    <meta property="og:description" content="Framework for balancing dataset size, annotation consistency, and data quality in ML projects.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/size-consistency-quality-tradeoffs">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-02-07">
+    <meta property="article:section" content="Data Optimization for ML">
+    <meta property="article:tag" content="Data Quality">
+    <meta property="article:tag" content="Data Optimization">
+    <meta property="article:tag" content="Machine Learning">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Size-Consistency-Quality Tradeoffs in AI Data",
+        "description": "Understanding the tradeoffs between dataset size, annotation consistency, and data quality in machine learning projects.",
+        "datePublished": "2025-02-07",
+        "dateModified": "2025-02-07",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/size-consistency-quality-tradeoffs"
+        },
+        "keywords": ["Data Quality", "Dataset Size", "Data Consistency", "Machine Learning", "Data Strategy", "Annotation Quality", "Tradeoffs"],
+        "articleSection": "Data Optimization for ML",
+        "about": [
+            {"@type": "Thing", "name": "Data Quality"},
+            {"@type": "Thing", "name": "Data Optimization"}
+        ]
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Custom Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 100ms;
+        }
+
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+
+        .delay-300 {
+            animation-delay: 300ms;
+        }
+
+        .delay-400 {
+            animation-delay: 400ms;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tree Branch Logic for CSS */
+        .tree-line {
+            position: absolute;
+            background-color: #cbd5e1;
+            z-index: 0;
+        }
+
+        .triangle-container {
+            position: relative;
+            height: 300px;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+
+            body {
+                background-color: white;
+            }
+
+            .card-hover {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        size: '#3B82F6',
+                        consistency: '#10B981',
+                        quality: '#F59E0B',
+                        precision: '#059669',
+                        recall: '#F43F5E',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- HEADER SECTION -->
+    <header class="bg-slate-900 text-white py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="absolute top-0 right-0 opacity-10 transform translate-x-1/3 -translate-y-1/3">
+            <i data-lucide="database" class="w-96 h-96"></i>
+        </div>
+        <div class="max-w-7xl mx-auto relative z-10 text-center">
+            <h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Size-Consistency-Quality Tradeoffs in AI Data
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 mb-6">Understanding the Critical Balance for Successful AI
+                Systems</p>
+            <div
+                class="inline-block bg-slate-800 rounded-full px-6 py-2 text-sm text-slate-400 mb-8 border border-slate-700">
+                Based on lectures by Dr. Ian McCullough, Johns Hopkins University
+            </div>
+
+            <div
+                class="bg-gradient-to-r from-blue-900/50 to-slate-900/50 border border-blue-500/30 rounded-xl p-6 max-w-4xl mx-auto backdrop-blur-sm">
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <div class="flex-shrink-0 bg-blue-500/20 p-4 rounded-full">
+                        <i data-lucide="quote" class="w-8 h-8 text-blue-400"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-lg italic text-slate-200 mb-2">"You don't get good autonomous vehicles by
+                            training them on lots and lots of bad drivers. What you need to do is train them on a few
+                            good drivers."</p>
+                        <p class="text-red-400 font-semibold text-sm flex items-center gap-2">
+                            <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                            CRITICAL: "If you do not get consistency right up front, you can't fix precision later."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-20">
+
+        <!-- SECTION 1: THE THREE DIMENSIONS -->
+        <section class="animate-fade-in">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">The Three Critical Dimensions</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Every AI project must balance these three competing factors.
+                    The optimal balance point depends on your specific use case.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <!-- Size Card -->
+                <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-size card-hover">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-3 bg-blue-100 rounded-lg text-size">
+                            <i data-lucide="database" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Size (Volume)</h3>
+                    </div>
+                    <ul class="space-y-2 text-slate-600 text-sm">
+                        <li class="flex gap-2"><i data-lucide="hash" class="w-4 h-4 mt-1 text-size"></i> <span>Amount of
+                                training data available</span></li>
+                        <li class="flex gap-2"><i data-lucide="trending-up" class="w-4 h-4 mt-1 text-size"></i>
+                            <span>Enables better generalization</span>
+                        </li>
+                        <li class="flex gap-2"><i data-lucide="scan-line" class="w-4 h-4 mt-1 text-size"></i>
+                            <span>Directly impacts <strong>Recall</strong></span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Visualization Center -->
+                <div class="hidden lg:flex justify-center items-center relative h-64">
+                    <!-- Triangle Logic rendered via CSS positioning -->
+                    <div class="relative w-64 h-64">
+                        <!-- Edges -->
+                        <div
+                            class="absolute top-8 left-1/2 -translate-x-1/2 w-0.5 h-28 bg-gradient-to-b from-consistency to-slate-300">
+                        </div>
+                        <div
+                            class="absolute bottom-8 left-8 w-28 h-0.5 bg-gradient-to-r from-size to-slate-300 transform -rotate-[30deg] origin-right">
+                        </div>
+                        <div
+                            class="absolute bottom-8 right-8 w-28 h-0.5 bg-gradient-to-l from-quality to-slate-300 transform rotate-[30deg] origin-left">
+                        </div>
+
+                        <!-- Center Point -->
+                        <div
+                            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-slate-100 rounded-full flex items-center justify-center border-4 border-slate-200 z-10 shadow-inner">
+                            <span class="text-xs font-bold text-center text-slate-500">OPTIMALBALANCE</span>
+                        </div>
+
+                        <!-- Vertices -->
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 bg-consistency text-white p-2 rounded-full shadow-lg z-20"
+                            title="Consistency">
+                            <i data-lucide="users" class="w-6 h-6"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 bg-size text-white p-2 rounded-full shadow-lg z-20"
+                            title="Size">
+                            <i data-lucide="database" class="w-6 h-6"></i>
+                        </div>
+                        <div class="absolute bottom-0 right-0 bg-quality text-white p-2 rounded-full shadow-lg z-20"
+                            title="Quality">
+                            <i data-lucide="award" class="w-6 h-6"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Consistency & Quality Stacked for Mobile/Tablet or separate on Desktop -->
+                <div class="space-y-8">
+                    <!-- Consistency Card -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-consistency card-hover">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-3 bg-emerald-100 rounded-lg text-consistency">
+                                <i data-lucide="users" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900">Consistency (Uniformity)</h3>
+                        </div>
+                        <ul class="space-y-2 text-slate-600 text-sm">
+                            <li class="flex gap-2"><i data-lucide="check-circle"
+                                    class="w-4 h-4 mt-1 text-consistency"></i> <span>Uniformity of annotations</span>
+                            </li>
+                            <li class="flex gap-2"><i data-lucide="scale" class="w-4 h-4 mt-1 text-consistency"></i>
+                                <span>Measured by Inter-Annotator Agreement</span>
+                            </li>
+                            <li class="flex gap-2"><i data-lucide="crosshair" class="w-4 h-4 mt-1 text-consistency"></i>
+                                <span>Directly impacts <strong>Precision</strong></span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Quality Card -->
+                    <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-quality card-hover">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="p-3 bg-amber-100 rounded-lg text-quality">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900">Quality (Accuracy)</h3>
+                        </div>
+                        <ul class="space-y-2 text-slate-600 text-sm">
+                            <li class="flex gap-2"><i data-lucide="target" class="w-4 h-4 mt-1 text-quality"></i>
+                                <span>Accuracy reflecting ground truth</span>
+                            </li>
+                            <li class="flex gap-2"><i data-lucide="file-check" class="w-4 h-4 mt-1 text-quality"></i>
+                                <span>Correctness and completeness</span>
+                            </li>
+                            <li class="flex gap-2"><i data-lucide="shield" class="w-4 h-4 mt-1 text-quality"></i>
+                                <span>Foundation of reliability</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: PRECISION VS RECALL -->
+        <section
+            class="animate-fade-in delay-100 bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden">
+            <div class="bg-slate-50 border-b border-slate-200 px-6 py-4">
+                <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                    <i data-lucide="scale" class="w-6 h-6 text-slate-500"></i>
+                    The Core Metrics: Precision vs. Recall
+                </h2>
+                <p class="text-slate-500 text-sm mt-1">Using the Autonomous Vehicle Pedestrian Detection Example</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <!-- Precision Side -->
+                <div class="p-8 border-b md:border-b-0 md:border-r border-slate-200 bg-emerald-50/30">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold text-emerald-700">PRECISION</h3>
+                        <span class="text-xs font-mono bg-emerald-100 text-emerald-800 px-2 py-1 rounded">TP / (TP +
+                            FP)</span>
+                    </div>
+                    <p class="text-lg font-medium text-slate-800 mb-2">"When I say it's a pedestrian, is it?"</p>
+                    <p class="text-slate-600 mb-6 text-sm">Driven by <strong>Consistency</strong>. Ensures the model
+                        isn't hallucinating or confused.</p>
+
+                    <div class="bg-white p-4 rounded-lg border border-emerald-200 shadow-sm">
+                        <h4 class="font-bold text-emerald-800 mb-2 flex items-center gap-2"><i
+                                data-lucide="alert-circle" class="w-4 h-4"></i> Low Precision Scenario</h4>
+                        <p class="text-sm text-slate-600">The car stops violently because it thinks a mailbox is a
+                            child.</p>
+                        <p class="text-xs text-slate-400 mt-2 font-mono">RESULT: Poor User Experience / Trust</p>
+                    </div>
+                </div>
+
+                <!-- Recall Side -->
+                <div class="p-8 bg-rose-50/30">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-2xl font-bold text-rose-700">RECALL</h3>
+                        <span class="text-xs font-mono bg-rose-100 text-rose-800 px-2 py-1 rounded">TP / (TP +
+                            FN)</span>
+                    </div>
+                    <p class="text-lg font-medium text-slate-800 mb-2">"Do I see ALL the pedestrians?"</p>
+                    <p class="text-slate-600 mb-6 text-sm">Driven by <strong>Data Size</strong>. Ensures the model
+                        handles variety and doesn't miss things.</p>
+
+                    <div class="bg-white p-4 rounded-lg border border-rose-200 shadow-sm">
+                        <h4 class="font-bold text-rose-800 mb-2 flex items-center gap-2"><i data-lucide="alert-triangle"
+                                class="w-4 h-4"></i> Low Recall Scenario</h4>
+                        <p class="text-sm text-slate-600">The car fails to see a child crossing the street and does not
+                            stop.</p>
+                        <p class="text-xs text-slate-400 mt-2 font-mono">RESULT: Safety Failure / Fatality</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-slate-800 text-white p-4 text-center text-sm">
+                <strong>The Bottom Line:</strong> You cannot fix Precision retroactively. If trained on inconsistent
+                data, the confusion is baked in.
+            </div>
+        </section>
+
+        <!-- SECTION 3: LARGE DATA PROS/CONS & PRINCIPLES -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Advantages -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold text-green-700 flex items-center gap-2">
+                    <i data-lucide="thumbs-up" class="w-5 h-5"></i> Advantages of Large Data
+                </h3>
+                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                    <h4 class="font-bold text-green-900">Better Generalization</h4>
+                    <p class="text-sm text-green-800">Model handles new, unseen scenarios (e.g., new cities for
+                        self-driving cars).</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                    <h4 class="font-bold text-green-900">Wider Pattern Variety</h4>
+                    <p class="text-sm text-green-800">Captures edge cases, rare scenarios, and nuanced distinctions.</p>
+                </div>
+                <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                    <h4 class="font-bold text-green-900">Mitigates Overfitting</h4>
+                    <p class="text-sm text-green-800">Prevents memorization; forces learning of general rules.</p>
+                </div>
+            </div>
+
+            <!-- Disadvantages -->
+            <div class="space-y-4">
+                <h3 class="text-xl font-bold text-red-700 flex items-center gap-2">
+                    <i data-lucide="thumbs-down" class="w-5 h-5"></i> Disadvantages of Large Data
+                </h3>
+                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                    <h4 class="font-bold text-red-900">Resource Intensive</h4>
+                    <p class="text-sm text-red-800">High GPU/TPU costs, electricity usage, and long training cycles.</p>
+                </div>
+                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                    <h4 class="font-bold text-red-900">Storage & Handling</h4>
+                    <p class="text-sm text-red-800">Requires distributed systems, complex governance, and data movement.
+                    </p>
+                </div>
+                <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                    <h4 class="font-bold text-red-900">Diminishing Returns</h4>
+                    <p class="text-sm text-red-800">Eventually, more data stops improving performance but costs continue
+                        to rise.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: RARE CLASS PROBLEM (Interactive-feel) -->
+        <section class="bg-slate-900 text-slate-200 rounded-3xl p-6 lg:p-12 shadow-2xl overflow-hidden relative">
+            <div class="relative z-10">
+                <div class="text-center mb-10">
+                    <h2 class="text-3xl font-bold text-white mb-2">The Rare Class Paradox</h2>
+                    <p class="text-slate-400">Why 95% Accuracy can mean the model is useless.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- The Math/Tree Visualization -->
+                    <div class="lg:col-span-8 bg-slate-800/50 rounded-xl p-6 border border-slate-700">
+                        <div class="flex flex-col items-center">
+                            <!-- Root -->
+                            <div class="mb-8 p-3 bg-blue-600 rounded-lg text-white text-center w-48 shadow-lg">
+                                All Data Points
+                            </div>
+
+                            <!-- Branching -->
+                            <div class="flex justify-between w-full max-w-lg mb-4 relative">
+                                <!-- Lines SVG -->
+                                <svg class="absolute top-0 left-0 w-full h-12 -mt-4 pointer-events-none"
+                                    style="z-index:-1;">
+                                    <line x1="50%" y1="0" x2="20%" y2="100%" stroke="#475569" stroke-width="2" />
+                                    <line x1="50%" y1="0" x2="80%" y2="100%" stroke="#475569" stroke-width="2" />
+                                </svg>
+
+                                <div class="text-center">
+                                    <div class="text-xs text-green-400 mb-1">True Positive Class (1%)</div>
+                                    <div class="p-2 bg-slate-700 rounded border border-green-500/30 w-32">
+                                        Rare Class
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-xs text-red-400 mb-1">True Negative Class (99%)</div>
+                                    <div class="p-2 bg-slate-700 rounded border border-red-500/30 w-32">
+                                        Standard Class
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Leaves -->
+                            <div class="flex justify-between w-full max-w-2xl text-xs sm:text-sm">
+                                <!-- TP/FN Block -->
+                                <div class="flex gap-2 sm:gap-4">
+                                    <div class="text-center">
+                                        <div class="text-emerald-500 font-bold">98% Correct</div>
+                                        <div class="p-2 bg-emerald-900/30 border border-emerald-500/50 rounded mt-1">
+                                            True Pos0.98%
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-orange-500 font-bold">2% Missed</div>
+                                        <div
+                                            class="p-2 bg-orange-900/30 border border-orange-500/50 rounded mt-1 opacity-50">
+                                            False Neg0.02%
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- TN/FP Block -->
+                                <div class="flex gap-2 sm:gap-4">
+                                    <div class="text-center">
+                                        <div class="text-blue-500 font-bold">95% Correct</div>
+                                        <div
+                                            class="p-2 bg-blue-900/30 border border-blue-500/50 rounded mt-1 opacity-50">
+                                            True Neg94.05%
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-red-500 font-bold">5% Wrong</div>
+                                        <div class="p-2 bg-red-900/30 border border-red-500/50 rounded mt-1">
+                                            False Pos4.95%
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- The Calculation -->
+                        <div
+                            class="mt-8 pt-6 border-t border-slate-700 font-mono text-sm sm:text-base bg-black/20 p-4 rounded-lg">
+                            <p class="text-slate-400 mb-2">// Probability the item is ACTUALLY rare given the model
+                                tagged it:</p>
+                            <p class="mb-1">P(Rare | Tagged) = <span class="text-emerald-400">TP</span> / (<span
+                                    class="text-emerald-400">TP</span> + <span class="text-red-400">FP</span>)</p>
+                            <p class="mb-1">P(Rare | Tagged) = 0.0098 / (0.0098 + 0.0495)</p>
+                            <p class="text-xl font-bold text-yellow-400 mt-2">P(Rare | Tagged) = 16.5%</p>
+                        </div>
+                    </div>
+
+                    <!-- The Insight Panel -->
+                    <div class="lg:col-span-4 flex flex-col justify-center space-y-6">
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/10">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-slate-300">Overall Accuracy</span>
+                                <span class="text-2xl font-bold text-green-400">95%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 h-2 rounded-full">
+                                <div class="bg-green-400 h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-red-500/50">
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="text-slate-300">Confidence when Tagged</span>
+                                <span class="text-2xl font-bold text-red-400">16.5%</span>
+                            </div>
+                            <div class="w-full bg-slate-700 h-2 rounded-full">
+                                <div class="bg-red-400 h-2 rounded-full" style="width: 16.5%"></div>
+                            </div>
+                            <p class="text-sm text-slate-300 mt-4">
+                                Even with high overall accuracy, the vast majority of items the model claims are "Rare"
+                                are actually false alarms.
+                            </p>
+                        </div>
+
+                        <div class="p-4 border-l-4 border-yellow-500 bg-yellow-900/20">
+                            <p class="text-yellow-200 font-bold">"You cannot support an ontology class with insufficient
+                                data."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: QUALITY ISSUES GRID -->
+        <section>
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">10 Common Quality Issues</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <!-- 1. Incomplete -->
+                <div
+                    class="bg-white p-4 rounded-lg shadow border-b-4 border-blue-500 hover:bg-blue-50 transition-colors group">
+                    <div class="text-blue-500 mb-2"><i data-lucide="file-question"></i></div>
+                    <h4 class="font-bold text-sm">Incomplete</h4>
+                    <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-700">Missing fields or null values
+                        prevents feature learning.</p>
+                </div>
+                <!-- 2. Inconsistent -->
+                <div
+                    class="bg-white p-4 rounded-lg shadow border-b-4 border-purple-500 hover:bg-purple-50 transition-colors group">
+                    <div class="text-purple-500 mb-2"><i data-lucide="git-compare"></i></div>
+                    <h4 class="font-bold text-sm">Inconsistent</h4>
+                    <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-700">"USA" vs "United States". Creates
+                        category confusion.</p>
+                </div>
+                <!-- 3. Noisy -->
+                <div
+                    class="bg-white p-4 rounded-lg shadow border-b-4 border-orange-500 hover:bg-orange-50 transition-colors group">
+                    <div class="text-orange-500 mb-2"><i data-lucide="radio"></i></div>
+                    <h4 class="font-bold text-sm">Noisy</h4>
+                    <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-700">Sensor errors or environmental
+                        measurement spikes.</p>
+                </div>
+                <!-- 4. Imbalanced -->
+                <div
+                    class="bg-white p-4 rounded-lg shadow border-b-4 border-rose-500 hover:bg-rose-50 transition-colors group">
+                    <div class="text-rose-500 mb-2"><i data-lucide="scale"></i></div>
+                    <h4 class="font-bold text-sm">Imbalanced</h4>
+                    <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-700">99% Negative, 1% Positive. Bias
+                        towards majority.</p>
+                </div>
+                <!-- 5. Redundant -->
+                <div
+                    class="bg-white p-4 rounded-lg shadow border-b-4 border-teal-500 hover:bg-teal-50 transition-colors group">
+                    <div class="text-teal-500 mb-2"><i data-lucide="copy"></i></div>
+                    <h4 class="font-bold text-sm">Redundant</h4>
+                    <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-700">Duplicate entries overweight
+                        specific examples.</p>
+                </div>
+                <!-- 6. Human Bias -->
+                <div
+                    class="bg-white p-4 rounded-lg shadow border-b-4 border-amber-500 hover:bg-amber-50 transition-colors group">
+                    <div class="text-amber-500 mb-2"><i data-lucide="user-x"></i></div>
+                    <h4 class="font-bold text-sm">Human Bias</h4>
+                    <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-700">Annotator prejudices baked into
+                        the labels.</p>
+                </div>
+                <!-- 7. Label Errors -->
+                <div
+                    class="bg-white p-4 rounded-lg shadow border-b-4 border-red-600 hover:bg-red-50 transition-colors group">
+                    <div class="text-red-600 mb-2"><i data-lucide="x-circle"></i></div>
+                    <h4 class="font-bold text-sm">Label Errors</h4>
+                    <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-700">"Fat-fingering" or wrong
+                        classification.</p>
+                </div>
+                <!-- 8. Apportionment -->
+                <div
+                    class="bg-white p-4 rounded-lg shadow border-b-4 border-indigo-500 hover:bg-indigo-50 transition-colors group">
+                    <div class="text-indigo-500 mb-2"><i data-lucide="pie-chart"></i></div>
+                    <h4 class="font-bold text-sm">Apportionment</h4>
+                    <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-700">Rare classes naturally
+                        underrepresented in real world.</p>
+                </div>
+                <!-- 9. Data Sparsity -->
+                <div
+                    class="bg-white p-4 rounded-lg shadow border-b-4 border-green-500 hover:bg-green-50 transition-colors group">
+                    <div class="text-green-500 mb-2"><i data-lucide="wind"></i></div>
+                    <h4 class="font-bold text-sm">Sparsity</h4>
+                    <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-700">Insufficient data in specific
+                        feature regions.</p>
+                </div>
+                <!-- 10. Data Drift -->
+                <div
+                    class="bg-white p-4 rounded-lg shadow border-b-4 border-violet-500 hover:bg-violet-50 transition-colors group">
+                    <div class="text-violet-500 mb-2"><i data-lucide="move-right"></i></div>
+                    <h4 class="font-bold text-sm">Data Drift</h4>
+                    <p class="text-xs text-slate-500 mt-1 group-hover:text-slate-700">World changes over time; data no
+                        longer reflects reality.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: PIPELINE & INTEGRATION -->
+        <section class="bg-white rounded-xl shadow-lg p-6 md:p-10 border border-slate-200">
+            <h2 class="text-2xl font-bold mb-8">Data Cleaning vs. Data Modeling</h2>
+
+            <div class="flex flex-col md:flex-row items-center gap-4 mb-8">
+                <!-- RAW -->
+                <div class="bg-slate-100 p-4 rounded text-center w-full md:w-auto">RAW DATA</div>
+                <i data-lucide="arrow-right" class="text-slate-400 hidden md:block"></i>
+                <i data-lucide="arrow-down" class="text-slate-400 block md:hidden"></i>
+
+                <!-- CLEANING -->
+                <div class="bg-blue-50 border border-blue-200 p-4 rounded flex-1 w-full">
+                    <h4 class="text-blue-800 font-bold text-sm mb-2"><i data-lucide="sparkles"
+                            class="w-4 h-4 inline mr-1"></i> Data Cleaning</h4>
+                    <p class="text-xs text-blue-600">Correcting values, fixing spelling, deduplication. <strong>Goal:
+                            Quality</strong></p>
+                </div>
+
+                <i data-lucide="arrow-right" class="text-slate-400 hidden md:block"></i>
+                <i data-lucide="arrow-down" class="text-slate-400 block md:hidden"></i>
+
+                <!-- MODELING -->
+                <div class="bg-green-50 border border-green-200 p-4 rounded flex-1 w-full">
+                    <h4 class="text-green-800 font-bold text-sm mb-2"><i data-lucide="box"
+                            class="w-4 h-4 inline mr-1"></i> Data Modeling</h4>
+                    <p class="text-xs text-green-600">Defining schema, ontology complexity, business rules.
+                        <strong>Goal: Structure</strong>
+                    </p>
+                </div>
+
+                <i data-lucide="arrow-right" class="text-slate-400 hidden md:block"></i>
+                <i data-lucide="arrow-down" class="text-slate-400 block md:hidden"></i>
+
+                <!-- MODELED -->
+                <div class="bg-slate-800 text-white p-4 rounded text-center w-full md:w-auto">AI READY</div>
+            </div>
+
+            <div class="bg-slate-50 p-6 rounded-lg border-l-4 border-purple-500">
+                <h3 class="font-bold text-slate-800 mb-2">The Integration Puzzle</h3>
+                <p class="text-sm text-slate-600 mb-4">Most organizations use manual scripting (error-prone) instead of
+                    Symbolic AI (logic-based) for integration.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="flex-1 bg-white p-3 rounded shadow-sm opacity-50">
+                        <span class="text-red-500 font-bold text-xs">MANUAL PROCESS</span>
+                        <p class="text-xs mt-1">Declarative SQL. High labor, high error rate.</p>
+                    </div>
+                    <div class="flex-1 bg-white p-3 rounded shadow-sm border border-green-200">
+                        <span class="text-green-600 font-bold text-xs">SYMBOLIC GEN AI</span>
+                        <p class="text-xs mt-1">Rules & formal logic. Reliable, fast, consistent.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 7: MANAGEMENT STRATEGIES -->
+        <section>
+            <h2 class="text-3xl font-bold text-slate-900 mb-8 text-center">5 Management Strategies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- 1. Active Learning -->
+                <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-100 card-hover">
+                    <div
+                        class="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mb-4">
+                        <span class="font-bold text-xl">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-indigo-900 mb-2">Active Learning</h3>
+                    <p class="text-sm text-indigo-800 mb-4">Iteratively select the most informative data points for
+                        labeling.</p>
+                    <div class="bg-white p-3 rounded text-xs text-indigo-600 shadow-sm">
+                        <strong>Result:</strong> Get to market quickly with MVP. Efficient budget use.
+                    </div>
+                </div>
+
+                <!-- 2. Data Augmentation -->
+                <div class="bg-emerald-50 p-6 rounded-xl border border-emerald-100 card-hover">
+                    <div
+                        class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-4">
+                        <span class="font-bold text-xl">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-emerald-900 mb-2">Data Augmentation</h3>
+                    <p class="text-sm text-emerald-800 mb-4">Create synthetic data or resample existing data (rotations,
+                        flips, Generative AI).</p>
+                    <div class="bg-white p-3 rounded text-xs text-emerald-600 shadow-sm">
+                        <strong>Result:</strong> Boost size while maintaining high consistency standards.
+                    </div>
+                </div>
+
+                <!-- 3. Transfer Learning -->
+                <div class="bg-sky-50 p-6 rounded-xl border border-sky-100 card-hover">
+                    <div class="w-12 h-12 bg-sky-100 text-sky-600 rounded-lg flex items-center justify-center mb-4">
+                        <span class="font-bold text-xl">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-sky-900 mb-2">Transfer Learning</h3>
+                    <p class="text-sm text-sky-800 mb-4">Fine-tune large foundation models (BERT, ResNet) instead of
+                        training from scratch.</p>
+                    <div class="bg-white p-3 rounded text-xs text-sky-600 shadow-sm">
+                        <strong>Result:</strong> Drastically reduces data volume requirements.
+                    </div>
+                </div>
+
+                <!-- 4. Quality Control -->
+                <div class="bg-amber-50 p-6 rounded-xl border border-amber-100 card-hover">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center mb-4">
+                        <span class="font-bold text-xl">4</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-amber-900 mb-2">Quality Control</h3>
+                    <p class="text-sm text-amber-800 mb-4">Multiple annotators, Inter-Annotator Agreement (IAA) scores,
+                        and overlap management.</p>
+                    <div class="bg-white p-3 rounded text-xs text-amber-600 shadow-sm">
+                        <strong>Result:</strong> Validated reliability. Start with high overlap, reduce as trust builds.
+                    </div>
+                </div>
+
+                <!-- 5. Combining Sources -->
+                <div
+                    class="bg-purple-50 p-6 rounded-xl border border-purple-100 card-hover lg:col-span-2 lg:w-1/2 lg:mx-auto">
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex-shrink-0 flex items-center justify-center">
+                            <span class="font-bold text-xl">5</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-purple-900 mb-2">Combining Data Sources</h3>
+                            <p class="text-sm text-purple-800 mb-4">Mix small high-quality "Gold" sets with larger,
+                                noisier sets to balance trade-offs.</p>
+                            <div class="bg-white p-3 rounded text-xs text-purple-600 shadow-sm inline-block">
+                                <strong>Result:</strong> Risk diversification and comprehensive coverage.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER: LEADERSHIP -->
+        <footer class="bg-slate-900 text-white rounded-2xl overflow-hidden mt-12 mb-12">
+            <div class="p-8 md:p-12">
+                <div class="flex flex-col md:flex-row gap-12">
+                    <div class="md:w-1/2">
+                        <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                            <i data-lucide="briefcase" class="text-blue-400"></i> Leadership Responsibility
+                        </h2>
+                        <p class="text-slate-400 mb-6">Data quality issues are not just technical problems to be
+                            outsourced. They are business decisions involving trade-offs between cost, speed, and risk.
+                        </p>
+
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="text-green-500"></i>
+                                <span>Engage productively in data decisions</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="text-green-500"></i>
+                                <span>Allocate resources for annotation & quality</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="check-circle-2" class="text-green-500"></i>
+                                <span>Understand the "Can't fix precision later" rule</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:w-1/2 bg-slate-800 p-6 rounded-xl border border-slate-700">
+                        <h3 class="font-bold text-lg mb-4 text-blue-300">Key Questions for Leaders</h3>
+                        <ul class="space-y-3">
+                            <li class="flex gap-3 text-sm text-slate-300">
+                                <i data-lucide="help-circle" class="w-5 h-5 text-slate-500 flex-shrink-0"></i>
+                                What is our current Inter-Annotator Agreement score?
+                            </li>
+                            <li class="flex gap-3 text-sm text-slate-300">
+                                <i data-lucide="help-circle" class="w-5 h-5 text-slate-500 flex-shrink-0"></i>
+                                Are we scaling volume before proving consistency?
+                            </li>
+                            <li class="flex gap-3 text-sm text-slate-300">
+                                <i data-lucide="help-circle" class="w-5 h-5 text-slate-500 flex-shrink-0"></i>
+                                How are we handling rare classes in our ontology?
+                            </li>
+                            <li class="flex gap-3 text-sm text-slate-300">
+                                <i data-lucide="help-circle" class="w-5 h-5 text-slate-500 flex-shrink-0"></i>
+                                Is our overlap strategy adequate for this complexity?
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-black py-4 text-center text-slate-600 text-xs">
+                Generated based on lecture materials regarding AI Data Trade-offs.
+            </div>
+        </footer>
+
+    </main>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Simple interactive calculation animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        });
+
+        document.querySelectorAll('section').forEach((section) => {
+            section.style.opacity = "0"; // Start hidden for animation
+            observer.observe(section);
+        });
+
+        // Add fade-in class css
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .animate-fade-in {
+                animation: fadeIn 0.8s ease-out forwards;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>
