@@ -1,6 +1,6 @@
 {
-  "generated": "2025-02-08",
-  "totalTags": 165,
+  "generated": "2026-02-10",
+  "totalTags": 179,
   "tags": {
     "Machine Learning": [
       "ai-introduction/introduction-to-ai.html",
@@ -591,6 +591,55 @@
     ],
     "Data Pipeline": [
       "data-optimization-for-ml/project-maven-data-quality-case-study.html"
+    ],
+    "Claude Code": [
+      "agentic-ai/portfolio-site-using-claude-code.html"
+    ],
+    "Agentic Coding": [
+      "agentic-ai/portfolio-site-using-claude-code.html"
+    ],
+    "AI Pair Programming": [
+      "agentic-ai/portfolio-site-using-claude-code.html"
+    ],
+    "Portfolio Development": [
+      "agentic-ai/portfolio-site-using-claude-code.html"
+    ],
+    "Spec-Driven Development": [
+      "agentic-ai/portfolio-site-using-claude-code.html"
+    ],
+    "CLAUDE.md": [
+      "agentic-ai/portfolio-site-using-claude-code.html"
+    ],
+    "AI Workflow": [
+      "agentic-ai/portfolio-site-using-claude-code.html"
+    ],
+    "Web Development": [
+      "agentic-ai/portfolio-site-using-claude-code.html"
+    ],
+    "AI Agent Security": [
+      "agentic-ai/ai-agent-security.html"
+    ],
+    "Agentic AI": [
+      "agentic-ai/portfolio-site-using-claude-code.html",
+      "agentic-ai/ai-agent-security.html"
+    ],
+    "Prompt Injection": [
+      "agentic-ai/ai-agent-security.html"
+    ],
+    "Supply Chain Attack": [
+      "agentic-ai/ai-agent-security.html"
+    ],
+    "OpenClaw": [
+      "agentic-ai/ai-agent-security.html"
+    ],
+    "AI Vulnerabilities": [
+      "agentic-ai/ai-agent-security.html"
+    ],
+    "Cybersecurity": [
+      "agentic-ai/ai-agent-security.html"
+    ],
+    "LLM Security": [
+      "agentic-ai/ai-agent-security.html"
     ]
   }
 }

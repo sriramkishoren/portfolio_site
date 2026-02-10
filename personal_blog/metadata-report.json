@@ -1,6 +1,6 @@
 {
-  "generated": "2025-02-08",
-  "totalPosts": 36,
+  "generated": "2026-02-10",
+  "totalPosts": 38,
   "baseUrl": "https://www.kishoretech.com",
   "author": "Sriramkishore Naraharisetti",
   "categories": {
@@ -9,7 +9,8 @@
     "AI Business UseCases": 6,
     "AI Project Management": 2,
     "ML Algorithms": 10,
-    "Data Optimization for ML": 9
+    "Data Optimization for ML": 9,
+    "Agentic AI": 2
   },
   "posts": [
     {
@@ -335,6 +336,24 @@
       "datePublished": "2025-02-08",
       "tags": ["Project Maven", "Object Detection", "Case Study", "Data Quality", "Computer Vision", "Military AI", "Annotation", "Data Pipeline"],
       "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/project-maven-data-quality-case-study"
+    },
+    {
+      "file": "agentic-ai/portfolio-site-using-claude-code.html",
+      "title": "How I Built My Portfolio Site Using Claude Code",
+      "description": "A practical guide to building a full portfolio website with a blog system, dark mode, analytics, and SEO using Claude Code as an AI pair programmer. Covers agentic coding workflow, spec-driven development, and prompt patterns.",
+      "category": "Agentic AI",
+      "datePublished": "2026-02-02",
+      "tags": ["Claude Code", "Agentic Coding", "AI Pair Programming", "Portfolio Development", "Spec-Driven Development", "CLAUDE.md", "AI Workflow", "Web Development"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=agentic-ai/portfolio-site-using-claude-code"
+    },
+    {
+      "file": "agentic-ai/ai-agent-security.html",
+      "title": "AI Agent Security: Lessons from OpenClaw",
+      "description": "Comprehensive security analysis of AI agent vulnerabilities using OpenClaw as a case study. Covers prompt injection, supply chain attacks, credential theft, and a hardening checklist for agentic AI systems.",
+      "category": "Agentic AI",
+      "datePublished": "2026-02-10",
+      "tags": ["AI Agent Security", "Agentic AI", "Prompt Injection", "Supply Chain Attack", "OpenClaw", "AI Vulnerabilities", "Cybersecurity", "LLM Security"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=agentic-ai/ai-agent-security"
     }
   ]
 }

@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How I Built My Portfolio Site Using Claude Code — Interactive Guide</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="How I Built My Portfolio Site Using Claude Code">
+    <meta name="description"
+        content="A practical guide to building a full portfolio website with a blog system, dark mode, analytics, and SEO — all powered by Claude Code as my AI pair programmer.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Agentic AI">
+    <meta name="tags" content="Claude Code, Agentic Coding, AI Pair Programming, Portfolio Development, Spec-Driven Development, CLAUDE.md, AI Workflow, Web Development">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Step-by-step guide to building a complete portfolio site (kishoretech.com) using Claude Code CLI tool. Compares vibe coding vs agentic coding approaches. Introduces a 6-phase spec-driven workflow (Plan, Spec, TODO, Implement, Test, Confirm) codified in CLAUDE.md. Covers 7 workflow habits, best prompt patterns, and practical development examples for AI-assisted web development.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=agentic-ai/portfolio-site-using-claude-code">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="How I Built My Portfolio Site Using Claude Code">
+    <meta property="og:description"
+        content="Workflow, prompts, and lessons from building kishoretech.com end-to-end with an AI pair programmer.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=agentic-ai/portfolio-site-using-claude-code">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2026-02-02">
+    <meta property="article:section" content="Agentic AI">
+    <meta property="article:tag" content="Claude Code">
+    <meta property="article:tag" content="Agentic Coding">
+    <meta property="article:tag" content="AI Pair Programming">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "How I Built My Portfolio Site Using Claude Code",
+        "description": "A practical guide to building a full portfolio website with a blog system, dark mode, analytics, and SEO using Claude Code as an AI pair programmer.",
+        "datePublished": "2026-02-02",
+        "dateModified": "2026-02-02",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=agentic-ai/portfolio-site-using-claude-code"
+        },
+        "keywords": ["Claude Code", "Agentic Coding", "AI Pair Programming", "Portfolio Development", "Spec-Driven Development", "CLAUDE.md", "AI Workflow", "Web Development"],
+        "articleSection": "Agentic AI",
+        "about": [
+            {"@type": "Thing", "name": "Claude Code"},
+            {"@type": "Thing", "name": "Agentic Coding"}
+        ]
+    }
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@0.309.0/dist/umd/lucide.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --brand-50: #f0f4ff;
+            --brand-100: #dbe4ff;
+            --brand-200: #bac8ff;
+            --brand-300: #91a7ff;
+            --brand-400: #748ffc;
+            --brand-500: #5c7cfa;
+            --brand-600: #4c6ef5;
+            --brand-700: #4263eb;
+            --brand-800: #3b5bdb;
+            --brand-900: #364fc7;
+            --surface-50: #f8f9fc;
+            --surface-100: #f1f3f9;
+            --surface-200: #e8ecf4;
+        }
+
+        /* Custom color utilities */
+        .bg-brand-50 {
+            background: var(--brand-50)
+        }
+
+        .bg-brand-100 {
+            background: var(--brand-100)
+        }
+
+        .bg-brand-200 {
+            background: var(--brand-200)
+        }
+
+        .bg-brand-400 {
+            background: var(--brand-400)
+        }
+
+        .bg-brand-600 {
+            background: var(--brand-600)
+        }
+
+        .text-brand-600 {
+            color: var(--brand-600)
+        }
+
+        .text-brand-700 {
+            color: var(--brand-700)
+        }
+
+        .text-brand-800 {
+            color: var(--brand-800)
+        }
+
+        .text-brand-500 {
+            color: var(--brand-500)
+        }
+
+        .border-brand-200 {
+            border-color: var(--brand-200)
+        }
+
+        .border-brand-400 {
+            border-color: var(--brand-400)
+        }
+
+        .bg-surface-50 {
+            background: var(--surface-50)
+        }
+
+        .bg-surface-100 {
+            background: var(--surface-100)
+        }
+
+        .hover\:text-brand-600:hover {
+            color: var(--brand-600)
+        }
+
+        /* ===== Tailwind 3 colors missing from TW 2.x ===== */
+        /* Rose */
+        .bg-rose-50 {
+            background: #fff1f2
+        }
+
+        .bg-rose-100 {
+            background: #ffe4e6
+        }
+
+        .border-rose-200 {
+            border-color: #fecdd3
+        }
+
+        .text-rose-600 {
+            color: #e11d48
+        }
+
+        .text-rose-700 {
+            color: #be123c
+        }
+
+        /* Amber */
+        .bg-amber-50 {
+            background: #fffbeb
+        }
+
+        .bg-amber-100 {
+            background: #fef3c7
+        }
+
+        .border-amber-200 {
+            border-color: #fde68a
+        }
+
+        .text-amber-500 {
+            color: #f59e0b
+        }
+
+        .text-amber-600 {
+            color: #d97706
+        }
+
+        .text-amber-700 {
+            color: #b45309
+        }
+
+        .text-amber-800 {
+            color: #92400e
+        }
+
+        /* Teal */
+        .bg-teal-50 {
+            background: #f0fdfa
+        }
+
+        .bg-teal-100 {
+            background: #ccfbf1
+        }
+
+        .border-teal-200 {
+            border-color: #99f6e4
+        }
+
+        .text-teal-600 {
+            color: #0d9488
+        }
+
+        .text-teal-700 {
+            color: #0f766e
+        }
+
+        /* Cyan */
+        .bg-cyan-100 {
+            background: #cffafe
+        }
+
+        .text-cyan-600 {
+            color: #0891b2
+        }
+
+        /* Violet */
+        .bg-violet-100 {
+            background: #ede9fe
+        }
+
+        .text-violet-600 {
+            color: #7c3aed
+        }
+
+        /* Orange */
+        .bg-orange-50 {
+            background: #fff7ed
+        }
+
+        .bg-orange-100 {
+            background: #ffedd5
+        }
+
+        .border-orange-200 {
+            border-color: #fed7aa
+        }
+
+        .text-orange-600 {
+            color: #ea580c
+        }
+
+        .text-orange-700 {
+            color: #c2410c
+        }
+
+        /* Emerald */
+        .bg-emerald-50 {
+            background: #ecfdf5
+        }
+
+        .bg-emerald-100 {
+            background: #d1fae5
+        }
+
+        .border-emerald-100 {
+            border-color: #d1fae5
+        }
+
+        .text-emerald-600 {
+            color: #059669
+        }
+
+        /* Slate (used in some places) */
+        .bg-slate-50 {
+            background: #f8fafc
+        }
+
+        /* Font weight utilities */
+        .font-600 {
+            font-weight: 600
+        }
+
+        .font-700 {
+            font-weight: 700
+        }
+
+        .font-800 {
+            font-weight: 800
+        }
+
+        .font-900 {
+            font-weight: 900
+        }
+
+        /* Max-width override */
+        .max-w-\[1200px\] {
+            max-width: 1200px
+        }
+
+        .max-w-\[130px\] {
+            min-width: 130px
+        }
+
+        /* Gap utilities missing in TW2 */
+        .gap-1\.5 {
+            gap: 0.375rem
+        }
+
+        /* Leading */
+        .leading-\[1\.1\] {
+            line-height: 1.1
+        }
+
+        .text-\[0\.7rem\] {
+            font-size: 0.7rem
+        }
+
+        .min-w-\[130px\] {
+            min-width: 130px
+        }
+
+        html.scroll-smooth {
+            scroll-behavior: smooth
+        }
+
+        .from-brand-50 {
+            --tw-gradient-from: var(--brand-50);
+            --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(240, 244, 255, 0))
+        }
+
+        .to-purple-50 {
+            --tw-gradient-to: #faf5ff
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        code,
+        .font-mono {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+        }
+
+        .phase-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .phase-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        .habit-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .habit-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.12);
+        }
+
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .expandable-content.open {
+            max-height: 800px;
+            opacity: 1;
+        }
+
+        .flow-connector {
+            position: relative;
+        }
+
+        .flow-connector::after {
+            content: '';
+            position: absolute;
+            right: -28px;
+            top: 50%;
+            width: 24px;
+            height: 2px;
+            background: linear-gradient(90deg, #4c6ef5, #91a7ff);
+        }
+
+        @media (max-width: 1023px) {
+            .flow-connector::after {
+                display: none;
+            }
+        }
+
+        .stat-number {
+            background: linear-gradient(135deg, #4263eb, #5c7cfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .code-block {
+            background: #1a1f2e;
+            border: 1px solid #2d3548;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .code-block pre {
+            padding: 1.25rem;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        .code-header {
+            background: #232838;
+            padding: 0.6rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid #2d3548;
+        }
+
+        .code-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #4263eb 0%, #7c3aed 50%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        .timeline-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            border: 3px solid #4c6ef5;
+            background: white;
+            position: relative;
+            z-index: 2;
+            flex-shrink: 0;
+        }
+
+        .timeline-line {
+            width: 2px;
+            background: linear-gradient(180deg, #4c6ef5, #bac8ff);
+            flex-shrink: 0;
+        }
+
+        .versus-badge {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            font-weight: 700;
+            font-size: 0.7rem;
+            padding: 2px 10px;
+            border-radius: 999px;
+            letter-spacing: 0.05em;
+        }
+
+        .prompt-good {
+            border-left: 3px solid #40c057;
+        }
+
+        .prompt-bad {
+            border-left: 3px solid #fa5252;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+        }
+
+        .check-icon {
+            width: 22px;
+            height: 22px;
+            border-radius: 6px;
+            background: #16a34a;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        @media print {
+            body {
+                font-size: 11pt;
+                color: #000;
+            }
+
+            .phase-card,
+            .habit-card {
+                box-shadow: none !important;
+                transform: none !important;
+                border: 1px solid #ccc;
+            }
+
+            .phase-card:hover,
+            .habit-card:hover {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+
+            .hero-glow {
+                display: none;
+            }
+
+            .expandable-content {
+                max-height: none !important;
+                opacity: 1 !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .print-break {
+                page-break-before: always;
+            }
+
+            .code-block {
+                background: #f5f5f5 !important;
+                border: 1px solid #ccc;
+            }
+
+            .code-block pre {
+                color: #222 !important;
+            }
+
+            .code-header {
+                background: #eee !important;
+            }
+
+            a {
+                color: #4263eb;
+                text-decoration: underline;
+            }
+
+            .gradient-text {
+                -webkit-text-fill-color: #4263eb;
+            }
+
+            .stat-number {
+                -webkit-text-fill-color: #4263eb;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-surface-50 text-gray-800 antialiased">
+
+    <!-- ============ HERO ============ -->
+    <header class="relative overflow-hidden bg-white border-b border-gray-100">
+        <div class="hero-glow bg-brand-400" style="top: -200px; left: -100px;"></div>
+        <div class="hero-glow bg-purple-500" style="top: -100px; right: -150px;"></div>
+        <div class="max-w-[1200px] mx-auto px-4 md:px-8 py-16 md:py-24 relative z-10">
+            <div class="flex flex-col md:flex-row md:items-center gap-8 md:gap-16">
+                <div class="flex-1">
+                    <div
+                        class="inline-flex items-center gap-2 bg-brand-50 text-brand-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+                        <i data-lucide="terminal" class="w-4 h-4"></i>
+                        AI-Powered Development
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-900 leading-[1.1] tracking-tight mb-6">
+                        How I Built My Portfolio Site Using
+                        <span class="gradient-text"> Claude Code</span>
+                    </h1>
+                    <p class="text-lg md:text-xl text-gray-500 leading-relaxed max-w-xl mb-8">
+                        The workflow, the prompts, and the lessons from building
+                        <a href="https://www.kishoretech.com"
+                            class="text-brand-600 font-semibold hover:underline">kishoretech.com</a>
+                        end-to-end with an AI pair programmer.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500">
+                        <span class="flex items-center gap-1.5"><i data-lucide="user" class="w-4 h-4"></i> Sriramkishore
+                            Naraharisetti</span>
+                        <span class="text-gray-300">·</span>
+                        <span class="flex items-center gap-1.5"><i data-lucide="calendar" class="w-4 h-4"></i> Feb 2,
+                            2026</span>
+                        <span class="text-gray-300">·</span>
+                        <span class="flex items-center gap-1.5"><i data-lucide="clock" class="w-4 h-4"></i> 12 min
+                            read</span>
+                    </div>
+                </div>
+                <!-- Stats panel -->
+                <div class="grid grid-cols-2 gap-4 md:gap-5 flex-shrink-0">
+                    <div class="bg-surface-50 border border-gray-100 rounded-2xl p-5 text-center min-w-[130px]">
+                        <div class="stat-number text-3xl font-800">27</div>
+                        <div class="text-xs text-gray-500 mt-1 font-medium">Blog Posts</div>
+                    </div>
+                    <div class="bg-surface-50 border border-gray-100 rounded-2xl p-5 text-center min-w-[130px]">
+                        <div class="stat-number text-3xl font-800">11</div>
+                        <div class="text-xs text-gray-500 mt-1 font-medium">Feature Specs</div>
+                    </div>
+                    <div class="bg-surface-50 border border-gray-100 rounded-2xl p-5 text-center min-w-[130px]">
+                        <div class="stat-number text-3xl font-800">0</div>
+                        <div class="text-xs text-gray-500 mt-1 font-medium">Build Tools</div>
+                    </div>
+                    <div class="bg-surface-50 border border-gray-100 rounded-2xl p-5 text-center min-w-[130px]">
+                        <div class="stat-number text-3xl font-800">319</div>
+                        <div class="text-xs text-gray-500 mt-1 font-medium">Lines in CLAUDE.md</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-[1200px] mx-auto px-4 md:px-8">
+
+        <!-- ============ WHY CLAUDE CODE ============ -->
+        <section class="py-16 md:py-20">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center">
+                    <i data-lucide="zap" class="w-5 h-5 text-brand-600"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-800 tracking-tight">Why Claude Code?</h2>
+            </div>
+            <p class="text-gray-500 mb-10 max-w-2xl">Not a chatbot with a code panel — it's a CLI tool that reads your
+                files, runs commands, and commits to git.</p>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white border border-gray-100 rounded-2xl p-7 habit-card">
+                    <div class="w-11 h-11 rounded-xl bg-green-200 flex items-center justify-center mb-4">
+                        <i data-lucide="terminal" class="w-5 h-5 text-green-700"></i>
+                    </div>
+                    <h3 class="font-700 text-lg mb-2">Lives in Your Terminal</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">It reads your files, runs commands, and commits to
+                        git. It feels like pairing with a developer who has your entire codebase in their head.</p>
+                </div>
+                <div class="bg-white border border-gray-100 rounded-2xl p-7 habit-card">
+                    <div class="w-11 h-11 rounded-xl bg-purple-200 flex items-center justify-center mb-4">
+                        <i data-lucide="brain" class="w-5 h-5 text-purple-700"></i>
+                    </div>
+                    <h3 class="font-700 text-lg mb-2">Remembers Your Project</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Through a <code
+                            class="bg-gray-100 px-1.5 py-0.5 rounded text-xs font-mono">CLAUDE.md</code> file, every
+                        conversation starts with Claude already knowing your architecture and conventions.</p>
+                </div>
+                <div class="bg-white border border-gray-100 rounded-2xl p-7 habit-card">
+                    <div class="w-11 h-11 rounded-xl bg-yellow-200 flex items-center justify-center mb-4">
+                        <i data-lucide="repeat" class="w-5 h-5 text-yellow-700"></i>
+                    </div>
+                    <h3 class="font-700 text-lg mb-2">Works Iteratively</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Small, focused requests. Review each change. Accept
+                        or reject. That's how real development works.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ VIBE vs AGENTIC ============ -->
+        <section class="py-16 md:py-20 border-t border-gray-100 print-break">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center"
+                    style="background:#fed7aa">
+                    <i data-lucide="git-compare" class="w-5 h-5 text-orange-600" style="color:#ea580c"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-800 tracking-tight">Vibe Coding vs. Agentic Coding</h2>
+            </div>
+            <p class="text-gray-500 mb-10 max-w-2xl">Most AI coding today is vibe coding. I used an agentic approach
+                with guardrails — Claude plans and implements, but stops at checkpoints for my approval.</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Vibe -->
+                <div class="relative bg-white border border-gray-200 rounded-2xl p-7 overflow-hidden">
+                    <div class="absolute top-4 right-4"><span class="versus-badge">TYPICAL</span></div>
+                    <h3 class="text-xl font-700 mb-4 flex items-center gap-2">
+                        <i data-lucide="sparkles" class="w-5 h-5 text-gray-400"></i>
+                        Vibe Coding
+                    </h3>
+                    <div class="space-y-3 text-sm text-gray-600">
+                        <div class="flex items-start gap-3">
+                            <span
+                                class="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-gray-400">1</span>
+                            <span>You describe what you want</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span
+                                class="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-gray-400">2</span>
+                            <span>AI writes code</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span
+                                class="w-5 h-5 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-gray-400">3</span>
+                            <span>You review &amp; hope it works</span>
+                        </div>
+                    </div>
+                    <div class="mt-5 pt-5 border-t border-gray-100 text-sm text-gray-500">
+                        <span class="font-semibold text-gray-700">Limitation:</span> You're still doing all the thinking
+                        about <em>how</em> to break down the work.
+                    </div>
+                </div>
+                <!-- Agentic -->
+                <div
+                    class="relative bg-gradient-to-br from-brand-50 to-purple-50 border-2 border-brand-200 rounded-2xl p-7 overflow-hidden">
+                    <div class="absolute top-4 right-4"><span
+                            class="bg-brand-600 text-white font-700 text-[0.7rem] px-3 py-0.5 rounded-full tracking-wide">MY
+                            APPROACH</span></div>
+                    <h3 class="text-xl font-700 mb-4 flex items-center gap-2">
+                        <i data-lucide="bot" class="w-5 h-5 text-brand-600"></i>
+                        Agentic Coding
+                    </h3>
+                    <div class="space-y-3 text-sm text-gray-700">
+                        <div class="flex items-start gap-3">
+                            <span
+                                class="w-5 h-5 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-brand-600">1</span>
+                            <span>AI <strong>plans</strong> tasks &amp; asks questions</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span
+                                class="w-5 h-5 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-brand-600">2</span>
+                            <span>AI <strong>creates specs</strong> &amp; documentation</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span
+                                class="w-5 h-5 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-brand-600">3</span>
+                            <span>AI <strong>implements</strong> with checkpoints for approval</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span
+                                class="w-5 h-5 rounded-full bg-brand-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-xs font-bold text-brand-600">4</span>
+                            <span>AI <strong>verifies</strong> against acceptance criteria</span>
+                        </div>
+                    </div>
+                    <div class="mt-5 pt-5 border-t border-brand-200 text-sm text-gray-600">
+                        <span class="font-semibold text-brand-700">Advantage:</span> I control <em>what</em> gets built;
+                        Claude handles <em>how</em> to execute it.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ GETTING STARTED ============ -->
+        <section class="py-16 md:py-20 border-t border-gray-100">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center">
+                    <i data-lucide="rocket" class="w-5 h-5 text-green-600"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-800 tracking-tight">Getting Started</h2>
+            </div>
+            <p class="text-gray-500 mb-8 max-w-2xl">You need Git, a GitHub account, and an Anthropic API key. That's it.
+            </p>
+
+            <div class="code-block max-w-2xl">
+                <div class="code-header">
+                    <span class="code-dot bg-red-400"></span>
+                    <span class="code-dot bg-yellow-400"></span>
+                    <span class="code-dot bg-green-400"></span>
+                    <span class="text-gray-400 text-xs font-mono ml-2">terminal</span>
+                </div>
+                <pre class="text-gray-300"><code><span class="text-gray-500"># Install Claude Code (macOS via Homebrew)</span>
+<span class="text-green-400">brew</span> install claude-code
+
+<span class="text-gray-500"># Create your project</span>
+<span class="text-green-400">mkdir</span> my-portfolio <span class="text-gray-500">&&</span> <span class="text-green-400">cd</span> my-portfolio <span class="text-gray-500">&&</span> <span class="text-green-400">git</span> init
+
+<span class="text-gray-500"># Start Claude Code</span>
+<span class="text-green-400">claude</span></code></pre>
+            </div>
+        </section>
+
+        <!-- ============ 7 WORKFLOW HABITS ============ -->
+        <section class="py-16 md:py-20 border-t border-gray-100 print-break">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#c4b5fd">
+                    <i data-lucide="list-checks" class="w-5 h-5" style="color:#6d28d9"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-800 tracking-tight">7 Workflow Habits That Made the Difference</h2>
+            </div>
+            <p class="text-gray-500 mb-10 max-w-2xl">Click any habit to expand the details.</p>
+
+            <div class="space-y-4" id="habits-container">
+                <!-- Habits injected via JS -->
+            </div>
+        </section>
+
+        <!-- ============ SPEC-DRIVEN WORKFLOW (THE INFOGRAPHIC) ============ -->
+        <section class="py-16 md:py-20 border-t border-gray-100 print-break">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center">
+                    <i data-lucide="workflow" class="w-5 h-5 text-brand-600"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-800 tracking-tight">The Spec-Driven Workflow</h2>
+            </div>
+            <p class="text-gray-500 mb-4 max-w-2xl">This transformed my experience from "prompting an AI" to "managing a
+                development process." Six phases, codified in <code
+                    class="bg-gray-100 px-1.5 py-0.5 rounded text-xs font-mono">CLAUDE.md</code>, that Claude follows
+                for every feature.</p>
+            <p class="text-sm text-brand-600 font-semibold mb-10 flex items-center gap-1.5 no-print"><i
+                    data-lucide="pointer" class="w-4 h-4"></i> Click any phase to see details</p>
+
+            <!-- Phase cards grid -->
+            <div class="grid grid-cols-2 lg:grid-cols-6 gap-4 mb-12" id="phase-cards">
+                <!-- Phases injected via JS -->
+            </div>
+
+            <!-- Expanded phase detail -->
+            <div id="phase-detail"
+                class="bg-white border border-gray-200 rounded-2xl p-6 md:p-8 hidden transition-all duration-300">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 id="phase-detail-title" class="text-xl font-700"></h3>
+                    <button onclick="closePhaseDetail()" class="text-gray-400 hover:text-gray-600 no-print"><i
+                            data-lucide="x" class="w-5 h-5"></i></button>
+                </div>
+                <div id="phase-detail-body" class="text-gray-600 text-sm leading-relaxed"></div>
+            </div>
+
+            <!-- Workflow comparison -->
+            <div class="mt-14 grid md:grid-cols-2 gap-8">
+                <div class="bg-red-50 border border-red-100 rounded-2xl p-6">
+                    <h4 class="font-700 text-red-700 mb-3 flex items-center gap-2"><i data-lucide="x-circle"
+                            class="w-5 h-5"></i> Most People</h4>
+                    <div class="flex items-center gap-3 flex-wrap text-sm font-mono">
+                        <span class="bg-white px-3 py-1.5 rounded-lg border border-red-200 text-red-600">Prompt</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-red-300"></i>
+                        <span class="bg-white px-3 py-1.5 rounded-lg border border-red-200 text-red-600">Hope</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-red-300"></i>
+                        <span class="bg-white px-3 py-1.5 rounded-lg border border-red-200 text-red-600">Fix</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-red-300"></i>
+                        <span class="bg-white px-3 py-1.5 rounded-lg border border-red-200 text-red-600">Repeat</span>
+                    </div>
+                </div>
+                <div class="bg-green-50 border border-green-200 rounded-2xl p-6">
+                    <h4 class="font-700 text-green-700 mb-3 flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-5 h-5"></i> This Workflow</h4>
+                    <div class="flex items-center gap-3 flex-wrap text-sm font-mono">
+                        <span class="bg-white px-3 py-1.5 rounded-lg border border-green-200 text-green-700">Plan</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-green-400"></i>
+                        <span
+                            class="bg-white px-3 py-1.5 rounded-lg border border-green-200 text-green-700">Align</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-green-400"></i>
+                        <span class="bg-white px-3 py-1.5 rounded-lg border border-green-200 text-green-700">Spec</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-green-400"></i>
+                        <span
+                            class="bg-white px-3 py-1.5 rounded-lg border border-green-200 text-green-700">Build</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 text-green-400"></i>
+                        <span
+                            class="bg-white px-3 py-1.5 rounded-lg border border-green-200 text-green-700">Verify</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONVERSATION EXAMPLE (TIMELINE) ============ -->
+        <section class="py-16 md:py-20 border-t border-gray-100 print-break">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#99f6e4">
+                    <i data-lucide="message-square" class="w-5 h-5" style="color:#0f766e"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-800 tracking-tight">How It Plays Out in Practice</h2>
+            </div>
+            <p class="text-gray-500 mb-10 max-w-2xl">Here's how the certifications page feature flowed through the
+                workflow — catching a missing accessibility requirement <em>before any code was written</em>.</p>
+
+            <div class="max-w-2xl">
+                <div class="flex gap-4">
+                    <div class="flex flex-col items-center">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line flex-1"></div>
+                    </div>
+                    <div class="pb-8">
+                        <div class="text-xs font-semibold text-brand-600 uppercase tracking-wider mb-1">You</div>
+                        <div class="bg-white border border-gray-200 rounded-xl px-5 py-3 text-sm text-gray-700">"I want
+                            to add a certifications showcase page."</div>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex flex-col items-center">
+                        <div class="timeline-dot" style="border-color: #7c3aed;"></div>
+                        <div class="timeline-line flex-1"
+                            style="background: linear-gradient(180deg, #7c3aed, #c4b5fd);"></div>
+                    </div>
+                    <div class="pb-8">
+                        <div class="text-xs font-semibold text-purple-600 uppercase tracking-wider mb-1">Claude — Plan
+                            Phase</div>
+                        <div class="bg-purple-50 border border-purple-100 rounded-xl px-5 py-3 text-sm text-gray-700">
+                            "A few questions: Grid layout, cards, or timeline? How many certifications? Clickable images
+                            with lightbox? Dark mode support?"
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex flex-col items-center">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-line flex-1"></div>
+                    </div>
+                    <div class="pb-8">
+                        <div class="text-xs font-semibold text-brand-600 uppercase tracking-wider mb-1">You</div>
+                        <div class="bg-white border border-gray-200 rounded-xl px-5 py-3 text-sm text-gray-700">"Grid —
+                            2 hero cards on top, 5 smaller below. Yes lightbox. Yes dark mode."</div>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex flex-col items-center">
+                        <div class="timeline-dot" style="border-color: #7c3aed;"></div>
+                        <div class="timeline-line flex-1"
+                            style="background: linear-gradient(180deg, #7c3aed, #c4b5fd);"></div>
+                    </div>
+                    <div class="pb-8">
+                        <div class="text-xs font-semibold text-purple-600 uppercase tracking-wider mb-1">Claude — Spec
+                            Phase</div>
+                        <div class="bg-purple-50 border border-purple-100 rounded-xl px-5 py-3 text-sm text-gray-700">
+                            "Spec created. Approve to create TODO?"
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex flex-col items-center">
+                        <div class="timeline-dot" style="border-color: #f59e0b;"></div>
+                        <div class="timeline-line flex-1"
+                            style="background: linear-gradient(180deg, #f59e0b, #fde68a);"></div>
+                    </div>
+                    <div class="pb-8">
+                        <div class="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-1">You — Catch!
+                        </div>
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl px-5 py-3 text-sm text-gray-700">
+                            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-500 inline mr-1"></i>
+                            "Add acceptance criteria for <strong>Escape key closing the lightbox</strong>."
+                        </div>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <div class="flex flex-col items-center">
+                        <div class="timeline-dot" style="border-color: #10b981;"></div>
+                    </div>
+                    <div class="pb-2">
+                        <div class="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">Claude —
+                            Updated</div>
+                        <div class="bg-emerald-50 border border-emerald-100 rounded-xl px-5 py-3 text-sm text-gray-700">
+                            "Updated. Approve to create TODO?" ✓
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="mt-6 bg-amber-50 border border-amber-200 rounded-xl px-5 py-3 text-sm text-amber-800 max-w-2xl flex items-start gap-2">
+                <i data-lucide="lightbulb" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+                <span>Problems are cheap to fix in a spec, expensive to fix in code. This accessibility requirement was
+                    caught <strong>before a single line was written</strong>.</span>
+            </div>
+        </section>
+
+        <!-- ============ PROMPT PATTERNS ============ -->
+        <section class="py-16 md:py-20 border-t border-gray-100 print-break">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#a5f3fc">
+                    <i data-lucide="code-2" class="w-5 h-5" style="color:#0e7490"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-800 tracking-tight">Best Prompt Patterns</h2>
+            </div>
+            <p class="text-gray-500 mb-10 max-w-2xl">Patterns that consistently produce better results.</p>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-10">
+                <div class="space-y-4">
+                    <h4 class="text-sm font-700 text-green-700 uppercase tracking-wider flex items-center gap-1.5"><i
+                            data-lucide="check" class="w-4 h-4"></i> Do This</h4>
+                    <div class="prompt-good bg-white border border-gray-100 rounded-r-xl p-5">
+                        <div class="text-xs font-600 text-green-700 mb-2">Be specific about locations</div>
+                        <code
+                            class="text-xs text-gray-600 font-mono leading-relaxed block">"In personal_blog/index.html, update getSortedPosts() to prioritize posts with an 'order' field."</code>
+                    </div>
+                    <div class="prompt-good bg-white border border-gray-100 rounded-r-xl p-5">
+                        <div class="text-xs font-600 text-green-700 mb-2">Ask Claude to explore first</div>
+                        <code
+                            class="text-xs text-gray-600 font-mono leading-relaxed block">"Explore the codebase and understand how blog filtering works before making changes."</code>
+                    </div>
+                    <div class="prompt-good bg-white border border-gray-100 rounded-r-xl p-5">
+                        <div class="text-xs font-600 text-green-700 mb-2">Reference existing patterns</div>
+                        <code
+                            class="text-xs text-gray-600 font-mono leading-relaxed block">"I use Tailwind dark: variants everywhere. Make sure the new page follows the same pattern."</code>
+                    </div>
+                    <div class="prompt-good bg-white border border-gray-100 rounded-r-xl p-5">
+                        <div class="text-xs font-600 text-green-700 mb-2">Use templates for common tasks</div>
+                        <code
+                            class="text-xs text-gray-600 font-mono leading-relaxed block">"In [file], add [feature]. Current behavior: [X]. Desired behavior: [Y]. Stay consistent."</code>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="text-sm font-700 text-red-600 uppercase tracking-wider flex items-center gap-1.5"><i
+                            data-lucide="x" class="w-4 h-4"></i> Avoid This</h4>
+                    <div class="prompt-bad bg-white border border-gray-100 rounded-r-xl p-5">
+                        <div class="text-xs font-600 text-red-600 mb-2">Skipping CLAUDE.md</div>
+                        <p class="text-xs text-gray-600 leading-relaxed">The difference between Claude knowing your
+                            project and guessing.</p>
+                    </div>
+                    <div class="prompt-bad bg-white border border-gray-100 rounded-r-xl p-5">
+                        <div class="text-xs font-600 text-red-600 mb-2">Mega-prompts</div>
+                        <p class="text-xs text-gray-600 leading-relaxed">Break features into steps, review each one. Big
+                            prompts produce tangled output.</p>
+                    </div>
+                    <div class="prompt-bad bg-white border border-gray-100 rounded-r-xl p-5">
+                        <div class="text-xs font-600 text-red-600 mb-2">Blind acceptance</div>
+                        <p class="text-xs text-gray-600 leading-relaxed">Always read the diffs. I caught over-engineered
+                            solutions and missing dark mode classes.</p>
+                    </div>
+                    <div class="prompt-bad bg-white border border-gray-100 rounded-r-xl p-5">
+                        <div class="text-xs font-600 text-red-600 mb-2">Stale documentation</div>
+                        <p class="text-xs text-gray-600 leading-relaxed">Update CLAUDE.md as the project evolves.
+                            Compounding context is the superpower.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Batch work callout -->
+            <div class="bg-brand-50 border border-brand-200 rounded-2xl p-6 max-w-2xl">
+                <div class="flex items-start gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center flex-shrink-0">
+                        <i data-lucide="layers" class="w-5 h-5 text-brand-600"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-700 text-brand-800 mb-1">Batch work is where AI really earns its keep</h4>
+                        <p class="text-sm text-brand-700">"Add SEO metadata to all 27 blog posts — meta tags, Open
+                            Graph, JSON-LD structured data." Claude processed all 27 posts in one go. Doing that
+                            manually would have been brutal.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ GIT SAFETY NET ============ -->
+        <section class="py-16 md:py-20 border-t border-gray-100">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl bg-gray-200 flex items-center justify-center">
+                    <i data-lucide="shield" class="w-5 h-5 text-gray-600"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-800 tracking-tight">Your Safety Net: Git</h2>
+            </div>
+            <p class="text-gray-500 mb-8 max-w-2xl">Commit after every successful change. This is non-negotiable.</p>
+
+            <div class="code-block max-w-2xl">
+                <div class="code-header">
+                    <span class="code-dot bg-red-400"></span>
+                    <span class="code-dot bg-yellow-400"></span>
+                    <span class="code-dot bg-green-400"></span>
+                    <span class="text-gray-400 text-xs font-mono ml-2">git commands</span>
+                </div>
+                <pre
+                    class="text-gray-300"><code><span class="text-green-400">git diff</span>                    <span class="text-gray-500"># See what changed</span>
+<span class="text-green-400">git checkout .</span>              <span class="text-gray-500"># Undo uncommitted changes</span>
+<span class="text-green-400">git reset --soft HEAD~1</span>     <span class="text-gray-500"># Undo last commit, keep changes</span>
+<span class="text-green-400">git reset --hard abc1234</span>    <span class="text-gray-500"># Roll back to a specific commit</span></code></pre>
+            </div>
+        </section>
+
+        <!-- ============ WHAT I SHIPPED ============ -->
+        <section class="py-16 md:py-20 border-t border-gray-100 print-break">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#6ee7b7">
+                    <i data-lucide="package" class="w-5 h-5" style="color:#047857"></i>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-800 tracking-tight">What I Shipped</h2>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 mb-10">
+                <div class="bg-white border border-gray-100 rounded-xl p-5 text-center habit-card">
+                    <i data-lucide="file-text" class="w-6 h-6 text-brand-500 mx-auto mb-2"></i>
+                    <div class="font-700 text-lg">27-Post Blog</div>
+                    <div class="text-xs text-gray-500 mt-1">Category filtering &amp; deep linking</div>
+                </div>
+                <div class="bg-white border border-gray-100 rounded-xl p-5 text-center habit-card">
+                    <i data-lucide="award" class="w-6 h-6 text-brand-500 mx-auto mb-2"></i>
+                    <div class="font-700 text-lg">Certifications Page</div>
+                    <div class="text-xs text-gray-500 mt-1">Hero grid &amp; lightbox viewer</div>
+                </div>
+                <div class="bg-white border border-gray-100 rounded-xl p-5 text-center habit-card">
+                    <i data-lucide="moon" class="w-6 h-6 text-brand-500 mx-auto mb-2"></i>
+                    <div class="font-700 text-lg">Dark Mode</div>
+                    <div class="text-xs text-gray-500 mt-1">Full site dark theme</div>
+                </div>
+                <div class="bg-white border border-gray-100 rounded-xl p-5 text-center habit-card">
+                    <i data-lucide="search" class="w-6 h-6 text-brand-500 mx-auto mb-2"></i>
+                    <div class="font-700 text-lg">Full SEO</div>
+                    <div class="text-xs text-gray-500 mt-1">Meta, Open Graph &amp; JSON-LD</div>
+                </div>
+            </div>
+
+            <div class="bg-surface-100 border border-gray-200 rounded-2xl p-6 max-w-2xl">
+                <h4 class="font-700 mb-3 text-gray-700">Tech Stack</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span
+                        class="bg-white border border-gray-200 text-gray-700 text-xs font-semibold px-3 py-1.5 rounded-lg">HTML</span>
+                    <span
+                        class="bg-white border border-gray-200 text-gray-700 text-xs font-semibold px-3 py-1.5 rounded-lg">Tailwind
+                        CSS (CDN)</span>
+                    <span
+                        class="bg-white border border-gray-200 text-gray-700 text-xs font-semibold px-3 py-1.5 rounded-lg">Vanilla
+                        JavaScript</span>
+                    <span
+                        class="bg-white border border-gray-200 text-gray-700 text-xs font-semibold px-3 py-1.5 rounded-lg">GitHub
+                        Pages</span>
+                </div>
+                <p class="text-sm text-gray-500 mt-3">No frameworks. No build tools. No database. Loads fast, works
+                    everywhere, costs nothing to host.</p>
+            </div>
+        </section>
+
+        <!-- ============ THE REAL TAKEAWAY ============ -->
+        <section class="py-16 md:py-20 border-t border-gray-100 print-break">
+            <div>
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:#fecdd3">
+                        <i data-lucide="lightbulb" class="w-5 h-5" style="color:#be123c"></i>
+                    </div>
+                    <h2 class="text-2xl md:text-3xl font-800 tracking-tight">The Real Takeaway</h2>
+                </div>
+
+                <blockquote
+                    class="text-xl md:text-2xl font-700 leading-snug text-gray-800 mb-8 pl-6 border-l-4 border-brand-400">
+                    The skill of working with AI isn't prompting — it's project management.
+                </blockquote>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <p class="text-gray-600 leading-relaxed text-lg">Claude Code didn't replace my judgment. It
+                        amplified my output. Architecture, UX, what to build and what to skip — those decisions were
+                        mine. Claude handled the implementation, the boilerplate, and the repetitive work.</p>
+
+                    <div class="bg-gradient-to-br from-brand-50 to-purple-50 border border-brand-200 rounded-2xl p-6">
+                        <h4 class="font-700 text-brand-800 mb-4">Developers who get the most out of Claude Code:</h4>
+                        <div class="space-y-3">
+                            <div class="checklist-item">
+                                <div class="check-icon"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                                <span class="text-sm text-gray-700">Define boundaries and constraints upfront</span>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="check-icon"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                                <span class="text-sm text-gray-700">Break work into small, reviewable chunks</span>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="check-icon"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                                <span class="text-sm text-gray-700">Maintain living documentation</span>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="check-icon"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                                <span class="text-sm text-gray-700">Review critically instead of accepting
+                                    blindly</span>
+                            </div>
+                            <div class="checklist-item">
+                                <div class="check-icon"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                                <span class="text-sm text-gray-700">Commit religiously</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-gray-600 leading-relaxed">Start with a <code
+                        class="bg-gray-100 px-1.5 py-0.5 rounded text-xs font-mono">CLAUDE.md</code> file. Define your
+                    workflow. Iterate in small steps. You'll be surprised how far you get.</p>
+            </div>
+        </section>
+
+        <!-- ============ FOOTER ============ -->
+        <footer class="py-12 border-t border-gray-100 text-center text-sm text-gray-500">
+            <div class="flex justify-center gap-4 mb-4">
+                <a href="https://github.com/kishoretech/portfolio_site"
+                    class="flex items-center gap-1.5 text-gray-500 hover:text-brand-600 transition-colors">
+                    <i data-lucide="github" class="w-4 h-4"></i> Source Code
+                </a>
+                <a href="https://www.linkedin.com/in/kishoretech"
+                    class="flex items-center gap-1.5 text-gray-500 hover:text-brand-600 transition-colors">
+                    <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+                </a>
+                <a href="https://www.kishoretech.com"
+                    class="flex items-center gap-1.5 text-gray-500 hover:text-brand-600 transition-colors">
+                    <i data-lucide="globe" class="w-4 h-4"></i> kishoretech.com
+                </a>
+            </div>
+            <p>By Sriramkishore Naraharisetti · Feb 2026</p>
+        </footer>
+    </main>
+
+    <script>
+        // ========== DATA ==========
+        const habits = [
+            {
+                num: 1,
+                title: "Start with a Clear Brief",
+                icon: "file-text",
+                color: "blue",
+                summary: "Give Claude the full picture — what you want and what you don't.",
+                detail: `<p class="mb-3">Before any code, I gave Claude constraints that mattered more than features. "No build process" and "vanilla JS only" prevented Claude from suggesting React or npm packages.</p>
+            <div class="bg-gray-50 rounded-xl p-4 font-mono text-xs text-gray-600 leading-relaxed">
+                <div class="text-gray-400 mb-1"># My initial brief:</div>
+                - Static, hosted on GitHub Pages<br>
+                - Tailwind CSS via CDN, vanilla JS, no frameworks<br>
+                - No build tools — must work without npm/webpack<br>
+                - Landing page, blog with categories, certifications page<br>
+                - Dark mode, mobile-responsive, privacy-friendly analytics
+            </div>
+            <p class="mt-3 text-brand-700 font-semibold text-xs">💡 Tell the AI what's off the table.</p>`
+            },
+            {
+                num: 2,
+                title: "Use a CLAUDE.md File",
+                icon: "bookmark",
+                color: "purple",
+                summary: "The single most impactful decision. Persistent project context for every conversation.",
+                detail: `<p class="mb-3">A <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">CLAUDE.md</code> file at your project root acts as persistent instructions that Claude reads at the start of every conversation. Mine grew to 319 lines covering architecture, naming conventions, and the development workflow.</p>
+            <p class="mb-3">Update it as your project evolves. After adding the blog system, I documented the creation workflow. After adding analytics, I documented the integration pattern. This compounding context is why Claude gets <strong>better</strong> the longer you work on a project.</p>
+            <p class="text-brand-700 font-semibold text-xs">💡 This is the game changer — don't skip it.</p>`
+            },
+            {
+                num: 3,
+                title: "Iterate in Small Bites",
+                icon: "scissors",
+                color: "green",
+                summary: "Each step should be reviewable, testable, and reversible.",
+                detail: `<p class="mb-3">Early mistake: asking for too much at once. The result was always a tangled mess. What works is breaking things down:</p>
+            <div class="space-y-2 text-xs font-mono bg-gray-50 rounded-xl p-4 text-gray-600">
+                <div><span class="text-green-600 font-bold">Step 1:</span> "Create the HTML layout — no JS yet."</div>
+                <div><span class="text-green-600 font-bold">Step 2:</span> "Now add the blogConfig JavaScript object."</div>
+                <div><span class="text-green-600 font-bold">Step 3:</span> "Add filtering logic."</div>
+            </div>`
+            },
+            {
+                num: 4,
+                title: "Actually Read the Diffs",
+                icon: "eye",
+                color: "amber",
+                summary: "Claude shows changes before applying them. Read them.",
+                detail: `<p>I caught over-engineered solutions, missing dark mode classes, and hardcoded values that should have used the config — all before they hit my codebase. The diff review is where your developer judgment matters most.</p>`
+            },
+            {
+                num: 5,
+                title: "Commit After Every Change",
+                icon: "git-commit-horizontal",
+                color: "rose",
+                summary: "Claude handles git directly. Every commit is a safe rollback point.",
+                detail: `<p class="mb-3">Just tell Claude: <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">"Commit the blog filtering changes with a descriptive message."</code></p>
+            <p>My commit log became a development diary, and every commit was a safe rollback point. This is non-negotiable.</p>`
+            },
+            {
+                num: 6,
+                title: "One Feature, One Conversation",
+                icon: "message-circle",
+                color: "teal",
+                summary: "Same feature, same conversation. New feature? Start fresh.",
+                detail: `<p>Claude keeps context within a conversation. For a new feature, start a new conversation — your <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">CLAUDE.md</code> carries the project knowledge forward automatically.</p>`
+            },
+            {
+                num: 7,
+                title: "Know When to Reset",
+                icon: "refresh-cw",
+                color: "orange",
+                summary: "Conversation going sideways? Start over. CLAUDE.md means you lose nothing.",
+                detail: `<p>If Claude gets fixated on a bad approach, don't fight it. Start a new conversation. Your <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">CLAUDE.md</code> ensures nothing important is lost.</p>`
+            }
+        ];
+
+        const phases = [
+            {
+                num: 1,
+                name: "PLAN",
+                icon: "clipboard-list",
+                color: "#4263eb",
+                bg: "#dbe4ff",
+                summary: "Gather requirements, ask questions",
+                detail: `<p>Claude asks specific architectural questions — not vague "what do you want?" but the exact decisions you need to make. After you answer, Claude summarizes back before proceeding, catching misunderstandings before they become bugs.</p>`
+            },
+            {
+                num: 2,
+                name: "SPEC",
+                icon: "file-check",
+                color: "#7c3aed",
+                bg: "#ede9fe",
+                summary: "Write specs/[feature].md",
+                detail: `<p>Claude creates a detailed specification document in <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">specs/[feature].md</code> that captures requirements, acceptance criteria, and architectural decisions. This is where problems are cheapest to fix.</p>`
+            },
+            {
+                num: 3,
+                name: "TODO",
+                icon: "list-todo",
+                color: "#0891b2",
+                bg: "#cffafe",
+                summary: "Break into tasks in todo file",
+                detail: `<p>The spec is broken down into concrete, checkable tasks in <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">specs/[feature]-todo.md</code>. Claude updates checkboxes in real time, so you can pause, come back tomorrow, and know exactly what's done and what's left.</p>`
+            },
+            {
+                num: 4,
+                name: "IMPLEMENT",
+                icon: "code-2",
+                color: "#059669",
+                bg: "#d1fae5",
+                summary: "Build incrementally, check off tasks",
+                detail: `<p>Claude implements each task from the TODO list, checking off items as they're completed. Builds are incremental and reviewable — you approve each step before moving to the next.</p>`
+            },
+            {
+                num: 5,
+                name: "TEST",
+                icon: "test-tube-2",
+                color: "#d97706",
+                bg: "#fef3c7",
+                summary: "Verify against acceptance criteria",
+                detail: `<p>Claude verifies each acceptance criterion from the spec. Any failures are caught and fixed before the feature is considered complete.</p>`
+            },
+            {
+                num: 6,
+                name: "CONFIRM",
+                icon: "check-circle-2",
+                color: "#dc2626",
+                bg: "#fee2e2",
+                summary: "Summarize what was built",
+                detail: `<p>Claude provides a summary of everything that was built, any decisions that were made during implementation, and confirms all acceptance criteria are met. The spec and TODO files serve as permanent documentation.</p>`
+            }
+        ];
+
+        // ========== RENDER HABITS ==========
+        const habitsContainer = document.getElementById('habits-container');
+        const colorMap = {
+            blue: { bg: 'bg-blue-100', border: 'border-blue-300', icon: 'text-blue-700', num: 'bg-blue-200 text-blue-800' },
+            purple: { bg: 'bg-purple-100', border: 'border-purple-300', icon: 'text-purple-700', num: 'bg-purple-200 text-purple-800' },
+            green: { bg: 'bg-green-100', border: 'border-green-300', icon: 'text-green-700', num: 'bg-green-200 text-green-800' },
+            amber: { bg: 'bg-yellow-100', border: 'border-yellow-300', icon: 'text-yellow-700', num: 'bg-yellow-200 text-yellow-800' },
+            rose: { bg: 'bg-red-100', border: 'border-red-300', icon: 'text-red-600', num: 'bg-red-200 text-red-800' },
+            teal: { bg: 'bg-green-100', border: 'border-green-300', icon: 'text-green-700', num: 'bg-green-300 text-green-900' },
+            orange: { bg: 'bg-yellow-100', border: 'border-yellow-300', icon: 'text-yellow-700', num: 'bg-yellow-300 text-yellow-900' },
+        };
+
+        habits.forEach(h => {
+            const c = colorMap[h.color];
+            const card = document.createElement('div');
+            card.className = 'habit-card bg-white border border-gray-100 rounded-2xl overflow-hidden cursor-pointer';
+            card.innerHTML = `
+            <div class="p-5 md:p-6 flex items-start gap-4" onclick="toggleHabit(this)">
+                <div class="w-10 h-10 rounded-xl ${c.num} flex items-center justify-center flex-shrink-0 text-sm font-800">${h.num}</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-1">
+                        <i data-lucide="${h.icon}" class="w-4 h-4 ${c.icon}"></i>
+                        <h3 class="font-700 text-base">${h.title}</h3>
+                    </div>
+                    <p class="text-sm text-gray-500">${h.summary}</p>
+                </div>
+                <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 flex-shrink-0 mt-1 transition-transform duration-300 no-print expand-chevron"></i>
+            </div>
+            <div class="expandable-content px-5 md:px-6 pb-6">
+                <div class="pl-14 text-sm text-gray-600 leading-relaxed">${h.detail}</div>
+            </div>
+        `;
+            habitsContainer.appendChild(card);
+        });
+
+        function toggleHabit(el) {
+            const content = el.nextElementSibling;
+            const chevron = el.querySelector('.expand-chevron');
+            const isOpen = content.classList.contains('open');
+            content.classList.toggle('open');
+            chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+        }
+
+        // ========== RENDER PHASES ==========
+        const phasesContainer = document.getElementById('phase-cards');
+        phases.forEach(p => {
+            const card = document.createElement('div');
+            card.className = 'phase-card bg-white border border-gray-100 rounded-2xl p-5 text-center cursor-pointer relative';
+            card.style.borderTopColor = p.color;
+            card.style.borderTopWidth = '3px';
+            card.innerHTML = `
+            <div class="w-10 h-10 rounded-full mx-auto mb-3 flex items-center justify-center" style="background: ${p.bg}">
+                <i data-lucide="${p.icon}" class="w-5 h-5" style="color: ${p.color}"></i>
+            </div>
+            <div class="text-xs font-800 uppercase tracking-wider mb-1" style="color: ${p.color}">Phase ${p.num}</div>
+            <div class="font-700 text-sm mb-1">${p.name}</div>
+            <div class="text-xs text-gray-500">${p.summary}</div>
+        `;
+            card.onclick = () => showPhaseDetail(p);
+            phasesContainer.appendChild(card);
+        });
+
+        function showPhaseDetail(phase) {
+            const detail = document.getElementById('phase-detail');
+            document.getElementById('phase-detail-title').innerHTML = `<span style="color: ${phase.color}">Phase ${phase.num}:</span> ${phase.name}`;
+            document.getElementById('phase-detail-body').innerHTML = phase.detail;
+            detail.classList.remove('hidden');
+            detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+        }
+
+        function closePhaseDetail() {
+            document.getElementById('phase-detail').classList.add('hidden');
+        }
+
+        // ========== INIT ICONS ==========
+        function initIcons() {
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            } else {
+                setTimeout(initIcons, 150);
+            }
+        }
+        // Try immediately, on DOMContentLoaded, and on window load
+        initIcons();
+        document.addEventListener('DOMContentLoaded', initIcons);
+        window.addEventListener('load', initIcons);
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

@@ -25,6 +25,7 @@ This is a static personal portfolio website for Sriramkishore Naraharisetti. The
   - `ml-algorithms/` - 10 posts about ML algorithm deep-dives
   - `ml-fundamentals/` - 7 posts about machine learning basics
   - `data-optimization-for-ml/` - 9 posts about data quality, labeling, and optimization for ML
+  - `agentic-ai/` - 2 posts about agentic AI coding workflows and AI agent security
 - **Styling**: Tailwind CSS loaded via CDN (with forms, typography, aspect-ratio, line-clamp plugins)
 - **Icons**: Font Awesome 5.15.3 via CDN
 - **Dark mode**: Implemented using Tailwind's `dark:` class variants with manual toggle (adds/removes `dark` class on `<html>`)
@@ -57,8 +58,10 @@ portfolio_site/
 │   │   └── [post].html     # ML algorithm deep-dive posts
 │   ├── ml-fundamentals/
 │   │   └── [post].html     # Machine learning basics posts
-│   └── data-optimization-for-ml/
-│       └── [post].html     # Data quality & labeling optimization posts
+│   ├── data-optimization-for-ml/
+│   │   └── [post].html     # Data quality & labeling optimization posts
+│   └── agentic-ai/
+│       └── [post].html     # Agentic AI coding & security posts
 └── specs/                  # Feature specifications
 ```
 
@@ -107,6 +110,7 @@ To add a new blog post:
 - `ml-algorithms` - ML Algorithms
 - `ml-fundamentals` - ML Fundamentals
 - `data-optimization` - Data Optimization for ML
+- `agentic-ai` - Agentic AI
 
 ## SEO & GEO Metadata
 
