@@ -179,6 +179,21 @@
     })();
     </script>
 
+    <!-- Configure GoatCounter to track article-specific path -->
+    <script>
+    (function() {
+        var urlParams = new URLSearchParams(window.location.search);
+        var article = urlParams.get('article');
+        if (article) {
+            var decoded = decodeURIComponent(article);
+            var sanitized = decoded.replace(/[^a-zA-Z0-9_\-\/ ]/g, '');
+            if (sanitized) {
+                window.goatcounter = window.goatcounter || {};
+                window.goatcounter.path = '/personal_blog/' + sanitized + '.html';
+            }
+        }
+    })();
+    </script>
     <!-- GoatCounter Analytics -->
     <script data-goatcounter="https://kishoretech.goatcounter.com/count"
             async src="//gc.zgo.at/count.js"></script>
