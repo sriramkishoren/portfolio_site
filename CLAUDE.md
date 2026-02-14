@@ -183,7 +183,7 @@ Blog posts are displayed through a viewer page (`post.html`) that provides consi
 The blog index (`personal_blog/index.html`) includes:
 - **Sidebar filtering**: Desktop shows category buttons; mobile shows horizontal pills
 - **Post cards**: Display title, excerpt, date, and category badge
-- **Custom ordering**: Posts and categories support `order` field for manual sorting
+- **Hierarchical ordering**: Posts are sorted by category order first, then by post order within each category
 - **Deep linking**: URL hash (`#category=ml-fundamentals`) preserves filter state
 - **Dark mode**: Full support with toggle button
 
@@ -215,17 +215,19 @@ Individual blog posts (33 files) have the tracking script but no visible counter
 
 ## Display Order Configuration
 
-Both posts and categories support custom display ordering via an optional `order` field.
+Posts are displayed using a **two-level hierarchical sort**:
+
+1. **Primary sort (Category Grouping):** Posts are grouped by their parent category's `order` property. Categories with lower `order` values appear first.
+2. **Secondary sort (Within Category):** Within each category, posts are sorted by their individual `order` property. Lower number = appears first.
 
 **Post Ordering:**
+- Each category's posts are numbered independently starting from 1 (e.g., 1, 2, 3...)
 - Add `order` field to posts in `blogConfig.posts`
-- Lower number = higher priority (appears first)
-- Posts with `order` appear before posts without `order`
-- Posts without `order` fall back to date sorting (newest first)
+- Lower number = higher priority within the category
 
 **Category Ordering:**
 - Add `order` field to categories in `blogConfig.categories`
-- Lower number = higher priority (appears first in sidebar/pills)
+- Lower number = higher priority (appears first in sidebar/pills and in post listing)
 - "All Posts" button always appears first, before any category
 
 **Example:**
@@ -239,11 +241,12 @@ categories: [
     { id: "ai-pm", name: "AI Project Management", ..., order: 4 }
 ]
 
-// Posts
+// Posts (order is per-category, starting from 1)
 posts: [
-    { id: "intro_post", title: "Start Here", ..., order: 1 },  // Always first
-    { id: "featured", title: "Featured Post", ..., order: 2 }, // Second
-    { id: "regular", title: "Regular Post", ... }              // Falls back to date sorting
+    { id: "post-a", title: "First in AI Intro", category: "ai-intro", ..., order: 1 },
+    { id: "post-b", title: "Second in AI Intro", category: "ai-intro", ..., order: 2 },
+    { id: "post-c", title: "First in ML Fundamentals", category: "ml-fundamentals", ..., order: 1 },
+    { id: "post-d", title: "Second in ML Fundamentals", category: "ml-fundamentals", ..., order: 2 }
 ]
 ```
 
