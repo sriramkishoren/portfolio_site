@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Knowledge Summary: Key Concepts for Engineers | KishoreTech</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="AI Knowledge Summary: Key Concepts for Engineers">
+    <meta name="description" content="Compact cheat-sheet of essential AI concepts for senior engineers and architects. Covers data precision, model architecture, hardware selection, systems optimization, and strategic leadership decisions.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Optimizing AI Resources">
+    <meta name="tags" content="AI Summary, AI Cheat Sheet, LSTM, Transformers, Processing Units, Data Quality, AI Strategy, AI Architecture, Senior Engineer Guide">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Concise summary of key AI concepts for senior engineers covering data and precision (well-labeled data, data poisoning), model architecture (LSTMs, Transformers, catastrophic forgetting), hardware (processing unit comparison and costs), systems (query expressiveness, performance optimization), and strategy (leadership decisions for AI resource allocation).">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/quick-summary">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="AI Knowledge Summary: Key Concepts for Engineers">
+    <meta property="og:description" content="Essential AI concepts cheat-sheet for senior engineers covering data, models, hardware, systems, and strategy.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/quick-summary">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-02-15">
+    <meta property="article:section" content="Optimizing AI Resources">
+    <meta property="article:tag" content="AI Summary">
+    <meta property="article:tag" content="AI Architecture">
+    <meta property="article:tag" content="AI Strategy">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "AI Knowledge Summary: Key Concepts for Engineers",
+        "description": "Compact cheat-sheet of essential AI concepts for senior engineers and architects. Covers data precision, model architecture, hardware selection, systems optimization, and strategic leadership decisions.",
+        "datePublished": "2025-02-15",
+        "dateModified": "2025-02-15",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/quick-summary"
+        },
+        "keywords": ["AI Summary", "AI Cheat Sheet", "LSTM", "Transformers", "Processing Units", "Data Quality", "AI Strategy", "AI Architecture", "Senior Engineer Guide"],
+        "articleSection": "Optimizing AI Resources",
+        "about": [
+            {"@type": "Thing", "name": "AI Knowledge Summary"},
+            {"@type": "Thing", "name": "AI Architecture"}
+        ]
+    }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@400;600;800&display=swap');
+
+        :root {
+            --bg-color: #FAFAFA;
+            --card-bg: #FFFFFF;
+            --text-main: #1F1F1F;
+            --text-light: #666666;
+            --border-light: #E0E0E0;
+
+            /* Pastel Palettes (Primary, Light, Mid) */
+            --blue-1: #42A5F5;
+            --blue-2: #E3F2FD;
+            --blue-3: #90CAF9;
+            --purple-1: #7E57C2;
+            --purple-2: #EDE7F6;
+            --purple-3: #B39DDB;
+            --orange-1: #FFA726;
+            --orange-2: #FFF3E0;
+            --orange-3: #FFCC80;
+            --green-1: #66BB6A;
+            --green-2: #E8F5E9;
+            --green-3: #A5D6A7;
+            --red-1: #EF5350;
+            --red-2: #FFEBEE;
+            --red-3: #EF9A9A;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .container {
+            width: 900px;
+            background: white;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            border-radius: 24px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            padding: 60px 50px 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        h1 {
+            font-family: 'Sora', sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Sections */
+        .section {
+            padding: 50px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .section-title {
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        /* Card Styling */
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border-light);
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .card-top-stripe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+        }
+
+        .card h3 {
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 8px;
+            margin-top: 4px;
+        }
+
+        .card p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-light);
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        /* Specific Color Applications */
+        /* Data - Blue */
+        .section.blue .card-top-stripe {
+            background: var(--blue-1);
+        }
+
+        .section.blue .tag {
+            background: var(--blue-2);
+            color: var(--blue-1);
+        }
+
+        /* Architecture - Purple */
+        .section.purple .card-top-stripe {
+            background: var(--purple-1);
+        }
+
+        .section.purple .tag {
+            background: var(--purple-2);
+            color: var(--purple-1);
+        }
+
+        /* Hardware - Orange */
+        .section.orange .card-top-stripe {
+            background: var(--orange-1);
+        }
+
+        .section.orange .tag {
+            background: var(--orange-2);
+            color: var(--orange-1);
+        }
+
+        /* Systems - Green */
+        .section.green .card-top-stripe {
+            background: var(--green-1);
+        }
+
+        .section.green .tag {
+            background: var(--green-2);
+            color: var(--green-1);
+        }
+
+        /* Strategy - Red */
+        .section.red .card-top-stripe {
+            background: var(--red-1);
+        }
+
+        .section.red .tag {
+            background: var(--red-2);
+            color: var(--red-1);
+        }
+
+
+        /* Visual Components */
+        .chart-container {
+            margin-top: 15px;
+            background: #F5F5F5;
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .bar-group {
+            margin-bottom: 8px;
+        }
+
+        .bar-label {
+            font-size: 10px;
+            margin-bottom: 4px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bar-bg {
+            height: 8px;
+            background: #E0E0E0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: 4px;
+        }
+
+        /* Diagram CSS */
+        .diagram-box {
+            display: flex;
+            gap: 5px;
+            margin-top: 15px;
+            align-items: center;
+        }
+
+        .node {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background: var(--bg-color);
+            border: 2px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .arrow {
+            font-size: 12px;
+            color: var(--text-light);
+        }
+
+        .parallel-container {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .parallel-group {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-light);
+            background: #FAFAFA;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div style="font-size: 40px; margin-bottom: 10px;">🧠</div>
+            <h1>AI Knowledge Summary</h1>
+            <p class="subtitle">Key concepts for Senior Engineers & Architects</p>
+        </header>
+
+        <div class="section blue">
+            <div class="section-title">📊 Data & Precision</div>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-top-stripe"></div>
+                    <span class="tag">Foundation</span>
+                    <h3>Well-Labeled Data</h3>
+                    <p>The #1 driver of model precision. Noise in labels directly causes False Positives, regardless of
+                        algorithm complexity.</p>
+                </div>
+                <div class="card">
+                    <div class="card-top-stripe"></div>
+                    <span class="tag">Security</span>
+                    <h3>Data Poisoning</h3>
+                    <p>Attacks that corrupt training data to manipulate model behavior. Garbage In = Danger Out.</p>
+                    <div class="chart-container">
+                        <div class="bar-group">
+                            <div class="bar-label"><span>Clean Data</span><span>98% Acc</span></div>
+                            <div class="bar-bg">
+                                <div class="bar-fill" style="width: 98%; background: var(--blue-1);"></div>
+                            </div>
+                        </div>
+                        <div class="bar-group" style="margin-bottom:0;">
+                            <div class="bar-label"><span>Poisoned Data</span><span>45% Acc</span></div>
+                            <div class="bar-bg">
+                                <div class="bar-fill" style="width: 45%; background: var(--blue-3);"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section purple">
+            <div class="section-title">🏗️ Model Architecture</div>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-top-stripe"></div>
+                    <span class="tag">RNN Upgrade</span>
+                    <h3>LSTMs & Gradients</h3>
+                    <p>Solved the "Vanishing Gradient" problem using Cell States and Gates to retain long-term memory.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-top-stripe"></div>
+                    <span class="tag">Parallelism</span>
+                    <h3>Transformers</h3>
+                    <p>Replaced sequential processing with Self-Attention, allowing massive parallel computation of
+                        entire sequences.</p>
+                </div>
+                <div class="card" style="grid-column: span 2;">
+                    <div class="card-top-stripe"></div>
+                    <span class="tag">Lifelong Learning</span>
+                    <h3>Catastrophic Forgetting</h3>
+                    <p>When new learning overwrites old weights. Mitigated by <strong>Regularization</strong> (EWC) and
+                        <strong>Memory Consolidation</strong> (Replay).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section orange">
+            <div class="section-title">⚡ Hardware & Scaling</div>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-top-stripe"></div>
+                    <span class="tag">Cost Driver</span>
+                    <h3>Cloud GPUs</h3>
+                    <p>The biggest cost in scaling AI. GPUs are essential for their ability to handle massive parallel
+                        math operations.</p>
+                </div>
+                <div class="card">
+                    <div class="card-top-stripe"></div>
+                    <span class="tag">Constraint</span>
+                    <h3>Data Dependency</h3>
+                    <p>The deciding factor for algorithms. If Task B needs Task A's result, you <em>must</em> use
+                        sequential processing.</p>
+                    <div class="diagram-box" style="justify-content: space-around;">
+                        <div style="text-align:center;">
+                            <div style="font-size:10px;color:#999;margin-bottom:4px;">Sequential (CPU)</div>
+                            <div style="display:flex;align-items:center;gap:2px;">
+                                <div class="node">A</div>
+                                <div class="arrow">→</div>
+                                <div class="node">B</div>
+                                <div class="arrow">→</div>
+                                <div class="node">C</div>
+                            </div>
+                        </div>
+                        <div style="text-align:center;">
+                            <div style="font-size:10px;color:#999;margin-bottom:4px;">Parallel (GPU)</div>
+                            <div class="parallel-container">
+                                <div class="node" style="border-color:var(--orange-1); color:var(--orange-1);">A</div>
+                                <div class="node" style="border-color:var(--orange-1); color:var(--orange-1);">B</div>
+                                <div class="node" style="border-color:var(--orange-1); color:var(--orange-1);">C</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section green">
+            <div class="section-title">💾 Systems & Databases</div>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-top-stripe"></div>
+                    <span class="tag">Structure</span>
+                    <h3>Foreign Keys</h3>
+                    <p>A column linking two tables. Enforces <strong>Referential Integrity</strong> (no broken links or
+                        orphan records).</p>
+                </div>
+                <div class="card">
+                    <div class="card-top-stripe"></div>
+                    <span class="tag">Concurrency</span>
+                    <h3>Multi-threading</h3>
+                    <p>Executing multiple operations at the same time. Vital for responsiveness in high-scale systems
+                        (like MQTT brokers).</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section red">
+            <div class="section-title">🚀 Strategic Optimization</div>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-top-stripe"></div>
+                    <span class="tag">Efficiency</span>
+                    <h3>Query Expressiveness</h3>
+                    <p>Improves <strong>Data Retrieval Efficiency</strong>. Vector search understands intent, fetching
+                        only relevant context for RAG.</p>
+                </div>
+                <div class="card">
+                    <div class="card-top-stripe"></div>
+                    <span class="tag">OpEx Control</span>
+                    <h3>Energy Efficiency</h3>
+                    <p>Crucial for lowering compute costs. Efficient models = less electricity = lower cloud bills and
+                        hardware stress.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            Generated for Sriram Kishore Naraharisetti • 2026
+        </footer>
+    </div>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

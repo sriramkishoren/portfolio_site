@@ -1,6 +1,6 @@
 {
-  "generated": "2026-02-10",
-  "totalPosts": 38,
+  "generated": "2026-02-15",
+  "totalPosts": 48,
   "baseUrl": "https://www.kishoretech.com",
   "author": "Sriramkishore Naraharisetti",
   "categories": {
@@ -10,6 +10,7 @@
     "AI Project Management": 2,
     "ML Algorithms": 10,
     "Data Optimization for ML": 9,
+    "Optimizing AI Resources": 10,
     "Agentic AI": 2
   },
   "posts": [
@@ -336,6 +337,96 @@
       "datePublished": "2025-02-08",
       "tags": ["Project Maven", "Object Detection", "Case Study", "Data Quality", "Computer Vision", "Military AI", "Annotation", "Data Pipeline"],
       "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=data-optimization-for-ml/project-maven-data-quality-case-study"
+    },
+    {
+      "file": "optimizing-ai-resources/introduction-to-ai-resources.html",
+      "title": "Introduction to AI Resources: Computational Tradeoffs & Optimization",
+      "description": "Overview of the four AI resource pillars — Memory, Compute Power, Query Expressiveness, and Performance. Learn strategic tradeoffs and optimization strategies for AI projects at scale.",
+      "category": "Optimizing AI Resources",
+      "datePublished": "2025-02-11",
+      "tags": ["AI Resources", "Computational Tradeoffs", "Memory", "Compute Power", "Query Expressiveness", "Performance Optimization", "GPU vs CPU", "AI Infrastructure"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/introduction-to-ai-resources"
+    },
+    {
+      "file": "optimizing-ai-resources/memory-in-ai-systems.html",
+      "title": "Memory in AI Systems: Architectures & Tradeoffs",
+      "description": "Deep dive into memory architectures in AI: STM, Working Memory, LTM, RNN sequential processing, LSTM gates, and Transformer self-attention. Includes strategic tradeoff analysis and industry concepts.",
+      "category": "Optimizing AI Resources",
+      "datePublished": "2025-02-11",
+      "tags": ["AI Memory", "RNN", "LSTM", "Transformers", "Self-Attention", "Working Memory", "Short-Term Memory", "Long-Term Memory", "Vanishing Gradient", "KV Cache"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/memory-in-ai-systems"
+    },
+    {
+      "file": "optimizing-ai-resources/memory-management-strategies.html",
+      "title": "AI Memory Management Strategies",
+      "description": "Strategies for optimizing, securing, and scaling memory in AI systems. Covers hardware hierarchies, data retention, anti-forgetting mechanisms, and data poisoning prevention.",
+      "category": "Optimizing AI Resources",
+      "datePublished": "2025-02-13",
+      "tags": ["Memory Management", "AI Memory", "Data Retention", "Data Poisoning", "Catastrophic Forgetting", "Regularization", "Dropout", "AI Security", "Model Weights"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/memory-management-strategies"
+    },
+    {
+      "file": "optimizing-ai-resources/memory-applications-and-challenges.html",
+      "title": "Memory Applications & Challenges in AI",
+      "description": "How memory powers AI systems from chatbots to robotics, and critical challenges including scalability, catastrophic forgetting, data poisoning, and the 80/20 data retention problem.",
+      "category": "Optimizing AI Resources",
+      "datePublished": "2025-02-15",
+      "tags": ["AI Memory Applications", "Catastrophic Forgetting", "Data Poisoning", "Scalability", "AI Chatbots", "Robotics AI", "Data Retention", "AI Security", "Memory Challenges"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/memory-applications-and-challenges"
+    },
+    {
+      "file": "optimizing-ai-resources/computational-tradeoffs-algorithms.html",
+      "title": "Computational Tradeoffs: Algorithm Selection for AI",
+      "description": "Explore computational tradeoffs in algorithm selection with interactive pathfinding simulation. Compare Dijkstra's vs A* algorithms, Big-O complexity, and real-world case studies from Google Maps to LLM training.",
+      "category": "Optimizing AI Resources",
+      "datePublished": "2025-02-13",
+      "tags": ["Algorithm Selection", "Computational Tradeoffs", "Big-O Complexity", "Dijkstra", "A Star Algorithm", "Time Complexity", "Space Complexity", "Pathfinding", "AI Optimization"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/computational-tradeoffs-algorithms"
+    },
+    {
+      "file": "optimizing-ai-resources/computational-tradeoffs-parallelization.html",
+      "title": "Computational Tradeoffs: Parallelization in AI Systems",
+      "description": "How parallelization decisions impact AI performance, cost, and scalability. Covers multi-threading, Amdahl's Law, GPU parallelism, distributed computing, and cloud GPU cost strategies.",
+      "category": "Optimizing AI Resources",
+      "datePublished": "2025-02-14",
+      "tags": ["Parallelization", "Multi-Threading", "Amdahl's Law", "GPU Computing", "Distributed Computing", "AI Scalability", "Synchronous Training", "Asynchronous Training", "Cloud GPU"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/computational-tradeoffs-parallelization"
+    },
+    {
+      "file": "optimizing-ai-resources/query-expressiveness.html",
+      "title": "Query Expressiveness in AI: Data Retrieval Strategy",
+      "description": "How data retrieval strategy impacts AI quality, accuracy, and cost. Covers procedural vs declarative queries, database selection (relational, graph, vector, NoSQL), and AI pipeline optimization.",
+      "category": "Optimizing AI Resources",
+      "datePublished": "2025-02-14",
+      "tags": ["Query Expressiveness", "Data Retrieval", "SQL", "NoSQL", "Graph Database", "Vector Database", "Procedural Queries", "Declarative Queries", "AI Data Pipeline"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/query-expressiveness"
+    },
+    {
+      "file": "optimizing-ai-resources/performance-in-ai-systems.html",
+      "title": "Performance in AI Systems: Resources & Optimization",
+      "description": "Cross-cutting analysis of AI system performance spanning hardware (CPU, GPU, TPU), memory optimization, energy consumption, software stack optimization, and talent tradeoffs.",
+      "category": "Optimizing AI Resources",
+      "datePublished": "2025-02-14",
+      "tags": ["AI Performance", "GPU", "CPU", "TPU", "Memory Optimization", "Energy Consumption", "Software Optimization", "AI Infrastructure", "Performance Tuning"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/performance-in-ai-systems"
+    },
+    {
+      "file": "optimizing-ai-resources/six-pillars-of-processing-units.html",
+      "title": "The Six Pillars of Processing Units for AI",
+      "description": "Infographic covering six processing unit types for AI workloads: CPU, GPU, TPU, DPU, NPU, and QPU. Compare architectures, strengths, and use cases for each processing technology.",
+      "category": "Optimizing AI Resources",
+      "datePublished": "2025-02-15",
+      "tags": ["Processing Units", "CPU", "GPU", "TPU", "DPU", "NPU", "QPU", "Quantum Computing", "AI Hardware", "Parallel Computing"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/six-pillars-of-processing-units"
+    },
+    {
+      "file": "optimizing-ai-resources/quick-summary.html",
+      "title": "AI Knowledge Summary: Key Concepts for Engineers",
+      "description": "Compact cheat-sheet of essential AI concepts for senior engineers and architects. Covers data precision, model architecture, hardware selection, systems optimization, and strategic leadership decisions.",
+      "category": "Optimizing AI Resources",
+      "datePublished": "2025-02-15",
+      "tags": ["AI Summary", "AI Cheat Sheet", "LSTM", "Transformers", "Processing Units", "Data Quality", "AI Strategy", "AI Architecture", "Senior Engineer Guide"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/quick-summary"
     },
     {
       "file": "agentic-ai/portfolio-site-using-claude-code.html",

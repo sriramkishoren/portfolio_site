@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Six Pillars of Processing Units for AI | KishoreTech</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="The Six Pillars of Processing Units for AI">
+    <meta name="description" content="Infographic covering six processing unit types for AI workloads: CPU, GPU, TPU, DPU, NPU, and QPU. Compare architectures, strengths, and use cases for each processing technology.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Optimizing AI Resources">
+    <meta name="tags" content="Processing Units, CPU, GPU, TPU, DPU, NPU, QPU, Quantum Computing, AI Hardware, Parallel Computing">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Visual guide to six types of processing units used in AI: CPU (general-purpose computing), GPU (parallel computing for deep learning), TPU (Google's tensor-optimized chips), DPU (data processing and networking), NPU (neural processing for edge devices), and QPU (quantum processing for future AI). Compares architectures, performance characteristics, and optimal use cases.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/six-pillars-of-processing-units">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="The Six Pillars of Processing Units for AI">
+    <meta property="og:description" content="Compare six processing unit types for AI: CPU, GPU, TPU, DPU, NPU, and QPU with architecture comparisons and use cases.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/six-pillars-of-processing-units">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-02-15">
+    <meta property="article:section" content="Optimizing AI Resources">
+    <meta property="article:tag" content="Processing Units">
+    <meta property="article:tag" content="GPU">
+    <meta property="article:tag" content="AI Hardware">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "The Six Pillars of Processing Units for AI",
+        "description": "Infographic covering six processing unit types for AI workloads: CPU, GPU, TPU, DPU, NPU, and QPU. Compare architectures, strengths, and use cases for each processing technology.",
+        "datePublished": "2025-02-15",
+        "dateModified": "2025-02-15",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/six-pillars-of-processing-units"
+        },
+        "keywords": ["Processing Units", "CPU", "GPU", "TPU", "DPU", "NPU", "QPU", "Quantum Computing", "AI Hardware", "Parallel Computing"],
+        "articleSection": "Optimizing AI Resources",
+        "about": [
+            {"@type": "Thing", "name": "Processing Units"},
+            {"@type": "Thing", "name": "AI Hardware"}
+        ]
+    }
+    </script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;1,9..40,400&family=Sora:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --cpu: #3B82F6;
+            --cpu-light: #EFF6FF;
+            --cpu-mid: #BFDBFE;
+            --gpu: #10B981;
+            --gpu-light: #ECFDF5;
+            --gpu-mid: #A7F3D0;
+            --tpu: #F59E0B;
+            --tpu-light: #FFFBEB;
+            --tpu-mid: #FDE68A;
+            --dpu: #8B5CF6;
+            --dpu-light: #F5F3FF;
+            --dpu-mid: #C4B5FD;
+            --npu: #06B6D4;
+            --npu-light: #ECFEFF;
+            --npu-mid: #A5F3FC;
+            --qpu: #EC4899;
+            --qpu-light: #FDF2F8;
+            --qpu-mid: #FBCFE8;
+            --text-dark: #1E293B;
+            --text-mid: #475569;
+            --text-light: #64748B;
+            --bg: #FAFBFC;
+            --white: #FFFFFF;
+            --border: #E2E8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .infographic {
+            width: 900px;
+            margin: 0 auto;
+            background: var(--white);
+            overflow: hidden;
+        }
+
+        /* ========== SECTION 1: HERO ========== */
+        .hero {
+            padding: 60px 50px 50px;
+            text-align: center;
+            background: linear-gradient(180deg, #F8FAFC 0%, #FFFFFF 100%);
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cpu), var(--gpu), var(--tpu), var(--dpu), var(--npu), var(--qpu));
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            background: #F1F5F9;
+            border-radius: 100px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Sora', sans-serif;
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--cpu) 0%, var(--dpu) 50%, var(--qpu) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text-mid);
+            max-width: 550px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-chips {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .hero-chip {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            position: relative;
+        }
+
+        .hero-chip::after {
+            content: attr(data-label);
+            position: absolute;
+            bottom: -20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        /* ========== SECTION 2: SIX PILLARS ========== */
+        .pillars {
+            padding: 50px 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 36px;
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: var(--text-dark);
+            color: white;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 {
+            font-family: 'Sora', sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            letter-spacing: -0.3px;
+        }
+
+        .section-header p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .pillar-card {
+            border-radius: 16px;
+            padding: 24px 22px;
+            text-align: center;
+            border: 1.5px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pillar-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .pillar-card .icon-wrap {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            font-size: 24px;
+        }
+
+        .pillar-card h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .pillar-card .full-name {
+            font-size: 11.5px;
+            color: var(--text-light);
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .pillar-card .desc {
+            font-size: 13px;
+            color: var(--text-mid);
+            line-height: 1.5;
+        }
+
+        /* Card color variants */
+        .pillar-card.cpu {
+            border-color: var(--cpu-mid);
+            background: var(--cpu-light);
+        }
+
+        .pillar-card.cpu::before {
+            background: var(--cpu);
+        }
+
+        .pillar-card.cpu .icon-wrap {
+            background: var(--cpu-mid);
+        }
+
+        .pillar-card.cpu h3 {
+            color: var(--cpu);
+        }
+
+        .pillar-card.gpu {
+            border-color: var(--gpu-mid);
+            background: var(--gpu-light);
+        }
+
+        .pillar-card.gpu::before {
+            background: var(--gpu);
+        }
+
+        .pillar-card.gpu .icon-wrap {
+            background: var(--gpu-mid);
+        }
+
+        .pillar-card.gpu h3 {
+            color: var(--gpu);
+        }
+
+        .pillar-card.tpu {
+            border-color: var(--tpu-mid);
+            background: var(--tpu-light);
+        }
+
+        .pillar-card.tpu::before {
+            background: var(--tpu);
+        }
+
+        .pillar-card.tpu .icon-wrap {
+            background: var(--tpu-mid);
+        }
+
+        .pillar-card.tpu h3 {
+            color: var(--tpu);
+        }
+
+        .pillar-card.dpu {
+            border-color: var(--dpu-mid);
+            background: var(--dpu-light);
+        }
+
+        .pillar-card.dpu::before {
+            background: var(--dpu);
+        }
+
+        .pillar-card.dpu .icon-wrap {
+            background: var(--dpu-mid);
+        }
+
+        .pillar-card.dpu h3 {
+            color: var(--dpu);
+        }
+
+        .pillar-card.npu {
+            border-color: var(--npu-mid);
+            background: var(--npu-light);
+        }
+
+        .pillar-card.npu::before {
+            background: var(--npu);
+        }
+
+        .pillar-card.npu .icon-wrap {
+            background: var(--npu-mid);
+        }
+
+        .pillar-card.npu h3 {
+            color: var(--npu);
+        }
+
+        .pillar-card.qpu {
+            border-color: var(--qpu-mid);
+            background: var(--qpu-light);
+        }
+
+        .pillar-card.qpu::before {
+            background: var(--qpu);
+        }
+
+        .pillar-card.qpu .icon-wrap {
+            background: var(--qpu-mid);
+        }
+
+        .pillar-card.qpu h3 {
+            color: var(--qpu);
+        }
+
+        /* ========== SECTION 3: ARCHITECTURE ========== */
+        .architecture {
+            padding: 50px 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .arch-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .arch-card {
+            border-radius: 16px;
+            padding: 24px 20px;
+            border: 1.5px solid var(--border);
+            position: relative;
+        }
+
+        .arch-card .arch-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .arch-card .arch-badge {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+            color: white;
+        }
+
+        .arch-card .arch-label {
+            font-size: 12px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .arch-visual {
+            height: 80px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* CPU visual: few large cores */
+        .arch-visual.cpu-vis {
+            background: var(--cpu-light);
+            gap: 8px;
+        }
+
+        .core-large {
+            width: 30px;
+            height: 30px;
+            border-radius: 6px;
+            background: var(--cpu);
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: white;
+            font-weight: 700;
+        }
+
+        .cache-block {
+            width: 60px;
+            height: 20px;
+            border-radius: 4px;
+            background: var(--cpu-mid);
+            position: absolute;
+            bottom: 8px;
+            font-size: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cpu);
+            font-weight: 600;
+        }
+
+        /* GPU visual: many small cores */
+        .arch-visual.gpu-vis {
+            background: var(--gpu-light);
+            flex-wrap: wrap;
+            gap: 3px;
+            padding: 10px;
+            align-content: center;
+        }
+
+        .core-small {
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            background: var(--gpu);
+            opacity: 0.7;
+        }
+
+        /* TPU visual: matrix */
+        .arch-visual.tpu-vis {
+            background: var(--tpu-light);
+            flex-wrap: wrap;
+            gap: 2px;
+            padding: 12px;
+            align-content: center;
+        }
+
+        .mac-unit {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            background: var(--tpu);
+            opacity: 0.6;
+        }
+
+        /* DPU visual: network nodes */
+        .arch-visual.dpu-vis {
+            background: var(--dpu-light);
+        }
+
+        /* NPU visual: neural layers */
+        .arch-visual.npu-vis {
+            background: var(--npu-light);
+            gap: 6px;
+        }
+
+        .neural-layer {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .neuron {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--npu);
+            opacity: 0.6;
+        }
+
+        /* QPU visual: qubits */
+        .arch-visual.qpu-vis {
+            background: var(--qpu-light);
+        }
+
+        .arch-specs {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .arch-spec {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11.5px;
+            color: var(--text-mid);
+        }
+
+        .arch-spec .dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ========== SECTION 4: USE CASES ========== */
+        .usecases {
+            padding: 50px 40px;
+            border-bottom: 1px solid var(--border);
+            background: #F8FAFC;
+        }
+
+        .usecase-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .usecase-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            border-radius: 14px;
+            background: var(--white);
+            border: 1.5px solid var(--border);
+        }
+
+        .usecase-row .uc-badge {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+            color: white;
+            min-width: 52px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .usecase-row .uc-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+
+        .usecase-row .uc-arrow {
+            color: var(--text-light);
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .usecase-row .uc-content h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 2px;
+        }
+
+        .usecase-row .uc-content p {
+            font-size: 12px;
+            color: var(--text-light);
+            line-height: 1.4;
+        }
+
+        /* ========== SECTION 5: PERFORMANCE ========== */
+        .performance {
+            padding: 50px 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .perf-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+
+        .perf-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .perf-label {
+            width: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .perf-bar-wrap {
+            flex: 1;
+            height: 36px;
+            background: #F1F5F9;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .perf-bar {
+            height: 100%;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding-left: 14px;
+            font-size: 11px;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
+        .perf-traits {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+        }
+
+        .perf-trait {
+            text-align: center;
+            padding: 16px 8px;
+            border-radius: 12px;
+            border: 1.5px solid var(--border);
+        }
+
+        .perf-trait .trait-name {
+            font-size: 12px;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+            margin-bottom: 8px;
+        }
+
+        .perf-trait .trait-items {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .trait-tag {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        /* ========== SECTION 6: CHOOSING THE RIGHT TOOL ========== */
+        .chooser {
+            padding: 50px 40px;
+            border-bottom: 1px solid var(--border);
+            background: #F8FAFC;
+        }
+
+        .chooser-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1.5px solid var(--border);
+            background: var(--white);
+        }
+
+        .chooser-table th {
+            padding: 14px 12px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-light);
+            background: #F8FAFC;
+            border-bottom: 1.5px solid var(--border);
+            text-align: left;
+        }
+
+        .chooser-table th:first-child {
+            width: 120px;
+        }
+
+        .chooser-table td {
+            padding: 12px;
+            font-size: 12px;
+            color: var(--text-mid);
+            border-bottom: 1px solid #F1F5F9;
+            vertical-align: middle;
+        }
+
+        .chooser-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .chooser-table td:first-child {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 12px;
+        }
+
+        .table-chip {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 10.5px;
+            font-weight: 600;
+        }
+
+        /* ========== SECTION 7: TIMELINE ========== */
+        .timeline {
+            padding: 50px 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .timeline-track {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            padding: 0 10px;
+        }
+
+        .timeline-track::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            top: 50%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--cpu), var(--gpu), var(--tpu), var(--dpu), var(--npu), var(--qpu));
+            border-radius: 2px;
+            transform: translateY(-50%);
+            z-index: 0;
+        }
+
+        .timeline-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 1;
+            gap: 8px;
+        }
+
+        .timeline-node .t-year {
+            font-size: 11px;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+            color: var(--text-mid);
+        }
+
+        .timeline-node .t-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px var(--border);
+        }
+
+        .timeline-node .t-label {
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--text-light);
+            text-align: center;
+            max-width: 70px;
+        }
+
+        /* ========== SECTION 8: FOOTER ========== */
+        .footer {
+            padding: 40px 50px;
+            text-align: center;
+            background: var(--text-dark);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--cpu), var(--gpu), var(--tpu), var(--dpu), var(--npu), var(--qpu));
+        }
+
+        .footer h3 {
+            font-family: 'Sora', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .footer p {
+            font-size: 13px;
+            opacity: 0.7;
+            margin-bottom: 16px;
+        }
+
+        .footer-chips {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .footer-chip {
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            font-family: 'Sora', sans-serif;
+        }
+
+        /* ========== WHY IT MATTERS SECTION ========== */
+        .why-matters {
+            padding: 44px 50px;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(135deg, #EFF6FF 0%, #F5F3FF 50%, #FDF2F8 100%);
+        }
+
+        .why-matters .section-header {
+            margin-bottom: 28px;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .why-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 22px 20px;
+            border: 1.5px solid var(--border);
+        }
+
+        .why-card .why-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .why-card h4 {
+            font-family: 'Sora', sans-serif;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+
+        .why-card p {
+            font-size: 11.5px;
+            color: var(--text-mid);
+            line-height: 1.5;
+        }
+
+        .why-highlight {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 20px;
+            padding: 16px 20px;
+            background: var(--white);
+            border-radius: 12px;
+            border: 1.5px solid var(--border);
+            border-left: 4px solid var(--cpu);
+        }
+
+        .why-highlight .wh-icon {
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .why-highlight p {
+            font-size: 13px;
+            color: var(--text-dark);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .why-highlight p strong {
+            color: var(--cpu);
+        }
+
+        /* ========== ANALOGY BADGES ========== */
+        .analogy {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px dashed var(--border);
+            max-width: 220px;
+        }
+
+        .analogy .analogy-icon {
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .analogy .analogy-text {
+            font-size: 11.5px;
+            color: var(--text-mid);
+            font-style: italic;
+            line-height: 1.4;
+        }
+
+        /* SVG icons in arch section */
+        .arch-svg {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="infographic">
+
+        <!-- ===== SECTION 1: HERO ===== -->
+        <section class="hero">
+            <div class="hero-badge">Infographic Guide</div>
+            <h1>The Six Pillars of<br><span>Processing Units</span></h1>
+            <p>From silicon to quantum — understanding CPU, GPU, TPU, DPU, NPU & QPU</p>
+            <div class="hero-chips">
+                <div class="hero-chip" data-label="CPU" style="background:var(--cpu-light); color:var(--cpu);">🧠</div>
+                <div class="hero-chip" data-label="GPU" style="background:var(--gpu-light); color:var(--gpu);">🎮</div>
+                <div class="hero-chip" data-label="TPU" style="background:var(--tpu-light); color:var(--tpu);">🤖</div>
+                <div class="hero-chip" data-label="DPU" style="background:var(--dpu-light); color:var(--dpu);">📡</div>
+                <div class="hero-chip" data-label="NPU" style="background:var(--npu-light); color:var(--npu);">🧬</div>
+                <div class="hero-chip" data-label="QPU" style="background:var(--qpu-light); color:var(--qpu);">⚛️</div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 2: WHY IT MATTERS ===== -->
+        <section class="why-matters">
+            <div class="section-header">
+                <div class="section-number">✦</div>
+                <h2>Why This Matters in the AI Era</h2>
+                <p>Understanding processing units is no longer just for hardware engineers</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card">
+                    <span class="why-icon">🚀</span>
+                    <h4>AI Runs on Specialized Hardware</h4>
+                    <p>Every ChatGPT response, every AI image, every self-driving car decision depends on choosing the
+                        right processor. GPUs and TPUs power the AI revolution — knowing why matters.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-icon">💰</span>
+                    <h4>It's a Billion-Dollar Decision</h4>
+                    <p>Companies spend millions choosing between GPUs and TPUs for AI training. NVIDIA's stock soared
+                        800%+ because of GPU demand. The right chip choice = massive cost savings.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-icon">📱</span>
+                    <h4>AI Is Moving to Your Pocket</h4>
+                    <p>NPUs in your phone and laptop enable on-device AI — live captions, photo enhancement, real-time
+                        translation — without sending data to the cloud. Privacy meets performance.</p>
+                </div>
+            </div>
+            <div class="why-highlight">
+                <span class="wh-icon">💡</span>
+                <p>Whether you're an <strong>engineer choosing infrastructure</strong>, a <strong>manager budgeting for
+                        AI</strong>, or a <strong>developer building AI apps</strong> — understanding these 6 processors
+                    helps you make smarter decisions in the age of artificial intelligence.</p>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 3: SIX PILLARS OVERVIEW ===== -->
+        <section class="pillars">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2>Meet the Six Processors</h2>
+                <p>Each designed for a specific computing challenge</p>
+            </div>
+            <div class="pillars-grid">
+                <div class="pillar-card cpu">
+                    <div class="icon-wrap">🧠</div>
+                    <h3>CPU</h3>
+                    <span class="full-name">Central Processing Unit</span>
+                    <p class="desc">The brain. Handles complex logic & sequential tasks</p>
+                    <div class="analogy">
+                        <span class="analogy-icon">🚗</span>
+                        <span class="analogy-text">Like a Toyota Camry — versatile, reliable, does everything but not
+                            specialized</span>
+                    </div>
+                </div>
+                <div class="pillar-card gpu">
+                    <div class="icon-wrap">🎮</div>
+                    <h3>GPU</h3>
+                    <span class="full-name">Graphics Processing Unit</span>
+                    <p class="desc">Massive parallelism for graphics & AI training</p>
+                    <div class="analogy">
+                        <span class="analogy-icon">🚀</span>
+                        <span class="analogy-text">Like a Rocket Ship — blazing fast in a straight line, but less
+                            versatile</span>
+                    </div>
+                </div>
+                <div class="pillar-card tpu">
+                    <div class="icon-wrap">🤖</div>
+                    <h3>TPU</h3>
+                    <span class="full-name">Tensor Processing Unit</span>
+                    <p class="desc">Google's chip built for neural network training</p>
+                    <div class="analogy">
+                        <span class="analogy-icon">🏭</span>
+                        <span class="analogy-text">Like an AI Factory — built for one job, does it incredibly
+                            well</span>
+                    </div>
+                </div>
+                <div class="pillar-card dpu">
+                    <div class="icon-wrap">📡</div>
+                    <h3>DPU</h3>
+                    <span class="full-name">Data Processing Unit</span>
+                    <p class="desc">Data center networking, storage & security</p>
+                    <div class="analogy">
+                        <span class="analogy-icon">📬</span>
+                        <span class="analogy-text">Like a Mail Sorting Center — routes everything so others can
+                            focus</span>
+                    </div>
+                </div>
+                <div class="pillar-card npu">
+                    <div class="icon-wrap">🧬</div>
+                    <h3>NPU</h3>
+                    <span class="full-name">Neural Processing Unit</span>
+                    <p class="desc">On-device AI inference with ultra-low power</p>
+                    <div class="analogy">
+                        <span class="analogy-icon">🤵</span>
+                        <span class="analogy-text">Like a Personal Assistant — always on, anticipates needs
+                            quietly</span>
+                    </div>
+                </div>
+                <div class="pillar-card qpu">
+                    <div class="icon-wrap">⚛️</div>
+                    <h3>QPU</h3>
+                    <span class="full-name">Quantum Processing Unit</span>
+                    <p class="desc">Quantum computing for exponential speedups</p>
+                    <div class="analogy">
+                        <span class="analogy-icon">🔮</span>
+                        <span class="analogy-text">Like a Crystal Ball — explores all possibilities at once, still
+                            maturing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 3: ARCHITECTURE ===== -->
+        <section class="architecture">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2>Architecture & Cores</h2>
+                <p>How each processor is built differently</p>
+            </div>
+            <div class="arch-grid">
+                <!-- CPU -->
+                <div class="arch-card" style="border-color:var(--cpu-mid);">
+                    <div class="arch-header">
+                        <div class="arch-badge" style="background:var(--cpu);">CPU</div>
+                        <span class="arch-label">Few, Powerful Cores</span>
+                    </div>
+                    <div class="arch-visual cpu-vis">
+                        <div class="core-large">C1</div>
+                        <div class="core-large">C2</div>
+                        <div class="core-large">C3</div>
+                        <div class="core-large">C4</div>
+                        <div class="cache-block">Cache</div>
+                    </div>
+                    <div class="arch-specs">
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--cpu);"></div>2–128 cores
+                        </div>
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--cpu);"></div>Complex logic, branching
+                        </div>
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--cpu);"></div>x86-64 / ARM
+                        </div>
+                    </div>
+                </div>
+                <!-- GPU -->
+                <div class="arch-card" style="border-color:var(--gpu-mid);">
+                    <div class="arch-header">
+                        <div class="arch-badge" style="background:var(--gpu);">GPU</div>
+                        <span class="arch-label">Thousands of Simple Cores</span>
+                    </div>
+                    <div class="arch-visual gpu-vis">
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                        <div class="core-small"></div>
+                    </div>
+                    <div class="arch-specs">
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--gpu);"></div>~10,000 cores (RTX 4080)
+                        </div>
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--gpu);"></div>Parallel processing, SIMD
+                        </div>
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--gpu);"></div>Matrix multiplication
+                        </div>
+                    </div>
+                </div>
+                <!-- TPU -->
+                <div class="arch-card" style="border-color:var(--tpu-mid);">
+                    <div class="arch-header">
+                        <div class="arch-badge" style="background:var(--tpu);">TPU</div>
+                        <span class="arch-label">Matrix of MACs</span>
+                    </div>
+                    <div class="arch-visual tpu-vis">
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                        <div class="mac-unit"></div>
+                    </div>
+                    <div class="arch-specs">
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--tpu);"></div>Thousands of MACs
+                        </div>
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--tpu);"></div>Tensor ops, no register overhead
+                        </div>
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--tpu);"></div>Systolic array design
+                        </div>
+                    </div>
+                </div>
+                <!-- DPU -->
+                <div class="arch-card" style="border-color:var(--dpu-mid);">
+                    <div class="arch-header">
+                        <div class="arch-badge" style="background:var(--dpu);">DPU</div>
+                        <span class="arch-label">ARM Cores + Accelerators</span>
+                    </div>
+                    <div class="arch-visual dpu-vis">
+                        <svg class="arch-svg" viewBox="0 0 200 70">
+                            <rect x="10" y="20" width="30" height="30" rx="4" fill="#8B5CF6" opacity="0.7" />
+                            <text x="25" y="39" fill="white" font-size="7" text-anchor="middle"
+                                font-weight="bold">ARM</text>
+                            <rect x="50" y="10" width="30" height="20" rx="3" fill="#C4B5FD" />
+                            <text x="65" y="23" fill="#8B5CF6" font-size="6" text-anchor="middle"
+                                font-weight="600">Packet</text>
+                            <rect x="50" y="40" width="30" height="20" rx="3" fill="#C4B5FD" />
+                            <text x="65" y="53" fill="#8B5CF6" font-size="6" text-anchor="middle"
+                                font-weight="600">Crypto</text>
+                            <rect x="100" y="10" width="30" height="20" rx="3" fill="#C4B5FD" />
+                            <text x="115" y="23" fill="#8B5CF6" font-size="6" text-anchor="middle"
+                                font-weight="600">Route</text>
+                            <rect x="100" y="40" width="30" height="20" rx="3" fill="#C4B5FD" />
+                            <text x="115" y="53" fill="#8B5CF6" font-size="6" text-anchor="middle"
+                                font-weight="600">Store</text>
+                            <line x1="40" y1="30" x2="50" y2="20" stroke="#8B5CF6" stroke-width="1.5" opacity="0.5" />
+                            <line x1="40" y1="40" x2="50" y2="50" stroke="#8B5CF6" stroke-width="1.5" opacity="0.5" />
+                            <line x1="80" y1="20" x2="100" y2="20" stroke="#8B5CF6" stroke-width="1.5" opacity="0.5" />
+                            <line x1="80" y1="50" x2="100" y2="50" stroke="#8B5CF6" stroke-width="1.5" opacity="0.5" />
+                            <rect x="150" y="15" width="40" height="40" rx="6" fill="#F5F3FF" stroke="#C4B5FD"
+                                stroke-width="1.5" />
+                            <text x="170" y="37" fill="#8B5CF6" font-size="7" text-anchor="middle"
+                                font-weight="600">Network</text>
+                            <text x="170" y="47" fill="#8B5CF6" font-size="7" text-anchor="middle"
+                                font-weight="600">I/O</text>
+                            <line x1="130" y1="35" x2="150" y2="35" stroke="#8B5CF6" stroke-width="1.5" opacity="0.5" />
+                        </svg>
+                    </div>
+                    <div class="arch-specs">
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--dpu);"></div>Optimized ARM cores
+                        </div>
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--dpu);"></div>Data flow, networking
+                        </div>
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--dpu);"></div>Offloads CPU data tasks
+                        </div>
+                    </div>
+                </div>
+                <!-- NPU -->
+                <div class="arch-card" style="border-color:var(--npu-mid);">
+                    <div class="arch-header">
+                        <div class="arch-badge" style="background:var(--npu);">NPU</div>
+                        <span class="arch-label">Neural Engines</span>
+                    </div>
+                    <div class="arch-visual npu-vis">
+                        <div class="neural-layer">
+                            <div class="neuron"></div>
+                            <div class="neuron"></div>
+                            <div class="neuron"></div>
+                        </div>
+                        <svg width="30" height="60" viewBox="0 0 30 60">
+                            <line x1="0" y1="10" x2="30" y2="5" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="10" x2="30" y2="20" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="10" x2="30" y2="35" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="10" x2="30" y2="50" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="30" x2="30" y2="5" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="30" x2="30" y2="20" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="30" x2="30" y2="35" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="30" x2="30" y2="50" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="50" x2="30" y2="5" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="50" x2="30" y2="20" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="50" x2="30" y2="35" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="50" x2="30" y2="50" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                        </svg>
+                        <div class="neural-layer">
+                            <div class="neuron" style="opacity:0.8"></div>
+                            <div class="neuron" style="opacity:0.8"></div>
+                            <div class="neuron" style="opacity:0.8"></div>
+                            <div class="neuron" style="opacity:0.8"></div>
+                        </div>
+                        <svg width="30" height="60" viewBox="0 0 30 60">
+                            <line x1="0" y1="5" x2="30" y2="15" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="5" x2="30" y2="45" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="20" x2="30" y2="15" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="20" x2="30" y2="45" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="40" x2="30" y2="15" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="40" x2="30" y2="45" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="55" x2="30" y2="15" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                            <line x1="0" y1="55" x2="30" y2="45" stroke="#06B6D4" stroke-width="1" opacity="0.4" />
+                        </svg>
+                        <div class="neural-layer">
+                            <div class="neuron" style="opacity:1; background:var(--npu);"></div>
+                            <div class="neuron" style="opacity:1; background:var(--npu);"></div>
+                        </div>
+                    </div>
+                    <div class="arch-specs">
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--npu);"></div>Specialized neural engines
+                        </div>
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--npu);"></div>Inference-optimized
+                        </div>
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--npu);"></div>Ultra low power, always-on
+                        </div>
+                    </div>
+                </div>
+                <!-- QPU -->
+                <div class="arch-card" style="border-color:var(--qpu-mid);">
+                    <div class="arch-header">
+                        <div class="arch-badge" style="background:var(--qpu);">QPU</div>
+                        <span class="arch-label">Qubits (Quantum Bits)</span>
+                    </div>
+                    <div class="arch-visual qpu-vis">
+                        <svg class="arch-svg" viewBox="0 0 200 70">
+                            <circle cx="40" cy="35" r="10" fill="#EC4899" opacity="0.6" />
+                            <circle cx="80" cy="15" r="8" fill="#EC4899" opacity="0.5" />
+                            <circle cx="80" cy="55" r="8" fill="#EC4899" opacity="0.5" />
+                            <circle cx="120" cy="25" r="9" fill="#EC4899" opacity="0.7" />
+                            <circle cx="120" cy="50" r="7" fill="#EC4899" opacity="0.4" />
+                            <circle cx="160" cy="35" r="10" fill="#EC4899" opacity="0.6" />
+                            <line x1="50" y1="32" x2="72" y2="18" stroke="#EC4899" stroke-width="1.5" opacity="0.3"
+                                stroke-dasharray="3,2" />
+                            <line x1="50" y1="38" x2="72" y2="52" stroke="#EC4899" stroke-width="1.5" opacity="0.3"
+                                stroke-dasharray="3,2" />
+                            <line x1="88" y1="18" x2="111" y2="23" stroke="#EC4899" stroke-width="1.5" opacity="0.3"
+                                stroke-dasharray="3,2" />
+                            <line x1="88" y1="52" x2="113" y2="48" stroke="#EC4899" stroke-width="1.5" opacity="0.3"
+                                stroke-dasharray="3,2" />
+                            <line x1="129" y1="28" x2="150" y2="33" stroke="#EC4899" stroke-width="1.5" opacity="0.3"
+                                stroke-dasharray="3,2" />
+                            <line x1="127" y1="48" x2="150" y2="38" stroke="#EC4899" stroke-width="1.5" opacity="0.3"
+                                stroke-dasharray="3,2" />
+                            <text x="40" y="38" fill="white" font-size="7" text-anchor="middle"
+                                font-weight="bold">|0⟩</text>
+                            <text x="120" y="28" fill="white" font-size="7" text-anchor="middle"
+                                font-weight="bold">|1⟩</text>
+                            <text x="160" y="38" fill="white" font-size="7" text-anchor="middle"
+                                font-weight="bold">|ψ⟩</text>
+                        </svg>
+                    </div>
+                    <div class="arch-specs">
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--qpu);"></div>Qubits, superposition
+                        </div>
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--qpu);"></div>Quantum gates & entanglement
+                        </div>
+                        <div class="arch-spec">
+                            <div class="dot" style="background:var(--qpu);"></div>Extreme cooling required
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 4: USE CASES ===== -->
+        <section class="usecases">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2>Use Cases</h2>
+                <p>What each processor does best</p>
+            </div>
+            <div class="usecase-flow">
+                <div class="usecase-row">
+                    <div class="uc-badge" style="background:var(--cpu);">CPU</div>
+                    <div class="uc-icon" style="background:var(--cpu-light);">💻</div>
+                    <div class="uc-arrow">→</div>
+                    <div class="uc-content">
+                        <h4>General Computing, OS & Applications</h4>
+                        <p>Sequential algorithms, complex branching logic, running operating systems</p>
+                    </div>
+                </div>
+                <div class="usecase-row">
+                    <div class="uc-badge" style="background:var(--gpu);">GPU</div>
+                    <div class="uc-icon" style="background:var(--gpu-light);">🎮</div>
+                    <div class="uc-arrow">→</div>
+                    <div class="uc-content">
+                        <h4>Gaming, Graphics & AI Training</h4>
+                        <p>3D rendering, parallel workloads, deep learning model training</p>
+                    </div>
+                </div>
+                <div class="usecase-row">
+                    <div class="uc-badge" style="background:var(--tpu);">TPU</div>
+                    <div class="uc-icon" style="background:var(--tpu-light);">🤖</div>
+                    <div class="uc-arrow">→</div>
+                    <div class="uc-content">
+                        <h4>AI/ML Training with TensorFlow & Large Models</h4>
+                        <p>Neural network training, tensor operations — saves millions vs GPUs</p>
+                    </div>
+                </div>
+                <div class="usecase-row">
+                    <div class="uc-badge" style="background:var(--dpu);">DPU</div>
+                    <div class="uc-icon" style="background:var(--dpu-light);">🏢</div>
+                    <div class="uc-arrow">→</div>
+                    <div class="uc-content">
+                        <h4>Data Center Networking, Storage & Security</h4>
+                        <p>Packet processing, routing, encryption, compression — offloads CPU</p>
+                    </div>
+                </div>
+                <div class="usecase-row">
+                    <div class="uc-badge" style="background:var(--npu);">NPU</div>
+                    <div class="uc-icon" style="background:var(--npu-light);">📱</div>
+                    <div class="uc-arrow">→</div>
+                    <div class="uc-content">
+                        <h4>On-Device AI — Live Captions, Translation, Effects</h4>
+                        <p>Real-time inference, always-on AI features, ultra-low power consumption</p>
+                    </div>
+                </div>
+                <div class="usecase-row">
+                    <div class="uc-badge" style="background:var(--qpu);">QPU</div>
+                    <div class="uc-icon" style="background:var(--qpu-light);">🔬</div>
+                    <div class="uc-arrow">→</div>
+                    <div class="uc-content">
+                        <h4>Quantum Research & Cryptography</h4>
+                        <p>Shor's algorithm, breaking RSA encryption, molecular simulation</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5: PERFORMANCE ===== -->
+        <section class="performance">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2>Performance Characteristics</h2>
+                <p>How they compare on key metrics</p>
+            </div>
+
+            <div class="perf-chart">
+                <div class="perf-row">
+                    <div class="perf-label" style="color:var(--cpu);">CPU</div>
+                    <div class="perf-bar-wrap">
+                        <div class="perf-bar"
+                            style="width:55%; background: linear-gradient(90deg, var(--cpu), #60A5FA);">High Logic ·
+                            Medium Parallelism</div>
+                    </div>
+                </div>
+                <div class="perf-row">
+                    <div class="perf-label" style="color:var(--gpu);">GPU</div>
+                    <div class="perf-bar-wrap">
+                        <div class="perf-bar"
+                            style="width:88%; background: linear-gradient(90deg, var(--gpu), #34D399);">Extreme
+                            Parallelism · Simple Operations</div>
+                    </div>
+                </div>
+                <div class="perf-row">
+                    <div class="perf-label" style="color:var(--tpu);">TPU</div>
+                    <div class="perf-bar-wrap">
+                        <div class="perf-bar"
+                            style="width:82%; background: linear-gradient(90deg, var(--tpu), #FBBF24);">AI-Optimized ·
+                            High Tensor Efficiency</div>
+                    </div>
+                </div>
+                <div class="perf-row">
+                    <div class="perf-label" style="color:var(--dpu);">DPU</div>
+                    <div class="perf-bar-wrap">
+                        <div class="perf-bar"
+                            style="width:65%; background: linear-gradient(90deg, var(--dpu), #A78BFA);">Data-Flow
+                            Optimized · Cloud-Focused</div>
+                    </div>
+                </div>
+                <div class="perf-row">
+                    <div class="perf-label" style="color:var(--npu);">NPU</div>
+                    <div class="perf-bar-wrap">
+                        <div class="perf-bar"
+                            style="width:70%; background: linear-gradient(90deg, var(--npu), #22D3EE);">Inference
+                            Optimized · Always-On</div>
+                    </div>
+                </div>
+                <div class="perf-row">
+                    <div class="perf-label" style="color:var(--qpu);">QPU</div>
+                    <div class="perf-bar-wrap">
+                        <div class="perf-bar"
+                            style="width:40%; background: linear-gradient(90deg, var(--qpu), #F472B6); border: 1.5px dashed var(--qpu);">
+                            Exponential Potential · Experimental</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="perf-traits">
+                <div class="perf-trait" style="background:var(--cpu-light); border-color:var(--cpu-mid);">
+                    <div class="trait-name" style="color:var(--cpu);">CPU</div>
+                    <div class="trait-items">
+                        <span class="trait-tag" style="background:var(--cpu-mid); color:var(--cpu);">High Logic</span>
+                        <span class="trait-tag" style="background:#F1F5F9; color:var(--text-mid);">Moderate
+                            Efficiency</span>
+                    </div>
+                </div>
+                <div class="perf-trait" style="background:var(--gpu-light); border-color:var(--gpu-mid);">
+                    <div class="trait-name" style="color:var(--gpu);">GPU</div>
+                    <div class="trait-items">
+                        <span class="trait-tag" style="background:var(--gpu-mid); color:#065F46;">Extreme
+                            Parallel</span>
+                        <span class="trait-tag" style="background:#FEF2F2; color:#DC2626;">Power Hungry</span>
+                    </div>
+                </div>
+                <div class="perf-trait" style="background:var(--tpu-light); border-color:var(--tpu-mid);">
+                    <div class="trait-name" style="color:var(--tpu);">TPU</div>
+                    <div class="trait-items">
+                        <span class="trait-tag" style="background:var(--tpu-mid); color:#92400E;">AI-Optimized</span>
+                        <span class="trait-tag" style="background:var(--tpu-mid); color:#92400E;">Cost Efficient</span>
+                    </div>
+                </div>
+                <div class="perf-trait" style="background:var(--dpu-light); border-color:var(--dpu-mid);">
+                    <div class="trait-name" style="color:var(--dpu);">DPU</div>
+                    <div class="trait-items">
+                        <span class="trait-tag" style="background:var(--dpu-mid); color:#5B21B6;">Data-Flow</span>
+                        <span class="trait-tag" style="background:var(--dpu-mid); color:#5B21B6;">Cloud-Focused</span>
+                    </div>
+                </div>
+                <div class="perf-trait" style="background:var(--npu-light); border-color:var(--npu-mid);">
+                    <div class="trait-name" style="color:var(--npu);">NPU</div>
+                    <div class="trait-items">
+                        <span class="trait-tag" style="background:var(--npu-mid); color:#155E75;">Inference-First</span>
+                        <span class="trait-tag" style="background:var(--npu-mid); color:#155E75;">Ultra Efficient</span>
+                    </div>
+                </div>
+                <div class="perf-trait" style="background:var(--qpu-light); border-color:var(--qpu-mid);">
+                    <div class="trait-name" style="color:var(--qpu);">QPU</div>
+                    <div class="trait-items">
+                        <span class="trait-tag" style="background:var(--qpu-mid); color:#9D174D;">Exponential</span>
+                        <span class="trait-tag" style="background:#F1F5F9; color:var(--text-mid);">Experimental</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 6: COMPARISON TABLE ===== -->
+        <section class="chooser">
+            <div class="section-header">
+                <div class="section-number">5</div>
+                <h2>Choosing the Right Tool</h2>
+                <p>Quick-reference comparison across all six processors</p>
+            </div>
+            <table class="chooser-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th><span class="table-chip" style="background:var(--cpu-light); color:var(--cpu);">CPU</span>
+                        </th>
+                        <th><span class="table-chip" style="background:var(--gpu-light); color:var(--gpu);">GPU</span>
+                        </th>
+                        <th><span class="table-chip" style="background:var(--tpu-light); color:var(--tpu);">TPU</span>
+                        </th>
+                        <th><span class="table-chip" style="background:var(--dpu-light); color:var(--dpu);">DPU</span>
+                        </th>
+                        <th><span class="table-chip" style="background:var(--npu-light); color:var(--npu);">NPU</span>
+                        </th>
+                        <th><span class="table-chip" style="background:var(--qpu-light); color:var(--qpu);">QPU</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Core Count</td>
+                        <td>2–128</td>
+                        <td>~10,000</td>
+                        <td>1000s MACs</td>
+                        <td>ARM cores</td>
+                        <td>Hundreds</td>
+                        <td>Qubits</td>
+                    </tr>
+                    <tr>
+                        <td>Processing</td>
+                        <td>Sequential</td>
+                        <td>Parallel</td>
+                        <td>Tensor ops</td>
+                        <td>Data stream</td>
+                        <td>Inference</td>
+                        <td>Quantum</td>
+                    </tr>
+                    <tr>
+                        <td>Power</td>
+                        <td>Moderate</td>
+                        <td>High</td>
+                        <td>Efficient</td>
+                        <td>Optimized</td>
+                        <td>Ultra low</td>
+                        <td>Extreme cooling</td>
+                    </tr>
+                    <tr>
+                        <td>Best For</td>
+                        <td>OS, apps</td>
+                        <td>Gaming, AI</td>
+                        <td>ML training</td>
+                        <td>Data centers</td>
+                        <td>On-device AI</td>
+                        <td>Research</td>
+                    </tr>
+                    <tr>
+                        <td>Maturity</td>
+                        <td><span class="table-chip" style="background:#DCFCE7; color:#166534;">Mature</span></td>
+                        <td><span class="table-chip" style="background:#DCFCE7; color:#166534;">Mature</span></td>
+                        <td><span class="table-chip" style="background:#FEF9C3; color:#854D0E;">Emerging</span></td>
+                        <td><span class="table-chip" style="background:#FEF9C3; color:#854D0E;">Growing</span></td>
+                        <td><span class="table-chip" style="background:#DBEAFE; color:#1E40AF;">Maturing</span></td>
+                        <td><span class="table-chip" style="background:#FCE7F3; color:#9D174D;">Experimental</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ===== SECTION 7: TIMELINE ===== -->
+        <section class="timeline">
+            <div class="section-header">
+                <div class="section-number">6</div>
+                <h2>The Evolution Timeline</h2>
+                <p>From silicon to quantum — a journey of specialization</p>
+            </div>
+            <div class="timeline-track">
+                <div class="timeline-node">
+                    <span class="t-year">1971</span>
+                    <div class="t-dot" style="background:var(--cpu);"></div>
+                    <span class="t-label">First CPU (Intel 4004)</span>
+                </div>
+                <div class="timeline-node">
+                    <span class="t-year">1999</span>
+                    <div class="t-dot" style="background:var(--gpu);"></div>
+                    <span class="t-label">GPU Era (NVIDIA GeForce)</span>
+                </div>
+                <div class="timeline-node">
+                    <span class="t-year">2016</span>
+                    <div class="t-dot" style="background:var(--tpu);"></div>
+                    <span class="t-label">Google TPU for ML</span>
+                </div>
+                <div class="timeline-node">
+                    <span class="t-year">2017</span>
+                    <div class="t-dot" style="background:var(--npu);"></div>
+                    <span class="t-label">NPU in Mobile Chips</span>
+                </div>
+                <div class="timeline-node">
+                    <span class="t-year">2020</span>
+                    <div class="t-dot" style="background:var(--dpu);"></div>
+                    <span class="t-label">DPU for Data Centers</span>
+                </div>
+                <div class="timeline-node">
+                    <span class="t-year">2020s</span>
+                    <div class="t-dot" style="background:var(--qpu);"></div>
+                    <span class="t-label">QPU Quantum Frontier</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 8: FOOTER ===== -->
+        <section class="footer">
+            <h3>Evolution of Processing: Choose the Right Tool</h3>
+            <p>Not all processors are equal — each is designed for a specific computing challenge</p>
+            <div class="footer-chips">
+                <span class="footer-chip" style="background:var(--cpu); color:white;">CPU</span>
+                <span class="footer-chip" style="background:var(--gpu); color:white;">GPU</span>
+                <span class="footer-chip" style="background:var(--tpu); color:white;">TPU</span>
+                <span class="footer-chip" style="background:var(--dpu); color:white;">DPU</span>
+                <span class="footer-chip" style="background:var(--npu); color:white;">NPU</span>
+                <span class="footer-chip" style="background:var(--qpu); color:white;">QPU</span>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

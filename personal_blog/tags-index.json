@@ -1,6 +1,6 @@
 {
-  "generated": "2026-02-10",
-  "totalTags": 179,
+  "generated": "2026-02-15",
+  "totalTags": 245,
   "tags": {
     "Machine Learning": [
       "ai-introduction/introduction-to-ai.html",
@@ -167,7 +167,8 @@
       "ml-fundamentals/overfitting-underfitting-balance.html"
     ],
     "Regularization": [
-      "ml-fundamentals/overfitting-underfitting-balance.html"
+      "ml-fundamentals/overfitting-underfitting-balance.html",
+      "optimizing-ai-resources/memory-management-strategies.html"
     ],
     "Computer Vision": [
       "ai-business-usecases/modern-ai-landscape.html",
@@ -359,10 +360,13 @@
       "ml-algorithms/ai-algorithm-selection-case-studies.html"
     ],
     "RNN": [
-      "ml-algorithms/neural-networks.html"
+      "ml-algorithms/neural-networks.html",
+      "optimizing-ai-resources/memory-in-ai-systems.html"
     ],
     "Transformers": [
-      "ml-algorithms/neural-networks.html"
+      "ml-algorithms/neural-networks.html",
+      "optimizing-ai-resources/memory-in-ai-systems.html",
+      "optimizing-ai-resources/quick-summary.html"
     ],
     "GANs": [
       "ml-algorithms/neural-networks.html"
@@ -384,7 +388,8 @@
     ],
     "Algorithm Selection": [
       "ml-algorithms/ml-algorithm-selection-guide.html",
-      "ml-algorithms/ai-algorithm-selection-case-studies.html"
+      "ml-algorithms/ai-algorithm-selection-case-studies.html",
+      "optimizing-ai-resources/computational-tradeoffs-algorithms.html"
     ],
     "Model Selection": [
       "ml-algorithms/ml-algorithm-selection-guide.html"
@@ -480,7 +485,8 @@
       "data-optimization-for-ml/inter-annotator-agreement.html",
       "data-optimization-for-ml/krippendorffs-Alpha.html",
       "data-optimization-for-ml/size-consistency-quality-tradeoffs.html",
-      "data-optimization-for-ml/project-maven-data-quality-case-study.html"
+      "data-optimization-for-ml/project-maven-data-quality-case-study.html",
+      "optimizing-ai-resources/quick-summary.html"
     ],
     "Active Learning": [
       "data-optimization-for-ml/data-labeling-challenges.html"
@@ -493,7 +499,8 @@
     ],
     "Scalability": [
       "data-optimization-for-ml/data-labeling-challenges.html",
-      "data-optimization-for-ml/data-labeling-considerations.html"
+      "data-optimization-for-ml/data-labeling-considerations.html",
+      "optimizing-ai-resources/memory-applications-and-challenges.html"
     ],
     "Annotation Guidelines": [
       "data-optimization-for-ml/data-labeling-considerations.html"
@@ -514,9 +521,6 @@
       "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
     ],
     "Terms of Reference": [
-      "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
-    ],
-    "Working Memory": [
       "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
     ],
     "Attention Span": [
@@ -572,7 +576,8 @@
       "data-optimization-for-ml/size-consistency-quality-tradeoffs.html"
     ],
     "Tradeoffs": [
-      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html"
+      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html",
+      "optimizing-ai-resources/introduction-to-ai-resources.html"
     ],
     "Data Optimization": [
       "data-optimization-for-ml/size-consistency-quality-tradeoffs.html"
@@ -640,6 +645,235 @@
     ],
     "LLM Security": [
       "agentic-ai/ai-agent-security.html"
+    ],
+    "AI Resources": [
+      "optimizing-ai-resources/introduction-to-ai-resources.html"
+    ],
+    "Computational Tradeoffs": [
+      "optimizing-ai-resources/introduction-to-ai-resources.html",
+      "optimizing-ai-resources/computational-tradeoffs-algorithms.html",
+      "optimizing-ai-resources/computational-tradeoffs-parallelization.html"
+    ],
+    "Memory": [
+      "optimizing-ai-resources/introduction-to-ai-resources.html"
+    ],
+    "Compute Power": [
+      "optimizing-ai-resources/introduction-to-ai-resources.html"
+    ],
+    "Query Expressiveness": [
+      "optimizing-ai-resources/introduction-to-ai-resources.html",
+      "optimizing-ai-resources/query-expressiveness.html"
+    ],
+    "Performance Optimization": [
+      "optimizing-ai-resources/introduction-to-ai-resources.html",
+      "optimizing-ai-resources/performance-in-ai-systems.html"
+    ],
+    "GPU vs CPU": [
+      "optimizing-ai-resources/introduction-to-ai-resources.html"
+    ],
+    "AI Infrastructure": [
+      "optimizing-ai-resources/introduction-to-ai-resources.html",
+      "optimizing-ai-resources/performance-in-ai-systems.html"
+    ],
+    "AI Memory": [
+      "optimizing-ai-resources/memory-in-ai-systems.html",
+      "optimizing-ai-resources/memory-management-strategies.html"
+    ],
+    "LSTM": [
+      "optimizing-ai-resources/memory-in-ai-systems.html",
+      "optimizing-ai-resources/quick-summary.html"
+    ],
+    "Self-Attention": [
+      "optimizing-ai-resources/memory-in-ai-systems.html"
+    ],
+    "Working Memory": [
+      "data-optimization-for-ml/cognitive-limits-terms-of-reference.html",
+      "optimizing-ai-resources/memory-in-ai-systems.html"
+    ],
+    "Short-Term Memory": [
+      "optimizing-ai-resources/memory-in-ai-systems.html"
+    ],
+    "Long-Term Memory": [
+      "optimizing-ai-resources/memory-in-ai-systems.html"
+    ],
+    "Vanishing Gradient": [
+      "optimizing-ai-resources/memory-in-ai-systems.html"
+    ],
+    "KV Cache": [
+      "optimizing-ai-resources/memory-in-ai-systems.html"
+    ],
+    "Memory Management": [
+      "optimizing-ai-resources/memory-management-strategies.html"
+    ],
+    "Data Retention": [
+      "optimizing-ai-resources/memory-management-strategies.html",
+      "optimizing-ai-resources/memory-applications-and-challenges.html"
+    ],
+    "Data Poisoning": [
+      "optimizing-ai-resources/memory-management-strategies.html",
+      "optimizing-ai-resources/memory-applications-and-challenges.html"
+    ],
+    "Catastrophic Forgetting": [
+      "optimizing-ai-resources/memory-management-strategies.html",
+      "optimizing-ai-resources/memory-applications-and-challenges.html"
+    ],
+    "Dropout": [
+      "optimizing-ai-resources/memory-management-strategies.html"
+    ],
+    "AI Security": [
+      "optimizing-ai-resources/memory-management-strategies.html",
+      "optimizing-ai-resources/memory-applications-and-challenges.html"
+    ],
+    "Model Weights": [
+      "optimizing-ai-resources/memory-management-strategies.html"
+    ],
+    "AI Memory Applications": [
+      "optimizing-ai-resources/memory-applications-and-challenges.html"
+    ],
+    "AI Chatbots": [
+      "optimizing-ai-resources/memory-applications-and-challenges.html"
+    ],
+    "Robotics AI": [
+      "optimizing-ai-resources/memory-applications-and-challenges.html"
+    ],
+    "Memory Challenges": [
+      "optimizing-ai-resources/memory-applications-and-challenges.html"
+    ],
+    "Big-O Complexity": [
+      "optimizing-ai-resources/computational-tradeoffs-algorithms.html"
+    ],
+    "Dijkstra": [
+      "optimizing-ai-resources/computational-tradeoffs-algorithms.html"
+    ],
+    "A Star Algorithm": [
+      "optimizing-ai-resources/computational-tradeoffs-algorithms.html"
+    ],
+    "Time Complexity": [
+      "optimizing-ai-resources/computational-tradeoffs-algorithms.html"
+    ],
+    "Space Complexity": [
+      "optimizing-ai-resources/computational-tradeoffs-algorithms.html"
+    ],
+    "Pathfinding": [
+      "optimizing-ai-resources/computational-tradeoffs-algorithms.html"
+    ],
+    "AI Optimization": [
+      "optimizing-ai-resources/computational-tradeoffs-algorithms.html"
+    ],
+    "Parallelization": [
+      "optimizing-ai-resources/computational-tradeoffs-parallelization.html"
+    ],
+    "Multi-Threading": [
+      "optimizing-ai-resources/computational-tradeoffs-parallelization.html"
+    ],
+    "Amdahl's Law": [
+      "optimizing-ai-resources/computational-tradeoffs-parallelization.html"
+    ],
+    "GPU Computing": [
+      "optimizing-ai-resources/computational-tradeoffs-parallelization.html"
+    ],
+    "Distributed Computing": [
+      "optimizing-ai-resources/computational-tradeoffs-parallelization.html"
+    ],
+    "AI Scalability": [
+      "optimizing-ai-resources/computational-tradeoffs-parallelization.html"
+    ],
+    "Synchronous Training": [
+      "optimizing-ai-resources/computational-tradeoffs-parallelization.html"
+    ],
+    "Asynchronous Training": [
+      "optimizing-ai-resources/computational-tradeoffs-parallelization.html"
+    ],
+    "Cloud GPU": [
+      "optimizing-ai-resources/computational-tradeoffs-parallelization.html"
+    ],
+    "Data Retrieval": [
+      "optimizing-ai-resources/query-expressiveness.html"
+    ],
+    "SQL": [
+      "optimizing-ai-resources/query-expressiveness.html"
+    ],
+    "NoSQL": [
+      "optimizing-ai-resources/query-expressiveness.html"
+    ],
+    "Graph Database": [
+      "optimizing-ai-resources/query-expressiveness.html"
+    ],
+    "Vector Database": [
+      "optimizing-ai-resources/query-expressiveness.html"
+    ],
+    "Procedural Queries": [
+      "optimizing-ai-resources/query-expressiveness.html"
+    ],
+    "Declarative Queries": [
+      "optimizing-ai-resources/query-expressiveness.html"
+    ],
+    "AI Data Pipeline": [
+      "optimizing-ai-resources/query-expressiveness.html"
+    ],
+    "AI Performance": [
+      "optimizing-ai-resources/performance-in-ai-systems.html"
+    ],
+    "GPU": [
+      "optimizing-ai-resources/performance-in-ai-systems.html",
+      "optimizing-ai-resources/six-pillars-of-processing-units.html"
+    ],
+    "CPU": [
+      "optimizing-ai-resources/performance-in-ai-systems.html",
+      "optimizing-ai-resources/six-pillars-of-processing-units.html"
+    ],
+    "TPU": [
+      "optimizing-ai-resources/performance-in-ai-systems.html",
+      "optimizing-ai-resources/six-pillars-of-processing-units.html"
+    ],
+    "Memory Optimization": [
+      "optimizing-ai-resources/performance-in-ai-systems.html"
+    ],
+    "Energy Consumption": [
+      "optimizing-ai-resources/performance-in-ai-systems.html"
+    ],
+    "Software Optimization": [
+      "optimizing-ai-resources/performance-in-ai-systems.html"
+    ],
+    "Performance Tuning": [
+      "optimizing-ai-resources/performance-in-ai-systems.html"
+    ],
+    "Processing Units": [
+      "optimizing-ai-resources/six-pillars-of-processing-units.html",
+      "optimizing-ai-resources/quick-summary.html"
+    ],
+    "DPU": [
+      "optimizing-ai-resources/six-pillars-of-processing-units.html"
+    ],
+    "NPU": [
+      "optimizing-ai-resources/six-pillars-of-processing-units.html"
+    ],
+    "QPU": [
+      "optimizing-ai-resources/six-pillars-of-processing-units.html"
+    ],
+    "Quantum Computing": [
+      "optimizing-ai-resources/six-pillars-of-processing-units.html"
+    ],
+    "AI Hardware": [
+      "optimizing-ai-resources/six-pillars-of-processing-units.html"
+    ],
+    "Parallel Computing": [
+      "optimizing-ai-resources/six-pillars-of-processing-units.html"
+    ],
+    "AI Summary": [
+      "optimizing-ai-resources/quick-summary.html"
+    ],
+    "AI Cheat Sheet": [
+      "optimizing-ai-resources/quick-summary.html"
+    ],
+    "AI Strategy": [
+      "optimizing-ai-resources/quick-summary.html"
+    ],
+    "AI Architecture": [
+      "optimizing-ai-resources/quick-summary.html"
+    ],
+    "Senior Engineer Guide": [
+      "optimizing-ai-resources/quick-summary.html"
     ]
   }
 }

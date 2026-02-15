@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computational Tradeoffs: Algorithm Selection for AI | KishoreTech</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Computational Tradeoffs: Algorithm Selection for AI">
+    <meta name="description" content="Explore computational tradeoffs in algorithm selection with interactive pathfinding simulation. Compare Dijkstra's vs A* algorithms, Big-O complexity, and real-world case studies from Google Maps to LLM training.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Optimizing AI Resources">
+    <meta name="tags" content="Algorithm Selection, Computational Tradeoffs, Big-O Complexity, Dijkstra, A Star Algorithm, Time Complexity, Space Complexity, Pathfinding, AI Optimization">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Interactive exploration of computational tradeoffs in algorithm selection. Features Dijkstra's vs A* pathfinding comparison, four tradeoff dimensions (time vs space, accuracy vs speed, prep vs query, simple vs complex), Big-O complexity visualization, algorithm decision tree for pathfinding/sorting/search, 5 real-world case studies (Google Maps, Netflix, LLM Training, Self-Driving, Logistics), and business leadership framework.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/computational-tradeoffs-algorithms">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Computational Tradeoffs: Algorithm Selection for AI">
+    <meta property="og:description" content="Interactive pathfinding simulation comparing Dijkstra's vs A* algorithms, Big-O complexity analysis, and real-world AI case studies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/computational-tradeoffs-algorithms">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-02-13">
+    <meta property="article:section" content="Optimizing AI Resources">
+    <meta property="article:tag" content="Algorithm Selection">
+    <meta property="article:tag" content="Computational Tradeoffs">
+    <meta property="article:tag" content="Big-O Complexity">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Computational Tradeoffs: Algorithm Selection for AI",
+        "description": "Explore computational tradeoffs in algorithm selection with interactive pathfinding simulation. Compare Dijkstra's vs A* algorithms, Big-O complexity, and real-world case studies from Google Maps to LLM training.",
+        "datePublished": "2025-02-13",
+        "dateModified": "2025-02-13",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/computational-tradeoffs-algorithms"
+        },
+        "keywords": ["Algorithm Selection", "Computational Tradeoffs", "Big-O Complexity", "Dijkstra", "A Star Algorithm", "Time Complexity", "Space Complexity", "Pathfinding", "AI Optimization"],
+        "articleSection": "Optimizing AI Resources",
+        "about": [
+            {"@type": "Thing", "name": "Algorithm Selection"},
+            {"@type": "Thing", "name": "Computational Complexity"}
+        ]
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+            scroll-behavior: smooth;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pulse-cell {
+            animation: pulseBlue 1.5s infinite;
+        }
+
+        @keyframes pulseBlue {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 6px rgba(59, 130, 246, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+            }
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 4px;
+            aspect-ratio: 1 / 1;
+        }
+
+        /* --- STRICT COLOR CODING --- */
+        /* Using !important to prevent animation classes from overwriting core state */
+        .cell-start {
+            background-color: #22C55E !important;
+            color: white !important;
+            z-index: 50;
+            border-color: transparent !important;
+        }
+
+        .cell-goal {
+            background-color: #EF4444 !important;
+            color: white !important;
+            z-index: 50;
+            border-color: transparent !important;
+        }
+
+        .cell-obstacle {
+            background-color: #475569 !important;
+            color: transparent !important;
+            border-color: transparent !important;
+        }
+
+        /* A* Never Considered Zone */
+        .cell-never {
+            background-color: #FECACA !important;
+            color: #991B1B !important;
+            border-color: #FCA5A5 !important;
+        }
+
+        /* Path Override (Lower priority than start/goal, higher than visited) */
+        .cell-path {
+            background-color: #1E40AF !important;
+            color: white !important;
+            z-index: 40;
+        }
+
+        /* Visited */
+        .cell-visited-dijkstra {
+            background-color: #93C5FD;
+            color: #1e3a8a;
+            border-color: #60A5FA;
+        }
+
+        .cell-visited-astar {
+            background-color: #6EE7B7;
+            color: #064E3B;
+            border-color: #34D399;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .shadow-xl,
+            .shadow-lg,
+            .shadow-md {
+                box-shadow: none !important;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dijkstra: '#3B82F6', // Blue
+                        astar: '#10B981',    // Emerald
+                        visited: '#93C5FD',  // Light Blue
+                        never: '#FCA5A5',    // Pink/Coral
+                        obstacle: '#475569', // Slate 600
+                        start: '#22C55E',    // Green
+                        goal: '#EF4444',     // Red
+                        path: '#1E40AF',     // Deep Blue
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="antialiased">
+
+    <!-- SECTION A: HEADER -->
+    <header class="bg-slate-900 text-white pt-16 pb-12 px-4 border-b-8 border-dijkstra">
+        <div class="max-w-6xl mx-auto text-center space-y-6">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-sm mb-4 border border-slate-700">
+                <i data-lucide="cpu" class="w-4 h-4"></i> Algorithm Selection Strategy
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-2">Computational Tradeoffs: Algorithms</h1>
+            <p class="text-xl md:text-2xl text-slate-300 font-light max-w-3xl mx-auto leading-relaxed">
+                "You can do the same task in two different ways. One takes a lot more work. That work you pay for in
+                compute power."
+            </p>
+            <div class="flex flex-wrap justify-center gap-8 mt-8 text-sm text-slate-400">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="graduation-cap" class="w-5 h-5 text-dijkstra"></i>
+                    <span>Based on Dr. Ian McCullough</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i data-lucide="wrench" class="w-5 h-5 text-yellow-400"></i>
+                    <span>Algorithm as a Resource Lever</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12 space-y-24">
+
+        <!-- SECTION B: CONCEPT OVERVIEW -->
+        <section class="fade-in">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold text-slate-800 mb-4 flex items-center justify-center gap-3">
+                    <i data-lucide="scale" class="w-8 h-8 text-dijkstra"></i>
+                    What Are Computational Tradeoffs?
+                </h2>
+                <p class="text-slate-600 max-w-3xl mx-auto">
+                    Achieving the same result using different approaches, where each approach consumes different amounts
+                    of resources (Time, Memory, Accuracy, Complexity).
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Dimension 1 -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-md border-t-4 border-blue-500 hover:-translate-y-1 transition-transform">
+                    <div class="flex justify-between mb-4">
+                        <h3 class="font-bold text-slate-800">Time vs. Space</h3><i data-lucide="clock"
+                            class="text-blue-500"></i>
+                    </div>
+                    <p class="text-sm text-slate-600">Trading memory for speed (e.g., Caching/Memoization uses RAM to
+                        avoid recalculating).</p>
+                </div>
+                <!-- Dimension 2 -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-md border-t-4 border-emerald-500 hover:-translate-y-1 transition-transform">
+                    <div class="flex justify-between mb-4">
+                        <h3 class="font-bold text-slate-800">Accuracy vs. Speed</h3><i data-lucide="target"
+                            class="text-emerald-500"></i>
+                    </div>
+                    <p class="text-sm text-slate-600">Trading exactness for performance (e.g., Heuristics/A* skip data
+                        to finish faster).</p>
+                </div>
+                <!-- Dimension 3 -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-md border-t-4 border-amber-500 hover:-translate-y-1 transition-transform">
+                    <div class="flex justify-between mb-4">
+                        <h3 class="font-bold text-slate-800">Prep vs. Query</h3><i data-lucide="database"
+                            class="text-amber-500"></i>
+                    </div>
+                    <p class="text-sm text-slate-600">Spending time upfront (Indexing) to make later searches instant.
+                    </p>
+                </div>
+                <!-- Dimension 4 -->
+                <div
+                    class="bg-white p-6 rounded-xl shadow-md border-t-4 border-indigo-500 hover:-translate-y-1 transition-transform">
+                    <div class="flex justify-between mb-4">
+                        <h3 class="font-bold text-slate-800">Simple vs. Complex</h3><i data-lucide="code"
+                            class="text-indigo-500"></i>
+                    </div>
+                    <p class="text-sm text-slate-600">Brute force is easy to write but slow. Optimized code is fast but
+                        hard to debug.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION C: MAIN VISUALIZATION (PATHFINDING) -->
+        <section id="simulation" class="scroll-mt-24">
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+                <!-- Controls -->
+                <div
+                    class="bg-slate-50 p-6 border-b border-slate-200 flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-slate-800 flex items-center gap-2">
+                            <i data-lucide="map" class="text-purple-600"></i> The Pathfinding Experiment
+                        </h2>
+                        <p class="text-slate-600 text-sm mt-2 max-w-lg">
+                            Task: Navigate from <span
+                                class="font-bold text-white bg-green-500 px-1.5 rounded text-xs">A</span> to <span
+                                class="font-bold text-white bg-red-500 px-1.5 rounded text-xs">9</span>.
+                            <br>Costs: Cardinal (↕↔) = 10, Diagonal (↗↘) = 15.
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button onclick="resetSim()"
+                            class="px-4 py-2 bg-white border border-slate-300 rounded-lg text-slate-700 font-semibold hover:bg-slate-100 flex items-center gap-2 shadow-sm">
+                            <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Reset
+                        </button>
+                        <button onclick="nextStep()"
+                            class="px-6 py-2 bg-blue-600 text-white rounded-lg font-bold hover:bg-blue-700 shadow-md transition-all active:scale-95 flex items-center gap-2">
+                            <i data-lucide="play" class="w-4 h-4 fill-current"></i> Next Step
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Simulation Info Panel -->
+                <div id="step-log"
+                    class="bg-slate-100 p-2 text-center text-xs font-mono text-slate-600 border-b border-slate-200">
+                    Click "Next Step" to begin comparison...
+                </div>
+
+                <!-- Grids -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-slate-200">
+
+                    <!-- DIJKSTRA -->
+                    <div class="p-8 bg-slate-50/50">
+                        <div class="flex justify-between items-end mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-dijkstra">Dijkstra's Algorithm</h3>
+                                <p class="text-xs font-mono text-slate-500 uppercase tracking-wider">Exhaustive Search
+                                    (Blind)</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs text-slate-400">Work Done</p>
+                                <p id="dijkstra-percent" class="text-2xl font-bold text-slate-700">0%</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-center">
+                            <div id="grid-dijkstra" class="grid-container w-full max-w-[400px]"></div>
+                        </div>
+                        <div
+                            class="mt-6 bg-blue-50 border border-blue-100 p-3 rounded-lg text-sm text-blue-800 flex gap-2">
+                            <i data-lucide="info" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+                            <p>Visits <strong>ALL</strong> cells like ripples in a pond. No sense of direction.</p>
+                        </div>
+                    </div>
+
+                    <!-- A* -->
+                    <div class="p-8 bg-white">
+                        <div class="flex justify-between items-end mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold text-astar">A* Algorithm</h3>
+                                <p class="text-xs font-mono text-slate-500 uppercase tracking-wider">Heuristic Search
+                                    (Directed)</p>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-xs text-slate-400">Work Done</p>
+                                <p id="astar-percent" class="text-2xl font-bold text-slate-700">0%</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-center">
+                            <div id="grid-astar" class="grid-container w-full max-w-[400px]"></div>
+                        </div>
+                        <div
+                            class="mt-6 bg-emerald-50 border border-emerald-100 p-3 rounded-lg text-sm text-emerald-800 flex gap-2">
+                            <i data-lucide="zap" class="w-4 h-4 mt-0.5 flex-shrink-0"></i>
+                            <p>Uses <strong>Heuristic</strong> ($h(n)$) to skip Pink areas. Updates path if cheaper
+                                parent found.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legend -->
+                <div
+                    class="bg-white p-4 border-t border-slate-200 flex flex-wrap justify-center gap-4 text-xs font-medium text-slate-600">
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-4 h-4 bg-green-500 rounded"></div> Start (A)
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-4 h-4 bg-red-500 rounded"></div> Goal (9)
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-4 h-4 bg-slate-600 rounded"></div> Obstacle
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-4 h-4 bg-blue-300 rounded border border-blue-400"></div> Visited (Dijkstra)
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-4 h-4 bg-emerald-300 rounded border border-emerald-400"></div> Visited (A*)
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-4 h-4 bg-red-200 rounded border border-red-300"></div> Never Considered
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                        <div class="w-4 h-4 bg-blue-800 rounded"></div> Final Path
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION D/E: ALGORITHM DETAILS -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Dijkstra Detail -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-blue-100 p-2 rounded-lg text-blue-600"><i data-lucide="compass"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800">How Dijkstra Works</h3>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-600 mb-4">
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Guarantees
+                        shortest path.</li>
+                    <li class="flex gap-2"><i data-lucide="x" class="w-4 h-4 text-red-500"></i> No direction (Blind).
+                    </li>
+                    <li class="flex gap-2"><i data-lucide="code" class="w-4 h-4 text-slate-400"></i> Logic: Pick node
+                        with lowest `cost_from_start`.</li>
+                </ul>
+                <div class="bg-slate-50 p-3 rounded font-mono text-xs border border-slate-100">
+                    Cost = g(n) <br>
+                    <span class="text-slate-400">// g(n): distance from start</span>
+                </div>
+            </div>
+
+            <!-- A* Detail -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-emerald-100 p-2 rounded-lg text-emerald-600"><i data-lucide="crosshair"></i></div>
+                    <h3 class="text-xl font-bold text-slate-800">How A* Works</h3>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-600 mb-4">
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Guarantees
+                        shortest path (if heuristic is admissible).</li>
+                    <li class="flex gap-2"><i data-lucide="check" class="w-4 h-4 text-green-500"></i> Directed towards
+                        goal.</li>
+                    <li class="flex gap-2"><i data-lucide="code" class="w-4 h-4 text-slate-400"></i> Logic: Pick node
+                        with lowest `estimated_total_cost`.</li>
+                </ul>
+                <div class="bg-slate-50 p-3 rounded font-mono text-xs border border-slate-100">
+                    Cost f(n) = g(n) + h(n) <br>
+                    <span class="text-slate-400">// h(n): estimated distance to goal (Heuristic)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION F: ALL 8 TRADEOFF CATEGORIES -->
+        <section>
+            <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">Comprehensive Tradeoff Categories</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- 1 -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-blue-600 mb-1 text-sm">Time vs Space</h4>
+                    <p class="text-xs text-slate-600">Memoization & Hash Tables. Use RAM to save CPU cycles.</p>
+                </div>
+                <!-- 2 -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-emerald-600 mb-1 text-sm">Accuracy vs Speed</h4>
+                    <p class="text-xs text-slate-600">A*, Approximate Nearest Neighbors (ANN). Faster, slightly less
+                        precise.</p>
+                </div>
+                <!-- 3 -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-amber-600 mb-1 text-sm">Greedy vs Exhaustive</h4>
+                    <p class="text-xs text-slate-600">Beam Search vs Brute Force. Local optimum vs Global optimum.</p>
+                </div>
+                <!-- 4 -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-indigo-600 mb-1 text-sm">Paradigms</h4>
+                    <p class="text-xs text-slate-600">Divide & Conquer (MapReduce) vs Dynamic Programming.</p>
+                </div>
+                <!-- 5 -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-rose-600 mb-1 text-sm">Graph Algorithms</h4>
+                    <p class="text-xs text-slate-600">BFS (Memory heavy) vs DFS (Depth heavy). Floyd-Warshall vs
+                        Dijkstra.</p>
+                </div>
+                <!-- 6 -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-purple-600 mb-1 text-sm">Machine Learning</h4>
+                    <p class="text-xs text-slate-600">Model Complexity vs Inference Time. Training Time vs Accuracy.</p>
+                </div>
+                <!-- 7 -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-teal-600 mb-1 text-sm">Parallelism</h4>
+                    <p class="text-xs text-slate-600">Sync vs Async training. Amdahl's Law limits speedup.</p>
+                </div>
+                <!-- 8 -->
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-orange-600 mb-1 text-sm">Data Structures</h4>
+                    <p class="text-xs text-slate-600">Arrays (Fast Read) vs Linked Lists (Fast Write). Trees vs Hash
+                        Maps.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION G: BIG-O & SCALING -->
+        <section>
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center lg:text-left">The Scaling Effect & Complexity
+            </h2>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Scaling Chart -->
+                <div>
+                    <div class="space-y-6">
+                        <div class="bg-white p-4 rounded-lg border border-slate-200">
+                            <div class="flex justify-between text-sm font-semibold mb-2"><span>Small Grid
+                                    (6x6)</span><span class="text-emerald-600">45% Savings</span></div>
+                            <div class="w-full bg-slate-100 rounded-full h-3 mb-1">
+                                <div class="bg-dijkstra h-3 rounded-full" style="width:100%"></div>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3">
+                                <div class="bg-astar h-3 rounded-full" style="width:55%"></div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-slate-200">
+                            <div class="flex justify-between text-sm font-semibold mb-2"><span>Large Grid
+                                    (100x100)</span><span class="text-emerald-600">80% Savings</span></div>
+                            <div class="w-full bg-slate-100 rounded-full h-3 mb-1">
+                                <div class="bg-dijkstra h-3 rounded-full" style="width:100%"></div>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3">
+                                <div class="bg-astar h-3 rounded-full" style="width:20%"></div>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-slate-200">
+                            <div class="flex justify-between text-sm font-semibold mb-2"><span>Real World
+                                    Map</span><span class="text-emerald-600">95%+ Savings</span></div>
+                            <div class="w-full bg-slate-100 rounded-full h-3 mb-1">
+                                <div class="bg-dijkstra h-3 rounded-full" style="width:100%"></div>
+                            </div>
+                            <div class="w-full bg-slate-100 rounded-full h-3">
+                                <div class="bg-astar h-3 rounded-full" style="width:5%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Big O Chart (SVG) -->
+                <div class="bg-slate-900 text-white p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                        <i data-lucide="trending-up" class="text-emerald-400"></i> Complexity Growth
+                    </h3>
+                    <div
+                        class="relative h-64 w-full border-l border-b border-slate-600 mb-4 bg-slate-800/50 rounded p-2 overflow-hidden">
+
+                        <!-- Grid Lines -->
+                        <div class="absolute inset-0 grid grid-cols-6 grid-rows-6 opacity-10">
+                            <div class="border-r border-slate-500"></div>
+                            <div class="border-r border-slate-500"></div>
+                            <div class="border-r border-slate-500"></div>
+                            <div class="border-r border-slate-500"></div>
+                            <div class="border-r border-slate-500"></div>
+                            <div class="border-r border-slate-500"></div>
+                        </div>
+
+                        <!-- O(1) -->
+                        <div class="absolute bottom-2 left-0 w-full h-0.5 bg-green-500"></div>
+                        <span class="absolute right-2 bottom-3 text-xs text-green-500 font-bold">O(1)</span>
+
+                        <!-- O(log n) -->
+                        <svg class="absolute inset-0 h-full w-full pointer-events-none" preserveAspectRatio="none">
+                            <path d="M0,250 Q150,230 400,220" fill="none" stroke="#3B82F6" stroke-width="2" />
+                        </svg>
+                        <span class="absolute right-2 bottom-12 text-xs text-blue-500 font-bold">O(log n)</span>
+
+                        <!-- O(n) -->
+                        <svg class="absolute inset-0 h-full w-full pointer-events-none" preserveAspectRatio="none">
+                            <path d="M0,250 L400,100" fill="none" stroke="#EAB308" stroke-width="2" />
+                        </svg>
+                        <span class="absolute right-2 top-28 text-xs text-yellow-500 font-bold">O(n)</span>
+
+                        <!-- O(n^2) -->
+                        <svg class="absolute inset-0 h-full w-full pointer-events-none" preserveAspectRatio="none">
+                            <path d="M0,250 Q100,250 200,0" fill="none" stroke="#EF4444" stroke-width="2" />
+                        </svg>
+                        <span class="absolute left-1/2 top-2 text-xs text-red-500 font-bold">O(n²)</span>
+                    </div>
+
+                    <p class="text-xs text-slate-400 text-center italic">"The gap between O(n log n) and O(n²) is the
+                        difference between pennies and millions."</p>
+                </div>
+            </div>
+
+            <!-- New Context Box (Explanation) -->
+            <div class="col-span-1 lg:col-span-2 bg-blue-50 p-6 rounded-xl border border-blue-200">
+                <h4 class="font-bold text-blue-900 mb-2 flex items-center gap-2"><i data-lucide="book-open"
+                        class="w-4 h-4"></i> Understanding this Section</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-slate-700">
+                    <div>
+                        <p class="font-bold mb-1">The Scaling Effect (Left):</p>
+                        <p>This shows <strong>practical impact</strong>. On a tiny grid (6x6), choosing Dijkstra over A*
+                            is negligible. But as the problem grows (Real World Map), the "dumb" algorithm wastes 95% of
+                            its effort checking useless paths. Small algorithmic differences compound into massive costs
+                            at scale.</p>
+                    </div>
+                    <div>
+                        <p class="font-bold mb-1">Complexity Growth (Right):</p>
+                        <p>This shows the <strong>theoretical backing (Big O)</strong>. The Red Line ($O(n^2)$)
+                            represents algorithms that fail at scale. If you double the data, the work quadruples. The
+                            Green/Blue lines ($O(\log n)$) are scalable—doubling data only adds a tiny bit more work.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW SECTION: DECISION FRAMEWORK -->
+        <section class="bg-slate-50 p-8 rounded-2xl border border-slate-200">
+            <h2 class="text-2xl font-bold text-slate-800 mb-8 text-center">Algorithm Selection Decision Tree</h2>
+            <div class="flex flex-col md:flex-row justify-center items-start gap-4 text-sm text-center">
+
+                <!-- Root -->
+                <div class="flex flex-col items-center gap-4 w-full">
+                    <div class="bg-slate-800 text-white p-3 rounded-lg font-bold shadow-md">What is your problem?</div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
+
+                        <!-- Pathfinding Branch -->
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="text-slate-400">↓</div>
+                            <div class="bg-white border border-slate-300 p-2 rounded font-bold">Pathfinding?</div>
+                            <div class="text-slate-400">↓</div>
+                            <div class="bg-slate-100 p-2 rounded text-xs">Good Heuristic?</div>
+                            <div class="grid grid-cols-2 gap-2 mt-2 w-full">
+                                <div class="bg-emerald-100 text-emerald-800 p-2 rounded font-bold">Yes: A*</div>
+                                <div class="bg-blue-100 text-blue-800 p-2 rounded font-bold">No: Dijkstra</div>
+                            </div>
+                        </div>
+
+                        <!-- Sorting Branch -->
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="text-slate-400">↓</div>
+                            <div class="bg-white border border-slate-300 p-2 rounded font-bold">Sorting?</div>
+                            <div class="text-slate-400">↓</div>
+                            <div class="bg-slate-100 p-2 rounded text-xs">Fits in Memory?</div>
+                            <div class="grid grid-cols-2 gap-2 mt-2 w-full">
+                                <div class="bg-emerald-100 text-emerald-800 p-2 rounded font-bold">Yes: QuickSort</div>
+                                <div class="bg-amber-100 text-amber-800 p-2 rounded font-bold">No: Ext. Merge</div>
+                            </div>
+                        </div>
+
+                        <!-- Search Branch -->
+                        <div class="flex flex-col items-center gap-2">
+                            <div class="text-slate-400">↓</div>
+                            <div class="bg-white border border-slate-300 p-2 rounded font-bold">Search?</div>
+                            <div class="text-slate-400">↓</div>
+                            <div class="bg-slate-100 p-2 rounded text-xs">Exact Needed?</div>
+                            <div class="grid grid-cols-2 gap-2 mt-2 w-full">
+                                <div class="bg-blue-100 text-blue-800 p-2 rounded font-bold">Yes: k-NN</div>
+                                <div class="bg-purple-100 text-purple-800 p-2 rounded font-bold">No: Approx NN</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION I: 5 CASE STUDIES -->
+        <section class="bg-slate-50 border border-slate-200 rounded-2xl p-8">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2"><i data-lucide="briefcase"></i> Real-World Case
+                Studies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                <div class="bg-white p-4 rounded-lg shadow-sm border-t-4 border-sky-500">
+                    <div class="font-bold text-sky-600 text-xs mb-1">Google Maps</div>
+                    <h4 class="font-bold text-sm mb-2">Routing</h4>
+                    <p class="text-xs text-slate-600">Contraction Hierarchies + A*. Milliseconds vs minutes.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border-t-4 border-red-500">
+                    <div class="font-bold text-red-600 text-xs mb-1">Netflix</div>
+                    <h4 class="font-bold text-sm mb-2">Recommender</h4>
+                    <p class="text-xs text-slate-600">Approximate Nearest Neighbors. Speed > perfect accuracy.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border-t-4 border-purple-500">
+                    <div class="font-bold text-purple-600 text-xs mb-1">LLM Training</div>
+                    <div class="font-bold text-sm mb-2">Flash Attention</div>
+                    <p class="text-xs text-slate-600">Memory access optimization. 2-4x faster training.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border-t-4 border-amber-500">
+                    <div class="font-bold text-amber-600 text-xs mb-1">Self-Driving</div>
+                    <div class="font-bold text-sm mb-2">Perception</div>
+                    <p class="text-xs text-slate-600">Single-Shot Detectors (YOLO). 30fps safety constraint.</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border-t-4 border-emerald-500">
+                    <div class="font-bold text-emerald-600 text-xs mb-1">Logistics</div>
+                    <div class="font-bold text-sm mb-2">Routing</div>
+                    <p class="text-xs text-slate-600">Domain-specific heuristics. 40-60% compute reduction.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION H: IMPROVEMENT STRATEGIES -->
+        <section>
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 text-center">Optimization Strategies</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="flex items-start gap-4 p-4 bg-white rounded-lg border border-slate-100 shadow-sm">
+                    <div class="bg-blue-100 p-2 rounded text-blue-600"><i data-lucide="wrench"></i></div>
+                    <div>
+                        <h4 class="font-bold text-sm">Optimize Existing</h4>
+                        <p class="text-xs text-slate-500">Better data structures, caching.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-4 bg-white rounded-lg border border-slate-100 shadow-sm">
+                    <div class="bg-emerald-100 p-2 rounded text-emerald-600"><i data-lucide="lightbulb"></i></div>
+                    <div>
+                        <h4 class="font-bold text-sm">New Algorithms</h4>
+                        <p class="text-xs text-slate-500">Transformers replacing RNNs.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-4 bg-white rounded-lg border border-slate-100 shadow-sm">
+                    <div class="bg-amber-100 p-2 rounded text-amber-600"><i data-lucide="fast-forward"></i></div>
+                    <div>
+                        <h4 class="font-bold text-sm">Heuristics</h4>
+                        <p class="text-xs text-slate-500">Approximations like A*.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-4 bg-white rounded-lg border border-slate-100 shadow-sm">
+                    <div class="bg-indigo-100 p-2 rounded text-indigo-600"><i data-lucide="check-circle"></i></div>
+                    <div>
+                        <h4 class="font-bold text-sm">Selection Frameworks</h4>
+                        <p class="text-xs text-slate-500">Evaluate per project constraints.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-4 bg-white rounded-lg border border-slate-100 shadow-sm">
+                    <div class="bg-rose-100 p-2 rounded text-rose-600"><i data-lucide="git-merge"></i></div>
+                    <div>
+                        <h4 class="font-bold text-sm">Parallelism</h4>
+                        <p class="text-xs text-slate-500">Distribute work (GPU/TPU).</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-4 bg-white rounded-lg border border-slate-100 shadow-sm">
+                    <div class="bg-purple-100 p-2 rounded text-purple-600"><i data-lucide="server"></i></div>
+                    <div>
+                        <h4 class="font-bold text-sm">Hardware utilization</h4>
+                        <p class="text-xs text-slate-500">Cache-friendly patterns.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION L: BUSINESS & LEADERSHIP -->
+        <section class="bg-slate-900 text-slate-300 rounded-2xl p-8 md:p-12">
+            <h2 class="text-3xl text-white font-bold mb-6 text-center">Business Leadership Framework</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Checklist -->
+                <div>
+                    <h3 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="help-circle"></i> Key
+                        Questions</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex gap-2"><span class="text-dijkstra">•</span> Are we using the most efficient
+                            algorithm for our scale?</li>
+                        <li class="flex gap-2"><span class="text-dijkstra">•</span> Have we evaluated algorithm choices
+                            per project?</li>
+                        <li class="flex gap-2"><span class="text-dijkstra">•</span> Are we paying for "exact" when
+                            "approximate" is sufficient?</li>
+                        <li class="flex gap-2"><span class="text-dijkstra">•</span> Do engineers have time to optimize
+                            (vs firefighting)?</li>
+                    </ul>
+                </div>
+
+                <!-- Actions -->
+                <div>
+                    <h3 class="text-white font-bold mb-4 flex items-center gap-2"><i data-lucide="check-circle"></i>
+                        Action Plan</h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex gap-2"><span class="text-emerald-500">1.</span> Mandate algorithm evaluation in
+                            design phase.</li>
+                        <li class="flex gap-2"><span class="text-emerald-500">2.</span> Track compute costs per feature.
+                        </li>
+                        <li class="flex gap-2"><span class="text-emerald-500">3.</span> Invest in code optimization
+                            BEFORE hardware scaling.</li>
+                        <li class="flex gap-2"><span class="text-emerald-500">4.</span> Benchmark against industry
+                            standards.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-red-900/30 border border-red-500/50 p-4 rounded-lg text-center">
+                <p class="text-red-200 font-bold text-sm">
+                    Warning: Buying hardware gives LINEAR returns. Better algorithms give EXPONENTIAL returns.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-center text-slate-400 text-sm">
+        <p>Generated for Computational Tradeoffs Module</p>
+    </footer>
+
+    <!-- LOGIC -->
+    <script>
+        lucide.createIcons();
+
+        // --- GRID CONFIG ---
+        const rows = 6, cols = 6;
+        const labels = [
+            ['A', 'B', 'C', 'D', 'E', 'F'],
+            ['G', 'H', 'I', 'J', 'K', 'L'],
+            ['M', 'N', 'O', 'P', 'Q', 'R'],
+            ['S', 'T', 'U', 'V', 'W', 'X'],
+            ['Y', 'Z', '0', '1', '2', '3'],
+            ['4', '5', '6', '7', '8', '9']
+        ];
+        const startPos = [0, 0]; // A
+        const endPos = [5, 5];   // 9
+
+        // Obstacles (D, J, P area + some thickness)
+        const obstacles = [
+            [0, 3], [1, 3], [2, 3], [3, 3], // Vertical Wall
+            [1, 4], [2, 4],               // Thickness
+            [2, 2]                       // Forces "N" path
+        ];
+
+        // Path: A -> H -> N -> T -> 0 -> 1 -> 2 -> 9
+        const finalPath = [
+            [0, 0], [1, 1], [2, 1], [3, 1], [4, 2], [4, 3], [4, 4], [5, 5]
+        ];
+
+        // Step Descriptions for the LOG
+        const stepDescriptions = [
+            "Start: Evaluating neighbors of A...",
+            "Dijkstra expands uniformly (B, G). A* prioritizes H due to heuristic.",
+            "A* follows H -> N. Dijkstra fills B, C, I, G...",
+            "A* moves N -> T (finding cheaper path). Dijkstra still exploring top-right.",
+            "A* moves T -> 0. Dijkstra hitting obstacles at D, J.",
+            "A* moves 0 -> 1. Dijkstra finally reaches T.",
+            "A* moves 1 -> 2. Dijkstra filling everywhere.",
+            "A* reaches 9! Dijkstra still checking corners.",
+            "Comparison complete. Note the Red Zone in A*."
+        ];
+
+        // Dijkstra Visits (Ripples)
+        const dijkstraSteps = [
+            [[0, 0]],
+            [[0, 1], [1, 0], [1, 1]],
+            [[0, 2], [1, 2], [2, 0], [2, 1]],
+            [[2, 2], [3, 0], [3, 1]],
+            [[3, 2], [4, 0], [4, 1]],
+            [[4, 2], [5, 0], [5, 1]],
+            [[4, 3], [5, 2]],
+            [[4, 4], [5, 3]],
+            [[4, 5], [5, 4]],
+            [[5, 5]]
+        ];
+
+        // A* Visits (Directed)
+        const astarSteps = [
+            [[0, 0]],
+            [[1, 1]], // A -> H
+            [[2, 1]], // H -> N
+            [[3, 1]], // N -> T
+            [[4, 2]], // T -> 0
+            [[4, 3]], // 0 -> 1
+            [[4, 4]], // 1 -> 2
+            [[5, 5]]  // 2 -> 9
+        ];
+
+        // Never Considered (Top Right Quadrant)
+        const neverConsidered = [
+            [0, 2], [0, 3], [0, 4], [0, 5],
+            [1, 2], [1, 3], [1, 4], [1, 5],
+            [2, 3], [2, 4], [2, 5],
+            [3, 3], [3, 4], [3, 5],
+            [4, 5]
+        ];
+
+        let step = 0;
+        const maxStep = 8;
+
+        function initGrid(id) {
+            const el = document.getElementById(id);
+            el.innerHTML = '';
+            for (let r = 0; r < rows; r++) {
+                for (let c = 0; c < cols; c++) {
+                    const div = document.createElement('div');
+                    div.id = `${id}-${r}-${c}`;
+                    div.className = `w-full h-full flex items-center justify-center text-xs font-mono font-bold rounded border border-slate-100 bg-white text-slate-300 transition-all duration-300`;
+                    div.innerText = labels[r][c];
+
+                    // Static classes (Start/End/Obstacle)
+                    // Note: Using JS to add classes that match our CSS !important rules
+                    if (r === startPos[0] && c === startPos[1]) div.classList.add('cell-start');
+                    else if (r === endPos[0] && c === endPos[1]) div.classList.add('cell-goal');
+                    else if (obstacles.some(o => o[0] === r && o[1] === c)) {
+                        div.classList.add('cell-obstacle');
+                        div.innerText = '';
+                    }
+
+                    el.appendChild(div);
+                }
+            }
+        }
+
+        function update() {
+            // Update Log
+            const logEl = document.getElementById('step-log');
+            if (stepDescriptions[step]) logEl.innerText = `Step ${step + 1}: ${stepDescriptions[step]}`;
+            else logEl.innerText = "Simulation Complete";
+
+            // Dijkstra Update
+            let dCount = 0;
+            for (let s = 0; s <= step && s < dijkstraSteps.length; s++) {
+                dijkstraSteps[s].forEach(([r, c]) => {
+                    // Check strict exclusions
+                    if (obstacles.some(o => o[0] === r && o[1] === c)) return;
+                    if (r === startPos[0] && c === startPos[1]) return;
+                    if (r === endPos[0] && c === endPos[1]) return;
+
+                    const cell = document.getElementById(`grid-dijkstra-${r}-${c}`);
+                    cell.className = "w-full h-full flex items-center justify-center text-xs font-mono font-bold rounded border transition-all duration-300 cell-visited-dijkstra";
+                    if (s === step) cell.classList.add('pulse-cell');
+                    dCount++;
+                });
+            }
+            document.getElementById('dijkstra-percent').innerText = Math.round((dCount / 36) * 100) + "%";
+
+            // A* Update
+            let aCount = 0;
+            for (let s = 0; s <= step && s < astarSteps.length; s++) {
+                astarSteps[s].forEach(([r, c]) => {
+                    // Check strict exclusions
+                    if (r === startPos[0] && c === startPos[1]) return;
+                    if (r === endPos[0] && c === endPos[1]) return;
+
+                    const cell = document.getElementById(`grid-astar-${r}-${c}`);
+                    cell.className = "w-full h-full flex items-center justify-center text-xs font-mono font-bold rounded border transition-all duration-300 cell-visited-astar";
+                    if (s === step) cell.classList.add('pulse-cell');
+                    aCount++;
+                });
+            }
+            document.getElementById('astar-percent').innerText = Math.round((aCount / 36) * 100) + "%";
+
+            // A* Never Considered Logic
+            if (step > 0) {
+                neverConsidered.forEach(([r, c]) => {
+                    const cell = document.getElementById(`grid-astar-${r}-${c}`);
+                    // Safety check against obstacles/start/goal
+                    if (!cell.classList.contains('cell-obstacle') &&
+                        !cell.classList.contains('cell-start') &&
+                        !cell.classList.contains('cell-goal') &&
+                        !cell.classList.contains('cell-visited-astar')) {
+                        cell.classList.add('cell-never');
+                    }
+                });
+            }
+
+            // Final Path (Draw at end)
+            if (step === maxStep) {
+                finalPath.forEach(([r, c], i) => {
+                    setTimeout(() => {
+                        const dCell = document.getElementById(`grid-dijkstra-${r}-${c}`);
+                        const aCell = document.getElementById(`grid-astar-${r}-${c}`);
+
+                        // Apply path class ONLY if not start/goal
+                        if (!dCell.classList.contains('cell-start') && !dCell.classList.contains('cell-goal')) {
+                            dCell.classList.add('cell-path');
+                        }
+                        if (!aCell.classList.contains('cell-start') && !aCell.classList.contains('cell-goal')) {
+                            aCell.classList.add('cell-path');
+                        }
+                    }, i * 50);
+                });
+            }
+        }
+
+        function nextStep() {
+            if (step < maxStep) {
+                step++;
+                update();
+            }
+        }
+
+        function resetSim() {
+            step = 0;
+            initGrid('grid-dijkstra');
+            initGrid('grid-astar');
+            document.getElementById('dijkstra-percent').innerText = "0%";
+            document.getElementById('astar-percent').innerText = "0%";
+            document.getElementById('step-log').innerText = 'Click "Next Step" to begin comparison...';
+        }
+
+        // Init
+        initGrid('grid-dijkstra');
+        initGrid('grid-astar');
+
+    </script>
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

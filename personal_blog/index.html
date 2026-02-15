@@ -89,12 +89,20 @@
                     order: 0
                 },
                 {
+                    id: "optimizing-ai-resources",
+                    name: "Optimizing AI Resources",
+                    folder: "optimizing-ai-resources",
+                    icon: "fa-microchip",
+                    color: "cyan",
+                    order: 4
+                },
+                {
                     id: "ai-business",
                     name: "AI Business UseCases",
                     folder: "ai-business-usecases",
                     icon: "fa-briefcase",
                     color: "blue",
-                    order: 4
+                    order: 5
                 },
                 {
                     id: "ai-pm",
@@ -102,7 +110,7 @@
                     folder: "ai-project-management",
                     icon: "fa-project-diagram",
                     color: "purple",
-                    order: 5
+                    order: 6
                 },
                 {
                     id: "ml-fundamentals",
@@ -134,7 +142,7 @@
                     folder: "agentic-ai",
                     icon: "fa-robot",
                     color: "red",
-                    order: 6
+                    order: 7
                 }
             ],
             posts: [
@@ -394,6 +402,97 @@
                     file: "data-optimization-for-ml/project-maven-data-quality-case-study.html",
                     order: 9
                 },
+                // Optimizing AI Resources
+                {
+                    id: "introduction-to-ai-resources",
+                    title: "Introduction to AI Resources",
+                    excerpt: "Overview of the four AI resource pillars — Memory, Compute Power, Query Expressiveness, and Performance — with strategic tradeoffs and optimization strategies.",
+                    category: "optimizing-ai-resources",
+                    date: "2025-02-11",
+                    file: "optimizing-ai-resources/introduction-to-ai-resources.html",
+                    order: 1
+                },
+                {
+                    id: "memory-in-ai-systems",
+                    title: "Memory in AI Systems: Architectures & Tradeoffs",
+                    excerpt: "Deep dive into AI memory architectures: STM, Working Memory, LTM, RNN, LSTM gates, and Transformer self-attention with strategic tradeoff analysis.",
+                    category: "optimizing-ai-resources",
+                    date: "2025-02-11",
+                    file: "optimizing-ai-resources/memory-in-ai-systems.html",
+                    order: 2
+                },
+                {
+                    id: "memory-management-strategies",
+                    title: "AI Memory Management Strategies",
+                    excerpt: "Strategies for optimizing, securing, and scaling memory in AI systems. Covers hardware hierarchies, data retention, and anti-forgetting mechanisms.",
+                    category: "optimizing-ai-resources",
+                    date: "2025-02-13",
+                    file: "optimizing-ai-resources/memory-management-strategies.html",
+                    order: 3
+                },
+                {
+                    id: "memory-applications-and-challenges",
+                    title: "Memory Applications & Challenges in AI",
+                    excerpt: "How memory powers AI systems from chatbots to robotics, and critical challenges including scalability, catastrophic forgetting, and data poisoning.",
+                    category: "optimizing-ai-resources",
+                    date: "2025-02-15",
+                    file: "optimizing-ai-resources/memory-applications-and-challenges.html",
+                    order: 4
+                },
+                {
+                    id: "computational-tradeoffs-algorithms",
+                    title: "Computational Tradeoffs: Algorithms",
+                    excerpt: "Interactive exploration of algorithm selection tradeoffs with Dijkstra's vs A* pathfinding, Big-O complexity, and real-world case studies.",
+                    category: "optimizing-ai-resources",
+                    date: "2025-02-13",
+                    file: "optimizing-ai-resources/computational-tradeoffs-algorithms.html",
+                    order: 5
+                },
+                {
+                    id: "computational-tradeoffs-parallelization",
+                    title: "Computational Tradeoffs: Parallelization",
+                    excerpt: "How parallelization decisions impact AI performance, cost, and scalability. Covers Amdahl's Law, GPU parallelism, and distributed computing.",
+                    category: "optimizing-ai-resources",
+                    date: "2025-02-14",
+                    file: "optimizing-ai-resources/computational-tradeoffs-parallelization.html",
+                    order: 6
+                },
+                {
+                    id: "query-expressiveness",
+                    title: "Query Expressiveness in AI",
+                    excerpt: "How data retrieval strategy impacts AI quality, accuracy, and cost. Covers procedural vs declarative queries and database type selection.",
+                    category: "optimizing-ai-resources",
+                    date: "2025-02-14",
+                    file: "optimizing-ai-resources/query-expressiveness.html",
+                    order: 7
+                },
+                {
+                    id: "performance-in-ai-systems",
+                    title: "Performance in AI Systems: Resources & Optimization",
+                    excerpt: "Cross-cutting analysis of AI performance spanning hardware, memory optimization, energy consumption, and software stack optimization.",
+                    category: "optimizing-ai-resources",
+                    date: "2025-02-14",
+                    file: "optimizing-ai-resources/performance-in-ai-systems.html",
+                    order: 8
+                },
+                {
+                    id: "six-pillars-of-processing-units",
+                    title: "The Six Pillars of Processing Units",
+                    excerpt: "Infographic covering six processing unit types for AI: CPU, GPU, TPU, DPU, NPU, and QPU with architecture comparisons and use cases.",
+                    category: "optimizing-ai-resources",
+                    date: "2025-02-15",
+                    file: "optimizing-ai-resources/six-pillars-of-processing-units.html",
+                    order: 9
+                },
+                {
+                    id: "quick-summary",
+                    title: "AI Knowledge Summary",
+                    excerpt: "Compact cheat-sheet of essential AI concepts for senior engineers covering data, models, hardware, systems, and strategy.",
+                    category: "optimizing-ai-resources",
+                    date: "2025-02-15",
+                    file: "optimizing-ai-resources/quick-summary.html",
+                    order: 10
+                },
                 // AI Business UseCases
                 {
                     id: "modern-ai-landscape",
@@ -615,6 +714,13 @@
                     buttonActive: 'bg-indigo-600 text-white border-indigo-600 dark:bg-indigo-600 dark:border-indigo-600',
                     pill: 'bg-indigo-100 text-indigo-700 dark:bg-indigo-900 dark:text-indigo-300',
                     pillActive: 'bg-indigo-600 text-white'
+                },
+                cyan: {
+                    badge: 'bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200',
+                    button: 'bg-cyan-50 text-cyan-700 border-cyan-200 dark:bg-cyan-900/30 dark:text-cyan-300 dark:border-cyan-800',
+                    buttonActive: 'bg-cyan-600 text-white border-cyan-600 dark:bg-cyan-600 dark:border-cyan-600',
+                    pill: 'bg-cyan-100 text-cyan-700 dark:bg-cyan-900 dark:text-cyan-300',
+                    pillActive: 'bg-cyan-600 text-white'
                 },
                 red: {
                     badge: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',

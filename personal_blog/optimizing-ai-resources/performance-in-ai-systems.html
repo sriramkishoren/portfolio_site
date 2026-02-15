@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance in AI Systems: Resources & Optimization | KishoreTech</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Performance in AI Systems: Resources & Optimization">
+    <meta name="description" content="Cross-cutting analysis of AI system performance spanning hardware (CPU, GPU, TPU), memory optimization, energy consumption, software stack optimization, and talent tradeoffs.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Optimizing AI Resources">
+    <meta name="tags" content="AI Performance, GPU, CPU, TPU, Memory Optimization, Energy Consumption, Software Optimization, AI Infrastructure, Performance Tuning">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Comprehensive performance analysis spanning the entire AI pipeline. Covers hardware considerations (CPU, GPU, TPU comparison), memory optimization strategies, energy consumption analysis (comparing ChatGPT data center power to central Florida), software optimization stack, talent tradeoffs between specialists and generalists, and actionable performance improvement strategies.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/performance-in-ai-systems">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Performance in AI Systems: Resources & Optimization">
+    <meta property="og:description" content="Cross-cutting analysis of AI performance spanning hardware, memory optimization, energy consumption, and software stack optimization.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/performance-in-ai-systems">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-02-14">
+    <meta property="article:section" content="Optimizing AI Resources">
+    <meta property="article:tag" content="AI Performance">
+    <meta property="article:tag" content="GPU">
+    <meta property="article:tag" content="Memory Optimization">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Performance in AI Systems: Resources & Optimization",
+        "description": "Cross-cutting analysis of AI system performance spanning hardware (CPU, GPU, TPU), memory optimization, energy consumption, software stack optimization, and talent tradeoffs.",
+        "datePublished": "2025-02-14",
+        "dateModified": "2025-02-14",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/performance-in-ai-systems"
+        },
+        "keywords": ["AI Performance", "GPU", "CPU", "TPU", "Memory Optimization", "Energy Consumption", "Software Optimization", "AI Infrastructure", "Performance Tuning"],
+        "articleSection": "Optimizing AI Resources",
+        "about": [
+            {"@type": "Thing", "name": "AI Performance"},
+            {"@type": "Thing", "name": "Hardware Optimization"}
+        ]
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cpu: '#3B82F6',
+                        gpu: '#22C55E',
+                        tpu: '#8B5CF6',
+                        emerging: '#F59E0B',
+                        ssd: '#22C55E',
+                        hdd: '#F97316',
+                        energy: '#14B8A6',
+                        model: '#8B5CF6',
+                        warning: '#DC2626',
+                        success: '#22C55E',
+                        accent: '#EA580C',
+                        slate: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#64748b',
+                            600: '#475569',
+                            700: '#334155',
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#020617',
+                        },
+                        orange: {
+                            50: '#fff7ed',
+                            100: '#ffedd5',
+                            500: '#f97316',
+                            600: '#ea580c',
+                            800: '#9a3412',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .pipeline-arrow::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 10px solid #CBD5E1;
+        }
+
+        @media print {
+            .no-print {
+                display: none;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+
+            body {
+                background-color: white;
+                color: black;
+            }
+
+            .shadow-lg {
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="gauge" class="text-accent h-6 w-6"></i>
+                    <span class="font-bold text-xl tracking-tight">AI Performance</span>
+                </div>
+                <div class="hidden md:flex space-x-4 text-sm font-medium text-slate-600">
+                    <a href="#pipeline" class="hover:text-accent transition-colors">Pipeline</a>
+                    <a href="#hardware" class="hover:text-accent transition-colors">Hardware</a>
+                    <a href="#memory" class="hover:text-accent transition-colors">Memory</a>
+                    <a href="#energy" class="hover:text-accent transition-colors">Energy</a>
+                    <a href="#software" class="hover:text-accent transition-colors">Stack</a>
+                    <a href="#strategies" class="hover:text-accent transition-colors">Strategies</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header
+        class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white pt-20 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-12 opacity-10">
+            <i data-lucide="cpu" class="w-64 h-64"></i>
+        </div>
+        <div class="max-w-7xl mx-auto relative z-10 text-center">
+            <div class="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full mb-6 border border-white/20">
+                <i data-lucide="layers" class="h-4 w-4 text-accent"></i>
+                <span class="text-sm font-medium text-slate-200">A Cross-Cutting Concern Spanning the Entire
+                    Pipeline</span>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+                Performance in AI Systems
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto mb-10 font-light">
+                How Computational Resources, Optimization, and Efficiency Directly Impact Speed, Accuracy, and Cost.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
+                <div class="bg-white/10 backdrop-blur p-6 rounded-xl border-l-4 border-warning">
+                    <div class="flex items-start gap-4">
+                        <i data-lucide="zap-off" class="text-warning h-8 w-8 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <p class="font-bold text-lg mb-2">Energy Reality</p>
+                            <p class="text-slate-300 italic">"The data center used for ChatGPT by OpenAI uses as much
+                                power as central Florida — from the city of Orlando all the way to Tampa."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white/10 backdrop-blur p-6 rounded-xl border-l-4 border-accent">
+                    <div class="flex items-start gap-4">
+                        <i data-lucide="users" class="text-accent h-8 w-8 mt-1 flex-shrink-0"></i>
+                        <div>
+                            <p class="font-bold text-lg mb-2">Talent Trade-off</p>
+                            <p class="text-slate-300 italic">"You might be cheaper in your hardware, but now you're
+                                going to have higher labor costs because those resources are scarce."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p class="mt-12 text-sm text-slate-400">Based on lectures by Dr. Ian McCullough, Johns Hopkins University
+            </p>
+        </div>
+    </header>
+
+    <!-- Pipeline Section -->
+    <section id="pipeline" class="py-16 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-12 text-center text-slate-800">Performance Across the AI/ML Pipeline</h2>
+
+            <!-- Overall Bar -->
+            <div class="w-full bg-gradient-to-r from-cpu via-accent to-purple-600 h-2 rounded-full mb-8 relative">
+                <div
+                    class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    PERFORMANCE IMPACTS EVERY STAGE
+                </div>
+            </div>
+
+            <!-- Pipeline Flow -->
+            <div class="flex flex-col lg:flex-row gap-4 items-stretch justify-between overflow-x-auto pb-6">
+                <!-- Step 1 -->
+                <div
+                    class="flex-1 bg-slate-50 border border-slate-200 p-4 rounded-lg min-w-[140px] text-center relative group hover:border-blue-400 transition-colors">
+                    <div class="text-xs font-bold text-slate-400 mb-2">PHASE 1</div>
+                    <div class="font-bold text-slate-700 mb-2">Data Collection</div>
+                    <div class="text-xs text-slate-500 bg-white p-1 rounded border border-slate-100">Storage & Network
+                    </div>
+                </div>
+                <!-- Step 2 -->
+                <div
+                    class="flex-1 bg-slate-50 border border-slate-200 p-4 rounded-lg min-w-[140px] text-center group hover:border-blue-400 transition-colors">
+                    <div class="text-xs font-bold text-slate-400 mb-2">PHASE 2</div>
+                    <div class="font-bold text-slate-700 mb-2">Data Prep</div>
+                    <div class="text-xs text-slate-500 bg-white p-1 rounded border border-slate-100">CPU & RAM</div>
+                </div>
+                <!-- Step 3 -->
+                <div
+                    class="flex-1 bg-slate-50 border border-slate-200 p-4 rounded-lg min-w-[140px] text-center group hover:border-blue-400 transition-colors">
+                    <div class="text-xs font-bold text-slate-400 mb-2">PHASE 3</div>
+                    <div class="font-bold text-slate-700 mb-2">Cleaning</div>
+                    <div class="text-xs text-slate-500 bg-white p-1 rounded border border-slate-100">CPU Intensive</div>
+                </div>
+                <!-- Step 4 -->
+                <div
+                    class="flex-1 bg-slate-50 border border-slate-200 p-4 rounded-lg min-w-[140px] text-center group hover:border-blue-400 transition-colors">
+                    <div class="text-xs font-bold text-slate-400 mb-2">PHASE 4</div>
+                    <div class="font-bold text-slate-700 mb-2">Feat. Eng.</div>
+                    <div class="text-xs text-slate-500 bg-white p-1 rounded border border-slate-100">Memory Bound</div>
+                </div>
+
+                <!-- PRIMARY HIGHLIGHT - Fixed rendering colors and z-index -->
+                <div
+                    class="flex-[1.5] bg-orange-100 border-2 border-orange-500 p-4 rounded-lg min-w-[180px] text-center shadow-lg relative z-10 mx-1">
+                    <div
+                        class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-orange-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">
+                        INTENSIVE</div>
+                    <div class="text-xs font-bold text-orange-600 mb-2">PHASE 5</div>
+                    <div class="font-bold text-slate-900 text-lg mb-2">Model Training</div>
+                    <div class="text-xs text-orange-800 bg-orange-200 p-1 rounded font-semibold">GPU/TPU & VRAM</div>
+                    <div class="mt-2 text-[10px] text-slate-600">Highest Energy Cost</div>
+                </div>
+
+                <!-- Step 6 -->
+                <div
+                    class="flex-1 bg-slate-50 border border-slate-200 p-4 rounded-lg min-w-[140px] text-center group hover:border-blue-400 transition-colors">
+                    <div class="text-xs font-bold text-slate-400 mb-2">PHASE 6</div>
+                    <div class="font-bold text-slate-700 mb-2">Evaluation</div>
+                    <div class="text-xs text-slate-500 bg-white p-1 rounded border border-slate-100">Inference Speed
+                    </div>
+                </div>
+
+                <!-- SECONDARY HIGHLIGHT -->
+                <div
+                    class="flex-[1.2] bg-indigo-50 border-2 border-indigo-500 p-4 rounded-lg min-w-[160px] text-center shadow-md">
+                    <div class="text-xs font-bold text-indigo-600 mb-2">PHASE 7</div>
+                    <div class="font-bold text-slate-800 mb-2">Deployment</div>
+                    <div class="text-xs text-indigo-800 bg-indigo-100 p-1 rounded font-semibold">Latency & TCO</div>
+                    <div class="mt-2 text-[10px] text-slate-500">Ongoing Optimization</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hardware Section -->
+    <section id="hardware" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-3 mb-8">
+                <i data-lucide="cpu" class="text-blue-600 w-8 h-8"></i>
+                <h2 class="text-3xl font-bold text-slate-800">Computational Power</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- CPU -->
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 card-hover border-t-4 border-t-cpu">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-slate-800">CPU</h3>
+                        <span class="bg-blue-100 text-cpu text-xs font-bold px-2 py-1 rounded">General</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4 h-20">The workhorse for general tasks. Sequential architecture
+                        with few powerful cores.</p>
+                    <div class="space-y-2">
+                        <div class="text-xs font-semibold text-slate-500 uppercase">Best For</div>
+                        <ul class="text-sm text-slate-700 space-y-1">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-cpu"></i>
+                                Preprocessing</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-cpu"></i>
+                                Orchestration</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-cpu"></i> ETL
+                                Pipelines</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- GPU -->
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 card-hover border-t-4 border-t-gpu">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-slate-800">GPU</h3>
+                        <span class="bg-green-100 text-gpu text-xs font-bold px-2 py-1 rounded">Parallel</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4 h-20">Optimized for parallel processing. Thousands of smaller
+                        cores for matrix math.</p>
+                    <div class="space-y-2">
+                        <div class="text-xs font-semibold text-slate-500 uppercase">Best For</div>
+                        <ul class="text-sm text-slate-700 space-y-1">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-gpu"></i>
+                                Deep Learning</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-gpu"></i>
+                                Matrix Ops</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-gpu"></i>
+                                Foundation Models</li>
+                        </ul>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-slate-100">
+                        <div class="flex justify-between text-xs mb-1">
+                            <span>Speedup vs CPU</span>
+                            <span class="font-bold text-gpu">10-100x</span>
+                        </div>
+                        <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-gpu h-full" style="width: 90%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TPU -->
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 card-hover border-t-4 border-t-tpu">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-slate-800">TPU</h3>
+                        <span class="bg-purple-100 text-tpu text-xs font-bold px-2 py-1 rounded">Specialized</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4 h-20">Google's custom ASIC accelerators. High throughput &
+                        energy efficient.</p>
+                    <div class="space-y-2">
+                        <div class="text-xs font-semibold text-slate-500 uppercase">Best For</div>
+                        <ul class="text-sm text-slate-700 space-y-1">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-tpu"></i>
+                                TensorFlow</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-tpu"></i>
+                                Large Scale (Pods)</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-3 h-3 text-tpu"></i> NLP
+                                & Vision</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Emerging -->
+                <div
+                    class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 card-hover border-t-4 border-t-emerging">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-slate-800">Emerging</h3>
+                        <span class="bg-amber-100 text-emerging text-xs font-bold px-2 py-1 rounded">Custom</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4 h-20">Diverse hardware reducing NVIDIA dependency and costs.
+                    </p>
+                    <div class="space-y-2">
+                        <div class="text-xs font-semibold text-slate-500 uppercase">Examples</div>
+                        <ul class="text-sm text-slate-700 space-y-1">
+                            <li class="flex items-center gap-2"><i data-lucide="chip" class="w-3 h-3 text-emerging"></i>
+                                AWS Trainium</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chip" class="w-3 h-3 text-emerging"></i>
+                                Intel Gaudi</li>
+                            <li class="flex items-center gap-2"><i data-lucide="chip" class="w-3 h-3 text-emerging"></i>
+                                Cerebras</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Memory & Storage Grid -->
+    <section id="memory" class="py-16 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+                <!-- Memory Column -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="hard-drive" class="text-blue-600 w-8 h-8"></i>
+                        <h2 class="text-3xl font-bold text-slate-800">Memory Management</h2>
+                    </div>
+                    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
+                        <div class="grid grid-cols-2 gap-4 mb-6">
+                            <!-- RAM -->
+                            <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-blue-500">
+                                <h4 class="font-bold text-slate-700 mb-1">RAM (System)</h4>
+                                <p class="text-xs text-slate-500 mb-2">32GB - 1TB+</p>
+                                <p class="text-sm text-slate-600">Working data for CPU. Insufficient RAM causes
+                                    bottlenecks.</p>
+                            </div>
+                            <!-- VRAM -->
+                            <div class="bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-500">
+                                <h4 class="font-bold text-slate-700 mb-1">VRAM (GPU)</h4>
+                                <p class="text-xs text-slate-500 mb-2">8GB - 80GB+</p>
+                                <p class="text-sm text-slate-600">Critical bottleneck. Determines max batch & model
+                                    size.</p>
+                            </div>
+                        </div>
+
+                        <h4 class="font-bold text-slate-800 mb-3 text-sm uppercase tracking-wide">Optimization
+                            Techniques</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div class="flex items-center gap-3 bg-white p-3 rounded-lg border border-slate-200">
+                                <i data-lucide="minimize" class="text-purple-500 w-5 h-5"></i>
+                                <div class="text-sm">
+                                    <span class="block font-semibold">Mixed Precision</span>
+                                    <span class="text-slate-500 text-xs">Use FP16/BF16 to halve memory</span>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3 bg-white p-3 rounded-lg border border-slate-200">
+                                <i data-lucide="refresh-ccw" class="text-purple-500 w-5 h-5"></i>
+                                <div class="text-sm">
+                                    <span class="block font-semibold">Gradient Checkpointing</span>
+                                    <span class="text-slate-500 text-xs">Trade compute for memory</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Storage Column -->
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <i data-lucide="database" class="text-orange-500 w-8 h-8"></i>
+                        <h2 class="text-3xl font-bold text-slate-800">Storage Speed</h2>
+                    </div>
+                    <div
+                        class="bg-slate-50 rounded-2xl p-6 border border-slate-200 h-full flex flex-col justify-center">
+                        <div class="space-y-6">
+                            <!-- SSD -->
+                            <div>
+                                <div class="flex justify-between items-end mb-2">
+                                    <div>
+                                        <h4 class="font-bold text-slate-800 flex items-center gap-2">
+                                            <i data-lucide="zap" class="text-green-500 w-4 h-4"></i> SSD (NVMe)
+                                        </h4>
+                                        <p class="text-xs text-slate-500">Crucial for training data pipelines</p>
+                                    </div>
+                                    <span class="text-green-600 font-bold text-sm">~3500+ MB/s</span>
+                                </div>
+                                <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
+                                    <div class="bg-gradient-to-r from-green-400 to-green-600 h-full" style="width: 95%">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- HDD -->
+                            <div>
+                                <div class="flex justify-between items-end mb-2">
+                                    <div>
+                                        <h4 class="font-bold text-slate-800 flex items-center gap-2">
+                                            <i data-lucide="hard-drive" class="text-orange-500 w-4 h-4"></i> HDD
+                                        </h4>
+                                        <p class="text-xs text-slate-500">Archival & Cold Data only</p>
+                                    </div>
+                                    <span class="text-orange-600 font-bold text-sm">~160 MB/s</span>
+                                </div>
+                                <div class="w-full bg-gray-200 h-4 rounded-full overflow-hidden">
+                                    <div class="bg-orange-400 h-full" style="width: 15%"></div>
+                                </div>
+                            </div>
+
+                            <!-- Cloud Storage Visual -->
+                            <div class="grid grid-cols-2 gap-3 mt-4">
+                                <div class="bg-blue-50 border border-blue-200 p-3 rounded-lg text-center">
+                                    <i data-lucide="cloud" class="w-5 h-5 text-blue-500 mx-auto mb-1"></i>
+                                    <div class="text-xs font-bold text-blue-800">Object Storage</div>
+                                    <div class="text-[10px] text-blue-600">S3 / GCS / Azure Blob</div>
+                                </div>
+                                <div class="bg-blue-50 border border-blue-200 p-3 rounded-lg text-center">
+                                    <i data-lucide="network" class="w-5 h-5 text-blue-500 mx-auto mb-1"></i>
+                                    <div class="text-xs font-bold text-blue-800">Dist. File System</div>
+                                    <div class="text-[10px] text-blue-600">HDFS / Ceph</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Query Expressiveness Block -->
+            <div class="mt-8 bg-indigo-50 rounded-2xl p-6 border border-indigo-100">
+                <div class="flex flex-col md:flex-row items-start gap-4">
+                    <div class="bg-white p-3 rounded-full shadow-sm text-indigo-600">
+                        <i data-lucide="file-code" class="w-6 h-6"></i>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-slate-800 mb-2">Query Expressiveness</h3>
+                        <p class="text-slate-600 mb-4">
+                            The efficiency of how you request data directly impacts memory and storage performance.
+                            Optimizing <em>what</em> you ask for (Calculus) vs. <em>how</em> you ask for it (Algebra)
+                            can prevent bottlenecks.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-white p-4 rounded-lg border border-indigo-200 shadow-sm">
+                                <h4 class="font-bold text-slate-700 text-sm mb-1">Relational Calculus Approach</h4>
+                                <p class="text-xs text-slate-500">Declarative (asking for "what"). Often more efficient
+                                    as the optimizer determines the best execution path, reducing memory load.</p>
+                            </div>
+                            <div class="bg-white p-4 rounded-lg border border-indigo-200 shadow-sm opacity-90">
+                                <h4 class="font-bold text-slate-700 text-sm mb-1">Relational Algebra Approach</h4>
+                                <p class="text-xs text-slate-500">Procedural (asking "how"). Risk of manual
+                                    inefficiencies if specific operations aren't optimized, leading to higher I/O.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallelism -->
+    <section class="py-16 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <div
+                    class="inline-flex items-center gap-2 bg-indigo-500/20 px-4 py-1.5 rounded-full mb-4 border border-indigo-500/30">
+                    <i data-lucide="share-2" class="w-4 h-4 text-indigo-400"></i>
+                    <span class="text-sm font-medium text-indigo-200">Enabling Scale</span>
+                </div>
+                <h2 class="text-3xl font-bold">Parallelism & Distributed Systems</h2>
+                <p class="text-slate-400 mt-2">How to handle workloads that don't fit on one machine.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Data Parallelism -->
+                <div
+                    class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors h-full">
+                    <div class="flex justify-center mb-4">
+                        <div class="flex gap-2">
+                            <div class="w-8 h-10 bg-indigo-500 rounded flex items-center justify-center text-xs">M</div>
+                            <div class="w-8 h-10 bg-indigo-500 rounded flex items-center justify-center text-xs">M</div>
+                            <div class="w-8 h-10 bg-indigo-500 rounded flex items-center justify-center text-xs">M</div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">Data Parallelism</h3>
+                    <p class="text-slate-400 text-sm text-center">Same model on multiple GPUs, different data batches.
+                        Gradients synchronized.</p>
+                </div>
+
+                <!-- Model Parallelism -->
+                <div
+                    class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors h-full">
+                    <div class="flex justify-center mb-4">
+                        <div class="flex gap-1">
+                            <div class="w-8 h-10 bg-rose-500 rounded-l flex items-center justify-center text-xs">M1
+                            </div>
+                            <div class="w-8 h-10 bg-rose-600 rounded-r flex items-center justify-center text-xs">M2
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">Model Parallelism</h3>
+                    <p class="text-slate-400 text-sm text-center">Model split across GPUs. Essential when model size >
+                        single GPU VRAM.</p>
+                </div>
+
+                <!-- Distributed -->
+                <div
+                    class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-indigo-500 transition-colors h-full">
+                    <div class="flex justify-center mb-4 items-center gap-2">
+                        <i data-lucide="server" class="text-slate-500"></i>
+                        <i data-lucide="arrow-left-right" class="text-indigo-400 w-4"></i>
+                        <i data-lucide="server" class="text-slate-500"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-center mb-2">Distributed Systems</h3>
+                    <p class="text-slate-400 text-sm text-center">Spreading workload across multiple machines (Nodes).
+                        Requires fast networking (InfiniBand).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Energy Section -->
+    <section id="energy" class="py-16 bg-teal-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center gap-3 mb-8">
+                <i data-lucide="leaf" class="text-teal-600 w-8 h-8"></i>
+                <h2 class="text-3xl font-bold text-slate-800">Energy & Sustainability</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white p-8 rounded-2xl shadow-lg border-t-8 border-teal-500">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-6">The Cost of Intelligence</h3>
+
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-red-100 p-3 rounded-full">
+                            <i data-lucide="zap" class="text-red-500 w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-lg">Massive Consumption</p>
+                            <p class="text-slate-600 text-sm">Training large models is energy-intensive. Inference at
+                                scale multiplies this daily.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-teal-100 p-3 rounded-full">
+                            <i data-lucide="dollar-sign" class="text-teal-600 w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-lg">Direct Cost Impact</p>
+                            <p class="text-slate-600 text-sm">"It's not just about being green. It's about reducing your
+                                compute costs."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="font-bold text-slate-700">Green AI Strategies</h3>
+
+                    <div class="bg-white p-4 rounded-lg shadow-sm flex items-start gap-3">
+                        <i data-lucide="map-pin" class="text-teal-500 mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-sm">Location Matters</p>
+                            <p class="text-xs text-slate-500">Train in regions with renewable energy or lower cooling
+                                costs.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-lg shadow-sm flex items-start gap-3">
+                        <i data-lucide="thermometer" class="text-teal-500 mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-sm">Efficient Cooling</p>
+                            <p class="text-xs text-slate-500">Cooling can be 30-40% of data center energy. Liquid
+                                cooling improves PUE.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-lg shadow-sm flex items-start gap-3">
+                        <i data-lucide="clock" class="text-teal-500 mt-1"></i>
+                        <div>
+                            <p class="font-semibold text-sm">Transfer Learning</p>
+                            <p class="text-xs text-slate-500">Fine-tune existing models instead of training from scratch
+                                to save vast energy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Efficiency - Renamed Header -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-bold text-slate-800">Model Efficiency</h2>
+                <p class="text-slate-600 mt-2">"It shocks me how little attention is applied to making models
+                    efficient."</p>
+            </div>
+
+            <!-- Before / After Visual -->
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 mb-12">
+                <!-- Standard Model -->
+                <div class="bg-red-50 border-2 border-red-200 p-6 rounded-xl w-full max-w-sm text-center opacity-75">
+                    <div class="text-red-500 font-bold mb-2">Standard Model</div>
+                    <i data-lucide="box" class="w-16 h-16 mx-auto text-red-400 mb-4"></i>
+                    <ul class="text-sm text-red-800 space-y-1">
+                        <li>Billions of Parameters</li>
+                        <li>High Latency</li>
+                        <li>High Cost</li>
+                    </ul>
+                </div>
+
+                <i data-lucide="arrow-right" class="hidden md:block w-8 h-8 text-slate-400"></i>
+                <i data-lucide="arrow-down" class="md:hidden w-8 h-8 text-slate-400"></i>
+
+                <!-- Optimized Model -->
+                <div
+                    class="bg-green-50 border-2 border-green-500 p-6 rounded-xl w-full max-w-sm text-center shadow-lg transform scale-105">
+                    <div class="text-green-600 font-bold mb-2">Optimized Model</div>
+                    <i data-lucide="package-check" class="w-16 h-16 mx-auto text-green-500 mb-4"></i>
+                    <ul class="text-sm text-green-800 space-y-1">
+                        <li>Compressed Size (50-90% less)</li>
+                        <li>Fast Inference</li>
+                        <li>Low Cost</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Techniques -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-purple-50 p-6 rounded-lg border border-purple-100">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i data-lucide="scissors" class="text-purple-600 w-5 h-5"></i>
+                        <h3 class="font-bold text-slate-800">Pruning</h3>
+                    </div>
+                    <p class="text-sm text-slate-600">Removing unnecessary weights or neurons. Can reduce model size by
+                        50-90% with minimal accuracy loss.</p>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-lg border border-purple-100">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i data-lucide="binary" class="text-purple-600 w-5 h-5"></i>
+                        <h3 class="font-bold text-slate-800">Quantization</h3>
+                    </div>
+                    <p class="text-sm text-slate-600">Reducing numerical precision (e.g., FP32 to INT8). 2-4x speedup
+                        and 4x memory reduction.</p>
+                </div>
+                <div class="bg-purple-50 p-6 rounded-lg border border-purple-100">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i data-lucide="graduation-cap" class="text-purple-600 w-5 h-5"></i>
+                        <h3 class="font-bold text-slate-800">Distillation</h3>
+                    </div>
+                    <p class="text-sm text-slate-600">Training a small "student" model to mimic a large "teacher".
+                        Student is 3-10x smaller.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Software Ecosystem Section -->
+    <section id="software" class="py-16 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-8 text-center text-slate-800">Software Ecosystem & Optimization</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Frameworks -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="font-bold text-lg mb-4 text-blue-600 flex items-center gap-2">
+                        <i data-lucide="code" class="w-5 h-5"></i> AI Frameworks
+                    </h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="border-b border-slate-100 pb-2">
+                            <strong class="block text-slate-900">TensorFlow</strong>
+                            Production-ready, TPU-optimized, Strong deployment (TF Serving).
+                        </li>
+                        <li class="border-b border-slate-100 pb-2">
+                            <strong class="block text-slate-900">PyTorch</strong>
+                            Research-dominant, dynamic graphs, TorchServe for deployment.
+                        </li>
+                        <li>
+                            <strong class="block text-slate-900">JAX</strong>
+                            Research-focused, XLA compilation, functional style.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- GPU Libraries -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="font-bold text-lg mb-4 text-green-600 flex items-center gap-2">
+                        <i data-lucide="terminal" class="w-5 h-5"></i> GPU Libraries
+                    </h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="border-b border-slate-100 pb-2">
+                            <strong class="block text-slate-900">CUDA</strong>
+                            NVIDIA's parallel computing platform. The foundation of GPU AI.
+                        </li>
+                        <li>
+                            <strong class="block text-slate-900">cuDNN</strong>
+                            Optimized primitives for deep neural networks.
+                        </li>
+                    </ul>
+                    <div class="mt-4 bg-amber-50 p-3 rounded-lg border border-amber-100 text-xs text-amber-800">
+                        <i data-lucide="alert-triangle" class="w-3 h-3 inline mr-1"></i>
+                        <strong>Talent Warning:</strong> Specialized CUDA skills command premium salaries.
+                    </div>
+                </div>
+
+                <!-- Inference Tools -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="font-bold text-lg mb-4 text-purple-600 flex items-center gap-2">
+                        <i data-lucide="zap" class="w-5 h-5"></i> Inference Tools
+                    </h3>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="border-b border-slate-100 pb-2">
+                            <strong class="block text-slate-900">TensorRT</strong>
+                            NVIDIA's inference optimizer for max GPU efficiency.
+                        </li>
+                        <li class="border-b border-slate-100 pb-2">
+                            <strong class="block text-slate-900">ONNX Runtime</strong>
+                            Cross-platform inference engine for interoperability.
+                        </li>
+                        <li>
+                            <strong class="block text-slate-900">vLLM</strong>
+                            High-throughput serving for LLMs with PagedAttention.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Challenges Section -->
+    <section id="challenges" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold mb-10 text-center text-slate-800">Critical Challenges</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Cost -->
+                <div class="bg-slate-50 p-5 rounded-lg border-l-4 border-red-500">
+                    <div class="flex items-center gap-2 mb-2 text-red-600 font-bold">
+                        <i data-lucide="dollar-sign" class="w-5 h-5"></i> Hardware Cost
+                    </div>
+                    <p class="text-sm text-slate-600">GPUs are expensive ($30+/hr cloud). Costs accumulate rapidly
+                        during training.</p>
+                </div>
+
+                <!-- Memory Wall -->
+                <div class="bg-slate-50 p-5 rounded-lg border-l-4 border-orange-500">
+                    <div class="flex items-center gap-2 mb-2 text-orange-600 font-bold">
+                        <i data-lucide="database" class="w-5 h-5"></i> Memory Wall
+                    </div>
+                    <p class="text-sm text-slate-600">Model sizes grow faster than VRAM. Forces complex strategies like
+                        offloading.</p>
+                </div>
+
+                <!-- Data Bottlenecks -->
+                <div class="bg-slate-50 p-5 rounded-lg border-l-4 border-amber-500">
+                    <div class="flex items-center gap-2 mb-2 text-amber-600 font-bold">
+                        <i data-lucide="loader" class="w-5 h-5"></i> Data Pipeline
+                    </div>
+                    <p class="text-sm text-slate-600">Slow storage/preprocessing starves GPUs. The fastest chip waits
+                        for data.</p>
+                </div>
+
+                <!-- Talent -->
+                <div class="bg-slate-50 p-5 rounded-lg border-l-4 border-indigo-500">
+                    <div class="flex items-center gap-2 mb-2 text-indigo-600 font-bold">
+                        <i data-lucide="users" class="w-5 h-5"></i> Talent Scarcity
+                    </div>
+                    <p class="text-sm text-slate-600">Optimal tools (CUDA) limit the talent pool. High labor costs vs.
+                        cheap hardware.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Strategies Section (Expanded to 8) -->
+    <section id="strategies" class="py-16 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-800 mb-8 text-center">8 Key Performance Strategies</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+
+                <!-- 1 -->
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-blue-500">
+                    <h4 class="font-bold text-slate-800 flex gap-2 items-center">
+                        <span class="bg-blue-100 text-blue-600 text-xs py-0.5 px-2 rounded-full">1</span> Right-Size
+                        Hardware
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-2">Match resources to workload. Don't use an H100 for small
+                        tabular data.</p>
+                </div>
+                <!-- 2 -->
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-green-500">
+                    <h4 class="font-bold text-slate-800 flex gap-2 items-center">
+                        <span class="bg-green-100 text-green-600 text-xs py-0.5 px-2 rounded-full">2</span> Optimize
+                        Memory
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-2">Use mixed precision (FP16) and gradient checkpointing to fit
+                        larger batches.</p>
+                </div>
+                <!-- 3 -->
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-amber-500">
+                    <h4 class="font-bold text-slate-800 flex gap-2 items-center">
+                        <span class="bg-amber-100 text-amber-600 text-xs py-0.5 px-2 rounded-full">3</span> Model
+                        Compression
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-2">Invest in pruning and quantization (INT8) for production
+                        models.</p>
+                </div>
+                <!-- 4 -->
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-indigo-500">
+                    <h4 class="font-bold text-slate-800 flex gap-2 items-center">
+                        <span class="bg-indigo-100 text-indigo-600 text-xs py-0.5 px-2 rounded-full">4</span> Efficient
+                        Pipelines
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-2">Ensure data loading (SSD + Workers) doesn't starve the GPU.
+                    </p>
+                </div>
+
+                <!-- 5 -->
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-rose-500">
+                    <h4 class="font-bold text-slate-800 flex gap-2 items-center">
+                        <span class="bg-rose-100 text-rose-600 text-xs py-0.5 px-2 rounded-full">5</span> Leverage
+                        Parallelism
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-2">Use Data, Model, or Pipeline parallelism to scale beyond
+                        single-machine limits.</p>
+                </div>
+
+                <!-- 6 -->
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-teal-500">
+                    <h4 class="font-bold text-slate-800 flex gap-2 items-center">
+                        <span class="bg-teal-100 text-teal-600 text-xs py-0.5 px-2 rounded-full">6</span> Manage Energy
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-2">Track carbon footprint. Train in renewable regions. Optimize
+                        for efficiency.</p>
+                </div>
+
+                <!-- 7 -->
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-purple-500">
+                    <h4 class="font-bold text-slate-800 flex gap-2 items-center">
+                        <span class="bg-purple-100 text-purple-600 text-xs py-0.5 px-2 rounded-full">7</span> Optimize
+                        Inference
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-2">Use TensorRT, dynamic batching, and caching to meet
+                        low-latency SLAs.</p>
+                </div>
+
+                <!-- 8 -->
+                <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-slate-500">
+                    <h4 class="font-bold text-slate-800 flex gap-2 items-center">
+                        <span class="bg-slate-100 text-slate-600 text-xs py-0.5 px-2 rounded-full">8</span> Holistic
+                        Monitoring
+                    </h4>
+                    <p class="text-xs text-slate-500 mt-2">Establish performance budgets and continuously profile to
+                        find bottlenecks.</p>
+                </div>
+            </div>
+
+            <!-- Leadership Checklist -->
+            <div id="leadership" class="bg-slate-800 text-white rounded-2xl p-8 lg:p-12">
+                <div class="flex flex-col lg:flex-row gap-12">
+                    <div class="lg:w-1/3">
+                        <h3 class="text-2xl font-bold mb-4">Leadership Responsibility</h3>
+                        <p class="text-slate-400 mb-6">Performance is a business decision with direct cost and timeline
+                            implications. It is not just a technical detail.</p>
+                        <div class="bg-slate-700/50 p-4 rounded-lg border border-slate-600">
+                            <p class="text-sm italic text-slate-300">"Are we defaulting to expensive resources when
+                                optimization would be more cost-effective?"</p>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3">
+                        <h4 class="font-bold text-lg mb-4 text-accent">Executive Action Checklist</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex gap-3 items-start">
+                                <div class="bg-green-500/20 text-green-400 p-1 rounded"><i data-lucide="check"
+                                        class="w-4 h-4"></i></div>
+                                <span class="text-sm text-slate-300">Audit current AI infrastructure utilization.</span>
+                            </div>
+                            <div class="flex gap-3 items-start">
+                                <div class="bg-green-500/20 text-green-400 p-1 rounded"><i data-lucide="check"
+                                        class="w-4 h-4"></i></div>
+                                <span class="text-sm text-slate-300">Evaluate model compression for deployed
+                                    models.</span>
+                            </div>
+                            <div class="flex gap-3 items-start">
+                                <div class="bg-green-500/20 text-green-400 p-1 rounded"><i data-lucide="check"
+                                        class="w-4 h-4"></i></div>
+                                <span class="text-sm text-slate-300">Assess tech stack impact on hiring costs.</span>
+                            </div>
+                            <div class="flex gap-3 items-start">
+                                <div class="bg-green-500/20 text-green-400 p-1 rounded"><i data-lucide="check"
+                                        class="w-4 h-4"></i></div>
+                                <span class="text-sm text-slate-300">Add energy costs as a specific budget line
+                                    item.</span>
+                            </div>
+                            <div class="flex gap-3 items-start">
+                                <div class="bg-green-500/20 text-green-400 p-1 rounded"><i data-lucide="check"
+                                        class="w-4 h-4"></i></div>
+                                <span class="text-sm text-slate-300">Check for data pipeline bottlenecks.</span>
+                            </div>
+                            <div class="flex gap-3 items-start">
+                                <div class="bg-green-500/20 text-green-400 p-1 rounded"><i data-lucide="check"
+                                        class="w-4 h-4"></i></div>
+                                <span class="text-sm text-slate-300">Invest in optimization training for the
+                                    team.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Principles Summary - Fixed Highlighting -->
+    <section class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl font-bold mb-8 text-slate-800">Core Principles Summary</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm font-semibold text-slate-700">
+                    Computational Power</div>
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm font-semibold text-slate-700">
+                    Memory</div>
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm font-semibold text-slate-700">
+                    Storage</div>
+                <!-- Changed purple highlight to standard slate style -->
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm font-semibold text-slate-700">
+                    Query Expressiveness</div>
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm font-semibold text-slate-700">
+                    Parallelism</div>
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm font-semibold text-slate-700">
+                    Energy Efficiency</div>
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm font-semibold text-slate-700">
+                    Model Efficiency</div>
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-3 text-sm font-semibold text-slate-700">
+                    Software Framework</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="mb-4">© 2024 AI Performance Infographic.</p>
+            <p class="text-xs text-slate-600">Based on "Performance.docx" provided by Dr. Ian McCullough.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+    </script>
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>
