@@ -63,7 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             removeLoading(loadingId);
             if (!res.ok) {
-                window.UI.appendChatMessage('Sorry, the AI service is temporarily unavailable. Please try again later.', 'ai');
+                const errData = await res.json().catch(() => ({}));
+                window.UI.appendChatMessage(errData.error || 'Sorry, the AI service is temporarily unavailable. Please try again later.', 'ai');
                 return;
             }
             const data = await res.json();
@@ -96,7 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerHTML = originalText;
             btn.disabled = false;
             if (!res.ok) {
-                alert('AI service is temporarily unavailable. Please try again later.');
+                const errData = await res.json().catch(() => ({}));
+                alert(errData.error || 'AI service is temporarily unavailable. Please try again later.');
                 return;
             }
             const result = await res.json();
