@@ -14,6 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     ui.renderCapabilities(data.capabilities);
     ui.renderSkills(data.skills);
 
+    // Wake up Render backend (free tier sleeps after 15min inactivity)
+    fetch('https://kishore-resume-api.onrender.com/api/health').catch(() => {});
+
     // 2. Setup Intersection Observer for scroll animations
     setupScrollAnimations();
 
