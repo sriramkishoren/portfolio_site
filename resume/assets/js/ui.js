@@ -142,6 +142,8 @@ window.UI = {
         return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     },
 
+    _scoreInterval: null,
+
     updateJobFitResult(result) {
         const resultsDiv = document.getElementById('fit-results');
         const scoreEl = document.getElementById('match-score');
@@ -149,22 +151,33 @@ window.UI = {
         const reasonsEl = document.getElementById('match-reasons');
         const gapEl = document.getElementById('match-gaps');
 
+        // Clear previous animation and reset UI
+        if (this._scoreInterval) clearInterval(this._scoreInterval);
+        scoreEl.innerText = '0%';
+        barEl.style.width = '0%';
+        reasonsEl.innerHTML = '';
+        gapEl.innerHTML = '';
+
         resultsDiv.classList.remove('hidden');
 
         // Animate Score
         let current = 0;
-        const interval = setInterval(() => {
+        this._scoreInterval = setInterval(() => {
             current += 2;
             if (current >= result.score) {
                 current = result.score;
-                clearInterval(interval);
+                clearInterval(this._scoreInterval);
+                this._scoreInterval = null;
             }
             scoreEl.innerText = `${current}%`;
             barEl.style.width = `${current}%`;
         }, 20);
 
         // Populate Lists
-        reasonsEl.innerHTML = result.reasons.map(r => `<li>${this.formatMarkdown(r)}</li>`).join('');
+        const reasons = result.reasons || [];
+        reasonsEl.innerHTML = reasons.length
+            ? reasons.map(r => `<li>${this.formatMarkdown(r)}</li>`).join('')
+            : '<li>No specific matches found for this role.</li>';
         const gaps = result.gaps || (result.gap ? [result.gap] : ['None detected for this role.']);
         gapEl.innerHTML = gaps.map(g => `<li>${this.formatMarkdown(g)}</li>`).join('');
     }
