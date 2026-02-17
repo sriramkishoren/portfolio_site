@@ -158,6 +158,9 @@ window.UI = {
         const gapEl = document.getElementById('match-gaps');
         const headingEl = document.getElementById('match-heading');
 
+        // Sanitize score: must be a number between 0 and 100
+        const score = Math.max(0, Math.min(100, Math.round(Number(result.score) || 0)));
+
         // Clear previous animation and reset UI
         if (this._scoreInterval) clearInterval(this._scoreInterval);
         scoreEl.innerText = '0%';
@@ -170,31 +173,37 @@ window.UI = {
 
         resultsDiv.classList.remove('hidden');
 
-        // Apply final colors based on score
-        const colors = this._scoreColors(result.score);
+        // Apply colors based on sanitized score
+        const colors = this._scoreColors(score);
         scoreEl.classList.add(colors.text);
         barEl.classList.add(colors.bar);
         headingEl.classList.add(colors.heading);
 
-        // Animate Score
-        let current = 0;
-        this._scoreInterval = setInterval(() => {
-            current += 2;
-            if (current >= result.score) {
-                current = result.score;
-                clearInterval(this._scoreInterval);
-                this._scoreInterval = null;
-            }
-            scoreEl.innerText = `${current}%`;
-            barEl.style.width = `${current}%`;
-        }, 20);
+        // Animate Score (skip animation if score is 0)
+        if (score === 0) {
+            scoreEl.innerText = '0%';
+            barEl.style.width = '0%';
+        } else {
+            let current = 0;
+            this._scoreInterval = setInterval(() => {
+                current += 2;
+                if (current >= score) {
+                    current = score;
+                    clearInterval(this._scoreInterval);
+                    this._scoreInterval = null;
+                }
+                scoreEl.innerText = `${current}%`;
+                barEl.style.width = `${current}%`;
+            }, 20);
+        }
 
-        // Populate Lists
-        const reasons = result.reasons || [];
+        // Populate Lists (guard against non-array values)
+        const reasons = Array.isArray(result.reasons) ? result.reasons : [];
         reasonsEl.innerHTML = reasons.length
-            ? reasons.map(r => `<li>${this.formatMarkdown(r)}</li>`).join('')
+            ? reasons.map(r => `<li>${this.formatMarkdown(String(r))}</li>`).join('')
             : '<li>No specific matches found for this role.</li>';
-        const gaps = result.gaps || (result.gap ? [result.gap] : ['None detected for this role.']);
-        gapEl.innerHTML = gaps.map(g => `<li>${this.formatMarkdown(g)}</li>`).join('');
+        const gaps = Array.isArray(result.gaps) ? result.gaps
+            : (result.gap ? [result.gap] : ['None detected for this role.']);
+        gapEl.innerHTML = gaps.map(g => `<li>${this.formatMarkdown(String(g))}</li>`).join('');
     }
 };

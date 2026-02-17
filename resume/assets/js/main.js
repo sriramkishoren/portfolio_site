@@ -58,9 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ question: text })
             });
-            const data = await res.json();
             removeLoading(loadingId);
-            window.UI.appendChatMessage(data.answer || data.error || 'Something went wrong.', 'ai');
+            if (!res.ok) {
+                window.UI.appendChatMessage('Sorry, the AI service is temporarily unavailable. Please try again later.', 'ai');
+                return;
+            }
+            const data = await res.json();
+            window.UI.appendChatMessage(data.answer || 'Something went wrong.', 'ai');
         } catch (err) {
             removeLoading(loadingId);
             window.UI.appendChatMessage('Sorry, the AI service is temporarily unavailable. Please try again later.', 'ai');
@@ -86,9 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ jd: text })
             });
-            const result = await res.json();
             btn.innerHTML = originalText;
             btn.disabled = false;
+            if (!res.ok) {
+                alert('AI service is temporarily unavailable. Please try again later.');
+                return;
+            }
+            const result = await res.json();
             window.UI.updateJobFitResult(result);
         } catch (err) {
             btn.innerHTML = originalText;
