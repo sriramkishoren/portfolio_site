@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kishore | Interactive Work Summary</title>
+
+    <!-- SEO & Metadata -->
+    <meta name="description"
+        content="Interactive work summary and AI-powered resume of Kishore, Solutions Architect & Engineering Lead.">
+    <meta name="author" content="Kishore">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gray: {
+                            50: '#f9fafb',
+                            100: '#f3f4f6',
+                            200: '#e5e7eb',
+                            300: '#d1d5db',
+                            400: '#9ca3af',
+                            500: '#6b7280',
+                            600: '#4b5563',
+                            700: '#374151',
+                            800: '#1f2937',
+                            900: '#111827',
+                        },
+                        primary: {
+                            light: '#3b82f6', // bright blue
+                            DEFAULT: '#2563eb', // blue-600
+                            dark: '#1d4ed8', // blue-700
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        /* Visitor count styles */
+        .visitor-count {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.875rem;
+            color: #666;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .dark .visitor-count {
+            color: #9ca3af;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .visitor-count .visitor-icon {
+            width: 14px;
+            height: 14px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans antialiased selection:bg-blue-100 selection:text-blue-900">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-card transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-xl font-bold tracking-tight text-gray-900">Sriramkishore Naraharisetti</span>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <div class="flex items-center space-x-6">
+                        <a href="../index.html"
+                            class="text-gray-900 hover:text-blue-600 font-medium transition-colors">Home</a>
+                        <button id="dark-mode-toggle"
+                            class="bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded-full text-sm font-medium transition-colors">
+                            Toggle Dark Mode
+                        </button>
+                    </div>
+                </div>
+            </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16">
+
+        <!-- Hero Section -->
+        <section id="summary" class="pt-20 pb-8 items-center justify-center relative overflow-hidden">
+            <!-- Background Decoration -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+                <div
+                    class="absolute top-[-20%] right-[-10%] w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob">
+                </div>
+                <div
+                    class="absolute bottom-[-20%] left-[-10%] w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000">
+                </div>
+            </div>
+
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center" id="hero-content">
+                <!-- Content injected by JS -->
+                <div class="animate-pulse flex justify-center mt-12">
+                    <div class="h-8 w-64 bg-gray-200 rounded"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 bg-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Work Experience</h2>
+                <div class="relative border-l border-gray-200 ml-3 md:ml-6 space-y-12" id="timeline-container">
+                    <!-- Timeline items injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities & Gaps Section -->
+        <section id="capabilities" class="py-20 bg-gray-50">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4 text-center">Capabilities & Gaps</h2>
+                <p class="text-gray-500 text-center mb-12 max-w-2xl mx-auto">A transparent view of my technical
+                    strengths, growth areas, and known limitations.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="capabilities-container">
+                    <!-- Capabilities injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Cloud -->
+        <section id="skills" class="py-20 bg-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Technical Stack</h2>
+                <div id="skills-container" class="flex flex-wrap justify-center gap-4">
+                    <!-- Skills injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Ask AI & Job Fit Section -->
+        <section id="ask-ai" class="py-24 bg-gray-900 text-white relative overflow-hidden">
+            <!-- Background accents -->
+            <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 opacity-20">
+                <div
+                    class="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-overlay filter blur-3xl">
+                </div>
+                <div
+                    class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-overlay filter blur-3xl">
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+                    <!-- Chat Interface -->
+                    <div
+                        class="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700/50 p-6 flex flex-col h-[600px] shadow-2xl">
+                        <div class="mb-4">
+                            <h3 class="text-xl font-semibold flex items-center"><i
+                                    class="fas fa-sparkles text-yellow-400 mr-2"></i> Ask AI about Kishore</h3>
+                            <p class="text-gray-400 text-sm mt-1">Ask about my experience, leadership style, or specific
+                                projects.</p>
+                        </div>
+
+                        <div id="chat-messages" class="flex-1 overflow-y-auto space-y-4 mb-4 pr-2 custom-scrollbar">
+                            <!-- Welcome Message -->
+                            <div class="flex items-start">
+                                <div class="bg-blue-600 rounded-full p-2 mr-3 flex-shrink-0">
+                                    <i class="fas fa-robot text-white text-xs"></i>
+                                </div>
+                                <div
+                                    class="bg-gray-700 rounded-lg rounded-tl-none p-3 text-sm text-gray-200 max-w-[85%]">
+                                    Hello! I'm an AI agent trained on Kishore's resume. Ask me anything about his 20
+                                    years of experience, leadership at Walmart, or technical skills.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Suggested Chips -->
+                        <div class="flex flex-wrap gap-2 mb-4" id="chat-suggestions">
+                            <button
+                                class="text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 py-1 px-3 rounded-full transition-colors"
+                                onclick="setChatInput('Tell me about the POS project at Walmart')">POS Project</button>
+                            <button
+                                class="text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 py-1 px-3 rounded-full transition-colors"
+                                onclick="setChatInput('What is his leadership style?')">Leadership Style</button>
+                            <button
+                                class="text-xs bg-gray-700 hover:bg-gray-600 text-gray-300 py-1 px-3 rounded-full transition-colors"
+                                onclick="setChatInput('List his top 3 skills')">Top Skills</button>
+                        </div>
+
+                        <div class="relative">
+                            <input type="text" id="chat-input"
+                                class="w-full bg-gray-900 border border-gray-700 text-white rounded-lg pl-4 pr-12 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-500"
+                                placeholder="Type your question..." onkeypress="handleChatEnter(event)">
+                            <button onclick="sendChatMessage()"
+                                class="absolute right-2 top-2 bottom-2 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-md transition-colors w-9 h-9 flex items-center justify-center">
+                                <i class="fas fa-paper-plane text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Job Fit Analyzer -->
+                    <div class="flex flex-col">
+                        <div class="mb-6">
+                            <h3 class="text-2xl font-bold mb-2">Job Match Analyzer</h3>
+                            <p class="text-gray-400">Paste a Job Description (JD) below to see how well Kishore matches
+                                the role.</p>
+                        </div>
+
+                        <div
+                            class="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700/50 p-6 flex-1 shadow-2xl relative">
+                            <textarea id="jd-input"
+                                class="w-full h-40 bg-gray-900 border border-gray-700 text-white rounded-lg p-4 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent placeholder-gray-500 resize-none mb-4"
+                                placeholder="Paste Job Description here..."></textarea>
+
+                            <button onclick="analyzeJobFit()"
+                                class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+                                <i class="fas fa-search-dollar"></i> Analyze Fit
+                            </button>
+
+                            <!-- Results Overlay (Hidden by default) -->
+                            <div id="fit-results" class="hidden mt-6 animate-fade-in">
+                                <div class="border-t border-gray-700 pt-6">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <span class="text-gray-300">Match Score</span>
+                                        <span class="text-3xl font-bold text-green-400" id="match-score">--%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-2.5 mb-6">
+                                        <div id="match-bar" class="bg-green-500 h-2.5 rounded-full" style="width: 0%">
+                                        </div>
+                                    </div>
+
+                                    <div class="space-y-4">
+                                        <div>
+                                            <h4
+                                                class="text-sm font-semibold text-green-300 mb-1 uppercase tracking-wider">
+                                                Why it's a match</h4>
+                                            <ul id="match-reasons"
+                                                class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                                                <!-- Dynamic -->
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h4
+                                                class="text-sm font-semibold text-red-300 mb-1 uppercase tracking-wider mt-4">
+                                                Potential Gaps</h4>
+                                            <ul id="match-gaps"
+                                                class="list-disc list-inside text-sm text-gray-300 space-y-1">
+                                                <!-- Dynamic -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-200 text-center p-4">
+        <div class="visitor-count mx-auto mb-2">
+            <svg class="visitor-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            <span id="page-views">—</span> views
+        </div>
+        © 2025 Sriramkishore Naraharisetti. All Rights Reserved.
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/resume-data.js"></script>
+    <script src="assets/js/api-mock.js"></script>
+    <script src="assets/js/ui.js"></script>
+    <script src="assets/js/main.js"></script>
+
+    <!-- Inline scripts for chat helpers -->
+    <script>
+        function setChatInput(text) {
+            document.getElementById('chat-input').value = text;
+        }
+    </script>
+
+    <!-- Visitor Count Script -->
+    <script>
+        (function () {
+            var path = '/resume/work-summary.html';
+            fetch('https://kishoretech.goatcounter.com/counter/' + encodeURIComponent(path) + '.json')
+                .then(function (response) {
+                    if (!response.ok) throw new Error('Not found');
+                    return response.json();
+                })
+                .then(function (data) {
+                    var count = data.count_unique || data.count || 0;
+                    document.getElementById('page-views').textContent = count.toLocaleString();
+                })
+                .catch(function () {
+                    document.getElementById('page-views').textContent = '0';
+                });
+        })();
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+Kishore WORK SUMMARY
+
+EXECITIVE SUMMARY
+•	Engineering Lead with 20 years of experience in IT. 
+•	Expertise in cloud-based technologies and microservices, specialized in architecting operational excellence through automated metric tracking and observability.
+•	Managing teams, problem-solving and strategic thinking, with the ability to anticipate future needs and challenges.
+
+WORK EXPERIENCE
+11/2018 – till date | WALMART | SOLUTIONS ARCHITECT
+
+POS Hardware Abstraction Platform: (02/2024 – till date)
+What is this project?
+Developed a unified middleware platform that exposes standardized APIs to control point-of-sale (POS) peripherals, including pinpads, scales, scanners, and printers. By decoupling the software layer from specific hardware drivers, the platform ensures registers are vendor-agnostic, allowing clients to swap hardware components seamlessly without core code changes.
+Why this project is important to Walmart?
+Mission-Critical Retail Infrastructure:
+I lead and worked on a high-scale POS hardware abstraction layer that drives operational efficiency across 5,000+ Walmart locations in the US and Canada. By decoupling hardware from proprietary vendor software, the project has achieved massive cost savings through fee elimination. Operating at a scale of 50,000+ endpoints, the system is architected for maximum uptime and reliability, as it sits in the critical path of store revenue—where downtime carries a projected fiscal impact of up to $100M daily.
+
+My Contributions:
+•	Architected and optimized MMS dashboards, reducing latency and boosting adoption, enabling proactive issue detection and faster resolution across all teams.
+•	Designed and launched context-aware MMS alerting, reducing false positives by 40% and restoring on-call team confidence through deduplication with Overwatch and Spotlight.
+•	Led automation of wave-level deployment validation, integrating health checks into CICD and saving 30% validation time while meeting Auto CRQ compliance.
+•	Drove code quality by achieving 95%+ test coverage and zero Sonar vulnerabilities in 15+ repositories, enforcing strict PR quality gates.
+•	Engineered a fully automated CICD pipeline with one-click rollback, test/hotfix flows, and multi-client support, eliminating manual steps and improving deployment reliability.
+•	Delivered a self-service deployment tool for lower environments, reducing staff engineer workload by 50% and empowering developers to manage deployments independently.
+•	Enabled auto-healing by architecting real-time device heartbeat and error event pipelines, improving system reliability and reducing MTTR by 25%.
+•	Provided effective leadership during major organizational changes, ensuring uninterrupted delivery, successful feature launches, and high team morale.
+
+
+End-to-End Assortment Orchestration Platform : (11/2018 – 01/2024)
+What is this project?
+Developed a mission-critical platform that integrates Machine Learning (ML) recommendations into the merchant workflow to optimize product assortments. I architected the downstream automation pipeline that transforms finalized merchant plans into actionable data—triggering automated item creation within catalog platforms and generating Purchase Orders (POs) to streamline supplier logistics and ensure on-time delivery.
+Why this project is important to Walmart?
+Time-to-Market Optimization & Operational Agility:
+This automation platform serves as a critical driver for merchant efficiency, significantly reducing manual planning cycles and allowing merchants to focus on high-value strategic initiatives. By streamlining the product lifecycle, the project achieved a 50% reduction in time-to-market—dropping from 40 weeks to just 20. This accelerated "speed-to-shelf" provides Walmart with a decisive competitive edge, enabling the company to respond faster to market trends and directly driving accelerated revenue growth.
+
+My Contributions:
+•	Leading a team of 8 engineers to design, develop, and deliver cutting-edge assortment system, consistently meeting project deadlines and exceeding business expectations.
+•	Coached and mentored team members, resulting in 1 promotion and set 3 members in line for promotion.
+•	Designed and delivered a multi-tenant workflow management system which is used in automating supplier onboarding, item creation, purchase order creation for store and e-commerce business.
+•	This implementation has streamlined the entire selection process for merchants, saving time and effort while saving the company approximately 5 million dollars per year.
+•	Enhanced operational efficiency by creating utility tools and comprehensive troubleshooting documentation, resulting in a 30% reduction in engineering touch time.
+•	Cultivated a culture within the team that values risk-taking, learning from mistakes, and mutual support, resulting in a 25% increase in overall productivity.
+•	Collaborate with product, business and cross functional teams to understand product roadmaps, prioritize engineering efforts and deliver high quality solutions on time. 
+
+
+
+
+10/2017 – 11/2018 | INBIZ CONCEPTS INC | AUTOMATION LEAD
+•	Effectively managed a fintech client's automation testing project, leading a team of 6 engineers located in multi-geographic locations (India & Argentina).
+•	Led the planning, design, execution, and delivery of the framework that automated web application and micro services testing.
+•	Developed and maintained strong relations with our client InComm fostering trust and ensuring customer satisfaction.
+ 
+10/2014 – 08/2017 | J.P. MORGAN | AUTOMATION LEAD
+•	Developed a Big Data automation framework, saving 7,000 man-hours annually with a team of 5 engineers
+•	Coached and trained testing teams on Core Java and automation framework for data testing
+
+11/2011 – 10/2014 | TATA CONSULTANCY SERVICES | ETL TESTER
+•	Contracted at Microsoft, automated testing in data warehousing projects, reducing regression testing man-hours from 80 to 15 per build, achieving an 80% ROI.
+
+11/2009 – 10/2011 | DELTA TECHNOLOGY | QA ENGINEER
+•	Made significant contributions to the company's successful attainment of CMMI Level-3 certification.
+•	Developed Hybrid Automation Framework using QTP for UI automation in ToPS project which achieved 65% ROI in first year of implementation with Automation Index of 60%.
+
+05/2006 – 10/2009 | PRIME KI SOLUTIONS | QA ENGINEER
+•	Performed functional testing for a web application.
+
+
+SKILLS
+•	AI
+    o	Agentic AI
+    o	Vibe Coding
+    o	Claude Code
+•	Cloud Computing
+    o	Azure
+    o	GCP
+•	Programming Languages:
+    o	Java, Python, JavaScript
+•	Frameworks and Libraries:
+    o	Spring, NodeJS, React
+•	Databases:
+    o	SQL: PostgreSQL, SQL Server, Big Query
+    o	No SQL: Mongo DB, Cosmos DB
+•	Platforms:
+    o	Kafka
+    o	Camunda
+•	Operational Excellence:
+    o	Grafana
+    o	Prometheus
+    o	Looker
+•	Technical Writing
+•	Collaborating with cross-functional teams
+•	Strategic thinking
+•	Problem Solving
+•	Mentoring and Coaching
+
+
+STRONG 
+✓ High-Scale Distributed Systems Troubleshooting ✓ Strategic Planning & Lifecycle Orchestration ✓ Hardware Abstraction & Vendor-Agnostic API Design ✓ Financial Stewardship & ROI Optimization ✓ Engineering Leadership & Team Mentorship 
+MODERATE 
+○ Cloud Modernization & Multi-tenant Scaling ○ Agentic AI & Orchestration Protocols ○ Data Literacy & Predictive Visualization ○ Cloud-Native Resilience & Event-Driven Architecture 
+GAPS (I'LL TELL YOU)
+ ✕ Web UI Development ✕ Mobile Development ✕ No experience handling year-end reviews
+
+
+
+education
+2001-2005 
+•	BE (Bachelor of Engineering) in Electrical and Electronics
+•	Jaya Engineering College, Anna University
+•	Chennai, India
+
+My THREE  C ‘ S
+For engineering excellence
+•	Commitment
+•	Coaching
+•	Compassion
+
+My INTERESTS
+•	Travelling
+•	Cycling
+•	Audio books
+•	Personal Effectiveness
