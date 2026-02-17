@@ -52,11 +52,19 @@ document.addEventListener('DOMContentLoaded', () => {
         showLoading(loadingId);
 
         // API Call
-        const response = await window.ApiMock.askAI(text);
-
-        // Remove loading and show response
-        removeLoading(loadingId);
-        window.UI.appendChatMessage(response, 'ai');
+        try {
+            const res = await fetch('https://kishore-resume-api.onrender.com/api/ask', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ question: text })
+            });
+            const data = await res.json();
+            removeLoading(loadingId);
+            window.UI.appendChatMessage(data.answer || data.error || 'Something went wrong.', 'ai');
+        } catch (err) {
+            removeLoading(loadingId);
+            window.UI.appendChatMessage('Sorry, the AI service is temporarily unavailable. Please try again later.', 'ai');
+        }
     };
 
     window.analyzeJobFit = async () => {
@@ -72,12 +80,21 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
         btn.disabled = true;
 
-        const result = await window.ApiMock.jobFit(text);
-
-        btn.innerHTML = originalText;
-        btn.disabled = false;
-
-        window.UI.updateJobFitResult(result);
+        try {
+            const res = await fetch('https://kishore-resume-api.onrender.com/api/job-fit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ jd: text })
+            });
+            const result = await res.json();
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            window.UI.updateJobFitResult(result);
+        } catch (err) {
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+            alert('AI service is temporarily unavailable. Please try again later.');
+        }
     };
 });
 

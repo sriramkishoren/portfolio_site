@@ -165,6 +165,7 @@ window.UI = {
 
         // Populate Lists
         reasonsEl.innerHTML = result.reasons.map(r => `<li>${this.formatMarkdown(r)}</li>`).join('');
-        gapEl.innerHTML = `<li>${this.formatMarkdown(result.gap)}</li>`;
+        const gaps = result.gaps || (result.gap ? [result.gap] : ['None detected for this role.']);
+        gapEl.innerHTML = gaps.map(g => `<li>${this.formatMarkdown(g)}</li>`).join('');
     }
 };
