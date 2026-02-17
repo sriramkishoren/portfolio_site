@@ -144,21 +144,37 @@ window.UI = {
 
     _scoreInterval: null,
 
+    _scoreColors(score) {
+        if (score >= 70) return { text: 'text-green-400', bar: 'bg-green-500', heading: 'text-green-300' };
+        if (score >= 40) return { text: 'text-yellow-400', bar: 'bg-yellow-500', heading: 'text-yellow-300' };
+        return { text: 'text-red-400', bar: 'bg-red-500', heading: 'text-red-300' };
+    },
+
     updateJobFitResult(result) {
         const resultsDiv = document.getElementById('fit-results');
         const scoreEl = document.getElementById('match-score');
         const barEl = document.getElementById('match-bar');
         const reasonsEl = document.getElementById('match-reasons');
         const gapEl = document.getElementById('match-gaps');
+        const headingEl = document.getElementById('match-heading');
 
         // Clear previous animation and reset UI
         if (this._scoreInterval) clearInterval(this._scoreInterval);
         scoreEl.innerText = '0%';
+        scoreEl.className = 'text-3xl font-bold';
         barEl.style.width = '0%';
+        barEl.className = 'h-2.5 rounded-full';
+        headingEl.className = 'text-sm font-semibold mb-1 uppercase tracking-wider';
         reasonsEl.innerHTML = '';
         gapEl.innerHTML = '';
 
         resultsDiv.classList.remove('hidden');
+
+        // Apply final colors based on score
+        const colors = this._scoreColors(result.score);
+        scoreEl.classList.add(colors.text);
+        barEl.classList.add(colors.bar);
+        headingEl.classList.add(colors.heading);
 
         // Animate Score
         let current = 0;
