@@ -466,13 +466,13 @@
       "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/various-data-bias"
     },
     {
-      "file": "ai-bias-and-risks/bias_mitigation.html",
+      "file": "ai-bias-and-risks/bias-mitigation.html",
       "title": "Bias Mitigation — Inter-Annotator Agreement & Data Quality",
       "description": "Complete guide to bias mitigation through inter-annotator agreement measurement. Learn Cohen's Kappa, Fleiss' Kappa, and strategies for improving annotation quality and reducing bias.",
       "category": "AI Bias and Risks",
       "datePublished": "2025-02-22",
       "tags": ["Bias Mitigation", "Inter-Annotator Agreement", "Cohen's Kappa", "Fleiss' Kappa", "Data Quality", "Annotation Quality", "Fairness", "Bias Detection", "IAA Metrics"],
-      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/bias_mitigation"
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/bias-mitigation"
     },
     {
       "file": "agentic-ai/portfolio-site-using-claude-code.html",

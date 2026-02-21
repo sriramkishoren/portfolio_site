@@ -489,7 +489,7 @@
       "data-optimization-for-ml/project-maven-data-quality-case-study.html",
       "optimizing-ai-resources/quick-summary.html",
       "ai-bias-and-risks/various-data-bias.html",
-      "ai-bias-and-risks/bias_mitigation.html"
+      "ai-bias-and-risks/bias-mitigation.html"
     ],
     "Active Learning": [
       "data-optimization-for-ml/data-labeling-challenges.html"
@@ -535,7 +535,7 @@
     "Annotation Quality": [
       "data-optimization-for-ml/cognitive-limits-terms-of-reference.html",
       "data-optimization-for-ml/size-consistency-quality-tradeoffs.html",
-      "ai-bias-and-risks/bias_mitigation.html"
+      "ai-bias-and-risks/bias-mitigation.html"
     ],
     "ToR": [
       "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
@@ -543,7 +543,7 @@
     "Inter-Annotator Agreement": [
       "data-optimization-for-ml/inter-annotator-agreement.html",
       "data-optimization-for-ml/krippendorffs-Alpha.html",
-      "ai-bias-and-risks/bias_mitigation.html"
+      "ai-bias-and-risks/bias-mitigation.html"
     ],
     "IAA": [
       "data-optimization-for-ml/inter-annotator-agreement.html",
@@ -551,11 +551,11 @@
     ],
     "Cohen's Kappa": [
       "data-optimization-for-ml/inter-annotator-agreement.html",
-      "ai-bias-and-risks/bias_mitigation.html"
+      "ai-bias-and-risks/bias-mitigation.html"
     ],
     "Fleiss' Kappa": [
       "data-optimization-for-ml/inter-annotator-agreement.html",
-      "ai-bias-and-risks/bias_mitigation.html"
+      "ai-bias-and-risks/bias-mitigation.html"
     ],
     "Krippendorff's Alpha": [
       "data-optimization-for-ml/inter-annotator-agreement.html",
@@ -900,7 +900,7 @@
     "Fairness": [
       "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html",
       "ai-bias-and-risks/managing-ai-bias.html",
-      "ai-bias-and-risks/bias_mitigation.html"
+      "ai-bias-and-risks/bias-mitigation.html"
     ],
     "Discrimination": [
       "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html",
@@ -908,7 +908,7 @@
     ],
     "Bias Mitigation": [
       "ai-bias-and-risks/managing-ai-bias.html",
-      "ai-bias-and-risks/bias_mitigation.html"
+      "ai-bias-and-risks/bias-mitigation.html"
     ],
     "AI Risk Management": [
       "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html"
@@ -940,7 +940,7 @@
     ],
     "Bias Detection": [
       "ai-bias-and-risks/managing-ai-bias.html",
-      "ai-bias-and-risks/bias_mitigation.html"
+      "ai-bias-and-risks/bias-mitigation.html"
     ],
     "Algorithmic Fairness": [
       "ai-bias-and-risks/managing-ai-bias.html"
@@ -970,7 +970,7 @@
       "ai-bias-and-risks/various-data-bias.html"
     ],
     "IAA Metrics": [
-      "ai-bias-and-risks/bias_mitigation.html"
+      "ai-bias-and-risks/bias-mitigation.html"
     ]
   }
 }
