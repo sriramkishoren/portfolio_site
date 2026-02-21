@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bias: Types and Legal Perspective</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Bias: Types and Legal Perspective">
+    <meta name="description" content="Comprehensive guide to bias types from legal and regulatory perspectives. Explore discrimination, bias in hiring, lending, and legal frameworks for AI governance.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Bias and Risks">
+    <meta name="tags" content="Bias, Legal Perspective, Discrimination, AI Regulation, Hiring Bias, Lending Bias, Fair Lending, EEOC, Algorithmic Accountability">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Legal and regulatory framework for understanding bias in AI systems, covering discrimination law, fair hiring practices, lending discrimination, and compliance requirements for AI deployment.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/bias-types-and-legal-perspective">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Bias: Types and Legal Perspective">
+    <meta property="og:description" content="Comprehensive guide to bias types from legal and regulatory perspectives with governance frameworks.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/bias-types-and-legal-perspective">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-02-19">
+    <meta property="article:section" content="AI Bias and Risks">
+    <meta property="article:tag" content="Bias">
+    <meta property="article:tag" content="Legal">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Bias: Types and Legal Perspective",
+        "description": "Comprehensive guide to bias types from legal and regulatory perspectives. Explore discrimination, bias in hiring, lending, and legal frameworks for AI governance.",
+        "datePublished": "2025-02-19",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "keywords": ["Bias", "Legal Perspective", "Discrimination", "AI Regulation", "Hiring Bias", "Lending Bias"],
+        "articleSection": "AI Bias and Risks"
+    }
+    </script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['Sora', 'sans-serif'],
+                        body: ['DM Sans', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Sora', sans-serif;
+        }
+
+        /* Scroll-triggered fade-in */
+        .fade-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .fade-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Card hover */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Expandable case study */
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .expandable-content.open {
+            max-height: 600px;
+        }
+
+        /* Feedback loop animation */
+        @keyframes rotateDash {
+            0% {
+                stroke-dashoffset: 0;
+            }
+
+            100% {
+                stroke-dashoffset: -40;
+            }
+        }
+
+        .animated-dash {
+            animation: rotateDash 1.5s linear infinite;
+        }
+
+        /* Pipeline arrow pulse */
+        @keyframes arrowPulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .arrow-pulse {
+            animation: arrowPulse 2s ease-in-out infinite;
+        }
+
+        /* Strategy tab active */
+        .strategy-tab {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.6;
+        }
+
+        .strategy-tab.active {
+            opacity: 1;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: scale(1.03);
+        }
+
+        /* Section numbering pill */
+        .section-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 14px;
+            border-radius: 999px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* Risk level bars */
+        .risk-bar {
+            display: inline-block;
+            width: 8px;
+            height: 14px;
+            border-radius: 2px;
+            margin-right: 2px;
+        }
+
+        /* Print styles */
+        @media print {
+            .fade-section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .card-hover:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .expandable-content {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            body {
+                background: #fff !important;
+            }
+
+            .card-hover {
+                box-shadow: none !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+
+            section {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white text-[#1E293B]">
+    <div class="max-w-[900px] mx-auto px-4 sm:px-8 py-8 sm:py-12">
+
+        <!-- ============================================================ -->
+        <!-- SECTION A — HEADER -->
+        <!-- ============================================================ -->
+        <header class="text-center mb-12 fade-section">
+            <div class="inline-block mb-4">
+                <div class="w-12 h-1 bg-gradient-to-r from-[#3B82F6] to-[#8B5CF6] rounded-full mx-auto mb-3"></div>
+                <span class="text-xs font-semibold tracking-widest uppercase text-[#64748B]">Interactive
+                    Infographic</span>
+            </div>
+            <h1 class="font-heading text-3xl sm:text-4xl font-bold leading-tight mb-3" style="letter-spacing:-0.02em;">
+                Bias: Types and Legal Perspective
+            </h1>
+            <p class="text-base sm:text-lg text-[#475569] max-w-[680px] mx-auto mb-4 leading-relaxed">
+                Understanding Bias Definitions, Legal Frameworks, Data Pitfalls, and the Mathematics of Fairness in AI
+                Systems
+            </p>
+            <p class="text-sm text-[#94A3B8]">
+                Based on Dr. Ian McCullough's lecture — Johns Hopkins University
+            </p>
+        </header>
+
+        <!-- ============================================================ -->
+        <!-- SECTION B — OPENING HOOK: TWO DEFINITIONS, ONE WORD -->
+        <!-- ============================================================ -->
+        <section class="mb-16 fade-section">
+            <div class="section-pill bg-[#F0F9FF] text-[#0EA5E9] mb-5">
+                <i data-lucide="book-open" class="w-3.5 h-3.5"></i> Foundation
+            </div>
+            <h2 class="font-heading text-2xl font-bold mb-2">Two Definitions, One Word</h2>
+            <p class="text-sm text-[#64748B] mb-6">Bias carries both an ethical and a mathematical meaning — and both
+                matter in AI.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-6">
+                <!-- Ethical -->
+                <div class="card-hover rounded-2xl bg-white border border-[#E0F2FE] p-6 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-[#DBEAFE] flex items-center justify-center mb-3">
+                        <i data-lucide="heart" class="w-5 h-5 text-[#3B82F6]"></i>
+                    </div>
+                    <h3 class="font-heading text-base font-semibold mb-2 text-[#0C4A6E]">Ethical / Cultural</h3>
+                    <p class="text-sm leading-relaxed text-[#334155]">Prejudice in favor of or against a thing, person,
+                        or group compared with another, usually in a way that's unfair.</p>
+                </div>
+                <!-- Mathematical -->
+                <div class="card-hover rounded-2xl bg-white border border-[#E0F2FE] p-6 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-[#DBEAFE] flex items-center justify-center mb-3">
+                        <i data-lucide="calculator" class="w-5 h-5 text-[#3B82F6]"></i>
+                    </div>
+                    <h3 class="font-heading text-base font-semibold mb-2 text-[#0C4A6E]">Mathematical / Statistical</h3>
+                    <p class="text-sm leading-relaxed text-[#334155]">A systematic distortion of a statistical result
+                        due to a factor not allowed for in its derivation.</p>
+                </div>
+            </div>
+
+            <div class="bg-[#F0F9FF] rounded-xl p-5 border border-[#BAE6FD] text-center">
+                <p class="text-sm text-[#0369A1] leading-relaxed">These two definitions are <strong>related but
+                        different</strong> — and together they shape our understanding of bias in AI.</p>
+                <p class="text-xs text-[#0EA5E9] mt-2 font-medium">Humans have 50+ documented cognitive biases. We
+                    shouldn't expect it to be different in machines.</p>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION C — HUMAN COGNITIVE BIAS LANDSCAPE -->
+        <!-- ============================================================ -->
+        <section class="mb-16 fade-section">
+            <div class="section-pill bg-[#DBEAFE] text-[#3B82F6] mb-5">
+                <i data-lucide="brain" class="w-3.5 h-3.5"></i> Human Bias
+            </div>
+            <h2 class="font-heading text-2xl font-bold mb-2">Human Cognitive Bias Landscape</h2>
+            <p class="text-sm text-[#64748B] mb-6">"Humans are not without bias. We must understand that. Within that
+                context, let us look at machines."</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Bandwagon -->
+                <div class="card-hover rounded-xl bg-white border border-[#BFDBFE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#DBEAFE] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="users" class="w-4 h-4 text-[#3B82F6]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Bandwagon Effect</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Following along with what everybody else
+                                is doing, regardless of evidence.</p>
+                            <p class="text-[10px] text-[#94A3B8] mt-1 italic">Example: Adopting popular opinions without
+                                personal research</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Placebo -->
+                <div class="card-hover rounded-xl bg-white border border-[#BFDBFE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#DBEAFE] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="pill" class="w-4 h-4 text-[#3B82F6]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Placebo Effect</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Experiencing different outcomes simply
+                                because you believe you are in a study.</p>
+                            <p class="text-[10px] text-[#94A3B8] mt-1 italic">Example: Patients improve when told they
+                                received treatment</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Confirmation -->
+                <div class="card-hover rounded-xl bg-white border border-[#BFDBFE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#DBEAFE] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="search" class="w-4 h-4 text-[#3B82F6]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Confirmation Bias</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Seeking information that confirms existing
+                                beliefs while ignoring contradictory evidence.</p>
+                            <p class="text-[10px] text-[#94A3B8] mt-1 italic">Example: Only reading news sources aligned
+                                with your views</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Anchoring -->
+                <div class="card-hover rounded-xl bg-white border border-[#BFDBFE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#DBEAFE] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="anchor" class="w-4 h-4 text-[#3B82F6]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Anchoring Bias</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Over-relying on the first piece of
+                                information received when making decisions.</p>
+                            <p class="text-[10px] text-[#94A3B8] mt-1 italic">Example: Salary negotiations anchored by
+                                the first number offered</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Availability -->
+                <div class="card-hover rounded-xl bg-white border border-[#BFDBFE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#DBEAFE] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="clock" class="w-4 h-4 text-[#3B82F6]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Availability Heuristic</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Judging the likelihood of events based on
+                                how easily examples come to mind.</p>
+                            <p class="text-[10px] text-[#94A3B8] mt-1 italic">Example: Fearing plane crashes after
+                                seeing news coverage</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Implicit -->
+                <div class="card-hover rounded-xl bg-white border border-[#BFDBFE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#DBEAFE] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="eye-off" class="w-4 h-4 text-[#3B82F6]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Implicit / Unconscious Bias</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Automatic stereotyping that occurs outside
+                                of conscious awareness.</p>
+                            <p class="text-[10px] text-[#94A3B8] mt-1 italic">Example: Making assumptions about
+                                competence based on appearance</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Groupthink -->
+                <div class="card-hover rounded-xl bg-white border border-[#BFDBFE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#DBEAFE] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="message-circle" class="w-4 h-4 text-[#3B82F6]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Groupthink</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Conforming to group opinion over
+                                independent analysis to maintain harmony.</p>
+                            <p class="text-[10px] text-[#94A3B8] mt-1 italic">Example: Teams suppressing dissent to
+                                avoid conflict</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Status Quo -->
+                <div class="card-hover rounded-xl bg-white border border-[#BFDBFE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#DBEAFE] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="pause" class="w-4 h-4 text-[#3B82F6]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Status Quo Bias</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Preference for the current state of
+                                affairs, resisting change even when beneficial.</p>
+                            <p class="text-[10px] text-[#94A3B8] mt-1 italic">Example: Keeping default options even when
+                                better ones exist</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Dunning-Kruger -->
+                <div class="card-hover rounded-xl bg-white border border-[#BFDBFE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#DBEAFE] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="trending-up" class="w-4 h-4 text-[#3B82F6]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Dunning-Kruger Effect</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Overestimating one's competence in areas
+                                where knowledge is limited.</p>
+                            <p class="text-[10px] text-[#94A3B8] mt-1 italic">Example: Novice investors overconfident in
+                                stock-picking ability</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Framing -->
+                <div class="card-hover rounded-xl bg-white border border-[#BFDBFE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#DBEAFE] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="frame" class="w-4 h-4 text-[#3B82F6]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Framing Effect</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Drawing different conclusions from the
+                                same data depending on how it is presented.</p>
+                            <p class="text-[10px] text-[#94A3B8] mt-1 italic">Example: "90% survival rate" vs. "10%
+                                mortality rate"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION D — LEGAL PERSPECTIVE OF BIAS -->
+        <!-- ============================================================ -->
+        <section class="mb-16 fade-section">
+            <div class="section-pill bg-[#FEF3C7] text-[#D97706] mb-5">
+                <i data-lucide="scale" class="w-3.5 h-3.5"></i> Legal Framework
+            </div>
+            <h2 class="font-heading text-2xl font-bold mb-2">Legal Perspective of Bias</h2>
+            <p class="text-sm text-[#64748B] mb-6">Key legal definitions that govern fairness in algorithmic
+                decision-making.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <!-- Protected Class -->
+                <div class="card-hover rounded-xl bg-white border border-[#FDE68A] p-5 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#FEF3C7] flex items-center justify-center shrink-0"><i
+                                data-lucide="shield" class="w-4.5 h-4.5 text-[#D97706]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Protected Class</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">A category where bias is relevant and
+                                likely to differentially affect certain groups.</p>
+                            <div class="flex flex-wrap gap-1.5 mt-2">
+                                <span
+                                    class="text-[10px] bg-[#FEF3C7] text-[#92400E] px-2 py-0.5 rounded-full font-medium">Race</span>
+                                <span
+                                    class="text-[10px] bg-[#FEF3C7] text-[#92400E] px-2 py-0.5 rounded-full font-medium">Religion</span>
+                                <span
+                                    class="text-[10px] bg-[#FEF3C7] text-[#92400E] px-2 py-0.5 rounded-full font-medium">Gender</span>
+                                <span
+                                    class="text-[10px] bg-[#FEF3C7] text-[#92400E] px-2 py-0.5 rounded-full font-medium">Sexual
+                                    Orientation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sensitive Characteristics -->
+                <div class="card-hover rounded-xl bg-white border border-[#FDE68A] p-5 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#FEF3C7] flex items-center justify-center shrink-0"><i
+                                data-lucide="alert-triangle" class="w-4.5 h-4.5 text-[#D97706]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Sensitive Characteristics</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Features or attributes where algorithmic
+                                decisions may introduce bias.</p>
+                            <p class="text-[10px] text-[#92400E] mt-2 bg-[#FEF3C7] px-2 py-1 rounded italic">Example:
+                                Race in healthcare allows more accurate screening of chronic illness</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Disparate Treatment -->
+                <div class="card-hover rounded-xl bg-white border border-[#FDE68A] p-5 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#FEF3C7] flex items-center justify-center shrink-0"><i
+                                data-lucide="split" class="w-4.5 h-4.5 text-[#D97706]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Disparate Treatment</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Occurs when individuals are treated
+                                differently based on protected characteristics.</p>
+                            <span class="text-[10px] text-[#D97706] font-semibold mt-1 inline-block">Legal
+                                Definition</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Disparate Outcome -->
+                <div class="card-hover rounded-xl bg-white border border-[#FDE68A] p-5 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#FEF3C7] flex items-center justify-center shrink-0"><i
+                                data-lucide="git-branch" class="w-4.5 h-4.5 text-[#D97706]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Disparate Outcome / Demographic Parity
+                            </h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">When outcomes differ across groups
+                                regardless of intention.</p>
+                            <span class="text-[10px] text-[#D97706] font-semibold mt-1 inline-block">Legal
+                                Definition</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Equal Opportunity -->
+                <div class="card-hover rounded-xl bg-white border border-[#FDE68A] p-5 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#FEF3C7] flex items-center justify-center shrink-0"><i
+                                data-lucide="equal" class="w-4.5 h-4.5 text-[#D97706]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Equal Opportunity (Process)</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Ensuring that all individuals have the
+                                same chance of a favorable outcome.</p>
+                            <span class="text-[10px] text-[#D97706] font-semibold mt-1 inline-block">Legal
+                                Definition</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Equal Accuracy -->
+                <div class="card-hover rounded-xl bg-white border border-[#FDE68A] p-5 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#FEF3C7] flex items-center justify-center shrink-0"><i
+                                data-lucide="target" class="w-4.5 h-4.5 text-[#D97706]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Equal Accuracy</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Striving for overall accuracy to be
+                                consistent across different groups.</p>
+                            <span class="text-[10px] text-[#D97706] font-semibold mt-1 inline-block">Legal
+                                Definition</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Calibration -->
+                <div class="card-hover rounded-xl bg-white border border-[#FDE68A] p-5 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#FEF3C7] flex items-center justify-center shrink-0"><i
+                                data-lucide="sliders" class="w-4.5 h-4.5 text-[#D97706]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Calibration</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Achieving equal accuracy at each score
+                                level within a predictive model.</p>
+                            <span class="text-[10px] text-[#D97706] font-semibold mt-1 inline-block">Legal
+                                Definition</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Predictive Parity -->
+                <div class="card-hover rounded-xl bg-white border border-[#FDE68A] p-5 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-9 h-9 rounded-lg bg-[#FEF3C7] flex items-center justify-center shrink-0"><i
+                                data-lucide="check-circle" class="w-4.5 h-4.5 text-[#D97706]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Predictive Parity</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Ensuring equal accuracy at critical
+                                decision points within a model.</p>
+                            <span class="text-[10px] text-[#D97706] font-semibold mt-1 inline-block">Legal
+                                Definition</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Callout -->
+            <div class="bg-[#FFFBEB] rounded-xl p-5 border border-[#FDE68A] mb-5">
+                <p class="text-sm text-[#92400E] leading-relaxed text-center"><strong>Key Insight:</strong> These legal
+                    definitions were derived from decades or centuries of bias in human beings — they may or may not
+                    exist in AI. AI is making existing bias <em>measurable, observable, and visible</em>.</p>
+            </div>
+
+            <!-- Enrichment: Additional Legal Concepts -->
+            <h3 class="font-heading text-base font-semibold mb-3 text-[#92400E]">Additional Legal Concepts</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+                <div class="rounded-lg bg-[#FFFBEB] p-3 border border-[#FDE68A]/60">
+                    <h4 class="font-heading text-xs font-semibold mb-1">Four-Fifths Rule (80% Rule)</h4>
+                    <p class="text-[11px] text-[#78350F] leading-relaxed">A selection rate for any group less than 80%
+                        of the highest group's rate is evidence of adverse impact.</p>
+                </div>
+                <div class="rounded-lg bg-[#FFFBEB] p-3 border border-[#FDE68A]/60">
+                    <h4 class="font-heading text-xs font-semibold mb-1">Proxy Discrimination</h4>
+                    <p class="text-[11px] text-[#78350F] leading-relaxed">When neutral criteria serve as stand-ins for
+                        protected characteristics (e.g., zip code as proxy for race).</p>
+                </div>
+                <div class="rounded-lg bg-[#FFFBEB] p-3 border border-[#FDE68A]/60">
+                    <h4 class="font-heading text-xs font-semibold mb-1">Intentional vs. Unintentional</h4>
+                    <p class="text-[11px] text-[#78350F] leading-relaxed">Legal frameworks address both deliberate bias
+                        and systemic disparate impact.</p>
+                </div>
+                <div class="rounded-lg bg-[#FFFBEB] p-3 border border-[#FDE68A]/60">
+                    <h4 class="font-heading text-xs font-semibold mb-1">Regulatory Landscape</h4>
+                    <div class="flex flex-wrap gap-1 mt-1">
+                        <span class="text-[9px] bg-[#FEF3C7] text-[#92400E] px-1.5 py-0.5 rounded font-medium">EU AI
+                            Act</span>
+                        <span class="text-[9px] bg-[#FEF3C7] text-[#92400E] px-1.5 py-0.5 rounded font-medium">NIST AI
+                            RMF</span>
+                        <span
+                            class="text-[9px] bg-[#FEF3C7] text-[#92400E] px-1.5 py-0.5 rounded font-medium">EEOC</span>
+                        <span class="text-[9px] bg-[#FEF3C7] text-[#92400E] px-1.5 py-0.5 rounded font-medium">Fair
+                            Housing Act</span>
+                        <span
+                            class="text-[9px] bg-[#FEF3C7] text-[#92400E] px-1.5 py-0.5 rounded font-medium">ECOA</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION E — DATA PERSPECTIVE OF BIAS -->
+        <!-- ============================================================ -->
+        <section class="mb-16 fade-section">
+            <div class="section-pill bg-[#F3E8FF] text-[#7C3AED] mb-5">
+                <i data-lucide="database" class="w-3.5 h-3.5"></i> Data Perspective
+            </div>
+            <h2 class="font-heading text-2xl font-bold mb-2">Data Perspective of Bias</h2>
+            <p class="text-sm text-[#64748B] mb-2">Legal perspective defines <strong>what</strong> is protected. Data
+                perspective shows <strong>where</strong> bias enters.</p>
+            <p class="text-xs text-[#8B5CF6] mb-6 font-medium">Source-Material Bias Types</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <!-- Sampling Bias -->
+                <div class="card-hover rounded-xl bg-white border border-[#DDD6FE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#F3E8FF] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="pie-chart" class="w-4 h-4 text-[#7C3AED]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Sampling Bias</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Sample data is not representative of the
+                                population being analyzed.</p>
+                            <p class="text-[10px] text-[#7C3AED] mt-1.5 italic">Example: Chicago gun violence data may
+                                not generalize to other regions</p>
+                            <div class="flex items-center gap-1 mt-1"><span class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#E2E8F0]"></span><span
+                                    class="text-[9px] text-[#7C3AED] font-semibold ml-1">High</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Reporting Bias -->
+                <div class="card-hover rounded-xl bg-white border border-[#DDD6FE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#F3E8FF] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="file-text" class="w-4 h-4 text-[#7C3AED]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Reporting Bias</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Only certain outcomes or data points are
+                                reported, skewing the dataset.</p>
+                            <p class="text-[10px] text-[#7C3AED] mt-1.5 italic">Example: Police shootings reported;
+                                non-shooting altercations may not be</p>
+                            <div class="flex items-center gap-1 mt-1"><span class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#E2E8F0]"></span><span
+                                    class="text-[9px] text-[#7C3AED] font-semibold ml-1">High</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Social Desirability -->
+                <div class="card-hover rounded-xl bg-white border border-[#DDD6FE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#F3E8FF] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="message-square" class="w-4 h-4 text-[#7C3AED]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Social Desirability Bias</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Respondents provide socially acceptable
+                                answers rather than the truth.</p>
+                            <p class="text-[10px] text-[#7C3AED] mt-1.5 italic">Example: Survey participants
+                                underreporting unhealthy behaviors</p>
+                            <div class="flex items-center gap-1 mt-1"><span class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#E2E8F0]"></span><span
+                                    class="risk-bar bg-[#E2E8F0]"></span><span
+                                    class="text-[9px] text-[#7C3AED] font-semibold ml-1">Medium</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Historical Bias -->
+                <div class="card-hover rounded-xl bg-white border border-[#DDD6FE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#F3E8FF] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="history" class="w-4 h-4 text-[#7C3AED]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Historical Bias</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Biases in historical data are perpetuated
+                                in current models via feedback loops.</p>
+                            <p class="text-[10px] text-[#7C3AED] mt-1.5 italic">Example: Predictive policing — more
+                                arrests → more policing → more arrests</p>
+                            <div class="flex items-center gap-1 mt-1"><span class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="text-[9px] text-[#7C3AED] font-semibold ml-1">Critical</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Algorithmic Bias -->
+                <div class="card-hover rounded-xl bg-white border border-[#DDD6FE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#F3E8FF] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="cpu" class="w-4 h-4 text-[#7C3AED]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Algorithmic Bias</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Bias introduced by the design and
+                                functioning of the algorithm itself.</p>
+                            <div class="flex items-center gap-1 mt-1"><span class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#E2E8F0]"></span><span
+                                    class="text-[9px] text-[#7C3AED] font-semibold ml-1">High</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Survivorship -->
+                <div class="card-hover rounded-xl bg-white border border-[#DDD6FE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#F3E8FF] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="trophy" class="w-4 h-4 text-[#7C3AED]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Survivorship Bias</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Focusing on data from "survivors" while
+                                ignoring those that didn't make it through.</p>
+                            <p class="text-[10px] text-[#7C3AED] mt-1.5 italic">Example: Only examining consumer
+                                returns, not products that never reached market</p>
+                            <div class="flex items-center gap-1 mt-1"><span class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#E2E8F0]"></span><span
+                                    class="risk-bar bg-[#E2E8F0]"></span><span
+                                    class="text-[9px] text-[#7C3AED] font-semibold ml-1">Medium</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Data Collection -->
+                <div class="card-hover rounded-xl bg-white border border-[#DDD6FE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#F3E8FF] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="folder" class="w-4 h-4 text-[#7C3AED]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Data Collection Bias</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Bias from inconsistent or flawed data
+                                collection methodologies.</p>
+                            <div class="flex items-center gap-1 mt-1"><span class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#E2E8F0]"></span><span
+                                    class="risk-bar bg-[#E2E8F0]"></span><span
+                                    class="text-[9px] text-[#7C3AED] font-semibold ml-1">Medium</span></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Publication -->
+                <div class="card-hover rounded-xl bg-white border border-[#DDD6FE] p-4 shadow-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-[#F3E8FF] flex items-center justify-center shrink-0 mt-0.5"><i
+                                data-lucide="book" class="w-4 h-4 text-[#7C3AED]"></i></div>
+                        <div>
+                            <h4 class="font-heading text-sm font-semibold mb-1">Publication Bias</h4>
+                            <p class="text-xs text-[#475569] leading-relaxed">Studies with positive results are more
+                                likely to be published, skewing perception.</p>
+                            <div class="flex items-center gap-1 mt-1"><span class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#7C3AED]"></span><span
+                                    class="risk-bar bg-[#E2E8F0]"></span><span
+                                    class="risk-bar bg-[#E2E8F0]"></span><span
+                                    class="text-[9px] text-[#7C3AED] font-semibold ml-1">Medium</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enrichment Data Biases -->
+            <h3 class="font-heading text-base font-semibold mb-3 text-[#6D28D9]">Additional Data Bias Types</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-4">
+                <div class="rounded-lg bg-[#FAF5FF] p-2.5 border border-[#DDD6FE]/60 text-center">
+                    <p class="text-[10px] font-semibold text-[#6D28D9]">Representation</p>
+                    <p class="text-[9px] text-[#7C3AED] mt-0.5">Underrepresentation in data</p>
+                </div>
+                <div class="rounded-lg bg-[#FAF5FF] p-2.5 border border-[#DDD6FE]/60 text-center">
+                    <p class="text-[10px] font-semibold text-[#6D28D9]">Measurement</p>
+                    <p class="text-[9px] text-[#7C3AED] mt-0.5">Inaccurate proxy features</p>
+                </div>
+                <div class="rounded-lg bg-[#FAF5FF] p-2.5 border border-[#DDD6FE]/60 text-center">
+                    <p class="text-[10px] font-semibold text-[#6D28D9]">Aggregation</p>
+                    <p class="text-[9px] text-[#7C3AED] mt-0.5">Ignoring subgroups</p>
+                </div>
+                <div class="rounded-lg bg-[#FAF5FF] p-2.5 border border-[#DDD6FE]/60 text-center">
+                    <p class="text-[10px] font-semibold text-[#6D28D9]">Evaluation</p>
+                    <p class="text-[9px] text-[#7C3AED] mt-0.5">Non-representative benchmarks</p>
+                </div>
+                <div class="rounded-lg bg-[#FAF5FF] p-2.5 border border-[#DDD6FE]/60 text-center">
+                    <p class="text-[10px] font-semibold text-[#6D28D9]">Deployment</p>
+                    <p class="text-[9px] text-[#7C3AED] mt-0.5">Wrong context for model</p>
+                </div>
+                <div class="rounded-lg bg-[#FAF5FF] p-2.5 border border-[#DDD6FE]/60 text-center">
+                    <p class="text-[10px] font-semibold text-[#6D28D9]">Label</p>
+                    <p class="text-[9px] text-[#7C3AED] mt-0.5">Annotator subjectivity</p>
+                </div>
+                <div class="rounded-lg bg-[#FAF5FF] p-2.5 border border-[#DDD6FE]/60 text-center">
+                    <p class="text-[10px] font-semibold text-[#6D28D9]">Feedback Loop</p>
+                    <p class="text-[9px] text-[#7C3AED] mt-0.5">Self-reinforcing patterns</p>
+                </div>
+                <div class="rounded-lg bg-[#FAF5FF] p-2.5 border border-[#DDD6FE]/60 text-center">
+                    <p class="text-[10px] font-semibold text-[#6D28D9]">Proxy Variable</p>
+                    <p class="text-[9px] text-[#7C3AED] mt-0.5">Indirect encoding of traits</p>
+                </div>
+                <div class="rounded-lg bg-[#FAF5FF] p-2.5 border border-[#DDD6FE]/60 text-center">
+                    <p class="text-[10px] font-semibold text-[#6D28D9]">Temporal</p>
+                    <p class="text-[9px] text-[#7C3AED] mt-0.5">Time-bound data issues</p>
+                </div>
+                <div class="rounded-lg bg-[#FAF5FF] p-2.5 border border-[#DDD6FE]/60 text-center">
+                    <p class="text-[10px] font-semibold text-[#6D28D9]">Automation</p>
+                    <p class="text-[9px] text-[#7C3AED] mt-0.5">Over-reliance on AI output</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION F — BIAS ACROSS THE ML PIPELINE -->
+        <!-- ============================================================ -->
+        <section class="mb-16 fade-section">
+            <div class="section-pill bg-[#D1FAE5] text-[#059669] mb-5">
+                <i data-lucide="workflow" class="w-3.5 h-3.5"></i> ML Pipeline
+            </div>
+            <h2 class="font-heading text-2xl font-bold mb-2">Bias Across the ML Pipeline</h2>
+            <p class="text-sm text-[#64748B] mb-6">Bias can enter at every stage — from problem formulation to
+                post-deployment monitoring.</p>
+
+            <div class="overflow-x-auto pb-2">
+                <div class="flex items-stretch gap-1 min-w-[800px]">
+                    <!-- Stage 1 -->
+                    <div class="flex-1 rounded-xl bg-white border border-[#A7F3D0] p-3 shadow-sm relative">
+                        <div class="text-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-[#D1FAE5] flex items-center justify-center mx-auto mb-1.5">
+                                <span class="text-xs font-bold text-[#059669]">1</span>
+                            </div>
+                            <h4 class="font-heading text-[10px] font-semibold mb-1">Problem Formulation</h4>
+                            <p class="text-[9px] text-[#475569] leading-snug">Who defines the problem and for whom?</p>
+                            <div class="mt-1.5"><span class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span class="risk-bar bg-[#E2E8F0]"></span>
+                            </div>
+                            <p class="text-[8px] text-[#6D28D9] mt-1">Selection, Aggregation</p>
+                        </div>
+                        <div
+                            class="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[#10B981] arrow-pulse z-10 text-lg font-bold">
+                            →</div>
+                    </div>
+                    <!-- Stage 2 -->
+                    <div class="flex-1 rounded-xl bg-white border border-[#A7F3D0] p-3 shadow-sm relative">
+                        <div class="text-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-[#D1FAE5] flex items-center justify-center mx-auto mb-1.5">
+                                <span class="text-xs font-bold text-[#059669]">2</span>
+                            </div>
+                            <h4 class="font-heading text-[10px] font-semibold mb-1">Data Collection</h4>
+                            <p class="text-[9px] text-[#475569] leading-snug">What populations included or excluded?</p>
+                            <div class="mt-1.5"><span class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span class="risk-bar bg-[#EF4444]"></span>
+                            </div>
+                            <p class="text-[8px] text-[#6D28D9] mt-1">Sampling, Reporting, Historical</p>
+                        </div>
+                        <div
+                            class="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[#10B981] arrow-pulse z-10 text-lg font-bold">
+                            →</div>
+                    </div>
+                    <!-- Stage 3 -->
+                    <div class="flex-1 rounded-xl bg-white border border-[#A7F3D0] p-3 shadow-sm relative">
+                        <div class="text-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-[#D1FAE5] flex items-center justify-center mx-auto mb-1.5">
+                                <span class="text-xs font-bold text-[#059669]">3</span>
+                            </div>
+                            <h4 class="font-heading text-[10px] font-semibold mb-1">Data Labeling</h4>
+                            <p class="text-[9px] text-[#475569] leading-snug">Annotator subjectivity and cultural lens
+                            </p>
+                            <div class="mt-1.5"><span class="risk-bar bg-[#F59E0B]"></span><span
+                                    class="risk-bar bg-[#F59E0B]"></span><span
+                                    class="risk-bar bg-[#F59E0B]"></span><span
+                                    class="risk-bar bg-[#E2E8F0]"></span><span class="risk-bar bg-[#E2E8F0]"></span>
+                            </div>
+                            <p class="text-[8px] text-[#6D28D9] mt-1">Label, Social Desirability</p>
+                        </div>
+                        <div
+                            class="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[#10B981] arrow-pulse z-10 text-lg font-bold">
+                            →</div>
+                    </div>
+                    <!-- Stage 4 -->
+                    <div class="flex-1 rounded-xl bg-white border border-[#A7F3D0] p-3 shadow-sm relative">
+                        <div class="text-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-[#D1FAE5] flex items-center justify-center mx-auto mb-1.5">
+                                <span class="text-xs font-bold text-[#059669]">4</span>
+                            </div>
+                            <h4 class="font-heading text-[10px] font-semibold mb-1">Feature Engineering</h4>
+                            <p class="text-[9px] text-[#475569] leading-snug">Which variables selected and why?</p>
+                            <div class="mt-1.5"><span class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span class="risk-bar bg-[#E2E8F0]"></span>
+                            </div>
+                            <p class="text-[8px] text-[#6D28D9] mt-1">Proxy Variable, Measurement</p>
+                        </div>
+                        <div
+                            class="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[#10B981] arrow-pulse z-10 text-lg font-bold">
+                            →</div>
+                    </div>
+                    <!-- Stage 5 -->
+                    <div class="flex-1 rounded-xl bg-white border border-[#A7F3D0] p-3 shadow-sm relative">
+                        <div class="text-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-[#D1FAE5] flex items-center justify-center mx-auto mb-1.5">
+                                <span class="text-xs font-bold text-[#059669]">5</span>
+                            </div>
+                            <h4 class="font-heading text-[10px] font-semibold mb-1">Model Training</h4>
+                            <p class="text-[9px] text-[#475569] leading-snug">Optimization targets and loss functions
+                            </p>
+                            <div class="mt-1.5"><span class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span class="risk-bar bg-[#E2E8F0]"></span>
+                            </div>
+                            <p class="text-[8px] text-[#6D28D9] mt-1">Algorithmic, Aggregation</p>
+                        </div>
+                        <div
+                            class="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[#10B981] arrow-pulse z-10 text-lg font-bold">
+                            →</div>
+                    </div>
+                    <!-- Stage 6 -->
+                    <div class="flex-1 rounded-xl bg-white border border-[#A7F3D0] p-3 shadow-sm relative">
+                        <div class="text-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-[#D1FAE5] flex items-center justify-center mx-auto mb-1.5">
+                                <span class="text-xs font-bold text-[#059669]">6</span>
+                            </div>
+                            <h4 class="font-heading text-[10px] font-semibold mb-1">Model Evaluation</h4>
+                            <p class="text-[9px] text-[#475569] leading-snug">Which metrics and test populations?</p>
+                            <div class="mt-1.5"><span class="risk-bar bg-[#F59E0B]"></span><span
+                                    class="risk-bar bg-[#F59E0B]"></span><span
+                                    class="risk-bar bg-[#F59E0B]"></span><span
+                                    class="risk-bar bg-[#E2E8F0]"></span><span class="risk-bar bg-[#E2E8F0]"></span>
+                            </div>
+                            <p class="text-[8px] text-[#6D28D9] mt-1">Evaluation, Survivorship</p>
+                        </div>
+                        <div
+                            class="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[#10B981] arrow-pulse z-10 text-lg font-bold">
+                            →</div>
+                    </div>
+                    <!-- Stage 7 -->
+                    <div class="flex-1 rounded-xl bg-white border border-[#A7F3D0] p-3 shadow-sm relative">
+                        <div class="text-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-[#D1FAE5] flex items-center justify-center mx-auto mb-1.5">
+                                <span class="text-xs font-bold text-[#059669]">7</span>
+                            </div>
+                            <h4 class="font-heading text-[10px] font-semibold mb-1">Deployment</h4>
+                            <p class="text-[9px] text-[#475569] leading-snug">Real-world context vs. lab conditions</p>
+                            <div class="mt-1.5"><span class="risk-bar bg-[#F59E0B]"></span><span
+                                    class="risk-bar bg-[#F59E0B]"></span><span
+                                    class="risk-bar bg-[#F59E0B]"></span><span
+                                    class="risk-bar bg-[#F59E0B]"></span><span class="risk-bar bg-[#E2E8F0]"></span>
+                            </div>
+                            <p class="text-[8px] text-[#6D28D9] mt-1">Deployment, Temporal</p>
+                        </div>
+                        <div
+                            class="absolute right-[-10px] top-1/2 -translate-y-1/2 text-[#10B981] arrow-pulse z-10 text-lg font-bold">
+                            →</div>
+                    </div>
+                    <!-- Stage 8 -->
+                    <div class="flex-1 rounded-xl bg-white border border-[#A7F3D0] p-3 shadow-sm">
+                        <div class="text-center">
+                            <div
+                                class="w-8 h-8 rounded-full bg-[#D1FAE5] flex items-center justify-center mx-auto mb-1.5">
+                                <span class="text-xs font-bold text-[#059669]">8</span>
+                            </div>
+                            <h4 class="font-heading text-[10px] font-semibold mb-1">Monitoring</h4>
+                            <p class="text-[9px] text-[#475569] leading-snug">Detecting drift and emergent bias</p>
+                            <div class="mt-1.5"><span class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span
+                                    class="risk-bar bg-[#EF4444]"></span><span class="risk-bar bg-[#EF4444]"></span>
+                            </div>
+                            <p class="text-[8px] text-[#6D28D9] mt-1">Feedback Loop, Automation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center justify-center gap-4 mt-3 text-[10px] text-[#64748B]">
+                <span class="flex items-center gap-1"><span class="risk-bar bg-[#EF4444]"></span><span
+                        class="risk-bar bg-[#EF4444]"></span><span class="risk-bar bg-[#EF4444]"></span><span
+                        class="risk-bar bg-[#EF4444]"></span><span class="risk-bar bg-[#EF4444]"></span> Critical</span>
+                <span class="flex items-center gap-1"><span class="risk-bar bg-[#EF4444]"></span><span
+                        class="risk-bar bg-[#EF4444]"></span><span class="risk-bar bg-[#EF4444]"></span><span
+                        class="risk-bar bg-[#EF4444]"></span><span class="risk-bar bg-[#E2E8F0]"></span> High</span>
+                <span class="flex items-center gap-1"><span class="risk-bar bg-[#F59E0B]"></span><span
+                        class="risk-bar bg-[#F59E0B]"></span><span class="risk-bar bg-[#F59E0B]"></span><span
+                        class="risk-bar bg-[#E2E8F0]"></span><span class="risk-bar bg-[#E2E8F0]"></span> Medium</span>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION G — THE LOAN APPLICATION CASE STUDY -->
+        <!-- ============================================================ -->
+        <section class="mb-16 fade-section">
+            <div class="section-pill bg-[#FFE4E6] text-[#E11D48] mb-5">
+                <i data-lucide="landmark" class="w-3.5 h-3.5"></i> Mathematical Core
+            </div>
+            <h2 class="font-heading text-2xl font-bold mb-2">Examining Bias: The Loan Application Case Study</h2>
+            <p class="text-sm text-[#64748B] mb-6">The mathematical heart of the lecture — demonstrating how fairness
+                strategies conflict in practice.</p>
+
+            <!-- G1: Clean Separation vs Overlapping -->
+            <div class="bg-[#FFF1F2] rounded-2xl p-5 sm:p-6 mb-6 border border-[#FECDD3]">
+                <h3 class="font-heading text-base font-semibold mb-4 text-[#9F1239]">Scenario 1: Clean Separation vs.
+                    Overlapping Categories</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <!-- Clean -->
+                    <div class="bg-white rounded-xl p-4 border border-[#FECDD3]">
+                        <h4 class="font-heading text-sm font-semibold mb-2 text-center">A. Clean Separation</h4>
+                        <div class="flex items-center justify-center gap-2 mb-3">
+                            <div class="text-[9px] text-[#64748B]">Credit Score 0</div>
+                            <div class="flex-1 h-8 bg-[#F1F5F9] rounded relative overflow-hidden flex">
+                                <div class="w-1/2 flex items-center justify-center">
+                                    <div class="flex flex-wrap gap-0.5 justify-center">
+                                        <span class="w-2 h-2 rounded-full bg-[#93C5FD]"></span><span
+                                            class="w-2 h-2 rounded-full bg-[#93C5FD]"></span><span
+                                            class="w-2 h-2 rounded-full bg-[#93C5FD]"></span><span
+                                            class="w-2 h-2 rounded-full bg-[#93C5FD]"></span><span
+                                            class="w-2 h-2 rounded-full bg-[#93C5FD]"></span><span
+                                            class="w-2 h-2 rounded-full bg-[#93C5FD]"></span>
+                                    </div>
+                                </div>
+                                <div class="w-px bg-[#EF4444] shrink-0"></div>
+                                <div class="w-1/2 flex items-center justify-center">
+                                    <div class="flex flex-wrap gap-0.5 justify-center">
+                                        <span class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                            class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                            class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                            class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                            class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                            class="w-2 h-2 rounded-full bg-[#1E40AF]"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-[9px] text-[#64748B]">100</div>
+                        </div>
+                        <p class="text-[10px] text-[#64748B] text-center">Clear dividing line — easy classification</p>
+                    </div>
+                    <!-- Overlapping -->
+                    <div class="bg-white rounded-xl p-4 border border-[#FECDD3]">
+                        <h4 class="font-heading text-sm font-semibold mb-2 text-center">B. Overlapping Categories</h4>
+                        <div class="flex items-center justify-center gap-2 mb-3">
+                            <div class="text-[9px] text-[#64748B]">Credit Score 0</div>
+                            <div
+                                class="flex-1 h-8 bg-[#F1F5F9] rounded relative overflow-hidden flex items-center justify-center">
+                                <div class="flex flex-wrap gap-0.5 justify-center">
+                                    <span class="w-2 h-2 rounded-full bg-[#93C5FD]"></span><span
+                                        class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                        class="w-2 h-2 rounded-full bg-[#93C5FD]"></span><span
+                                        class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                        class="w-2 h-2 rounded-full bg-[#93C5FD]"></span><span
+                                        class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                        class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                        class="w-2 h-2 rounded-full bg-[#93C5FD]"></span><span
+                                        class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                        class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                        class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                        class="w-2 h-2 rounded-full bg-[#93C5FD]"></span>
+                                </div>
+                            </div>
+                            <div class="text-[9px] text-[#64748B]">100</div>
+                        </div>
+                        <p class="text-[10px] text-[#64748B] text-center">Realistic scenario — defaulters and payers
+                            overlap</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center gap-4 mt-3 text-[10px] text-[#64748B]">
+                    <span class="flex items-center gap-1"><span
+                            class="w-2.5 h-2.5 rounded-full bg-[#93C5FD] inline-block"></span> Would default</span>
+                    <span class="flex items-center gap-1"><span
+                            class="w-2.5 h-2.5 rounded-full bg-[#1E40AF] inline-block"></span> Would pay back</span>
+                </div>
+                <p class="text-xs text-[#9F1239] text-center mt-2 font-medium">Real-world data rarely has clean
+                    separation</p>
+            </div>
+
+            <!-- G2: Threshold Decision -->
+            <div class="bg-[#FFF1F2] rounded-2xl p-5 sm:p-6 mb-6 border border-[#FECDD3]">
+                <h3 class="font-heading text-base font-semibold mb-1 text-[#9F1239]">Scenario 2: Threshold Decision and
+                    Outcomes</h3>
+                <p class="text-xs text-[#64748B] mb-5">With a loan threshold at credit score 50, each applicant falls
+                    into one of four outcome categories.</p>
+
+                <div class="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6">
+                    <!-- LEFT: Dot Plot Visualization -->
+                    <div class="bg-white rounded-xl p-4 border border-[#FECDD3] overflow-x-auto">
+                        <div class="text-center mb-2">
+                            <p class="text-xs font-semibold text-[#475569]">Threshold Decision</p>
+                            <p class="text-[10px] text-[#94A3B8]">Credit Score — higher scores represent higher
+                                likelihood of payback</p>
+                        </div>
+                        <svg viewBox="0 0 520 260" class="w-full max-w-[520px] mx-auto" style="min-width:400px;">
+                            <!-- Credit score axis -->
+                            <line x1="50" y1="230" x2="500" y2="230" stroke="#CBD5E1" stroke-width="1" />
+                            <text x="50" y="248" font-size="9" fill="#94A3B8" text-anchor="middle">0</text>
+                            <text x="95" y="248" font-size="9" fill="#94A3B8" text-anchor="middle">10</text>
+                            <text x="140" y="248" font-size="9" fill="#94A3B8" text-anchor="middle">20</text>
+                            <text x="185" y="248" font-size="9" fill="#94A3B8" text-anchor="middle">30</text>
+                            <text x="230" y="248" font-size="9" fill="#94A3B8" text-anchor="middle">40</text>
+                            <text x="275" y="248" font-size="9" fill="#94A3B8" text-anchor="middle">50</text>
+                            <text x="320" y="248" font-size="9" fill="#94A3B8" text-anchor="middle">60</text>
+                            <text x="365" y="248" font-size="9" fill="#94A3B8" text-anchor="middle">70</text>
+                            <text x="410" y="248" font-size="9" fill="#94A3B8" text-anchor="middle">80</text>
+                            <text x="455" y="248" font-size="9" fill="#94A3B8" text-anchor="middle">90</text>
+                            <text x="500" y="248" font-size="9" fill="#94A3B8" text-anchor="middle">100</text>
+
+                            <!-- Threshold line at 50 -->
+                            <line x1="275" y1="28" x2="275" y2="230" stroke="#1E293B" stroke-width="2.5" />
+                            <text x="275" y="22" font-size="10" fill="#1E293B" text-anchor="middle"
+                                font-weight="600">loan threshold: 50</text>
+
+                            <!-- LEFT of threshold: denied applicants -->
+                            <!-- Row 1 (bottom) - score ~5-15: mostly light gray (denied/default=correct) -->
+                            <circle cx="62" cy="222" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="74" cy="222" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="86" cy="222" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="98" cy="222" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+
+                            <!-- Row 2 - score ~10-25 -->
+                            <circle cx="86" cy="210" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="98" cy="210" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="110" cy="210" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="110" cy="222" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="122" cy="222" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="122" cy="210" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+
+                            <!-- Row 3 - score ~15-35: more density, some dark gray (denied/would pay) -->
+                            <circle cx="134" cy="222" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="134" cy="210" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="134" cy="198" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="146" cy="222" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="146" cy="210" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="146" cy="198" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="158" cy="222" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="158" cy="210" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="158" cy="198" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="158" cy="186" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+
+                            <!-- Row 4 - score ~30-45: peak density, mix of light gray + dark gray -->
+                            <circle cx="170" cy="222" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="170" cy="210" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="170" cy="198" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="170" cy="186" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="170" cy="174" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="182" cy="222" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="182" cy="210" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="182" cy="198" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="182" cy="186" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="182" cy="174" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="182" cy="162" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+
+                            <!-- Near threshold left ~40-49 -->
+                            <circle cx="194" cy="222" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="194" cy="210" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="194" cy="198" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="194" cy="186" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="194" cy="174" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="194" cy="162" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="194" cy="150" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+
+                            <circle cx="206" cy="222" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="206" cy="210" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="206" cy="198" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="206" cy="186" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="206" cy="174" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="206" cy="162" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="206" cy="150" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="206" cy="138" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+
+                            <circle cx="218" cy="222" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="218" cy="210" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="218" cy="198" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="218" cy="186" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="218" cy="174" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="218" cy="162" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="218" cy="150" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+
+                            <circle cx="230" cy="222" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="230" cy="210" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="230" cy="198" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="230" cy="186" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="230" cy="174" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="230" cy="162" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+
+                            <circle cx="242" cy="222" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="242" cy="210" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="242" cy="198" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+                            <circle cx="242" cy="186" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="242" cy="174" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+
+                            <circle cx="254" cy="222" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="254" cy="210" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="254" cy="198" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="254" cy="186" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+
+                            <circle cx="266" cy="222" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="266" cy="210" r="5" fill="#4B5563" stroke="#374151" stroke-width="0.5" />
+                            <circle cx="266" cy="198" r="5" fill="#D1D5DB" stroke="#B0B7C0" stroke-width="0.5" />
+
+                            <!-- RIGHT of threshold: granted applicants -->
+                            <!-- Near threshold right ~51-59: mix of dark blue (pays) + light blue (defaults) -->
+                            <circle cx="284" cy="222" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="284" cy="210" r="5" fill="#93C5FD" stroke="#60A5FA" stroke-width="0.5" />
+                            <circle cx="284" cy="198" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+
+                            <circle cx="296" cy="222" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="296" cy="210" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="296" cy="198" r="5" fill="#93C5FD" stroke="#60A5FA" stroke-width="0.5" />
+                            <circle cx="296" cy="186" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+
+                            <circle cx="308" cy="222" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="308" cy="210" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="308" cy="198" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="308" cy="186" r="5" fill="#93C5FD" stroke="#60A5FA" stroke-width="0.5" />
+                            <circle cx="308" cy="174" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+
+                            <circle cx="320" cy="222" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="320" cy="210" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="320" cy="198" r="5" fill="#93C5FD" stroke="#60A5FA" stroke-width="0.5" />
+                            <circle cx="320" cy="186" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="320" cy="174" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="320" cy="162" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+
+                            <circle cx="332" cy="222" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="332" cy="210" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="332" cy="198" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="332" cy="186" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="332" cy="174" r="5" fill="#93C5FD" stroke="#60A5FA" stroke-width="0.5" />
+                            <circle cx="332" cy="162" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="332" cy="150" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+
+                            <!-- Mid-right ~65-80: mostly dark blue -->
+                            <circle cx="344" cy="222" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="344" cy="210" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="344" cy="198" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="344" cy="186" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="344" cy="174" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="344" cy="162" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="344" cy="150" r="5" fill="#93C5FD" stroke="#60A5FA" stroke-width="0.5" />
+                            <circle cx="344" cy="138" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+
+                            <circle cx="356" cy="222" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="356" cy="210" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="356" cy="198" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="356" cy="186" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="356" cy="174" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="356" cy="162" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="356" cy="150" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+
+                            <circle cx="368" cy="222" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="368" cy="210" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="368" cy="198" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="368" cy="186" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="368" cy="174" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="368" cy="162" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+
+                            <!-- Far right ~80-95: tapering, all dark blue -->
+                            <circle cx="380" cy="222" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="380" cy="210" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="380" cy="198" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="380" cy="186" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="380" cy="174" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+
+                            <circle cx="392" cy="222" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="392" cy="210" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="392" cy="198" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="392" cy="186" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+
+                            <circle cx="404" cy="222" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="404" cy="210" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="404" cy="198" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+
+                            <circle cx="416" cy="222" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+                            <circle cx="416" cy="210" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+
+                            <circle cx="428" cy="222" r="5" fill="#1E40AF" stroke="#1E3A8A" stroke-width="0.5" />
+
+                            <!-- Bottom-left label -->
+                            <text x="50" y="260" font-size="8" fill="#94A3B8" font-style="italic">each circle = one
+                                person</text>
+                        </svg>
+
+                        <!-- Legend -->
+                        <div
+                            class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 mt-2 text-[10px] text-[#475569]">
+                            <span class="flex items-center gap-1.5">
+                                <span
+                                    class="inline-block w-3 h-3 rounded-full bg-[#D1D5DB] border border-[#B0B7C0]"></span>
+                                denied loan / would default
+                            </span>
+                            <span class="flex items-center gap-1.5">
+                                <span
+                                    class="inline-block w-3 h-3 rounded-full bg-[#4B5563] border border-[#374151]"></span>
+                                denied loan / would pay back
+                            </span>
+                            <span class="flex items-center gap-1.5">
+                                <span
+                                    class="inline-block w-3 h-3 rounded-full bg-[#93C5FD] border border-[#60A5FA]"></span>
+                                granted loan / defaults
+                            </span>
+                            <span class="flex items-center gap-1.5">
+                                <span
+                                    class="inline-block w-3 h-3 rounded-full bg-[#1E40AF] border border-[#1E3A8A]"></span>
+                                granted loan / pays back
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT: Outcome Metrics -->
+                    <div class="flex flex-col gap-3">
+                        <!-- Correct / Incorrect -->
+                        <div class="bg-white rounded-xl p-4 border border-[#A7F3D0]">
+                            <div class="flex items-baseline justify-between mb-1">
+                                <p class="text-[10px] font-bold text-[#059669] uppercase tracking-wide">Correct</p>
+                                <p class="text-2xl font-bold text-[#059669] font-heading">84%</p>
+                            </div>
+                            <p class="text-[10px] text-[#475569] leading-snug">loans granted to paying applicants and
+                                denied to defaulters</p>
+                            <!-- Mini dot grid correct -->
+                            <div class="flex flex-wrap gap-[3px] mt-2">
+                                <span class="w-2 h-2 rounded-full bg-[#D1D5DB]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#D1D5DB]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#D1D5DB]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#D1D5DB]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#D1D5DB]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#D1D5DB]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#D1D5DB]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#D1D5DB]"></span>
+                                <span class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#1E40AF]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#1E40AF]"></span>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 border border-[#FECDD3]">
+                            <div class="flex items-baseline justify-between mb-1">
+                                <p class="text-[10px] font-bold text-[#E11D48] uppercase tracking-wide">Incorrect</p>
+                                <p class="text-2xl font-bold text-[#E11D48] font-heading">16%</p>
+                            </div>
+                            <p class="text-[10px] text-[#475569] leading-snug">loans denied to paying applicants and
+                                granted to defaulters</p>
+                            <div class="flex flex-wrap gap-[3px] mt-2">
+                                <span class="w-2 h-2 rounded-full bg-[#93C5FD]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#93C5FD]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#4B5563]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#4B5563]"></span><span
+                                    class="w-2 h-2 rounded-full bg-[#4B5563]"></span>
+                            </div>
+                        </div>
+
+                        <!-- TPR and Positive Rate as mini pie charts (SVG) -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="bg-white rounded-xl p-3 border border-[#BFDBFE] text-center">
+                                <svg viewBox="0 0 60 60" class="w-12 h-12 mx-auto mb-1">
+                                    <circle cx="30" cy="30" r="25" fill="none" stroke="#E2E8F0" stroke-width="8" />
+                                    <circle cx="30" cy="30" r="25" fill="none" stroke="#1E40AF" stroke-width="8"
+                                        stroke-dasharray="135.1 157.1" stroke-dashoffset="0"
+                                        transform="rotate(-90 30 30)" />
+                                    <!-- 86% = 135.1 of 157.1 circumference -->
+                                </svg>
+                                <p class="text-sm font-bold text-[#1E40AF] font-heading">86%</p>
+                                <p class="text-[9px] text-[#475569] leading-snug">True Positive Rate</p>
+                                <p class="text-[8px] text-[#94A3B8]">paying applicants getting loans</p>
+                            </div>
+                            <div class="bg-white rounded-xl p-3 border border-[#DDD6FE] text-center">
+                                <svg viewBox="0 0 60 60" class="w-12 h-12 mx-auto mb-1">
+                                    <circle cx="30" cy="30" r="25" fill="none" stroke="#E2E8F0" stroke-width="8" />
+                                    <circle cx="30" cy="30" r="25" fill="none" stroke="#7C3AED" stroke-width="8"
+                                        stroke-dasharray="81.7 157.1" stroke-dashoffset="0"
+                                        transform="rotate(-90 30 30)" />
+                                    <!-- 52% = 81.7 of 157.1 circumference -->
+                                </svg>
+                                <p class="text-sm font-bold text-[#7C3AED] font-heading">52%</p>
+                                <p class="text-[9px] text-[#475569] leading-snug">Positive Rate</p>
+                                <p class="text-[8px] text-[#94A3B8]">all applicants getting loans</p>
+                            </div>
+                        </div>
+
+                        <!-- Profit -->
+                        <div class="bg-white rounded-xl p-3 border border-[#FDE68A] text-center">
+                            <p class="text-[10px] text-[#475569] mb-0.5">Profit</p>
+                            <p class="text-2xl font-bold text-[#D97706] font-heading">$13,600</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- G3: Four Fairness Strategies -->
+            <div class="bg-[#FFF1F2] rounded-2xl p-5 sm:p-6 border border-[#FECDD3]">
+                <h3 class="font-heading text-base font-semibold mb-2 text-[#9F1239]">Scenario 3: Two Populations — Four
+                    Fairness Strategies</h3>
+                <div class="flex items-center gap-4 mb-4 text-xs text-[#64748B]">
+                    <span class="flex items-center gap-1"><span
+                            class="w-3 h-3 rounded-full bg-[#3B82F6] inline-block"></span> Blue Population</span>
+                    <span class="flex items-center gap-1"><span
+                            class="w-3 h-3 rounded-full bg-[#F97316] inline-block"></span> Orange Population</span>
+                    <span class="font-medium text-[#059669]">+$300 per success</span>
+                    <span class="font-medium text-[#E11D48]">−$700 per default</span>
+                </div>
+
+                <!-- Strategy tabs -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4" id="strategyTabs">
+                    <div class="strategy-tab active rounded-xl bg-white border-2 border-[#881337] p-3 text-center"
+                        data-strategy="groupUnaware" onclick="switchStrategy(this)">
+                        <p class="font-heading text-[10px] font-bold text-[#881337] uppercase tracking-wide">Group
+                            Unaware</p>
+                        <p class="text-[9px] text-[#64748B] mt-0.5">Same threshold for both</p>
+                    </div>
+                    <div class="strategy-tab rounded-xl bg-white border border-[#E2E8F0] p-3 text-center"
+                        data-strategy="maxProfit" onclick="switchStrategy(this)">
+                        <p class="font-heading text-[10px] font-bold text-[#881337] uppercase tracking-wide">Max Profit
+                        </p>
+                        <p class="text-[9px] text-[#64748B] mt-0.5">No constraints</p>
+                    </div>
+                    <div class="strategy-tab rounded-xl bg-white border border-[#E2E8F0] p-3 text-center"
+                        data-strategy="demoParity" onclick="switchStrategy(this)">
+                        <p class="font-heading text-[10px] font-bold text-[#881337] uppercase tracking-wide">Demographic
+                            Parity</p>
+                        <p class="text-[9px] text-[#64748B] mt-0.5">Same approval fractions</p>
+                    </div>
+                    <div class="strategy-tab rounded-xl bg-white border border-[#E2E8F0] p-3 text-center"
+                        data-strategy="equalOpp" onclick="switchStrategy(this)">
+                        <p class="font-heading text-[10px] font-bold text-[#881337] uppercase tracking-wide">Equal
+                            Opportunity</p>
+                        <p class="text-[9px] text-[#64748B] mt-0.5">Same true positive rate</p>
+                    </div>
+                </div>
+
+                <!-- Strategy content panels -->
+                <div id="strategyPanels">
+                    <!-- Group Unaware -->
+                    <div class="strategy-panel" data-strategy="groupUnaware">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+                            <div class="bg-white rounded-xl p-4 border border-[#BFDBFE]">
+                                <h4 class="font-heading text-sm font-semibold text-[#1E40AF] mb-2">Blue Population</h4>
+                                <p class="text-xs text-[#475569] mb-2">Threshold: 50 (same as Orange)</p>
+                                <div class="flex gap-3">
+                                    <div>
+                                        <p class="text-lg font-bold text-[#059669] font-heading">76%</p>
+                                        <p class="text-[9px] text-[#64748B]">Correct</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-lg font-bold text-[#E11D48] font-heading">24%</p>
+                                        <p class="text-[9px] text-[#64748B]">Incorrect</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm font-bold text-[#E11D48] mt-2 font-heading">Profit: −$700</p>
+                            </div>
+                            <div class="bg-white rounded-xl p-4 border border-[#FED7AA]">
+                                <h4 class="font-heading text-sm font-semibold text-[#C2410C] mb-2">Orange Population
+                                </h4>
+                                <p class="text-xs text-[#475569] mb-2">Threshold: 50 (same as Blue)</p>
+                                <div class="flex gap-3">
+                                    <div>
+                                        <p class="text-lg font-bold text-[#059669] font-heading">87%</p>
+                                        <p class="text-[9px] text-[#64748B]">Correct</p>
+                                    </div>
+                                    <div>
+                                        <p class="text-lg font-bold text-[#E11D48] font-heading">13%</p>
+                                        <p class="text-[9px] text-[#64748B]">Incorrect</p>
+                                    </div>
+                                </div>
+                                <p class="text-sm font-bold text-[#059669] mt-2 font-heading">Profit: $20,300</p>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg p-3 text-center border border-[#E2E8F0]">
+                            <p class="text-xs text-[#64748B]">Total Profit</p>
+                            <p class="text-2xl font-bold text-[#1E293B] font-heading">$19,600</p>
+                        </div>
+                        <p class="text-xs text-[#9F1239] mt-3 italic text-center">Trade-off: Appears fair but produces
+                            unequal accuracy and profit across groups</p>
+                    </div>
+
+                    <!-- Max Profit -->
+                    <div class="strategy-panel hidden" data-strategy="maxProfit">
+                        <div class="bg-white rounded-xl p-4 border border-[#E2E8F0] mb-3">
+                            <p class="text-sm text-[#475569] leading-relaxed">With no constraints, the algorithm sets
+                                <strong>different thresholds</strong> for each population to maximize total profit. The
+                                blue group gets a higher credit score requirement, while the orange group threshold may
+                                be adjusted independently.
+                            </p>
+                            <p class="text-xs text-[#9F1239] mt-3 italic">Trade-off: Maximizes revenue but results in
+                                different standards for different populations — potential disparate treatment</p>
+                        </div>
+                    </div>
+
+                    <!-- Demographic Parity -->
+                    <div class="strategy-panel hidden" data-strategy="demoParity">
+                        <div class="bg-white rounded-xl p-4 border border-[#E2E8F0] mb-3">
+                            <p class="text-sm text-[#475569] leading-relaxed">The threshold is set so the <strong>same
+                                    fraction</strong> of blue and orange applicants receive loans. Since the orange
+                                population has more low-credit-score applicants, this means <strong>fewer qualified blue
+                                    applicants</strong> get loans to create equity with the orange population.</p>
+                            <p class="text-xs text-[#9F1239] mt-3 italic">Trade-off: Hurts qualified individuals in the
+                                blue group to achieve equal approval rates</p>
+                        </div>
+                    </div>
+
+                    <!-- Equal Opportunity -->
+                    <div class="strategy-panel hidden" data-strategy="equalOpp">
+                        <div class="bg-white rounded-xl p-4 border border-[#E2E8F0] mb-3">
+                            <p class="text-sm text-[#475569] leading-relaxed">The <strong>same fraction of people who
+                                    CAN pay back</strong> actually get loans in both groups (equal true positive rate).
+                                However, <strong>you don't know who will actually pay back in advance</strong> — making
+                                this criterion impossible to optimize directly at decision time.</p>
+                            <p class="text-xs text-[#9F1239] mt-3 italic">Trade-off: Theoretically fair but practically
+                                impossible to implement without ground-truth knowledge</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Big Insight Box -->
+                <div class="bg-[#881337] rounded-xl p-5 mt-5 text-center">
+                    <i data-lucide="alert-circle" class="w-6 h-6 text-[#FDA4AF] mx-auto mb-2"></i>
+                    <p class="text-sm text-white leading-relaxed font-medium">
+                        "It is impossible to create a uniformly fair strategy when data is heterogeneous. These
+                        strategies conflict. Trade-offs must be assessed: <em>which bias are you comfortable with?</em>"
+                    </p>
+                    <p class="text-[10px] text-[#FDA4AF] mt-2">— The Impossibility Theorem demonstrated empirically</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION H — FAIRNESS DEFINITIONS AND IMPOSSIBILITY THEOREM -->
+        <!-- ============================================================ -->
+        <section class="mb-16 fade-section">
+            <div class="section-pill bg-[#E0E7FF] text-[#4F46E5] mb-5">
+                <i data-lucide="scale" class="w-3.5 h-3.5"></i> Fairness
+            </div>
+            <h2 class="font-heading text-2xl font-bold mb-2">Fairness Definitions &amp; the Impossibility Theorem</h2>
+            <p class="text-sm text-[#64748B] mb-6">Multiple definitions of fairness exist — and they cannot all be
+                satisfied simultaneously.</p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div class="card-hover rounded-xl bg-white border border-[#C7D2FE] p-4 shadow-sm">
+                    <div class="w-8 h-8 rounded-lg bg-[#E0E7FF] flex items-center justify-center mb-2"><i
+                            data-lucide="users" class="w-4 h-4 text-[#4F46E5]"></i></div>
+                    <h4 class="font-heading text-sm font-semibold mb-1">Demographic Parity</h4>
+                    <p class="text-xs text-[#475569] leading-relaxed">Equal positive prediction rates across all groups,
+                        regardless of actual outcome.</p>
+                </div>
+                <div class="card-hover rounded-xl bg-white border border-[#C7D2FE] p-4 shadow-sm">
+                    <div class="w-8 h-8 rounded-lg bg-[#E0E7FF] flex items-center justify-center mb-2"><i
+                            data-lucide="git-merge" class="w-4 h-4 text-[#4F46E5]"></i></div>
+                    <h4 class="font-heading text-sm font-semibold mb-1">Equalized Odds</h4>
+                    <p class="text-xs text-[#475569] leading-relaxed">Equal true positive and false positive rates
+                        across groups.</p>
+                </div>
+                <div class="card-hover rounded-xl bg-white border border-[#C7D2FE] p-4 shadow-sm">
+                    <div class="w-8 h-8 rounded-lg bg-[#E0E7FF] flex items-center justify-center mb-2"><i
+                            data-lucide="target" class="w-4 h-4 text-[#4F46E5]"></i></div>
+                    <h4 class="font-heading text-sm font-semibold mb-1">Calibration</h4>
+                    <p class="text-xs text-[#475569] leading-relaxed">Predicted probabilities match actual outcomes for
+                        each group.</p>
+                </div>
+                <div class="card-hover rounded-xl bg-white border border-[#C7D2FE] p-4 shadow-sm">
+                    <div class="w-8 h-8 rounded-lg bg-[#E0E7FF] flex items-center justify-center mb-2"><i
+                            data-lucide="user" class="w-4 h-4 text-[#4F46E5]"></i></div>
+                    <h4 class="font-heading text-sm font-semibold mb-1">Individual Fairness</h4>
+                    <p class="text-xs text-[#475569] leading-relaxed">Similar individuals receive similar outcomes,
+                        regardless of group membership.</p>
+                </div>
+                <div class="card-hover rounded-xl bg-white border border-[#C7D2FE] p-4 shadow-sm sm:col-span-2">
+                    <div class="w-8 h-8 rounded-lg bg-[#E0E7FF] flex items-center justify-center mb-2"><i
+                            data-lucide="check-circle" class="w-4 h-4 text-[#4F46E5]"></i></div>
+                    <h4 class="font-heading text-sm font-semibold mb-1">Predictive Parity</h4>
+                    <p class="text-xs text-[#475569] leading-relaxed">Equal precision (positive predictive value) across
+                        all groups at critical decision points.</p>
+                </div>
+            </div>
+
+            <!-- Impossibility Theorem callout -->
+            <div class="bg-[#4338CA] rounded-xl p-5 text-center">
+                <i data-lucide="alert-triangle" class="w-6 h-6 text-[#A5B4FC] mx-auto mb-2"></i>
+                <h3 class="font-heading text-base font-bold text-white mb-2">The Impossibility Theorem</h3>
+                <p class="text-sm text-[#C7D2FE] leading-relaxed">You cannot satisfy all fairness criteria
+                    simultaneously when base rates differ between groups.</p>
+                <p class="text-[10px] text-[#A5B4FC] mt-2">Chouldechova (2017) • Kleinberg, Mullainathan &amp; Raghavan
+                    (2016)</p>
+                <p class="text-xs text-[#E0E7FF] mt-3 font-medium">Stakeholders must choose which fairness definition
+                    matters most for their specific use case.</p>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION I — AI AS BIAS ILLUMINATOR -->
+        <!-- ============================================================ -->
+        <section class="mb-16 fade-section">
+            <div class="section-pill bg-[#FEF3C7] text-[#D97706] mb-5">
+                <i data-lucide="lightbulb" class="w-3.5 h-3.5"></i> Key Insight
+            </div>
+            <h2 class="font-heading text-2xl font-bold mb-2">AI as Bias Illuminator</h2>
+            <p class="text-sm text-[#64748B] mb-6">Dr. McCullough's central thesis — AI reveals bias rather than
+                creating it.</p>
+
+            <div class="bg-gradient-to-br from-[#FFFBEB] to-[#FEF3C7] rounded-2xl p-6 border border-[#FDE68A] mb-6">
+                <p class="text-base text-[#78350F] leading-relaxed text-center italic font-medium">
+                    "AI is not necessarily increasing bias or introducing bias as much as it's making the bias that
+                    exists <strong>measurable, observable, and visible</strong> — and it allows us to do something about
+                    it."
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+                <div class="card-hover rounded-xl bg-white border border-[#FDE68A] p-5 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-[#FEF3C7] flex items-center justify-center mb-3">
+                        <i data-lucide="eye-off" class="w-5 h-5 text-[#D97706]"></i>
+                    </div>
+                    <h4 class="font-heading text-sm font-semibold mb-2 text-[#92400E]">Before AI</h4>
+                    <p class="text-xs text-[#475569] leading-relaxed">Bias exists but is invisible, unmeasurable, and
+                        embedded in human decisions. Legal definitions were derived from centuries of documented human
+                        bias — but detection was inconsistent and after-the-fact.</p>
+                </div>
+                <div class="card-hover rounded-xl bg-white border border-[#FDE68A] p-5 shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-[#FEF3C7] flex items-center justify-center mb-3">
+                        <i data-lucide="eye" class="w-5 h-5 text-[#D97706]"></i>
+                    </div>
+                    <h4 class="font-heading text-sm font-semibold mb-2 text-[#92400E]">With AI</h4>
+                    <p class="text-xs text-[#475569] leading-relaxed">Bias becomes quantifiable, auditable, and
+                        actionable. Algorithms make bias patterns visible in data, enabling measurement across protected
+                        classes and systematic mitigation.</p>
+                </div>
+            </div>
+
+            <div class="bg-[#FFFBEB] rounded-xl p-4 border border-[#FDE68A]">
+                <p class="text-xs text-[#92400E] leading-relaxed"><strong>Healthcare Example:</strong> Including race as
+                    a sensitive characteristic allows the model to more accurately screen health outcomes. Removing it
+                    can lead to under-selection of at-risk patients — sometimes including sensitive variables produces
+                    <em>more equitable</em> outcomes.
+                </p>
+                <p class="text-xs text-[#D97706] mt-2 font-medium text-center">The question is not whether AI has bias,
+                    but what we do about it once it becomes visible.</p>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION J — BIAS MITIGATION STRATEGIES -->
+        <!-- ============================================================ -->
+        <section class="mb-16 fade-section">
+            <div class="section-pill bg-[#CCFBF1] text-[#0D9488] mb-5">
+                <i data-lucide="wrench" class="w-3.5 h-3.5"></i> Mitigation
+            </div>
+            <h2 class="font-heading text-2xl font-bold mb-2">Bias Mitigation Strategies</h2>
+            <p class="text-sm text-[#64748B] mb-6">Approaches across the ML pipeline to detect, reduce, and manage bias.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                <!-- Pre-processing -->
+                <div class="card-hover rounded-xl bg-white border border-[#99F6E4] p-5 shadow-sm">
+                    <div class="w-8 h-8 rounded-lg bg-[#CCFBF1] flex items-center justify-center mb-3"><i
+                            data-lucide="filter" class="w-4 h-4 text-[#0D9488]"></i></div>
+                    <h4 class="font-heading text-sm font-semibold mb-2 text-[#134E4A]">Pre-processing</h4>
+                    <div class="space-y-2">
+                        <div class="text-xs text-[#475569]"><strong class="text-[#0D9488]">Re-sampling</strong> —
+                            Balance representation across groups</div>
+                        <div class="text-xs text-[#475569]"><strong class="text-[#0D9488]">Re-weighting</strong> —
+                            Adjust sample importance</div>
+                        <div class="text-xs text-[#475569]"><strong class="text-[#0D9488]">Data Augmentation</strong> —
+                            Generate synthetic data for underrepresented groups</div>
+                        <div class="text-xs text-[#475569]"><strong class="text-[#0D9488]">Diverse Collection</strong> —
+                            Representative training data</div>
+                    </div>
+                </div>
+                <!-- In-processing -->
+                <div class="card-hover rounded-xl bg-white border border-[#99F6E4] p-5 shadow-sm">
+                    <div class="w-8 h-8 rounded-lg bg-[#CCFBF1] flex items-center justify-center mb-3"><i
+                            data-lucide="settings" class="w-4 h-4 text-[#0D9488]"></i></div>
+                    <h4 class="font-heading text-sm font-semibold mb-2 text-[#134E4A]">In-processing</h4>
+                    <div class="space-y-2">
+                        <div class="text-xs text-[#475569]"><strong class="text-[#0D9488]">Fairness Constraints</strong>
+                            — Add to loss function</div>
+                        <div class="text-xs text-[#475569]"><strong class="text-[#0D9488]">Adversarial
+                                Debiasing</strong> — Train against bias detection</div>
+                        <div class="text-xs text-[#475569]"><strong class="text-[#0D9488]">Regularization</strong> —
+                            Penalize biased predictions</div>
+                        <div class="text-xs text-[#475569]"><strong class="text-[#0D9488]">Multi-objective</strong> —
+                            Optimize accuracy + fairness</div>
+                    </div>
+                </div>
+                <!-- Post-processing -->
+                <div class="card-hover rounded-xl bg-white border border-[#99F6E4] p-5 shadow-sm">
+                    <div class="w-8 h-8 rounded-lg bg-[#CCFBF1] flex items-center justify-center mb-3"><i
+                            data-lucide="sliders" class="w-4 h-4 text-[#0D9488]"></i></div>
+                    <h4 class="font-heading text-sm font-semibold mb-2 text-[#134E4A]">Post-processing</h4>
+                    <div class="space-y-2">
+                        <div class="text-xs text-[#475569]"><strong class="text-[#0D9488]">Threshold Adjustment</strong>
+                            — Per-group decision boundaries</div>
+                        <div class="text-xs text-[#475569]"><strong class="text-[#0D9488]">Calibration</strong> — Align
+                            predictions per group</div>
+                        <div class="text-xs text-[#475569]"><strong class="text-[#0D9488]">Reject Options</strong> —
+                            Flag uncertain cases for human review</div>
+                        <div class="text-xs text-[#475569]"><strong class="text-[#0D9488]">Output Auditing</strong> —
+                            Regular fairness checks</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional callouts -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div class="rounded-lg bg-[#F0FDFA] p-3 border border-[#99F6E4] text-center">
+                    <i data-lucide="user-check" class="w-4 h-4 text-[#0D9488] mx-auto mb-1"></i>
+                    <p class="text-[10px] font-semibold text-[#134E4A]">Human-in-the-Loop</p>
+                    <p class="text-[9px] text-[#475569]">Review at critical decision points</p>
+                </div>
+                <div class="rounded-lg bg-[#F0FDFA] p-3 border border-[#99F6E4] text-center">
+                    <i data-lucide="clipboard-check" class="w-4 h-4 text-[#0D9488] mx-auto mb-1"></i>
+                    <p class="text-[10px] font-semibold text-[#134E4A]">Bias Audits</p>
+                    <p class="text-[9px] text-[#475569]">Regular algorithmic impact assessments</p>
+                </div>
+                <div class="rounded-lg bg-[#F0FDFA] p-3 border border-[#99F6E4] text-center">
+                    <i data-lucide="layers" class="w-4 h-4 text-[#0D9488] mx-auto mb-1"></i>
+                    <p class="text-[10px] font-semibold text-[#134E4A]">Intersectional Analysis</p>
+                    <p class="text-[9px] text-[#475569]">Examine overlapping identities</p>
+                </div>
+            </div>
+
+            <div class="bg-[#F0FDFA] rounded-xl p-4 border border-[#99F6E4] mt-4">
+                <p class="text-xs text-[#134E4A] text-center italic">Sometimes <strong>including</strong> a sensitive
+                    variable produces more equitable outcomes than excluding it — as demonstrated in the healthcare
+                    screening example.</p>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION K — CASE STUDIES -->
+        <!-- ============================================================ -->
+        <section class="mb-16 fade-section">
+            <div class="section-pill bg-[#FCE7F3] text-[#DB2777] mb-5">
+                <i data-lucide="file-text" class="w-3.5 h-3.5"></i> Case Studies
+            </div>
+            <h2 class="font-heading text-2xl font-bold mb-2">Real-World Case Studies</h2>
+            <p class="text-sm text-[#64748B] mb-6">From source material and enrichment — bias in action across domains.
+            </p>
+
+            <!-- Featured case studies -->
+            <div class="space-y-4 mb-6">
+                <!-- Loan Applications -->
+                <div class="card-hover rounded-xl bg-white border border-[#FBCFE8] p-5 shadow-sm cursor-pointer"
+                    onclick="toggleExpand(this)">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-[#FCE7F3] flex items-center justify-center shrink-0"><i
+                                data-lucide="landmark" class="w-5 h-5 text-[#DB2777]"></i></div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-heading text-sm font-semibold">Loan Applications</h4>
+                                <span
+                                    class="text-[9px] bg-[#FCE7F3] text-[#DB2777] px-2 py-0.5 rounded-full font-medium">Source</span>
+                            </div>
+                            <p class="text-xs text-[#475569] mt-1">Four fairness strategies all produce different
+                                trade-offs with heterogeneous data.</p>
+                            <div class="expandable-content mt-3">
+                                <p class="text-xs text-[#475569] leading-relaxed">The case study demonstrates that Group
+                                    Unaware, Max Profit, Demographic Parity, and Equal Opportunity strategies each
+                                    create winners and losers when the blue and orange populations have different credit
+                                    score distributions. The blue population loses $700 while the orange profits $20,300
+                                    under Group Unaware — revealing how "neutral" policies produce disparate impact.</p>
+                                <p class="text-[10px] text-[#DB2777] font-medium mt-2">Lesson: Uniform fairness is
+                                    impossible with heterogeneous data</p>
+                            </div>
+                            <p class="text-[10px] text-[#DB2777] mt-2 no-print">Click to expand ▾</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Healthcare Screening -->
+                <div class="card-hover rounded-xl bg-white border border-[#FBCFE8] p-5 shadow-sm cursor-pointer"
+                    onclick="toggleExpand(this)">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-[#FCE7F3] flex items-center justify-center shrink-0"><i
+                                data-lucide="stethoscope" class="w-5 h-5 text-[#DB2777]"></i></div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-heading text-sm font-semibold">Healthcare Screening</h4>
+                                <span
+                                    class="text-[9px] bg-[#FCE7F3] text-[#DB2777] px-2 py-0.5 rounded-full font-medium">Source</span>
+                            </div>
+                            <p class="text-xs text-[#475569] mt-1">Including race as a sensitive characteristic improves
+                                screening accuracy.</p>
+                            <div class="expandable-content mt-3">
+                                <p class="text-xs text-[#475569] leading-relaxed">Retaining race as a variable allows
+                                    the model to account for statistically different rates of chronic illness between
+                                    populations. Removing it would cause under-selection of at-risk patients —
+                                    effectively denying them health services. This demonstrates that bias removal can
+                                    cause disparate impact when data is genuinely heterogeneous.</p>
+                                <p class="text-[10px] text-[#DB2777] font-medium mt-2">Lesson: Sometimes including
+                                    sensitive variables produces more equitable outcomes</p>
+                            </div>
+                            <p class="text-[10px] text-[#DB2777] mt-2 no-print">Click to expand ▾</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Predictive Policing -->
+                <div class="card-hover rounded-xl bg-white border border-[#FBCFE8] p-5 shadow-sm cursor-pointer"
+                    onclick="toggleExpand(this)">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-[#FCE7F3] flex items-center justify-center shrink-0"><i
+                                data-lucide="shield" class="w-5 h-5 text-[#DB2777]"></i></div>
+                        <div class="flex-1">
+                            <div class="flex items-center justify-between">
+                                <h4 class="font-heading text-sm font-semibold">Predictive Policing</h4>
+                                <span
+                                    class="text-[9px] bg-[#FCE7F3] text-[#DB2777] px-2 py-0.5 rounded-full font-medium">Source</span>
+                            </div>
+                            <p class="text-xs text-[#475569] mt-1">Historical bias creates self-reinforcing feedback
+                                loops in arrest data.</p>
+                            <div class="expandable-content mt-3">
+                                <!-- Feedback Loop Diagram -->
+                                <div class="flex items-center justify-center my-3">
+                                    <svg width="280" height="80" viewBox="0 0 280 80">
+                                        <defs>
+                                            <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3"
+                                                orient="auto">
+                                                <polygon points="0 0, 8 3, 0 6" fill="#DB2777" />
+                                            </marker>
+                                        </defs>
+                                        <rect x="0" y="25" width="60" height="30" rx="6" fill="#FCE7F3" stroke="#DB2777"
+                                            stroke-width="1" />
+                                        <text x="30" y="44" text-anchor="middle" font-size="8" fill="#DB2777"
+                                            font-weight="600">More Arrests</text>
+                                        <line x1="62" y1="40" x2="78" y2="40" stroke="#DB2777" stroke-width="1.5"
+                                            marker-end="url(#arrowhead)" class="animated-dash" stroke-dasharray="4 4" />
+                                        <rect x="80" y="25" width="60" height="30" rx="6" fill="#FCE7F3"
+                                            stroke="#DB2777" stroke-width="1" />
+                                        <text x="110" y="44" text-anchor="middle" font-size="8" fill="#DB2777"
+                                            font-weight="600">Biased Data</text>
+                                        <line x1="142" y1="40" x2="158" y2="40" stroke="#DB2777" stroke-width="1.5"
+                                            marker-end="url(#arrowhead)" class="animated-dash" stroke-dasharray="4 4" />
+                                        <rect x="160" y="25" width="60" height="30" rx="6" fill="#FCE7F3"
+                                            stroke="#DB2777" stroke-width="1" />
+                                        <text x="190" y="44" text-anchor="middle" font-size="8" fill="#DB2777"
+                                            font-weight="600">AI Model</text>
+                                        <line x1="222" y1="40" x2="238" y2="40" stroke="#DB2777" stroke-width="1.5"
+                                            marker-end="url(#arrowhead)" class="animated-dash" stroke-dasharray="4 4" />
+                                        <rect x="240" y="25" width="38" height="30" rx="6" fill="#FCE7F3"
+                                            stroke="#DB2777" stroke-width="1" />
+                                        <text x="259" y="44" text-anchor="middle" font-size="7" fill="#DB2777"
+                                            font-weight="600">More</text>
+                                        <text x="259" y="52" text-anchor="middle" font-size="7" fill="#DB2777"
+                                            font-weight="600">Policing</text>
+                                        <path d="M 259 57 Q 259 75 140 75 Q 20 75 20 57" stroke="#DB2777"
+                                            stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"
+                                            class="animated-dash" stroke-dasharray="4 4" />
+                                    </svg>
+                                </div>
+                                <p class="text-xs text-[#475569] leading-relaxed">Arrest data does not equal ground
+                                    truth for crime. More policing in an area → more arrests → model sees more "crime" →
+                                    even more policing. Historical biases are perpetuated and amplified through this
+                                    feedback loop.</p>
+                                <p class="text-[10px] text-[#DB2777] font-medium mt-2">Lesson: Feedback loops amplify
+                                    and entrench existing inequities</p>
+                            </div>
+                            <p class="text-[10px] text-[#DB2777] mt-2 no-print">Click to expand ▾</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional mini-cards -->
+            <h3 class="font-heading text-sm font-semibold mb-3 text-[#9D174D]">Additional Case Studies</h3>
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                <div class="rounded-lg bg-[#FDF2F8] p-2.5 border border-[#FBCFE8] text-center">
+                    <p class="text-[10px] font-semibold text-[#9D174D]">Gun Violence</p>
+                    <p class="text-[9px] text-[#DB2777]">Chicago sampling bias</p>
+                    <span
+                        class="text-[8px] bg-[#FCE7F3] text-[#DB2777] px-1.5 py-0.5 rounded mt-1 inline-block">Source</span>
+                </div>
+                <div class="rounded-lg bg-[#FDF2F8] p-2.5 border border-[#FBCFE8] text-center">
+                    <p class="text-[10px] font-semibold text-[#9D174D]">Manufacturing</p>
+                    <p class="text-[9px] text-[#DB2777]">Survivorship bias</p>
+                    <span
+                        class="text-[8px] bg-[#FCE7F3] text-[#DB2777] px-1.5 py-0.5 rounded mt-1 inline-block">Source</span>
+                </div>
+                <div class="rounded-lg bg-[#FDF2F8] p-2.5 border border-[#FBCFE8] text-center">
+                    <p class="text-[10px] font-semibold text-[#9D174D]">COMPAS</p>
+                    <p class="text-[9px] text-[#DB2777]">Recidivism scoring bias</p>
+                    <span
+                        class="text-[8px] bg-[#F3E8FF] text-[#7C3AED] px-1.5 py-0.5 rounded mt-1 inline-block">Enrichment</span>
+                </div>
+                <div class="rounded-lg bg-[#FDF2F8] p-2.5 border border-[#FBCFE8] text-center">
+                    <p class="text-[10px] font-semibold text-[#9D174D]">Amazon Hiring</p>
+                    <p class="text-[9px] text-[#DB2777]">Historical training bias</p>
+                    <span
+                        class="text-[8px] bg-[#F3E8FF] text-[#7C3AED] px-1.5 py-0.5 rounded mt-1 inline-block">Enrichment</span>
+                </div>
+                <div class="rounded-lg bg-[#FDF2F8] p-2.5 border border-[#FBCFE8] text-center">
+                    <p class="text-[10px] font-semibold text-[#9D174D]">Facial Recog.</p>
+                    <p class="text-[9px] text-[#DB2777]">Demographic accuracy gaps</p>
+                    <span
+                        class="text-[8px] bg-[#F3E8FF] text-[#7C3AED] px-1.5 py-0.5 rounded mt-1 inline-block">Enrichment</span>
+                </div>
+                <div class="rounded-lg bg-[#FDF2F8] p-2.5 border border-[#FBCFE8] text-center">
+                    <p class="text-[10px] font-semibold text-[#9D174D]">IRS Tax Audit</p>
+                    <p class="text-[9px] text-[#DB2777]">Stanford study on selection</p>
+                    <span
+                        class="text-[8px] bg-[#F3E8FF] text-[#7C3AED] px-1.5 py-0.5 rounded mt-1 inline-block">Enrichment</span>
+                </div>
+                <div class="rounded-lg bg-[#FDF2F8] p-2.5 border border-[#FBCFE8] text-center sm:col-span-2">
+                    <p class="text-[10px] font-semibold text-[#9D174D]">Simpson's Paradox</p>
+                    <p class="text-[9px] text-[#DB2777]">Berkeley admissions (1970s)</p>
+                    <span
+                        class="text-[8px] bg-[#F3E8FF] text-[#7C3AED] px-1.5 py-0.5 rounded mt-1 inline-block">Enrichment</span>
+                </div>
+                <div class="rounded-lg bg-[#FDF2F8] p-2.5 border border-[#FBCFE8] text-center sm:col-span-2">
+                    <p class="text-[10px] font-semibold text-[#9D174D]">Police Altercations</p>
+                    <p class="text-[9px] text-[#DB2777]">Reporting bias in incidents</p>
+                    <span
+                        class="text-[8px] bg-[#FCE7F3] text-[#DB2777] px-1.5 py-0.5 rounded mt-1 inline-block">Source</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION L — KEY TAKEAWAYS -->
+        <!-- ============================================================ -->
+        <section class="mb-16 fade-section">
+            <div class="section-pill bg-[#F0FDF4] text-[#16A34A] mb-5">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Takeaways
+            </div>
+            <h2 class="font-heading text-2xl font-bold mb-6">Key Takeaways</h2>
+
+            <div class="space-y-3">
+                <div
+                    class="card-hover rounded-xl bg-white border border-[#BBF7D0] p-4 shadow-sm flex items-start gap-3">
+                    <div class="w-7 h-7 rounded-full bg-[#DCFCE7] flex items-center justify-center shrink-0"><span
+                            class="text-xs font-bold text-[#16A34A]">1</span></div>
+                    <p class="text-sm text-[#1E293B] leading-relaxed">Bias has <strong>two definitions</strong> —
+                        ethical and mathematical — both matter in AI and both shape how we evaluate fairness.</p>
+                </div>
+                <div
+                    class="card-hover rounded-xl bg-white border border-[#BBF7D0] p-4 shadow-sm flex items-start gap-3">
+                    <div class="w-7 h-7 rounded-full bg-[#DCFCE7] flex items-center justify-center shrink-0"><span
+                            class="text-xs font-bold text-[#16A34A]">2</span></div>
+                    <p class="text-sm text-[#1E293B] leading-relaxed"><strong>Legal frameworks</strong> define what is
+                        protected; <strong>data science</strong> reveals where bias enters — two perspectives that must
+                        work together.</p>
+                </div>
+                <div
+                    class="card-hover rounded-xl bg-white border border-[#BBF7D0] p-4 shadow-sm flex items-start gap-3">
+                    <div class="w-7 h-7 rounded-full bg-[#DCFCE7] flex items-center justify-center shrink-0"><span
+                            class="text-xs font-bold text-[#16A34A]">3</span></div>
+                    <p class="text-sm text-[#1E293B] leading-relaxed">AI is not creating new bias — it is making
+                        <strong>existing bias measurable and visible</strong>, enabling us to address it systematically.
+                    </p>
+                </div>
+                <div
+                    class="card-hover rounded-xl bg-white border border-[#BBF7D0] p-4 shadow-sm flex items-start gap-3">
+                    <div class="w-7 h-7 rounded-full bg-[#DCFCE7] flex items-center justify-center shrink-0"><span
+                            class="text-xs font-bold text-[#16A34A]">4</span></div>
+                    <p class="text-sm text-[#1E293B] leading-relaxed">It is <strong>mathematically impossible</strong>
+                        to satisfy all fairness criteria simultaneously when data distributions differ between groups.
+                    </p>
+                </div>
+                <div
+                    class="card-hover rounded-xl bg-white border border-[#BBF7D0] p-4 shadow-sm flex items-start gap-3">
+                    <div class="w-7 h-7 rounded-full bg-[#DCFCE7] flex items-center justify-center shrink-0"><span
+                            class="text-xs font-bold text-[#16A34A]">5</span></div>
+                    <p class="text-sm text-[#1E293B] leading-relaxed">Including sensitive variables can sometimes
+                        produce <strong>more equitable outcomes</strong> than excluding them — as shown in healthcare
+                        screening.</p>
+                </div>
+                <div
+                    class="card-hover rounded-xl bg-white border border-[#BBF7D0] p-4 shadow-sm flex items-start gap-3">
+                    <div class="w-7 h-7 rounded-full bg-[#DCFCE7] flex items-center justify-center shrink-0"><span
+                            class="text-xs font-bold text-[#16A34A]">6</span></div>
+                    <p class="text-sm text-[#1E293B] leading-relaxed">Trade-offs are unavoidable — the question is
+                        <strong>which bias you are comfortable with</strong>, and that requires deliberate stakeholder
+                        discussion.
+                    </p>
+                </div>
+                <div
+                    class="card-hover rounded-xl bg-white border border-[#BBF7D0] p-4 shadow-sm flex items-start gap-3">
+                    <div class="w-7 h-7 rounded-full bg-[#DCFCE7] flex items-center justify-center shrink-0"><span
+                            class="text-xs font-bold text-[#16A34A]">7</span></div>
+                    <p class="text-sm text-[#1E293B] leading-relaxed">Responsible AI requires <strong>ongoing
+                            monitoring</strong>, not one-time fixes — bias can emerge, drift, and amplify through
+                        feedback loops.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION M — FOOTER -->
+        <!-- ============================================================ -->
+        <footer class="fade-section border-t border-[#E2E8F0] pt-8 pb-4">
+            <div class="text-center">
+                <p class="text-xs text-[#94A3B8] mb-2">Based on Dr. Ian McCullough's lecture — Johns Hopkins University
+                </p>
+                <p class="text-xs text-[#94A3B8] mb-4">Topic: Bias Types and Legal Perspective</p>
+                <div class="flex flex-wrap items-center justify-center gap-3 text-[10px] text-[#94A3B8]">
+                    <span>Chouldechova (2017)</span>
+                    <span>•</span>
+                    <span>Kleinberg, Mullainathan &amp; Raghavan (2016)</span>
+                    <span>•</span>
+                    <span>NIST AI RMF</span>
+                    <span>•</span>
+                    <span>EU AI Act</span>
+                </div>
+                <p class="text-[10px] text-[#CBD5E1] mt-4 no-print">Print-friendly: Use Ctrl/Cmd + P to print. All
+                    expandable sections will be visible in print.</p>
+            </div>
+        </footer>
+
+    </div><!-- end container -->
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS -->
+    <!-- ============================================================ -->
+    <script src="https://unpkg.com/lucide@0.344.0/dist/umd/lucide.js"></script>
+    <script>
+        // Initialize Lucide icons after script loads
+        document.addEventListener('DOMContentLoaded', function () {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        // Also try on window load as fallback
+        window.addEventListener('load', function () {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        // Scroll-triggered fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+
+        // Strategy tab switching
+        function switchStrategy(clickedTab) {
+            document.querySelectorAll('.strategy-tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.style.borderWidth = '1px';
+                tab.style.borderColor = '#E2E8F0';
+            });
+            clickedTab.classList.add('active');
+            clickedTab.style.borderWidth = '2px';
+            clickedTab.style.borderColor = '#881337';
+
+            const strategy = clickedTab.dataset.strategy;
+            document.querySelectorAll('.strategy-panel').forEach(panel => {
+                panel.classList.toggle('hidden', panel.dataset.strategy !== strategy);
+            });
+        }
+
+        // Expandable case studies
+        function toggleExpand(card) {
+            const content = card.querySelector('.expandable-content');
+            const label = card.querySelector('.no-print');
+            if (content) {
+                content.classList.toggle('open');
+                if (label) label.textContent = content.classList.contains('open') ? 'Click to collapse ▴' : 'Click to expand ▾';
+            }
+        }
+    </script>
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

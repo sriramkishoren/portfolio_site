@@ -1,16 +1,17 @@
 {
-  "generated": "2026-02-15",
-  "totalPosts": 48,
+  "generated": "2026-02-21",
+  "totalPosts": 53,
   "baseUrl": "https://www.kishoretech.com",
   "author": "Sriramkishore Naraharisetti",
   "categories": {
     "AI Introduction": 2,
     "ML Fundamentals": 7,
-    "AI Business UseCases": 6,
-    "AI Project Management": 2,
     "ML Algorithms": 10,
     "Data Optimization for ML": 9,
     "Optimizing AI Resources": 10,
+    "AI Bias and Risks": 5,
+    "AI Business UseCases": 6,
+    "AI Project Management": 2,
     "Agentic AI": 2
   },
   "posts": [
@@ -427,6 +428,51 @@
       "datePublished": "2025-02-15",
       "tags": ["AI Summary", "AI Cheat Sheet", "LSTM", "Transformers", "Processing Units", "Data Quality", "AI Strategy", "AI Architecture", "Senior Engineer Guide"],
       "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=optimizing-ai-resources/quick-summary"
+    },
+    {
+      "file": "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html",
+      "title": "Introduction to Bias in Humans and Machines (AI)",
+      "description": "Explore human and machine bias: from cognitive shortcuts to algorithmic discrimination. Learn detection strategies, real-world case studies, and mitigation approaches for fair AI systems.",
+      "category": "AI Bias and Risks",
+      "datePublished": "2025-02-18",
+      "tags": ["Bias", "AI Ethics", "Human Bias", "Machine Bias", "Fairness", "Discrimination", "Bias Mitigation", "AI Risk Management", "Responsible AI"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/introduction-to-bias-in-humans-an-machines"
+    },
+    {
+      "file": "ai-bias-and-risks/bias-types-and-legal-perspective.html",
+      "title": "Bias: Types and Legal Perspective",
+      "description": "Comprehensive guide to bias types from legal and regulatory perspectives. Explore discrimination, bias in hiring, lending, and legal frameworks for AI governance and compliance.",
+      "category": "AI Bias and Risks",
+      "datePublished": "2025-02-19",
+      "tags": ["Bias", "Legal Perspective", "Discrimination", "AI Regulation", "Hiring Bias", "Lending Bias", "Fair Lending", "EEOC", "Algorithmic Accountability"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/bias-types-and-legal-perspective"
+    },
+    {
+      "file": "ai-bias-and-risks/managing-ai-bias.html",
+      "title": "Managing AI Bias — From Hidden Bias to Actionable Fairness",
+      "description": "Practical strategies for detecting, measuring, and mitigating bias in AI systems. Learn the ADAPT framework for bias management and responsible AI deployment.",
+      "category": "AI Bias and Risks",
+      "datePublished": "2025-02-20",
+      "tags": ["Bias Mitigation", "Fairness", "AI Ethics", "Responsible AI", "Bias Detection", "AI Governance", "Algorithmic Fairness", "Fairness Metrics"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/managing-ai-bias"
+    },
+    {
+      "file": "ai-bias-and-risks/various-data-bias.html",
+      "title": "Various Data Bias — Taxonomy and ML Pipeline",
+      "description": "Comprehensive taxonomy of data biases in machine learning pipelines. Explore collection, reporting, and systematic biases with mitigation strategies for each stage.",
+      "category": "AI Bias and Risks",
+      "datePublished": "2025-02-21",
+      "tags": ["Data Bias", "Measurement Bias", "Representation Bias", "Collection Bias", "Reporting Bias", "Systematic Bias", "ML Pipeline", "Data Quality", "Bias Taxonomy"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/various-data-bias"
+    },
+    {
+      "file": "ai-bias-and-risks/bias_mitigation.html",
+      "title": "Bias Mitigation — Inter-Annotator Agreement & Data Quality",
+      "description": "Complete guide to bias mitigation through inter-annotator agreement measurement. Learn Cohen's Kappa, Fleiss' Kappa, and strategies for improving annotation quality and reducing bias.",
+      "category": "AI Bias and Risks",
+      "datePublished": "2025-02-22",
+      "tags": ["Bias Mitigation", "Inter-Annotator Agreement", "Cohen's Kappa", "Fleiss' Kappa", "Data Quality", "Annotation Quality", "Fairness", "Bias Detection", "IAA Metrics"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/bias_mitigation"
     },
     {
       "file": "agentic-ai/portfolio-site-using-claude-code.html",

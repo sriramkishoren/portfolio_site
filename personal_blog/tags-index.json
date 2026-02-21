@@ -874,6 +874,111 @@
     ],
     "Senior Engineer Guide": [
       "optimizing-ai-resources/quick-summary.html"
+    ],
+    "Bias": [
+      "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html",
+      "ai-bias-and-risks/bias-types-and-legal-perspective.html",
+      "ai-bias-and-risks/managing-ai-bias.html"
+    ],
+    "AI Ethics": [
+      "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html",
+      "ai-bias-and-risks/managing-ai-bias.html"
+    ],
+    "Human Bias": [
+      "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html"
+    ],
+    "Machine Bias": [
+      "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html"
+    ],
+    "Fairness": [
+      "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html",
+      "ai-bias-and-risks/managing-ai-bias.html",
+      "ai-bias-and-risks/bias_mitigation.html"
+    ],
+    "Discrimination": [
+      "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html",
+      "ai-bias-and-risks/bias-types-and-legal-perspective.html"
+    ],
+    "Bias Mitigation": [
+      "ai-bias-and-risks/managing-ai-bias.html",
+      "ai-bias-and-risks/bias_mitigation.html"
+    ],
+    "AI Risk Management": [
+      "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html"
+    ],
+    "Responsible AI": [
+      "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html",
+      "ai-bias-and-risks/managing-ai-bias.html"
+    ],
+    "Legal Perspective": [
+      "ai-bias-and-risks/bias-types-and-legal-perspective.html"
+    ],
+    "AI Regulation": [
+      "ai-bias-and-risks/bias-types-and-legal-perspective.html"
+    ],
+    "Hiring Bias": [
+      "ai-bias-and-risks/bias-types-and-legal-perspective.html"
+    ],
+    "Lending Bias": [
+      "ai-bias-and-risks/bias-types-and-legal-perspective.html"
+    ],
+    "Fair Lending": [
+      "ai-bias-and-risks/bias-types-and-legal-perspective.html"
+    ],
+    "EEOC": [
+      "ai-bias-and-risks/bias-types-and-legal-perspective.html"
+    ],
+    "Algorithmic Accountability": [
+      "ai-bias-and-risks/bias-types-and-legal-perspective.html"
+    ],
+    "Bias Detection": [
+      "ai-bias-and-risks/managing-ai-bias.html",
+      "ai-bias-and-risks/bias_mitigation.html"
+    ],
+    "AI Governance": [
+      "ai-bias-and-risks/managing-ai-bias.html"
+    ],
+    "Algorithmic Fairness": [
+      "ai-bias-and-risks/managing-ai-bias.html"
+    ],
+    "Fairness Metrics": [
+      "ai-bias-and-risks/managing-ai-bias.html"
+    ],
+    "Data Bias": [
+      "ai-bias-and-risks/various-data-bias.html"
+    ],
+    "Measurement Bias": [
+      "ai-bias-and-risks/various-data-bias.html"
+    ],
+    "Representation Bias": [
+      "ai-bias-and-risks/various-data-bias.html"
+    ],
+    "Collection Bias": [
+      "ai-bias-and-risks/various-data-bias.html"
+    ],
+    "Reporting Bias": [
+      "ai-bias-and-risks/various-data-bias.html"
+    ],
+    "Systematic Bias": [
+      "ai-bias-and-risks/various-data-bias.html"
+    ],
+    "Bias Taxonomy": [
+      "ai-bias-and-risks/various-data-bias.html"
+    ],
+    "Inter-Annotator Agreement": [
+      "ai-bias-and-risks/bias_mitigation.html"
+    ],
+    "Cohen's Kappa": [
+      "ai-bias-and-risks/bias_mitigation.html"
+    ],
+    "Fleiss' Kappa": [
+      "ai-bias-and-risks/bias_mitigation.html"
+    ],
+    "Annotation Quality": [
+      "ai-bias-and-risks/bias_mitigation.html"
+    ],
+    "IAA Metrics": [
+      "ai-bias-and-risks/bias_mitigation.html"
     ]
   }
 }

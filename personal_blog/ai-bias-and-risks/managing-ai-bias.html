@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Managing AI Bias — From Hidden Bias to Actionable Fairness</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Managing AI Bias — From Hidden Bias to Actionable Fairness">
+    <meta name="description" content="Practical strategies for detecting, measuring, and mitigating bias in AI systems. Learn the ADAPT framework for bias management and responsible AI deployment.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Bias and Risks">
+    <meta name="tags" content="Bias Mitigation, Fairness, AI Ethics, Responsible AI, Bias Detection, AI Governance, Algorithmic Fairness, Fairness Metrics">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Comprehensive approach to managing AI bias through detection, assessment, and mitigation strategies. Covers fairness metrics, responsible AI principles, and actionable bias management frameworks.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/managing-ai-bias">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Managing AI Bias — From Hidden Bias to Actionable Fairness">
+    <meta property="og:description" content="Practical strategies for detecting and mitigating bias in AI systems with the ADAPT framework.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/managing-ai-bias">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-02-20">
+    <meta property="article:section" content="AI Bias and Risks">
+    <meta property="article:tag" content="Bias Mitigation">
+    <meta property="article:tag" content="Fairness">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Managing AI Bias — From Hidden Bias to Actionable Fairness",
+        "description": "Practical strategies for detecting, measuring, and mitigating bias in AI systems with the ADAPT framework.",
+        "datePublished": "2025-02-20",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "keywords": ["Bias Mitigation", "Fairness", "AI Ethics", "Responsible AI", "Bias Detection"],
+        "articleSection": "AI Bias and Risks"
+    }
+    </script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #F8FAFC;
+            color: #1E293B;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-sora {
+            font-family: 'Sora', sans-serif;
+        }
+
+        /* ── Scroll fade-in ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px) scale(1.015);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+        }
+
+        /* ── Sam vs Mo panels ── */
+        .sam-panel {
+            background: #fff;
+            border-radius: 16px;
+            border: 2px solid #FED7AA;
+            padding: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sam-panel.locked {
+            opacity: 0.45;
+            filter: blur(1.5px);
+            pointer-events: none;
+        }
+
+        .sam-panel.active {
+            border-color: #EA580C;
+            box-shadow: 0 6px 24px rgba(234, 88, 12, 0.18);
+            opacity: 1;
+            filter: none;
+            pointer-events: auto;
+        }
+
+        .sam-panel.revealed {
+            opacity: 1;
+            filter: none;
+            border-color: #FDBA74;
+            pointer-events: none;
+        }
+
+        .click-hint {
+            position: absolute;
+            bottom: 12px;
+            right: 16px;
+            font-size: 11px;
+            color: #EA580C;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* ── ADAPT steps ── */
+        .adapt-step {
+            background: #fff;
+            border-radius: 16px;
+            border: 2px solid transparent;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .adapt-step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        }
+
+        .adapt-detail {
+            display: none;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px solid #E2E8F0;
+        }
+
+        .adapt-step.open .adapt-detail {
+            display: block;
+        }
+
+        .adapt-step.open {
+            transform: translateY(-2px);
+        }
+
+        /* ── Bias tags ── */
+        .bias-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 99px;
+            margin: 2px;
+        }
+
+        /* ── Arrows ── */
+        .adapt-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94A3B8;
+            font-size: 20px;
+            padding: 0 4px;
+            flex-shrink: 0;
+        }
+
+        /* ── Score box ── */
+        .score-box {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 14px;
+            font-family: 'Sora', sans-serif;
+        }
+
+        /* ── Section divider ── */
+        .section-divider {
+            width: 48px;
+            height: 4px;
+            border-radius: 99px;
+            margin: 0 auto 12px;
+        }
+
+        /* ── Feedback loop label ── */
+        .feedback-arc {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            color: #0D9488;
+            letter-spacing: 0.06em;
+            padding: 8px 0 0;
+        }
+
+        /* ── Print ── */
+        @media print {
+
+            .card,
+            .sam-panel,
+            .adapt-step {
+                box-shadow: none !important;
+                border: 1px solid #E2E8F0 !important;
+            }
+
+            .reveal {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .sam-panel.locked {
+                opacity: 1 !important;
+                filter: none !important;
+            }
+
+            .adapt-detail {
+                display: block !important;
+            }
+
+            .click-hint {
+                display: none;
+            }
+
+            body {
+                background: #fff;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .adapt-flow {
+                flex-direction: column !important;
+            }
+
+            .adapt-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div style="max-width:900px; margin:0 auto; padding:20px 16px 48px;">
+
+        <!-- ═══════════════════════════════════════════════════════════
+     SECTION A — HEADER
+═══════════════════════════════════════════════════════════ -->
+        <section
+            style="background: linear-gradient(135deg,#F0F9FF 0%,#E0F2FE 100%); border-radius:24px; padding:48px 40px 40px; margin-bottom:40px; border:1.5px solid #BAE6FD; text-align:center;"
+            class="reveal">
+            <div
+                style="display:inline-flex; align-items:center; gap:8px; background:#0EA5E9; color:#fff; border-radius:99px; padding:6px 16px; font-size:12px; font-weight:700; letter-spacing:0.08em; margin-bottom:20px; font-family:'Sora',sans-serif;">
+                <i data-lucide="shield-check" style="width:14px;height:14px;"></i>
+                RESPONSIBLE AI SERIES
+            </div>
+            <h1
+                style="font-family:'Sora',sans-serif; font-size:clamp(28px,5vw,40px); font-weight:800; color:#0C4A6E; line-height:1.15; margin:0 0 12px;">
+                Managing AI Bias
+            </h1>
+            <p
+                style="font-family:'Sora',sans-serif; font-size:clamp(15px,2.5vw,19px); font-weight:600; color:#0369A1; margin:0 0 18px; line-height:1.4;">
+                From Hidden Bias to Actionable Fairness —<br>A Practical Framework for Responsible AI
+            </p>
+            <p style="color:#334155; font-size:15px; max-width:620px; margin:0 auto 24px; line-height:1.6;">
+                Bias in AI isn't always obvious — it hides in incomplete data, informal networks, and invisible context.
+                This infographic uses a real workplace scenario to make bias tangible, then introduces the
+                <strong>ADAPT framework</strong> to help you manage bias trade-offs systematically.
+            </p>
+            <div style="display:flex; justify-content:center; gap:24px; flex-wrap:wrap;">
+                <div
+                    style="background:#fff; border-radius:12px; padding:10px 20px; font-size:13px; color:#0369A1; font-weight:600; border:1px solid #BAE6FD;">
+                    <i data-lucide="users"
+                        style="width:14px;height:14px;display:inline;vertical-align:middle;margin-right:6px;"></i>Case
+                    Study: Sam vs. Mo
+                </div>
+                <div
+                    style="background:#fff; border-radius:12px; padding:10px 20px; font-size:13px; color:#0369A1; font-weight:600; border:1px solid #BAE6FD;">
+                    <i data-lucide="layers"
+                        style="width:14px;height:14px;display:inline;vertical-align:middle;margin-right:6px;"></i>5-Step
+                    ADAPT Framework
+                </div>
+                <div
+                    style="background:#fff; border-radius:12px; padding:10px 20px; font-size:13px; color:#0369A1; font-weight:600; border:1px solid #BAE6FD;">
+                    <i data-lucide="settings"
+                        style="width:14px;height:14px;display:inline;vertical-align:middle;margin-right:6px;"></i>Mitigation
+                    Strategies
+                </div>
+            </div>
+            <p style="color:#94A3B8; font-size:12px; margin:20px 0 0;">Source: Managing AI Bias — Lecture on Bias in AI
+                Systems</p>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════════════
+     SECTION B — SAM vs. MO CASE STUDY
+═══════════════════════════════════════════════════════════ -->
+        <section
+            style="background:linear-gradient(135deg,#FFF7ED,#FFEDD5); border-radius:24px; padding:40px 32px; margin-bottom:40px; border:1.5px solid #FED7AA;"
+            class="reveal">
+
+            <div style="text-align:center; margin-bottom:32px;">
+                <div class="section-divider" style="background:#EA580C;"></div>
+                <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <i data-lucide="help-circle" style="width:22px;height:22px;color:#EA580C;"></i>
+                    <span
+                        style="font-family:'Sora',sans-serif; font-size:13px; font-weight:700; color:#EA580C; letter-spacing:0.1em;">CASE
+                        STUDY</span>
+                </div>
+                <h2
+                    style="font-family:'Sora',sans-serif; font-size:26px; font-weight:800; color:#7C2D12; margin:4px 0 8px;">
+                    "What Would You Do?"</h2>
+                <p style="color:#9A3412; font-size:15px; font-weight:500; margin:0;">The Sam vs. Mo Promotion Decision
+                </p>
+                <p style="color:#78350F; font-size:14px; margin:12px auto 0; max-width:520px; line-height:1.6;">
+                    You have <strong>one promotion slot</strong>. Two candidates. Click each panel to reveal the data —
+                    and ask yourself: <em>who would you promote?</em>
+                </p>
+            </div>
+
+            <!-- Three panels -->
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; margin-bottom:24px;"
+                id="sam-panels">
+
+                <!-- Panel 1 -->
+                <div class="sam-panel active" id="panel1" onclick="revealPanel(1)">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+                        <div style="background:#FFF7ED; border-radius:10px; padding:8px; border:1px solid #FED7AA;">
+                            <i data-lucide="briefcase" style="width:20px;height:20px;color:#EA580C;"></i>
+                        </div>
+                        <div>
+                            <div style="font-size:10px; font-weight:700; color:#EA580C; letter-spacing:0.1em;">PANEL 1
+                            </div>
+                            <div style="font-family:'Sora',sans-serif; font-size:15px; font-weight:700; color:#7C2D12;">
+                                The Setup</div>
+                        </div>
+                    </div>
+
+                    <p style="font-size:13px; font-weight:600; color:#9A3412; margin:0 0 12px;">Performance Scores (out
+                        of 10)</p>
+
+                    <div style="display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap;">
+                        <div
+                            style="flex:1; min-width:100px; background:#FFF7ED; border-radius:12px; padding:12px; border:1px solid #FED7AA;">
+                            <div
+                                style="font-size:12px; font-weight:700; color:#7C2D12; margin-bottom:8px; font-family:'Sora',sans-serif;">
+                                Samuel (Sam)</div>
+                            <div style="display:flex; gap:4px;">
+                                <span class="score-box" style="background:#FBBF24;color:#78350F;">7</span>
+                                <span class="score-box" style="background:#FBBF24;color:#78350F;">6</span>
+                                <span class="score-box" style="background:#FBBF24;color:#78350F;">7</span>
+                            </div>
+                        </div>
+                        <div
+                            style="flex:1; min-width:100px; background:#FFF7ED; border-radius:12px; padding:12px; border:1px solid #FED7AA;">
+                            <div
+                                style="font-size:12px; font-weight:700; color:#7C2D12; margin-bottom:8px; font-family:'Sora',sans-serif;">
+                                Mohammad (Mo)</div>
+                            <div style="display:flex; gap:4px;">
+                                <span class="score-box" style="background:#E0F2FE;color:#0C4A6E;">6</span>
+                                <span class="score-box" style="background:#E0F2FE;color:#0C4A6E;">7</span>
+                                <span class="score-box" style="background:#E0F2FE;color:#0C4A6E;">6</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background:#FFF7ED; border-radius:10px; padding:10px; border-left:3px solid #EA580C; margin-bottom:14px;">
+                        <p style="font-size:12px; color:#78350F; margin:0 0 4px; font-weight:600;">Informal Feedback</p>
+                        <p style="font-size:13px; color:#7C2D12; margin:0;"><strong>Sam</strong> is well liked
+                            &nbsp;·&nbsp; <strong>Mo</strong> is not well known</p>
+                    </div>
+
+                    <div
+                        style="background:#EA580C; color:#fff; border-radius:10px; padding:10px 14px; text-align:center;">
+                        <p style="font-family:'Sora',sans-serif; font-size:13px; font-weight:700; margin:0;">Who would
+                            you promote?</p>
+                    </div>
+                    <div class="click-hint">Click to continue ›</div>
+                </div>
+
+                <!-- Panel 2 -->
+                <div class="sam-panel locked" id="panel2" onclick="revealPanel(2)">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+                        <div style="background:#FFF7ED; border-radius:10px; padding:8px; border:1px solid #FED7AA;">
+                            <i data-lucide="bar-chart-2" style="width:20px;height:20px;color:#EA580C;"></i>
+                        </div>
+                        <div>
+                            <div style="font-size:10px; font-weight:700; color:#EA580C; letter-spacing:0.1em;">PANEL 2
+                            </div>
+                            <div style="font-family:'Sora',sans-serif; font-size:15px; font-weight:700; color:#7C2D12;">
+                                New Data Arrives</div>
+                        </div>
+                    </div>
+
+                    <p style="font-size:13px; font-weight:600; color:#9A3412; margin:0 0 12px;">Skills Assessment
+                        Results</p>
+
+                    <div style="display:flex; gap:8px; margin-bottom:14px;">
+                        <div
+                            style="flex:1; background:#FFF7ED; border-radius:12px; padding:14px; border:1px solid #FED7AA; text-align:center;">
+                            <div
+                                style="font-size:12px; font-weight:700; color:#7C2D12; margin-bottom:6px; font-family:'Sora',sans-serif;">
+                                Sam</div>
+                            <div style="font-size:28px; font-weight:800; color:#FBBF24; font-family:'Sora',sans-serif;">
+                                67%</div>
+                        </div>
+                        <div
+                            style="flex:1; background:#F0FDF4; border-radius:12px; padding:14px; border:2px solid #4ADE80; text-align:center;">
+                            <div
+                                style="font-size:12px; font-weight:700; color:#166534; margin-bottom:6px; font-family:'Sora',sans-serif;">
+                                Mo</div>
+                            <div style="font-size:28px; font-weight:800; color:#16A34A; font-family:'Sora',sans-serif;">
+                                74%</div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background:#EA580C; color:#fff; border-radius:10px; padding:10px 14px; text-align:center;">
+                        <p style="font-family:'Sora',sans-serif; font-size:13px; font-weight:700; margin:0;">Does this
+                            change your decision?</p>
+                    </div>
+                    <div class="click-hint">Click to continue ›</div>
+                </div>
+
+                <!-- Panel 3 -->
+                <div class="sam-panel locked" id="panel3">
+                    <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+                        <div style="background:#FFF7ED; border-radius:10px; padding:8px; border:1px solid #FED7AA;">
+                            <i data-lucide="eye" style="width:20px;height:20px;color:#EA580C;"></i>
+                        </div>
+                        <div>
+                            <div style="font-size:10px; font-weight:700; color:#EA580C; letter-spacing:0.1em;">PANEL 3
+                            </div>
+                            <div style="font-family:'Sora',sans-serif; font-size:15px; font-weight:700; color:#7C2D12;">
+                                The Hidden Context</div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="background:#FFF7ED; border-radius:10px; padding:12px; border-left:3px solid #FBBF24; margin-bottom:10px;">
+                        <p style="font-size:12px; font-weight:700; color:#78350F; margin:0 0 4px;">🍺 Sam — "Thirsty
+                            Thursdays"</p>
+                        <p style="font-size:13px; color:#7C2D12; margin:0;">Regularly attended after-hours networking
+                            events with colleagues</p>
+                    </div>
+
+                    <div
+                        style="background:#FFF7ED; border-radius:10px; padding:12px; border-left:3px solid #60A5FA; margin-bottom:12px;">
+                        <p style="font-size:12px; font-weight:700; color:#78350F; margin:0 0 4px;">👨‍👧 Mo — Daycare
+                            Pickup</p>
+                        <p style="font-size:13px; color:#7C2D12; margin:0;">Had to pick his kids up from daycare — could
+                            not attend after-hours events</p>
+                    </div>
+
+                    <div
+                        style="background:#7C2D12; color:#fff; border-radius:10px; padding:10px 14px; margin-bottom:12px;">
+                        <p style="font-size:12px; font-weight:700; margin:0 0 3px; font-family:'Sora',sans-serif;">The
+                            Realization</p>
+                        <p style="font-size:12px; margin:0; color:#FED7AA;">"Well liked" reflects <strong>social
+                                access</strong>, not competence</p>
+                    </div>
+
+                    <div style="display:flex; flex-wrap:wrap; gap:4px;">
+                        <span class="bias-tag" style="background:#FEF3C7;color:#92400E;">Affinity Bias</span>
+                        <span class="bias-tag" style="background:#FCE7F3;color:#9D174D;">Proximity Bias</span>
+                        <span class="bias-tag" style="background:#EDE9FE;color:#5B21B6;">Measurement Bias</span>
+                        <span class="bias-tag" style="background:#DBEAFE;color:#1E40AF;">Info Asymmetry</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insight box -->
+            <div
+                style="background:#fff; border-radius:16px; padding:24px; border:1.5px solid #FED7AA; margin-bottom:16px;">
+                <div style="display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap;">
+                    <i data-lucide="quote"
+                        style="width:28px;height:28px;color:#EA580C;flex-shrink:0;margin-top:2px;"></i>
+                    <div>
+                        <p
+                            style="font-family:'Sora',sans-serif; font-size:15px; font-weight:700; color:#7C2D12; margin:0 0 10px; line-height:1.5;">
+                            "It is not clear a lot of the times in data alone what the right answer should be."
+                        </p>
+                        <p style="font-size:13px; color:#78350F; margin:0 0 6px; line-height:1.6;">
+                            "There's a lot more context that goes into addressing issues of bias."
+                        </p>
+                        <p style="font-size:13px; color:#78350F; margin:0; line-height:1.6;">
+                            "The unfortunate reality is most organizations do not have or take the time to really get
+                            into the weeds and understand these differences."
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transition -->
+            <div
+                style="text-align:center; background:linear-gradient(90deg,#EA580C,#DC2626); color:#fff; border-radius:14px; padding:16px 24px;">
+                <p style="font-family:'Sora',sans-serif; font-size:15px; font-weight:700; margin:0;">
+                    So what do we do about it? How do we manage bias trade-offs when it's so unclear?
+                </p>
+                <p style="font-size:13px; margin:6px 0 0; opacity:0.9;">↓ Keep reading to discover the ADAPT framework
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════════════
+     SECTION C — TYPES OF BIAS
+═══════════════════════════════════════════════════════════ -->
+        <section
+            style="background:linear-gradient(135deg,#F5F3FF,#EDE9FE); border-radius:24px; padding:40px 32px; margin-bottom:40px; border:1.5px solid #DDD6FE;"
+            class="reveal">
+
+            <div style="text-align:center; margin-bottom:28px;">
+                <div class="section-divider" style="background:#8B5CF6;"></div>
+                <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <i data-lucide="layers" style="width:20px;height:20px;color:#8B5CF6;"></i>
+                    <span
+                        style="font-family:'Sora',sans-serif; font-size:12px; font-weight:700; color:#8B5CF6; letter-spacing:0.1em;">SUPPORTING
+                        CONTEXT</span>
+                </div>
+                <h2
+                    style="font-family:'Sora',sans-serif; font-size:22px; font-weight:800; color:#3B0764; margin:4px 0 8px;">
+                    Types of Bias in AI Systems</h2>
+                <p style="font-size:14px; color:#6D28D9; max-width:500px; margin:0 auto;">Before you can manage bias,
+                    you must recognize it. The ADAPT Awareness step begins here.</p>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px;">
+
+                <!-- Human Cognitive Biases -->
+                <div>
+                    <div
+                        style="background:#8B5CF6; color:#fff; border-radius:12px 12px 0 0; padding:12px 16px; display:flex; align-items:center; gap:8px;">
+                        <i data-lucide="brain" style="width:18px;height:18px;"></i>
+                        <span style="font-family:'Sora',sans-serif; font-size:13px; font-weight:700;">Human Cognitive
+                            Biases</span>
+                    </div>
+                    <div
+                        style="background:#fff; border-radius:0 0 12px 12px; border:1.5px solid #DDD6FE; border-top:none; overflow:hidden;">
+                        <div style="padding:12px 14px; border-bottom:1px solid #F3F4F6;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Confirmation Bias
+                            </p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Seeking data that supports existing
+                                beliefs</p>
+                        </div>
+                        <div style="padding:12px 14px; border-bottom:1px solid #F3F4F6;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Anchoring Bias
+                            </p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Over-relying on the first piece of
+                                information</p>
+                        </div>
+                        <div style="padding:12px 14px; border-bottom:1px solid #F3F4F6;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Affinity Bias</p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Favoring people similar to us (Sam vs.
+                                Mo!)</p>
+                        </div>
+                        <div style="padding:12px 14px; border-bottom:1px solid #F3F4F6;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Groupthink</p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Conforming to group opinion over
+                                independent analysis</p>
+                        </div>
+                        <div style="padding:12px 14px; border-bottom:1px solid #F3F4F6;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Automation Bias
+                            </p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Over-trusting automated system outputs
+                            </p>
+                        </div>
+                        <div style="padding:12px 14px;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Framing Effect
+                            </p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Different conclusions from same data
+                                presented differently</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Data Biases -->
+                <div>
+                    <div
+                        style="background:#6D28D9; color:#fff; border-radius:12px 12px 0 0; padding:12px 16px; display:flex; align-items:center; gap:8px;">
+                        <i data-lucide="database" style="width:18px;height:18px;"></i>
+                        <span style="font-family:'Sora',sans-serif; font-size:13px; font-weight:700;">Data Biases</span>
+                    </div>
+                    <div
+                        style="background:#fff; border-radius:0 0 12px 12px; border:1.5px solid #DDD6FE; border-top:none; overflow:hidden;">
+                        <div style="padding:12px 14px; border-bottom:1px solid #F3F4F6;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Sampling Bias</p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Sample not representative of target
+                                population</p>
+                        </div>
+                        <div style="padding:12px 14px; border-bottom:1px solid #F3F4F6;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Historical Bias
+                            </p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Past inequities baked into training data
+                            </p>
+                        </div>
+                        <div style="padding:12px 14px; border-bottom:1px solid #F3F4F6;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Reporting Bias
+                            </p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Only certain outcomes get recorded</p>
+                        </div>
+                        <div style="padding:12px 14px; border-bottom:1px solid #F3F4F6;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Survivorship Bias
+                            </p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Analyzing only "survivors" of a process
+                            </p>
+                        </div>
+                        <div style="padding:12px 14px; border-bottom:1px solid #F3F4F6;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Label Bias</p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Human annotator subjectivity in labeled
+                                data</p>
+                        </div>
+                        <div style="padding:12px 14px;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Representation
+                                Bias</p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Underrepresentation of certain groups in
+                                data</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Algorithmic Biases -->
+                <div>
+                    <div
+                        style="background:#4C1D95; color:#fff; border-radius:12px 12px 0 0; padding:12px 16px; display:flex; align-items:center; gap:8px;">
+                        <i data-lucide="cpu" style="width:18px;height:18px;"></i>
+                        <span style="font-family:'Sora',sans-serif; font-size:13px; font-weight:700;">Algorithmic &
+                            System Biases</span>
+                    </div>
+                    <div
+                        style="background:#fff; border-radius:0 0 12px 12px; border:1.5px solid #DDD6FE; border-top:none; overflow:hidden;">
+                        <div style="padding:12px 14px; border-bottom:1px solid #F3F4F6;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Algorithmic Bias
+                            </p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Bias from model design and optimization
+                                choices</p>
+                        </div>
+                        <div style="padding:12px 14px; border-bottom:1px solid #F3F4F6;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Feedback Loop
+                                Bias</p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Model outputs reinforce and amplify
+                                input patterns</p>
+                        </div>
+                        <div style="padding:12px 14px; border-bottom:1px solid #F3F4F6;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Proxy Variable
+                                Bias</p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Neutral features encoding protected
+                                attributes (e.g., zip code → race)</p>
+                        </div>
+                        <div style="padding:12px 14px;">
+                            <p style="font-size:13px; font-weight:700; color:#3B0764; margin:0 0 2px;">Deployment Bias
+                            </p>
+                            <p style="font-size:12px; color:#6B7280; margin:0;">Model used in a context it wasn't
+                                designed for</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════════════
+     SECTION D — FAIRNESS TRADE-OFFS
+═══════════════════════════════════════════════════════════ -->
+        <section
+            style="background:linear-gradient(135deg,#EEF2FF,#E0E7FF); border-radius:24px; padding:40px 32px; margin-bottom:40px; border:1.5px solid #C7D2FE;"
+            class="reveal">
+
+            <div style="text-align:center; margin-bottom:28px;">
+                <div class="section-divider" style="background:#6366F1;"></div>
+                <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <i data-lucide="scale" style="width:20px;height:20px;color:#6366F1;"></i>
+                    <span
+                        style="font-family:'Sora',sans-serif; font-size:12px; font-weight:700; color:#6366F1; letter-spacing:0.1em;">SUPPORTING
+                        CONTEXT</span>
+                </div>
+                <h2
+                    style="font-family:'Sora',sans-serif; font-size:22px; font-weight:800; color:#1E1B4B; margin:4px 0 8px;">
+                    Fairness Trade-offs: Why This Is So Hard</h2>
+                <p style="font-size:14px; color:#4338CA; max-width:520px; margin:0 auto;">There is no single definition
+                    of "fairness." Organizations must choose which trade-offs they accept.</p>
+            </div>
+
+            <div
+                style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-bottom:24px;">
+                <div class="card" style="padding:18px; text-align:center; border-top:3px solid #6366F1;">
+                    <i data-lucide="users"
+                        style="width:22px;height:22px;color:#6366F1;margin:0 auto 10px;display:block;"></i>
+                    <p
+                        style="font-family:'Sora',sans-serif; font-size:13px; font-weight:700; color:#1E1B4B; margin:0 0 6px;">
+                        Demographic Parity</p>
+                    <p style="font-size:12px; color:#6B7280; margin:0; line-height:1.5;">Equal positive prediction rates
+                        across groups</p>
+                </div>
+                <div class="card" style="padding:18px; text-align:center; border-top:3px solid #8B5CF6;">
+                    <i data-lucide="target"
+                        style="width:22px;height:22px;color:#8B5CF6;margin:0 auto 10px;display:block;"></i>
+                    <p
+                        style="font-family:'Sora',sans-serif; font-size:13px; font-weight:700; color:#1E1B4B; margin:0 0 6px;">
+                        Equal Opportunity</p>
+                    <p style="font-size:12px; color:#6B7280; margin:0; line-height:1.5;">Equal true positive rates
+                        across groups</p>
+                </div>
+                <div class="card" style="padding:18px; text-align:center; border-top:3px solid #0EA5E9;">
+                    <i data-lucide="check-circle"
+                        style="width:22px;height:22px;color:#0EA5E9;margin:0 auto 10px;display:block;"></i>
+                    <p
+                        style="font-family:'Sora',sans-serif; font-size:13px; font-weight:700; color:#1E1B4B; margin:0 0 6px;">
+                        Predictive Parity</p>
+                    <p style="font-size:12px; color:#6B7280; margin:0; line-height:1.5;">Equal precision scores across
+                        groups</p>
+                </div>
+                <div class="card" style="padding:18px; text-align:center; border-top:3px solid #10B981;">
+                    <i data-lucide="activity"
+                        style="width:22px;height:22px;color:#10B981;margin:0 auto 10px;display:block;"></i>
+                    <p
+                        style="font-family:'Sora',sans-serif; font-size:13px; font-weight:700; color:#1E1B4B; margin:0 0 6px;">
+                        Calibration</p>
+                    <p style="font-size:12px; color:#6B7280; margin:0; line-height:1.5;">Predicted probabilities match
+                        actual outcomes</p>
+                </div>
+            </div>
+
+            <div
+                style="background:#fff; border-radius:14px; padding:20px 24px; border:2px solid #6366F1; display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:16px;">
+                <i data-lucide="alert-triangle" style="width:28px;height:28px;color:#DC2626;flex-shrink:0;"></i>
+                <div>
+                    <p
+                        style="font-family:'Sora',sans-serif; font-size:14px; font-weight:700; color:#1E1B4B; margin:0 0 4px;">
+                        The Impossibility Problem</p>
+                    <p style="font-size:13px; color:#4B5563; margin:0; line-height:1.6;">These fairness definitions
+                        <strong>conflict with each other</strong> when data distributions differ across groups. It is
+                        mathematically impossible to satisfy all fairness criteria simultaneously. Organizations must
+                        decide which trade-offs they are comfortable accepting.</p>
+                </div>
+            </div>
+
+            <div style="text-align:center; background:#6366F1; color:#fff; border-radius:12px; padding:14px 20px;">
+                <p style="font-family:'Sora',sans-serif; font-size:14px; font-weight:700; margin:0;">This is why you
+                    need a structured approach — the ADAPT framework ↓</p>
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════════════
+     SECTION E — THE ADAPT FRAMEWORK
+═══════════════════════════════════════════════════════════ -->
+        <section
+            style="background:linear-gradient(135deg,#F0FDFA,#CCFBF1); border-radius:24px; padding:40px 32px; margin-bottom:40px; border:1.5px solid #99F6E4;"
+            class="reveal page-break">
+
+            <div style="text-align:center; margin-bottom:36px;">
+                <div class="section-divider" style="background:#0D9488;"></div>
+                <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <i data-lucide="zap" style="width:20px;height:20px;color:#0D9488;"></i>
+                    <span
+                        style="font-family:'Sora',sans-serif; font-size:12px; font-weight:700; color:#0D9488; letter-spacing:0.1em;">PRIMARY
+                        FRAMEWORK</span>
+                </div>
+                <h2
+                    style="font-family:'Sora',sans-serif; font-size:28px; font-weight:800; color:#042F2E; margin:4px 0 8px;">
+                    The ADAPT Framework
+                </h2>
+                <p style="font-size:14px; color:#0F766E; max-width:560px; margin:0 auto 6px; line-height:1.6;">
+                    "I like to just offer a simple approach that I call ADAPT. I use acronyms like this because they're
+                    usually mnemonics that are easy to remember."
+                </p>
+                <p style="font-size:13px; color:#0F766E; font-style:italic;">Click each step to expand the full
+                    description and key action</p>
+            </div>
+
+            <!-- ADAPT Cards -->
+            <div style="display:flex; flex-direction:column; gap:14px; margin-bottom:28px;" id="adapt-container">
+
+                <!-- A — AWARENESS -->
+                <div class="adapt-step" id="adapt-A" onclick="toggleAdapt('A')" style="border-color:#BFDBFE;">
+                    <div style="display:flex; align-items:flex-start; gap:16px;">
+                        <div
+                            style="background:#EFF6FF; border-radius:14px; padding:12px; border:2px solid #BFDBFE; flex-shrink:0; text-align:center; min-width:56px;">
+                            <i data-lucide="eye"
+                                style="width:24px;height:24px;color:#3B82F6;display:block;margin:0 auto;"></i>
+                            <span
+                                style="font-family:'Sora',sans-serif; font-size:22px; font-weight:800; color:#3B82F6; line-height:1;">A</span>
+                        </div>
+                        <div style="flex:1;">
+                            <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+                                <h3
+                                    style="font-family:'Sora',sans-serif; font-size:18px; font-weight:800; color:#1E3A8A; margin:0;">
+                                    AWARENESS</h3>
+                                <span
+                                    style="font-size:11px; background:#DBEAFE; color:#1D4ED8; padding:2px 8px; border-radius:99px; font-weight:600;">Step
+                                    1 of 5</span>
+                            </div>
+                            <p style="font-size:13px; color:#4B5563; margin:0; line-height:1.6;">Know and measure the
+                                different potential types of bias — map them against protected classes and demographics
+                                you're concerned about.</p>
+                        </div>
+                        <i data-lucide="chevron-down"
+                            style="width:18px;height:18px;color:#94A3B8;flex-shrink:0;margin-top:4px;"
+                            id="chevron-A"></i>
+                    </div>
+                    <div class="adapt-detail" id="detail-A">
+                        <div
+                            style="background:#EFF6FF; border-radius:12px; padding:16px; border-left:4px solid #3B82F6; margin-bottom:12px;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#1D4ED8; margin:0 0 6px; font-family:'Sora',sans-serif;">
+                                SOURCE QUOTE</p>
+                            <p style="font-size:13px; color:#1E3A8A; margin:0; line-height:1.6; font-style:italic;">"In
+                                that loan example, there are four different types of bias. So measure all four and see
+                                how they match against potential protected classes or demographics that you're concerned
+                                about. Be aware of what the different potential biases are so that you can make an
+                                informed decision."</p>
+                        </div>
+                        <div
+                            style="background:#F8FAFC; border-radius:10px; padding:14px; border:1px solid #BFDBFE; margin-bottom:12px;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#3B82F6; margin:0 0 6px; font-family:'Sora',sans-serif; letter-spacing:0.05em;">
+                                KEY ACTION</p>
+                            <p style="font-size:13px; color:#334155; margin:0; line-height:1.6;">Create a <strong>bias
+                                    inventory</strong> for your AI system — identify and measure all relevant bias types
+                                before making any decisions.</p>
+                        </div>
+                        <div style="background:#FFF7ED; border-radius:10px; padding:12px; border:1px solid #FED7AA;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#EA580C; margin:0 0 4px; font-family:'Sora',sans-serif;">
+                                🔗 SAM vs. MO APPLICATION</p>
+                            <p style="font-size:12px; color:#78350F; margin:0; line-height:1.5;">Recognize that the
+                                evaluation contains Affinity Bias (likeability), Measurement Bias (social events as
+                                proxy), and Information Asymmetry (missing caregiving context).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- D — DIVERSITY -->
+                <div class="adapt-step" id="adapt-D" onclick="toggleAdapt('D')" style="border-color:#E9D5FF;">
+                    <div style="display:flex; align-items:flex-start; gap:16px;">
+                        <div
+                            style="background:#F5F3FF; border-radius:14px; padding:12px; border:2px solid #DDD6FE; flex-shrink:0; text-align:center; min-width:56px;">
+                            <i data-lucide="users"
+                                style="width:24px;height:24px;color:#8B5CF6;display:block;margin:0 auto;"></i>
+                            <span
+                                style="font-family:'Sora',sans-serif; font-size:22px; font-weight:800; color:#8B5CF6; line-height:1;">D</span>
+                        </div>
+                        <div style="flex:1;">
+                            <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+                                <h3
+                                    style="font-family:'Sora',sans-serif; font-size:18px; font-weight:800; color:#4C1D95; margin:0;">
+                                    DIVERSITY</h3>
+                                <span
+                                    style="font-size:11px; background:#EDE9FE; color:#6D28D9; padding:2px 8px; border-radius:99px; font-weight:600;">Step
+                                    2 of 5</span>
+                            </div>
+                            <p style="font-size:13px; color:#4B5563; margin:0; line-height:1.6;">Contrast different
+                                metrics for consistency vs. divergence, and involve diverse viewpoints in your
+                                evaluation process.</p>
+                        </div>
+                        <i data-lucide="chevron-down"
+                            style="width:18px;height:18px;color:#94A3B8;flex-shrink:0;margin-top:4px;"
+                            id="chevron-D"></i>
+                    </div>
+                    <div class="adapt-detail" id="detail-D">
+                        <div
+                            style="background:#F5F3FF; border-radius:12px; padding:16px; border-left:4px solid #8B5CF6; margin-bottom:12px;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#6D28D9; margin:0 0 6px; font-family:'Sora',sans-serif;">
+                                SOURCE QUOTE</p>
+                            <p style="font-size:13px; color:#4C1D95; margin:0; line-height:1.6; font-style:italic;">
+                                "Contrast the different metrics to observe whether they're providing consistent or
+                                divergent information. Is this something that is an anomaly or is this something that is
+                                a trend that you should be paying attention to? And involve other people and diverse
+                                viewpoints in looking at that decision as well."</p>
+                        </div>
+                        <div
+                            style="background:#F8FAFC; border-radius:10px; padding:14px; border:1px solid #DDD6FE; margin-bottom:12px;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#8B5CF6; margin:0 0 6px; font-family:'Sora',sans-serif; letter-spacing:0.05em;">
+                                KEY ACTION</p>
+                            <p style="font-size:13px; color:#334155; margin:0; line-height:1.6;">Compare multiple
+                                metrics side by side and assemble <strong>diverse review teams</strong> — including
+                                people with different backgrounds and lived experiences — to evaluate findings.</p>
+                        </div>
+                        <div style="background:#FFF7ED; border-radius:10px; padding:12px; border:1px solid #FED7AA;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#EA580C; margin:0 0 4px; font-family:'Sora',sans-serif;">
+                                🔗 SAM vs. MO APPLICATION</p>
+                            <p style="font-size:12px; color:#78350F; margin:0; line-height:1.5;">Notice that performance
+                                scores and skills scores diverge — Sam's likeability correlates with networking, not
+                                performance. A diverse review panel would flag this inconsistency.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- A — ANALYSIS -->
+                <div class="adapt-step" id="adapt-A2" onclick="toggleAdapt('A2')" style="border-color:#FDE68A;">
+                    <div style="display:flex; align-items:flex-start; gap:16px;">
+                        <div
+                            style="background:#FFFBEB; border-radius:14px; padding:12px; border:2px solid #FDE68A; flex-shrink:0; text-align:center; min-width:56px;">
+                            <i data-lucide="search"
+                                style="width:24px;height:24px;color:#F59E0B;display:block;margin:0 auto;"></i>
+                            <span
+                                style="font-family:'Sora',sans-serif; font-size:22px; font-weight:800; color:#F59E0B; line-height:1;">A</span>
+                        </div>
+                        <div style="flex:1;">
+                            <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+                                <h3
+                                    style="font-family:'Sora',sans-serif; font-size:18px; font-weight:800; color:#78350F; margin:0;">
+                                    ANALYSIS</h3>
+                                <span
+                                    style="font-size:11px; background:#FEF3C7; color:#92400E; padding:2px 8px; border-radius:99px; font-weight:600;">Step
+                                    3 of 5</span>
+                            </div>
+                            <p style="font-size:13px; color:#4B5563; margin:0; line-height:1.6;">Holistically
+                                investigate the potential root causes — ask whether there are variables or factors not
+                                being captured in the data.</p>
+                        </div>
+                        <i data-lucide="chevron-down"
+                            style="width:18px;height:18px;color:#94A3B8;flex-shrink:0;margin-top:4px;"
+                            id="chevron-A2"></i>
+                    </div>
+                    <div class="adapt-detail" id="detail-A2">
+                        <div
+                            style="background:#FFFBEB; border-radius:12px; padding:16px; border-left:4px solid #F59E0B; margin-bottom:12px;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#92400E; margin:0 0 6px; font-family:'Sora',sans-serif;">
+                                SOURCE QUOTE</p>
+                            <p style="font-size:13px; color:#78350F; margin:0; line-height:1.6; font-style:italic;">
+                                "Holistically investigate the potential reasons and cause — like we did in the Mo versus
+                                Sam examples — to say, hey, are there variables that I may not be capturing here? Are
+                                there factors here that I may not be considering?"</p>
+                        </div>
+                        <div
+                            style="background:#F8FAFC; border-radius:10px; padding:14px; border:1px solid #FDE68A; margin-bottom:12px;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#F59E0B; margin:0 0 6px; font-family:'Sora',sans-serif; letter-spacing:0.05em;">
+                                KEY ACTION</p>
+                            <p style="font-size:13px; color:#334155; margin:0; line-height:1.6;">Conduct
+                                <strong>root-cause analysis</strong> — go beyond surface data to uncover hidden context
+                                and confounding variables that shape the observed outcomes.</p>
+                        </div>
+                        <div style="background:#FFF7ED; border-radius:10px; padding:12px; border:1px solid #FED7AA;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#EA580C; margin:0 0 4px; font-family:'Sora',sans-serif;">
+                                🔗 SAM vs. MO APPLICATION</p>
+                            <p style="font-size:12px; color:#78350F; margin:0; line-height:1.5;">Investigate
+                                <em>why</em> Sam is "well liked" — discover the Thirsty Thursdays networking events and
+                                Mo's daycare obligations. The hidden variable explains the entire apparent gap.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- P — PUBLISH -->
+                <div class="adapt-step" id="adapt-P" onclick="toggleAdapt('P')" style="border-color:#A7F3D0;">
+                    <div style="display:flex; align-items:flex-start; gap:16px;">
+                        <div
+                            style="background:#F0FDF4; border-radius:14px; padding:12px; border:2px solid #A7F3D0; flex-shrink:0; text-align:center; min-width:56px;">
+                            <i data-lucide="file-text"
+                                style="width:24px;height:24px;color:#10B981;display:block;margin:0 auto;"></i>
+                            <span
+                                style="font-family:'Sora',sans-serif; font-size:22px; font-weight:800; color:#10B981; line-height:1;">P</span>
+                        </div>
+                        <div style="flex:1;">
+                            <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+                                <h3
+                                    style="font-family:'Sora',sans-serif; font-size:18px; font-weight:800; color:#064E3B; margin:0;">
+                                    PUBLISH</h3>
+                                <span
+                                    style="font-size:11px; background:#D1FAE5; color:#065F46; padding:2px 8px; border-radius:99px; font-weight:600;">Step
+                                    4 of 5</span>
+                            </div>
+                            <p style="font-size:13px; color:#4B5563; margin:0; line-height:1.6;">Publish your bias data
+                                and results to create transparency and explainability — be open to criticism and
+                                alternative explanations.</p>
+                        </div>
+                        <i data-lucide="chevron-down"
+                            style="width:18px;height:18px;color:#94A3B8;flex-shrink:0;margin-top:4px;"
+                            id="chevron-P"></i>
+                    </div>
+                    <div class="adapt-detail" id="detail-P">
+                        <div
+                            style="background:#F0FDF4; border-radius:12px; padding:16px; border-left:4px solid #10B981; margin-bottom:12px;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#065F46; margin:0 0 6px; font-family:'Sora',sans-serif;">
+                                SOURCE QUOTE</p>
+                            <p style="font-size:13px; color:#064E3B; margin:0; line-height:1.6; font-style:italic;">"You
+                                need to publish your biased data and results so you create a sense of transparency and
+                                explainability of the decision. You have to be open to criticism and alternative
+                                explanations that you may not have proposed. It fosters more of an open, transparent
+                                dialogue and helps people realize that you're about fairness and equity."</p>
+                        </div>
+                        <div
+                            style="background:#F8FAFC; border-radius:10px; padding:14px; border:1px solid #A7F3D0; margin-bottom:12px;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#10B981; margin:0 0 6px; font-family:'Sora',sans-serif; letter-spacing:0.05em;">
+                                KEY ACTION</p>
+                            <p style="font-size:13px; color:#334155; margin:0; line-height:1.6;">Create <strong>bias
+                                    transparency reports</strong>, share findings openly with stakeholders, and actively
+                                invite criticism and alternative interpretations — not as a courtesy, but as a process
+                                requirement.</p>
+                        </div>
+                        <div style="background:#FFF7ED; border-radius:10px; padding:12px; border:1px solid #FED7AA;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#EA580C; margin:0 0 4px; font-family:'Sora',sans-serif;">
+                                🔗 SAM vs. MO APPLICATION</p>
+                            <p style="font-size:12px; color:#78350F; margin:0; line-height:1.5;">Document and share the
+                                full analysis — including the networking context — with HR, leadership, and affected
+                                employees to build trust and enable informed challenges to the decision.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- T — TRANSFORM -->
+                <div class="adapt-step" id="adapt-T" onclick="toggleAdapt('T')" style="border-color:#FECACA;">
+                    <div style="display:flex; align-items:flex-start; gap:16px;">
+                        <div
+                            style="background:#FFF5F5; border-radius:14px; padding:12px; border:2px solid #FECACA; flex-shrink:0; text-align:center; min-width:56px;">
+                            <i data-lucide="refresh-cw"
+                                style="width:24px;height:24px;color:#EF4444;display:block;margin:0 auto;"></i>
+                            <span
+                                style="font-family:'Sora',sans-serif; font-size:22px; font-weight:800; color:#EF4444; line-height:1;">T</span>
+                        </div>
+                        <div style="flex:1;">
+                            <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+                                <h3
+                                    style="font-family:'Sora',sans-serif; font-size:18px; font-weight:800; color:#7F1D1D; margin:0;">
+                                    TRANSFORM</h3>
+                                <span
+                                    style="font-size:11px; background:#FEE2E2; color:#9B1C1C; padding:2px 8px; border-radius:99px; font-weight:600;">Step
+                                    5 of 5</span>
+                            </div>
+                            <p style="font-size:13px; color:#4B5563; margin:0; line-height:1.6;">Implement changes based
+                                on feedback, establish continuous learning loops, and improve the model over time. This
+                                is never a one-time fix.</p>
+                        </div>
+                        <i data-lucide="chevron-down"
+                            style="width:18px;height:18px;color:#94A3B8;flex-shrink:0;margin-top:4px;"
+                            id="chevron-T"></i>
+                    </div>
+                    <div class="adapt-detail" id="detail-T">
+                        <div
+                            style="background:#FFF5F5; border-radius:12px; padding:16px; border-left:4px solid #EF4444; margin-bottom:12px;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#9B1C1C; margin:0 0 6px; font-family:'Sora',sans-serif;">
+                                SOURCE QUOTE</p>
+                            <p style="font-size:13px; color:#7F1D1D; margin:0; line-height:1.6; font-style:italic;">"You
+                                have to be prepared to implement changes that you have based on feedback and continuous
+                                learning and improve the model over time."</p>
+                        </div>
+                        <div
+                            style="background:#F8FAFC; border-radius:10px; padding:14px; border:1px solid #FECACA; margin-bottom:12px;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#EF4444; margin:0 0 6px; font-family:'Sora',sans-serif; letter-spacing:0.05em;">
+                                KEY ACTION</p>
+                            <p style="font-size:13px; color:#334155; margin:0; line-height:1.6;">Implement changes based
+                                on findings, <strong>establish feedback loops</strong>, retrain models, update policies
+                                — then cycle back to Awareness to repeat the process continuously.</p>
+                        </div>
+                        <div style="background:#FFF7ED; border-radius:10px; padding:12px; border:1px solid #FED7AA;">
+                            <p
+                                style="font-size:12px; font-weight:700; color:#EA580C; margin:0 0 4px; font-family:'Sora',sans-serif;">
+                                🔗 SAM vs. MO APPLICATION</p>
+                            <p style="font-size:12px; color:#78350F; margin:0; line-height:1.5;">Redesign the promotion
+                                evaluation process — remove after-hours networking as an informal criterion, add
+                                structured skills assessments, and schedule regular review cycles to catch similar
+                                hidden biases.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Continuous cycle callout -->
+            <div
+                style="background:#042F2E; border-radius:16px; padding:20px 24px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+                <i data-lucide="refresh-cw" style="width:28px;height:28px;color:#2DD4BF;flex-shrink:0;"></i>
+                <div>
+                    <p
+                        style="font-family:'Sora',sans-serif; font-size:14px; font-weight:700; color:#CCFBF1; margin:0 0 4px;">
+                        ADAPT is a Continuous Cycle</p>
+                    <p style="font-size:13px; color:#5EEAD4; margin:0; line-height:1.6;">Transform feeds directly back
+                        into Awareness. Bias management is not a one-time project — it is an ongoing organizational
+                        commitment to fairness, transparency, and continuous learning.</p>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════════════
+     SECTION F — BIAS MITIGATION STRATEGIES
+═══════════════════════════════════════════════════════════ -->
+        <section
+            style="background:linear-gradient(135deg,#F0FDF4,#DCFCE7); border-radius:24px; padding:40px 32px; margin-bottom:40px; border:1.5px solid #BBF7D0;"
+            class="reveal">
+
+            <div style="text-align:center; margin-bottom:28px;">
+                <div class="section-divider" style="background:#10B981;"></div>
+                <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <i data-lucide="wrench" style="width:20px;height:20px;color:#10B981;"></i>
+                    <span
+                        style="font-family:'Sora',sans-serif; font-size:12px; font-weight:700; color:#10B981; letter-spacing:0.1em;">PRACTICAL
+                        ACTIONS</span>
+                </div>
+                <h2
+                    style="font-family:'Sora',sans-serif; font-size:22px; font-weight:800; color:#052E16; margin:4px 0 8px;">
+                    Bias Mitigation Strategies</h2>
+                <p style="font-size:14px; color:#15803D; max-width:520px; margin:0 auto;">Practical techniques organized
+                    by when they apply, mapped to ADAPT phases.</p>
+            </div>
+
+            <div
+                style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; margin-bottom:16px;">
+
+                <!-- Pre-processing -->
+                <div
+                    style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.07);">
+                    <div
+                        style="background:#059669; color:#fff; padding:14px 18px; display:flex; align-items:center; gap:8px;">
+                        <i data-lucide="filter" style="width:18px;height:18px;"></i>
+                        <div>
+                            <p style="font-family:'Sora',sans-serif; font-size:13px; font-weight:700; margin:0;">
+                                Pre-Processing</p>
+                            <p style="font-size:11px; margin:0; opacity:0.85;">ADAPT: Awareness + Diversity</p>
+                        </div>
+                    </div>
+                    <div style="padding:16px;">
+                        <div style="display:flex; align-items:flex-start; gap:8px; margin-bottom:10px;">
+                            <span style="color:#059669; margin-top:2px; font-size:14px;">•</span>
+                            <div>
+                                <p style="font-size:13px; font-weight:600; color:#052E16; margin:0;">Re-sampling &
+                                    re-weighting</p>
+                                <p style="font-size:12px; color:#6B7280; margin:0;">Balance training data across groups
+                                </p>
+                                <span class="bias-tag"
+                                    style="background:#D1FAE5;color:#065F46;margin-top:4px;">Awareness</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:flex-start; gap:8px; margin-bottom:10px;">
+                            <span style="color:#059669; margin-top:2px; font-size:14px;">•</span>
+                            <div>
+                                <p style="font-size:13px; font-weight:600; color:#052E16; margin:0;">Data augmentation
+                                </p>
+                                <p style="font-size:12px; color:#6B7280; margin:0;">Expand representation of
+                                    underrepresented groups</p>
+                                <span class="bias-tag"
+                                    style="background:#D1FAE5;color:#065F46;margin-top:4px;">Diversity</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:flex-start; gap:8px;">
+                            <span style="color:#059669; margin-top:2px; font-size:14px;">•</span>
+                            <div>
+                                <p style="font-size:13px; font-weight:600; color:#052E16; margin:0;">Bias audits on
+                                    training data</p>
+                                <p style="font-size:12px; color:#6B7280; margin:0;">Systematic review before training
+                                    begins</p>
+                                <span class="bias-tag"
+                                    style="background:#D1FAE5;color:#065F46;margin-top:4px;">Awareness</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- In-processing -->
+                <div
+                    style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.07);">
+                    <div
+                        style="background:#0891B2; color:#fff; padding:14px 18px; display:flex; align-items:center; gap:8px;">
+                        <i data-lucide="settings" style="width:18px;height:18px;"></i>
+                        <div>
+                            <p style="font-family:'Sora',sans-serif; font-size:13px; font-weight:700; margin:0;">
+                                In-Processing</p>
+                            <p style="font-size:11px; margin:0; opacity:0.85;">ADAPT: Analysis</p>
+                        </div>
+                    </div>
+                    <div style="padding:16px;">
+                        <div style="display:flex; align-items:flex-start; gap:8px; margin-bottom:10px;">
+                            <span style="color:#0891B2; margin-top:2px; font-size:14px;">•</span>
+                            <div>
+                                <p style="font-size:13px; font-weight:600; color:#0C4A6E; margin:0;">Fairness
+                                    constraints</p>
+                                <p style="font-size:12px; color:#6B7280; margin:0;">Incorporate fairness into the
+                                    model's loss function</p>
+                                <span class="bias-tag"
+                                    style="background:#E0F2FE;color:#075985;margin-top:4px;">Analysis</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:flex-start; gap:8px; margin-bottom:10px;">
+                            <span style="color:#0891B2; margin-top:2px; font-size:14px;">•</span>
+                            <div>
+                                <p style="font-size:13px; font-weight:600; color:#0C4A6E; margin:0;">Adversarial
+                                    debiasing</p>
+                                <p style="font-size:12px; color:#6B7280; margin:0;">Train model to be predictive but not
+                                    discriminatory</p>
+                                <span class="bias-tag"
+                                    style="background:#E0F2FE;color:#075985;margin-top:4px;">Analysis</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:flex-start; gap:8px;">
+                            <span style="color:#0891B2; margin-top:2px; font-size:14px;">•</span>
+                            <div>
+                                <p style="font-size:13px; font-weight:600; color:#0C4A6E; margin:0;">Multi-objective
+                                    optimization</p>
+                                <p style="font-size:12px; color:#6B7280; margin:0;">Balance accuracy and fairness across
+                                    multiple metrics</p>
+                                <span class="bias-tag"
+                                    style="background:#E0F2FE;color:#075985;margin-top:4px;">Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post-processing -->
+                <div
+                    style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.07);">
+                    <div
+                        style="background:#7C3AED; color:#fff; padding:14px 18px; display:flex; align-items:center; gap:8px;">
+                        <i data-lucide="shield-check" style="width:18px;height:18px;"></i>
+                        <div>
+                            <p style="font-family:'Sora',sans-serif; font-size:13px; font-weight:700; margin:0;">
+                                Post-Processing</p>
+                            <p style="font-size:11px; margin:0; opacity:0.85;">ADAPT: Publish + Transform</p>
+                        </div>
+                    </div>
+                    <div style="padding:16px;">
+                        <div style="display:flex; align-items:flex-start; gap:8px; margin-bottom:10px;">
+                            <span style="color:#7C3AED; margin-top:2px; font-size:14px;">•</span>
+                            <div>
+                                <p style="font-size:13px; font-weight:600; color:#3B0764; margin:0;">Threshold
+                                    adjustment per group</p>
+                                <p style="font-size:12px; color:#6B7280; margin:0;">Calibrate decision boundaries to
+                                    equalize outcomes</p>
+                                <span class="bias-tag"
+                                    style="background:#EDE9FE;color:#5B21B6;margin-top:4px;">Publish</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:flex-start; gap:8px; margin-bottom:10px;">
+                            <span style="color:#7C3AED; margin-top:2px; font-size:14px;">•</span>
+                            <div>
+                                <p style="font-size:13px; font-weight:600; color:#3B0764; margin:0;">Calibration for
+                                    equal outcomes</p>
+                                <p style="font-size:12px; color:#6B7280; margin:0;">Align predicted probabilities with
+                                    actual outcomes by group</p>
+                                <span class="bias-tag"
+                                    style="background:#EDE9FE;color:#5B21B6;margin-top:4px;">Transform</span>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:flex-start; gap:8px;">
+                            <span style="color:#7C3AED; margin-top:2px; font-size:14px;">•</span>
+                            <div>
+                                <p style="font-size:13px; font-weight:600; color:#3B0764; margin:0;">Human-in-the-loop
+                                    review</p>
+                                <p style="font-size:12px; color:#6B7280; margin:0;">Critical decision points require
+                                    human oversight</p>
+                                <span class="bias-tag"
+                                    style="background:#EDE9FE;color:#5B21B6;margin-top:4px;">Transform</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Organizational strategies -->
+            <div
+                style="background:#fff; border-radius:16px; padding:20px 24px; border:2px solid #BBF7D0; margin-bottom:14px;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
+                    <i data-lucide="user-check" style="width:20px;height:20px;color:#10B981;"></i>
+                    <p style="font-family:'Sora',sans-serif; font-size:15px; font-weight:700; color:#052E16; margin:0;">
+                        Organizational Strategies <span style="font-size:12px; font-weight:500; color:#6B7280;">(all
+                            ADAPT phases)</span></p>
+                </div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px;">
+                    <div style="background:#F0FDF4; border-radius:10px; padding:10px 14px;">
+                        <p style="font-size:12px; font-weight:600; color:#15803D; margin:0;">Diverse review teams &
+                            stakeholder engagement</p>
+                    </div>
+                    <div style="background:#F0FDF4; border-radius:10px; padding:10px 14px;">
+                        <p style="font-size:12px; font-weight:600; color:#15803D; margin:0;">Regular bias audits &
+                            algorithmic impact assessments</p>
+                    </div>
+                    <div style="background:#F0FDF4; border-radius:10px; padding:10px 14px;">
+                        <p style="font-size:12px; font-weight:600; color:#15803D; margin:0;">Bias transparency reports &
+                            open documentation</p>
+                    </div>
+                    <div style="background:#F0FDF4; border-radius:10px; padding:10px 14px;">
+                        <p style="font-size:12px; font-weight:600; color:#15803D; margin:0;">Continuous monitoring,
+                            feedback loops & model retraining</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Special note -->
+            <div
+                style="background:#FFFBEB; border-radius:12px; padding:14px 18px; border:1.5px solid #FDE68A; display:flex; gap:10px; align-items:flex-start;">
+                <i data-lucide="lightbulb"
+                    style="width:20px;height:20px;color:#F59E0B;flex-shrink:0;margin-top:1px;"></i>
+                <p style="font-size:13px; color:#78350F; margin:0; line-height:1.6;"><strong>Counterintuitive
+                        insight:</strong> Sometimes <em>including</em> a sensitive variable (like race in healthcare
+                    algorithms) produces more equitable outcomes than excluding it — context determines the right
+                    approach.</p>
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════════════
+     SECTION G — KEY TAKEAWAYS
+═══════════════════════════════════════════════════════════ -->
+        <section
+            style="background:linear-gradient(135deg,#F0FDF4,#DCFCE7); border-radius:24px; padding:40px 32px; margin-bottom:40px; border:1.5px solid #BBF7D0;"
+            class="reveal">
+
+            <div style="text-align:center; margin-bottom:28px;">
+                <div class="section-divider" style="background:#22C55E;"></div>
+                <div style="display:inline-flex; align-items:center; gap:8px; margin-bottom:8px;">
+                    <i data-lucide="star" style="width:20px;height:20px;color:#22C55E;"></i>
+                    <span
+                        style="font-family:'Sora',sans-serif; font-size:12px; font-weight:700; color:#22C55E; letter-spacing:0.1em;">KEY
+                        INSIGHTS</span>
+                </div>
+                <h2
+                    style="font-family:'Sora',sans-serif; font-size:22px; font-weight:800; color:#052E16; margin:4px 0;">
+                    Six Things to Remember</h2>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:16px;">
+
+                <div class="card" style="padding:20px; border-top:4px solid #22C55E;">
+                    <div style="display:flex; gap:12px; align-items:flex-start;">
+                        <span
+                            style="font-family:'Sora',sans-serif; font-size:24px; font-weight:800; color:#BBF7D0; line-height:1; flex-shrink:0;">01</span>
+                        <div>
+                            <p
+                                style="font-family:'Sora',sans-serif; font-size:14px; font-weight:700; color:#052E16; margin:0 0 6px;">
+                                Data alone doesn't tell the full story</p>
+                            <p style="font-size:13px; color:#374151; margin:0; line-height:1.6;">Context is critical.
+                                Sam vs. Mo showed that identical performance scores hid completely different
+                                circumstances.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="padding:20px; border-top:4px solid #16A34A;">
+                    <div style="display:flex; gap:12px; align-items:flex-start;">
+                        <span
+                            style="font-family:'Sora',sans-serif; font-size:24px; font-weight:800; color:#BBF7D0; line-height:1; flex-shrink:0;">02</span>
+                        <div>
+                            <p
+                                style="font-family:'Sora',sans-serif; font-size:14px; font-weight:700; color:#052E16; margin:0 0 6px;">
+                                Most organizations don't dig deep enough</p>
+                            <p style="font-size:13px; color:#374151; margin:0; line-height:1.6;">"Most organizations do
+                                not have or take the time to really get into the weeds and understand these
+                                differences."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="padding:20px; border-top:4px solid #0D9488;">
+                    <div style="display:flex; gap:12px; align-items:flex-start;">
+                        <span
+                            style="font-family:'Sora',sans-serif; font-size:24px; font-weight:800; color:#CCFBF1; line-height:1; flex-shrink:0;">03</span>
+                        <div>
+                            <p
+                                style="font-family:'Sora',sans-serif; font-size:14px; font-weight:700; color:#052E16; margin:0 0 6px;">
+                                Fairness trade-offs are real and unavoidable</p>
+                            <p style="font-size:13px; color:#374151; margin:0; line-height:1.6;">The question isn't
+                                whether to accept trade-offs — it's which trade-offs your organization is comfortable
+                                with.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="padding:20px; border-top:4px solid #3B82F6;">
+                    <div style="display:flex; gap:12px; align-items:flex-start;">
+                        <span
+                            style="font-family:'Sora',sans-serif; font-size:24px; font-weight:800; color:#BFDBFE; line-height:1; flex-shrink:0;">04</span>
+                        <div>
+                            <p
+                                style="font-family:'Sora',sans-serif; font-size:14px; font-weight:700; color:#052E16; margin:0 0 6px;">
+                                AI makes existing bias measurable and visible</p>
+                            <p style="font-size:13px; color:#374151; margin:0; line-height:1.6;">AI doesn't create new
+                                bias — it surfaces bias that already existed. The question is what we do with that
+                                visibility.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="padding:20px; border-top:4px solid #8B5CF6;">
+                    <div style="display:flex; gap:12px; align-items:flex-start;">
+                        <span
+                            style="font-family:'Sora',sans-serif; font-size:24px; font-weight:800; color:#DDD6FE; line-height:1; flex-shrink:0;">05</span>
+                        <div>
+                            <p
+                                style="font-family:'Sora',sans-serif; font-size:14px; font-weight:700; color:#052E16; margin:0 0 6px;">
+                                Use ADAPT — and repeat it continuously</p>
+                            <p style="font-size:13px; color:#374151; margin:0; line-height:1.6;">
+                                <strong>A</strong>wareness · <strong>D</strong>iversity · <strong>A</strong>nalysis ·
+                                <strong>P</strong>ublish · <strong>T</strong>ransform → back to Awareness. Never stop
+                                the cycle.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="padding:20px; border-top:4px solid #EF4444;">
+                    <div style="display:flex; gap:12px; align-items:flex-start;">
+                        <span
+                            style="font-family:'Sora',sans-serif; font-size:24px; font-weight:800; color:#FECACA; line-height:1; flex-shrink:0;">06</span>
+                        <div>
+                            <p
+                                style="font-family:'Sora',sans-serif; font-size:14px; font-weight:700; color:#052E16; margin:0 0 6px;">
+                                Transparency builds trust</p>
+                            <p style="font-size:13px; color:#374151; margin:0; line-height:1.6;">Openness to criticism
+                                is not a weakness — it is essential for building organizational trust in AI-driven
+                                decisions.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- ═══════════════════════════════════════════════════════════
+     SECTION H — FOOTER
+═══════════════════════════════════════════════════════════ -->
+        <footer style="background:#1E293B; border-radius:20px; padding:28px 32px; text-align:center; color:#94A3B8;"
+            class="reveal">
+            <div style="display:flex; align-items:center; justify-content:center; gap:8px; margin-bottom:12px;">
+                <i data-lucide="shield-check" style="width:18px;height:18px;color:#0EA5E9;"></i>
+                <span style="font-family:'Sora',sans-serif; font-size:16px; font-weight:700; color:#E2E8F0;">Managing AI
+                    Bias</span>
+            </div>
+            <p style="font-size:13px; margin:0 0 6px;">Source: Lecture on Managing AI Bias — Bias in AI Systems</p>
+            <p style="font-size:12px; margin:0 0 12px; color:#64748B;">Educational content for responsible AI
+                practitioners.</p>
+            <div
+                style="display:inline-flex; gap:16px; align-items:center; background:#0F172A; border-radius:10px; padding:10px 20px;">
+                <i data-lucide="printer" style="width:14px;height:14px;color:#38BDF8;"></i>
+                <span style="font-size:12px; color:#7DD3FC;">Print-friendly — use Ctrl+P / Cmd+P</span>
+            </div>
+        </footer>
+
+    </div><!-- end max-width container -->
+
+    <script>
+        function initLucide() {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                setTimeout(initLucide, 50);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            initLucide();
+
+            // ── Scroll reveal ──
+            const reveals = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+            }, { threshold: 0.08 });
+            reveals.forEach(el => observer.observe(el));
+
+            // Init panel state
+            window._panelState = 1;
+
+        }); // end DOMContentLoaded
+
+        // ── ADAPT expand/collapse (global — used in onclick attributes) ──
+        function toggleAdapt(id) {
+            const step = document.getElementById('adapt-' + id);
+            const chevron = document.getElementById('chevron-' + id);
+            const isOpen = step.classList.contains('open');
+
+            // Close all
+            ['A', 'D', 'A2', 'P', 'T'].forEach(s => {
+                const el = document.getElementById('adapt-' + s);
+                const ch = document.getElementById('chevron-' + s);
+                if (el) { el.classList.remove('open'); }
+                if (ch) { ch.style.transform = ''; }
+            });
+
+            // Open clicked if it was closed
+            if (!isOpen) {
+                step.classList.add('open');
+                if (chevron) chevron.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // revealPanel also needs to be global
+        function revealPanel(panelNum) {
+            if (panelNum === 1 && window._panelState === 1) {
+                document.getElementById('panel1').classList.remove('active');
+                document.getElementById('panel1').classList.add('revealed');
+                document.getElementById('panel2').classList.remove('locked');
+                document.getElementById('panel2').classList.add('active');
+                window._panelState = 2;
+            } else if (panelNum === 2 && window._panelState === 2) {
+                document.getElementById('panel2').classList.remove('active');
+                document.getElementById('panel2').classList.add('revealed');
+                document.getElementById('panel3').classList.remove('locked');
+                document.getElementById('panel3').classList.add('revealed');
+                window._panelState = 3;
+            }
+        }
+    </script>
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

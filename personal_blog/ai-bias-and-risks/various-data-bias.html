@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Various Data Bias — Dr. Ian McCullough, Johns Hopkins University</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Various Data Bias — Taxonomy and ML Pipeline">
+    <meta name="description" content="Comprehensive taxonomy of data biases in machine learning pipelines. Explore collection, reporting, and systematic biases with mitigation strategies for each stage.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Bias and Risks">
+    <meta name="tags" content="Data Bias, Measurement Bias, Representation Bias, Collection Bias, Reporting Bias, Systematic Bias, Homogeneous Heterogeneity, ML Pipeline, Data Quality">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Detailed taxonomy of data biases affecting machine learning systems, covering bias sources throughout the ML pipeline from data collection to deployment, with examples and mitigation strategies.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/various-data-bias">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Various Data Bias — Taxonomy and ML Pipeline">
+    <meta property="og:description" content="Comprehensive taxonomy of data biases in ML pipelines with mitigation strategies for each stage.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/various-data-bias">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-02-21">
+    <meta property="article:section" content="AI Bias and Risks">
+    <meta property="article:tag" content="Data Bias">
+    <meta property="article:tag" content="ML Pipeline">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Various Data Bias — Taxonomy and ML Pipeline",
+        "description": "Comprehensive taxonomy of data biases in machine learning pipelines with mitigation strategies.",
+        "datePublished": "2025-02-21",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "keywords": ["Data Bias", "Measurement Bias", "Representation Bias", "ML Pipeline", "Data Quality"],
+        "articleSection": "AI Bias and Risks"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sora: ['Sora', 'sans-serif'],
+                        dm: ['DM Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        header: { bg: '#F0F9FF', accent: '#0EA5E9' },
+                        collection: { bg: '#FFF7ED', accent: '#EA580C' },
+                        reporting: { bg: '#F3E8FF', accent: '#8B5CF6' },
+                        systematic: { bg: '#FEF2F2', accent: '#DC2626' },
+                        homohet: { bg: '#E0E7FF', accent: '#6366F1' },
+                        mitigation: { bg: '#D1FAE5', accent: '#10B981' },
+                        takeaway: { bg: '#F0FDF4', accent: '#22C55E' },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #F8FAFC;
+            color: #1E293B;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Sora', sans-serif;
+        }
+
+        .infographic-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 32px 16px;
+        }
+
+        /* ---- SECTION SPACING ---- */
+        .section {
+            margin-bottom: 56px;
+        }
+
+        /* ---- CARDS ---- */
+        .card {
+            background: #FFFFFF;
+            border-radius: 14px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+            padding: 22px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #F1F5F9;
+        }
+
+        .card:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.10), 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ---- EXPANDABLE CARDS ---- */
+        .expandable-header {
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .expandable-body {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.4s ease;
+        }
+
+        .expandable-body.open {
+            max-height: 2000px;
+        }
+
+        .expand-icon {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+            background: #F1F5F9;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            font-size: 12px;
+            color: #64748B;
+        }
+
+        .expand-icon.open {
+            transform: rotate(180deg);
+        }
+
+        /* ---- SECTION HEADERS ---- */
+        .section-header {
+            border-radius: 12px;
+            padding: 18px 22px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        /* ---- GRID LAYOUTS ---- */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .grid-7 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        @media (max-width: 640px) {
+
+            .grid-3,
+            .grid-2,
+            .grid-7 {
+                grid-template-columns: 1fr;
+            }
+
+            .split-panel {
+                flex-direction: column !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-7 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* ---- BADGE ---- */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 11px;
+            font-weight: 600;
+            font-family: 'Sora', sans-serif;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 99px;
+        }
+
+        /* ---- OVERVIEW ROADMAP CARDS ---- */
+        .overview-card {
+            border-radius: 14px;
+            padding: 22px;
+            transition: transform 0.3s ease;
+        }
+
+        .overview-card:hover {
+            transform: translateY(-3px);
+        }
+
+        /* ---- CONFIDENCE BAR CHART ---- */
+        .confidence-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 6px 0;
+        }
+
+        .confidence-bar-label {
+            font-size: 12px;
+            color: #475569;
+            width: 130px;
+            flex-shrink: 0;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .confidence-bar-track {
+            flex: 1;
+            background: #F1F5F9;
+            border-radius: 99px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .confidence-bar-fill {
+            height: 100%;
+            border-radius: 99px;
+            transition: width 1s ease;
+        }
+
+        .confidence-bar-pct {
+            font-size: 11px;
+            color: #64748B;
+            width: 40px;
+            text-align: right;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* ---- AIRCRAFT SVG ---- */
+        .aircraft-diagram {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+        }
+
+        /* ---- ALLBUS TABLE ---- */
+        .allbus-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .allbus-table th {
+            background: #F8FAFC;
+            padding: 8px 12px;
+            text-align: left;
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+            color: #475569;
+            border-bottom: 2px solid #E2E8F0;
+        }
+
+        .allbus-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #F1F5F9;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .allbus-table tr.highlight {
+            background: #FFF7ED;
+        }
+
+        .allbus-table tr.highlight td {
+            font-weight: 600;
+            color: #EA580C;
+        }
+
+        /* ---- CYCLE DIAGRAM ---- */
+        .cycle-item {
+            flex: 1;
+            text-align: center;
+            padding: 10px 8px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-family: 'Sora', sans-serif;
+            font-weight: 600;
+        }
+
+        .cycle-arrow {
+            display: flex;
+            align-items: center;
+            padding: 0 4px;
+            color: #94A3B8;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        /* ---- PIPELINE DIAGRAM ---- */
+        .pipeline-stage {
+            flex: 1;
+            border-radius: 10px;
+            padding: 12px;
+            text-align: center;
+        }
+
+        .pipeline-stage h5 {
+            font-size: 11px;
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            margin: 0 0 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .pipeline-tag {
+            font-size: 10px;
+            padding: 3px 7px;
+            border-radius: 99px;
+            margin: 2px;
+            display: inline-block;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+        }
+
+        /* ---- SPLIT PANEL ---- */
+        .split-panel {
+            display: flex;
+            gap: 0;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+
+        .split-panel-side {
+            flex: 1;
+            padding: 22px;
+        }
+
+        /* ---- QUOTE BOX ---- */
+        .quote-box {
+            border-left: 3px solid;
+            padding: 12px 16px;
+            border-radius: 0 10px 10px 0;
+            font-style: italic;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        /* ---- MITIGATION NUMBERED ---- */
+        .mitigation-num {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #10B981;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Sora', sans-serif;
+            font-weight: 700;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        /* ---- TAKEAWAY CARDS ---- */
+        .takeaway-card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            border-left: 4px solid #22C55E;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ---- SCROLL FADE ---- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease both;
+        }
+
+        .fade-in-1 {
+            animation-delay: 0.1s;
+        }
+
+        .fade-in-2 {
+            animation-delay: 0.2s;
+        }
+
+        .fade-in-3 {
+            animation-delay: 0.3s;
+        }
+
+        .fade-in-4 {
+            animation-delay: 0.4s;
+        }
+
+        /* ---- DIMMER ANALOGY ---- */
+        .dimmer-box {
+            background: #1E293B;
+            border-radius: 12px;
+            padding: 16px;
+            color: white;
+            font-size: 12px;
+            line-height: 1.6;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* ---- PRINT STYLES ---- */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .card {
+                box-shadow: none;
+                border: 1px solid #E2E8F0;
+            }
+
+            .card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .expandable-body {
+                max-height: none !important;
+            }
+
+            .infographic-wrapper {
+                padding: 0;
+            }
+
+            .section {
+                page-break-inside: avoid;
+            }
+
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="infographic-wrapper">
+
+        <!-- ============================================================ -->
+        <!-- SECTION A — HEADER -->
+        <!-- ============================================================ -->
+        <section class="section fade-in"
+            style="background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%); border-radius: 20px; padding: 40px 36px; border: 1px solid #BAE6FD;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                <span class="badge" style="background: #0EA5E9; color: white;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                        </path>
+                    </svg>
+                    AI Education Series
+                </span>
+                <span style="font-size: 12px; color: #0EA5E9; font-family: 'DM Sans', sans-serif;">Johns Hopkins
+                    University</span>
+            </div>
+            <h1 style="font-size: 38px; font-weight: 800; color: #0C4A6E; margin: 0 0 8px; line-height: 1.15;">Various
+                Data Bias</h1>
+            <p
+                style="font-size: 17px; color: #0369A1; font-weight: 600; margin: 0 0 18px; font-family: 'Sora', sans-serif; line-height: 1.4;">
+                Understanding How Bias Enters AI Systems — From Data Collection to Algorithm Design</p>
+            <p
+                style="font-size: 14px; color: #1E40AF; line-height: 1.7; max-width: 700px; margin: 0 0 20px; font-family: 'DM Sans', sans-serif;">
+                Data bias in AI systems falls into three major categories: biases in collection, biases in reporting,
+                and systematic biases. Each type can silently distort AI outcomes. Understanding where bias enters is
+                the first step to building fairer systems.</p>
+            <div
+                style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #0369A1; font-family: 'DM Sans', sans-serif;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="12"></line>
+                    <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                Source: Dr. Ian McCullough — Lecture on Data Bias, Johns Hopkins University
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION B — OVERVIEW: THREE CATEGORIES -->
+        <!-- ============================================================ -->
+        <section class="section">
+            <div style="text-align: center; margin-bottom: 24px;">
+                <h2 style="font-size: 24px; font-weight: 700; color: #1E293B; margin: 0 0 8px;">Three Categories of Data
+                    Bias</h2>
+                <p style="font-size: 14px; color: #64748B; margin: 0; font-family: 'DM Sans', sans-serif;">A visual
+                    roadmap of where and how bias enters AI systems</p>
+            </div>
+            <div class="grid-3">
+                <!-- Collection -->
+                <div class="overview-card" style="background: #FFF7ED; border: 2px solid #FED7AA;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                        <div
+                            style="width: 40px; height: 40px; background: #EA580C; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                            </svg>
+                        </div>
+                        <h3 style="font-size: 16px; font-weight: 700; color: #9A3412; margin: 0;">Biases in Collection
+                        </h3>
+                    </div>
+                    <p
+                        style="font-size: 12px; color: #7C3D12; margin: 0 0 12px; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                        Bias enters during the data gathering stage, before any model is trained.</p>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <div
+                            style="background: white; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #9A3412; font-weight: 600; font-family: 'Sora', sans-serif;">
+                            📊 Sampling Bias</div>
+                        <div
+                            style="background: white; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #9A3412; font-weight: 600; font-family: 'Sora', sans-serif;">
+                            ✈️ Survivorship Bias</div>
+                        <div
+                            style="background: white; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #9A3412; font-weight: 600; font-family: 'Sora', sans-serif;">
+                            📋 Data Collection Bias</div>
+                    </div>
+                </div>
+                <!-- Reporting -->
+                <div class="overview-card" style="background: #F3E8FF; border: 2px solid #DDD6FE;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                        <div
+                            style="width: 40px; height: 40px; background: #8B5CF6; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polygon
+                                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                </polygon>
+                            </svg>
+                        </div>
+                        <h3 style="font-size: 16px; font-weight: 700; color: #5B21B6; margin: 0;">Biases in Reporting
+                        </h3>
+                    </div>
+                    <p
+                        style="font-size: 12px; color: #5B21B6; margin: 0 0 12px; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                        Bias occurs in how data outcomes are communicated, recorded, or shared.</p>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <div
+                            style="background: white; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #5B21B6; font-weight: 600; font-family: 'Sora', sans-serif;">
+                            🔍 Reporting Bias</div>
+                        <div
+                            style="background: white; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #5B21B6; font-weight: 600; font-family: 'Sora', sans-serif;">
+                            🎭 Social Desirability Bias</div>
+                        <div
+                            style="background: white; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #5B21B6; font-weight: 600; font-family: 'Sora', sans-serif;">
+                            📚 Publication Bias</div>
+                    </div>
+                </div>
+                <!-- Systematic -->
+                <div class="overview-card" style="background: #FEF2F2; border: 2px solid #FECACA;">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 14px;">
+                        <div
+                            style="width: 40px; height: 40px; background: #DC2626; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path>
+                            </svg>
+                        </div>
+                        <h3 style="font-size: 16px; font-weight: 700; color: #991B1B; margin: 0;">Systematic Biases</h3>
+                    </div>
+                    <p
+                        style="font-size: 12px; color: #991B1B; margin: 0 0 12px; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                        Biases embedded in historical patterns or through algorithm design and function.</p>
+                    <div style="display: flex; flex-direction: column; gap: 6px;">
+                        <div
+                            style="background: white; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #991B1B; font-weight: 600; font-family: 'Sora', sans-serif;">
+                            🏛️ Historical Bias</div>
+                        <div
+                            style="background: white; border-radius: 8px; padding: 8px 12px; font-size: 12px; color: #991B1B; font-weight: 600; font-family: 'Sora', sans-serif;">
+                            🤖 Algorithmic Bias</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION C — BIASES IN COLLECTION -->
+        <!-- ============================================================ -->
+        <section class="section">
+            <div class="section-header" style="background: #FFF7ED; border: 1px solid #FED7AA;">
+                <div
+                    style="width: 44px; height: 44px; background: #EA580C; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span
+                        style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #EA580C; font-family: 'Sora', sans-serif;">Category
+                        1</span>
+                    <h2 style="font-size: 22px; font-weight: 700; color: #7C2D12; margin: 2px 0 0;">Biases in Collection
+                    </h2>
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <!-- Card 1: Sampling Bias -->
+                <div class="card" style="grid-column: span 2;">
+                    <div class="expandable-header" onclick="toggleCard(this)">
+                        <div style="flex: 1;">
+                            <div class="badge"
+                                style="background: #FFF7ED; color: #EA580C; border: 1px solid #FED7AA; margin-bottom: 8px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <rect x="3" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="3" width="7" height="7"></rect>
+                                    <rect x="14" y="14" width="7" height="7"></rect>
+                                    <rect x="3" y="14" width="7" height="7"></rect>
+                                </svg>
+                                Collection Bias
+                            </div>
+                            <h3 style="font-size: 18px; font-weight: 700; color: #1E293B; margin: 0 0 6px;">Sampling
+                                Bias</h3>
+                            <p style="font-size: 13px; color: #64748B; margin: 0; font-family: 'DM Sans', sans-serif;">
+                                Sample data is not representative of the population being analyzed.</p>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="expandable-body">
+                        <div style="margin-top: 18px; border-top: 1px solid #F1F5F9; padding-top: 18px;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start;">
+                                <div>
+                                    <div
+                                        style="background: #FFF7ED; border-radius: 10px; padding: 14px; margin-bottom: 14px;">
+                                        <p
+                                            style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #EA580C; margin: 0 0 6px; font-family: 'Sora', sans-serif;">
+                                            Scenario</p>
+                                        <p
+                                            style="font-size: 13px; color: #3D1D00; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                            A tech company developing an AI-based facial recognition system for gender
+                                            classification uses a dataset <strong>predominantly composed of images from
+                                                public figures and celebrities</strong> sourced from the internet.</p>
+                                    </div>
+                                    <div
+                                        style="background: #FFF7ED; border-radius: 10px; padding: 14px; margin-bottom: 14px;">
+                                        <p
+                                            style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #EA580C; margin: 0 0 6px; font-family: 'Sora', sans-serif;">
+                                            Bias Identified</p>
+                                        <p
+                                            style="font-size: 13px; color: #3D1D00; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                            Dataset likely underrepresents <strong>older individuals</strong>,
+                                            <strong>people of varying attractiveness</strong>, and <strong>ethnic
+                                                minorities</strong>. The AI may perform poorly for faces outside these
+                                            demographic groups.</p>
+                                    </div>
+                                    <div
+                                        style="background: #FEF9C3; border-radius: 10px; padding: 14px; border-left: 3px solid #EA580C;">
+                                        <p
+                                            style="font-size: 13px; color: #3D1D00; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6; font-style: italic;">
+                                            "You need to make sure that you have not just a large volume of training
+                                            data, but that training data is diverse and balanced across different
+                                            demographics — or you might have differential performance."</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p
+                                        style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #EA580C; margin: 0 0 12px; font-family: 'Sora', sans-serif;">
+                                        Confidence Scores by Demographic Group</p>
+                                    <div style="background: #F8FAFC; border-radius: 10px; padding: 14px;">
+                                        <div class="confidence-bar">
+                                            <span class="confidence-bar-label">Lighter Male</span>
+                                            <div class="confidence-bar-track">
+                                                <div class="confidence-bar-fill"
+                                                    style="width: 91%; background: #22C55E;"></div>
+                                            </div>
+                                            <span class="confidence-bar-pct">Highest</span>
+                                        </div>
+                                        <div class="confidence-bar">
+                                            <span class="confidence-bar-label">Lighter Female</span>
+                                            <div class="confidence-bar-track">
+                                                <div class="confidence-bar-fill"
+                                                    style="width: 76%; background: #84CC16;"></div>
+                                            </div>
+                                            <span class="confidence-bar-pct">High</span>
+                                        </div>
+                                        <div class="confidence-bar">
+                                            <span class="confidence-bar-label">Darker Male</span>
+                                            <div class="confidence-bar-track">
+                                                <div class="confidence-bar-fill"
+                                                    style="width: 55%; background: #F59E0B;"></div>
+                                            </div>
+                                            <span class="confidence-bar-pct">Lower</span>
+                                        </div>
+                                        <div class="confidence-bar">
+                                            <span class="confidence-bar-label">Darker Female</span>
+                                            <div class="confidence-bar-track">
+                                                <div class="confidence-bar-fill"
+                                                    style="width: 34%; background: #EF4444;"></div>
+                                            </div>
+                                            <span class="confidence-bar-pct">Lowest</span>
+                                        </div>
+                                        <p
+                                            style="font-size: 11px; color: #94A3B8; margin: 10px 0 0; font-family: 'DM Sans', sans-serif; text-align: center;">
+                                            Source: Facial recognition confidence score study — Dr. Ian McCullough, JHU
+                                        </p>
+                                    </div>
+                                    <div
+                                        style="background: #FEF2F2; border-radius: 10px; padding: 12px; margin-top: 14px; border: 1px solid #FECACA;">
+                                        <p
+                                            style="font-size: 12px; font-weight: 700; color: #DC2626; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                            ⚠ Implication</p>
+                                        <p
+                                            style="font-size: 12px; color: #7F1D1D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                            Significant inaccuracies and higher error rates for underrepresented groups,
+                                            leading to biased and unreliable results in practical applications.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div
+                                style="margin-top: 14px; background: #ECFDF5; border-radius: 10px; padding: 14px; border-left: 3px solid #10B981;">
+                                <p
+                                    style="font-size: 13px; color: #065F46; margin: 0; font-family: 'DM Sans', sans-serif;">
+                                    <strong>Key Lesson:</strong> Training data must be not just large in volume, but
+                                    <strong>diverse AND balanced</strong> across all demographics present in real-world
+                                    use.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Data Collection Bias (compact) -->
+                <div class="card">
+                    <div class="expandable-header" onclick="toggleCard(this)">
+                        <div style="flex: 1;">
+                            <div class="badge"
+                                style="background: #FFF7ED; color: #EA580C; border: 1px solid #FED7AA; margin-bottom: 8px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14 2 14 8 20 8"></polyline>
+                                </svg>
+                                Collection Bias
+                            </div>
+                            <h3 style="font-size: 16px; font-weight: 700; color: #1E293B; margin: 0 0 6px;">Data
+                                Collection Bias</h3>
+                            <p style="font-size: 12px; color: #64748B; margin: 0; font-family: 'DM Sans', sans-serif;">
+                                Bias introduced during the collection process itself.</p>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="expandable-body">
+                        <div
+                            style="margin-top: 14px; border-top: 1px solid #F1F5F9; padding-top: 14px; display: flex; flex-direction: column; gap: 10px;">
+                            <div style="background: #FFF7ED; border-radius: 8px; padding: 10px;">
+                                <p
+                                    style="font-size: 12px; font-weight: 700; color: #EA580C; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                    Observer Bias</p>
+                                <p
+                                    style="font-size: 12px; color: #7C2D12; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                    Data collectors unconsciously record data that confirms their expectations.</p>
+                            </div>
+                            <div style="background: #FFF7ED; border-radius: 8px; padding: 10px;">
+                                <p
+                                    style="font-size: 12px; font-weight: 700; color: #EA580C; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                    Instrument Bias</p>
+                                <p
+                                    style="font-size: 12px; color: #7C2D12; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                    Faulty or poorly calibrated measurement tools produce systematic errors.</p>
+                            </div>
+                            <div style="background: #FFF7ED; border-radius: 8px; padding: 10px;">
+                                <p
+                                    style="font-size: 12px; font-weight: 700; color: #EA580C; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                    Selection Bias in Collection</p>
+                                <p
+                                    style="font-size: 12px; color: #7C2D12; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                    Choosing convenient data sources over representative ones (e.g., health data only
+                                    from hospitals).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Survivorship Bias — Full Width -->
+            <div class="card" style="margin-top: 16px;">
+                <div class="expandable-header" onclick="toggleCard(this)">
+                    <div style="flex: 1;">
+                        <div class="badge"
+                            style="background: #FFF7ED; color: #EA580C; border: 1px solid #FED7AA; margin-bottom: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.89 12l-2.3-2.3">
+                                </path>
+                            </svg>
+                            Collection Bias
+                        </div>
+                        <h3 style="font-size: 18px; font-weight: 700; color: #1E293B; margin: 0 0 6px;">Survivorship
+                            Bias</h3>
+                        <p style="font-size: 13px; color: #64748B; margin: 0; font-family: 'DM Sans', sans-serif;">Only
+                            looking at survivors from a process — not those that did not make it through.</p>
+                    </div>
+                    <div class="expand-icon">▼</div>
+                </div>
+                <div class="expandable-body">
+                    <div style="margin-top: 18px; border-top: 1px solid #F1F5F9; padding-top: 18px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start;">
+                            <div>
+                                <div
+                                    style="background: #FFF7ED; border-radius: 10px; padding: 14px; margin-bottom: 14px;">
+                                    <p
+                                        style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #EA580C; margin: 0 0 6px; font-family: 'Sora', sans-serif;">
+                                        The WWII Scenario</p>
+                                    <p
+                                        style="font-size: 13px; color: #3D1D00; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                        During WWII, military analysts examined returning aircraft to find bullet
+                                        damage. They saw damage concentrated on <strong>wings and fuselage</strong>, and
+                                        proposed reinforcing these areas with additional armor.</p>
+                                </div>
+                                <div
+                                    style="background: #FEF2F2; border-radius: 10px; padding: 14px; margin-bottom: 14px; border-left: 3px solid #DC2626;">
+                                    <p
+                                        style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #DC2626; margin: 0 0 6px; font-family: 'Sora', sans-serif;">
+                                        The Flaw</p>
+                                    <p
+                                        style="font-size: 13px; color: #7F1D1D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                        The analysis only included <strong>planes that survived and returned</strong>.
+                                        Missing from the data were planes shot down — those likely hit in
+                                        <strong>engines or cockpit</strong>, which never made it back.</p>
+                                </div>
+                                <div
+                                    style="background: #ECFDF5; border-radius: 10px; padding: 14px; border-left: 3px solid #10B981;">
+                                    <p
+                                        style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #10B981; margin: 0 0 6px; font-family: 'Sora', sans-serif;">
+                                        The Solution</p>
+                                    <p
+                                        style="font-size: 13px; color: #064E3B; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                        Armor was placed on the <strong>areas WITHOUT bullet holes</strong> — engines
+                                        and cockpit — leading to more successful outcomes. The missing data told the
+                                        real story.</p>
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Aircraft SVG Diagram -->
+                                <div
+                                    style="background: #1E293B; border-radius: 14px; padding: 20px; text-align: center;">
+                                    <p
+                                        style="font-size: 11px; color: #94A3B8; margin: 0 0 12px; font-family: 'Sora', sans-serif; text-transform: uppercase; letter-spacing: 0.08em;">
+                                        Aircraft Bullet Hole Analysis</p>
+                                    <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg"
+                                        style="width: 100%; max-width: 260px; margin: 0 auto; display: block;">
+                                        <!-- Fuselage -->
+                                        <ellipse cx="130" cy="95" rx="80" ry="22" fill="#334155" stroke="#64748B"
+                                            stroke-width="1.5" />
+                                        <!-- Left wing -->
+                                        <polygon points="130,85 50,60 30,75 130,100" fill="#334155" stroke="#64748B"
+                                            stroke-width="1.5" />
+                                        <!-- Right wing -->
+                                        <polygon points="130,85 210,60 230,75 130,100" fill="#334155" stroke="#64748B"
+                                            stroke-width="1.5" />
+                                        <!-- Tail -->
+                                        <polygon points="50,95 20,75 20,115" fill="#334155" stroke="#64748B"
+                                            stroke-width="1.5" />
+                                        <polygon points="50,85 35,65 45,85" fill="#334155" stroke="#64748B"
+                                            stroke-width="1.5" />
+                                        <!-- Nose -->
+                                        <ellipse cx="208" cy="95" rx="12" ry="14" fill="#475569" stroke="#64748B"
+                                            stroke-width="1.5" />
+                                        <!-- Engine (left wing) -->
+                                        <ellipse cx="80" cy="70" rx="16" ry="8" fill="#1E3A5F" stroke="#3B82F6"
+                                            stroke-width="2" />
+                                        <!-- Engine right wing -->
+                                        <ellipse cx="180" cy="70" rx="16" ry="8" fill="#1E3A5F" stroke="#3B82F6"
+                                            stroke-width="2" />
+                                        <!-- Cockpit -->
+                                        <ellipse cx="185" cy="88" rx="14" ry="10" fill="#1E3A5F" stroke="#3B82F6"
+                                            stroke-width="2" />
+
+                                        <!-- RED DOTS — visible damage (wings/fuselage) -->
+                                        <circle cx="70" cy="65" r="3.5" fill="#EF4444" opacity="0.9" />
+                                        <circle cx="55" cy="70" r="3" fill="#EF4444" opacity="0.8" />
+                                        <circle cx="85" cy="78" r="3" fill="#EF4444" opacity="0.9" />
+                                        <circle cx="190" cy="65" r="3.5" fill="#EF4444" opacity="0.9" />
+                                        <circle cx="205" cy="72" r="3" fill="#EF4444" opacity="0.8" />
+                                        <circle cx="175" cy="75" r="3.5" fill="#EF4444" opacity="0.9" />
+                                        <circle cx="110" cy="90" r="3" fill="#EF4444" opacity="0.9" />
+                                        <circle cx="130" cy="93" r="3.5" fill="#EF4444" opacity="0.8" />
+                                        <circle cx="150" cy="91" r="3" fill="#EF4444" opacity="0.9" />
+                                        <circle cx="120" cy="100" r="3" fill="#EF4444" opacity="0.8" />
+                                        <circle cx="100" cy="95" r="3" fill="#EF4444" opacity="0.7" />
+                                        <circle cx="155" cy="97" r="3" fill="#EF4444" opacity="0.8" />
+                                        <circle cx="40" cy="80" r="3" fill="#EF4444" opacity="0.7" />
+                                        <circle cx="35" cy="95" r="3" fill="#EF4444" opacity="0.7" />
+
+                                        <!-- Labels -->
+                                        <text x="80" y="55" fill="#EF4444" font-size="8" text-anchor="middle"
+                                            font-family="sans-serif">Visible Damage</text>
+                                        <text x="80" y="48" fill="#EF4444" font-size="7" text-anchor="middle"
+                                            font-family="sans-serif">(Reinforce here?)</text>
+
+                                        <!-- Critical zone labels -->
+                                        <text x="80" y="83" fill="#60A5FA" font-size="7" text-anchor="middle"
+                                            font-family="sans-serif">Engine</text>
+                                        <text x="180" y="83" fill="#60A5FA" font-size="7" text-anchor="middle"
+                                            font-family="sans-serif">Engine</text>
+                                        <text x="185" y="103" fill="#60A5FA" font-size="7" text-anchor="middle"
+                                            font-family="sans-serif">Cockpit</text>
+                                        <text x="132" y="165" fill="#60A5FA" font-size="8" text-anchor="middle"
+                                            font-family="sans-serif">← Actually armor THESE areas</text>
+                                    </svg>
+                                    <div style="margin-top: 12px; display: flex; justify-content: center; gap: 16px;">
+                                        <div style="display: flex; align-items: center; gap: 5px;"><span
+                                                style="width: 10px; height: 10px; background: #EF4444; border-radius: 50%; display: inline-block;"></span><span
+                                                style="font-size: 10px; color: #94A3B8; font-family: sans-serif;">Visible
+                                                bullet holes</span></div>
+                                        <div style="display: flex; align-items: center; gap: 5px;"><span
+                                                style="width: 10px; height: 10px; background: #3B82F6; border-radius: 50%; display: inline-block;"></span><span
+                                                style="font-size: 10px; color: #94A3B8; font-family: sans-serif;">Critical
+                                                unaffected zones</span></div>
+                                    </div>
+                                </div>
+                                <div
+                                    style="background: #F0FDF4; border-radius: 10px; padding: 12px; margin-top: 12px; border: 1px solid #86EFAC;">
+                                    <p
+                                        style="font-size: 13px; color: #14532D; margin: 0; font-family: 'DM Sans', sans-serif; text-align: center; font-weight: 600;">
+                                        💡 "The missing data tells you more than the visible data"</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION D — BIASES IN REPORTING -->
+        <!-- ============================================================ -->
+        <section class="section">
+            <div class="section-header" style="background: #F3E8FF; border: 1px solid #DDD6FE;">
+                <div
+                    style="width: 44px; height: 44px; background: #8B5CF6; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                        </polygon>
+                    </svg>
+                </div>
+                <div>
+                    <span
+                        style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #8B5CF6; font-family: 'Sora', sans-serif;">Category
+                        2</span>
+                    <h2 style="font-size: 22px; font-weight: 700; color: #3B0764; margin: 2px 0 0;">Biases in Reporting
+                    </h2>
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <!-- Reporting Bias (compact) -->
+                <div class="card">
+                    <div class="expandable-header" onclick="toggleCard(this)">
+                        <div style="flex: 1;">
+                            <div class="badge"
+                                style="background: #F3E8FF; color: #8B5CF6; border: 1px solid #DDD6FE; margin-bottom: 8px;">
+                                Reporting</div>
+                            <h3 style="font-size: 16px; font-weight: 700; color: #1E293B; margin: 0 0 6px;">Reporting
+                                Bias</h3>
+                            <p style="font-size: 12px; color: #64748B; margin: 0; font-family: 'DM Sans', sans-serif;">
+                                Only outcomes supporting a particular viewpoint are reported.</p>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="expandable-body">
+                        <div style="margin-top: 14px; border-top: 1px solid #F1F5F9; padding-top: 14px;">
+                            <div style="background: #F3E8FF; border-radius: 8px; padding: 12px; margin-bottom: 10px;">
+                                <p
+                                    style="font-size: 13px; color: #4C1D95; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                    When only certain outcomes of data points are reported — especially those that
+                                    support a particular hypothesis or point of view — the resulting dataset becomes
+                                    inherently skewed.</p>
+                            </div>
+                            <div style="background: #F9F5FF; border-radius: 8px; padding: 12px;">
+                                <p
+                                    style="font-size: 12px; font-weight: 700; color: #8B5CF6; margin: 0 0 6px; font-family: 'Sora', sans-serif;">
+                                    Example</p>
+                                <p
+                                    style="font-size: 12px; color: #4C1D95; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                    A pharmaceutical company publishes only clinical trials showing their drug is
+                                    effective, shelving neutral or negative results. An AI trained on this data would
+                                    dramatically overestimate drug effectiveness.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Publication Bias (compact) -->
+                <div class="card">
+                    <div class="expandable-header" onclick="toggleCard(this)">
+                        <div style="flex: 1;">
+                            <div class="badge"
+                                style="background: #F3E8FF; color: #8B5CF6; border: 1px solid #DDD6FE; margin-bottom: 8px;">
+                                Reporting</div>
+                            <h3 style="font-size: 16px; font-weight: 700; color: #1E293B; margin: 0 0 6px;">Publication
+                                Bias</h3>
+                            <p style="font-size: 12px; color: #64748B; margin: 0; font-family: 'DM Sans', sans-serif;">
+                                Only significant or positive results tend to get published.</p>
+                        </div>
+                        <div class="expand-icon">▼</div>
+                    </div>
+                    <div class="expandable-body">
+                        <div style="margin-top: 14px; border-top: 1px solid #F1F5F9; padding-top: 14px;">
+                            <div style="background: #F3E8FF; border-radius: 8px; padding: 12px; margin-bottom: 10px;">
+                                <p
+                                    style="font-size: 13px; color: #4C1D95; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                    Studies with significant or positive results are far more likely to be published,
+                                    which skews the research landscape. Negative results sit unpublished in researchers'
+                                    file drawers.</p>
+                            </div>
+                            <div style="background: #2D1B69; border-radius: 8px; padding: 12px;">
+                                <p
+                                    style="font-size: 13px; color: #DDD6FE; margin: 0; font-family: 'DM Sans', sans-serif; text-align: center; font-weight: 600;">
+                                    📁 The "File Drawer Problem"</p>
+                                <p
+                                    style="font-size: 11px; color: #A78BFA; margin: 6px 0 0; font-family: 'DM Sans', sans-serif; text-align: center;">
+                                    Negative results sit unpublished → AI systems trained on published literature
+                                    develop a skewed view of what interventions actually work.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Desirability Bias — spans all columns below -->
+            </div>
+
+            <!-- Social Desirability — Featured Full Width -->
+            <div class="card" style="margin-top: 16px; border: 2px solid #DDD6FE;">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                    <div class="badge" style="background: #8B5CF6; color: white;">⭐ Featured — Primary Evidence</div>
+                </div>
+                <div class="expandable-header" onclick="toggleCard(this)">
+                    <div style="flex: 1;">
+                        <h3 style="font-size: 20px; font-weight: 700; color: #1E293B; margin: 0 0 6px;">Social
+                            Desirability Bias</h3>
+                        <p style="font-size: 13px; color: #64748B; margin: 0; font-family: 'DM Sans', sans-serif;">
+                            Respondents answer how they think the data collector <em>wants</em> to hear, not what they
+                            truly believe.</p>
+                    </div>
+                    <div class="expand-icon">▼</div>
+                </div>
+                <div class="expandable-body">
+                    <div style="margin-top: 18px; border-top: 1px solid #F1F5F9; padding-top: 18px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
+                            <div>
+                                <div
+                                    style="background: #F3E8FF; border-radius: 10px; padding: 14px; margin-bottom: 14px;">
+                                    <p
+                                        style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #8B5CF6; margin: 0 0 6px; font-family: 'Sora', sans-serif;">
+                                        Scenario</p>
+                                    <p
+                                        style="font-size: 13px; color: #3B0764; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                        A tech company builds a <strong>sentiment analysis AI</strong> using survey data
+                                        on sensitive topics like racial discrimination and political views. Respondents
+                                        provide socially acceptable answers — not their true opinions — to avoid
+                                        judgment or backlash.</p>
+                                </div>
+                                <div
+                                    style="background: #FEF2F2; border-radius: 10px; padding: 14px; margin-bottom: 14px; border-left: 3px solid #DC2626;">
+                                    <p
+                                        style="font-size: 12px; font-weight: 700; color: #DC2626; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                        ⚠ Implication</p>
+                                    <p
+                                        style="font-size: 12px; color: #7F1D1D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                        The AI produces inaccurate sentiment analyses, failing to reflect the true
+                                        sentiment of the population it's meant to understand.</p>
+                                </div>
+                                <div
+                                    style="background: #F3E8FF; border-radius: 10px; padding: 14px; border-style: dashed; border-width: 1px; border-color: #8B5CF6; font-style: italic;">
+                                    <p
+                                        style="font-size: 13px; color: #4C1D95; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                        "People are going to report what they think is the right answer as opposed to
+                                        what they truly believe — and AI models inherit this distortion."</p>
+                                    <p
+                                        style="font-size: 11px; color: #8B5CF6; margin: 6px 0 0; font-family: 'Sora', sans-serif;">
+                                        — Dr. Ian McCullough, JHU</p>
+                                </div>
+                            </div>
+                            <div>
+                                <p
+                                    style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #8B5CF6; margin: 0 0 10px; font-family: 'Sora', sans-serif;">
+                                    ALLBUS Survey Data — Missing Response Rates</p>
+                                <div style="overflow-x: auto;">
+                                    <table class="allbus-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Question Topic</th>
+                                                <th style="text-align: right;">1990</th>
+                                                <th style="text-align: right;">2000</th>
+                                                <th style="text-align: right;">Change</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Household net-income</td>
+                                                <td style="text-align: right;">26.2%</td>
+                                                <td style="text-align: right;">23.5%</td>
+                                                <td style="text-align: right; color: #10B981;">▼ 2.7%</td>
+                                            </tr>
+                                            <tr class="highlight">
+                                                <td><strong>🔍 Voting intention</strong></td>
+                                                <td style="text-align: right;"><strong>14.4%</strong></td>
+                                                <td style="text-align: right;"><strong>22.7%</strong></td>
+                                                <td style="text-align: right; color: #DC2626;">▲ 8.3%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Religious denomination</td>
+                                                <td style="text-align: right;">0.4%</td>
+                                                <td style="text-align: right;">0.7%</td>
+                                                <td style="text-align: right; color: #DC2626;">▲ 0.3%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Educational attainment</td>
+                                                <td style="text-align: right;">0.8%</td>
+                                                <td style="text-align: right;">0.3%</td>
+                                                <td style="text-align: right; color: #10B981;">▼ 0.5%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Membership of trade union</td>
+                                                <td style="text-align: right;">1.7%</td>
+                                                <td style="text-align: right;">0.2%</td>
+                                                <td style="text-align: right; color: #10B981;">▼ 1.5%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Employment status</td>
+                                                <td style="text-align: right;">0.1%</td>
+                                                <td style="text-align: right;">0.2%</td>
+                                                <td style="text-align: right; color: #DC2626;">▲ 0.1%</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Age</td>
+                                                <td style="text-align: right;">0.4%</td>
+                                                <td style="text-align: right;">0.0%</td>
+                                                <td style="text-align: right; color: #10B981;">▼ 0.4%</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div
+                                    style="background: #FFF7ED; border-radius: 8px; padding: 12px; margin-top: 12px; border-left: 3px solid #EA580C;">
+                                    <p
+                                        style="font-size: 12px; color: #7C2D12; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                        <strong>Key Anomaly:</strong> Voting intention missing responses jumped from
+                                        14.4% (1990) to 22.7% (2000) — an 8.3% surge while all other categories remained
+                                        stable. This suggests political sensitivity suppressed responses in 1990.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            style="margin-top: 14px; background: #4C1D95; border-radius: 10px; padding: 14px; color: white; text-align: center;">
+                            <p
+                                style="font-size: 13px; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                "The gap between reported and actual beliefs creates a <strong>hidden layer of
+                                    bias</strong> in survey-trained AI systems that cannot be corrected without knowing
+                                the truth."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION E — SYSTEMATIC BIASES -->
+        <!-- ============================================================ -->
+        <section class="section">
+            <div class="section-header" style="background: #FEF2F2; border: 1px solid #FECACA;">
+                <div
+                    style="width: 44px; height: 44px; background: #DC2626; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span
+                        style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #DC2626; font-family: 'Sora', sans-serif;">Category
+                        3</span>
+                    <h2 style="font-size: 22px; font-weight: 700; color: #7F1D1D; margin: 2px 0 0;">Systematic Biases
+                    </h2>
+                </div>
+            </div>
+
+            <!-- Historical Bias -->
+            <div class="card" style="margin-bottom: 16px;">
+                <div class="expandable-header" onclick="toggleCard(this)">
+                    <div style="flex: 1;">
+                        <div class="badge"
+                            style="background: #FEF2F2; color: #DC2626; border: 1px solid #FECACA; margin-bottom: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Systematic Bias
+                        </div>
+                        <h3 style="font-size: 18px; font-weight: 700; color: #1E293B; margin: 0 0 6px;">Historical Bias
+                        </h3>
+                        <p style="font-size: 13px; color: #64748B; margin: 0; font-family: 'DM Sans', sans-serif;">
+                            Biased results present in historical data are perpetuated in future models.</p>
+                    </div>
+                    <div class="expand-icon">▼</div>
+                </div>
+                <div class="expandable-body">
+                    <div style="margin-top: 18px; border-top: 1px solid #F1F5F9; padding-top: 18px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px;">
+                            <div>
+                                <div
+                                    style="background: #FEF2F2; border-radius: 10px; padding: 14px; margin-bottom: 14px;">
+                                    <p
+                                        style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #DC2626; margin: 0 0 6px; font-family: 'Sora', sans-serif;">
+                                        Scenario</p>
+                                    <p
+                                        style="font-size: 13px; color: #7F1D1D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                        A company develops a <strong>hiring algorithm</strong> to screen resumes and
+                                        predict job performance based on historical hiring data. The training data
+                                        predominantly includes resumes of employees who were hired and performed well —
+                                        reflecting <strong>historical biases favoring certain demographics</strong>.</p>
+                                </div>
+                                <div
+                                    style="background: #FEF9C3; border-radius: 10px; padding: 14px; margin-bottom: 14px;">
+                                    <p
+                                        style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #92400E; margin: 0 0 6px; font-family: 'Sora', sans-serif;">
+                                        Mitigation Insight (from source)</p>
+                                    <p
+                                        style="font-size: 12px; color: #78350F; margin: 0 0 8px; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                        "It might be better to go back and think about what are the qualifications we
+                                        want — and identify those qualities in applicants independently."</p>
+                                    <p
+                                        style="font-size: 12px; color: #78350F; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                        AI masking of demographic indicators is one approach, but may not fully solve
+                                        the problem if resumes are still evaluated against historical patterns.</p>
+                                </div>
+                            </div>
+                            <div>
+                                <!-- Cycle Diagram -->
+                                <p
+                                    style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #DC2626; margin: 0 0 12px; font-family: 'Sora', sans-serif;">
+                                    The Perpetuation Cycle</p>
+                                <div style="background: #FEF2F2; border-radius: 12px; padding: 16px;">
+                                    <div
+                                        style="display: flex; align-items: center; justify-content: center; gap: 4px; flex-wrap: wrap;">
+                                        <div class="cycle-item" style="background: #FEE2E2; color: #991B1B;">📊
+                                            Historical Data</div>
+                                        <div class="cycle-arrow">→</div>
+                                        <div class="cycle-item" style="background: #FEE2E2; color: #991B1B;">🤖 Model
+                                            Training</div>
+                                        <div style="width: 100%; height: 8px;"></div>
+                                        <div class="cycle-item" style="background: #FEE2E2; color: #991B1B;">↩
+                                            Reinforced Inequality</div>
+                                        <div class="cycle-arrow">←</div>
+                                        <div class="cycle-item" style="background: #FEE2E2; color: #991B1B;">⚠ Biased
+                                            Predictions</div>
+                                    </div>
+                                    <p
+                                        style="font-size: 11px; color: #DC2626; text-align: center; margin: 12px 0 0; font-family: 'DM Sans', sans-serif;">
+                                        "It's very difficult when developing a selection tool to use your existing
+                                        population as the benchmark."</p>
+                                </div>
+                                <div
+                                    style="background: #FEF2F2; border-radius: 10px; padding: 12px; margin-top: 12px; border: 1px solid #FECACA;">
+                                    <p
+                                        style="font-size: 12px; font-weight: 700; color: #DC2626; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                        ⚠ Implication</p>
+                                    <p
+                                        style="font-size: 12px; color: #7F1D1D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                        Biased hiring practices are perpetuated, limiting diversity and disadvantaging
+                                        equally qualified candidates from underrepresented groups.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Algorithmic Bias -->
+            <div class="card">
+                <div class="expandable-header" onclick="toggleCard(this)">
+                    <div style="flex: 1;">
+                        <div class="badge"
+                            style="background: #FEF2F2; color: #DC2626; border: 1px solid #FECACA; margin-bottom: 8px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="2" ry="2"></rect>
+                                <line x1="8" y1="6" x2="8" y2="18"></line>
+                                <line x1="16" y1="6" x2="16" y2="18"></line>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                            </svg>
+                            Systematic Bias
+                        </div>
+                        <h3 style="font-size: 18px; font-weight: 700; color: #1E293B; margin: 0 0 6px;">Algorithmic Bias
+                        </h3>
+                        <p style="font-size: 13px; color: #64748B; margin: 0; font-family: 'DM Sans', sans-serif;">Bias
+                            arising from the design and function of the algorithm itself.</p>
+                    </div>
+                    <div class="expand-icon">▼</div>
+                </div>
+                <div class="expandable-body">
+                    <div style="margin-top: 18px; border-top: 1px solid #F1F5F9; padding-top: 18px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 18px;">
+                            <div>
+                                <div
+                                    style="background: #FEF2F2; border-radius: 10px; padding: 14px; margin-bottom: 14px;">
+                                    <p
+                                        style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #DC2626; margin: 0 0 6px; font-family: 'Sora', sans-serif;">
+                                        Scenario</p>
+                                    <p
+                                        style="font-size: 13px; color: #7F1D1D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                        An AI system predicts the likelihood of patients developing
+                                        <strong>complications after surgery</strong> using preoperative health data. The
+                                        model uses data where <strong>certain demographic groups are
+                                            overrepresented</strong>, and where missing data is <em>asymmetric</em>
+                                        across protected and non-protected groups.</p>
+                                </div>
+                                <div
+                                    style="background: #FEF2F2; border-radius: 10px; padding: 14px; border-left: 3px solid #DC2626;">
+                                    <p
+                                        style="font-size: 12px; font-weight: 700; color: #DC2626; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                        Core Problem</p>
+                                    <p
+                                        style="font-size: 12px; color: #7F1D1D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                        Label removal is <strong>not the same</strong> across protected and
+                                        non-protected groups. This asymmetric missing data enters the model, causing the
+                                        algorithm to underpredict risk for older patients or those with complex medical
+                                        histories.</p>
+                                </div>
+                            </div>
+                            <div>
+                                <div
+                                    style="background: #7F1D1D; border-radius: 10px; padding: 14px; border: 1px solid #FECACA;">
+                                    <p
+                                        style="font-size: 12px; font-weight: 700; color: #FCA5A5; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                        ⚠ Implication</p>
+                                    <p
+                                        style="font-size: 12px; color: #FEE2E2; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                        The AI system may <strong>fail to adequately predict complications</strong> for
+                                        diverse patient groups, risking patient safety and leading to suboptimal medical
+                                        care for the most vulnerable patients.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pipeline Diagram -->
+                        <p
+                            style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #DC2626; margin: 0 0 12px; font-family: 'Sora', sans-serif;">
+                            Model Bias Pipeline — Entry Points</p>
+                        <div style="background: #F8FAFC; border-radius: 12px; padding: 16px; overflow-x: auto;">
+                            <div style="display: flex; gap: 8px; min-width: 600px; align-items: stretch;">
+                                <!-- Development -->
+                                <div class="pipeline-stage" style="background: #FEE2E2;">
+                                    <h5 style="color: #991B1B;">Model Development</h5>
+                                    <div><span class="pipeline-tag"
+                                            style="background: #FEF2F2; color: #DC2626;">Features</span></div>
+                                    <div><span class="pipeline-tag"
+                                            style="background: #FEF2F2; color: #DC2626;">Labels</span></div>
+                                    <div><span class="pipeline-tag"
+                                            style="background: #FCA5A5; color: #7F1D1D;">Missing-data bias</span></div>
+                                    <div><span class="pipeline-tag" style="background: #FCA5A5; color: #7F1D1D;">Cohort
+                                            bias</span></div>
+                                    <div><span class="pipeline-tag" style="background: #FCA5A5; color: #7F1D1D;">Label
+                                            bias</span></div>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: center; color: #DC2626; font-size: 18px; flex-shrink: 0;">
+                                    →</div>
+                                <!-- Deployment -->
+                                <div class="pipeline-stage" style="background: #FECDD3;">
+                                    <h5 style="color: #9F1239;">Model Deployment</h5>
+                                    <div><span class="pipeline-tag" style="background: #FFE4E6; color: #9F1239;">Live
+                                            patient data</span></div>
+                                    <div><span class="pipeline-tag"
+                                            style="background: #FDA4AF; color: #881337;">Training-serving skew</span>
+                                    </div>
+                                    <div><span class="pipeline-tag"
+                                            style="background: #FDA4AF; color: #881337;">Privilege bias</span></div>
+                                    <div><span class="pipeline-tag"
+                                            style="background: #FDA4AF; color: #881337;">Patients not served</span>
+                                    </div>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: center; color: #DC2626; font-size: 18px; flex-shrink: 0;">
+                                    →</div>
+                                <!-- Clinician -->
+                                <div class="pipeline-stage" style="background: #FECACA;">
+                                    <h5 style="color: #7F1D1D;">Clinician Interaction</h5>
+                                    <div><span class="pipeline-tag"
+                                            style="background: #FEE2E2; color: #7F1D1D;">Automation bias</span></div>
+                                    <div><span class="pipeline-tag"
+                                            style="background: #FEE2E2; color: #7F1D1D;">Dismissal bias</span></div>
+                                    <div><span class="pipeline-tag" style="background: #FCA5A5; color: #7F1D1D;">Alert
+                                            fatigue</span></div>
+                                    <div><span class="pipeline-tag"
+                                            style="background: #FCA5A5; color: #7F1D1D;">Allocation discrepancy</span>
+                                    </div>
+                                </div>
+                                <div
+                                    style="display: flex; align-items: center; color: #DC2626; font-size: 18px; flex-shrink: 0;">
+                                    →</div>
+                                <!-- Patient -->
+                                <div class="pipeline-stage"
+                                    style="background: #B91C1C; flex-shrink: 0; min-width: 100px;">
+                                    <h5 style="color: #FFE4E6;">Patient Impact</h5>
+                                    <div><span class="pipeline-tag" style="background: #991B1B; color: #FCA5A5;">Agency
+                                            bias</span></div>
+                                    <div><span class="pipeline-tag"
+                                            style="background: #991B1B; color: #FCA5A5;">Informed mistrust</span></div>
+                                    <div><span class="pipeline-tag"
+                                            style="background: #7F1D1D; color: #FCA5A5;">Suboptimal care</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION F — HOMOGENEOUS VS. HETEROGENEOUS DATA -->
+        <!-- ============================================================ -->
+        <section class="section">
+            <div class="section-header" style="background: #E0E7FF; border: 1px solid #C7D2FE;">
+                <div
+                    style="width: 44px; height: 44px; background: #6366F1; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="3" x2="12" y2="21"></line>
+                        <path d="M3 12h18M3 6h18M3 18h18"></path>
+                    </svg>
+                </div>
+                <div>
+                    <span
+                        style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6366F1; font-family: 'Sora', sans-serif;">Analytical
+                        Framework</span>
+                    <h2 style="font-size: 22px; font-weight: 700; color: #312E81; margin: 2px 0 0;">Bias in Homogeneous
+                        vs. Heterogeneous Data</h2>
+                </div>
+            </div>
+
+            <div
+                style="border-radius: 16px; overflow: hidden; border: 1px solid #C7D2FE; box-shadow: 0 4px 16px rgba(99,102,241,0.1);">
+                <div class="split-panel" style="flex-direction: row;">
+                    <!-- Homogeneous -->
+                    <div class="split-panel-side" style="background: #EDE9FE;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+                            <div
+                                style="width: 36px; height: 36px; background: #7C3AED; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                    <circle cx="12" cy="12" r="1"></circle>
+                                </svg>
+                            </div>
+                            <h3 style="font-size: 17px; font-weight: 700; color: #3B0764; margin: 0;">Homogeneous Data
+                            </h3>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="background: white; border-radius: 10px; padding: 12px;">
+                                <p
+                                    style="font-size: 12px; font-weight: 700; color: #7C3AED; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                    Non-Representative Sample</p>
+                                <p
+                                    style="font-size: 12px; color: #4C1D95; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                    The sample does not represent the broader population — you're only seeing a narrow
+                                    slice of reality.</p>
+                            </div>
+                            <div style="background: white; border-radius: 10px; padding: 12px;">
+                                <p
+                                    style="font-size: 12px; font-weight: 700; color: #7C3AED; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                    Overfitting</p>
+                                <p
+                                    style="font-size: 12px; color: #4C1D95; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                    Models learn to perform very well on the narrow training data but fail to generalize
+                                    to more diverse real-world data.</p>
+                            </div>
+                            <div style="background: white; border-radius: 10px; padding: 12px;">
+                                <p
+                                    style="font-size: 12px; font-weight: 700; color: #7C3AED; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                    Confirmation Bias</p>
+                                <p
+                                    style="font-size: 12px; color: #4C1D95; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                    Reinforces pre-existing assumptions and leads to biased conclusions because you
+                                    haven't examined a broader sample.</p>
+                            </div>
+                            <div style="background: #7C3AED; border-radius: 10px; padding: 12px;">
+                                <p
+                                    style="font-size: 12px; color: #EDE9FE; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5; font-style: italic;">
+                                    "You'll be really good at prediction on that sample of data, but it's consistently
+                                    wrong in that it doesn't represent the general population."</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div style="width: 3px; background: linear-gradient(to bottom, #8B5CF6, #6366F1); flex-shrink: 0;">
+                    </div>
+
+                    <!-- Heterogeneous -->
+                    <div class="split-panel-side" style="background: #E0E7FF;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+                            <div
+                                style="width: 36px; height: 36px; background: #6366F1; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                                    fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="16 3 21 3 21 8"></polyline>
+                                    <line x1="4" y1="20" x2="21" y2="3"></line>
+                                    <polyline points="21 16 21 21 16 21"></polyline>
+                                    <line x1="15" y1="15" x2="21" y2="21"></line>
+                                </svg>
+                            </div>
+                            <h3 style="font-size: 17px; font-weight: 700; color: #1E1B4B; margin: 0;">Heterogeneous Data
+                            </h3>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 10px;">
+                            <div style="background: white; border-radius: 10px; padding: 12px;">
+                                <p
+                                    style="font-size: 12px; font-weight: 700; color: #6366F1; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                    Measurement Bias</p>
+                                <p
+                                    style="font-size: 12px; color: #3730A3; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                    If data is collected differently from different groups, this leads to variability in
+                                    data quality across populations.</p>
+                            </div>
+                            <div style="background: white; border-radius: 10px; padding: 12px;">
+                                <p
+                                    style="font-size: 12px; font-weight: 700; color: #6366F1; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                    Complex Interaction Effects</p>
+                                <p
+                                    style="font-size: 12px; color: #3730A3; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                    Different subgroups have different characteristics and behaviors, creating
+                                    interaction effects between variables.</p>
+                            </div>
+                            <div style="background: white; border-radius: 10px; padding: 12px;">
+                                <p
+                                    style="font-size: 12px; font-weight: 700; color: #6366F1; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                                    Confounding Variables</p>
+                                <p
+                                    style="font-size: 12px; color: #3730A3; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                                    You can't determine if it's variable A or variable B making the difference because
+                                    you don't see contrast between them.</p>
+                            </div>
+                            <!-- Dimmer Switch Analogy -->
+                            <div class="dimmer-box">
+                                <p
+                                    style="font-size: 12px; font-weight: 700; color: #A5B4FC; margin: 0 0 6px; font-family: 'Sora', sans-serif;">
+                                    💡 The Dimmer Switch Analogy</p>
+                                <p
+                                    style="font-size: 12px; color: #C7D2FE; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                    "You turn the dimmer switch up, the light gets bright. You turn it down, the light
+                                    gets lower. But if the <strong style="color: #FCD34D;">circuit breaker is
+                                        off</strong>, it doesn't matter how you turn that dimmer switch — the light's
+                                    not getting brighter or darker. It's just off." Variables interact in ways that
+                                    completely override individual effects.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Insight Box -->
+                <div style="background: #312E81; padding: 20px 24px;">
+                    <div style="display: flex; align-items: flex-start; gap: 14px;">
+                        <div
+                            style="width: 32px; height: 32px; background: #6366F1; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke="white" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            </svg>
+                        </div>
+                        <div>
+                            <p
+                                style="font-size: 14px; color: #C7D2FE; margin: 0 0 6px; font-family: 'DM Sans', sans-serif; line-height: 1.7; font-style: italic;">
+                                "It's always good to have the data. Whether you want to use the data in a model outcome
+                                is another story, but you can keep some variables to simply test if there is bias —
+                                either legal, systematic, or data bias — present in your solution."</p>
+                            <p
+                                style="font-size: 12px; color: #818CF8; margin: 0; font-family: 'Sora', sans-serif; font-weight: 600;">
+                                — Dr. Ian McCullough, Johns Hopkins University</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION G — MITIGATING BIAS -->
+        <!-- ============================================================ -->
+        <section class="section">
+            <div class="section-header" style="background: #D1FAE5; border: 1px solid #A7F3D0;">
+                <div
+                    style="width: 44px; height: 44px; background: #10B981; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <polyline points="9 12 11 14 15 10"></polyline>
+                    </svg>
+                </div>
+                <div>
+                    <span
+                        style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #10B981; font-family: 'Sora', sans-serif;">Practical
+                        Resolution</span>
+                    <h2 style="font-size: 22px; font-weight: 700; color: #064E3B; margin: 2px 0 0;">Mitigating Bias</h2>
+                </div>
+            </div>
+
+            <!-- Primary: 7 Source Strategies -->
+            <div class="card" style="margin-bottom: 16px; border: 2px solid #A7F3D0;">
+                <h4
+                    style="font-size: 16px; font-weight: 700; color: #065F46; margin: 0 0 18px; font-family: 'Sora', sans-serif;">
+                    Seven Core Strategies — Dr. Ian McCullough, JHU</h4>
+                <div class="grid-7" style="gap: 14px;">
+                    <div
+                        style="background: #F0FDF4; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 8px; border: 1px solid #D1FAE5;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="mitigation-num">1</div>
+                            <p
+                                style="font-size: 13px; font-weight: 700; color: #065F46; margin: 0; font-family: 'Sora', sans-serif;">
+                                Representative Sampling</p>
+                        </div>
+                        <p
+                            style="font-size: 12px; color: #14532D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                            Ensure the sample is representative and randomly selected to avoid systematic exclusion of
+                            any group.</p>
+                    </div>
+                    <div
+                        style="background: #F0FDF4; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 8px; border: 1px solid #D1FAE5;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="mitigation-num">2</div>
+                            <p
+                                style="font-size: 13px; font-weight: 700; color: #065F46; margin: 0; font-family: 'Sora', sans-serif;">
+                                Validated Measurement Instruments</p>
+                        </div>
+                        <p
+                            style="font-size: 12px; color: #14532D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                            "Try not to make up your own survey instruments. Try and use things that people have already
+                            done and tested before." — Dr. McCullough</p>
+                    </div>
+                    <div
+                        style="background: #F0FDF4; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 8px; border: 1px solid #D1FAE5;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="mitigation-num">3</div>
+                            <p
+                                style="font-size: 13px; font-weight: 700; color: #065F46; margin: 0; font-family: 'Sora', sans-serif;">
+                                Train Data Collectors</p>
+                        </div>
+                        <p
+                            style="font-size: 12px; color: #14532D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                            Thoroughly train data collectors to minimize observer bias and standardize collection
+                            methodology across all groups.</p>
+                    </div>
+                    <div
+                        style="background: #F0FDF4; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 8px; border: 1px solid #D1FAE5;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="mitigation-num">4</div>
+                            <p
+                                style="font-size: 13px; font-weight: 700; color: #065F46; margin: 0; font-family: 'Sora', sans-serif;">
+                                Multiple Sources & Contexts</p>
+                        </div>
+                        <p
+                            style="font-size: 12px; color: #14532D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                            Collect data from multiple diverse sources and contexts to reduce the influence of any
+                            single biased source.</p>
+                    </div>
+                    <div
+                        style="background: #F0FDF4; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 8px; border: 1px solid #D1FAE5;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="mitigation-num">5</div>
+                            <p
+                                style="font-size: 13px; font-weight: 700; color: #065F46; margin: 0; font-family: 'Sora', sans-serif;">
+                                Transparent Reporting</p>
+                        </div>
+                        <p
+                            style="font-size: 12px; color: #14532D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                            Transparently report ALL data results — including null and negative results — to prevent
+                            publication and reporting bias.</p>
+                    </div>
+                    <div
+                        style="background: #F0FDF4; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 8px; border: 1px solid #D1FAE5;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="mitigation-num">6</div>
+                            <p
+                                style="font-size: 13px; font-weight: 700; color: #065F46; margin: 0; font-family: 'Sora', sans-serif;">
+                                Regular Auditing</p>
+                        </div>
+                        <p
+                            style="font-size: 12px; color: #14532D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                            Regularly audit and evaluate both data and algorithms for bias, especially as models are
+                            updated and deployed in new contexts.</p>
+                    </div>
+                    <div
+                        style="background: #F0FDF4; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 8px; border: 1px solid #D1FAE5;">
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div class="mitigation-num">7</div>
+                            <p
+                                style="font-size: 13px; font-weight: 700; color: #065F46; margin: 0; font-family: 'Sora', sans-serif;">
+                                Diverse Perspectives</p>
+                        </div>
+                        <p
+                            style="font-size: 12px; color: #14532D; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.5;">
+                            Include diverse perspectives in the data collection and analysis process to surface blind
+                            spots that homogeneous teams may miss.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Secondary: Additional Technical Approaches -->
+            <div style="background: #F8FAFC; border-radius: 14px; padding: 20px; border: 1px solid #E2E8F0;">
+                <h4
+                    style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #64748B; margin: 0 0 14px; font-family: 'Sora', sans-serif;">
+                    Additional Technical Approaches (Supplementary)</h4>
+                <div class="grid-3">
+                    <div style="background: white; border-radius: 10px; padding: 14px; border-top: 3px solid #6366F1;">
+                        <p
+                            style="font-size: 13px; font-weight: 700; color: #4338CA; margin: 0 0 8px; font-family: 'Sora', sans-serif;">
+                            Pre-processing</p>
+                        <div style="display: flex; flex-direction: column; gap: 4px;">
+                            <span style="font-size: 12px; color: #475569; font-family: 'DM Sans', sans-serif;">•
+                                Re-sampling & re-weighting</span>
+                            <span style="font-size: 12px; color: #475569; font-family: 'DM Sans', sans-serif;">• Data
+                                augmentation for diversity</span>
+                            <span style="font-size: 12px; color: #475569; font-family: 'DM Sans', sans-serif;">• Dataset
+                                bias audits before training</span>
+                        </div>
+                    </div>
+                    <div style="background: white; border-radius: 10px; padding: 14px; border-top: 3px solid #8B5CF6;">
+                        <p
+                            style="font-size: 13px; font-weight: 700; color: #5B21B6; margin: 0 0 8px; font-family: 'Sora', sans-serif;">
+                            In-processing</p>
+                        <div style="display: flex; flex-direction: column; gap: 4px;">
+                            <span style="font-size: 12px; color: #475569; font-family: 'DM Sans', sans-serif;">•
+                                Fairness constraints in training</span>
+                            <span style="font-size: 12px; color: #475569; font-family: 'DM Sans', sans-serif;">•
+                                Adversarial debiasing</span>
+                            <span style="font-size: 12px; color: #475569; font-family: 'DM Sans', sans-serif;">•
+                                Multi-objective optimization</span>
+                        </div>
+                    </div>
+                    <div style="background: white; border-radius: 10px; padding: 14px; border-top: 3px solid #10B981;">
+                        <p
+                            style="font-size: 13px; font-weight: 700; color: #065F46; margin: 0 0 8px; font-family: 'Sora', sans-serif;">
+                            Post-processing</p>
+                        <div style="display: flex; flex-direction: column; gap: 4px;">
+                            <span style="font-size: 12px; color: #475569; font-family: 'DM Sans', sans-serif;">•
+                                Threshold adjustment by group</span>
+                            <span style="font-size: 12px; color: #475569; font-family: 'DM Sans', sans-serif;">•
+                                Calibration across demographics</span>
+                            <span style="font-size: 12px; color: #475569; font-family: 'DM Sans', sans-serif;">•
+                                Human-in-the-loop review</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION H — KEY TAKEAWAYS -->
+        <!-- ============================================================ -->
+        <section class="section">
+            <div class="section-header" style="background: #F0FDF4; border: 1px solid #BBF7D0;">
+                <div
+                    style="width: 44px; height: 44px; background: #22C55E; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                        stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                </div>
+                <div>
+                    <span
+                        style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #22C55E; font-family: 'Sora', sans-serif;">Synthesis</span>
+                    <h2 style="font-size: 22px; font-weight: 700; color: #14532D; margin: 2px 0 0;">Key Takeaways</h2>
+                </div>
+            </div>
+
+            <div class="grid-3" style="gap: 14px;">
+                <div class="takeaway-card">
+                    <div style="display: flex; align-items: flex-start; gap: 10px;">
+                        <span style="font-size: 20px; flex-shrink: 0;">🗺</span>
+                        <div>
+                            <p
+                                style="font-size: 12px; font-weight: 700; color: #15803D; margin: 0 0 4px; font-family: 'Sora', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;">
+                                Three Categories</p>
+                            <p
+                                style="font-size: 13px; color: #1E293B; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                Data bias falls into Collection, Reporting, and Systematic categories — each requires
+                                different mitigation approaches.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="takeaway-card">
+                    <div style="display: flex; align-items: flex-start; gap: 10px;">
+                        <span style="font-size: 20px; flex-shrink: 0;">⚖️</span>
+                        <div>
+                            <p
+                                style="font-size: 12px; font-weight: 700; color: #15803D; margin: 0 0 4px; font-family: 'Sora', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;">
+                                Diverse & Balanced</p>
+                            <p
+                                style="font-size: 13px; color: #1E293B; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                Training data must be not just large in volume — it must be <strong>diverse AND
+                                    balanced</strong> across all demographics. (Sampling Bias)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="takeaway-card">
+                    <div style="display: flex; align-items: flex-start; gap: 10px;">
+                        <span style="font-size: 20px; flex-shrink: 0;">👁‍🗨</span>
+                        <div>
+                            <p
+                                style="font-size: 12px; font-weight: 700; color: #15803D; margin: 0 0 4px; font-family: 'Sora', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;">
+                                Missing Data Speaks</p>
+                            <p
+                                style="font-size: 13px; color: #1E293B; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                Missing data tells you more than visible data — always ask what you are NOT seeing.
+                                (Survivorship Bias)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="takeaway-card">
+                    <div style="display: flex; align-items: flex-start; gap: 10px;">
+                        <span style="font-size: 20px; flex-shrink: 0;">🎭</span>
+                        <div>
+                            <p
+                                style="font-size: 12px; font-weight: 700; color: #15803D; margin: 0 0 4px; font-family: 'Sora', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;">
+                                Hidden Beliefs</p>
+                            <p
+                                style="font-size: 13px; color: #1E293B; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                People report socially acceptable answers, not true beliefs — survey-trained AI inherits
+                                this distortion. (Social Desirability)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="takeaway-card">
+                    <div style="display: flex; align-items: flex-start; gap: 10px;">
+                        <span style="font-size: 20px; flex-shrink: 0;">🔄</span>
+                        <div>
+                            <p
+                                style="font-size: 12px; font-weight: 700; color: #15803D; margin: 0 0 4px; font-family: 'Sora', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;">
+                                History Repeats</p>
+                            <p
+                                style="font-size: 13px; color: #1E293B; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                Historical data perpetuates historical inequities — past performance predictions
+                                disadvantage underrepresented groups. (Historical Bias)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="takeaway-card">
+                    <div style="display: flex; align-items: flex-start; gap: 10px;">
+                        <span style="font-size: 20px; flex-shrink: 0;">📊</span>
+                        <div>
+                            <p
+                                style="font-size: 12px; font-weight: 700; color: #15803D; margin: 0 0 4px; font-family: 'Sora', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;">
+                                Always Collect Data</p>
+                            <p
+                                style="font-size: 13px; color: #1E293B; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                Homogeneous and heterogeneous data each carry distinct risks — always collect the data;
+                                decide later whether to use it in your model. (Data Composition)</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="takeaway-card" style="grid-column: span 1;">
+                    <div style="display: flex; align-items: flex-start; gap: 10px;">
+                        <span style="font-size: 20px; flex-shrink: 0;">🛡</span>
+                        <div>
+                            <p
+                                style="font-size: 12px; font-weight: 700; color: #15803D; margin: 0 0 4px; font-family: 'Sora', sans-serif; text-transform: uppercase; letter-spacing: 0.06em;">
+                                Multi-Strategy Mitigation</p>
+                            <p
+                                style="font-size: 13px; color: #1E293B; margin: 0; font-family: 'DM Sans', sans-serif; line-height: 1.6;">
+                                Effective mitigation requires representative sampling, validated instruments, diverse
+                                perspectives, full transparency, and continuous auditing — no single strategy is
+                                sufficient. (Mitigation)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION I — FOOTER -->
+        <!-- ============================================================ -->
+        <footer
+            style="background: #1E293B; border-radius: 16px; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+            <div>
+                <h4
+                    style="font-size: 16px; font-weight: 700; color: white; margin: 0 0 4px; font-family: 'Sora', sans-serif;">
+                    Various Data Bias — A Data Perspective</h4>
+                <p style="font-size: 13px; color: #94A3B8; margin: 0; font-family: 'DM Sans', sans-serif;">Source: Dr.
+                    Ian McCullough — Lecture on Bias in AI Systems, Johns Hopkins University</p>
+            </div>
+            <div style="text-align: right;">
+                <p style="font-size: 11px; color: #64748B; margin: 0; font-family: 'DM Sans', sans-serif;">
+                    kishoretech.com · AI Education Series</p>
+                <p style="font-size: 11px; color: #475569; margin: 4px 0 0; font-family: 'DM Sans', sans-serif;">
+                    Print-friendly — All cards expanded on print</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        function toggleCard(header) {
+            const body = header.nextElementSibling;
+            const icon = header.querySelector('.expand-icon');
+            if (!body || !body.classList.contains('expandable-body')) return;
+            body.classList.toggle('open');
+            icon.classList.toggle('open');
+        }
+
+        // Auto-open first card in each section for preview
+        document.querySelectorAll('.expandable-body').forEach((body, i) => {
+            if (i === 0 || i === 3 || i === 6 || i === 8) {
+                body.classList.add('open');
+                const icon = body.previousElementSibling?.querySelector('.expand-icon');
+                if (icon) icon.classList.add('open');
+            }
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>
