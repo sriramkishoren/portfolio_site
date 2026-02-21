@@ -1,6 +1,6 @@
 {
   "generated": "2026-02-15",
-  "totalTags": 245,
+  "totalTags": 278,
   "tags": {
     "Machine Learning": [
       "ai-introduction/introduction-to-ai.html",
@@ -247,7 +247,8 @@
       "ai-project-management/road-framework-guide.html"
     ],
     "AI Governance": [
-      "ai-project-management/road-framework-guide.html"
+      "ai-project-management/road-framework-guide.html",
+      "ai-bias-and-risks/managing-ai-bias.html"
     ],
     "Data Engineering": [
       "ai-project-management/road-framework-guide.html",
@@ -486,7 +487,9 @@
       "data-optimization-for-ml/krippendorffs-Alpha.html",
       "data-optimization-for-ml/size-consistency-quality-tradeoffs.html",
       "data-optimization-for-ml/project-maven-data-quality-case-study.html",
-      "optimizing-ai-resources/quick-summary.html"
+      "optimizing-ai-resources/quick-summary.html",
+      "ai-bias-and-risks/various-data-bias.html",
+      "ai-bias-and-risks/bias_mitigation.html"
     ],
     "Active Learning": [
       "data-optimization-for-ml/data-labeling-challenges.html"
@@ -531,24 +534,28 @@
     ],
     "Annotation Quality": [
       "data-optimization-for-ml/cognitive-limits-terms-of-reference.html",
-      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html"
+      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html",
+      "ai-bias-and-risks/bias_mitigation.html"
     ],
     "ToR": [
       "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
     ],
     "Inter-Annotator Agreement": [
       "data-optimization-for-ml/inter-annotator-agreement.html",
-      "data-optimization-for-ml/krippendorffs-Alpha.html"
+      "data-optimization-for-ml/krippendorffs-Alpha.html",
+      "ai-bias-and-risks/bias_mitigation.html"
     ],
     "IAA": [
       "data-optimization-for-ml/inter-annotator-agreement.html",
       "data-optimization-for-ml/krippendorffs-Alpha.html"
     ],
     "Cohen's Kappa": [
-      "data-optimization-for-ml/inter-annotator-agreement.html"
+      "data-optimization-for-ml/inter-annotator-agreement.html",
+      "ai-bias-and-risks/bias_mitigation.html"
     ],
     "Fleiss' Kappa": [
-      "data-optimization-for-ml/inter-annotator-agreement.html"
+      "data-optimization-for-ml/inter-annotator-agreement.html",
+      "ai-bias-and-risks/bias_mitigation.html"
     ],
     "Krippendorff's Alpha": [
       "data-optimization-for-ml/inter-annotator-agreement.html",
@@ -935,9 +942,6 @@
       "ai-bias-and-risks/managing-ai-bias.html",
       "ai-bias-and-risks/bias_mitigation.html"
     ],
-    "AI Governance": [
-      "ai-bias-and-risks/managing-ai-bias.html"
-    ],
     "Algorithmic Fairness": [
       "ai-bias-and-risks/managing-ai-bias.html"
     ],
@@ -964,18 +968,6 @@
     ],
     "Bias Taxonomy": [
       "ai-bias-and-risks/various-data-bias.html"
-    ],
-    "Inter-Annotator Agreement": [
-      "ai-bias-and-risks/bias_mitigation.html"
-    ],
-    "Cohen's Kappa": [
-      "ai-bias-and-risks/bias_mitigation.html"
-    ],
-    "Fleiss' Kappa": [
-      "ai-bias-and-risks/bias_mitigation.html"
-    ],
-    "Annotation Quality": [
-      "ai-bias-and-risks/bias_mitigation.html"
     ],
     "IAA Metrics": [
       "ai-bias-and-risks/bias_mitigation.html"
