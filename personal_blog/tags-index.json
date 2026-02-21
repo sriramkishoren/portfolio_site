@@ -1,6 +1,6 @@
 {
   "generated": "2026-02-15",
-  "totalTags": 278,
+  "totalTags": 284,
   "tags": {
     "Machine Learning": [
       "ai-introduction/introduction-to-ai.html",
@@ -605,7 +605,8 @@
       "data-optimization-for-ml/project-maven-data-quality-case-study.html"
     ],
     "Claude Code": [
-      "agentic-ai/portfolio-site-using-claude-code.html"
+      "agentic-ai/portfolio-site-using-claude-code.html",
+      "agentic-ai/ai-coding-levels.html"
     ],
     "Agentic Coding": [
       "agentic-ai/portfolio-site-using-claude-code.html"
@@ -633,7 +634,8 @@
     ],
     "Agentic AI": [
       "agentic-ai/portfolio-site-using-claude-code.html",
-      "agentic-ai/ai-agent-security.html"
+      "agentic-ai/ai-agent-security.html",
+      "agentic-ai/ai-coding-levels.html"
     ],
     "Prompt Injection": [
       "agentic-ai/ai-agent-security.html"
@@ -971,6 +973,24 @@
     ],
     "IAA Metrics": [
       "ai-bias-and-risks/bias-mitigation.html"
+    ],
+    "AI Coding": [
+      "agentic-ai/ai-coding-levels.html"
+    ],
+    "Dark Factory": [
+      "agentic-ai/ai-coding-levels.html"
+    ],
+    "AI Productivity": [
+      "agentic-ai/ai-coding-levels.html"
+    ],
+    "Developer Skills": [
+      "agentic-ai/ai-coding-levels.html"
+    ],
+    "Autonomous Development": [
+      "agentic-ai/ai-coding-levels.html"
+    ],
+    "AI Tools": [
+      "agentic-ai/ai-coding-levels.html"
     ]
   }
 }

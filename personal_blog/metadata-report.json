@@ -1,6 +1,6 @@
 {
   "generated": "2026-02-21",
-  "totalPosts": 53,
+  "totalPosts": 54,
   "baseUrl": "https://www.kishoretech.com",
   "author": "Sriramkishore Naraharisetti",
   "categories": {
@@ -12,7 +12,7 @@
     "AI Bias and Risks": 5,
     "AI Business UseCases": 6,
     "AI Project Management": 2,
-    "Agentic AI": 2
+    "Agentic AI": 3
   },
   "posts": [
     {
@@ -491,6 +491,15 @@
       "datePublished": "2026-02-10",
       "tags": ["AI Agent Security", "Agentic AI", "Prompt Injection", "Supply Chain Attack", "OpenClaw", "AI Vulnerabilities", "Cybersecurity", "LLM Security"],
       "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=agentic-ai/ai-agent-security"
+    },
+    {
+      "file": "agentic-ai/ai-coding-levels.html",
+      "title": "The 5 Levels of AI Coding",
+      "description": "From spicy autocomplete to dark factories: explore the 5 levels of AI-assisted coding, the productivity paradox, and why most developers won't make it past Level 2.",
+      "category": "Agentic AI",
+      "datePublished": "2026-02-15",
+      "tags": ["AI Coding", "Agentic AI", "Dark Factory", "AI Productivity", "Developer Skills", "Autonomous Development", "Claude Code", "AI Tools"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=agentic-ai/ai-coding-levels"
     }
   ]
 }
