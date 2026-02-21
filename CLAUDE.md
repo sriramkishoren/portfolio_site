@@ -20,11 +20,13 @@ This is a static personal portfolio website for Sriramkishore Naraharisetti. The
   - `personal_blog/[Category]/[post-name].html` - individual blog posts organized by category
 - **Blog Categories** (lowercase with hyphens):
   - `ai-introduction/` - 2 posts introducing AI foundations and history
+  - `ml-fundamentals/` - 7 posts about machine learning basics
+  - `ml-algorithms/` - 10 posts about ML algorithm deep-dives
+  - `data-optimization-for-ml/` - 9 posts about data quality, labeling, and optimization for ML
+  - `optimizing-ai-resources/` - 10 posts about AI memory, compute, query expressiveness, and performance
+  - `ai-bias-and-risks/` - 5 posts about AI bias, fairness, ethics, and legal perspectives
   - `ai-business-usecases/` - 6 posts about AI applications in business
   - `ai-project-management/` - 2 posts about managing AI/ML projects
-  - `ml-algorithms/` - 10 posts about ML algorithm deep-dives
-  - `ml-fundamentals/` - 7 posts about machine learning basics
-  - `data-optimization-for-ml/` - 9 posts about data quality, labeling, and optimization for ML
   - `agentic-ai/` - 2 posts about agentic AI coding workflows and AI agent security
 - **Styling**: Tailwind CSS loaded via CDN (with forms, typography, aspect-ratio, line-clamp plugins)
 - **Icons**: Font Awesome 5.15.3 via CDN
@@ -50,16 +52,20 @@ portfolio_site/
 │   ├── tags-index.json     # Tag-to-posts mapping index
 │   ├── ai-introduction/
 │   │   └── [post].html     # AI foundations & history posts
+│   ├── ml-fundamentals/
+│   │   └── [post].html     # Machine learning basics posts
+│   ├── ml-algorithms/
+│   │   └── [post].html     # ML algorithm deep-dive posts
+│   ├── data-optimization-for-ml/
+│   │   └── [post].html     # Data quality & labeling optimization posts
+│   ├── optimizing-ai-resources/
+│   │   └── [post].html     # AI memory, compute & performance posts
+│   ├── ai-bias-and-risks/
+│   │   └── [post].html     # AI bias, fairness & ethics posts
 │   ├── ai-business-usecases/
 │   │   └── [post].html     # Business-focused AI posts
 │   ├── ai-project-management/
 │   │   └── [post].html     # AI/ML project lifecycle posts
-│   ├── ml-algorithms/
-│   │   └── [post].html     # ML algorithm deep-dive posts
-│   ├── ml-fundamentals/
-│   │   └── [post].html     # Machine learning basics posts
-│   ├── data-optimization-for-ml/
-│   │   └── [post].html     # Data quality & labeling optimization posts
 │   └── agentic-ai/
 │       └── [post].html     # Agentic AI coding & security posts
 └── specs/                  # Feature specifications
@@ -105,11 +111,13 @@ To add a new blog post:
 
 **Category IDs:**
 - `ai-intro` - AI Introduction
+- `ml-fundamentals` - ML Fundamentals
+- `ml-algorithms` - ML Algorithms
+- `data-optimization` - Data Optimization for ML
+- `optimizing-ai-resources` - Optimizing AI Resources
+- `ai-bias-and-risks` - AI Bias and Risks
 - `ai-business` - AI Business UseCases
 - `ai-pm` - AI Project Management
-- `ml-algorithms` - ML Algorithms
-- `ml-fundamentals` - ML Fundamentals
-- `data-optimization` - Data Optimization for ML
 - `agentic-ai` - Agentic AI
 
 ## SEO & GEO Metadata
@@ -191,7 +199,7 @@ The blog index (`personal_blog/index.html`) includes:
 
 All pages include GoatCounter for privacy-friendly visitor tracking (no cookies, GDPR compliant).
 
-**Tracking Script (on ALL 37 HTML pages):**
+**Tracking Script (on ALL 58 HTML pages):**
 ```html
 <script data-goatcounter="https://kishoretech.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
@@ -205,7 +213,7 @@ All pages include GoatCounter for privacy-friendly visitor tracking (no cookies,
 | `personal_blog/index.html` | Page-specific views |
 | `personal_blog/post.html` | Views for the specific blog post loaded via `?article=` param |
 
-Individual blog posts (33 files) have the tracking script but no visible counter (the post viewer shows the count instead).
+Individual blog posts (55 files) have the tracking script but no visible counter (the post viewer shows the count instead).
 
 **API Endpoints:**
 - Total site views: `https://kishoretech.goatcounter.com/counter/TOTAL.json`
