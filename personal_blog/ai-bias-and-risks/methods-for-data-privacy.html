@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methods for Data Privacy</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Methods for Data Privacy">
+    <meta name="description"
+        content="Explore practical data privacy methods: encryption, RBAC, masking, minimization, formal methods, and incident response. Includes Uber case study and GenAI risks.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Bias and Risks">
+    <meta name="tags"
+        content="Data Privacy, Encryption, RBAC, Data Masking, Data Minimization, Privacy by Design, Formal Methods, Incident Response, Deepfakes, Data Ownership">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary"
+        content="A practical guide to data privacy methods covering data encryption (AES-256, TLS 1.3), role-based access control, data masking and anonymization, data minimization, retention policies, privacy by design, mathematical formal methods (category theory), and incident response planning. Includes a case study on Uber's use of formal methods for global privacy compliance and explores data ownership challenges in the generative AI era including deepfakes and voice cloning.">
+    <link rel="canonical"
+        href="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/methods-for-data-privacy">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Methods for Data Privacy">
+    <meta property="og:description"
+        content="Practical data privacy methods: encryption, RBAC, masking, formal methods, and incident response -- plus how generative AI challenges personal data definitions.">
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/methods-for-data-privacy">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2026-02-23">
+    <meta property="article:section" content="AI Bias and Risks">
+    <meta property="article:tag" content="Data Privacy">
+    <meta property="article:tag" content="Encryption">
+    <meta property="article:tag" content="Privacy by Design">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Methods for Data Privacy",
+        "description": "Explore practical data privacy methods: encryption, RBAC, masking, minimization, formal methods, and incident response. Includes Uber case study and GenAI risks.",
+        "datePublished": "2026-02-23",
+        "dateModified": "2026-02-23",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/methods-for-data-privacy"
+        },
+        "keywords": ["Data Privacy", "Encryption", "RBAC", "Data Masking", "Data Minimization", "Privacy by Design", "Formal Methods", "Incident Response", "Deepfakes", "Data Ownership"],
+        "articleSection": "AI Bias and Risks",
+        "about": [
+            {"@type": "Thing", "name": "Data Privacy"},
+            {"@type": "Thing", "name": "Privacy by Design"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "AES-256"},
+            {"@type": "Thing", "name": "Uber"},
+            {"@type": "Thing", "name": "Deepfakes"}
+        ]
+    }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Base Typography */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #FAFBFC;
+            color: #475569;
+            /* medium gray */
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-sora {
+            font-family: 'Sora', sans-serif;
+            color: #1E293B;
+            /* dark charcoal */
+            letter-spacing: -0.02em;
+        }
+
+        /* Custom Color Palette (Bypassing Tailwind v3 limitations) */
+        .bg-custom-header {
+            background-color: #F0F9FF;
+        }
+
+        .text-custom-blue {
+            color: #0EA5E9;
+        }
+
+        .bg-custom-opening {
+            background-color: #F8FAFC;
+        }
+
+        .text-custom-gray {
+            color: #475569;
+        }
+
+        .bg-encryption {
+            background-color: #EFF6FF;
+        }
+
+        .text-encryption-accent {
+            color: #2563EB;
+        }
+
+        .border-encryption {
+            border-color: #BFDBFE;
+        }
+
+        .bg-rbac {
+            background-color: #F0FDFA;
+        }
+
+        .text-rbac-accent {
+            color: #0D9488;
+        }
+
+        .border-rbac {
+            border-color: #99F6E4;
+        }
+
+        .bg-masking {
+            background-color: #FDF4FF;
+        }
+
+        .text-masking-accent {
+            color: #A855F7;
+        }
+
+        .border-masking {
+            border-color: #E9D5FF;
+        }
+
+        .bg-minimization {
+            background-color: #FFF7ED;
+        }
+
+        .text-minimization-accent {
+            color: #EA580C;
+        }
+
+        .bg-minimization-accent {
+            background-color: #EA580C;
+        }
+
+        .border-minimization {
+            border-color: #FED7AA;
+        }
+
+        .bg-retention {
+            background-color: #F0F9FF;
+        }
+
+        .text-retention-accent {
+            color: #0284C7;
+        }
+
+        .bg-privacy-design {
+            background-color: #F0FDF4;
+        }
+
+        .text-privacy-design {
+            color: #16A34A;
+        }
+
+        .bg-formal {
+            background-color: #E0E7FF;
+        }
+
+        .text-formal-accent {
+            color: #6366F1;
+        }
+
+        .bg-incident {
+            background-color: #FEF2F2;
+        }
+
+        .text-incident-accent {
+            color: #DC2626;
+        }
+
+        .bg-deepfakes {
+            background-color: #FEF2F2;
+        }
+
+        .text-deepfakes-accent {
+            color: #EF4444;
+        }
+
+        .bg-complementary {
+            background-color: #D1FAE5;
+        }
+
+        .text-complementary-accent {
+            color: #10B981;
+        }
+
+        .bg-framework {
+            background-color: #FEF3C7;
+        }
+
+        .text-framework-accent {
+            color: #D97706;
+        }
+
+        .bg-takeaways {
+            background-color: #F0FDF4;
+        }
+
+        .text-takeaways-accent {
+            color: #22C55E;
+        }
+
+        /* Shared Card Styles */
+        .glass-card {
+            background-color: #FFFFFF;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Safe Fade-In Animation Pattern */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Top Rainbow Gradient Accent */
+        .rainbow-stripe {
+            height: 6px;
+            width: 100%;
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6, #EC4899, #EF4444, #F59E0B, #10B981);
+        }
+
+        /* Spectrum Bar Custom Styling */
+        .spectrum-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #10B981 0%, #F59E0B 50%, #EF4444 100%);
+        }
+
+        /* Print Media Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .glass-card {
+                box-shadow: none !important;
+                transform: none !important;
+                border: 2px solid #CBD5E1;
+                page-break-inside: avoid;
+            }
+
+            .fade-section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .rainbow-stripe {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased text-gray-700">
+
+    <div class="rainbow-stripe fixed top-0 left-0 z-50"></div>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 pb-24">
+
+        <header
+            class="text-center mb-16 fade-section bg-custom-header rounded-3xl p-8 border border-blue-100 relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 opacity-10">
+                <i data-lucide="shield" class="w-48 h-48 text-custom-blue"></i>
+            </div>
+            <div class="relative z-10">
+                <span
+                    class="inline-block py-1 px-3 rounded-full bg-blue-100 text-custom-blue text-xs font-bold tracking-wider uppercase mb-4">Toolkit</span>
+                <h1 class="text-4xl md:text-5xl font-sora font-extrabold mb-4 leading-tight">Methods for Data Privacy
+                </h1>
+                <p class="text-xl md:text-2xl font-sora text-gray-600 mb-6 font-semibold">A Practical Toolkit for
+                    Protecting Personal Data in the Age of AI</p>
+                <p class="max-w-2xl mx-auto text-lg mb-6">Explore the foundational safeguards, operational policies, and
+                    mathematical breakthroughs required to protect privacy when building modern systems.</p>
+                <div
+                    class="flex items-center justify-center gap-2 text-sm font-medium text-custom-blue bg-white inline-flex px-4 py-2 rounded-lg shadow-sm">
+                    <i data-lucide="building" class="w-4 h-4"></i>
+                    Dr. Ian McCullough, Johns Hopkins University
+                </div>
+            </div>
+        </header>
+
+        <section class="mb-16 fade-section glass-card bg-custom-opening p-8">
+            <div class="flex flex-col md:flex-row gap-8 items-start">
+                <div class="md:w-2/3">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+                        <i data-lucide="map" class="text-custom-gray w-6 h-6"></i>
+                        Why Methods Matter
+                    </h2>
+                    <p class="text-lg mb-4">When we look at methods for data privacy, there are a number. While this is
+                        not a cybersecurity course, it is crucial that your team or organization is at least addressing
+                        these common methods as you are doing development.</p>
+                    <div class="bg-white border-l-4 border-gray-400 p-4 rounded-r-lg mb-6 shadow-sm">
+                        <p class="font-semibold text-gray-800">"Data privacy requires more than regulations — it
+                            requires concrete methods that your team actively implements."</p>
+                    </div>
+                </div>
+                <div class="md:w-1/3 bg-white p-5 rounded-xl border border-gray-200 shadow-sm w-full">
+                    <h3 class="font-bold text-sm uppercase tracking-wide mb-3 flex items-center gap-2">
+                        <i data-lucide="help-circle" class="w-4 h-4"></i> Who concerns you?
+                    </h3>
+                    <p class="text-xs text-gray-500 mb-3">Consider who you are most concerned with having access to your
+                        data:</p>
+                    <ul class="space-y-2 text-sm font-medium text-gray-700">
+                        <li class="flex items-center gap-2">
+                            <div class="w-6 h-6 rounded bg-gray-100 flex items-center justify-center text-xs">1</div>
+                            The Government
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-6 h-6 rounded bg-gray-100 flex items-center justify-center text-xs">2</div>
+                            The Police
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-6 h-6 rounded bg-gray-100 flex items-center justify-center text-xs">3</div>
+                            Social Media Companies
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-6 h-6 rounded bg-gray-100 flex items-center justify-center text-xs">4</div>
+                            Your Employer
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <div class="w-6 h-6 rounded bg-gray-100 flex items-center justify-center text-xs">5</div>
+                            The General Public
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <section class="fade-section glass-card bg-encryption p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="p-3 bg-white rounded-lg shadow-sm border border-encryption">
+                        <i data-lucide="lock" class="text-encryption-accent w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-xl font-bold">Data Encryption</h2>
+                </div>
+                <p class="mb-5">Encrypting data at rest and in transit is essential to protect it from unauthorized
+                    access. You must ensure you are using strong encryption standards.</p>
+
+                <div class="bg-white rounded-xl p-4 border border-encryption flex items-center justify-between mb-4">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="database" class="w-5 h-5 text-gray-400"></i>
+                        <span class="font-semibold text-sm">Data at Rest</span>
+                    </div>
+                    <i data-lucide="shield" class="w-5 h-5 text-green-500"></i>
+                </div>
+                <div class="bg-white rounded-xl p-4 border border-encryption flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <i data-lucide="zap" class="w-5 h-5 text-gray-400"></i>
+                        <span class="font-semibold text-sm">Data in Transit</span>
+                    </div>
+                    <i data-lucide="shield" class="w-5 h-5 text-green-500"></i>
+                </div>
+                <div class="mt-4 pt-4 border-t border-encryption text-xs text-gray-500">
+                    <strong>Extends with:</strong> AES-256 (Rest), TLS 1.3 (Transit), Key Management
+                </div>
+            </section>
+
+            <section class="fade-section glass-card bg-rbac p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="p-3 bg-white rounded-lg shadow-sm border border-rbac">
+                        <i data-lucide="users" class="text-rbac-accent w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-xl font-bold">Role-Based Access</h2>
+                </div>
+                <p class="mb-5">A policy to restrict data based on the roles and responsibilities of users. You are not
+                    just letting everybody get access to data just because.</p>
+
+                <div class="bg-white rounded-xl p-4 border border-rbac h-28 flex flex-col justify-center gap-2">
+                    <div class="flex items-center gap-2 text-sm">
+                        <i data-lucide="user-check" class="w-4 h-4 text-green-500"></i>
+                        <span class="font-medium text-gray-800">Authorized Role</span>
+                        <span class="ml-auto text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Access
+                            Granted</span>
+                    </div>
+                    <div class="w-full h-px bg-gray-100 my-1"></div>
+                    <div class="flex items-center gap-2 text-sm opacity-60">
+                        <i data-lucide="user-x" class="w-4 h-4 text-red-500"></i>
+                        <span class="font-medium text-gray-800">Unrelated Role</span>
+                        <span class="ml-auto text-xs bg-red-100 text-red-700 px-2 py-1 rounded">Access Denied</span>
+                    </div>
+                </div>
+                <div class="mt-4 pt-4 border-t border-rbac text-xs text-gray-500">
+                    <strong>Extends with:</strong> Principle of Least Privilege, Access Reviews
+                </div>
+            </section>
+        </div>
+
+        <section class="mb-16 fade-section glass-card bg-masking p-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-3 bg-white rounded-lg shadow-sm border border-masking">
+                    <i data-lucide="eye-off" class="text-masking-accent w-6 h-6"></i>
+                </div>
+                <h2 class="text-2xl font-bold">Data Masking & Anonymization</h2>
+            </div>
+            <p class="text-lg mb-6">You may use data masking to obscure specific data in a database to protect it from
+                unauthorized use, or to anonymize it and protect it from being identifiable.</p>
+
+            <div class="bg-white rounded-2xl border border-masking p-6 shadow-sm">
+                <h3 class="font-bold text-center mb-6 tracking-wide text-gray-800 uppercase text-sm">The Zip Code
+                    Context Challenge</h3>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-green-50 border border-green-200 rounded-xl p-5 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-3 opacity-20"><i data-lucide="users"
+                                class="w-12 h-12 text-green-700"></i></div>
+                        <h4 class="font-bold text-green-800 mb-2 flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i> Large Population Zip Code
+                        </h4>
+                        <p class="text-sm text-green-700 mb-3">Looking at aggregated risk of disease is generally safe.
+                        </p>
+                        <div
+                            class="inline-flex items-center gap-1 text-xs font-bold bg-white text-green-700 px-2 py-1 rounded border border-green-200 shadow-sm">
+                            <i data-lucide="check-circle" class="w-3 h-3"></i> Individual data points blend in
+                        </div>
+                    </div>
+
+                    <div class="bg-red-50 border border-red-200 rounded-xl p-5 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-3 opacity-20"><i data-lucide="user-x"
+                                class="w-12 h-12 text-red-700"></i></div>
+                        <h4 class="font-bold text-red-800 mb-2 flex items-center gap-2">
+                            <i data-lucide="map-pin" class="w-4 h-4"></i> Small Population Zip Code
+                        </h4>
+                        <p class="text-sm text-red-700 mb-3">Very few people live here. Individuals become visible.</p>
+                        <div
+                            class="inline-flex items-center gap-1 text-xs font-bold bg-white text-red-700 px-2 py-1 rounded border border-red-200 shadow-sm">
+                            <i data-lucide="alert-triangle" class="w-3 h-3"></i> Risk of privacy violation
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-purple-50 rounded-xl p-4 text-center border border-purple-200">
+                    <p class="font-bold text-purple-900 flex items-center justify-center gap-2">
+                        <i data-lucide="layers" class="w-5 h-5"></i>
+                        Solution: Aggregate Contextually
+                    </p>
+                    <p class="text-sm text-purple-800 mt-1">The policy must require aggregation with neighboring zip
+                        codes. You still get the same informational value, but you successfully protect personally
+                        identifiable information.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section glass-card bg-minimization p-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-3 bg-white rounded-lg shadow-sm border border-minimization">
+                    <i data-lucide="filter" class="text-minimization-accent w-6 h-6"></i>
+                </div>
+                <h2 class="text-2xl font-bold">Data Minimization</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <p class="text-lg mb-4">Limit the collection of personal data to what is strictly necessary for the
+                        intended purpose. Organizations often collect everything they can for "maybe someday."</p>
+
+                    <div class="bg-white p-5 rounded-xl border border-minimization shadow-sm mb-4">
+                        <h3 class="font-bold text-gray-800 mb-2">The Deliberate Approach</h3>
+                        <p class="text-sm text-gray-600">Be forced into an exercise to define the intended goals of your
+                            AI system first. Then determine exactly what data is needed to drive those goals.</p>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div
+                            class="flex-1 bg-white p-3 rounded-lg border border-minimization text-center flex flex-col items-center justify-center shadow-sm">
+                            <i data-lucide="shield" class="w-5 h-5 text-minimization-accent mb-1"></i>
+                            <span class="text-xs font-bold uppercase">Better Privacy</span>
+                        </div>
+                        <div
+                            class="flex-1 bg-white p-3 rounded-lg border border-minimization text-center flex flex-col items-center justify-center shadow-sm">
+                            <i data-lucide="database" class="w-5 h-5 text-minimization-accent mb-1"></i>
+                            <span class="text-xs font-bold uppercase">Lower Costs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm h-64 flex flex-col relative group">
+                    <div
+                        class="h-1/5 bg-minimization-accent text-white flex items-center justify-center font-bold relative z-10 shadow-md">
+                        <span class="text-lg tracking-wide">20% : Data You Actually Need</span>
+                    </div>
+                    <div class="h-4/5 bg-gray-100 flex flex-col items-center justify-center relative p-4 text-center">
+                        <i data-lucide="trash-2" class="w-8 h-8 text-gray-300 mb-2"></i>
+                        <span class="text-gray-500 font-bold text-xl">80% : Data Never Used</span>
+                        <p class="text-xs text-gray-400 mt-2 max-w-[200px]">Most organizations don't know which 20% they
+                            actually need.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <section class="fade-section glass-card bg-retention p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="p-3 bg-white rounded-lg shadow-sm border border-blue-100">
+                        <i data-lucide="clock" class="text-retention-accent w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-xl font-bold">Retention Policies</h2>
+                </div>
+                <p class="mb-6">Implemented to make sure we do not keep data any longer than we have to.</p>
+
+                <div class="relative pt-2 pb-6">
+                    <div class="absolute left-4 top-2 bottom-6 w-0.5 bg-blue-200"></div>
+                    <div class="space-y-4 relative">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-white border-2 border-blue-400 flex items-center justify-center z-10">
+                                <i data-lucide="database" class="w-3 h-3 text-blue-500"></i></div>
+                            <span class="font-medium text-sm">Collect safely</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-white border-2 border-blue-400 flex items-center justify-center z-10">
+                                <i data-lucide="zap" class="w-3 h-3 text-blue-500"></i></div>
+                            <span class="font-medium text-sm">Use for intended purpose</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center z-10 shadow-sm">
+                                <i data-lucide="trash-2" class="w-4 h-4 text-white"></i></div>
+                            <span class="font-bold text-blue-800 text-sm">Delete when finished</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fade-section glass-card bg-privacy-design p-6">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="p-3 bg-white rounded-lg shadow-sm border border-green-100">
+                        <i data-lucide="pen-tool" class="text-privacy-design w-6 h-6"></i>
+                    </div>
+                    <h2 class="text-xl font-bold">Privacy by Design</h2>
+                </div>
+                <p class="mb-6">Incorporate privacy into the way we design and develop products from the beginning, so
+                    we don't have to collect personal identifiable information if we don't have to.</p>
+
+                <div class="flex flex-col gap-3">
+                    <div class="bg-white p-3 rounded-lg border border-red-100 flex items-center gap-3 opacity-60">
+                        <i data-lucide="x-circle" class="w-5 h-5 text-red-400"></i>
+                        <span class="text-sm line-through">Retrofitting privacy later</span>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg border border-green-200 shadow-sm flex items-center gap-3">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-green-500"></i>
+                        <span class="text-sm font-bold text-green-800">Built into the foundation</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="mb-16 fade-section glass-card bg-formal p-8 border-2 border-indigo-100">
+            <div
+                class="inline-block bg-indigo-100 text-indigo-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
+                The Breakthrough</div>
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-3 bg-white rounded-lg shadow-md border border-indigo-200">
+                    <i data-lucide="cpu" class="text-formal-accent w-8 h-8"></i>
+                </div>
+                <h2 class="text-3xl font-bold">Mathematical Formal Methods</h2>
+            </div>
+
+            <p class="text-lg mb-8 max-w-2xl">Probably one of the most exciting breakthroughs you won't hear a lot
+                about. Using mathematical formal methods, like category theory, creates inherently privacy-protecting
+                queries.</p>
+
+            <div class="bg-white rounded-2xl border border-indigo-100 shadow-lg overflow-hidden">
+                <div class="bg-indigo-50 px-6 py-4 border-b border-indigo-100 flex items-center gap-3">
+                    <i data-lucide="globe" class="w-5 h-5 text-indigo-600"></i>
+                    <h3 class="font-bold text-indigo-900">Case Study: Global Ride-Sharing (Uber)</h3>
+                </div>
+
+                <div class="p-6 grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+                    <div
+                        class="hidden md:block absolute top-1/2 left-8 right-8 h-0.5 bg-indigo-100 -z-10 transform -translate-y-1/2">
+                    </div>
+
+                    <div
+                        class="bg-white border-2 border-gray-100 rounded-xl p-4 flex flex-col items-center text-center shadow-sm z-10">
+                        <div
+                            class="w-10 h-10 rounded-full bg-gray-50 border border-gray-200 flex items-center justify-center mb-3">
+                            1</div>
+                        <h4 class="font-bold text-gray-800 text-sm mb-2">The Problem</h4>
+                        <p class="text-xs text-gray-500">Different privacy requirements globally. Each metro area
+                            developed data structures independently.</p>
+                    </div>
+
+                    <div
+                        class="bg-white border-2 border-red-100 rounded-xl p-4 flex flex-col items-center text-center shadow-sm z-10">
+                        <div
+                            class="w-10 h-10 rounded-full bg-red-50 border border-red-200 flex items-center justify-center mb-3">
+                            2</div>
+                        <h4 class="font-bold text-gray-800 text-sm mb-2">The Data Complexity</h4>
+                        <p class="text-xs text-gray-500">Drivers (licenses, insurance) vs. Passengers (credit cards).
+                            Massive amounts of required PII.</p>
+                    </div>
+
+                    <div
+                        class="bg-white border-2 border-indigo-200 rounded-xl p-4 flex flex-col items-center text-center shadow-md z-10 transform md:-translate-y-2">
+                        <div
+                            class="w-10 h-10 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center mb-3">
+                            <i data-lucide="code" class="w-4 h-4"></i></div>
+                        <h4 class="font-bold text-indigo-800 text-sm mb-2">The Solution</h4>
+                        <p class="text-xs text-indigo-600">Mathematical formal methods sit between the query and the
+                            data structures.</p>
+                    </div>
+
+                    <div
+                        class="bg-indigo-600 text-white rounded-xl p-4 flex flex-col items-center text-center shadow-lg z-10 transform md:scale-105">
+                        <div class="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center mb-3"><i
+                                data-lucide="shield" class="w-5 h-5 text-white"></i></div>
+                        <h4 class="font-bold text-white text-sm mb-2">The Result</h4>
+                        <p class="text-xs text-indigo-100">Privacy protection is built INTO the query. Violations are
+                            mathematically impossible.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 px-6 py-4 border-t border-gray-100 text-center">
+                    <p class="text-sm font-bold text-gray-600 italic">"Oftentimes much more secure than competing
+                        methods like blockchain."</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section glass-card bg-incident p-8">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="p-3 bg-white rounded-lg shadow-sm border border-red-100">
+                    <i data-lucide="alert-triangle" class="text-incident-accent w-6 h-6"></i>
+                </div>
+                <h2 class="text-2xl font-bold">Incident Response Planning</h2>
+            </div>
+            <p class="mb-8">Develop and maintain an incident response plan to address any data breaches promptly. Under
+                regulations like GDPR, you have a limited time window from when you are aware of a breach until you must
+                notify users.</p>
+
+            <div class="flex flex-wrap gap-2 md:gap-4 items-center justify-center text-sm font-semibold">
+                <div class="bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm text-gray-600">Detect</div>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                <div class="bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm text-gray-600">Contain</div>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                <div class="bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm text-gray-600">Eradicate
+                </div>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+                <div
+                    class="bg-red-50 px-4 py-2 rounded-lg border border-red-200 shadow-md text-red-700 flex items-center gap-2">
+                    <i data-lucide="bell" class="w-4 h-4"></i> Promptly Notify
+                </div>
+            </div>
+
+            <div class="mt-8 text-center bg-white rounded-xl p-4 border border-red-100 inline-block w-full">
+                <p class="text-red-600 font-bold flex justify-center items-center gap-2">
+                    <i data-lucide="clock" class="w-5 h-5"></i> GDPR mandates notification within tight timeframes
+                    (e.g., 72 hours).
+                </p>
+                <p class="text-xs text-gray-500 mt-1">You need a plan in place to act quickly.</p>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section glass-card bg-deepfakes p-8 border-2 border-red-200 shadow-xl">
+            <div class="text-center mb-10">
+                <h2 class="text-4xl font-extrabold text-gray-900 mb-4 font-sora">What is your data, anyway?</h2>
+                <div class="bg-white inline-block px-6 py-3 rounded-full border border-red-100 shadow-sm">
+                    <p class="text-lg font-bold text-red-600 flex items-center gap-2">
+                        <i data-lucide="camera" class="w-5 h-5"></i>
+                        With the advent of Generative AI, this has become a murky question.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6 mb-10">
+
+                <div class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm flex flex-col">
+                    <div class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                        <i data-lucide="user-x" class="w-5 h-5 text-gray-500"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Deepfake Likeness</h3>
+                    <p class="text-sm text-gray-600 mb-4 flex-grow">A well-known actress had her likeness used in
+                        pornographic videos created by others making a model.</p>
+                    <div class="bg-gray-50 p-3 rounded-lg border border-gray-100 mt-auto">
+                        <p class="text-xs font-semibold text-gray-700 italic">"Is a synthetic likeness necessarily HER
+                            data? Do model creators have rights to their output?"</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-5 border border-gray-200 shadow-sm flex flex-col">
+                    <div class="w-10 h-10 rounded-full bg-orange-100 flex items-center justify-center mb-4">
+                        <i data-lucide="alert-circle" class="w-5 h-5 text-orange-500"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Broadcast Exploitation</h3>
+                    <p class="text-sm text-gray-600 mb-4 flex-grow">Another actress had explicit deepfakes broadcast
+                        publicly over the internet.</p>
+                    <div class="bg-orange-50 p-3 rounded-lg border border-orange-100 mt-auto">
+                        <p class="text-xs font-semibold text-orange-800 italic">"A highly invasive use of data—but
+                            legally undefined whether a synthetic likeness qualifies as personal data."</p>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-xl p-5 border-2 border-red-300 shadow-md flex flex-col transform md:-translate-y-2 relative">
+                    <div
+                        class="absolute -top-3 -right-3 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-full uppercase tracking-widest shadow-sm">
+                        Key Case</div>
+                    <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center mb-4">
+                        <i data-lucide="mic" class="w-5 h-5 text-red-600"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">The OpenAI Voice Clone</h3>
+                    <p class="text-sm text-gray-600 mb-4 flex-grow">Scarlett Johansson explicitly refused to license her
+                        voice. OpenAI developed a synthetic voice so similar that close friends couldn't tell the
+                        difference.</p>
+
+                    <div class="space-y-2 mt-auto">
+                        <p class="text-xs font-bold text-red-700 uppercase tracking-wide">Unresolved Questions:</p>
+                        <ul class="text-xs text-gray-700 space-y-1 ml-2 list-disc pl-2">
+                            <li>Prove copying vs. independent creation?</li>
+                            <li>Right to prevent use?</li>
+                            <li>Right to seek damages?</li>
+                            <li>Can you own your voice in the AI age?</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-sm text-center">
+                <h3 class="font-bold text-sm uppercase tracking-wider text-gray-500 mb-6">The Data Ownership Spectrum
+                </h3>
+
+                <div class="relative max-w-2xl mx-auto mb-8">
+                    <div class="spectrum-bar w-full"></div>
+                    <div
+                        class="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-4 border-green-500">
+                    </div>
+                    <div
+                        class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-4 border-yellow-500">
+                    </div>
+                    <div
+                        class="absolute top-1/2 left-full transform -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-white border-4 border-red-500 shadow-lg ring-4 ring-red-100">
+                    </div>
+                </div>
+
+                <div class="flex justify-between text-xs font-bold text-gray-600 max-w-2xl mx-auto px-4">
+                    <div class="text-left"><span class="block text-green-600">Clearly Defined</span>Traditional Data
+                    </div>
+                    <div class="text-center"><span class="block text-yellow-600">Murky</span>Behavioral Profiles</div>
+                    <div class="text-right"><span class="block text-red-600">Undefined Ownership</span>AI-Generated
+                        Likeness</div>
+                </div>
+            </div>
+
+            <div class="mt-10 text-center">
+                <h3 class="text-2xl font-sora font-bold text-red-600">"If that doesn't get you concerned about data
+                    privacy, I'm not sure what does."</h3>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <h3 class="text-xl font-bold font-sora mb-6 flex items-center gap-2">
+                <i data-lucide="plus-circle" class="text-green-500 w-5 h-5"></i> Complementary Extensions
+            </h3>
+            <p class="text-sm mb-6 max-w-2xl">Additional methods that seamlessly extend and complement the core toolkit
+                discussed above.</p>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+                    <h4 class="font-bold text-sm mb-1">Tokenization</h4>
+                    <p class="text-xs text-gray-500 mb-3 flex-grow">Replaces sensitive data with non-sensitive tokens
+                        maintaining format.</p>
+                    <span class="text-[10px] font-bold bg-blue-50 text-blue-600 px-2 py-1 rounded self-start">Extends:
+                        Encryption</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+                    <h4 class="font-bold text-sm mb-1">Data Loss Prevention</h4>
+                    <p class="text-xs text-gray-500 mb-3 flex-grow">Monitors and controls movement to prevent leaks.</p>
+                    <span class="text-[10px] font-bold bg-teal-50 text-teal-600 px-2 py-1 rounded self-start">Extends:
+                        Access Control</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+                    <h4 class="font-bold text-sm mb-1">Zero Trust</h4>
+                    <p class="text-xs text-gray-500 mb-3 flex-grow">Requires verification for every single access
+                        request.</p>
+                    <span class="text-[10px] font-bold bg-teal-50 text-teal-600 px-2 py-1 rounded self-start">Extends:
+                        RBAC</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+                    <h4 class="font-bold text-sm mb-1">Audit Logging</h4>
+                    <p class="text-xs text-gray-500 mb-3 flex-grow">Records who accessed what data, when, and why.</p>
+                    <span class="text-[10px] font-bold bg-red-50 text-red-600 px-2 py-1 rounded self-start">Extends:
+                        Incident Response</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+                    <h4 class="font-bold text-sm mb-1">Consent Management</h4>
+                    <p class="text-xs text-gray-500 mb-3 flex-grow">Technical platforms managing user consent
+                        preferences.</p>
+                    <span class="text-[10px] font-bold bg-green-50 text-green-600 px-2 py-1 rounded self-start">Extends:
+                        Privacy by Design</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+                    <h4 class="font-bold text-sm mb-1">Differential Privacy</h4>
+                    <p class="text-xs text-gray-500 mb-3 flex-grow">Adds mathematical noise to prevent individual
+                        identification.</p>
+                    <span
+                        class="text-[10px] font-bold bg-purple-50 text-purple-600 px-2 py-1 rounded self-start">Extends:
+                        Masking</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section glass-card bg-framework p-8">
+            <h2 class="text-xl font-bold font-sora mb-6 flex items-center gap-2 text-yellow-900">
+                <i data-lucide="layers" class="text-yellow-600 w-5 h-5"></i> Implementation Pipeline
+            </h2>
+
+            <div class="flex flex-col md:flex-row gap-4 relative">
+                <div
+                    class="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-yellow-200 transform -translate-y-1/2 z-0">
+                </div>
+
+                <div class="flex-1 bg-white p-5 rounded-xl border border-yellow-200 shadow-sm z-10">
+                    <div class="text-xs font-bold text-yellow-600 uppercase mb-2 tracking-wider">Phase 1</div>
+                    <h3 class="font-bold text-gray-800 mb-3 text-sm">Assess & Inventory</h3>
+                    <ul class="text-xs text-gray-600 space-y-2 list-disc pl-4">
+                        <li>Map current landscape</li>
+                        <li>Identify strictly necessary data</li>
+                        <li>Evaluate encryption status</li>
+                    </ul>
+                </div>
+
+                <div class="flex-1 bg-white p-5 rounded-xl border border-yellow-200 shadow-sm z-10">
+                    <div class="text-xs font-bold text-yellow-600 uppercase mb-2 tracking-wider">Phase 2</div>
+                    <h3 class="font-bold text-gray-800 mb-3 text-sm">Core Safeguards</h3>
+                    <ul class="text-xs text-gray-600 space-y-2 list-disc pl-4">
+                        <li>Deploy transit & rest encryption</li>
+                        <li>Establish role-based access</li>
+                        <li>Apply data masking mechanisms</li>
+                        <li>Build privacy into new designs</li>
+                    </ul>
+                </div>
+
+                <div class="flex-1 bg-white p-5 rounded-xl border border-yellow-200 shadow-sm z-10">
+                    <div class="text-xs font-bold text-yellow-600 uppercase mb-2 tracking-wider">Phase 3</div>
+                    <h3 class="font-bold text-gray-800 mb-3 text-sm">Establish Governance</h3>
+                    <ul class="text-xs text-gray-600 space-y-2 list-disc pl-4">
+                        <li>Define minimization limits</li>
+                        <li>Implement retention automation</li>
+                        <li>Develop incident response plans</li>
+                    </ul>
+                </div>
+
+                <div class="flex-1 bg-white p-5 rounded-xl border border-yellow-200 shadow-sm z-10">
+                    <div class="text-xs font-bold text-yellow-600 uppercase mb-2 tracking-wider">Phase 4</div>
+                    <h3 class="font-bold text-gray-800 mb-3 text-sm">Advance & Innovate</h3>
+                    <ul class="text-xs text-gray-600 space-y-2 list-disc pl-4">
+                        <li>Evaluate formal methods</li>
+                        <li>Monitor ownership challenges</li>
+                        <li>Update to regulatory changes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section glass-card bg-takeaways p-8 border-2 border-green-200">
+            <h2 class="text-2xl font-bold font-sora text-green-900 mb-8 text-center">Summary & Final Reflection</h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+                <div
+                    class="bg-white p-3 rounded border border-green-100 text-center text-xs font-bold text-gray-700 shadow-sm">
+                    1. Data Encryption</div>
+                <div
+                    class="bg-white p-3 rounded border border-green-100 text-center text-xs font-bold text-gray-700 shadow-sm">
+                    2. Role-Based Access</div>
+                <div
+                    class="bg-white p-3 rounded border border-green-100 text-center text-xs font-bold text-gray-700 shadow-sm">
+                    3. Data Masking</div>
+                <div
+                    class="bg-white p-3 rounded border border-green-100 text-center text-xs font-bold text-gray-700 shadow-sm">
+                    4. Data Minimization</div>
+                <div
+                    class="bg-white p-3 rounded border border-green-100 text-center text-xs font-bold text-gray-700 shadow-sm">
+                    5. Retention Policies</div>
+                <div
+                    class="bg-white p-3 rounded border border-green-100 text-center text-xs font-bold text-gray-700 shadow-sm">
+                    6. Privacy by Design</div>
+                <div
+                    class="bg-white p-3 rounded border border-green-100 text-center text-xs font-bold text-gray-700 shadow-sm">
+                    7. Formal Methods</div>
+                <div
+                    class="bg-white p-3 rounded border border-green-100 text-center text-xs font-bold text-gray-700 shadow-sm">
+                    8. Incident Response</div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 border border-green-200 shadow-md text-center max-w-2xl mx-auto">
+                <h3 class="text-xl font-bold font-sora mb-6">Do you care about data privacy?</h3>
+                <p class="text-gray-600 mb-6">Revisit your ranked concerns. Who are you most concerned with having
+                    access to your data? Has your ranked order changed?</p>
+
+                <div class="flex flex-wrap justify-center gap-2 mb-8 text-sm">
+                    <span class="bg-gray-100 px-3 py-1 rounded-full font-medium">Government</span>
+                    <span class="bg-gray-100 px-3 py-1 rounded-full font-medium">Police</span>
+                    <span class="bg-gray-100 px-3 py-1 rounded-full font-medium">Social Media</span>
+                    <span class="bg-gray-100 px-3 py-1 rounded-full font-medium">Employer</span>
+                    <span class="bg-gray-100 px-3 py-1 rounded-full font-medium">General Public</span>
+                </div>
+
+                <div class="bg-green-50 p-6 rounded-xl border border-green-100">
+                    <p class="font-bold text-green-800 text-lg">The toolkit exists.</p>
+                    <p class="text-green-700">Make sure your team is addressing these methods. The question is whether
+                        you are actively using them.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center pt-8 border-t border-gray-200 text-sm text-gray-500">
+            <p class="font-bold text-gray-700">Methods for Data Privacy</p>
+            <p>Based on lectures by Dr. Ian McCullough, Johns Hopkins University</p>
+            <p class="mt-4 text-xs bg-gray-100 inline-block px-3 py-1 rounded-full text-gray-400">Optimized for Print &
+                Digital Reading</p>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Lucide Icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            // 2. Add 'not-visible' class safely via JS so default CSS remains visible on failure
+            var fadeSections = document.querySelectorAll('.fade-section');
+            fadeSections.forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+
+            // 3. Set up Intersection Observer for fade-in effect
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.remove('not-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+                fadeSections.forEach(function (el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for older browsers
+                fadeSections.forEach(function (el) {
+                    el.classList.remove('not-visible');
+                });
+            }
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

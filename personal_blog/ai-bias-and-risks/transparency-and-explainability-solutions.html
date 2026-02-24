@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparency and Explainability Solutions</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Transparency and Explainability Solutions">
+    <meta name="description"
+        content="Learn LIME and SHAP techniques for explainable AI. Includes a glaucoma detection case study, SHAP beeswarm plots, bias detection, and practical XAI solutions.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Bias and Risks">
+    <meta name="tags"
+        content="Explainable AI, XAI, LIME, SHAP, Model Interpretability, Deep Learning, Healthcare AI, Bias Detection, Feature Importance, CNN">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary"
+        content="A practical guide to explainable AI (XAI) solutions covering two key techniques: LIME (Local Interpretable Model-agnostic Explanations) and SHAP (SHapley Additive exPlanations). Demonstrates LIME through a real-world glaucoma detection CNN pipeline, covers SHAP's game-theory-based beeswarm plots for visualizing feature importance, bias detection when protected features appear discriminatory, and how LIME and SHAP complement each other.">
+    <link rel="canonical"
+        href="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/transparency-and-explainability-solutions">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Transparency and Explainability Solutions">
+    <meta property="og:description"
+        content="Practical LIME and SHAP techniques for explainable AI, with a glaucoma detection case study and bias detection using SHAP beeswarm plots.">
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/transparency-and-explainability-solutions">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2026-02-23">
+    <meta property="article:section" content="AI Bias and Risks">
+    <meta property="article:tag" content="Explainable AI">
+    <meta property="article:tag" content="LIME">
+    <meta property="article:tag" content="SHAP">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Transparency and Explainability Solutions",
+        "description": "Learn LIME and SHAP techniques for explainable AI. Includes a glaucoma detection case study, SHAP beeswarm plots, bias detection, and practical XAI solutions.",
+        "datePublished": "2026-02-23",
+        "dateModified": "2026-02-23",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/transparency-and-explainability-solutions"
+        },
+        "keywords": ["Explainable AI", "XAI", "LIME", "SHAP", "Model Interpretability", "Deep Learning", "Healthcare AI", "Bias Detection", "Feature Importance", "CNN"],
+        "articleSection": "AI Bias and Risks",
+        "about": [
+            {"@type": "Thing", "name": "Explainable AI"},
+            {"@type": "Thing", "name": "LIME"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "SHAP"},
+            {"@type": "Thing", "name": "Glaucoma Detection"},
+            {"@type": "Thing", "name": "CNN"}
+        ]
+    }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+
+    <style>
+        /* Base Typography and Colors */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #FAFBFC;
+            color: #475569;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Sora', sans-serif;
+            color: #1E293B;
+            letter-spacing: -0.025em;
+        }
+
+        /* Safe Colors (Tailwind 2.2.19 missing these specific hexes) */
+        .bg-teal-light {
+            background-color: #F0FDFA;
+        }
+
+        .text-teal-dark {
+            color: #0D9488;
+        }
+
+        .bg-orange-light {
+            background-color: #FFF7ED;
+        }
+
+        .text-orange-dark {
+            color: #EA580C;
+        }
+
+        .bg-indigo-light {
+            background-color: #E0E7FF;
+        }
+
+        .text-indigo-dark {
+            color: #6366F1;
+        }
+
+        /* Component Styles */
+        .card {
+            background-color: #FFFFFF;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+        }
+
+        .rainbow-stripe {
+            height: 6px;
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6, #EC4899, #EF4444, #F59E0B, #10B981);
+            width: 100%;
+        }
+
+        /* Safe Fade-in Animation Classes */
+        .safe-fade {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .safe-fade.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Beeswarm Plot Custom Styles */
+        .plot-container {
+            position: relative;
+            width: 100%;
+            height: 40px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .plot-axis {
+            position: absolute;
+            left: 120px;
+            right: 0;
+            height: 100%;
+            border-left: 1px dashed #CBD5E1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .plot-label {
+            width: 110px;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: right;
+            padding-right: 12px;
+            color: #475569;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+            opacity: 0.8;
+            transition: transform 0.2s;
+        }
+
+        .dot:hover {
+            transform: scale(1.5);
+            z-index: 10;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .pipeline-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .beeswarm-wrapper {
+                overflow-x: auto;
+            }
+
+            .plot-container {
+                min-width: 400px;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white !important;
+            }
+
+            .card {
+                box-shadow: none !important;
+                border-color: #CBD5E1 !important;
+                break-inside: avoid;
+            }
+
+            .safe-fade {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased pb-20">
+
+    <div class="rainbow-stripe"></div>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+
+        <header class="text-center mb-16 safe-fade">
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-4">Transparency and Explainability Solutions</h1>
+            <p class="text-lg md:text-xl text-gray-600 font-medium max-w-2xl mx-auto mb-4">
+                Practical Techniques for Making Complex AI Models Understandable — LIME and SHAP in Action
+            </p>
+            <p class="text-sm text-gray-500">Based on lectures by Dr. Ian McCullough, Johns Hopkins University</p>
+        </header>
+
+        <section class="mb-16 safe-fade">
+            <div class="card card-hover bg-gray-50 p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
+                <div class="flex-shrink-0 bg-white p-4 rounded-full shadow-sm border border-gray-200">
+                    <i data-lucide="eye" class="w-8 h-8 text-gray-600"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-2">How do we make the unexplainable explainable?</h2>
+                    <p class="text-gray-600 mb-3">
+                        Deep learning models, particularly convolutional neural networks (CNNs), are notoriously
+                        difficult to interpret. As models grow larger and more accurate, their internal decision-making
+                        becomes opaque.
+                    </p>
+                    <p class="text-gray-600 font-medium">
+                        Two key techniques — <span class="text-blue-600 font-bold">LIME</span> and <span
+                            class="text-indigo-600 font-bold">SHAP</span> — provide practical solutions. Let's explore
+                        them through real-world healthcare applications, starting with a CNN designed to detect
+                        early-onset glaucoma.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-10 safe-fade">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-blue-100 p-2 rounded-lg">
+                    <i data-lucide="search" class="w-6 h-6 text-blue-600"></i>
+                </div>
+                <h2 class="text-2xl font-bold">LIME: Local Interpretable Model-agnostic Explanations</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="card p-6 bg-white">
+                    <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                        <i data-lucide="settings" class="w-5 h-5 text-blue-500"></i> How LIME Works
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4">LIME creates a locally interpretable approximation of a
+                        complex model's behavior around a specific prediction.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">1.</span> Manipulates
+                            different feature weights</li>
+                        <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">2.</span> Observes how
+                            changes affect the output data</li>
+                        <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">3.</span> Identifies
+                            which factors contribute more or less</li>
+                        <li class="flex items-start gap-2"><span class="text-blue-500 font-bold">4.</span> Displays the
+                            relative weights of those factors</li>
+                    </ul>
+                </div>
+                <div class="card p-6 bg-blue-50 border-blue-100">
+                    <h3 class="font-bold text-lg mb-3 text-blue-800 flex items-center gap-2">
+                        <i data-lucide="layers" class="w-5 h-5"></i> The "Plug-in" Advantage
+                    </h3>
+                    <p class="text-blue-900 text-sm">
+                        LIME operates as an additional layer added to an existing framework. It acts as a plug-in that
+                        interfaces with the model's inputs and outputs. <strong>The complex underlying model does not
+                            need to be modified</strong> to gain explainability.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 safe-fade">
+            <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+                <div class="bg-teal-light border-b border-gray-200 p-6">
+                    <h2 class="text-xl font-bold text-teal-dark flex items-center gap-2">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                        The Glaucoma Detection Pipeline (Stages A–E)
+                    </h2>
+                    <p class="text-sm text-teal-800 mt-2">Adding an explainability layer to a notoriously difficult deep
+                        learning model.</p>
+                </div>
+
+                <div class="p-6 md:p-8">
+                    <div class="flex flex-col gap-4 relative">
+
+                        <div class="card p-4 border-l-4 border-gray-300 relative z-10 flex gap-4 items-center">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center font-bold text-gray-600 shrink-0">
+                                A</div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Data Preprocessing</h4>
+                                <p class="text-sm text-gray-600">Examining earlier images of the eye (BMO-overview and
+                                    BMO-based disc photography) from patients later diagnosed with glaucoma. Images are
+                                    cropped and standardized.</p>
+                            </div>
+                        </div>
+
+                        <div class="card p-4 border-l-4 border-gray-300 relative z-10 flex gap-4 items-center">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center font-bold text-gray-600 shrink-0">
+                                B</div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Dataset Partitioning</h4>
+                                <p class="text-sm text-gray-600">Total n=501 split into training and test sets.
+                                    Categories include healthy patients (GS, n=255) and patients who develop early
+                                    normal-tension glaucoma (early NTG, n=246).</p>
+                            </div>
+                        </div>
+
+                        <div class="card p-4 border-l-4 border-gray-400 relative z-10 flex gap-4 items-center">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center font-bold text-gray-700 shrink-0">
+                                C</div>
+                            <div class="w-full">
+                                <h4 class="font-bold text-gray-800">CNN Architecture</h4>
+                                <p class="text-sm text-gray-600 mb-2">Images run through a convolutional neural network
+                                    (27,122 parameters) containing multiple layers:</p>
+                                <div class="bg-gray-50 text-xs p-2 rounded text-gray-500 font-mono">
+                                    Input (224x224x3) → Conv2D → MaxPooling → Conv2D → MaxPooling → Conv2D → MaxPooling
+                                    → Fully-Connected Dense
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="card card-hover p-5 border-l-4 border-purple-500 bg-purple-50 relative z-20 shadow-md my-2 transform scale-105 origin-left">
+                            <div class="flex gap-4 items-start">
+                                <div
+                                    class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center font-bold text-white shrink-0 shadow-lg animate-pulse">
+                                    E</div>
+                                <div>
+                                    <h4 class="font-bold text-purple-900 text-lg flex items-center gap-2">
+                                        Explainable AI Layer (LIME)
+                                        <i data-lucide="zap" class="w-4 h-4 text-purple-500"></i>
+                                    </h4>
+                                    <p class="text-sm text-purple-800 font-medium mb-3 mt-1">
+                                        Inserted between the model and diagnosis, LIME manipulates feature weights to
+                                        reveal what drives the CNN's decision.
+                                    </p>
+                                    <div class="grid sm:grid-cols-3 gap-3 text-xs">
+                                        <div class="bg-white p-2 rounded border border-purple-100 shadow-sm">
+                                            <strong class="block text-purple-700 mb-1">Feature Weights</strong>
+                                            Identifies which factors contribute more or less, displaying their relative
+                                            weights.
+                                        </div>
+                                        <div class="bg-white p-2 rounded border border-purple-100 shadow-sm">
+                                            <strong class="block text-purple-700 mb-1">Image Regions</strong>
+                                            Returns exactly which areas of the eye image drive the early-onset decision.
+                                        </div>
+                                        <div class="bg-white p-2 rounded border border-purple-100 shadow-sm">
+                                            <strong class="block text-purple-700 mb-1">Clinical Validation</strong>
+                                            Allows clinicians to verify if identified features have scientific
+                                            rationale.
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-purple-600 mt-3 font-semibold italic">
+                                        "Opens up new pathways for discovery — could lead to new insights into diagnosis
+                                        and treatment."
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card p-4 border-l-4 border-green-400 relative z-10 flex gap-4 items-center">
+                            <div
+                                class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-700 shrink-0">
+                                D</div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Diagnosis Output</h4>
+                                <p class="text-sm text-gray-600">The final classification: GS (healthy), GF, or early
+                                    NTG. Thanks to Stage E, this output is now explainable.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-10 safe-fade mt-20">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="bg-orange-light p-2 rounded-lg">
+                    <i data-lucide="bar-chart-2" class="w-6 h-6 text-orange-dark"></i>
+                </div>
+                <h2 class="text-2xl font-bold">SHAP: SHapley Additive exPlanations</h2>
+            </div>
+            <p class="text-gray-600 mb-6 max-w-3xl">
+                While LIME excels at highlighting local image regions, another powerful approach is the SHAP graph.
+                Based on game theory, SHAP visualizes feature importance by showing how discriminatory each variable is
+                in driving the model's outcome.
+            </p>
+        </section>
+
+        <section class="mb-12 safe-fade">
+            <div class="card bg-white p-6 md:p-8 overflow-hidden relative">
+                <div class="flex justify-between items-end mb-8 border-b border-gray-100 pb-4">
+                    <div>
+                        <h3 class="font-bold text-lg">SHAP Beeswarm Plot</h3>
+                        <p class="text-sm text-gray-500">Visualizing the impact of healthcare features on model output.
+                        </p>
+                    </div>
+                    <div class="text-xs text-right hidden sm:block">
+                        <div class="font-bold mb-1 text-gray-600">Feature Value</div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-blue-500 font-medium">Low</span>
+                            <div class="w-24 h-2 rounded bg-gradient-to-r from-blue-500 via-purple-500 to-red-500">
+                            </div>
+                            <span class="text-red-500 font-medium">High</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="beeswarm-wrapper">
+                    <div class="absolute left-0 right-0 top-24 bottom-12 z-0 opacity-30 pointer-events-none">
+                        <div
+                            class="w-full h-full border-l border-r border-gray-300 ml-[120px] flex justify-between relative">
+                            <div class="w-px h-full bg-gray-300 absolute left-1/2 transform -translate-x-1/2"></div>
+                        </div>
+                    </div>
+
+                    <div class="plot-container">
+                        <div class="plot-label">HR mean</div>
+                        <div class="plot-axis">
+                            <div class="dot bg-blue-500" style="left: 10%;"></div>
+                            <div class="dot bg-blue-500" style="left: 12%;"></div>
+                            <div class="dot bg-blue-400" style="left: 15%;"></div>
+                            <div class="dot bg-blue-400" style="left: 18%;"></div>
+                            <div class="dot bg-purple-400" style="left: 35%;"></div>
+                            <div class="dot bg-purple-500" style="left: 40%;"></div>
+                            <div class="dot bg-red-400" style="left: 70%;"></div>
+                            <div class="dot bg-red-500" style="left: 75%;"></div>
+                            <div class="dot bg-red-500" style="left: 80%;"></div>
+                            <div class="dot bg-red-600" style="left: 85%;"></div>
+                            <div class="dot bg-red-600" style="left: 90%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="plot-container">
+                        <div class="plot-label">Avg RR int.</div>
+                        <div class="plot-axis">
+                            <div class="dot bg-red-500" style="left: 15%;"></div>
+                            <div class="dot bg-red-400" style="left: 20%;"></div>
+                            <div class="dot bg-purple-500" style="left: 45%;"></div>
+                            <div class="dot bg-blue-400" style="left: 60%;"></div>
+                            <div class="dot bg-blue-500" style="left: 65%;"></div>
+                            <div class="dot bg-blue-600" style="left: 70%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="plot-container">
+                        <div class="plot-label">HRV (RMSSD)</div>
+                        <div class="plot-axis">
+                            <div class="dot bg-blue-400" style="left: 45%;"></div>
+                            <div class="dot bg-purple-400" style="left: 48%;"></div>
+                            <div class="dot bg-purple-500" style="left: 50%;"></div>
+                            <div class="dot bg-red-400" style="left: 52%;"></div>
+                            <div class="dot bg-red-500" style="left: 55%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="plot-container">
+                        <div class="plot-label">HRV (SDNN)</div>
+                        <div class="plot-axis">
+                            <div class="dot bg-blue-500" style="left: 42%;"></div>
+                            <div class="dot bg-blue-400" style="left: 46%;"></div>
+                            <div class="dot bg-purple-500" style="left: 49%;"></div>
+                            <div class="dot bg-red-400" style="left: 54%;"></div>
+                            <div class="dot bg-red-500" style="left: 58%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="plot-container">
+                        <div class="plot-label">Age</div>
+                        <div class="plot-axis">
+                            <div class="dot bg-blue-500" style="left: 25%;"></div>
+                            <div class="dot bg-blue-400" style="left: 30%;"></div>
+                            <div class="dot bg-purple-400" style="left: 45%;"></div>
+                            <div class="dot bg-red-400" style="left: 65%;"></div>
+                            <div class="dot bg-red-500" style="left: 70%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="plot-container">
+                        <div class="plot-label">Gender</div>
+                        <div class="plot-axis">
+                            <div class="dot bg-blue-500" style="left: 40%;"></div>
+                            <div class="dot bg-blue-400" style="left: 45%;"></div>
+                            <div class="dot bg-red-400" style="left: 55%;"></div>
+                            <div class="dot bg-red-500" style="left: 60%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="plot-container">
+                        <div class="plot-label">Avg sig. value</div>
+                        <div class="plot-axis">
+                            <div class="dot bg-blue-400" style="left: 48%;"></div>
+                            <div class="dot bg-purple-500" style="left: 50%;"></div>
+                            <div class="dot bg-red-400" style="left: 52%;"></div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="ml-[120px] border-t-2 border-gray-800 mt-2 pt-2 flex justify-between text-xs font-mono text-gray-500 relative z-10">
+                        <span>-0.4</span>
+                        <span>0.0</span>
+                        <span>+0.4</span>
+                    </div>
+                    <div class="text-center text-xs text-gray-500 font-medium mt-1 ml-[120px]">
+                        SHAP value (impact on model output)
+                    </div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 gap-4 mt-8 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                    <div>
+                        <strong class="text-sm block mb-1 text-gray-800"><span class="text-indigo-600">HR mean</span>
+                            shows a wide spread:</strong>
+                        <p class="text-xs text-gray-600">Blue dots heavily on the left, red dots heavily on the right.
+                            This represents a <strong>highly discriminatory feature</strong> heavily weighting the
+                            decision.</p>
+                    </div>
+                    <div>
+                        <strong class="text-sm block mb-1 text-gray-800"><span class="text-indigo-600">HRV</span> is
+                            clustered near center:</strong>
+                        <p class="text-xs text-gray-600">Both low (blue) and high (red) values cluster near the 0.0
+                            line. It is <strong>not as discriminatory</strong> and has less impact on the outcome.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 safe-fade">
+            <div class="card bg-red-50 border-red-100 p-6 flex flex-col md:flex-row gap-6 items-center">
+                <div class="bg-white p-4 rounded-full shadow-sm shrink-0 text-red-500">
+                    <i data-lucide="scale" class="w-8 h-8"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-red-900 mb-2">Bias Detection & Context Evaluation</h3>
+                    <p class="text-sm text-red-800 mb-3">
+                        When features like <strong>Age</strong> and <strong>Gender</strong> appear discriminatory in a
+                        SHAP plot, practitioners must evaluate for ethical concerns.
+                    </p>
+                    <p class="text-sm text-gray-700 bg-white p-3 rounded-lg border border-red-50">
+                        "Usually in healthcare outcomes, age is not necessarily an age-assist thing. We know that older
+                        people are more likely to exhibit chronic disease and need additional screening. So that would
+                        not be considered unethical in that context. <strong>Being able to visualize how these features
+                            impact your decisions is the goal of explainable AI.</strong>"
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 safe-fade">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold">Five Advantages of SHAP Scores</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="card card-hover p-5 border-t-4 border-t-green-500">
+                    <div class="bg-green-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
+                        <i data-lucide="shuffle" class="w-5 h-5 text-green-700"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">1. Model Agnostic</h4>
+                    <p class="text-sm text-gray-600">Can be applied to virtually any ML model (neural networks to linear
+                        models) and operates independently of internal workings.</p>
+                </div>
+                <div class="card card-hover p-5 border-t-4 border-t-green-500">
+                    <div class="bg-green-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
+                        <i data-lucide="target" class="w-5 h-5 text-green-700"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">2. Local Explanations</h4>
+                    <p class="text-sm text-gray-600">Provides explanations for individual predictions by calculating the
+                        contribution of each specific feature.</p>
+                </div>
+                <div class="card card-hover p-5 border-t-4 border-t-green-500">
+                    <div class="bg-green-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
+                        <i data-lucide="layers" class="w-5 h-5 text-green-700"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">3. Unified Framework</h4>
+                    <p class="text-sm text-gray-600">Combines various existing methods (like LIME and DeepLIFT) under a
+                        single, understandable theoretical framework.</p>
+                </div>
+                <div class="card card-hover p-5 border-t-4 border-t-green-500 md:col-span-2 lg:col-span-1">
+                    <div class="bg-green-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
+                        <i data-lucide="bar-chart-2" class="w-5 h-5 text-green-700"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">4. Feature Importance</h4>
+                    <p class="text-sm text-gray-600">Identifies the most influential features, enabling evaluation of
+                        domain context and potential responsibility concerns.</p>
+                </div>
+                <div class="card card-hover p-5 border-t-4 border-t-green-500 md:col-span-2 lg:col-span-2">
+                    <div class="bg-green-100 w-10 h-10 rounded-lg flex items-center justify-center mb-3">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-green-700"></i>
+                    </div>
+                    <h4 class="font-bold text-gray-800 mb-2">5. Model Validation</h4>
+                    <p class="text-sm text-gray-600">Provides insights into how different features interact and
+                        contribute to outcomes, supporting ongoing model validation efforts.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 safe-fade">
+            <div class="bg-yellow-50 border-2 border-yellow-200 rounded-xl p-6 relative overflow-hidden">
+                <div class="absolute right-0 top-0 opacity-10 transform translate-x-4 -translate-y-4">
+                    <i data-lucide="alert-triangle" class="w-32 h-32 text-yellow-600"></i>
+                </div>
+                <div class="relative z-10 flex gap-4">
+                    <i data-lucide="alert-triangle" class="w-6 h-6 text-yellow-600 shrink-0 mt-1"></i>
+                    <div>
+                        <h3 class="font-bold text-yellow-800 text-lg mb-2">SHAP's Key Limitation: Interaction Effects
+                        </h3>
+                        <p class="text-yellow-900 text-sm mb-3">
+                            SHAP does not effectively capture <strong>interaction effects</strong> — scenarios where one
+                            variable behaves differently in the presence of another variable.
+                        </p>
+                        <p class="text-yellow-800 text-sm bg-white/60 p-3 rounded">
+                            These interactions are often highly significant in complex models like neural networks.
+                            Because the SHAP graph evaluates features primarily in isolation, it misses these combined
+                            effects, meaning the explanation may be incomplete.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 safe-fade">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold">Complementary Approaches</h2>
+                <p class="text-sm text-gray-500 mt-2">SHAP's unified framework incorporates LIME — they are
+                    complementary, not competing.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-6">
+                <div class="flex-1 card p-6 bg-white border-blue-200">
+                    <div class="flex justify-center mb-4"><span
+                            class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-bold">LIME</span></div>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="target" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
+                            <span>Best for explaining individual predictions locally.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="eye" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
+                            <span>Excels at image region highlighting for visual models.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-blue-500 mt-0.5 shrink-0"></i>
+                            <span class="text-xs italic">"Which exact areas of the eye drive the classification?"</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="flex items-center justify-center -mx-4 z-10 hidden md:flex">
+                    <div class="bg-white rounded-full p-2 border border-gray-200 shadow-sm">
+                        <i data-lucide="git-merge" class="w-6 h-6 text-gray-400"></i>
+                    </div>
+                </div>
+
+                <div class="flex-1 card p-6 bg-white border-indigo-200">
+                    <div class="flex justify-center mb-4"><span
+                            class="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-sm font-bold">SHAP</span>
+                    </div>
+                    <ul class="space-y-3 text-sm text-gray-600">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="activity" class="w-4 h-4 text-indigo-500 mt-0.5 shrink-0"></i>
+                            <span>Best for understanding overall feature importance.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="bar-chart-2" class="w-4 h-4 text-indigo-500 mt-0.5 shrink-0"></i>
+                            <span>Excels at beeswarm visualization across entire datasets.</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="help-circle" class="w-4 h-4 text-indigo-500 mt-0.5 shrink-0"></i>
+                            <span class="text-xs italic">"How discriminatory is each health metric globally?"</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 safe-fade">
+            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 border-b border-gray-200 pb-2">
+                Additional XAI Tools</h3>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <div class="bg-white border border-gray-200 p-3 rounded-lg text-xs flex items-center gap-2 shadow-sm">
+                    <i data-lucide="file-text" class="w-4 h-4 text-gray-400 shrink-0"></i>
+                    <div><strong class="block text-gray-700">Model Cards</strong> Documentation transparency</div>
+                </div>
+                <div class="bg-white border border-gray-200 p-3 rounded-lg text-xs flex items-center gap-2 shadow-sm">
+                    <i data-lucide="zap" class="w-4 h-4 text-gray-400 shrink-0"></i>
+                    <div><strong class="block text-gray-700">DeepLIFT</strong> Incorporated in SHAP framework</div>
+                </div>
+                <div class="bg-white border border-gray-200 p-3 rounded-lg text-xs flex items-center gap-2 shadow-sm">
+                    <i data-lucide="eye" class="w-4 h-4 text-gray-400 shrink-0"></i>
+                    <div><strong class="block text-gray-700">Attention Viz</strong> Complements LIME regions</div>
+                </div>
+                <div class="bg-white border border-gray-200 p-3 rounded-lg text-xs flex items-center gap-2 shadow-sm">
+                    <i data-lucide="refresh-cw" class="w-4 h-4 text-gray-400 shrink-0"></i>
+                    <div><strong class="block text-gray-700">Counterfactuals</strong> "What-if" scenario tests</div>
+                </div>
+                <div
+                    class="bg-white border border-gray-200 p-3 rounded-lg text-xs flex items-center gap-2 shadow-sm border-l-2 border-l-yellow-400">
+                    <i data-lucide="trending-up" class="w-4 h-4 text-gray-400 shrink-0"></i>
+                    <div><strong class="block text-gray-700">ALE Plots</strong> Addresses SHAP interactions limit</div>
+                </div>
+                <div
+                    class="bg-white border border-gray-200 p-3 rounded-lg text-xs flex items-center gap-2 shadow-sm border-l-2 border-l-red-400">
+                    <i data-lucide="shield" class="w-4 h-4 text-gray-400 shrink-0"></i>
+                    <div><strong class="block text-gray-700">Algorithm Auditing</strong> Extends bias detection</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 safe-fade">
+            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-wider mb-4 border-b border-gray-200 pb-2">
+                Implementation Pipeline</h3>
+            <div class="flex flex-col sm:flex-row gap-2 bg-gray-50 p-2 rounded-xl">
+                <div class="flex-1 bg-white p-3 rounded-lg shadow-sm border border-gray-100 text-center">
+                    <div class="text-xs font-bold text-gray-500 mb-1">Phase 1</div>
+                    <div class="text-sm font-semibold text-gray-800">Assess Needs</div>
+                </div>
+                <div class="hidden sm:flex items-center text-gray-300">→</div>
+                <div class="flex-1 bg-white p-3 rounded-lg shadow-sm border border-gray-100 text-center">
+                    <div class="text-xs font-bold text-gray-500 mb-1">Phase 2</div>
+                    <div class="text-sm font-semibold text-gray-800">Select Tools (LIME/SHAP)</div>
+                </div>
+                <div class="hidden sm:flex items-center text-gray-300">→</div>
+                <div class="flex-1 bg-white p-3 rounded-lg shadow-sm border border-gray-100 text-center">
+                    <div class="text-xs font-bold text-purple-500 mb-1">Phase 3</div>
+                    <div class="text-sm font-semibold text-gray-800">Integrate Layer & Validate</div>
+                </div>
+                <div class="hidden sm:flex items-center text-gray-300">→</div>
+                <div class="flex-1 bg-white p-3 rounded-lg shadow-sm border border-gray-100 text-center">
+                    <div class="text-xs font-bold text-gray-500 mb-1">Phase 4</div>
+                    <div class="text-sm font-semibold text-gray-800">Monitor Output</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 safe-fade">
+            <div class="bg-gray-900 text-white rounded-2xl p-8 md:p-10 text-center relative overflow-hidden shadow-xl">
+                <div
+                    class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9IiNmZmYiLz48L3N2Zz4=')]">
+                </div>
+                <i data-lucide="lightbulb" class="w-12 h-12 text-yellow-400 mx-auto mb-6 relative z-10"></i>
+                <h2 class="text-xl md:text-2xl font-light leading-relaxed relative z-10 mb-6 text-gray-200">
+                    "Explainability is not about replacing complex models — it's about <strong
+                        class="text-white font-bold">adding the tools</strong> that help us understand, validate, and
+                    trust their decisions."
+                </h2>
+
+                <div
+                    class="grid sm:grid-cols-2 gap-4 text-left mt-8 relative z-10 text-sm border-t border-gray-700 pt-8">
+                    <div>
+                        <strong class="text-purple-300 block mb-2">Remember LIME:</strong>
+                        <ul class="text-gray-300 space-y-1">
+                            <li>• Highlighted in Stage E of the glaucoma CNN pipeline.</li>
+                            <li>• Enables clinical validation of features.</li>
+                            <li>• Returns specific image regions driving classification.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <strong class="text-indigo-300 block mb-2">Remember SHAP:</strong>
+                        <ul class="text-gray-300 space-y-1">
+                            <li>• Visualizes discriminatory power via beeswarm plots.</li>
+                            <li>• Enables detection of bias (e.g., age, gender).</li>
+                            <li>• Unified framework, but misses interaction effects.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-xs text-gray-400 border-t border-gray-200 pt-8 mt-12 mb-8 safe-fade">
+            <p class="mb-2"><strong>Source Attribution:</strong> Dr. Ian McCullough, Johns Hopkins University</p>
+            <p class="mb-2">Topic: Transparency and Explainability Solutions</p>
+            <p class="no-print">Use Ctrl+P (Cmd+P) to print this infographic for offline reference.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Lucide Icons
+            lucide.createIcons();
+
+            // 2. Add hidden state to all safe-fade elements
+            // This ensures if JS runs, we hide them for the scroll effect.
+            // If JS fails, they stay visible.
+            const fadeElements = document.querySelectorAll('.safe-fade');
+            fadeElements.forEach(el => {
+                el.classList.add('not-visible');
+            });
+
+            // 3. Setup Intersection Observer for scroll animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('not-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

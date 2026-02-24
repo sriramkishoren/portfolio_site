@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsible AI Principles - Transparency & Explainability</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Responsible AI Principles - Transparency & Explainability">
+    <meta name="description"
+        content="Understand the critical distinction between AI transparency and explainability. Covers the TRUSTED framework, NIST standards, real-world scenarios, and trade-offs.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Bias and Risks">
+    <meta name="tags"
+        content="Transparency, Explainability, TRUSTED Framework, NIST, Responsible AI, AI Governance, Interpretability, Post-Hoc Assessment, AI Ethics, Black Box AI">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary"
+        content="Explores the critical distinction between AI transparency (exposing how a system works) and explainability (providing understandable reasons for decisions). Introduces the TRUSTED framework (Transparent, Respectful, Unbiased, Sustainable, Traceable, Explainable, Dependable), illustrates concepts through four real-world scenarios (finance, image recognition, stock prediction, healthcare), covers the accuracy vs. interpretability trade-off, post-hoc assessment methods, and the NIST framework for responsible AI explanation.">
+    <link rel="canonical"
+        href="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/transparency-and-explainability">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Responsible AI Principles - Transparency & Explainability">
+    <meta property="og:description"
+        content="Why transparent and explainable are not the same in AI. Covers the TRUSTED framework, NIST standards, and four real-world scenarios.">
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/transparency-and-explainability">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2026-02-23">
+    <meta property="article:section" content="AI Bias and Risks">
+    <meta property="article:tag" content="Transparency">
+    <meta property="article:tag" content="Explainability">
+    <meta property="article:tag" content="TRUSTED Framework">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Responsible AI Principles - Transparency & Explainability",
+        "description": "Understand the critical distinction between AI transparency and explainability. Covers the TRUSTED framework, NIST standards, real-world scenarios, and trade-offs.",
+        "datePublished": "2026-02-23",
+        "dateModified": "2026-02-23",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/transparency-and-explainability"
+        },
+        "keywords": ["Transparency", "Explainability", "TRUSTED Framework", "NIST", "Responsible AI", "AI Governance", "Interpretability", "Post-Hoc Assessment", "AI Ethics", "Black Box AI"],
+        "articleSection": "AI Bias and Risks",
+        "about": [
+            {"@type": "Thing", "name": "AI Transparency"},
+            {"@type": "Thing", "name": "AI Explainability"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "TRUSTED Framework"},
+            {"@type": "Thing", "name": "NIST"},
+            {"@type": "Thing", "name": "Post-Hoc Assessment"}
+        ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Sora:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-bg-lightest-blue: #F0F9FF;
+            --color-accent-blue: #0EA5E9;
+            --color-bg-lightest-gray: #F8FAFC;
+            --color-accent-gray: #475569;
+            --color-bg-light-orange: #FFF7ED;
+            --color-accent-orange: #EA580C;
+            --color-bg-light-teal: #F0FDFA;
+            --color-accent-teal: #0D9488;
+            --color-bg-light-purple: #FDF4FF;
+            --color-accent-purple: #A855F7;
+            --color-bg-light-red: #FEF2F2;
+            --color-accent-red: #DC2626;
+            --color-bg-light-indigo: #E0E7FF;
+            --color-accent-indigo: #6366F1;
+            --color-bg-light-green: #F0FDF4;
+            --color-accent-green: #16A34A;
+            --color-bg-light-yellow: #FEF3C7;
+            --color-accent-yellow: #D97706;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #FAFBFC;
+            color: #1E293B;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-sora {
+            font-family: 'Sora', sans-serif;
+            letter-spacing: -0.025em;
+        }
+
+        .container-custom {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        /* Safe Animation Pattern */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Custom Color Classes for 2.2.19 missing colors */
+        .bg-lightest-blue {
+            background-color: var(--color-bg-lightest-blue);
+        }
+
+        .text-accent-blue {
+            color: var(--color-accent-blue);
+        }
+
+        .border-accent-blue {
+            border-color: var(--color-accent-blue);
+        }
+
+        .bg-lightest-gray {
+            background-color: var(--color-bg-lightest-gray);
+        }
+
+        .text-accent-gray {
+            color: var(--color-accent-gray);
+        }
+
+        .bg-light-orange {
+            background-color: var(--color-bg-light-orange);
+        }
+
+        .text-accent-orange {
+            color: var(--color-accent-orange);
+        }
+
+        .bg-light-teal {
+            background-color: var(--color-bg-light-teal);
+        }
+
+        .text-accent-teal {
+            color: var(--color-accent-teal);
+        }
+
+        .bg-light-purple {
+            background-color: var(--color-bg-light-purple);
+        }
+
+        .text-accent-purple {
+            color: var(--color-accent-purple);
+        }
+
+        .bg-light-red {
+            background-color: var(--color-bg-light-red);
+        }
+
+        .text-accent-red {
+            color: var(--color-accent-red);
+        }
+
+        .bg-light-indigo {
+            background-color: var(--color-bg-light-indigo);
+        }
+
+        .text-accent-indigo {
+            color: var(--color-accent-indigo);
+        }
+
+        .bg-light-green {
+            background-color: var(--color-bg-light-green);
+        }
+
+        .text-accent-green {
+            color: var(--color-accent-green);
+        }
+
+        .bg-light-yellow {
+            background-color: var(--color-bg-light-yellow);
+        }
+
+        .text-accent-yellow {
+            color: var(--color-accent-yellow);
+        }
+
+        /* Card Hover Effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Rainbow Gradient Stripe */
+        .rainbow-stripe {
+            height: 6px;
+            background: linear-gradient(90deg, var(--color-accent-blue), var(--color-accent-teal), var(--color-accent-green), var(--color-accent-yellow), var(--color-accent-orange), var(--color-accent-red), var(--color-accent-purple));
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Matrix Specifics */
+        .matrix-cell {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #E2E8F0;
+        }
+
+        /* Print Styles */
+        @media print {
+
+            .fade-section,
+            .fade-section.not-visible {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+
+            .hover-lift:hover {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+
+            body {
+                background: white;
+            }
+
+            .container-custom {
+                max-width: 100%;
+                padding: 0;
+            }
+
+            .print-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+
+<body class="relative">
+
+    <div class="rainbow-stripe"></div>
+
+    <div class="container-custom">
+
+        <header class="fade-section text-center mb-16 pt-8">
+            <div
+                class="inline-block bg-lightest-blue text-accent-blue px-4 py-1 rounded-full text-sm font-bold mb-6 tracking-wide uppercase font-sora">
+                Responsible AI Principles
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+                Understanding Transparency<br>and Explainability
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-8 font-dm-sans">
+                Why Transparent and Explainable are not the same thing — and why distinguishing between them is critical
+                for responsible artificial intelligence.
+            </p>
+            <div class="flex items-center justify-center gap-2 text-gray-500 text-sm">
+                <i data-lucide="book-open" class="w-4 h-4"></i>
+                <span>Based on lectures by Dr. Ian McCullough, Johns Hopkins University</span>
+            </div>
+        </header>
+
+        <section class="fade-section mb-20">
+            <div class="bg-white rounded-2xl p-8 border border-gray-200 shadow-sm relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8 opacity-5">
+                    <i data-lucide="shield" class="w-32 h-32"></i>
+                </div>
+
+                <h2 class="text-2xl font-bold mb-2 font-sora">The TRUSTED Framework</h2>
+                <p class="text-gray-600 mb-8 italic">"What allows us to have a trusted AI solution?"</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                    <div class="bg-lightest-blue border-2 border-accent-blue rounded-xl p-4 shadow-sm hover-lift">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div
+                                class="bg-white text-accent-blue font-bold w-8 h-8 rounded-full flex items-center justify-center shadow-sm">
+                                T</div>
+                            <h3 class="font-bold text-accent-blue">Transparent</h3>
+                        </div>
+                        <p class="text-sm text-gray-700">Have we exposed the models, algorithms, and data, allowing us
+                            to understand how decisions are made?</p>
+                    </div>
+
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 flex flex-col gap-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-gray-400 font-bold">R</span>
+                                <h3 class="font-semibold text-gray-800 text-sm">Respect for Privacy</h3>
+                            </div>
+                            <p class="text-xs text-gray-600">Protect individual privacy and handle data responsibly.</p>
+                        </div>
+                        <div class="border-t border-gray-200 pt-3">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-gray-400 font-bold">U</span>
+                                <h3 class="font-semibold text-gray-800 text-sm">Unbiased</h3>
+                            </div>
+                            <p class="text-xs text-gray-600">Implement tools to detect and measure biases.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 flex flex-col gap-4">
+                        <div>
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-gray-400 font-bold">S</span>
+                                <h3 class="font-semibold text-gray-800 text-sm">Sustainable</h3>
+                            </div>
+                            <p class="text-xs text-gray-600">Energy efficient and environmentally friendly.</p>
+                        </div>
+                        <div class="border-t border-gray-200 pt-3">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-gray-400 font-bold">T</span>
+                                <h3 class="font-semibold text-gray-800 text-sm">Traceable</h3>
+                            </div>
+                            <p class="text-xs text-gray-600">Clear records to audit and track development processes.</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-light-indigo border-2 border-accent-indigo rounded-xl p-4 shadow-sm hover-lift relative lg:-mt-0 lg:row-span-1 md:col-span-1">
+                        <div class="flex items-center gap-3 mb-2">
+                            <div
+                                class="bg-white text-accent-indigo font-bold w-8 h-8 rounded-full flex items-center justify-center shadow-sm">
+                                E</div>
+                            <h3 class="font-bold text-accent-indigo">Explainable</h3>
+                        </div>
+                        <p class="text-sm text-gray-700">Provide clear, understandable reasons for decisions and
+                            actions.</p>
+                    </div>
+
+                    <div
+                        class="bg-gray-50 border border-gray-200 rounded-xl p-4 col-span-1 md:col-span-2 lg:col-span-4 flex items-center gap-4">
+                        <div class="flex items-center gap-2">
+                            <span class="text-gray-400 font-bold">D</span>
+                            <h3 class="font-semibold text-gray-800">Dependable</h3>
+                        </div>
+                        <p class="text-sm text-gray-600">Develop AI systems that perform consistently and dependably.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-gray-900 text-white rounded-lg p-4 text-center text-sm font-medium shadow-inner flex items-center justify-center gap-3">
+                    <i data-lucide="info" class="w-5 h-5 text-blue-400"></i>
+                    This lecture focuses on the critical distinction between Transparency and Explainability. Let's
+                    explore why these are not the same thing.
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section mb-16">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold font-sora mb-4 text-gray-900">The Core Distinction</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">These are independent properties. A model can be transparent
+                    without being explainable, and explainable without being transparent.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-6 mb-12">
+                <div
+                    class="flex-1 bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex items-start gap-4 hover-lift">
+                    <div class="bg-lightest-blue p-3 rounded-lg text-accent-blue">
+                        <i data-lucide="layers" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold font-sora text-gray-900 mb-1">Transparency</h3>
+                        <div class="text-accent-blue font-semibold mb-2 uppercase text-sm tracking-wider">HOW it works
+                        </div>
+                        <p class="text-gray-600 text-sm">Exposing the models, algorithms, and data so observers can see
+                            exactly what components make up the system.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="flex-1 bg-white border border-gray-200 rounded-2xl p-6 shadow-sm flex items-start gap-4 hover-lift">
+                    <div class="bg-light-indigo p-3 rounded-lg text-accent-indigo">
+                        <i data-lucide="message-square" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold font-sora text-gray-900 mb-1">Explainability</h3>
+                        <div class="text-accent-indigo font-semibold mb-2 uppercase text-sm tracking-wider">WHY it
+                            decided</div>
+                        <p class="text-gray-600 text-sm">Providing clear, human-understandable reasons for individual
+                            decisions and system actions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-8">
+                <h3 class="text-center text-lg font-bold font-sora text-gray-800 mb-8 uppercase tracking-widest">The
+                    Property Matrix</h3>
+
+                <div
+                    class="grid grid-cols-2 grid-rows-2 max-w-3xl mx-auto rounded-xl overflow-hidden border border-gray-300">
+                    <div class="matrix-cell bg-light-green p-6 flex flex-col items-center justify-center text-center">
+                        <div class="flex gap-2 mb-3">
+                            <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">✓
+                                Transparent</span>
+                            <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">✓
+                                Explainable</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1">The Ideal State</h4>
+                        <p class="text-xs text-gray-600">Rare in complex applications</p>
+                    </div>
+
+                    <div class="matrix-cell bg-gray-50 p-6 flex flex-col items-center justify-center text-center">
+                        <div class="flex gap-2 mb-3">
+                            <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">✓
+                                Transparent</span>
+                            <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded">✗ Not
+                                Explainable</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1">The "Open Black Box"</h4>
+                        <p class="text-xs text-gray-600">Scenarios 2 & 3</p>
+                    </div>
+
+                    <div class="matrix-cell bg-gray-50 p-6 flex flex-col items-center justify-center text-center">
+                        <div class="flex gap-2 mb-3">
+                            <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded">✗ Not
+                                Transparent</span>
+                            <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">✓
+                                Explainable</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1">The "Hidden Logic"</h4>
+                        <p class="text-xs text-gray-600">Scenarios 1 & 4</p>
+                    </div>
+
+                    <div class="matrix-cell bg-light-red p-6 flex flex-col items-center justify-center text-center">
+                        <div class="flex gap-2 mb-3">
+                            <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded">✗ Not
+                                Transparent</span>
+                            <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded">✗ Not
+                                Explainable</span>
+                        </div>
+                        <h4 class="font-bold text-gray-800 mb-1">The Worst Case</h4>
+                        <p class="text-xs text-gray-600">Completely opaque systems</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section mb-24 print-break">
+            <h2 class="text-3xl font-bold font-sora text-center mb-12 text-gray-900">Four Real-World Scenarios</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <div
+                    class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden hover-lift flex flex-col">
+                    <div class="bg-light-orange p-5 border-b border-gray-200 flex items-center gap-4">
+                        <div class="bg-white p-2 rounded-lg text-accent-orange shadow-sm">
+                            <i data-lucide="landmark" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold font-sora text-lg text-gray-900">Scenario 1: Financial Institution</h3>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <p class="text-gray-700 mb-4 font-medium">A decision tree model used to approve loans.</p>
+
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6 relative">
+                            <div
+                                class="absolute -top-3 left-4 bg-white px-2 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                Example Output</div>
+                            <p class="text-sm font-mono text-gray-800">"Loan DENIED: Credit score < 700 AND
+                                    debt-to-income ratio> 40%"</p>
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-gray-900 block text-sm">✓ Explainable</span>
+                                    <span class="text-sm text-gray-600">Provides clear reasons for each decision based
+                                        on the tree structure.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-gray-900 block text-sm">✗ Not Transparent</span>
+                                    <span class="text-sm text-gray-600">Proprietary data and hidden criteria prevent
+                                        full understanding of data sources.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 border-t border-gray-200 text-sm text-gray-600 flex gap-2 items-start">
+                        <i data-lucide="alert-circle" class="w-4 h-4 text-accent-orange mt-0.5 flex-shrink-0"></i>
+                        <p><strong>Bias risk:</strong> There is no way to have a uniformly fair system; bias can hide
+                            behind explainability.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden hover-lift flex flex-col">
+                    <div class="bg-light-teal p-5 border-b border-gray-200 flex items-center gap-4">
+                        <div class="bg-white p-2 rounded-lg text-accent-teal shadow-sm">
+                            <i data-lucide="image" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold font-sora text-lg text-gray-900">Scenario 2: Image Recognition</h3>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <p class="text-gray-700 mb-4 font-medium">A deep neural network classifying images.</p>
+
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6 relative">
+                            <div
+                                class="absolute -top-3 left-4 bg-white px-2 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                The Setup</div>
+                            <p class="text-sm text-gray-800">Fully open source on GitHub: all model weights,
+                                architectures, training processes, and hyperparameters are publicly documented.</p>
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-gray-900 block text-sm">✓ Transparent</span>
+                                    <span class="text-sm text-gray-600">Every aspect of the model's development is
+                                        openly available and accessible.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-gray-900 block text-sm">✗ Not Explainable</span>
+                                    <span class="text-sm text-gray-600">Understanding why it classified an image as a
+                                        cat is not interpretable due to network complexity.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 border-t border-gray-200 text-sm text-gray-600 flex gap-2 items-start">
+                        <i data-lucide="eye" class="w-4 h-4 text-accent-teal mt-0.5 flex-shrink-0"></i>
+                        <p><strong>The takeaway:</strong> You can see everything, but still not understand why it
+                            decided what it did.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden hover-lift flex flex-col">
+                    <div class="bg-light-purple p-5 border-b border-gray-200 flex items-center gap-4">
+                        <div class="bg-white p-2 rounded-lg text-accent-purple shadow-sm">
+                            <i data-lucide="trending-up" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold font-sora text-lg text-gray-900">Scenario 3: Stock Price Prediction</h3>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <p class="text-gray-700 mb-4 font-medium">A machine learning pipeline for financial forecasting.
+                        </p>
+
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6 relative">
+                            <div
+                                class="absolute -top-3 left-4 bg-white px-2 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                The Reality</div>
+                            <p class="text-sm text-gray-800">Pipeline design is fully disclosed. However, it uses
+                                complex ensemble methods with differently weighted models.</p>
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-gray-900 block text-sm">✓ Transparent</span>
+                                    <span class="text-sm text-gray-600">Preprocessing, feature engineering, and model
+                                        selection steps are entirely documented.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-gray-900 block text-sm">✗ Not Explainable</span>
+                                    <span class="text-sm text-gray-600">It is hard to attribute specific factors to
+                                        individual predictions (e.g., why a stock is predicted to rise).</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 border-t border-gray-200 text-sm text-gray-600 flex gap-2 items-start">
+                        <i data-lucide="layers" class="w-4 h-4 text-accent-purple mt-0.5 flex-shrink-0"></i>
+                        <p><strong>Complexity barrier:</strong> Ensemble methods mix variables so intricately that
+                            distinct explanations are lost.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden hover-lift flex flex-col">
+                    <div class="bg-light-red p-5 border-b border-gray-200 flex items-center gap-4">
+                        <div class="bg-white p-2 rounded-lg text-accent-red shadow-sm">
+                            <i data-lucide="heart" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold font-sora text-lg text-gray-900">Scenario 4: Healthcare System</h3>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <p class="text-gray-700 mb-4 font-medium">A rule-based expert system for medical
+                            recommendations.</p>
+
+                        <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6 relative">
+                            <div
+                                class="absolute -top-3 left-4 bg-white px-2 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                                Example Output</div>
+                            <p class="text-sm font-mono text-gray-800">"Take Medication X because blood pressure is
+                                above [level] and history of heart disease."</p>
+                        </div>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-gray-900 block text-sm">✓ Explainable</span>
+                                    <span class="text-sm text-gray-600">Explanation is clear, understandable, and based
+                                        on predefined specific rules.</span>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i data-lucide="x-circle" class="w-5 h-5 text-red-600 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <span class="font-bold text-gray-900 block text-sm">✗ Not Transparent</span>
+                                    <span class="text-sm text-gray-600">The development process, criteria for rule
+                                        creation, and what rules were omitted are hidden.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-4 border-t border-gray-200 text-sm text-gray-600 flex gap-2 items-start">
+                        <i data-lucide="activity" class="w-4 h-4 text-accent-red mt-0.5 flex-shrink-0"></i>
+                        <p><strong>Hidden flaws:</strong> Bias can exist even when fully explainable if the rules
+                            themselves stem from biased demographic data.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="fade-section mb-20 print-break">
+            <div class="bg-white rounded-3xl border border-gray-200 shadow-md p-8 md:p-12 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
+                    <i data-lucide="bar-chart-2" class="w-64 h-64"></i>
+                </div>
+
+                <h2 class="text-3xl font-bold font-sora text-gray-900 mb-6 relative z-10">The Accuracy vs.
+                    Interpretability Trade-off</h2>
+                <p class="text-lg text-gray-600 mb-10 max-w-3xl relative z-10">
+                    There is an inherent trade-off in machine learning model selection. Models that tend to perform very
+                    well are often the hardest to explain.
+                </p>
+
+                <div
+                    class="relative w-full h-80 md:h-96 bg-gray-50 rounded-xl border-2 border-gray-200 mb-10 p-4 font-dm-sans overflow-hidden">
+                    <div class="absolute bottom-12 left-12 md:left-16 right-10 h-0.5 bg-gray-400"></div>
+                    <div class="absolute bottom-12 left-12 md:left-16 top-10 w-0.5 bg-gray-400"></div>
+
+                    <div
+                        class="absolute bottom-3 left-1/2 transform -translate-x-1/2 font-bold text-gray-500 uppercase tracking-widest text-xs md:text-sm">
+                        Interpretability (Low to High)</div>
+                    <div
+                        class="absolute -left-16 sm:-left-12 md:-left-8 top-1/2 transform -translate-y-1/2 -rotate-90 font-bold text-gray-500 uppercase tracking-widest text-xs md:text-sm whitespace-nowrap origin-center">
+                        Accuracy (Low to High)</div>
+
+                    <svg class="absolute inset-0 w-full h-full pointer-events-none"
+                        style="padding: 2.5rem 2.5rem 3rem 4rem;" preserveAspectRatio="none">
+                        <path d="M 10%,10% Q 40%,20% 90%,90%" fill="none" stroke="#94A3B8" stroke-width="4"
+                            stroke-dasharray="8 4" />
+                        <path d="M 30%,5% Q 60%,10% 95%,80%" fill="none" stroke="#16A34A" stroke-width="3"
+                            stroke-dasharray="4 4" class="opacity-70" />
+                        <g transform="translate(45%, 45%)">
+                            <line x1="0" y1="0" x2="30" y2="-20" stroke="#16A34A" stroke-width="3"
+                                marker-end="url(#arrowhead)" />
+                        </g>
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#16A34A" />
+                            </marker>
+                        </defs>
+                    </svg>
+
+                    <div class="absolute flex items-center gap-2" style="top: 15%; left: 18%;">
+                        <div class="w-3 h-3 rounded-full bg-accent-indigo shadow-md"></div>
+                        <span
+                            class="text-xs md:text-sm font-semibold text-gray-800 bg-white px-2 py-0.5 rounded shadow-sm border border-gray-100">Deep
+                            Learning</span>
+                    </div>
+
+                    <div class="absolute flex items-center gap-2" style="top: 25%; left: 28%;">
+                        <div class="w-3 h-3 rounded-full bg-blue-500 shadow-md"></div>
+                        <span class="text-xs md:text-sm font-semibold text-gray-700">SVM</span>
+                    </div>
+
+                    <div class="absolute flex items-center gap-2" style="top: 38%; left: 38%;">
+                        <div class="w-3 h-3 rounded-full bg-blue-400 shadow-md"></div>
+                        <span class="text-xs md:text-sm font-semibold text-gray-700">Random Forest</span>
+                    </div>
+
+                    <div class="absolute flex items-center gap-2" style="top: 50%; left: 52%;">
+                        <div class="w-3 h-3 rounded-full bg-blue-400 shadow-md"></div>
+                        <span class="text-xs md:text-sm font-semibold text-gray-700">Bayesian Models</span>
+                    </div>
+
+                    <div class="absolute flex items-center gap-2" style="top: 65%; left: 65%;">
+                        <div class="w-3 h-3 rounded-full bg-blue-300 shadow-md"></div>
+                        <span class="text-xs md:text-sm font-semibold text-gray-700">kNN</span>
+                    </div>
+
+                    <div class="absolute flex items-center gap-2" style="top: 78%; left: 75%;">
+                        <div class="w-3 h-3 rounded-full bg-blue-300 shadow-md"></div>
+                        <span class="text-xs md:text-sm font-semibold text-gray-700">Decision Trees</span>
+                    </div>
+
+                    <div class="absolute flex items-center gap-2" style="bottom: 18%; right: 10%;">
+                        <div class="w-3 h-3 rounded-full bg-gray-400 shadow-md"></div>
+                        <span
+                            class="text-xs md:text-sm font-semibold text-gray-800 bg-white px-2 py-0.5 rounded shadow-sm border border-gray-100">Rule-based
+                            Models</span>
+                    </div>
+
+                    <div class="absolute flex flex-col items-center" style="top: 25%; right: 15%;">
+                        <div
+                            class="bg-light-green text-accent-green px-3 py-1.5 rounded-lg border border-green-200 shadow-sm font-bold text-xs md:text-sm flex items-center gap-1 z-10">
+                            <i data-lucide="zap" class="w-4 h-4"></i>
+                            Objective of XAI
+                        </div>
+                        <span
+                            class="text-xs text-green-700 mt-1 font-medium bg-white px-2 py-0.5 rounded shadow-sm hidden md:block z-10">(Push
+                            the curve to the right)</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                    <div class="bg-gray-50 rounded-xl p-6 border-l-4 border-gray-400">
+                        <h4 class="font-bold text-gray-900 mb-2 flex items-center gap-2">
+                            <i data-lucide="help-circle" class="w-5 h-5 text-gray-500"></i> The Critical Question
+                        </h4>
+                        <p class="text-sm text-gray-700">"How important is explainability if it means degraded
+                            performance? How responsible are high-performing algorithms if we can't explain their
+                            conclusions?"</p>
+                    </div>
+
+                    <div class="bg-light-green rounded-xl p-6 border-l-4 border-accent-green">
+                        <h4 class="font-bold text-green-900 mb-2 flex items-center gap-2">
+                            <i data-lucide="target" class="w-5 h-5 text-accent-green"></i> The Goal of XAI
+                        </h4>
+                        <p class="text-sm text-green-800">The idea of Explainable AI is not to force a binary choice
+                            between accuracy and interpretability. It's to push the trade-off curve to the upper right
+                            to achieve better interpretability AND better accuracy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section mb-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 hover-lift flex flex-col">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-light-orange p-3 rounded-lg text-accent-orange">
+                            <i data-lucide="search" class="w-6 h-6"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold font-sora text-gray-900">Post-Hoc Assessment</h2>
+                    </div>
+                    <p class="text-gray-600 mb-6 flex-grow">A practical method when you cannot build explainability in:
+                        evaluate the outputs after the fact.</p>
+
+                    <div class="flex flex-col gap-2 relative">
+                        <div class="absolute left-4 top-4 bottom-4 w-0.5 bg-orange-200"></div>
+
+                        <div class="flex items-start gap-4 relative">
+                            <div
+                                class="w-8 h-8 rounded-full bg-orange-100 border-2 border-accent-orange flex items-center justify-center text-xs font-bold text-accent-orange flex-shrink-0 z-10">
+                                1</div>
+                            <div
+                                class="bg-gray-50 px-4 py-2 rounded-lg text-sm text-gray-800 border border-gray-200 w-full">
+                                Let unexplainable model run</div>
+                        </div>
+                        <div class="flex items-start gap-4 relative">
+                            <div
+                                class="w-8 h-8 rounded-full bg-orange-100 border-2 border-accent-orange flex items-center justify-center text-xs font-bold text-accent-orange flex-shrink-0 z-10">
+                                2</div>
+                            <div
+                                class="bg-gray-50 px-4 py-2 rounded-lg text-sm text-gray-800 border border-gray-200 w-full">
+                                Use regression after the fact</div>
+                        </div>
+                        <div class="flex items-start gap-4 relative">
+                            <div
+                                class="w-8 h-8 rounded-full bg-orange-100 border-2 border-accent-orange flex items-center justify-center text-xs font-bold text-accent-orange flex-shrink-0 z-10">
+                                3</div>
+                            <div
+                                class="bg-gray-50 px-4 py-2 rounded-lg text-sm text-gray-800 border border-gray-200 w-full">
+                                Check for protected class violations</div>
+                        </div>
+                        <div class="flex items-start gap-4 relative">
+                            <div
+                                class="w-8 h-8 rounded-full bg-orange-100 border-2 border-accent-orange flex items-center justify-center text-xs font-bold text-accent-orange flex-shrink-0 z-10">
+                                4</div>
+                            <div
+                                class="bg-gray-50 px-4 py-2 rounded-lg text-sm text-gray-800 border border-gray-200 w-full">
+                                Evaluate potential biases</div>
+                        </div>
+                    </div>
+                    <div class="mt-6 text-sm italic text-gray-500 text-center">"There's no right or wrong answer in how
+                        that is used."</div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 hover-lift flex flex-col">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-lightest-blue p-3 rounded-lg text-accent-blue">
+                            <i data-lucide="shield" class="w-6 h-6"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold font-sora text-gray-900">Transparency vs. Privacy</h2>
+                    </div>
+                    <p class="text-gray-600 mb-8 flex-grow">The inherent tension between making AI systems transparent
+                        and protecting personal data.</p>
+
+                    <div class="bg-gray-50 rounded-xl p-6 border border-gray-200 flex flex-col items-center mb-6">
+                        <div class="w-full max-w-xs relative mb-4">
+                            <div class="w-full h-2 bg-gray-400 rounded-full mb-8 relative">
+                                <div
+                                    class="absolute left-1/2 top-0 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-gray-600">
+                                </div>
+                            </div>
+                            <div class="absolute left-4 top-2 text-center">
+                                <div class="w-0.5 h-6 bg-gray-400 mx-auto"></div>
+                                <div
+                                    class="bg-blue-100 text-blue-800 text-xs font-bold py-1 px-3 rounded shadow-sm border border-blue-200">
+                                    Transparency</div>
+                            </div>
+                            <div class="absolute right-4 top-2 text-center transform translate-y-2">
+                                <div class="w-0.5 h-6 bg-gray-400 mx-auto"></div>
+                                <div
+                                    class="bg-red-100 text-red-800 text-xs font-bold py-1 px-3 rounded shadow-sm border border-red-200">
+                                    Data Privacy</div>
+                            </div>
+                            <div
+                                class="w-0 h-0 border-l-[15px] border-l-transparent border-r-[15px] border-r-transparent border-b-[20px] border-b-gray-400 mx-auto absolute left-1/2 transform -translate-x-1/2 -bottom-2">
+                            </div>
+                        </div>
+                        <p class="text-sm text-center font-medium text-gray-800 mt-2">Regulations Limit Disclosure</p>
+                    </div>
+                    <p class="text-sm text-gray-600">"We want to protect personally identifiable information. In many
+                        countries, data privacy regulations inherently limit transparency in your ability to share what
+                        is in the model."</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="fade-section mb-20 print-break">
+            <div class="bg-light-purple rounded-3xl p-8 md:p-10 border border-purple-200 shadow-sm text-center">
+                <i data-lucide="users" class="w-12 h-12 text-accent-purple mx-auto mb-4"></i>
+                <h2 class="text-3xl font-bold font-sora text-gray-900 mb-8">The Human Baseline</h2>
+
+                <div
+                    class="bg-white rounded-2xl shadow-sm overflow-hidden grid grid-cols-1 md:grid-cols-2 text-left border border-gray-200">
+                    <div class="p-6 md:p-8 border-b md:border-b-0 md:border-r border-gray-200 relative">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gray-300"></div>
+                        <h3 class="text-xl font-bold font-sora text-gray-800 mb-6 flex items-center gap-2">
+                            <i data-lucide="brain" class="w-5 h-5 text-gray-500"></i> Human Decision-Making
+                        </h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center justify-between border-b border-gray-100 pb-2">
+                                <span class="text-gray-600">Transparent?</span>
+                                <span
+                                    class="bg-gray-100 text-gray-800 text-xs font-bold px-2 py-1 rounded">RARELY</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-gray-100 pb-2">
+                                <span class="text-gray-600">Unbiased?</span>
+                                <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded">NO (High
+                                    Bias)</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-gray-100 pb-2">
+                                <span class="text-gray-600">Explainable?</span>
+                                <span
+                                    class="bg-gray-100 text-gray-800 text-xs font-bold px-2 py-1 rounded">RARELY</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2">
+                                <span class="text-gray-600">Consistent?</span>
+                                <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded">NO</span>
+                            </li>
+                        </ul>
+                        <p class="text-sm text-gray-500 mt-6 italic">"Most people can't give you a good understanding of
+                            why they make the decisions they do."</p>
+                    </div>
+
+                    <div class="p-6 md:p-8 relative">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-accent-purple"></div>
+                        <h3 class="text-xl font-bold font-sora text-purple-900 mb-6 flex items-center gap-2">
+                            <i data-lucide="monitor" class="w-5 h-5 text-accent-purple"></i> AI Decision-Making
+                        </h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-center justify-between border-b border-gray-100 pb-2">
+                                <span class="text-gray-600">Transparent?</span>
+                                <span
+                                    class="bg-purple-100 text-purple-800 text-xs font-bold px-2 py-1 rounded">VARIES</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-gray-100 pb-2">
+                                <span class="text-gray-600">Unbiased?</span>
+                                <span
+                                    class="bg-purple-100 text-purple-800 text-xs font-bold px-2 py-1 rounded">VARIES</span>
+                            </li>
+                            <li class="flex items-center justify-between border-b border-gray-100 pb-2">
+                                <span class="text-gray-600">Explainable?</span>
+                                <span
+                                    class="bg-purple-100 text-purple-800 text-xs font-bold px-2 py-1 rounded">VARIES</span>
+                            </li>
+                            <li class="flex items-center justify-between pb-2">
+                                <span class="text-gray-600">Consistent?</span>
+                                <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">YES</span>
+                            </li>
+                        </ul>
+                        <p class="text-sm text-gray-500 mt-6 italic">Performance depends entirely on model type,
+                            transparency, and design choices.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-8 bg-white/60 inline-block px-6 py-3 rounded-full text-purple-900 font-bold text-lg shadow-sm">
+                    "Oftentimes humans aren't necessarily better than what the AI system would provide."
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section mb-20">
+            <h2 class="text-3xl font-bold font-sora text-center mb-4 text-gray-900">The NIST Framework</h2>
+            <p class="text-center text-gray-600 mb-10">Important standard criteria for responsible AI explanation,
+                especially for government work.</p>
+
+            <div class="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 md:p-10 relative">
+                <div
+                    class="w-full bg-light-indigo border-b-4 border-accent-indigo py-4 rounded-t-xl text-center mb-8 relative z-10">
+                    <h3 class="font-bold text-indigo-900 tracking-widest uppercase">Responsible AI Explanation</h3>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 z-10 relative">
+
+                    <div
+                        class="bg-gray-50 border border-gray-200 rounded-lg p-5 flex flex-col items-center text-center shadow-sm">
+                        <div class="bg-white p-2 rounded-full mb-3 shadow-sm text-accent-indigo border border-gray-100">
+                            <i data-lucide="file-text" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold font-sora text-gray-900 mb-2">Explanation</h4>
+                        <div class="w-8 h-1 bg-accent-indigo mb-3 rounded-full"></div>
+                        <p class="text-xs text-gray-600 leading-relaxed">System delivers accompanying evidence or
+                            reasons for ALL outputs, providing justification.</p>
+                    </div>
+
+                    <div
+                        class="bg-gray-50 border border-gray-200 rounded-lg p-5 flex flex-col items-center text-center shadow-sm">
+                        <div class="bg-white p-2 rounded-full mb-3 shadow-sm text-accent-indigo border border-gray-100">
+                            <i data-lucide="users" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold font-sora text-gray-900 mb-2">Meaningful</h4>
+                        <div class="w-8 h-1 bg-accent-indigo mb-3 rounded-full"></div>
+                        <p class="text-xs text-gray-600 leading-relaxed">Provides explanations that are understandable
+                            to individual users. Avoids overly technical jargon.</p>
+                    </div>
+
+                    <div
+                        class="bg-gray-50 border border-gray-200 rounded-lg p-5 flex flex-col items-center text-center shadow-sm">
+                        <div class="bg-white p-2 rounded-full mb-3 shadow-sm text-accent-indigo border border-gray-100">
+                            <i data-lucide="target" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold font-sora text-gray-900 mb-2">Accuracy</h4>
+                        <div class="w-8 h-1 bg-accent-indigo mb-3 rounded-full"></div>
+                        <p class="text-xs text-gray-600 leading-relaxed">Correctly reflects the system's actual process
+                            generating the output. Zero fabrication.</p>
+                    </div>
+
+                    <div
+                        class="bg-gray-50 border border-gray-200 rounded-lg p-5 flex flex-col items-center text-center shadow-sm">
+                        <div class="bg-white p-2 rounded-full mb-3 shadow-sm text-accent-indigo border border-gray-100">
+                            <i data-lucide="shield" class="w-6 h-6"></i>
+                        </div>
+                        <h4 class="font-bold font-sora text-gray-900 mb-2">Knowledge Limits</h4>
+                        <div class="w-8 h-1 bg-accent-indigo mb-3 rounded-full"></div>
+                        <p class="text-xs text-gray-600 leading-relaxed">System only operates under conditions for which
+                            it was designed when outputting confidence.</p>
+                    </div>
+
+                </div>
+
+                <div class="w-full h-4 bg-gray-200 rounded-b-xl mt-8"></div>
+            </div>
+        </section>
+
+        <div class="bg-gray-50 rounded-3xl p-6 md:p-10 border border-gray-200 mb-16 fade-section print-break">
+
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold font-sora text-gray-900 mb-2 flex items-center gap-2">
+                    <i data-lucide="plus-circle" class="w-6 h-6 text-green-600"></i> Complementary Methods
+                </h2>
+                <p class="text-sm text-gray-600 mb-6">Practical tools that address the transparency and explainability
+                    gaps identified in the scenarios above.</p>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+                        <h4 class="font-bold text-gray-800 text-sm mb-1">Model Cards</h4>
+                        <p class="text-xs text-gray-600 mb-2 flex-grow">Standardized documentation of intended use and
+                            limits.</p>
+                        <span class="text-[10px] bg-gray-100 text-gray-500 font-bold px-2 py-1 rounded w-max">Addresses
+                            Scenarios 1 & 4</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+                        <h4 class="font-bold text-gray-800 text-sm mb-1">LIME</h4>
+                        <p class="text-xs text-gray-600 mb-2 flex-grow">Explains individual predictions via simple local
+                            models.</p>
+                        <span class="text-[10px] bg-gray-100 text-gray-500 font-bold px-2 py-1 rounded w-max">Addresses
+                            Scenarios 2 & 3</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+                        <h4 class="font-bold text-gray-800 text-sm mb-1">SHAP</h4>
+                        <p class="text-xs text-gray-600 mb-2 flex-grow">Game-theoretic feature importance attribution.
+                        </p>
+                        <span class="text-[10px] bg-gray-100 text-gray-500 font-bold px-2 py-1 rounded w-max">Addresses
+                            Scenario 3</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+                        <h4 class="font-bold text-gray-800 text-sm mb-1">Attention Visuals</h4>
+                        <p class="text-xs text-gray-600 mb-2 flex-grow">Visualizing which inputs the neural network
+                            attends to.</p>
+                        <span class="text-[10px] bg-gray-100 text-gray-500 font-bold px-2 py-1 rounded w-max">Addresses
+                            Scenario 2</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+                        <h4 class="font-bold text-gray-800 text-sm mb-1">Counterfactuals</h4>
+                        <p class="text-xs text-gray-600 mb-2 flex-grow">Showing what must change for a different
+                            outcome.</p>
+                        <span class="text-[10px] bg-gray-100 text-gray-500 font-bold px-2 py-1 rounded w-max">Enhances
+                            Scenario 1</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col">
+                        <h4 class="font-bold text-gray-800 text-sm mb-1">Algorithmic Audits</h4>
+                        <p class="text-xs text-gray-600 mb-2 flex-grow">Third-party review for bias and compliance.</p>
+                        <span class="text-[10px] bg-gray-100 text-gray-500 font-bold px-2 py-1 rounded w-max">Extends
+                            Post-Hoc Check</span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-bold font-sora text-gray-900 mb-2 flex items-center gap-2">
+                    <i data-lucide="map" class="w-6 h-6 text-accent-yellow"></i> Implementation Pipeline
+                </h2>
+                <p class="text-sm text-gray-600 mb-6">Map your models, address the gaps, and measure against the NIST
+                    framework.</p>
+
+                <div class="flex flex-col md:flex-row gap-2 relative">
+                    <div
+                        class="hidden md:block absolute top-1/2 left-4 right-4 h-1 bg-yellow-200 -z-10 transform -translate-y-1/2">
+                    </div>
+
+                    <div class="flex-1 bg-white border border-gray-200 rounded-lg p-4 shadow-sm relative z-10">
+                        <div class="bg-yellow-100 text-accent-yellow text-xs font-bold px-2 py-1 rounded w-max mb-2">
+                            Phase 1</div>
+                        <h4 class="font-bold text-sm text-gray-800 mb-2">Assess Models</h4>
+                        <ul class="text-xs text-gray-600 list-disc pl-4 space-y-1">
+                            <li>Map to the 2×2 matrix</li>
+                            <li>Locate on trade-off curve</li>
+                            <li>Determine user needs</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 bg-white border border-gray-200 rounded-lg p-4 shadow-sm relative z-10">
+                        <div class="bg-yellow-100 text-accent-yellow text-xs font-bold px-2 py-1 rounded w-max mb-2">
+                            Phase 2</div>
+                        <h4 class="font-bold text-sm text-gray-800 mb-2">Transparency Gaps</h4>
+                        <ul class="text-xs text-gray-600 list-disc pl-4 space-y-1">
+                            <li>Document architecture</li>
+                            <li>Create model cards</li>
+                            <li>Balance privacy limits</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 bg-white border border-gray-200 rounded-lg p-4 shadow-sm relative z-10">
+                        <div class="bg-yellow-100 text-accent-yellow text-xs font-bold px-2 py-1 rounded w-max mb-2">
+                            Phase 3</div>
+                        <h4 class="font-bold text-sm text-gray-800 mb-2">Explainability Gaps</h4>
+                        <ul class="text-xs text-gray-600 list-disc pl-4 space-y-1">
+                            <li>Apply XAI techniques</li>
+                            <li>Run post-hoc checks</li>
+                            <li>Design for audiences</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 bg-white border border-gray-200 rounded-lg p-4 shadow-sm relative z-10">
+                        <div class="bg-yellow-100 text-accent-yellow text-xs font-bold px-2 py-1 rounded w-max mb-2">
+                            Phase 4</div>
+                        <h4 class="font-bold text-sm text-gray-800 mb-2">Governance</h4>
+                        <ul class="text-xs text-gray-600 list-disc pl-4 space-y-1">
+                            <li>Evaluate via NIST pillars</li>
+                            <li>Compare to human baseline</li>
+                            <li>Monitor bias over time</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="fade-section mb-16 text-center print-break">
+            <h2 class="text-3xl font-bold font-sora text-gray-900 mb-8">Key Takeaways</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left max-w-4xl mx-auto mb-12">
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mt-0.5"></i>
+                    <div>
+                        <strong class="text-gray-900 block">The TRUSTED Framework is Comprehensive</strong>
+                        <span class="text-sm text-gray-600">Encompasses 7 principles: Transparent, Respect for Privacy,
+                            Unbiased, Sustainable, Traceable, Explainable, Dependable.</span>
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mt-0.5"></i>
+                    <div>
+                        <strong class="text-gray-900 block">Transparency ≠ Explainability</strong>
+                        <span class="text-sm text-gray-600">The 4 scenarios prove a model can expose its code without
+                            explaining its reasoning, or explain its output without sharing its data.</span>
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mt-0.5"></i>
+                    <div>
+                        <strong class="text-gray-900 block">Push the Curve with XAI</strong>
+                        <span class="text-sm text-gray-600">Don't accept the accuracy-interpretability trade-off as
+                            final. Use XAI techniques to push toward better performance AND understanding.</span>
+                    </div>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-start gap-3">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-green-600 mt-0.5"></i>
+                    <div>
+                        <strong class="text-gray-900 block">Meet the NIST Standards</strong>
+                        <span class="text-sm text-gray-600">Ensure explanations are backed by evidence, meaningful to
+                            users, completely accurate, and respect knowledge limits.</span>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="bg-light-green border-2 border-accent-green rounded-2xl p-8 md:p-12 shadow-lg max-w-4xl mx-auto relative overflow-hidden">
+                <div class="absolute -right-4 -bottom-4 opacity-10">
+                    <i data-lucide="lightbulb" class="w-48 h-48"></i>
+                </div>
+                <p class="text-xl md:text-2xl font-bold font-sora text-green-900 leading-relaxed relative z-10">
+                    "Transparency shows <span
+                        class="text-accent-green underline decoration-4 underline-offset-4">HOW</span> a model
+                    works.<br>
+                    Explainability shows <span
+                        class="text-accent-green underline decoration-4 underline-offset-4">WHY</span> it
+                    decided.<br><br>
+                    Responsible AI requires both — and the wisdom to know which gaps to address first."
+                </p>
+            </div>
+        </section>
+
+        <footer class="fade-section border-t border-gray-200 pt-8 mt-16 text-center pb-8">
+            <div class="flex justify-center mb-4">
+                <div class="bg-gray-100 p-3 rounded-full text-gray-400">
+                    <i data-lucide="book-open" class="w-6 h-6"></i>
+                </div>
+            </div>
+            <p class="text-gray-800 font-bold mb-1">Dr. Ian McCullough, Johns Hopkins University</p>
+            <p class="text-gray-500 text-sm mb-4">Topic: Responsible AI Principles — Understanding Transparency and
+                Explainability</p>
+            <div class="text-xs text-gray-400 max-w-xl mx-auto">
+                <p class="mb-2">For further reading, consult the NIST AI Risk Management Framework and XAI methodology
+                    documentation (LIME, SHAP).</p>
+                <p>Designed for print and digital viewing. To print, use standard browser print functionality (Ctrl+P /
+                    Cmd+P).</p>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <script>
+        // SAFE PATTERN FOR SCROLL ANIMATIONS AND ICON INITIALIZATION
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Lucide icons
+            lucide.createIcons();
+
+            // 2. Add .not-visible to sections (Ensures visibility if JS fails)
+            const fadeSections = document.querySelectorAll('.fade-section');
+            fadeSections.forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+
+            // 3. Set up IntersectionObserver
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.remove('not-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+                fadeSections.forEach(function (el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for older browsers
+                fadeSections.forEach(function (el) {
+                    el.classList.remove('not-visible');
+                });
+            }
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

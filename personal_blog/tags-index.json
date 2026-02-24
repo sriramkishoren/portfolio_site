@@ -1,6 +1,6 @@
 {
-  "generated": "2026-02-15",
-  "totalTags": 284,
+  "generated": "2026-02-23",
+  "totalTags": 339,
   "tags": {
     "Machine Learning": [
       "ai-introduction/introduction-to-ai.html",
@@ -248,7 +248,9 @@
     ],
     "AI Governance": [
       "ai-project-management/road-framework-guide.html",
-      "ai-bias-and-risks/managing-ai-bias.html"
+      "ai-bias-and-risks/managing-ai-bias.html",
+      "ai-bias-and-risks/responsible-ai-systems.html",
+      "ai-bias-and-risks/transparency-and-explainability.html"
     ],
     "Data Engineering": [
       "ai-project-management/road-framework-guide.html",
@@ -342,7 +344,8 @@
       "ml-algorithms/random-forest.html"
     ],
     "Feature Importance": [
-      "ml-algorithms/random-forest.html"
+      "ml-algorithms/random-forest.html",
+      "ai-bias-and-risks/transparency-and-explainability-solutions.html"
     ],
     "Neural Networks": [
       "ai-introduction/history-of-ai.html",
@@ -354,11 +357,13 @@
     "Deep Learning": [
       "ai-introduction/introduction-to-ai.html",
       "ai-introduction/history-of-ai.html",
-      "ml-algorithms/neural-networks.html"
+      "ml-algorithms/neural-networks.html",
+      "ai-bias-and-risks/transparency-and-explainability-solutions.html"
     ],
     "CNN": [
       "ml-algorithms/neural-networks.html",
-      "ml-algorithms/ai-algorithm-selection-case-studies.html"
+      "ml-algorithms/ai-algorithm-selection-case-studies.html",
+      "ai-bias-and-risks/transparency-and-explainability-solutions.html"
     ],
     "RNN": [
       "ml-algorithms/neural-networks.html",
@@ -396,7 +401,9 @@
       "ml-algorithms/ml-algorithm-selection-guide.html"
     ],
     "Interpretability": [
-      "ml-algorithms/ml-algorithm-selection-guide.html"
+      "ml-algorithms/ml-algorithm-selection-guide.html",
+      "ai-bias-and-risks/transparency-and-explainability.html",
+      "ai-bias-and-risks/transparency-and-explainability-solutions.html"
     ],
     "Algorithm Mapping": [
       "ml-algorithms/algorithm-paradigm-mapping.html"
@@ -450,7 +457,8 @@
     "Data Labeling": [
       "data-optimization-for-ml/data-labeling-for-ml.html",
       "data-optimization-for-ml/data-labeling-considerations.html",
-      "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
+      "data-optimization-for-ml/cognitive-limits-terms-of-reference.html",
+      "ai-bias-and-risks/human-baseline.html"
     ],
     "Annotation": [
       "data-optimization-for-ml/data-labeling-for-ml.html",
@@ -489,7 +497,8 @@
       "data-optimization-for-ml/project-maven-data-quality-case-study.html",
       "optimizing-ai-resources/quick-summary.html",
       "ai-bias-and-risks/various-data-bias.html",
-      "ai-bias-and-risks/bias-mitigation.html"
+      "ai-bias-and-risks/bias-mitigation.html",
+      "ai-bias-and-risks/human-baseline.html"
     ],
     "Active Learning": [
       "data-optimization-for-ml/data-labeling-challenges.html"
@@ -509,10 +518,13 @@
       "data-optimization-for-ml/data-labeling-considerations.html"
     ],
     "Privacy": [
-      "data-optimization-for-ml/data-labeling-considerations.html"
+      "data-optimization-for-ml/data-labeling-considerations.html",
+      "ai-bias-and-risks/data-privacy.html",
+      "ai-bias-and-risks/methods-for-data-privacy.html"
     ],
     "GDPR": [
-      "data-optimization-for-ml/data-labeling-considerations.html"
+      "data-optimization-for-ml/data-labeling-considerations.html",
+      "ai-bias-and-risks/data-privacy.html"
     ],
     "Consistency": [
       "data-optimization-for-ml/data-labeling-considerations.html"
@@ -535,7 +547,8 @@
     "Annotation Quality": [
       "data-optimization-for-ml/cognitive-limits-terms-of-reference.html",
       "data-optimization-for-ml/size-consistency-quality-tradeoffs.html",
-      "ai-bias-and-risks/bias-mitigation.html"
+      "ai-bias-and-risks/bias-mitigation.html",
+      "ai-bias-and-risks/human-baseline.html"
     ],
     "ToR": [
       "data-optimization-for-ml/cognitive-limits-terms-of-reference.html"
@@ -559,7 +572,8 @@
     ],
     "Krippendorff's Alpha": [
       "data-optimization-for-ml/inter-annotator-agreement.html",
-      "data-optimization-for-ml/krippendorffs-Alpha.html"
+      "data-optimization-for-ml/krippendorffs-Alpha.html",
+      "ai-bias-and-risks/human-baseline.html"
     ],
     "Annotation Reliability": [
       "data-optimization-for-ml/inter-annotator-agreement.html"
@@ -635,7 +649,8 @@
     "Agentic AI": [
       "agentic-ai/portfolio-site-using-claude-code.html",
       "agentic-ai/ai-agent-security.html",
-      "agentic-ai/ai-coding-levels.html"
+      "agentic-ai/ai-coding-levels.html",
+      "agentic-ai/ai-agent-fundamentals.html"
     ],
     "Prompt Injection": [
       "agentic-ai/ai-agent-security.html"
@@ -879,7 +894,8 @@
       "optimizing-ai-resources/quick-summary.html"
     ],
     "AI Architecture": [
-      "optimizing-ai-resources/quick-summary.html"
+      "optimizing-ai-resources/quick-summary.html",
+      "agentic-ai/ai-agent-fundamentals.html"
     ],
     "Senior Engineer Guide": [
       "optimizing-ai-resources/quick-summary.html"
@@ -891,7 +907,10 @@
     ],
     "AI Ethics": [
       "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html",
-      "ai-bias-and-risks/managing-ai-bias.html"
+      "ai-bias-and-risks/managing-ai-bias.html",
+      "ai-bias-and-risks/responsible-ai-systems.html",
+      "ai-bias-and-risks/nudging-human-bias.html",
+      "ai-bias-and-risks/transparency-and-explainability.html"
     ],
     "Human Bias": [
       "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html"
@@ -902,7 +921,8 @@
     "Fairness": [
       "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html",
       "ai-bias-and-risks/managing-ai-bias.html",
-      "ai-bias-and-risks/bias-mitigation.html"
+      "ai-bias-and-risks/bias-mitigation.html",
+      "ai-bias-and-risks/responsible-ai-systems.html"
     ],
     "Discrimination": [
       "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html",
@@ -917,13 +937,17 @@
     ],
     "Responsible AI": [
       "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html",
-      "ai-bias-and-risks/managing-ai-bias.html"
+      "ai-bias-and-risks/managing-ai-bias.html",
+      "ai-bias-and-risks/responsible-ai-systems.html",
+      "ai-bias-and-risks/nudging-human-bias.html",
+      "ai-bias-and-risks/transparency-and-explainability.html"
     ],
     "Legal Perspective": [
       "ai-bias-and-risks/bias-types-and-legal-perspective.html"
     ],
     "AI Regulation": [
-      "ai-bias-and-risks/bias-types-and-legal-perspective.html"
+      "ai-bias-and-risks/bias-types-and-legal-perspective.html",
+      "ai-bias-and-risks/data-privacy.html"
     ],
     "Hiring Bias": [
       "ai-bias-and-risks/bias-types-and-legal-perspective.html"
@@ -942,7 +966,8 @@
     ],
     "Bias Detection": [
       "ai-bias-and-risks/managing-ai-bias.html",
-      "ai-bias-and-risks/bias-mitigation.html"
+      "ai-bias-and-risks/bias-mitigation.html",
+      "ai-bias-and-risks/transparency-and-explainability-solutions.html"
     ],
     "Algorithmic Fairness": [
       "ai-bias-and-risks/managing-ai-bias.html"
@@ -991,6 +1016,175 @@
     ],
     "AI Tools": [
       "agentic-ai/ai-coding-levels.html"
+    ],
+    "Trolley Problem": [
+      "ai-bias-and-risks/responsible-ai-systems.html"
+    ],
+    "Loss Aversion": [
+      "ai-bias-and-risks/responsible-ai-systems.html"
+    ],
+    "Cognitive Bias": [
+      "ai-bias-and-risks/responsible-ai-systems.html",
+      "ai-bias-and-risks/nudging-human-bias.html",
+      "ai-bias-and-risks/human-baseline.html"
+    ],
+    "AI Adoption": [
+      "ai-bias-and-risks/responsible-ai-systems.html"
+    ],
+    "Moral Philosophy": [
+      "ai-bias-and-risks/responsible-ai-systems.html"
+    ],
+    "Accountability": [
+      "ai-bias-and-risks/responsible-ai-systems.html"
+    ],
+    "AI Bias": [
+      "ai-bias-and-risks/nudging-human-bias.html"
+    ],
+    "Nudging": [
+      "ai-bias-and-risks/nudging-human-bias.html"
+    ],
+    "Judicial AI": [
+      "ai-bias-and-risks/nudging-human-bias.html"
+    ],
+    "Resume Anonymization": [
+      "ai-bias-and-risks/nudging-human-bias.html"
+    ],
+    "Decision-Making": [
+      "ai-bias-and-risks/nudging-human-bias.html"
+    ],
+    "AI Fairness": [
+      "ai-bias-and-risks/nudging-human-bias.html",
+      "ai-bias-and-risks/human-baseline.html"
+    ],
+    "Human Baseline": [
+      "ai-bias-and-risks/human-baseline.html"
+    ],
+    "AI Evaluation": [
+      "ai-bias-and-risks/human-baseline.html"
+    ],
+    "Inter-Rater Reliability": [
+      "ai-bias-and-risks/human-baseline.html"
+    ],
+    "Training Data": [
+      "ai-bias-and-risks/human-baseline.html"
+    ],
+    "Human Performance": [
+      "ai-bias-and-risks/human-baseline.html"
+    ],
+    "Transparency": [
+      "ai-bias-and-risks/transparency-and-explainability.html"
+    ],
+    "Explainability": [
+      "ai-bias-and-risks/transparency-and-explainability.html"
+    ],
+    "TRUSTED Framework": [
+      "ai-bias-and-risks/transparency-and-explainability.html"
+    ],
+    "NIST": [
+      "ai-bias-and-risks/transparency-and-explainability.html"
+    ],
+    "Post-Hoc Assessment": [
+      "ai-bias-and-risks/transparency-and-explainability.html"
+    ],
+    "Black Box AI": [
+      "ai-bias-and-risks/transparency-and-explainability.html"
+    ],
+    "Explainable AI": [
+      "ai-bias-and-risks/transparency-and-explainability-solutions.html"
+    ],
+    "XAI": [
+      "ai-bias-and-risks/transparency-and-explainability-solutions.html"
+    ],
+    "LIME": [
+      "ai-bias-and-risks/transparency-and-explainability-solutions.html"
+    ],
+    "SHAP": [
+      "ai-bias-and-risks/transparency-and-explainability-solutions.html"
+    ],
+    "Model Interpretability": [
+      "ai-bias-and-risks/transparency-and-explainability-solutions.html"
+    ],
+    "Healthcare AI": [
+      "ai-bias-and-risks/transparency-and-explainability-solutions.html"
+    ],
+    "Data Privacy": [
+      "ai-bias-and-risks/data-privacy.html",
+      "ai-bias-and-risks/methods-for-data-privacy.html"
+    ],
+    "CalOPPA": [
+      "ai-bias-and-risks/data-privacy.html"
+    ],
+    "PIPL": [
+      "ai-bias-and-risks/data-privacy.html"
+    ],
+    "Privacy-Enhancing Technologies": [
+      "ai-bias-and-risks/data-privacy.html"
+    ],
+    "Federated Learning": [
+      "ai-bias-and-risks/data-privacy.html"
+    ],
+    "Differential Privacy": [
+      "ai-bias-and-risks/data-privacy.html"
+    ],
+    "Compliance": [
+      "ai-bias-and-risks/data-privacy.html"
+    ],
+    "Data Residency": [
+      "ai-bias-and-risks/data-privacy.html"
+    ],
+    "Encryption": [
+      "ai-bias-and-risks/methods-for-data-privacy.html"
+    ],
+    "RBAC": [
+      "ai-bias-and-risks/methods-for-data-privacy.html"
+    ],
+    "Data Masking": [
+      "ai-bias-and-risks/methods-for-data-privacy.html"
+    ],
+    "Data Minimization": [
+      "ai-bias-and-risks/methods-for-data-privacy.html"
+    ],
+    "Privacy by Design": [
+      "ai-bias-and-risks/methods-for-data-privacy.html"
+    ],
+    "Formal Methods": [
+      "ai-bias-and-risks/methods-for-data-privacy.html"
+    ],
+    "Incident Response": [
+      "ai-bias-and-risks/methods-for-data-privacy.html"
+    ],
+    "Deepfakes": [
+      "ai-bias-and-risks/methods-for-data-privacy.html"
+    ],
+    "Data Ownership": [
+      "ai-bias-and-risks/methods-for-data-privacy.html"
+    ],
+    "AI Agents": [
+      "agentic-ai/ai-agent-fundamentals.html"
+    ],
+    "LLM": [
+      "agentic-ai/ai-agent-fundamentals.html"
+    ],
+    "Model Context Protocol": [
+      "agentic-ai/ai-agent-fundamentals.html"
+    ],
+    "MCP": [
+      "agentic-ai/ai-agent-fundamentals.html"
+    ],
+    "RAG": [
+      "agentic-ai/ai-agent-fundamentals.html"
+    ],
+    "Retrieval-Augmented Generation": [
+      "agentic-ai/ai-agent-fundamentals.html"
+    ],
+    "Guardrails": [
+      "agentic-ai/ai-agent-fundamentals.html"
+    ],
+    "Observability": [
+      "agentic-ai/ai-agent-fundamentals.html"
+    ],
+    "Tool Calling": [
+      "agentic-ai/ai-agent-fundamentals.html"
     ]
   }
 }

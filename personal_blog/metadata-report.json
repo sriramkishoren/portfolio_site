@@ -1,6 +1,6 @@
 {
-  "generated": "2026-02-21",
-  "totalPosts": 54,
+  "generated": "2026-02-23",
+  "totalPosts": 62,
   "baseUrl": "https://www.kishoretech.com",
   "author": "Sriramkishore Naraharisetti",
   "categories": {
@@ -9,10 +9,10 @@
     "ML Algorithms": 10,
     "Data Optimization for ML": 9,
     "Optimizing AI Resources": 10,
-    "AI Bias and Risks": 5,
+    "AI Bias and Risks": 12,
     "AI Business UseCases": 6,
     "AI Project Management": 2,
-    "Agentic AI": 3
+    "Agentic AI": 4
   },
   "posts": [
     {
@@ -473,6 +473,78 @@
       "datePublished": "2025-02-22",
       "tags": ["Bias Mitigation", "Inter-Annotator Agreement", "Cohen's Kappa", "Fleiss' Kappa", "Data Quality", "Annotation Quality", "Fairness", "Bias Detection", "IAA Metrics"],
       "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/bias-mitigation"
+    },
+    {
+      "file": "ai-bias-and-risks/responsible-ai-systems.html",
+      "title": "Responsible AI Systems: Ethical and Moral Foundations",
+      "description": "Explore the ethical and moral foundations of responsible AI through trolley problems, cognitive biases, loss aversion, and actionable principles for AI adoption.",
+      "category": "AI Bias and Risks",
+      "datePublished": "2026-02-23",
+      "tags": ["Responsible AI", "AI Ethics", "Trolley Problem", "Loss Aversion", "Cognitive Bias", "AI Adoption", "Moral Philosophy", "Fairness", "Accountability", "AI Governance"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/responsible-ai-systems"
+    },
+    {
+      "file": "ai-bias-and-risks/nudging-human-bias.html",
+      "title": "Nudging Human Bias: AI for Fairer Decisions",
+      "description": "How AI nudges reduce human bias in patents, recruiting, judicial sentencing, and loans. Explore the 4-level nudging spectrum and a framework for responsible use.",
+      "category": "AI Bias and Risks",
+      "datePublished": "2026-02-23",
+      "tags": ["AI Bias", "Nudging", "Human Bias", "Cognitive Bias", "AI Ethics", "Judicial AI", "Resume Anonymization", "Decision-Making", "AI Fairness", "Responsible AI"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/nudging-human-bias"
+    },
+    {
+      "file": "ai-bias-and-risks/human-baseline.html",
+      "title": "The Human Baseline",
+      "description": "Discover why measuring human performance is essential before evaluating AI. Learn about inter-rater reliability, K-Alpha, annotation quality, and error sources.",
+      "category": "AI Bias and Risks",
+      "datePublished": "2026-02-23",
+      "tags": ["Human Baseline", "AI Evaluation", "Inter-Rater Reliability", "Krippendorff's Alpha", "Annotation Quality", "Training Data", "Cognitive Bias", "Data Labeling", "AI Fairness", "Human Performance"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/human-baseline"
+    },
+    {
+      "file": "ai-bias-and-risks/transparency-and-explainability.html",
+      "title": "Responsible AI Principles - Transparency & Explainability",
+      "description": "Understand the critical distinction between AI transparency and explainability. Covers the TRUSTED framework, NIST standards, real-world scenarios, and trade-offs.",
+      "category": "AI Bias and Risks",
+      "datePublished": "2026-02-23",
+      "tags": ["Transparency", "Explainability", "TRUSTED Framework", "NIST", "Responsible AI", "AI Governance", "Interpretability", "Post-Hoc Assessment", "AI Ethics", "Black Box AI"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/transparency-and-explainability"
+    },
+    {
+      "file": "ai-bias-and-risks/transparency-and-explainability-solutions.html",
+      "title": "Transparency and Explainability Solutions",
+      "description": "Learn LIME and SHAP techniques for explainable AI. Includes a glaucoma detection case study, SHAP beeswarm plots, bias detection, and practical XAI solutions.",
+      "category": "AI Bias and Risks",
+      "datePublished": "2026-02-23",
+      "tags": ["Explainable AI", "XAI", "LIME", "SHAP", "Model Interpretability", "Deep Learning", "Healthcare AI", "Bias Detection", "Feature Importance", "CNN"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/transparency-and-explainability-solutions"
+    },
+    {
+      "file": "ai-bias-and-risks/data-privacy.html",
+      "title": "Data Privacy: Navigating the Global Regulatory Landscape",
+      "description": "Compare global data privacy regulations including GDPR, CalOPPA, and China's PIPL. Explore trade-offs between individual rights, AI innovation, and security.",
+      "category": "AI Bias and Risks",
+      "datePublished": "2026-02-23",
+      "tags": ["Data Privacy", "GDPR", "CalOPPA", "PIPL", "AI Regulation", "Privacy-Enhancing Technologies", "Federated Learning", "Differential Privacy", "Compliance", "Data Residency"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/data-privacy"
+    },
+    {
+      "file": "ai-bias-and-risks/methods-for-data-privacy.html",
+      "title": "Methods for Data Privacy",
+      "description": "Explore practical data privacy methods: encryption, RBAC, masking, minimization, formal methods, and incident response. Includes Uber case study and GenAI risks.",
+      "category": "AI Bias and Risks",
+      "datePublished": "2026-02-23",
+      "tags": ["Data Privacy", "Encryption", "RBAC", "Data Masking", "Data Minimization", "Privacy by Design", "Formal Methods", "Incident Response", "Deepfakes", "Data Ownership"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/methods-for-data-privacy"
+    },
+    {
+      "file": "agentic-ai/ai-agent-fundamentals.html",
+      "title": "Fundamentals of AI Agents",
+      "description": "Learn the fundamentals of AI agents: core loop, LLM reasoning, tools, MCP, RAG, memory systems, guardrails, and production-ready architecture patterns.",
+      "category": "Agentic AI",
+      "datePublished": "2026-02-23",
+      "tags": ["AI Agents", "LLM", "Model Context Protocol", "MCP", "RAG", "Retrieval-Augmented Generation", "AI Architecture", "Guardrails", "Observability", "Tool Calling"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=agentic-ai/ai-agent-fundamentals"
     },
     {
       "file": "agentic-ai/portfolio-site-using-claude-code.html",

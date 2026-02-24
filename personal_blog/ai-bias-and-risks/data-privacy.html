@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Privacy: Navigating the Global Regulatory Landscape</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Data Privacy: Navigating the Global Regulatory Landscape">
+    <meta name="description"
+        content="Compare global data privacy regulations including GDPR, CalOPPA, and China's PIPL. Explore trade-offs between individual rights, AI innovation, and security.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Bias and Risks">
+    <meta name="tags"
+        content="Data Privacy, GDPR, CalOPPA, PIPL, AI Regulation, Privacy-Enhancing Technologies, Federated Learning, Differential Privacy, Compliance, Data Residency">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary"
+        content="A comprehensive analysis of global data privacy regulations comparing Europe's GDPR (7 individual rights), the United States CalOPPA (national standard effect), and China's PIPL (dual system with government exemptions). Covers the tension between individual rights and economic interests, privacy-enhancing technologies like differential privacy and federated learning, and a practical framework for privacy-compliant AI development.">
+    <link rel="canonical"
+        href="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/data-privacy">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Data Privacy: Navigating the Global Regulatory Landscape">
+    <meta property="og:description"
+        content="Compare global data privacy regulations -- GDPR, CalOPPA, and PIPL -- and explore trade-offs between individual rights, AI innovation, and security.">
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/data-privacy">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2026-02-23">
+    <meta property="article:section" content="AI Bias and Risks">
+    <meta property="article:tag" content="Data Privacy">
+    <meta property="article:tag" content="GDPR">
+    <meta property="article:tag" content="AI Regulation">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Data Privacy: Navigating the Global Regulatory Landscape",
+        "description": "Compare global data privacy regulations including GDPR, CalOPPA, and China's PIPL. Explore trade-offs between individual rights, AI innovation, and security.",
+        "datePublished": "2026-02-23",
+        "dateModified": "2026-02-23",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ai-bias-and-risks/data-privacy"
+        },
+        "keywords": ["Data Privacy", "GDPR", "CalOPPA", "PIPL", "AI Regulation", "Privacy-Enhancing Technologies", "Federated Learning", "Differential Privacy", "Compliance", "Data Residency"],
+        "articleSection": "AI Bias and Risks",
+        "about": [
+            {"@type": "Thing", "name": "Data Privacy"},
+            {"@type": "Thing", "name": "AI Regulation"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "GDPR"},
+            {"@type": "Thing", "name": "CalOPPA"},
+            {"@type": "Thing", "name": "PIPL"}
+        ]
+    }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Global & Layout Styles */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #FAFBFC;
+            color: #475569;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Sora', sans-serif;
+            color: #1E293B;
+            letter-spacing: -0.025em;
+        }
+
+        .container-custom {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        @media (min-width: 768px) {
+            .container-custom {
+                padding: 4rem 2rem;
+            }
+        }
+
+        /* Rainbow Gradient Accent */
+        .top-stripe {
+            height: 6px;
+            width: 100%;
+            background: linear-gradient(90deg, #0EA5E9, #8B5CF6, #EC4899, #F59E0B, #10B981);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 50;
+        }
+
+        /* Custom Color Palettes */
+        .bg-header {
+            background-color: #F0F9FF;
+        }
+
+        .text-header-accent {
+            color: #0EA5E9;
+        }
+
+        .border-header {
+            border-color: #BAE6FD;
+        }
+
+        .bg-opening {
+            background-color: #F8FAFC;
+        }
+
+        .text-opening-accent {
+            color: #475569;
+        }
+
+        .bg-gdpr {
+            background-color: #E0E7FF;
+        }
+
+        .text-gdpr-accent {
+            color: #6366F1;
+        }
+
+        .bg-gdpr-accent {
+            background-color: #6366F1;
+        }
+
+        .bg-obl {
+            background-color: #FEF2F2;
+        }
+
+        .text-obl-accent {
+            color: #DC2626;
+        }
+
+        .bg-cal {
+            background-color: #FFF7ED;
+        }
+
+        .text-cal-accent {
+            color: #EA580C;
+        }
+
+        .bg-cal-accent {
+            background-color: #EA580C;
+        }
+
+        .bg-pipl {
+            background-color: #F0FDFA;
+        }
+
+        .text-pipl-accent {
+            color: #0D9488;
+        }
+
+        .bg-pipl-accent {
+            background-color: #0D9488;
+        }
+
+        .bg-surv {
+            background-color: #FEF2F2;
+        }
+
+        .text-surv-accent {
+            color: #DC2626;
+        }
+
+        .border-surv-accent {
+            border-color: #DC2626;
+        }
+
+        .bg-comp {
+            background-color: #E0E7FF;
+        }
+
+        .bg-prin {
+            background-color: #F3E8FF;
+        }
+
+        .text-prin-accent {
+            color: #8B5CF6;
+        }
+
+        .bg-tech {
+            background-color: #D1FAE5;
+        }
+
+        .text-tech-accent {
+            color: #10B981;
+        }
+
+        .bg-prac {
+            background-color: #FEF3C7;
+        }
+
+        .text-prac-accent {
+            color: #D97706;
+        }
+
+        .bg-take {
+            background-color: #F0FDF4;
+        }
+
+        .text-take-accent {
+            color: #22C55E;
+        }
+
+        /* Card Styles */
+        .info-card {
+            background-color: #FFFFFF;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Animation & Interactivity */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .hidden-content {
+            display: none;
+        }
+
+        /* Drag and Drop Ranking */
+        .draggable-item {
+            cursor: grab;
+            user-select: none;
+        }
+
+        .draggable-item:active {
+            cursor: grabbing;
+        }
+
+        /* Ripple Effect (CalOPPA) */
+        .ripple-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .ripple-ring {
+            position: absolute;
+            border: 2px solid #EA580C;
+            border-radius: 50%;
+            animation: ripple 2s infinite;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .ripple-ring:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .ripple-ring:nth-child(3) {
+            animation-delay: 1.2s;
+        }
+
+        @keyframes ripple {
+            0% {
+                width: 40px;
+                height: 40px;
+                opacity: 1;
+            }
+
+            100% {
+                width: 150px;
+                height: 150px;
+                opacity: 0;
+            }
+        }
+
+        /* Matrix Table */
+        .matrix-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .matrix-table th,
+        .matrix-table td {
+            border-bottom: 1px solid #E2E8F0;
+            border-right: 1px solid #E2E8F0;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .matrix-table th:last-child,
+        .matrix-table td:last-child {
+            border-right: none;
+        }
+
+        .matrix-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .matrix-table td {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .matrix-table td:hover {
+            background-color: #F8FAFC;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .fade-section.not-visible {
+                opacity: 1;
+                transform: none;
+            }
+
+            .info-card {
+                border: 1px solid #ccc;
+                box-shadow: none;
+                break-inside: avoid;
+            }
+
+            .top-stripe,
+            button {
+                display: none;
+            }
+
+            .hidden-content {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-stripe"></div>
+
+    <div class="container-custom">
+
+        <header class="bg-header border border-header rounded-2xl p-8 mb-16 text-center fade-section">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Data Privacy</h1>
+            <h2 class="text-xl md:text-2xl text-header-accent font-semibold mb-6">Navigating the Global Regulatory
+                Landscape — Rights, Trade-offs, and the AI Arms Race</h2>
+            <p class="text-lg max-w-2xl mx-auto mb-4">A comprehensive analysis of how global frameworks balance
+                individual rights against economic interests, national security, and innovation.</p>
+            <div
+                class="text-sm font-medium text-gray-500 bg-white inline-block px-4 py-2 rounded-full shadow-sm border border-gray-100">
+                Dr. Ian McCullough, Johns Hopkins University
+            </div>
+        </header>
+
+        <section id="opening" class="mb-20 fade-section">
+            <div class="flex items-center gap-3 mb-8 border-b pb-4">
+                <i data-lucide="globe" class="w-8 h-8 text-opening-accent"></i>
+                <h2 class="text-3xl font-bold">The Data Privacy Challenge</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div class="info-card bg-white">
+                    <h3 class="text-xl font-bold mb-4">Are you concerned about data privacy?</h3>
+                    <p class="mb-4">Rank the organizations below from most (1) to least (5) concern regarding data
+                        privacy abuse. <em>(Drag to reorder)</em></p>
+                    <ul id="ranking-list" class="space-y-2">
+                        <li class="draggable-item bg-gray-50 border border-gray-200 p-3 rounded flex items-center gap-3"
+                            draggable="true">
+                            <i data-lucide="building" class="text-gray-400"></i> The Government
+                        </li>
+                        <li class="draggable-item bg-gray-50 border border-gray-200 p-3 rounded flex items-center gap-3"
+                            draggable="true">
+                            <i data-lucide="shield" class="text-gray-400"></i> The Police
+                        </li>
+                        <li class="draggable-item bg-gray-50 border border-gray-200 p-3 rounded flex items-center gap-3"
+                            draggable="true">
+                            <i data-lucide="monitor" class="text-gray-400"></i> Large Information Monopolies (Google,
+                            Meta)
+                        </li>
+                        <li class="draggable-item bg-gray-50 border border-gray-200 p-3 rounded flex items-center gap-3"
+                            draggable="true">
+                            <i data-lucide="users" class="text-gray-400"></i> The Public / Random People
+                        </li>
+                        <li class="draggable-item bg-gray-50 border border-gray-200 p-3 rounded flex items-center gap-3"
+                            draggable="true">
+                            <i data-lucide="user-check" class="text-gray-400"></i> Your Employer / Organization
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-6">
+                    <div class="info-card bg-obl border-red-200 relative overflow-hidden">
+                        <div class="absolute top-0 right-0 p-4 opacity-10">
+                            <i data-lucide="alert-triangle" class="w-24 h-24 text-red-600"></i>
+                        </div>
+                        <div class="flex items-center gap-3 mb-2 text-red-600">
+                            <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                            <h3 class="font-bold text-lg">The Overreaction Warning</h3>
+                        </div>
+                        <p class="font-medium text-gray-800 mb-2">Society overreacts to security issues. Once you
+                            overreact, it's very difficult to back off.</p>
+                        <p class="text-sm text-gray-600 border-l-2 border-red-400 pl-3"><strong>The Airport Security
+                                Analogy:</strong> Following 9/11, society instituted massive security overreactions that
+                            are arguably excessive and cost taxpayers billions. Who takes the risk of backing off? If we
+                            are not proactive, we end up living with bad policy.</p>
+                    </div>
+
+                    <div class="info-card bg-opening border-gray-200">
+                        <h3 class="font-bold text-lg mb-3">Global Landscape</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start gap-2"><i data-lucide="map"
+                                    class="w-4 h-4 mt-1 text-gray-500"></i> Regulations are growing globally, driven
+                                more by economics than ideology.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="database"
+                                    class="w-4 h-4 mt-1 text-gray-500"></i> <strong>Data Residency:</strong> A massive
+                                trend forcing data to stay inside national borders.</li>
+                            <li class="flex items-start gap-2"><i data-lucide="zap"
+                                    class="w-4 h-4 mt-1 text-gray-500"></i> New laws are emerging constantly; checking
+                                local requirements is mandatory for development.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gdpr-rights" class="mb-16 fade-section">
+            <div class="flex items-center gap-3 mb-6 border-b pb-4">
+                <i data-lucide="shield" class="w-8 h-8 text-gdpr-accent"></i>
+                <h2 class="text-3xl font-bold">Europe's GDPR: Individual Rights</h2>
+            </div>
+
+            <div class="flex justify-between items-end mb-6">
+                <p class="text-lg max-w-xl">Europe's General Data Protection Regulation guarantees seven core rights to
+                    individuals.</p>
+                <button id="gdpr-toggle-btn"
+                    class="bg-gdpr-accent text-white px-5 py-2 rounded-full font-semibold hover:bg-indigo-600 transition shadow-sm text-sm">
+                    Toggle: Intent vs. Reality
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-8">
+                <div class="info-card border-indigo-100 bg-white">
+                    <i data-lucide="eye" class="text-gdpr-accent mb-3 w-6 h-6"></i>
+                    <h4 class="font-bold mb-2">Right to Access</h4>
+                    <p class="text-sm gdpr-intent">Individuals can access their personal data held by organizations.</p>
+                    <p class="text-sm gdpr-reality hidden-content text-red-600 font-medium">Reality: Complex
+                        bureaucratic requests that strain organizational resources.</p>
+                </div>
+                <div class="info-card border-indigo-100 bg-white">
+                    <i data-lucide="edit-3" class="text-gdpr-accent mb-3 w-6 h-6"></i>
+                    <h4 class="font-bold mb-2">Right to Rectification</h4>
+                    <p class="text-sm gdpr-intent">Right to correct inaccurate or incomplete data.</p>
+                    <p class="text-sm gdpr-reality hidden-content text-red-600 font-medium">Reality: Creates massive
+                        engineering overhead for immutable systems.</p>
+                </div>
+                <div class="info-card border-indigo-100 bg-white">
+                    <i data-lucide="trash-2" class="text-gdpr-accent mb-3 w-6 h-6"></i>
+                    <h4 class="font-bold mb-2">Right to Erasure</h4>
+                    <p class="text-sm gdpr-intent">The "Right to be Forgotten" — request data deletion.</p>
+                    <p class="text-sm gdpr-reality hidden-content text-red-600 font-medium">Reality: Technically
+                        impossible in many backups and machine learning models.</p>
+                </div>
+                <div class="info-card border-indigo-100 bg-white">
+                    <i data-lucide="pause-circle" class="text-gdpr-accent mb-3 w-6 h-6"></i>
+                    <h4 class="font-bold mb-2">Restrict Processing</h4>
+                    <p class="text-sm gdpr-intent">Prevent use of data under certain circumstances.</p>
+                    <p class="text-sm gdpr-reality hidden-content text-red-600 font-medium">Reality: Disconnects user
+                        data dynamically, breaking app features.</p>
+                </div>
+                <div class="info-card border-indigo-100 bg-white">
+                    <i data-lucide="share-2" class="text-gdpr-accent mb-3 w-6 h-6"></i>
+                    <h4 class="font-bold mb-2">Data Portability</h4>
+                    <p class="text-sm gdpr-intent">Receive data in a structured format to send elsewhere.</p>
+                    <p class="text-sm gdpr-reality hidden-content text-red-600 font-medium">Reality: Competitors rarely
+                        align on "commonly used" structural formats.</p>
+                </div>
+                <div class="info-card border-indigo-100 bg-white">
+                    <i data-lucide="x-circle" class="text-gdpr-accent mb-3 w-6 h-6"></i>
+                    <h4 class="font-bold mb-2">Right to Object</h4>
+                    <p class="text-sm gdpr-intent">Object to processing for direct marketing or specific reasons.</p>
+                    <p class="text-sm gdpr-reality hidden-content text-red-600 font-medium">Reality: The cause of
+                        annoying cookie banners and check boxes everywhere.</p>
+                </div>
+                <div class="info-card border-indigo-100 bg-white">
+                    <i data-lucide="cpu" class="text-gdpr-accent mb-3 w-6 h-6"></i>
+                    <h4 class="font-bold mb-2">Automated Decisions</h4>
+                    <p class="text-sm gdpr-intent">Rights regarding automated policing, loan approvals, and resume
+                        reviews.</p>
+                    <p class="text-sm gdpr-reality hidden-content text-red-600 font-medium">Reality: Severely limits AI
+                        development in European markets.</p>
+                </div>
+
+                <div
+                    class="info-card bg-gdpr border-indigo-200 sm:col-span-2 md:col-span-1 lg:col-span-1 flex flex-col justify-center">
+                    <h4 class="font-bold text-gdpr-accent mb-2">The Lecturer's View</h4>
+                    <p class="text-sm italic">"At first blush, they seem great. In practice: annoying little check
+                        blocks on every website."</p>
+                </div>
+            </div>
+
+            <div class="bg-gray-900 text-white rounded-xl p-6 relative overflow-hidden shadow-lg">
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-6">
+                    <div class="p-4 bg-yellow-400 text-gray-900 rounded-full flex-shrink-0">
+                        <i data-lucide="crosshair" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-white">The AI Arms Race Warning</h3>
+                        <p class="text-gray-300">"We are in a global AI arms race to develop more sophisticated models
+                            to crush competition. Being inhibited in your ability to develop better AI models has a risk
+                            as well. I would argue GDPR is an example of excessive regulation that is not necessarily
+                            achieving its true intent."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gdpr-obligations" class="mb-20 fade-section">
+            <h3 class="text-2xl font-bold mb-6 text-gray-800">GDPR: Business Obligations & The Monopoly Risk</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="info-card bg-white">
+                        <i data-lucide="shield" class="text-gray-400 mb-2 w-5 h-5"></i>
+                        <h4 class="font-bold text-sm mb-1">Privacy by Design</h4>
+                        <p class="text-xs text-gray-600">Built-in default protection (a generally good practice).</p>
+                    </div>
+                    <div class="info-card bg-white">
+                        <i data-lucide="clipboard" class="text-gray-400 mb-2 w-5 h-5"></i>
+                        <h4 class="font-bold text-sm mb-1">Impact Assessments</h4>
+                        <p class="text-xs text-gray-600">Often lack technical depth to truly assess risk.</p>
+                    </div>
+                    <div class="info-card bg-white">
+                        <i data-lucide="clock" class="text-gray-400 mb-2 w-5 h-5"></i>
+                        <h4 class="font-bold text-sm mb-1">72-Hour Breach Rule</h4>
+                        <p class="text-xs text-gray-600">Mandatory rapid notification of any data breach.</p>
+                    </div>
+                    <div class="info-card bg-white">
+                        <i data-lucide="user-check" class="text-gray-400 mb-2 w-5 h-5"></i>
+                        <h4 class="font-bold text-sm mb-1">Data Officers</h4>
+                        <p class="text-xs text-gray-600">Mandatory DPOs add significant overhead costs.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="lg:col-span-7 bg-obl border border-red-200 rounded-xl p-6 flex flex-col justify-center items-center text-center shadow-sm">
+                    <i data-lucide="dollar-sign" class="text-obl-accent w-10 h-10 mb-2 opacity-50"></i>
+                    <h3 class="text-sm font-bold text-red-800 tracking-widest uppercase mb-2">GDPR Violation Penalties
+                    </h3>
+                    <div class="text-3xl md:text-5xl font-black text-obl-accent mb-2">€20 MILLION</div>
+                    <div class="text-gray-600 font-bold mb-2">— OR —</div>
+                    <div class="text-2xl md:text-4xl font-black text-obl-accent mb-4">4% GLOBAL TURNOVER</div>
+                    <div class="bg-red-800 text-white px-4 py-1 rounded text-sm font-bold inline-block">WHICHEVER IS
+                        HIGHER</div>
+                </div>
+            </div>
+
+            <div class="mt-8 info-card bg-white border-gray-200 p-8">
+                <h3 class="text-xl font-bold mb-4 text-center">Does GDPR Create Information Monopolies?</h3>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8 mt-6">
+                    <div class="text-center w-full md:w-1/3">
+                        <div
+                            class="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3 border-2 border-blue-200">
+                            <i data-lucide="zap" class="text-blue-500 w-8 h-8"></i>
+                        </div>
+                        <h4 class="font-bold">Startups / Small Biz</h4>
+                        <p class="text-sm mt-2">Compliance costs and €20M threat are <strong>crushing</strong>. Few
+                            accommodations exist to allow growth.</p>
+                    </div>
+
+                    <div class="hidden md:flex flex-col items-center justify-center w-1/6">
+                        <i data-lucide="scale" class="w-12 h-12 text-gray-300"></i>
+                        <div class="h-1 w-full bg-gray-200 mt-4 rounded"></div>
+                        <div class="w-4 h-4 rounded-full bg-red-400 -mt-2.5"></div>
+                    </div>
+
+                    <div class="text-center w-full md:w-1/3">
+                        <div
+                            class="w-24 h-24 bg-gray-800 rounded-lg flex items-center justify-center mx-auto mb-3 border-4 border-gray-900 shadow-lg">
+                            <i data-lucide="building" class="text-white w-12 h-12"></i>
+                        </div>
+                        <h4 class="font-bold">Large Corporations</h4>
+                        <p class="text-sm mt-2">Easily absorb costs. Result: <strong>Monopoly</strong> with greater data
+                            control than elected governments.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="caloppa" class="mb-20 fade-section">
+            <div class="flex items-center gap-3 mb-6 border-b pb-4">
+                <i data-lucide="map-pin" class="w-8 h-8 text-cal-accent"></i>
+                <h2 class="text-3xl font-bold">United States: CalOPPA & The National Standard</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div
+                    class="md:col-span-1 bg-cal border border-orange-200 p-6 rounded-xl flex flex-col items-center text-center justify-center">
+                    <div class="ripple-container w-16 h-16 mb-6">
+                        <div class="ripple-ring"></div>
+                        <div class="ripple-ring"></div>
+                        <div class="ripple-ring"></div>
+                        <div
+                            class="w-16 h-16 bg-cal-accent rounded-full relative z-10 flex items-center justify-center text-white font-bold text-xl">
+                            CA</div>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2 text-orange-900">The National Standard Effect</h3>
+                    <p class="text-sm text-orange-800">California's law effectively set the national baseline. Companies
+                        adopt it nationwide to avoid managing different regional software versions.</p>
+                    <div class="mt-4 p-3 bg-white/60 rounded text-xs text-orange-900">
+                        "While there aren't many broad federal laws yet, it's likely the U.S. will adopt some in the
+                        near future."
+                    </div>
+                </div>
+
+                <div class="md:col-span-2 grid grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="info-card border-orange-100 p-4">
+                        <i data-lucide="file-text" class="text-cal-accent mb-2"></i>
+                        <h4 class="font-bold text-sm mb-1">Privacy Policy</h4>
+                        <p class="text-xs">Must be prominently posted on the website.</p>
+                    </div>
+                    <div class="info-card border-orange-100 p-4">
+                        <i data-lucide="info" class="text-cal-accent mb-2"></i>
+                        <h4 class="font-bold text-sm mb-1">PII Disclosure</h4>
+                        <p class="text-xs">Explicit details on data usage and sharing.</p>
+                    </div>
+                    <div class="info-card border-orange-100 p-4">
+                        <i data-lucide="user" class="text-cal-accent mb-2"></i>
+                        <h4 class="font-bold text-sm mb-1">Review Process</h4>
+                        <p class="text-xs">Users can review and request changes.</p>
+                    </div>
+                    <div class="info-card border-orange-100 p-4">
+                        <i data-lucide="calendar" class="text-cal-accent mb-2"></i>
+                        <h4 class="font-bold text-sm mb-1">Effective Date</h4>
+                        <p class="text-xs">Policy requires a clear effective date.</p>
+                    </div>
+                    <div class="info-card border-orange-100 p-4">
+                        <i data-lucide="eye-off" class="text-cal-accent mb-2"></i>
+                        <h4 class="font-bold text-sm mb-1">Do-Not-Track</h4>
+                        <p class="text-xs">Must define response to tracking opt-outs.</p>
+                    </div>
+                    <div class="info-card border-orange-100 p-4 bg-orange-50">
+                        <i data-lucide="clock" class="text-cal-accent mb-2"></i>
+                        <h4 class="font-bold text-sm mb-1">30-Day Cure</h4>
+                        <p class="text-xs font-medium">30 days to fix violations after notification.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="china-pipl" class="mb-20 fade-section">
+            <div class="flex items-center gap-3 mb-6 border-b pb-4">
+                <i data-lucide="shield-alert" class="w-8 h-8 text-pipl-accent"></i>
+                <h2 class="text-3xl font-bold">China's PIPL: The Dual System</h2>
+            </div>
+
+            <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-lg mb-8">
+
+                <div class="bg-gray-50 p-4 text-center border-b border-gray-200">
+                    <h3 class="font-bold text-lg">China's Personal Information Protection Law (PIPL)</h3>
+                    <p class="text-sm text-gray-500">A system of individual rights overridden by broad government
+                        powers.</p>
+                </div>
+
+                <div class="flex flex-col md:flex-row">
+                    <div class="w-full md:w-1/2 p-6 md:p-8 bg-pipl border-r border-gray-200">
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="text-xl font-bold text-teal-900">Individual Rights</h4>
+                            <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2 py-1 rounded uppercase">On
+                                Paper</span>
+                        </div>
+
+                        <p class="text-sm italic text-teal-800 mb-6 border-l-4 border-teal-500 pl-3">"At first glance,
+                            this seems like great policy. It gives people reasonable rights without an onerous burden."
+                        </p>
+
+                        <ul class="space-y-4">
+                            <li class="flex items-start gap-3">
+                                <div class="bg-white p-1 rounded-full shadow-sm mt-1 text-teal-600"><i
+                                        data-lucide="check" class="w-4 h-4"></i></div>
+                                <div><strong class="text-teal-900 block">Know & Be Informed</strong><span
+                                        class="text-sm text-teal-700">How personal info is processed</span></div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="bg-white p-1 rounded-full shadow-sm mt-1 text-teal-600"><i
+                                        data-lucide="check" class="w-4 h-4"></i></div>
+                                <div><strong class="text-teal-900 block">Decide & Consent</strong><span
+                                        class="text-sm text-teal-700">Ability to withdraw consent</span></div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="bg-white p-1 rounded-full shadow-sm mt-1 text-teal-600"><i
+                                        data-lucide="check" class="w-4 h-4"></i></div>
+                                <div><strong class="text-teal-900 block">Access & Copy</strong><span
+                                        class="text-sm text-teal-700">Request access and obtain copies</span></div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="bg-white p-1 rounded-full shadow-sm mt-1 text-teal-600"><i
+                                        data-lucide="check" class="w-4 h-4"></i></div>
+                                <div><strong class="text-teal-900 block">Correct & Delete</strong><span
+                                        class="text-sm text-teal-700">Fix or remove inaccurate data</span></div>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="bg-white p-1 rounded-full shadow-sm mt-1 text-teal-600"><i
+                                        data-lucide="check" class="w-4 h-4"></i></div>
+                                <div><strong class="text-teal-900 block">Portability</strong><span
+                                        class="text-sm text-teal-700">Transfer data to another service</span></div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="w-full md:w-1/2 p-6 md:p-8 bg-surv relative">
+
+                        <div
+                            class="hidden md:flex absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 bg-gray-900 text-white w-12 h-12 rounded-full items-center justify-center font-bold shadow-xl border-4 border-white z-10">
+                            BUT
+                        </div>
+
+                        <div class="flex items-center justify-between mb-6">
+                            <h4 class="text-xl font-bold text-red-900">Government Exemptions</h4>
+                            <span class="bg-red-100 text-red-800 text-xs font-bold px-2 py-1 rounded uppercase">In
+                                Practice</span>
+                        </div>
+
+                        <div class="md:hidden flex justify-center mb-6 -mt-10">
+                            <span
+                                class="bg-gray-900 text-white px-4 py-1 rounded-full font-bold shadow-lg text-sm border-2 border-white">THERE
+                                IS A BUT...</span>
+                        </div>
+
+                        <ul class="space-y-4">
+                            <li class="bg-white/80 p-3 rounded border border-red-200 shadow-sm">
+                                <div class="flex items-center gap-2 mb-1 text-red-800">
+                                    <i data-lucide="shield-alert" class="w-4 h-4"></i>
+                                    <strong>National Security Exemption</strong>
+                                </div>
+                                <p class="text-xs text-red-900">Broad exemption allowing facial recognition and social
+                                    media surveillance to "keep population in line."</p>
+                            </li>
+                            <li class="bg-white/80 p-3 rounded border border-red-200 shadow-sm">
+                                <div class="flex items-center gap-2 mb-1 text-red-800">
+                                    <i data-lucide="lock" class="w-4 h-4"></i>
+                                    <strong>Cybersecurity Laws (2017)</strong>
+                                </div>
+                                <p class="text-xs text-red-900">Mandates networks must cooperate with security agencies
+                                    for surveillance.</p>
+                            </li>
+                            <li class="bg-white/80 p-3 rounded border border-red-200 shadow-sm">
+                                <div class="flex items-center gap-2 mb-1 text-red-800">
+                                    <i data-lucide="camera" class="w-4 h-4"></i>
+                                    <strong>Public Security Laws</strong>
+                                </div>
+                                <p class="text-xs text-red-900">Broad, invasive authority enabling AI for crime
+                                    prevention and public order monitoring.</p>
+                            </li>
+                            <li class="bg-red-800 text-white p-3 rounded shadow-sm">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <i data-lucide="building" class="w-4 h-4"></i>
+                                    <strong>State-Controlled Entities</strong>
+                                </div>
+                                <p class="text-xs text-red-100">State-owned platforms bypass protection laws entirely,
+                                    subject only to direct government control.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-8 p-6 bg-white border border-gray-200 rounded-xl shadow-sm">
+                <h3 class="text-xl font-bold mb-6 text-center">The AI Arms Race Advantage</h3>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                    <div class="flex flex-col items-center text-center relative z-10">
+                        <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mb-3">
+                            <span class="font-bold text-indigo-800">EU</span>
+                        </div>
+                        <h4 class="font-bold text-sm">Heavy Regulation</h4>
+                        <p class="text-xs text-gray-500 mt-2">Strong individual rights inhibit rapid AI development due
+                            to compliance costs.</p>
+                    </div>
+
+                    <div class="flex flex-col items-center text-center relative z-10">
+                        <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-3">
+                            <span class="font-bold text-blue-800">US</span>
+                        </div>
+                        <h4 class="font-bold text-sm">Evolving Regulation</h4>
+                        <p class="text-xs text-gray-500 mt-2">Patchwork standard (CalOPPA) offers a moderate balance.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col items-center text-center relative z-10">
+                        <div
+                            class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mb-3 border-2 border-red-500 shadow-md transform scale-110">
+                            <span class="font-bold text-red-800">CHN</span>
+                        </div>
+                        <h4 class="font-bold text-sm text-red-700">Unrestricted State AI</h4>
+                        <p class="text-xs text-red-600 mt-2 font-medium">Bypasses rules to accelerate AI and mass
+                            surveillance while restricting foreign competition.</p>
+                    </div>
+
+                    <div class="hidden md:block absolute top-8 left-16 right-16 h-1 bg-gray-200 -z-10"></div>
+                </div>
+
+                <div class="mt-8 bg-red-50 border-l-4 border-red-500 p-4 rounded text-sm">
+                    <strong>Ethical Warning:</strong> "Perhaps the biggest ethical issues involve China's use of mass
+                    surveillance, especially to monitor ethnic minorities, raising significant human rights concerns."
+                </div>
+            </div>
+        </section>
+
+        <section id="comparative" class="mb-20 fade-section">
+            <div class="flex items-center gap-3 mb-6 border-b pb-4">
+                <i data-lucide="bar-chart" class="w-8 h-8 text-comp-accent text-indigo-600"></i>
+                <h2 class="text-3xl font-bold">Comparative Regulatory Matrix</h2>
+            </div>
+
+            <p class="mb-6 text-gray-600">No single framework gets it right — each involves significant trade-offs.
+                <em>(Click rows to highlight)</em></p>
+
+            <div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-gray-200">
+                <table class="matrix-table w-full text-sm">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="text-left w-1/4">Dimension</th>
+                            <th class="w-1/4 border-t-4 border-indigo-400">
+                                <div class="font-bold text-lg text-indigo-900">GDPR</div>
+                                <div class="text-xs text-gray-500 font-normal">Europe</div>
+                            </th>
+                            <th class="w-1/4 border-t-4 border-orange-400">
+                                <div class="font-bold text-lg text-orange-900">CalOPPA</div>
+                                <div class="text-xs text-gray-500 font-normal">United States</div>
+                            </th>
+                            <th class="w-1/4 border-t-4 border-teal-400">
+                                <div class="font-bold text-lg text-teal-900">PIPL</div>
+                                <div class="text-xs text-gray-500 font-normal">China</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="font-bold text-left bg-gray-50">Individual Rights</td>
+                            <td><span class="text-green-600 font-bold">7 Rights</span><br><span
+                                    class="text-xs text-gray-500">Comprehensive</span></td>
+                            <td><span class="text-blue-600 font-bold">Transparency</span><br><span
+                                    class="text-xs text-gray-500">Disclosure focus</span></td>
+                            <td><span class="text-teal-600 font-bold">5 Rights</span><br><span
+                                    class="text-xs text-gray-500">On paper only</span></td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-left bg-gray-50">Business Burden</td>
+                            <td><span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-bold">HEAVY</span>
+                            </td>
+                            <td><span
+                                    class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-bold">MODERATE</span>
+                            </td>
+                            <td><span
+                                    class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs font-bold">MODERATE</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-left bg-gray-50">Penalties</td>
+                            <td><strong class="text-red-600">€20M / 4%</strong><br><span
+                                    class="text-xs text-gray-500">Severe</span></td>
+                            <td><strong>30-Day Cure</strong><br><span class="text-xs text-gray-500">Mild</span></td>
+                            <td><strong>Variable</strong><br><span class="text-xs text-gray-500">Govt Oversight</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-left bg-gray-50">Gov't Surveillance</td>
+                            <td><span class="text-gray-500">Restricted</span></td>
+                            <td><span class="text-gray-500">Unaddressed</span></td>
+                            <td><span class="bg-red-600 text-white px-2 py-1 rounded text-xs font-bold">EXTENSIVE
+                                    EXEMPTIONS</span></td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-left bg-gray-50">AI Impact</td>
+                            <td><span class="text-red-500 font-medium">Inhibiting</span></td>
+                            <td><span class="text-gray-500 font-medium">Neutral</span></td>
+                            <td><span class="text-green-600 font-bold">State Advantaged</span></td>
+                        </tr>
+                        <tr>
+                            <td class="font-bold text-left bg-gray-50">Monopoly Risk</td>
+                            <td><span class="text-red-600 font-bold">HIGH</span><br><span
+                                    class="text-xs text-gray-500">Large corps absorb costs</span></td>
+                            <td><span class="text-yellow-600 font-medium">Moderate</span></td>
+                            <td><span class="text-red-600 font-bold">BY DESIGN</span><br><span
+                                    class="text-xs text-gray-500">State entities favored</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
+
+            <section id="principles" class="fade-section">
+                <div class="flex items-center gap-2 mb-4">
+                    <i data-lucide="book-open" class="text-purple-600"></i>
+                    <h3 class="text-xl font-bold">Core Privacy Principles</h3>
+                </div>
+                <p class="text-sm text-gray-500 mb-4">Foundational concepts underpinning all frameworks.</p>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-white p-3 rounded border border-purple-100 shadow-sm flex items-center gap-3">
+                        <i data-lucide="minimize-2" class="text-purple-500 w-5 h-5"></i>
+                        <div>
+                            <h4 class="font-bold text-sm">Data Minimization</h4>
+                            <p class="text-xs text-gray-500">Collect only what is necessary (GDPR default).</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3 rounded border border-purple-100 shadow-sm flex items-center gap-3">
+                        <i data-lucide="target" class="text-purple-500 w-5 h-5"></i>
+                        <div>
+                            <h4 class="font-bold text-sm">Purpose Limitation</h4>
+                            <p class="text-xs text-gray-500">Use only for stated intent (Consent basis).</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3 rounded border border-purple-100 shadow-sm flex items-center gap-3">
+                        <i data-lucide="globe" class="text-purple-500 w-5 h-5"></i>
+                        <div>
+                            <h4 class="font-bold text-sm">Data Residency & Transfer</h4>
+                            <p class="text-xs text-gray-500">Keeping data in-border; strict export rules.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="technologies" class="fade-section">
+                <div class="flex items-center gap-2 mb-4">
+                    <i data-lucide="cpu" class="text-green-600"></i>
+                    <h3 class="text-xl font-bold">Privacy-Enhancing Tech</h3>
+                </div>
+                <p class="text-sm text-gray-500 mb-4">Tools to balance protection with AI development.</p>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-white p-3 rounded border border-green-100 shadow-sm flex items-center gap-3">
+                        <i data-lucide="bar-chart" class="text-green-500 w-5 h-5"></i>
+                        <div>
+                            <h4 class="font-bold text-sm">Differential Privacy</h4>
+                            <p class="text-xs text-gray-500">Adds noise so individuals can't be identified.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3 rounded border border-green-100 shadow-sm flex items-center gap-3">
+                        <i data-lucide="network" class="text-green-500 w-5 h-5"></i>
+                        <div>
+                            <h4 class="font-bold text-sm">Federated Learning</h4>
+                            <p class="text-xs text-gray-500">Trains AI on distributed data without centralizing it.</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-3 rounded border border-green-100 shadow-sm flex items-center gap-3">
+                        <i data-lucide="lock" class="text-green-500 w-5 h-5"></i>
+                        <div>
+                            <h4 class="font-bold text-sm">Homomorphic Encryption</h4>
+                            <p class="text-xs text-gray-500">Computes on encrypted data directly.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section id="framework" class="mb-20 fade-section">
+            <div class="bg-prac p-6 md:p-8 rounded-2xl border border-yellow-200">
+                <div class="flex items-center gap-3 mb-6">
+                    <i data-lucide="map" class="w-8 h-8 text-prac-accent"></i>
+                    <h2 class="text-2xl font-bold text-yellow-900">Practical Framework for AI Development</h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-yellow-100 relative">
+                        <div
+                            class="absolute -top-3 -left-3 w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold">
+                            1</div>
+                        <h4 class="font-bold mb-2 pt-2">Understand Landscape</h4>
+                        <ul class="text-xs text-gray-600 space-y-1 ml-2 list-disc pl-2">
+                            <li>Map applicable regulations</li>
+                            <li>Use strictest as baseline</li>
+                            <li>Monitor emerging laws</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-yellow-100 relative">
+                        <div
+                            class="absolute -top-3 -left-3 w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold">
+                            2</div>
+                        <h4 class="font-bold mb-2 pt-2">Privacy by Design</h4>
+                        <ul class="text-xs text-gray-600 space-y-1 ml-2 list-disc pl-2">
+                            <li>Build in from architecture start</li>
+                            <li>Apply data minimization</li>
+                            <li>Clear consent mechanisms</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-yellow-100 relative">
+                        <div
+                            class="absolute -top-3 -left-3 w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-bold">
+                            3</div>
+                        <h4 class="font-bold mb-2 pt-2">Cross-Border Rules</h4>
+                        <ul class="text-xs text-gray-600 space-y-1 ml-2 list-disc pl-2">
+                            <li>Check data residency limits</li>
+                            <li>Implement transfer safeguards</li>
+                            <li>Consider federated systems</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-yellow-100 relative">
+                        <div
+                            class="absolute -top-3 -left-3 w-8 h-8 text-yellow-800 bg-yellow-300 rounded-full flex items-center justify-center font-bold">
+                            4</div>
+                        <h4 class="font-bold mb-2 pt-2">Engage in Policy</h4>
+                        <ul class="text-xs text-gray-600 space-y-1 ml-2 list-disc pl-2 font-medium">
+                            <li>Bring technical expertise</li>
+                            <li>Advocate for balanced rules</li>
+                            <li>Prevent bad regulation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="takeaways" class="mb-16 fade-section">
+
+            <div class="bg-gray-900 text-white p-8 rounded-2xl mb-8 text-center shadow-xl">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 text-green-400">Are we creating good policy, or
+                    overreacting?</h2>
+                <p class="text-lg max-w-2xl mx-auto italic">"If we're not proactive in thinking about what is good
+                    policy, it's very likely that we will end up having to live with and deal with bad policy."</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="bg-white border-l-4 border-green-500 p-4 shadow-sm text-sm"><strong class="block mb-1">1.
+                        Global Growth</strong> Regulation is expanding globally, driven more by economics than ideology.
+                </div>
+                <div class="bg-white border-l-4 border-indigo-500 p-4 shadow-sm text-sm"><strong class="block mb-1">2.
+                        GDPR Burden</strong> 7 comprehensive rights, but excessive compliance risk inhibiting AI
+                    development.</div>
+                <div class="bg-white border-l-4 border-red-500 p-4 shadow-sm text-sm"><strong class="block mb-1">3.
+                        Severe Penalties</strong> €20M / 4% fines burden startups and can create information monopolies.
+                </div>
+                <div class="bg-white border-l-4 border-orange-500 p-4 shadow-sm text-sm"><strong class="block mb-1">4.
+                        CalOPPA Standard</strong> CA set the U.S. baseline because companies adopt it universally for
+                    simplicity.</div>
+                <div class="bg-white border-l-4 border-teal-500 p-4 shadow-sm text-sm"><strong class="block mb-1">5.
+                        China's PIPL</strong> Looks reasonable on paper (5 rights) but contains massive government
+                    exemptions.</div>
+                <div class="bg-white border-l-4 border-red-800 p-4 shadow-sm text-sm"><strong class="block mb-1">6.
+                        State AI Advantage</strong> Chinese state entities bypass laws, creating unrestricted AI
+                    capabilities.</div>
+                <div class="bg-white border-l-4 border-red-900 p-4 shadow-sm text-sm"><strong class="block mb-1">7.
+                        Ethical Concerns</strong> Mass surveillance of ethnic minorities represents massive human rights
+                    issues.</div>
+                <div class="bg-white border-l-4 border-blue-500 p-4 shadow-sm text-sm"><strong class="block mb-1">8.
+                        Proactive Duty</strong> Society overreacts to security. Engage, evaluate, and advocate to build
+                    good policy.</div>
+            </div>
+        </section>
+
+        <footer class="text-center pt-8 border-t border-gray-200 text-gray-500 text-sm">
+            <p class="font-bold mb-1">Data Privacy: Navigating the Global Regulatory Landscape</p>
+            <p class="mb-4">Content sourced from lecture by Dr. Ian McCullough, Johns Hopkins University</p>
+            <p class="text-xs">Interactive HTML format. Use browser print function (Ctrl/Cmd+P) for a static PDF
+                version.</p>
+        </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Lucide icons
+            lucide.createIcons();
+
+            // 2. Safe Fade-in Animation Observer
+            const fadeSections = document.querySelectorAll('.fade-section');
+
+            // First add the hidden class via JS
+            fadeSections.forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+
+            // Then observe and remove it
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('not-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeSections.forEach(function (el) {
+                observer.observe(el);
+            });
+
+            // 3. Interactivity: GDPR Intent vs Reality Toggle
+            const gdprBtn = document.getElementById('gdpr-toggle-btn');
+            if (gdprBtn) {
+                gdprBtn.addEventListener('click', function () {
+                    const intents = document.querySelectorAll('.gdpr-intent');
+                    const realities = document.querySelectorAll('.gdpr-reality');
+
+                    intents.forEach(el => el.classList.toggle('hidden-content'));
+                    realities.forEach(el => el.classList.toggle('hidden-content'));
+
+                    if (gdprBtn.innerText.includes('Intent')) {
+                        gdprBtn.innerText = 'Toggle: Reality vs. Intent';
+                        gdprBtn.classList.replace('bg-gdpr-accent', 'bg-red-600');
+                    } else {
+                        gdprBtn.innerText = 'Toggle: Intent vs. Reality';
+                        gdprBtn.classList.replace('bg-red-600', 'bg-gdpr-accent');
+                    }
+                });
+            }
+
+            // 4. Interactivity: Basic Drag and Drop ranking visual effect
+            const list = document.getElementById('ranking-list');
+            let draggingEle;
+
+            if (list) {
+                const items = list.querySelectorAll('.draggable-item');
+                items.forEach(item => {
+                    item.addEventListener('dragstart', function (e) {
+                        draggingEle = item;
+                        e.dataTransfer.effectAllowed = 'move';
+                        item.style.opacity = '0.5';
+                    });
+                    item.addEventListener('dragend', function () {
+                        item.style.opacity = '1';
+                        draggingEle = null;
+                        updateRankingNumbers();
+                    });
+                    item.addEventListener('dragover', function (e) {
+                        e.preventDefault();
+                    });
+                    item.addEventListener('dragenter', function (e) {
+                        e.preventDefault();
+                    });
+                    item.addEventListener('drop', function (e) {
+                        if (draggingEle !== item) {
+                            let allItems = Array.from(list.querySelectorAll('.draggable-item'));
+                            let draggedIndex = allItems.indexOf(draggingEle);
+                            let droppedIndex = allItems.indexOf(item);
+
+                            if (draggedIndex < droppedIndex) {
+                                item.parentNode.insertBefore(draggingEle, item.nextSibling);
+                            } else {
+                                item.parentNode.insertBefore(draggingEle, item);
+                            }
+                        }
+                    });
+                });
+
+                function updateRankingNumbers() {
+                    // Optional visual cue update
+                }
+            }
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

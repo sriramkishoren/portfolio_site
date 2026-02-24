@@ -24,10 +24,10 @@ This is a static personal portfolio website for Sriramkishore Naraharisetti. The
   - `ml-algorithms/` - 10 posts about ML algorithm deep-dives
   - `data-optimization-for-ml/` - 9 posts about data quality, labeling, and optimization for ML
   - `optimizing-ai-resources/` - 10 posts about AI memory, compute, query expressiveness, and performance
-  - `ai-bias-and-risks/` - 5 posts about AI bias, fairness, ethics, and legal perspectives
+  - `ai-bias-and-risks/` - 12 posts about AI bias, fairness, ethics, privacy, transparency, and responsible AI
   - `ai-business-usecases/` - 6 posts about AI applications in business
   - `ai-project-management/` - 2 posts about managing AI/ML projects
-  - `agentic-ai/` - 3 posts about agentic AI coding workflows, security, and AI coding maturity levels
+  - `agentic-ai/` - 4 posts about agentic AI coding workflows, security, AI coding maturity levels, and agent fundamentals
 - **Styling**: Tailwind CSS loaded via CDN (with forms, typography, aspect-ratio, line-clamp plugins)
 - **Icons**: Font Awesome 5.15.3 via CDN
 - **Dark mode**: Implemented using Tailwind's `dark:` class variants with manual toggle (adds/removes `dark` class on `<html>`)
@@ -199,7 +199,7 @@ The blog index (`personal_blog/index.html`) includes:
 
 All pages include GoatCounter for privacy-friendly visitor tracking (no cookies, GDPR compliant).
 
-**Tracking Script (on ALL 59 HTML pages):**
+**Tracking Script (on ALL 67 HTML pages):**
 ```html
 <script data-goatcounter="https://kishoretech.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
@@ -213,7 +213,7 @@ All pages include GoatCounter for privacy-friendly visitor tracking (no cookies,
 | `personal_blog/index.html` | Page-specific views |
 | `personal_blog/post.html` | Views for the specific blog post loaded via `?article=` param |
 
-Individual blog posts (56 files) have the tracking script but no visible counter (the post viewer shows the count instead).
+Individual blog posts (64 files) have the tracking script but no visible counter (the post viewer shows the count instead).
 
 **API Endpoints:**
 - Total site views: `https://kishoretech.goatcounter.com/counter/TOTAL.json`

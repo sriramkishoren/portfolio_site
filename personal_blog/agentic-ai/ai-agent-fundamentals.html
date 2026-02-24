@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fundamentals of AI Agents</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="title" content="Fundamentals of AI Agents">
+  <meta name="description"
+    content="Learn the fundamentals of AI agents: core loop, LLM reasoning, tools, MCP, RAG, memory systems, guardrails, and production-ready architecture patterns.">
+  <meta name="author" content="Sriramkishore Naraharisetti">
+  <meta name="category" content="Agentic AI">
+  <meta name="tags"
+    content="AI Agents, LLM, Model Context Protocol, MCP, RAG, Retrieval-Augmented Generation, AI Architecture, Guardrails, Observability, Tool Calling">
+  <meta name="robots" content="index, follow">
+  <meta name="ai-summary"
+    content="A comprehensive technical guide to AI agent fundamentals covering agent definition, the observe-think-act-reflect core loop, LLM reasoning, system prompts, memory systems (short-term, long-term, vector DB), tool integration via function calling, Model Context Protocol (MCP) for standardized tool access, RAG pipelines, state management, planning patterns (ReAct, Plan-and-Execute, DAG), guardrails, evaluation and observability, and real-world architecture case studies.">
+  <link rel="canonical"
+    href="https://www.kishoretech.com/personal_blog/post.html?article=agentic-ai/ai-agent-fundamentals">
+
+  <!-- Open Graph Tags -->
+  <meta property="og:title" content="Fundamentals of AI Agents">
+  <meta property="og:description"
+    content="A no-fluff technical guide to AI agent architecture covering the core loop, LLM reasoning, tools, MCP, RAG, memory systems, and guardrails.">
+  <meta property="og:type" content="article">
+  <meta property="og:url"
+    content="https://www.kishoretech.com/personal_blog/post.html?article=agentic-ai/ai-agent-fundamentals">
+  <meta property="og:site_name" content="Kishore's Blog">
+  <meta property="article:author" content="Sriramkishore Naraharisetti">
+  <meta property="article:published_time" content="2026-02-23">
+  <meta property="article:section" content="Agentic AI">
+  <meta property="article:tag" content="AI Agents">
+  <meta property="article:tag" content="Model Context Protocol">
+  <meta property="article:tag" content="RAG">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Fundamentals of AI Agents",
+    "description": "Learn the fundamentals of AI agents: core loop, LLM reasoning, tools, MCP, RAG, memory systems, guardrails, and production-ready architecture patterns.",
+    "datePublished": "2026-02-23",
+    "dateModified": "2026-02-23",
+    "author": {
+      "@type": "Person",
+      "name": "Sriramkishore Naraharisetti",
+      "url": "https://www.kishoretech.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "kishoretech.com",
+      "url": "https://www.kishoretech.com"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.kishoretech.com/personal_blog/post.html?article=agentic-ai/ai-agent-fundamentals"
+    },
+    "keywords": ["AI Agents", "LLM", "Model Context Protocol", "MCP", "RAG", "Retrieval-Augmented Generation", "AI Architecture", "Guardrails", "Observability", "Tool Calling"],
+    "articleSection": "Agentic AI",
+    "about": [
+      {"@type": "Thing", "name": "AI Agents"},
+      {"@type": "Thing", "name": "Model Context Protocol"}
+    ],
+    "mentions": [
+      {"@type": "Thing", "name": "RAG"},
+      {"@type": "Thing", "name": "ReAct"},
+      {"@type": "Thing", "name": "LLM"}
+    ]
+  }
+  </script>
+
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #475569;
+      background-color: #FAFBFC;
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .font-sora {
+      font-family: 'Sora', sans-serif;
+      color: #1E293B;
+      letter-spacing: -0.02em;
+    }
+
+    /* Animation Classes */
+    .fade-section {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-section.not-visible {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    /* Custom Colors */
+    .bg-lightest-blue {
+      background-color: #F0F9FF;
+    }
+
+    .text-accent-blue {
+      color: #0EA5E9;
+    }
+
+    .bg-lightest-gray {
+      background-color: #F8FAFC;
+    }
+
+    .text-accent-gray {
+      color: #475569;
+    }
+
+    .bg-light-purple {
+      background-color: #FDF4FF;
+    }
+
+    .text-accent-purple {
+      color: #A855F7;
+    }
+
+    .bg-light-blue {
+      background-color: #EFF6FF;
+    }
+
+    .text-accent-blue-dark {
+      color: #2563EB;
+    }
+
+    .bg-light-teal {
+      background-color: #F0FDFA;
+    }
+
+    .text-accent-teal {
+      color: #0D9488;
+    }
+
+    .bg-light-indigo {
+      background-color: #E0E7FF;
+    }
+
+    .text-accent-indigo {
+      color: #6366F1;
+    }
+
+    .bg-light-orange {
+      background-color: #FFF7ED;
+    }
+
+    .text-accent-orange {
+      color: #EA580C;
+    }
+
+    .bg-light-green {
+      background-color: #F0FDF4;
+    }
+
+    .text-accent-green {
+      color: #16A34A;
+    }
+
+    .bg-light-yellow {
+      background-color: #FEF3C7;
+    }
+
+    .text-accent-yellow {
+      color: #D97706;
+    }
+
+    .bg-light-red {
+      background-color: #FEF2F2;
+    }
+
+    .text-accent-red {
+      color: #DC2626;
+    }
+
+    .bg-dark-slate {
+      background-color: #1E293B;
+    }
+
+    .card-base {
+      background-color: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+
+    .card-base:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    }
+
+    .rainbow-stripe {
+      background: linear-gradient(90deg, #0EA5E9, #A855F7, #EC4899, #EA580C, #EAB308);
+      height: 6px;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 50;
+    }
+
+    /* Loop Diagram Styles */
+    .loop-node {
+      position: absolute;
+      transform: translate(-50%, -50%);
+      width: 14rem;
+    }
+
+    /* Print Styles */
+    @media print {
+      .fade-section.not-visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      .card-base {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+
+      body {
+        background-color: white;
+      }
+
+      .rainbow-stripe {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="pt-8 pb-20">
+
+  <div class="rainbow-stripe"></div>
+
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+
+    <header
+      class="fade-section text-center py-12 bg-lightest-blue rounded-3xl border border-blue-100 relative overflow-hidden">
+      <div class="absolute top-0 right-0 -mt-10 -mr-10 opacity-10">
+        <i data-lucide="brain" class="w-64 h-64 text-blue-500"></i>
+      </div>
+      <div class="relative z-10">
+        <div
+          class="inline-flex items-center justify-center p-3 bg-white rounded-2xl shadow-sm mb-6 border border-blue-100">
+          <i data-lucide="cpu" class="w-8 h-8 text-accent-blue"></i>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Fundamentals of AI Agents</h1>
+        <h2 class="text-xl md:text-2xl text-accent-blue mb-4 font-sora">Components, Architectures & Implementation
+          Patterns</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto mb-6">A no-fluff technical guide for software engineers & tech leads
+        </p>
+        <div
+          class="inline-flex items-center space-x-2 text-sm text-gray-500 bg-white px-4 py-2 rounded-full border border-gray-200">
+          <i data-lucide="book-open" class="w-4 h-4"></i>
+          <span>kishoretech.com</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="fade-section">
+      <div class="text-center mb-8">
+        <span
+          class="inline-block px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-bold tracking-wider uppercase mb-3">1.
+          Definition</span>
+        <h2 class="text-3xl font-bold mb-2">Not a Chatbot. Not a Workflow.</h2>
+        <h3 class="text-xl text-accent-gray mb-6">An Autonomous Decision-Maker.</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="card-base bg-gray-50 opacity-80">
+          <div class="flex items-center mb-4">
+            <i data-lucide="message-square" class="w-6 h-6 text-gray-400 mr-2"></i>
+            <h4 class="text-lg font-bold">Chatbot</h4>
+          </div>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start"><span class="mr-2 text-gray-400">•</span> Stateless Q&A</li>
+            <li class="flex items-start"><span class="mr-2 text-gray-400">•</span> Single turn</li>
+            <li class="flex items-start"><span class="mr-2 text-gray-400">•</span> No tools, no memory</li>
+          </ul>
+        </div>
+        <div class="card-base bg-gray-50 opacity-90">
+          <div class="flex items-center mb-4">
+            <i data-lucide="layers" class="w-6 h-6 text-gray-500 mr-2"></i>
+            <h4 class="text-lg font-bold">Workflow Automation</h4>
+          </div>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-start"><span class="mr-2 text-gray-400">•</span> Predefined steps</li>
+            <li class="flex items-start"><span class="mr-2 text-gray-400">•</span> Deterministic</li>
+            <li class="flex items-start"><span class="mr-2 text-gray-400">•</span> No reasoning</li>
+          </ul>
+        </div>
+        <div class="card-base border-blue-200 shadow-sm relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-2 h-full bg-blue-500"></div>
+          <div class="flex items-center mb-4">
+            <i data-lucide="bot" class="w-6 h-6 text-accent-blue mr-2"></i>
+            <h4 class="text-lg font-bold text-blue-900">AI Agent</h4>
+          </div>
+          <ul class="space-y-2 text-sm font-medium text-gray-800">
+            <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-accent-blue mr-2 mt-0.5"></i>
+              Perceives → Reasons → Acts</li>
+            <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-accent-blue mr-2 mt-0.5"></i> Uses
+              tools</li>
+            <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-accent-blue mr-2 mt-0.5"></i> Holds
+              state</li>
+            <li class="flex items-start"><i data-lucide="zap" class="w-4 h-4 text-accent-blue mr-2 mt-0.5"></i> Adapts
+              to outcomes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-lightest-gray border border-gray-200 p-6 rounded-2xl text-center">
+        <p class="text-lg font-medium text-gray-800">
+          "An AI agent is software that uses an LLM to decide what to do next, calls tools to act, and adapts based on
+          results — autonomously pursuing a goal."
+        </p>
+        <p class="text-sm mt-3 text-gray-600">Agents handle data-heavy execution while humans focus on strategic
+          oversight.</p>
+      </div>
+    </section>
+
+    <section class="fade-section bg-light-purple p-8 rounded-3xl border border-purple-100">
+      <div class="text-center mb-10">
+        <span
+          class="inline-block px-3 py-1 bg-white text-purple-700 rounded-full text-xs font-bold tracking-wider uppercase mb-3 shadow-sm">2.
+          Core Framework</span>
+        <h2 class="text-3xl font-bold mb-3 flex justify-center items-center">
+          <i data-lucide="heart" class="w-8 h-8 text-accent-purple mr-3"></i> The Human Body Analogy
+        </h2>
+        <p class="text-gray-700">Every agent component maps to something your body already does.</p>
+      </div>
+
+      <div class="w-full overflow-hidden mb-10 hidden md:block">
+        <svg viewBox="0 0 800 450" class="w-full h-auto bg-white rounded-2xl border border-purple-100 shadow-sm p-4">
+          <circle cx="400" cy="225" r="50" fill="#F3E8FF" stroke="#A855F7" stroke-width="3" />
+          <text x="400" y="230" text-anchor="middle" font-weight="bold" fill="#6B21A8">AGENT</text>
+
+          <path d="M 360 190 L 250 100" fill="none" stroke="#E9D5FF" stroke-width="2" />
+          <path d="M 440 190 L 550 100" fill="none" stroke="#E9D5FF" stroke-width="2" />
+          <path d="M 360 260 L 250 350" fill="none" stroke="#E9D5FF" stroke-width="2" />
+          <path d="M 440 260 L 550 350" fill="none" stroke="#E9D5FF" stroke-width="2" />
+          <path d="M 350 225 L 220 225" fill="none" stroke="#E9D5FF" stroke-width="2" />
+          <path d="M 450 225 L 580 225" fill="none" stroke="#E9D5FF" stroke-width="2" />
+          <path d="M 400 175 L 400 80" fill="none" stroke="#E9D5FF" stroke-width="2" />
+          <path d="M 400 275 L 400 370" fill="none" stroke="#E9D5FF" stroke-width="2" />
+
+          <rect x="325" y="40" width="150" height="40" rx="5" fill="#F0FDFA" stroke="#14B8A6" stroke-width="2" />
+          <text x="400" y="65" text-anchor="middle" font-size="12" font-weight="bold" fill="#0F766E">LLM = Brain</text>
+
+          <rect x="520" y="80" width="180" height="40" rx="5" fill="#F0FDFA" stroke="#14B8A6" stroke-width="2" />
+          <text x="610" y="105" text-anchor="middle" font-size="12" font-weight="bold" fill="#0F766E">Prompt =
+            Values</text>
+
+          <rect x="580" y="205" width="180" height="40" rx="5" fill="#FFF7ED" stroke="#F97316" stroke-width="2" />
+          <text x="670" y="230" text-anchor="middle" font-size="12" font-weight="bold" fill="#C2410C">Tools =
+            Hands</text>
+
+          <rect x="520" y="330" width="180" height="40" rx="5" fill="#FEF3C7" stroke="#EAB308" stroke-width="2" />
+          <text x="610" y="355" text-anchor="middle" font-size="12" font-weight="bold" fill="#A16207">MCP =
+            Nerves</text>
+
+          <rect x="325" y="370" width="150" height="40" rx="5" fill="#F0FDF4" stroke="#22C55E" stroke-width="2" />
+          <text x="400" y="395" text-anchor="middle" font-size="12" font-weight="bold" fill="#15803D">RAG = Notes</text>
+
+          <rect x="100" y="330" width="200" height="40" rx="5" fill="#FEF2F2" stroke="#EF4444" stroke-width="2" />
+          <text x="200" y="355" text-anchor="middle" font-size="12" font-weight="bold" fill="#B91C1C">Guardrails =
+            Immune</text>
+
+          <rect x="20" y="205" width="200" height="40" rx="5" fill="#E0E7FF" stroke="#6366F1" stroke-width="2" />
+          <text x="120" y="230" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338CA">Long-term =
+            Hippo.</text>
+
+          <rect x="100" y="80" width="200" height="40" rx="5" fill="#E0E7FF" stroke="#6366F1" stroke-width="2" />
+          <text x="200" y="105" text-anchor="middle" font-size="12" font-weight="bold" fill="#4338CA">Short-term =
+            Working</text>
+        </svg>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="card-base bg-white border-teal-100 hover:border-teal-300 group cursor-pointer">
+          <i data-lucide="brain" class="w-6 h-6 text-accent-teal mb-3 group-hover:scale-110 transition-transform"></i>
+          <h4 class="font-bold text-gray-900">LLM</h4>
+          <p class="text-xs font-semibold text-accent-teal uppercase tracking-wider mb-2">↔ Brain / Cortex</p>
+          <p class="text-sm text-gray-600">Reasoning + language</p>
+        </div>
+        <div class="card-base bg-white border-teal-100 hover:border-teal-300 group cursor-pointer">
+          <i data-lucide="lock" class="w-6 h-6 text-accent-teal mb-3 group-hover:scale-110 transition-transform"></i>
+          <h4 class="font-bold text-gray-900">System Prompt</h4>
+          <p class="text-xs font-semibold text-accent-teal uppercase tracking-wider mb-2">↔ Values / Instincts</p>
+          <p class="text-sm text-gray-600">Prefrontal constraints</p>
+        </div>
+        <div class="card-base bg-white border-orange-100 hover:border-orange-300 group cursor-pointer">
+          <i data-lucide="wrench"
+            class="w-6 h-6 text-accent-orange mb-3 group-hover:scale-110 transition-transform"></i>
+          <h4 class="font-bold text-gray-900">Tools</h4>
+          <p class="text-xs font-semibold text-accent-orange uppercase tracking-wider mb-2">↔ Hands / Muscles</p>
+          <p class="text-sm text-gray-600">Acting on the world</p>
+        </div>
+        <div class="card-base bg-white border-yellow-100 hover:border-yellow-300 group cursor-pointer">
+          <i data-lucide="network"
+            class="w-6 h-6 text-accent-yellow mb-3 group-hover:scale-110 transition-transform"></i>
+          <h4 class="font-bold text-gray-900">MCP / Tool API</h4>
+          <p class="text-xs font-semibold text-accent-yellow uppercase tracking-wider mb-2">↔ Nervous System</p>
+          <p class="text-sm text-gray-600">Standardized signals</p>
+        </div>
+        <div class="card-base bg-white border-indigo-100 hover:border-indigo-300 group cursor-pointer">
+          <i data-lucide="archive"
+            class="w-6 h-6 text-accent-indigo mb-3 group-hover:scale-110 transition-transform"></i>
+          <h4 class="font-bold text-gray-900">Short-term Memory</h4>
+          <p class="text-xs font-semibold text-accent-indigo uppercase tracking-wider mb-2">↔ Working Memory</p>
+          <p class="text-sm text-gray-600">Current context</p>
+        </div>
+        <div class="card-base bg-white border-indigo-100 hover:border-indigo-300 group cursor-pointer">
+          <i data-lucide="database"
+            class="w-6 h-6 text-accent-indigo mb-3 group-hover:scale-110 transition-transform"></i>
+          <h4 class="font-bold text-gray-900">Long-term / Vector DB</h4>
+          <p class="text-xs font-semibold text-accent-indigo uppercase tracking-wider mb-2">↔ Hippocampus</p>
+          <p class="text-sm text-gray-600">Pattern-based recall</p>
+        </div>
+        <div class="card-base bg-white border-green-100 hover:border-green-300 group cursor-pointer">
+          <i data-lucide="search" class="w-6 h-6 text-accent-green mb-3 group-hover:scale-110 transition-transform"></i>
+          <h4 class="font-bold text-gray-900">RAG</h4>
+          <p class="text-xs font-semibold text-accent-green uppercase tracking-wider mb-2">↔ Reading Notes</p>
+          <p class="text-sm text-gray-600">Look up, don't guess</p>
+        </div>
+        <div class="card-base bg-white border-red-100 hover:border-red-300 group cursor-pointer">
+          <i data-lucide="shield" class="w-6 h-6 text-accent-red mb-3 group-hover:scale-110 transition-transform"></i>
+          <h4 class="font-bold text-gray-900">Guardrails</h4>
+          <p class="text-xs font-semibold text-accent-red uppercase tracking-wider mb-2">↔ Immune System</p>
+          <p class="text-sm text-gray-600">Pain reflex + defense</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section">
+      <div class="text-center mb-8">
+        <span
+          class="inline-block px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold tracking-wider uppercase mb-3">3.
+          Behavior</span>
+        <h2 class="text-3xl font-bold">The Agent Core Loop</h2>
+        <p class="text-gray-600 mt-2">Observe → Think / Plan → Act → Reflect — then repeat.</p>
+      </div>
+
+      <div class="relative w-full max-w-2xl mx-auto h-[600px] my-10 hidden sm:block">
+        <div
+          class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 bg-blue-50 p-6 rounded-full border border-blue-200">
+          <i data-lucide="refresh-cw" class="w-12 h-12 text-blue-500 opacity-80"></i>
+          <div class="text-center text-xs text-blue-800 font-bold mt-2">Loop or Exit</div>
+        </div>
+
+        <svg class="absolute inset-0 w-full h-full" viewBox="0 0 600 600">
+          <defs>
+            <marker id="arrow-blue" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#60A5FA" />
+            </marker>
+            <marker id="arrow-indigo" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#818CF8" />
+            </marker>
+            <marker id="arrow-orange" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#F87171" />
+            </marker>
+            <marker id="arrow-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+              <polygon points="0 0, 10 3.5, 0 7" fill="#34D399" />
+            </marker>
+          </defs>
+          <path d="M 350 120 Q 480 120 480 250" fill="none" stroke="#60A5FA" stroke-width="4" stroke-dasharray="8 4"
+            marker-end="url(#arrow-blue)" />
+          <path d="M 480 350 Q 480 480 350 480" fill="none" stroke="#818CF8" stroke-width="4" stroke-dasharray="8 4"
+            marker-end="url(#arrow-indigo)" />
+          <path d="M 250 480 Q 120 480 120 350" fill="none" stroke="#F87171" stroke-width="4" stroke-dasharray="8 4"
+            marker-end="url(#arrow-orange)" />
+          <path d="M 120 250 Q 120 120 250 120" fill="none" stroke="#34D399" stroke-width="4" stroke-dasharray="8 4"
+            marker-end="url(#arrow-green)" />
+        </svg>
+
+        <div class="loop-node" style="top: 15%; left: 50%;">
+          <div class="bg-white p-4 border-2 border-blue-200 rounded-xl text-center shadow-lg">
+            <h4 class="font-bold text-blue-800 mb-2 flex items-center justify-center"><i data-lucide="eye"
+                class="w-4 h-4 mr-2"></i> OBSERVE</h4>
+            <p class="text-xs text-gray-600">Receive input, read context, check memory & state</p>
+          </div>
+        </div>
+        <div class="loop-node" style="top: 50%; left: 85%;">
+          <div class="bg-white p-4 border-2 border-indigo-200 rounded-xl text-center shadow-lg">
+            <h4 class="font-bold text-indigo-800 mb-2 flex items-center justify-center"><i data-lucide="brain"
+                class="w-4 h-4 mr-2"></i> THINK / PLAN</h4>
+            <p class="text-xs text-gray-600">LLM reasons about goal, selects next action</p>
+          </div>
+        </div>
+        <div class="loop-node" style="top: 85%; left: 50%;">
+          <div class="bg-white p-4 border-2 border-red-200 rounded-xl text-center shadow-lg">
+            <h4 class="font-bold text-red-800 mb-2 flex items-center justify-center"><i data-lucide="wrench"
+                class="w-4 h-4 mr-2"></i> ACT</h4>
+            <p class="text-xs text-gray-600">Call tools, write output, modify state</p>
+          </div>
+        </div>
+        <div class="loop-node" style="top: 50%; left: 15%;">
+          <div class="bg-white p-4 border-2 border-green-200 rounded-xl text-center shadow-lg">
+            <h4 class="font-bold text-green-800 mb-2 flex items-center justify-center"><i data-lucide="trending-up"
+                class="w-4 h-4 mr-2"></i> REFLECT</h4>
+            <p class="text-xs text-gray-600">Evaluate result, update memory, decide: done or loop?</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="block sm:hidden space-y-4">
+        <div class="bg-white p-4 border-2 border-blue-200 rounded-xl shadow-sm text-center">
+          <h4 class="font-bold text-blue-800">1. OBSERVE</h4>
+          <p class="text-xs text-gray-600">Receive input, read context, check memory & state</p>
+        </div>
+        <div class="flex justify-center"><i data-lucide="arrow-down" class="w-5 h-5 text-gray-400"></i></div>
+        <div class="bg-white p-4 border-2 border-indigo-200 rounded-xl shadow-sm text-center">
+          <h4 class="font-bold text-indigo-800">2. THINK / PLAN</h4>
+          <p class="text-xs text-gray-600">LLM reasons about goal, selects next action</p>
+        </div>
+        <div class="flex justify-center"><i data-lucide="arrow-down" class="w-5 h-5 text-gray-400"></i></div>
+        <div class="bg-white p-4 border-2 border-red-200 rounded-xl shadow-sm text-center">
+          <h4 class="font-bold text-red-800">3. ACT</h4>
+          <p class="text-xs text-gray-600">Call tools, write output, modify state</p>
+        </div>
+        <div class="flex justify-center"><i data-lucide="arrow-down" class="w-5 h-5 text-gray-400"></i></div>
+        <div class="bg-white p-4 border-2 border-green-200 rounded-xl shadow-sm text-center">
+          <h4 class="font-bold text-green-800">4. REFLECT</h4>
+          <p class="text-xs text-gray-600">Evaluate result, update memory, decide: done or loop?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section bg-light-teal p-8 rounded-3xl border border-teal-100">
+      <div class="mb-8">
+        <div class="flex items-center space-x-3 mb-2">
+          <div class="p-2 bg-white rounded-lg"><i data-lucide="brain" class="w-6 h-6 text-accent-teal"></i></div>
+          <h2 class="text-3xl font-bold">The LLM: Brain of the Agent</h2>
+        </div>
+        <p class="text-teal-800">The core reasoning engine and the rules that guide it.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="card-base bg-white">
+          <h3 class="text-lg font-bold mb-4 flex items-center"><i data-lucide="cpu"
+              class="w-5 h-5 mr-2 text-teal-600"></i> What the LLM Does</h3>
+          <ul class="space-y-3 text-sm text-gray-700">
+            <li class="flex items-start"><span class="text-teal-500 mr-2">✓</span> Interprets natural language input
+            </li>
+            <li class="flex items-start"><span class="text-teal-500 mr-2">✓</span> Reasons about goals and constraints
+            </li>
+            <li class="flex items-start"><span class="text-teal-500 mr-2">✓</span> Decides which tool to call (or none)
+            </li>
+            <li class="flex items-start"><span class="text-teal-500 mr-2">✓</span> Generates structured output (JSON,
+              text)</li>
+            <li class="flex items-start"><span class="text-teal-500 mr-2">✓</span> Synthesizes results into final
+              response</li>
+          </ul>
+        </div>
+        <div class="card-base bg-white border-teal-200">
+          <h3 class="text-lg font-bold mb-4 flex items-center"><i data-lucide="settings"
+              class="w-5 h-5 mr-2 text-teal-600"></i> System Prompt</h3>
+          <p class="text-xs font-bold text-teal-600 uppercase mb-3">= Values & Instincts</p>
+          <ul class="space-y-3 text-sm text-gray-700">
+            <li class="flex items-start"><span class="text-teal-500 mr-2">•</span> Defines agent identity, role, tone
+            </li>
+            <li class="flex items-start"><span class="text-teal-500 mr-2">•</span> Sets boundaries: what to do and not
+              do</li>
+            <li class="flex items-start"><span class="text-teal-500 mr-2">•</span> Instructions hierarchy (system >
+              user)</li>
+            <li class="flex items-start"><span class="text-teal-500 mr-2">•</span> Includes tool descriptions & schemas
+            </li>
+            <li class="flex items-start"><span class="text-teal-500 mr-2">•</span> Like prefrontal cortex: constrains
+              impulse</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-6 text-center text-sm font-medium text-teal-800 bg-white/50 py-3 rounded-lg">
+        "The LLM is the cortex. The system prompt is your values and instincts — it doesn't think for you, but it shapes
+        every thought."
+      </div>
+    </section>
+
+    <section class="fade-section">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold flex items-center">
+          <i data-lucide="database" class="w-8 h-8 mr-3 text-accent-indigo"></i> Memory Systems
+        </h2>
+        <p class="text-gray-600 mt-2">Short-term, Long-term & Vector DB Embeddings</p>
+      </div>
+
+      <svg viewBox="0 0 800 300"
+        class="w-full h-auto mb-10 bg-white rounded-2xl border border-indigo-100 shadow-sm p-4 hidden md:block">
+        <rect x="50" y="100" width="200" height="100" rx="10" fill="#EEF2FF" stroke="#818CF8" stroke-width="2" />
+        <text x="150" y="140" text-anchor="middle" font-weight="bold" fill="#312E81">Short-term Memory</text>
+        <text x="150" y="165" text-anchor="middle" font-size="12" fill="#4F46E5">Working Context</text>
+
+        <rect x="350" y="100" width="100" height="100" rx="50" fill="#FFFBEB" stroke="#FBBF24" stroke-width="2" />
+        <text x="400" y="145" text-anchor="middle" font-weight="bold" fill="#92400E">Compaction</text>
+        <text x="400" y="165" text-anchor="middle" font-size="12" fill="#B45309">Filter</text>
+
+        <rect x="550" y="50" width="200" height="80" rx="10" fill="#F5F3FF" stroke="#A78BFA" stroke-width="2" />
+        <text x="650" y="85" text-anchor="middle" font-weight="bold" fill="#4C1D95">Long-term Semantic</text>
+        <text x="650" y="105" text-anchor="middle" font-size="12" fill="#6D28D9">Facts & Preferences</text>
+
+        <rect x="550" y="170" width="200" height="80" rx="10" fill="#F0FDF4" stroke="#4ADE80" stroke-width="2" />
+        <text x="650" y="205" text-anchor="middle" font-weight="bold" fill="#14532D">Episodic (Vector DB)</text>
+        <text x="650" y="225" text-anchor="middle" font-size="12" fill="#16A34A">Past Interactions</text>
+
+        <path d="M 250 150 L 335 150" fill="none" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrow-mem)" />
+        <path d="M 450 150 L 500 150 L 500 90 L 535 90" fill="none" stroke="#9CA3AF" stroke-width="2"
+          marker-end="url(#arrow-mem)" />
+        <path d="M 450 150 L 500 150 L 500 210 L 535 210" fill="none" stroke="#9CA3AF" stroke-width="2"
+          marker-end="url(#arrow-mem)" />
+
+        <defs>
+          <marker id="arrow-mem" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#9CA3AF" />
+          </marker>
+        </defs>
+      </svg>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+        <div class="card-base bg-indigo-50 border-indigo-100">
+          <h4 class="font-bold mb-1 text-indigo-900">Short-term Memory</h4>
+          <p class="text-xs text-indigo-600 font-semibold mb-4 uppercase">Working Memory</p>
+          <ul class="space-y-2 text-sm mb-4">
+            <li class="flex items-start"><span class="text-indigo-400 mr-2">•</span> Conversation history in context
+              window</li>
+            <li class="flex items-start"><span class="text-indigo-400 mr-2">•</span> Current tool call results</li>
+            <li class="flex items-start"><span class="text-indigo-400 mr-2">•</span> Scratchpad / chain-of-thought</li>
+            <li class="flex items-start"><span class="text-indigo-400 mr-2">•</span> Lost when session ends</li>
+          </ul>
+          <div class="text-xs bg-white p-2 rounded text-gray-500 italic border border-indigo-100">Analogy: A messy desk
+            for your active project.</div>
+        </div>
+
+        <div class="card-base bg-indigo-50 border-indigo-100">
+          <h4 class="font-bold mb-1 text-indigo-900">Long-term Semantic</h4>
+          <p class="text-xs text-indigo-600 font-semibold mb-4 uppercase">Hippocampus → Cortex</p>
+          <ul class="space-y-2 text-sm mb-4">
+            <li class="flex items-start"><span class="text-indigo-400 mr-2">•</span> Facts & knowledge stored in DB</li>
+            <li class="flex items-start"><span class="text-indigo-400 mr-2">•</span> User preferences, past summaries
+            </li>
+            <li class="flex items-start"><span class="text-indigo-400 mr-2">•</span> Persists across sessions</li>
+            <li class="flex items-start"><span class="text-indigo-400 mr-2">•</span> Requires explicit write/read</li>
+          </ul>
+          <div class="text-xs bg-white p-2 rounded text-gray-500 italic border border-indigo-100">Analogy: A filing
+            cabinet for saved information.</div>
+        </div>
+
+        <div class="card-base bg-indigo-50 border-indigo-100">
+          <h4 class="font-bold mb-1 text-indigo-900">Episodic + Vector DB</h4>
+          <p class="text-xs text-indigo-600 font-semibold mb-4 uppercase">Associative Memory</p>
+          <ul class="space-y-2 text-sm mb-4">
+            <li class="flex items-start"><span class="text-indigo-400 mr-2">•</span> Records of past interactions</li>
+            <li class="flex items-start"><span class="text-indigo-400 mr-2">•</span> Stored as embeddings in vector DB
+            </li>
+            <li class="flex items-start"><span class="text-indigo-400 mr-2">•</span> Retrieved by similarity, not exact
+              match</li>
+            <li class="flex items-start"><span class="text-indigo-400 mr-2">•</span> Enables pattern-based recall</li>
+          </ul>
+          <div class="text-xs bg-white p-2 rounded text-gray-500 italic border border-indigo-100">Analogy: A smell
+            triggering a childhood memory.</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="card-base text-sm">
+          <h5 class="font-bold mb-2 flex items-center"><i data-lucide="layers" class="w-4 h-4 mr-2 text-indigo-500"></i>
+            Compaction Process</h5>
+          <p class="text-gray-600 mb-2">Managed transition from short-term to long-term memory. Triggered automatically
+            to prevent running out of context window space.</p>
+          <p class="text-gray-600">A reviewing LLM acts as a smart filter: extracts key facts, resolves conflicts, and
+            permanently saves only condensed data.</p>
+        </div>
+        <div class="card-base text-sm">
+          <h5 class="font-bold mb-2 flex items-center"><i data-lucide="search" class="w-4 h-4 mr-2 text-indigo-500"></i>
+            Vector Databases</h5>
+          <p class="text-gray-600 mb-2">Search by meaning instead of exact keywords. Text becomes a high-dimensional
+            vector array.</p>
+          <p class="text-gray-600">A mathematical similarity search finds closest matching memories (e.g., searching
+            "holiday" retrieves "vacation" notes).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section bg-light-orange p-8 rounded-3xl border border-orange-100">
+      <div class="mb-8 flex flex-col md:flex-row md:items-center justify-between">
+        <div>
+          <h2 class="text-3xl font-bold flex items-center mb-2">
+            <i data-lucide="wrench" class="w-8 h-8 mr-3 text-accent-orange"></i> Tools & Function Calling
+          </h2>
+          <p class="text-orange-900">Hands and muscles — how the agent acts on the world.</p>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-orange-200 mb-8">
+        <h4 class="text-xs font-bold text-gray-400 tracking-wider uppercase mb-4 text-center">How Function Calling Works
+        </h4>
+        <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 text-sm font-medium">
+          <div class="bg-orange-50 px-4 py-3 rounded-lg border border-orange-100 w-full md:w-auto text-center">LLM sees
+            schema</div>
+          <i data-lucide="arrow-right" class="hidden md:block w-4 h-4 text-orange-300"></i>
+          <i data-lucide="arrow-down" class="block md:hidden w-4 h-4 text-orange-300"></i>
+          <div class="bg-orange-50 px-4 py-3 rounded-lg border border-orange-100 w-full md:w-auto text-center">Outputs
+            JSON</div>
+          <i data-lucide="arrow-right" class="hidden md:block w-4 h-4 text-orange-300"></i>
+          <i data-lucide="arrow-down" class="block md:hidden w-4 h-4 text-orange-300"></i>
+          <div class="bg-orange-50 px-4 py-3 rounded-lg border border-orange-100 w-full md:w-auto text-center">Runtime
+            executes</div>
+          <i data-lucide="arrow-right" class="hidden md:block w-4 h-4 text-orange-300"></i>
+          <i data-lucide="arrow-down" class="block md:hidden w-4 h-4 text-orange-300"></i>
+          <div class="bg-orange-50 px-4 py-3 rounded-lg border border-orange-100 w-full md:w-auto text-center">Result
+            fed back</div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="card-base bg-white">
+          <h3 class="font-bold mb-4 flex items-center"><i data-lucide="code" class="w-5 h-5 text-orange-500 mr-2"></i>
+            Deterministic Tools</h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex items-start"><span class="text-orange-400 mr-2">•</span> API calls (search, CRUD, payments)
+            </li>
+            <li class="flex items-start"><span class="text-orange-400 mr-2">•</span> Database queries (SQL, graph)</li>
+            <li class="flex items-start"><span class="text-orange-400 mr-2">•</span> File operations (read, write,
+              parse)</li>
+            <li class="flex items-start"><span class="text-orange-400 mr-2">•</span> Calculations and data transforms
+            </li>
+          </ul>
+        </div>
+        <div class="card-base bg-white">
+          <h3 class="font-bold mb-4 flex items-center"><i data-lucide="brain" class="w-5 h-5 text-orange-500 mr-2"></i>
+            LLM-as-Tool (Probabilistic)</h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex items-start"><span class="text-orange-400 mr-2">•</span> Summarization of retrieved docs
+            </li>
+            <li class="flex items-start"><span class="text-orange-400 mr-2">•</span> Classification / sentiment analysis
+            </li>
+            <li class="flex items-start"><span class="text-orange-400 mr-2">•</span> Code generation or review</li>
+            <li class="flex items-start"><span class="text-orange-400 mr-2">•</span> Sub-agent delegation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-white border-l-4 border-red-400 p-4 rounded-r-lg text-sm flex items-start">
+        <i data-lucide="shield" class="w-5 h-5 text-red-400 mr-3 shrink-0 mt-0.5"></i>
+        <div>
+          <strong class="text-gray-900 block mb-1">Security Critical</strong>
+          <span class="text-gray-600">Autonomously executing code introduces obvious risks. Sandbox environments
+            (Docker), set strict resource limits/timeouts, and explicitly whitelist allowed libraries.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section">
+      <div class="text-center mb-10">
+        <span
+          class="inline-block px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold tracking-wider uppercase mb-3">Lookup,
+          don't guess</span>
+        <h2 class="text-3xl font-bold flex items-center justify-center">
+          <i data-lucide="book-open" class="w-8 h-8 mr-3 text-accent-green"></i> RAG Architecture
+        </h2>
+        <p class="text-gray-600 mt-2">Retrieval-Augmented Generation: "Reading notes" instead of memory alone.</p>
+      </div>
+
+      <svg viewBox="0 0 900 250"
+        class="w-full h-auto mb-10 bg-white rounded-2xl border border-green-100 shadow-sm p-4 hidden lg:block">
+        <rect x="50" y="80" width="220" height="90" rx="10" fill="#F0FDF4" stroke="#4ADE80" stroke-width="2" />
+        <text x="160" y="110" text-anchor="middle" font-weight="bold" fill="#14532D">1. Ingestion</text>
+        <text x="160" y="135" text-anchor="middle" font-size="12" fill="#16A34A">Docs → Chunks →</text>
+        <text x="160" y="155" text-anchor="middle" font-size="12" fill="#16A34A">Embeddings → Vector DB</text>
+
+        <rect x="340" y="80" width="220" height="90" rx="10" fill="#F0FDF4" stroke="#4ADE80" stroke-width="2" />
+        <text x="450" y="110" text-anchor="middle" font-weight="bold" fill="#14532D">2. Retrieval</text>
+        <text x="450" y="135" text-anchor="middle" font-size="12" fill="#16A34A">Query → Similarity Search</text>
+        <text x="450" y="155" text-anchor="middle" font-size="12" fill="#16A34A">→ Top-K → Reranking</text>
+
+        <rect x="630" y="80" width="220" height="90" rx="10" fill="#F0FDF4" stroke="#4ADE80" stroke-width="2" />
+        <text x="740" y="110" text-anchor="middle" font-weight="bold" fill="#14532D">3. Generation</text>
+        <text x="740" y="135" text-anchor="middle" font-size="12" fill="#16A34A">Retrieved Chunks + Query</text>
+        <text x="740" y="155" text-anchor="middle" font-size="12" fill="#16A34A">→ LLM → Answer</text>
+
+        <path d="M 270 125 L 325 125" fill="none" stroke="#22C55E" stroke-width="3" marker-end="url(#arrow-rag)" />
+        <path d="M 560 125 L 615 125" fill="none" stroke="#22C55E" stroke-width="3" marker-end="url(#arrow-rag)" />
+
+        <defs>
+          <marker id="arrow-rag" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#22C55E" />
+          </marker>
+        </defs>
+      </svg>
+
+      <div class="flex flex-col lg:flex-row gap-8">
+        <div class="flex-1 space-y-4 lg:hidden">
+          <div class="card-base bg-green-50 border-green-200 relative">
+            <div
+              class="absolute -left-3 top-6 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-sm">
+              1</div>
+            <h4 class="font-bold text-green-900 ml-4 mb-2">Ingestion</h4>
+            <div class="bg-white p-3 rounded border border-green-100 text-sm text-center">
+              Docs → Chunks → Embeddings → Vector DB
+            </div>
+          </div>
+          <div class="flex justify-center"><i data-lucide="arrow-down" class="w-5 h-5 text-green-300"></i></div>
+
+          <div class="card-base bg-green-50 border-green-200 relative">
+            <div
+              class="absolute -left-3 top-6 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-sm">
+              2</div>
+            <h4 class="font-bold text-green-900 ml-4 mb-2">Retrieval</h4>
+            <div class="bg-white p-3 rounded border border-green-100 text-sm text-center">
+              Query → Similarity Search → Top-K → Reranking
+            </div>
+          </div>
+          <div class="flex justify-center"><i data-lucide="arrow-down" class="w-5 h-5 text-green-300"></i></div>
+
+          <div class="card-base bg-green-50 border-green-200 relative">
+            <div
+              class="absolute -left-3 top-6 w-6 h-6 bg-green-500 text-white rounded-full flex items-center justify-center text-xs font-bold shadow-sm">
+              3</div>
+            <h4 class="font-bold text-green-900 ml-4 mb-2">Generation</h4>
+            <div class="bg-white p-3 rounded border border-green-100 text-sm text-center">
+              Retrieved Chunks + Query → LLM → Answer w/ Citations
+            </div>
+          </div>
+        </div>
+
+        <div class="flex-1 lg:w-full">
+          <div class="card-base h-full bg-white border-green-100">
+            <h3 class="font-bold text-lg mb-5 flex items-center"><i data-lucide="filter"
+                class="w-5 h-5 text-green-500 mr-2"></i> Key Design Decisions</h3>
+            <ul class="space-y-4 text-sm">
+              <li>
+                <span class="font-bold text-gray-800 block">Chunk size?</span>
+                <span class="text-gray-600">200-800 tokens. Smaller = precise. Larger = context-rich.</span>
+              </li>
+              <li class="border-t border-gray-100 pt-3">
+                <span class="font-bold text-gray-800 block">Embedding model?</span>
+                <span class="text-gray-600">Match to your domain. General vs. fine-tuned.</span>
+              </li>
+              <li class="border-t border-gray-100 pt-3">
+                <span class="font-bold text-gray-800 block">Retrieval method?</span>
+                <span class="text-gray-600">Dense (vector), sparse (BM25), or hybrid.</span>
+              </li>
+              <li class="border-t border-gray-100 pt-3">
+                <span class="font-bold text-gray-800 block">Reranking?</span>
+                <span class="text-gray-600">Cross-encoder reranker improves top-K quality.</span>
+              </li>
+              <li class="border-t border-gray-100 pt-3">
+                <span class="font-bold text-gray-800 block">Citations?</span>
+                <span class="text-gray-600">Return source metadata with chunks. Let LLM cite.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section bg-light-yellow p-8 rounded-3xl border border-yellow-100">
+      <div class="mb-8 flex flex-col items-center text-center">
+        <span
+          class="px-3 py-1 bg-white text-yellow-700 rounded-full text-xs font-bold tracking-wider uppercase mb-3 shadow-sm">The
+          Nervous System</span>
+        <h2 class="text-3xl font-bold flex items-center justify-center mb-2">
+          <i data-lucide="git-branch" class="w-8 h-8 mr-3 text-accent-yellow"></i> MCP
+        </h2>
+        <h3 class="text-xl text-yellow-800 font-medium">Model Context Protocol</h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="card-base bg-white border-red-100">
+          <h4 class="font-bold text-red-600 mb-2 flex items-center"><i data-lucide="x-circle" class="w-4 h-4 mr-2"></i>
+            The Problem</h4>
+          <p class="text-sm text-gray-600 mb-2">Every tool has a different integration pattern. Auth, schemas, and
+            errors are all ad-hoc.</p>
+          <div
+            class="bg-red-50 p-3 rounded text-sm text-center font-mono text-red-800 font-bold border border-red-100 mt-4">
+            N agents × M tools = N×M custom integrations
+          </div>
+        </div>
+        <div class="card-base bg-white border-green-100">
+          <h4 class="font-bold text-green-600 mb-2 flex items-center"><i data-lucide="check-circle"
+              class="w-4 h-4 mr-2"></i> The Solution</h4>
+          <p class="text-sm text-gray-600 mb-2">Standard protocol for tool discovery + invocation. Consistent auth,
+            schemas, permissions.</p>
+          <div
+            class="bg-green-50 p-3 rounded text-sm text-center font-bold text-green-800 border border-green-100 mt-4">
+            Build once, connect to any agent
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl p-6 shadow-sm border border-yellow-200">
+        <div
+          class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-4 text-sm font-bold">
+          <div class="bg-gray-100 px-6 py-3 rounded-lg border border-gray-200 w-full md:w-auto text-center">AI Agent
+            (LLM)</div>
+          <i data-lucide="arrow-right-left" class="w-5 h-5 text-yellow-500 transform rotate-90 md:rotate-0"></i>
+          <div class="bg-yellow-50 px-6 py-3 rounded-lg border border-yellow-200 w-full md:w-auto text-center">MCP
+            Client</div>
+          <i data-lucide="arrow-right-left" class="w-5 h-5 text-yellow-500 transform rotate-90 md:rotate-0"></i>
+          <div class="bg-yellow-50 px-6 py-3 rounded-lg border border-yellow-200 w-full md:w-auto text-center">MCP
+            Server</div>
+          <i data-lucide="arrow-right-left" class="w-5 h-5 text-yellow-500 transform rotate-90 md:rotate-0"></i>
+          <div class="bg-gray-100 px-6 py-3 rounded-lg border border-gray-200 w-full md:w-auto text-center">Tools / Data
+          </div>
+        </div>
+
+        <div class="mt-6 text-center">
+          <p
+            class="text-sm font-medium text-gray-700 bg-yellow-50 inline-block px-4 py-2 rounded-full border border-yellow-200">
+            <i data-lucide="plug" class="w-4 h-4 inline mr-1 text-yellow-600"></i> Like a "USB port" for AI. Like HTTP
+            is for web, MCP is for agent-tool communication.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold flex items-center">
+          <i data-lucide="map" class="w-8 h-8 mr-3 text-accent-blue-dark"></i> State & Planning Patterns
+        </h2>
+        <p class="text-gray-600 mt-2">How agents track progress and decide what to do next.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="card-base bg-blue-50 border-blue-100">
+          <h3 class="font-bold text-blue-900 mb-2">State = Body Posture</h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex items-start"><span class="text-blue-400 mr-2">•</span> Tracks where the agent is in a task
+            </li>
+            <li class="flex items-start"><span class="text-blue-400 mr-2">•</span> Session state: current conversation
+            </li>
+            <li class="flex items-start"><span class="text-blue-400 mr-2">•</span> Task state: progress through steps
+            </li>
+            <li class="flex items-start"><span class="text-blue-400 mr-2">•</span> Enables pause, resume, and handoff
+            </li>
+          </ul>
+        </div>
+        <div class="card-base bg-blue-50 border-blue-100">
+          <h3 class="font-bold text-blue-900 mb-2">Planner = Decision-Making</h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex items-start"><span class="text-blue-400 mr-2">•</span> Decides what to do next and order
+            </li>
+            <li class="flex items-start"><span class="text-blue-400 mr-2">•</span> Executor = carries out steps</li>
+            <li class="flex items-start"><span class="text-blue-400 mr-2">•</span> May plan full upfront or step-by-step
+            </li>
+            <li class="flex items-start"><span class="text-blue-400 mr-2">•</span> Handles replanning when surprised
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="card-base text-sm">
+          <h4 class="font-bold mb-2">ReAct</h4>
+          <p class="text-gray-600">Think → Act → Observe, one step at a time.</p>
+          <p class="text-xs text-gray-400 mt-2 pt-2 border-t border-gray-100">Simple but can meander.</p>
+        </div>
+        <div class="card-base text-sm">
+          <h4 class="font-bold mb-2">Plan-and-Execute</h4>
+          <p class="text-gray-600">Generate full plan → execute steps sequentially.</p>
+          <p class="text-xs text-gray-400 mt-2 pt-2 border-t border-gray-100">Structured but rigid.</p>
+        </div>
+        <div class="card-base text-sm border-blue-200 bg-white">
+          <h4 class="font-bold mb-2 text-blue-700">DAG Workflows</h4>
+          <p class="text-gray-600">Predefined graph of steps. LLM at decision nodes.</p>
+          <p class="text-xs font-semibold text-blue-600 mt-2 pt-2 border-t border-blue-50">Most predictable.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section bg-light-red p-8 rounded-3xl border border-red-100">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold flex items-center justify-center mb-2">
+          <i data-lucide="shield" class="w-8 h-8 mr-3 text-accent-red"></i> Safety & Guardrails
+        </h2>
+        <p class="text-red-900 font-medium">The Immune System: Protecting the agent and the world from each other.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="card-base bg-white border-t-4 border-t-red-400">
+          <h4 class="font-bold mb-4 text-gray-800">INPUT Guardrails</h4>
+          <ul class="space-y-3 text-sm text-gray-600">
+            <li class="flex items-start"><i data-lucide="lock" class="w-4 h-4 text-red-400 mr-2 shrink-0 mt-0.5"></i>
+              Prompt injection detection</li>
+            <li class="flex items-start"><i data-lucide="lock" class="w-4 h-4 text-red-400 mr-2 shrink-0 mt-0.5"></i>
+              Input validation & sanitize</li>
+            <li class="flex items-start"><i data-lucide="lock" class="w-4 h-4 text-red-400 mr-2 shrink-0 mt-0.5"></i>
+              Rate limiting & abuse detect</li>
+            <li class="flex items-start"><i data-lucide="lock" class="w-4 h-4 text-red-400 mr-2 shrink-0 mt-0.5"></i>
+              Content classification (PII)</li>
+          </ul>
+        </div>
+        <div class="card-base bg-white border-t-4 border-t-yellow-400">
+          <h4 class="font-bold mb-4 text-gray-800">EXECUTION Guardrails</h4>
+          <ul class="space-y-3 text-sm text-gray-600">
+            <li class="flex items-start"><i data-lucide="lock" class="w-4 h-4 text-yellow-500 mr-2 shrink-0 mt-0.5"></i>
+              Tool permission scoping</li>
+            <li class="flex items-start"><i data-lucide="lock" class="w-4 h-4 text-yellow-500 mr-2 shrink-0 mt-0.5"></i>
+              Cost & token budgets</li>
+            <li class="flex items-start"><i data-lucide="lock" class="w-4 h-4 text-yellow-500 mr-2 shrink-0 mt-0.5"></i>
+              Max iteration / loop limits</li>
+            <li class="flex items-start"><i data-lucide="lock" class="w-4 h-4 text-yellow-500 mr-2 shrink-0 mt-0.5"></i>
+              Human-in-the-loop points</li>
+          </ul>
+        </div>
+        <div class="card-base bg-white border-t-4 border-t-green-400">
+          <h4 class="font-bold mb-4 text-gray-800">OUTPUT Guardrails</h4>
+          <ul class="space-y-3 text-sm text-gray-600">
+            <li class="flex items-start"><i data-lucide="lock" class="w-4 h-4 text-green-500 mr-2 shrink-0 mt-0.5"></i>
+              Response valid (format)</li>
+            <li class="flex items-start"><i data-lucide="lock" class="w-4 h-4 text-green-500 mr-2 shrink-0 mt-0.5"></i>
+              PII redaction</li>
+            <li class="flex items-start"><i data-lucide="lock" class="w-4 h-4 text-green-500 mr-2 shrink-0 mt-0.5"></i>
+              Confidence thresholds</li>
+            <li class="flex items-start"><i data-lucide="lock" class="w-4 h-4 text-green-500 mr-2 shrink-0 mt-0.5"></i>
+              Audit logging</li>
+          </ul>
+        </div>
+      </div>
+
+      <div
+        class="bg-red-900 text-white p-4 rounded-xl text-center font-medium shadow-sm flex items-center justify-center">
+        <i data-lucide="alert-triangle" class="w-5 h-5 mr-3 text-red-300"></i>
+        Rule of thumb: Build guardrails before you ship, not after the incident.
+      </div>
+    </section>
+
+    <section class="fade-section">
+      <div class="mb-8 flex flex-col items-center text-center">
+        <span
+          class="px-3 py-1 bg-teal-100 text-teal-800 rounded-full text-xs font-bold tracking-wider uppercase mb-3 shadow-sm">Vital
+          Signs</span>
+        <h2 class="text-3xl font-bold flex items-center justify-center mb-2">
+          <i data-lucide="activity" class="w-8 h-8 mr-3 text-accent-teal"></i> Evaluation & Observability
+        </h2>
+        <p class="text-gray-600">You can't improve what you can't measure.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="card-base">
+          <h3 class="font-bold mb-4 text-lg border-b border-gray-100 pb-2">What to Trace</h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><span class="font-semibold">Every LLM call:</span> prompt, completion, latency, tokens</li>
+            <li><span class="font-semibold">Every tool call:</span> name, params, result, duration</li>
+            <li><span class="font-semibold">Decision points:</span> why choose tool X?</li>
+            <li><span class="font-semibold">Full trace:</span> complete chain of steps per task</li>
+            <li><span class="font-semibold">Errors:</span> what failed, where, why</li>
+          </ul>
+        </div>
+        <div class="card-base">
+          <h3 class="font-bold mb-4 text-lg border-b border-gray-100 pb-2">Key Metrics</h3>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li><span class="font-semibold">Task completion rate:</span> did it finish?</li>
+            <li><span class="font-semibold">Correctness/accuracy:</span> was it right?</li>
+            <li><span class="font-semibold">Cost per task:</span> tokens × price</li>
+            <li><span class="font-semibold">Latency:</span> end-to-end, per step</li>
+            <li><span class="font-semibold">Failure rate by type:</span> hallucination, loop, error</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl p-5 border border-teal-100 shadow-sm text-sm">
+        <h4 class="font-bold text-teal-800 mb-3 uppercase tracking-wider text-xs">Evaluation Approaches</h4>
+        <div class="flex flex-wrap gap-3">
+          <span class="bg-teal-50 text-teal-700 px-3 py-1 rounded-md border border-teal-100">Unit tests (tools)</span>
+          <span class="bg-teal-50 text-teal-700 px-3 py-1 rounded-md border border-teal-100">Integration tests
+            (flows)</span>
+          <span class="bg-teal-50 text-teal-700 px-3 py-1 rounded-md border border-teal-100">Objective evals
+            (code-based)</span>
+          <span class="bg-teal-50 text-teal-700 px-3 py-1 rounded-md border border-teal-100">Subjective
+            (LLM-as-judge)</span>
+          <span class="bg-teal-50 text-teal-700 px-3 py-1 rounded-md border border-teal-100">Human eval (edge
+            cases)</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section bg-lightest-blue p-8 rounded-3xl border border-blue-100">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold flex items-center mb-2">
+          <i data-lucide="briefcase" class="w-8 h-8 mr-3 text-accent-blue"></i> Real-World Architectures
+        </h2>
+        <p class="text-blue-900">Case studies showing all components working together.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div class="card-base bg-white shadow-sm">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+              <i data-lucide="headphones" class="w-5 h-5 text-blue-600"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900">Support Engineer Agent</h3>
+              <p class="text-xs text-gray-500">Goal: Investigate & resolve billing disputes</p>
+            </div>
+          </div>
+
+          <div class="space-y-2 text-sm">
+            <div class="flex border-b border-gray-50 pb-2"><span class="w-20 font-bold text-gray-500">LLM</span> <span
+                class="flex-1">Understands complaint, reasons billing logic</span></div>
+            <div class="flex border-b border-gray-50 pb-2"><span class="w-20 font-bold text-gray-500">RAG</span> <span
+                class="flex-1">Searches KB on policies & known issues</span></div>
+            <div class="flex border-b border-gray-50 pb-2"><span class="w-20 font-bold text-gray-500">Tools</span> <span
+                class="flex-1">Ticket search, billing API, account lookup</span></div>
+            <div class="flex border-b border-gray-50 pb-2"><span class="w-20 font-bold text-gray-500">Memory</span>
+              <span class="flex-1">Previous customer interactions (episodic)</span></div>
+            <div class="flex border-b border-gray-50 pb-2"><span class="w-20 font-bold text-gray-500">Guards</span>
+              <span class="flex-1 text-red-600 font-medium">Cannot refund >$100 w/o human approval</span></div>
+            <div class="flex"><span class="w-20 font-bold text-gray-500">State</span> <span class="flex-1">investigate →
+                resolve → follow-up</span></div>
+          </div>
+          <div class="mt-4 bg-blue-50 p-3 rounded text-xs font-medium text-blue-800">
+            Takeaway: Agent doesn't guess policy, it looks it up (RAG).
+          </div>
+        </div>
+
+        <div class="card-base bg-white shadow-sm">
+          <div class="flex items-center mb-4">
+            <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+              <i data-lucide="server" class="w-5 h-5 text-purple-600"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900">DevOps Agent</h3>
+              <p class="text-xs text-gray-500">Goal: Diagnose & remediate high error rate alerts</p>
+            </div>
+          </div>
+
+          <div class="space-y-2 text-sm">
+            <div class="flex border-b border-gray-50 pb-2"><span class="w-20 font-bold text-gray-500">LLM</span> <span
+                class="flex-1">Interprets metrics, correlates signals</span></div>
+            <div class="flex border-b border-gray-50 pb-2"><span class="w-20 font-bold text-gray-500">RAG</span> <span
+                class="flex-1">Retrieves runbooks, past incident reports</span></div>
+            <div class="flex border-b border-gray-50 pb-2"><span class="w-20 font-bold text-gray-500">Tools</span> <span
+                class="flex-1">Metrics API, log search, PagerDuty</span></div>
+            <div class="flex border-b border-gray-50 pb-2"><span class="w-20 font-bold text-gray-500">MCP</span> <span
+                class="flex-1">Standardized access to Datadog, GitHub</span></div>
+            <div class="flex border-b border-gray-50 pb-2"><span class="w-20 font-bold text-gray-500">Guards</span>
+              <span class="flex-1 text-red-600 font-medium">No prod rollback w/o approval. Max 2 retries.</span></div>
+            <div class="flex"><span class="w-20 font-bold text-gray-500">Observ.</span> <span class="flex-1">Full trace
+                of steps for post-mortem</span></div>
+          </div>
+          <div class="mt-4 bg-purple-50 p-3 rounded text-xs font-medium text-purple-800">
+            Takeaway: MCP standardizes access to external tools seamlessly.
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-xl border border-blue-200 p-4 shadow-sm flex items-start">
+        <i data-lucide="gift" class="w-6 h-6 text-blue-400 mr-4 shrink-0 mt-1"></i>
+        <div class="text-sm">
+          <strong class="text-gray-900 block mb-1">Beginner Example: Santa's Helper (n8n no-code)</strong>
+          <span class="text-gray-600"><strong>Senses:</strong> Chat input. <strong>Brain & Memory:</strong> Gemini +
+            session memory for preferences. <strong>Conscience:</strong> Cheerful persona prompt & workflow.
+            <strong>Hands:</strong> Perplexity search tool + Gmail integration.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold flex items-center mb-2">
+          <i data-lucide="alert-triangle" class="w-8 h-8 mr-3 text-red-500"></i> What Goes Wrong
+        </h2>
+        <p class="text-gray-600">Six common agent failure modes and how to fix them.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="card-base border-l-4 border-l-red-500">
+          <h4 class="font-bold mb-2 flex items-center"><i data-lucide="bug" class="w-4 h-4 text-red-500 mr-2"></i>
+            Hallucination</h4>
+          <p class="text-xs text-gray-600 mb-3 h-10">LLM fabricates facts, tool names, or API responses.</p>
+          <p class="text-xs font-bold text-green-600 bg-green-50 p-2 rounded border border-green-100">FIX: RAG grounding
+            + output validation</p>
+        </div>
+        <div class="card-base border-l-4 border-l-orange-500">
+          <h4 class="font-bold mb-2 flex items-center"><i data-lucide="wrench" class="w-4 h-4 text-orange-500 mr-2"></i>
+            Tool Misuse</h4>
+          <p class="text-xs text-gray-600 mb-3 h-10">Wrong tool selected, bad params, or called when unneeded.</p>
+          <p class="text-xs font-bold text-green-600 bg-green-50 p-2 rounded border border-green-100">FIX: Clear schemas
+            + few-shot examples</p>
+        </div>
+        <div class="card-base border-l-4 border-l-purple-500">
+          <h4 class="font-bold mb-2 flex items-center"><i data-lucide="message-square"
+              class="w-4 h-4 text-purple-500 mr-2"></i> Prompt Injection</h4>
+          <p class="text-xs text-gray-600 mb-3 h-10">Malicious input overrides system instructions.</p>
+          <p class="text-xs font-bold text-green-600 bg-green-50 p-2 rounded border border-green-100">FIX: Sanitization
+            + instruction hierarchy</p>
+        </div>
+        <div class="card-base border-l-4 border-l-gray-400">
+          <h4 class="font-bold mb-2 flex items-center"><i data-lucide="archive" class="w-4 h-4 text-gray-500 mr-2"></i>
+            Stale Memory</h4>
+          <p class="text-xs text-gray-600 mb-3 h-10">Agent acts on outdated context or old retrieved data.</p>
+          <p class="text-xs font-bold text-green-600 bg-green-50 p-2 rounded border border-green-100">FIX: TTLs on
+            memory + freshness checks</p>
+        </div>
+        <div class="card-base border-l-4 border-l-yellow-500">
+          <h4 class="font-bold mb-2 flex items-center"><i data-lucide="refresh-cw"
+              class="w-4 h-4 text-yellow-500 mr-2"></i> Runaway Loops</h4>
+          <p class="text-xs text-gray-600 mb-3 h-10">Agent keeps retrying same failed action indefinitely.</p>
+          <p class="text-xs font-bold text-green-600 bg-green-50 p-2 rounded border border-green-100">FIX: Max iteration
+            limits + loop detection</p>
+        </div>
+        <div class="card-base border-l-4 border-l-green-500">
+          <h4 class="font-bold mb-2 flex items-center"><i data-lucide="trending-up"
+              class="w-4 h-4 text-green-500 mr-2"></i> Cost Blowups</h4>
+          <p class="text-xs text-gray-600 mb-3 h-10">Long chains → many LLM calls → surprise bills.</p>
+          <p class="text-xs font-bold text-green-600 bg-green-50 p-2 rounded border border-green-100">FIX: Token budgets
+            + cost monitoring</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section bg-light-purple p-8 rounded-3xl border border-purple-100">
+      <div class="text-center mb-8">
+        <span
+          class="inline-block px-3 py-1 bg-white text-purple-700 rounded-full text-xs font-bold tracking-wider uppercase mb-3 shadow-sm">Scaling
+          Output</span>
+        <h2 class="text-3xl font-bold flex items-center justify-center mb-2">
+          <i data-lucide="users" class="w-8 h-8 mr-3 text-accent-purple"></i> Multi-Agent Orchestration
+        </h2>
+        <p class="text-purple-900">Specialized agents working together like a company.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="card-base bg-white">
+          <div class="flex items-center mb-3">
+            <i data-lucide="arrow-right" class="w-5 h-5 text-purple-400 mr-2"></i>
+            <h4 class="font-bold text-gray-900">Sequential</h4>
+          </div>
+          <p class="text-xs text-purple-600 uppercase tracking-wider font-semibold mb-2">The Assembly Line</p>
+          <p class="text-sm text-gray-600">Agent A finishes task → hands output directly to Agent B. Highly predictable
+            and easy to debug.</p>
+        </div>
+        <div class="card-base bg-white">
+          <div class="flex items-center mb-3">
+            <i data-lucide="list" class="w-5 h-5 text-purple-400 mr-2"></i>
+            <h4 class="font-bold text-gray-900">Parallel</h4>
+          </div>
+          <p class="text-xs text-purple-600 uppercase tracking-wider font-semibold mb-2">Independent Tasks</p>
+          <p class="text-sm text-gray-600">Multiple agents work at exactly the same time. Final agent combines outputs.
+            Reduces latency.</p>
+        </div>
+        <div class="card-base bg-white border-2 border-purple-300 relative shadow-md">
+          <div
+            class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider whitespace-nowrap">
+            Most Common</div>
+          <div class="flex items-center mb-3 mt-2">
+            <i data-lucide="git-merge" class="w-5 h-5 text-purple-600 mr-2"></i>
+            <h4 class="font-bold text-gray-900">Manager-Led</h4>
+          </div>
+          <p class="text-xs text-purple-600 uppercase tracking-wider font-semibold mb-2">Hierarchical Team</p>
+          <p class="text-sm text-gray-600">Manager agent coordinates specialists, evaluates work, asks for revisions.
+            Balances flexibility/control.</p>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-purple-200 shadow-sm text-sm">
+        <h4 class="font-bold text-purple-900 mb-2">Design Principles for Reliability</h4>
+        <ul class="space-y-2">
+          <li class="flex items-start"><span class="text-purple-500 mr-2">1.</span> <strong>Rigid Data Schemas:</strong>
+            Handoffs (e.g., JSON formats) break more often than models. Define them strictly.</li>
+          <li class="flex items-start"><span class="text-purple-500 mr-2">2.</span> <strong>Tool Scoping:</strong> Give
+            each agent ONLY the specific tools it needs. Keeps system secure and debuggable.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="fade-section">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <div>
+          <h2 class="text-2xl font-bold flex items-center mb-6">
+            <i data-lucide="code" class="w-6 h-6 mr-3 text-orange-500"></i> Building Tools
+          </h2>
+          <div class="space-y-4">
+            <div class="card-base">
+              <h4 class="font-bold text-lg mb-2">LangChain</h4>
+              <p class="text-sm text-gray-600 mb-2">Pre-built building blocks connecting LLM to tools/memory.
+                Standardized interfaces. Easy to swap models (OpenAI vs Google) with one line of code.</p>
+            </div>
+            <div class="card-base border-orange-200">
+              <h4 class="font-bold text-lg mb-2 text-orange-700">LangGraph</h4>
+              <p class="text-sm text-gray-600 mb-3">For complex, multi-step workflows mapping as literal graphs.</p>
+              <ul class="text-xs space-y-1 text-gray-500">
+                <li>• <strong>Nodes:</strong> Specific actions / agents</li>
+                <li>• <strong>Edges:</strong> Rules for routing to next step</li>
+                <li>• <strong>State:</strong> Shared context updated as work progresses</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-bold flex items-center mb-6">
+            <i class="w-6 h-6 mr-3 text-green-500" data-lucide="lightbulb"></i> Practical Guidance
+          </h2>
+          <div class="space-y-4">
+            <div class="card-base border-red-100 bg-red-50">
+              <h4 class="font-bold text-red-800 mb-2">When NOT to use an agent:</h4>
+              <ul class="text-sm text-red-900/80 space-y-1">
+                <li>• Task is fully deterministic (use script)</li>
+                <li>• No decision-making needed (use pipeline)</li>
+                <li>• Errors catastrophic / unrecoverable</li>
+                <li>• Simple prompt + LLM is enough</li>
+              </ul>
+            </div>
+            <div class="card-base border-green-100 bg-green-50">
+              <h4 class="font-bold text-green-800 mb-2">Minimal Viable Agent (MVA)</h4>
+              <ul class="text-sm text-green-900/80 space-y-1">
+                <li>• 1 LLM + 1 System Prompt + 2-3 Tools</li>
+                <li>• RAG only if docs are involved</li>
+                <li>• Single-turn first, add memory later</li>
+                <li>• Add guardrails BEFORE capabilities</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 card-base">
+        <h4 class="font-bold mb-4 text-center">Agent Maturity Progression</h4>
+        <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0 text-sm">
+          <div class="flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-bold mb-2">
+              1</div>
+            <span class="text-center font-medium">Prompt<br>+ LLM</span>
+          </div>
+          <div class="hidden md:block h-0.5 w-full bg-gray-200 mx-2"></div>
+          <div class="flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold mb-2">2
+            </div>
+            <span class="text-center font-medium">Add<br>Tools</span>
+          </div>
+          <div class="hidden md:block h-0.5 w-full bg-gray-200 mx-2"></div>
+          <div class="flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full bg-indigo-500 text-white flex items-center justify-center font-bold mb-2">3
+            </div>
+            <span class="text-center font-medium">RAG +<br>Memory</span>
+          </div>
+          <div class="hidden md:block h-0.5 w-full bg-gray-200 mx-2"></div>
+          <div class="flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold mb-2">4
+            </div>
+            <span class="text-center font-medium">Multi-step<br>Planning</span>
+          </div>
+          <div class="hidden md:block h-0.5 w-full bg-gray-200 mx-2"></div>
+          <div class="flex flex-col items-center">
+            <div class="w-8 h-8 rounded-full bg-pink-500 text-white flex items-center justify-center font-bold mb-2">5
+            </div>
+            <span class="text-center font-medium text-pink-600">Multi-agent<br>Orchestr.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm text-center">
+          <p class="text-xs uppercase text-gray-400 font-bold mb-2">Automation Prep</p>
+          <p class="text-sm font-semibold">Repetitive & time-consuming?</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm text-center">
+          <p class="text-xs uppercase text-gray-400 font-bold mb-2">Automation Prep</p>
+          <p class="text-sm font-semibold">Uses structured data?</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm text-center">
+          <p class="text-xs uppercase text-gray-400 font-bold mb-2">Automation Prep</p>
+          <p class="text-sm font-semibold">Is 90% accuracy OK?</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm text-center">
+          <p class="text-xs uppercase text-gray-400 font-bold mb-2">Automation Prep</p>
+          <p class="text-sm font-semibold">Clear success metrics?</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section bg-dark-slate p-8 rounded-3xl text-white shadow-xl">
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold flex items-center justify-center mb-2 font-sora text-white">
+          <i data-lucide="clipboard-check" class="w-8 h-8 mr-3 text-green-400"></i> Pre-Launch Checklist
+        </h2>
+        <p class="text-gray-400">Production-readiness verification</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div>
+          <h3 class="text-lg font-bold mb-5 border-b border-gray-700 pb-2 text-white font-sora">10-Point Readiness</h3>
+          <ul class="space-y-3 text-sm text-gray-300">
+            <li class="flex items-center"><i data-lucide="check-square"
+                class="w-4 h-4 text-green-400 mr-3 shrink-0"></i> Clear goal defined (what is 'done'?)</li>
+            <li class="flex items-center"><i data-lucide="check-square"
+                class="w-4 h-4 text-green-400 mr-3 shrink-0"></i> LLM selected & system prompt written</li>
+            <li class="flex items-center"><i data-lucide="check-square"
+                class="w-4 h-4 text-green-400 mr-3 shrink-0"></i> Tools defined (schemas + permissions)</li>
+            <li class="flex items-center"><i data-lucide="check-square"
+                class="w-4 h-4 text-green-400 mr-3 shrink-0"></i> RAG pipeline built if docs involved</li>
+            <li class="flex items-center"><i data-lucide="check-square"
+                class="w-4 h-4 text-green-400 mr-3 shrink-0"></i> Memory strategy (short + long-term)</li>
+            <li class="flex items-center"><i data-lucide="check-square"
+                class="w-4 h-4 text-green-400 mr-3 shrink-0"></i> Guardrails on input, execution, output</li>
+            <li class="flex items-center"><i data-lucide="check-square"
+                class="w-4 h-4 text-green-400 mr-3 shrink-0"></i> Max iterations and cost budgets set</li>
+            <li class="flex items-center"><i data-lucide="check-square"
+                class="w-4 h-4 text-green-400 mr-3 shrink-0"></i> Observability: traces + metrics active</li>
+            <li class="flex items-center"><i data-lucide="check-square"
+                class="w-4 h-4 text-green-400 mr-3 shrink-0"></i> Eval suite (unit, integration, judge)</li>
+            <li class="flex items-center"><i data-lucide="check-square"
+                class="w-4 h-4 text-green-400 mr-3 shrink-0"></i> Human-in-the-loop for destructive ops</li>
+          </ul>
+        </div>
+
+        <div class="bg-gray-800 p-6 rounded-2xl border border-gray-700">
+          <h3 class="text-lg font-bold mb-4 flex items-center text-white font-sora">
+            <i data-lucide="shield" class="w-5 h-5 text-yellow-400 mr-2"></i> Default Guardrails
+          </h3>
+          <ul class="space-y-3 text-sm text-gray-300">
+            <li class="flex items-start"><span class="text-yellow-400 mr-2">♦</span> Max 10 tool calls per task</li>
+            <li class="flex items-start"><span class="text-yellow-400 mr-2">♦</span> Token budget per run (e.g. 50K)
+            </li>
+            <li class="flex items-start"><span class="text-yellow-400 mr-2">♦</span> No destructive ops without
+              confirmation</li>
+            <li class="flex items-start"><span class="text-yellow-400 mr-2">♦</span> PII detection on all inputs/outputs
+            </li>
+            <li class="flex items-start"><span class="text-yellow-400 mr-2">♦</span> Prompt injection filter on input
+            </li>
+            <li class="flex items-start"><span class="text-yellow-400 mr-2">♦</span> Timeout: 60s per tool, 5m per task
+            </li>
+            <li class="flex items-start"><span class="text-yellow-400 mr-2">♦</span> Fallback: escalate to human on 2
+              fails</li>
+            <li class="flex items-start"><span class="text-yellow-400 mr-2">♦</span> Log every LLM call and tool
+              invocation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section">
+      <h2 class="text-2xl font-bold mb-6 flex items-center">
+        <i data-lucide="book-open" class="w-6 h-6 mr-3 text-gray-500"></i> Quick Reference
+      </h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 card-base overflow-x-auto">
+          <h4 class="font-bold mb-4">Design Cheat Sheet</h4>
+          <table class="w-full text-sm text-left">
+            <thead class="text-xs text-gray-500 uppercase bg-gray-50">
+              <tr>
+                <th class="px-4 py-3 rounded-tl-lg">Component</th>
+                <th class="px-4 py-3">Body ↔</th>
+                <th class="px-4 py-3 rounded-tr-lg">Key Principle</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr>
+                <td class="px-4 py-2 font-medium">LLM</td>
+                <td class="px-4 py-2">Brain</td>
+                <td class="px-4 py-2 text-gray-500">Pick model for cost/quality tradeoff</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-medium">System Prompt</td>
+                <td class="px-4 py-2">Values</td>
+                <td class="px-4 py-2 text-gray-500">Your #1 control surface</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-medium">Tools</td>
+                <td class="px-4 py-2">Hands</td>
+                <td class="px-4 py-2 text-gray-500">JSON schemas + permission scoping</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-medium">MCP</td>
+                <td class="px-4 py-2">Nerves</td>
+                <td class="px-4 py-2 text-gray-500">Standardize tool access</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-medium">Memory</td>
+                <td class="px-4 py-2">Hippocampus</td>
+                <td class="px-4 py-2 text-gray-500">Session → persistent → vector</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-medium">RAG</td>
+                <td class="px-4 py-2">Notes</td>
+                <td class="px-4 py-2 text-gray-500">Chunk → embed → retrieve → rerank</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-medium">State</td>
+                <td class="px-4 py-2">Posture</td>
+                <td class="px-4 py-2 text-gray-500">Track progress, enable resume</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-medium">Guardrails</td>
+                <td class="px-4 py-2">Immune</td>
+                <td class="px-4 py-2 text-gray-500">Input + execution + output layers</td>
+              </tr>
+              <tr>
+                <td class="px-4 py-2 font-medium">Eval</td>
+                <td class="px-4 py-2">Vitals</td>
+                <td class="px-4 py-2 text-gray-500">Trace everything, measure success</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="space-y-4">
+          <div class="card-base bg-gray-50">
+            <h4 class="font-bold mb-3">Glossary</h4>
+            <ul class="text-xs space-y-2 text-gray-700">
+              <li><strong class="text-gray-900 block">RAG:</strong> Retrieval-Augmented Gen.</li>
+              <li><strong class="text-gray-900 block mt-1">MCP:</strong> Model Context Protocol</li>
+              <li><strong class="text-gray-900 block mt-1">ReAct:</strong> Reason + Act loop pattern</li>
+              <li><strong class="text-gray-900 block mt-1">Embedding:</strong> Dense vector for meaning</li>
+              <li><strong class="text-gray-900 block mt-1">Reranking:</strong> Reorder retrieved results</li>
+              <li><strong class="text-gray-900 block mt-1">DAG:</strong> Directed Acyclic Graph</li>
+              <li><strong class="text-gray-900 block mt-1">HITL:</strong> Human-in-the-loop approval</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fade-section bg-light-green p-8 md:p-12 rounded-3xl border border-green-200 text-center">
+      <i data-lucide="award" class="w-12 h-12 mx-auto text-green-500 mb-6"></i>
+      <h2 class="text-2xl md:text-3xl font-bold mb-8 text-green-900">An AI Agent is Not Magic. It's Architecture.</h2>
+
+      <div class="max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 text-sm font-medium text-green-800">
+        <div class="bg-white/60 p-3 rounded-xl">Brain <span class="block text-xs font-normal opacity-70">LLM</span>
+        </div>
+        <div class="bg-white/60 p-3 rounded-xl">Memory <span class="block text-xs font-normal opacity-70">Context +
+            Vector DB</span></div>
+        <div class="bg-white/60 p-3 rounded-xl">Hands <span class="block text-xs font-normal opacity-70">Tools</span>
+        </div>
+        <div class="bg-white/60 p-3 rounded-xl">Nerves <span class="block text-xs font-normal opacity-70">MCP</span>
+        </div>
+      </div>
+
+      <p class="text-lg md:text-xl text-green-900 max-w-2xl mx-auto font-medium leading-relaxed">
+        "Understand the components, respect the guardrails, and build one layer at a time. The competitive advantage
+        belongs to those who orchestrate systems to amplify their own judgment."
+      </p>
+    </section>
+
+    <footer class="text-center pt-8 border-t border-gray-200">
+      <p class="font-bold text-gray-800">kishoretech.com</p>
+      <p class="text-sm text-gray-500 mt-1">Fundamentals of AI Agents: Components, Architectures & Implementation
+        Patterns</p>
+      <div class="mt-4 text-xs text-gray-400">
+        <p>Further Reading: Anthropic Docs, LangChain Docs, LlamaIndex, Pinecone Guides</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1. Initialize icons
+      lucide.createIcons();
+
+      // 2. Safe fade-in animation setup
+      const fadeSections = document.querySelectorAll('.fade-section');
+
+      // First apply hidden class so they don't pop in abruptly if JS is active
+      fadeSections.forEach(function (el) {
+        el.classList.add('not-visible');
+      });
+
+      // Set up intersection observer
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.remove('not-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.05, rootMargin: '0px 0px -50px 0px' });
+
+        fadeSections.forEach(function (el) {
+          observer.observe(el);
+        });
+      } else {
+        // Fallback for older browsers
+        fadeSections.forEach(function (el) {
+          el.classList.remove('not-visible');
+        });
+      }
+    });
+  </script>
+
+  <!-- GoatCounter Analytics -->
+  <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>
