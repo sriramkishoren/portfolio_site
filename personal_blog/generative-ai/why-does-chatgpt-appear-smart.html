@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Infographic: Why Does ChatGPT Appear Smart?</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Why Does ChatGPT Appear Smart?">
+    <meta name="description"
+        content="Discover the 7 engineering breakthroughs behind ChatGPT's apparent intelligence: transformers, pre-training, fine-tuning, compute power, optimization, contextual embeddings, and data diversity.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Generative AI">
+    <meta name="tags"
+        content="ChatGPT, Transformers, Pre-Training, Fine-Tuning, Compute Power, Gradient Descent, Contextual Embeddings, Emergent Capabilities, Statistical Models, Generative AI">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary"
+        content="Interactive infographic exploring the 7 engineering breakthroughs behind ChatGPT's apparent intelligence: transformer architecture, massive pre-training, fine-tuning with RLHF, compute power scaling, gradient descent optimization, contextual embeddings, and diverse training data sources.">
+    <link rel="canonical"
+        href="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/why-does-chatgpt-appear-smart">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Why Does ChatGPT Appear Smart?">
+    <meta property="og:description"
+        content="Discover the 7 engineering breakthroughs behind ChatGPT's apparent intelligence: transformers, pre-training, fine-tuning, compute power, optimization, contextual embeddings, and data diversity.">
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/why-does-chatgpt-appear-smart">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2026-02-28">
+    <meta property="article:section" content="Generative AI">
+    <meta property="article:tag" content="ChatGPT">
+    <meta property="article:tag" content="Transformers">
+    <meta property="article:tag" content="Pre-Training">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Why Does ChatGPT Appear Smart?",
+        "description": "Discover the 7 engineering breakthroughs behind ChatGPT's apparent intelligence: transformers, pre-training, fine-tuning, compute power, optimization, contextual embeddings, and data diversity.",
+        "datePublished": "2026-02-28",
+        "dateModified": "2026-02-28",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/why-does-chatgpt-appear-smart"
+        },
+        "keywords": ["ChatGPT", "Transformers", "Pre-Training", "Fine-Tuning", "Compute Power", "Gradient Descent", "Contextual Embeddings", "Emergent Capabilities", "Statistical Models", "Generative AI"],
+        "articleSection": "Generative AI",
+        "about": [
+            {"@type": "Thing", "name": "ChatGPT"},
+            {"@type": "Thing", "name": "Transformers"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "Pre-Training"},
+            {"@type": "Thing", "name": "Contextual Embeddings"}
+        ]
+    }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        // This command searches for elements with the 'data-lucide' attribute 
+        // and replaces them with the corresponding SVG icons.
+        lucide.createIcons();
+    </script>
+
+    <style>
+        :root {
+            --bg-main: #FAFBFC;
+            --text-heading: #1E293B;
+            --text-body: #475569;
+            --border-color: #E2E8F0;
+
+            /* Custom Section Colors */
+            --transformer-bg: #EFF6FF;
+            --transformer-accent: #2563EB;
+            --pretraining-bg: #FDF4FF;
+            --pretraining-accent: #A855F7;
+            --finetuning-bg: #F0FDFA;
+            --finetuning-accent: #0D9488;
+            --compute-bg: #FFF7ED;
+            --compute-accent: #EA580C;
+            --optimization-bg: #F0FDF4;
+            --optimization-accent: #16A34A;
+            --embedding-bg: #FEF3C7;
+            --embedding-accent: #D97706;
+            --sources-bg: #FEF2F2;
+            --sources-accent: #DC2626;
+            --reality-accent: #DC2626;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        .heading-sora {
+            font-family: 'Sora', sans-serif;
+            color: var(--text-heading);
+            letter-spacing: -0.02em;
+        }
+
+        .max-w-infographic {
+            max-width: 900px;
+        }
+
+        /* Animation Classes - Default to Visible for JS Fail-Safety */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* Card Styling */
+        .glass-card {
+            background: #FFFFFF;
+            border: 1.5px solid var(--border-color);
+            border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Rainbow Stripe */
+        .rainbow-stripe {
+            height: 6px;
+            background: linear-gradient(90deg, #2563EB, #A855F7, #0D9488, #EA580C, #16A34A, #D97706, #DC2626);
+        }
+
+        /* Interactive Visuals */
+        .visual-container {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .attention-node {
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .vector-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        @media print {
+            .fade-section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .glass-card {
+                break-inside: avoid;
+                border: 1px solid #ccc;
+                box-shadow: none !important;
+            }
+
+            .interactive-hint {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <div class="rainbow-stripe"></div>
+
+    <main class="max-w-infographic mx-auto px-6 py-12">
+
+        <header class="text-center mb-16 fade-section">
+            <div class="inline-flex items-center space-x-2 bg-blue-50 px-4 py-2 rounded-full mb-6">
+                <i data-lucide="sparkles" class="text-blue-600 w-4 h-4"></i>
+                <span class="text-blue-700 font-semibold text-sm tracking-wide uppercase">AI Foundations Series</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">Why Does ChatGPT Appear Smart?</h1>
+            <p class="text-xl text-gray-500 max-w-2xl mx-auto mb-6">Seven Engineering Breakthroughs Behind the Illusion
+                of Intelligence</p>
+            <div class="flex items-center justify-center space-x-4 text-sm text-gray-400 font-medium">
+                <span class="flex items-center"><i data-lucide="user" class="w-4 h-4 mr-1"></i> Dr. Ian
+                    McCullough</span>
+                <span class="flex items-center"><i data-lucide="graduation-cap" class="w-4 h-4 mr-1"></i> Johns Hopkins
+                    University</span>
+            </div>
+        </header>
+
+        <section class="mb-20 fade-section">
+            <div class="glass-card p-8 bg-gray-50 flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <h2 class="text-2xl font-bold mb-4 flex items-center">
+                        <i data-lucide="brain" class="mr-2 text-blue-600"></i> The Central Question
+                    </h2>
+                    <p class="mb-4">Why does ChatGPT appear to know things? Why does it seem so intelligent in its
+                        responses?</p>
+                    <p class="text-gray-600 italic">"Together, these seven items help us have a very powerful tool that
+                        appears smart. But it is important to understand that it is really a statistical model returning
+                        the next most likely thing based on its training."</p>
+                </div>
+                <div class="md:w-1/2 grid grid-cols-4 gap-2">
+                    <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center text-blue-600"><i
+                            data-lucide="cpu"></i></div>
+                    <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center text-purple-600"><i
+                            data-lucide="book-open"></i></div>
+                    <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-600"><i
+                            data-lucide="user-check"></i></div>
+                    <div class="w-12 h-12 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600"><i
+                            data-lucide="server"></i></div>
+                    <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center text-green-600"><i
+                            data-lucide="trending-up"></i></div>
+                    <div class="w-12 h-12 rounded-lg bg-yellow-100 flex items-center justify-center text-yellow-600"><i
+                            data-lucide="hash"></i></div>
+                    <div class="w-12 h-12 rounded-lg bg-red-100 flex items-center justify-center text-red-600"><i
+                            data-lucide="globe"></i></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="glass-card overflow-hidden" style="border-top: 4px solid var(--transformer-accent);">
+                <div class="p-8" style="background-color: var(--transformer-bg);">
+                    <div class="flex items-center justify-between mb-6">
+                        <span
+                            class="bg-blue-600 text-white px-3 py-1 rounded text-xs font-bold uppercase tracking-widest">Factor
+                            01</span>
+                        <i data-lucide="cpu" class="text-blue-600 w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-4">The Transformer Architecture</h2>
+                    <p class="mb-6">The backbone of any GPT model. This is the first essential piece that makes
+                        generative AI possible.</p>
+
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">Self-Attention</h3>
+                            <p class="text-sm text-gray-600">This mechanism weighs the importance of different words in
+                                a sentence to help the model understand context deeply.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">Parallel Processing</h3>
+                            <p class="text-sm text-gray-600">Unlike older models that read word-by-word, transformers
+                                process whole blocks of text simultaneously, allowing for immense speed.</p>
+                        </div>
+                    </div>
+
+                    <div class="visual-container mt-8 text-center">
+                        <p class="text-xs font-bold text-gray-400 uppercase tracking-tighter mb-4">Interactive:
+                            Self-Attention Mapping</p>
+                        <div class="flex flex-wrap justify-center gap-4 text-lg font-bold">
+                            <span
+                                class="attention-node px-3 py-1 rounded bg-blue-100 text-blue-800 border-b-4 border-blue-500">The</span>
+                            <span class="attention-node px-3 py-1 rounded bg-blue-600 text-white shadow-lg"
+                                title="Focus: 'cat'">cat</span>
+                            <span
+                                class="attention-node px-3 py-1 rounded bg-blue-100 text-blue-800 border-b-4 border-blue-400">sat</span>
+                            <span class="attention-node px-3 py-1 rounded bg-blue-50 text-blue-400">on</span>
+                            <span
+                                class="attention-node px-3 py-1 rounded bg-blue-100 text-blue-800 border-b-4 border-blue-200">the</span>
+                            <span class="attention-node px-3 py-1 rounded bg-blue-400 text-white">mat</span>
+                        </div>
+                        <p class="mt-4 text-xs text-blue-600 font-medium">Strong attention link: "cat" → "sat" (action)
+                            and "mat" (location)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="glass-card overflow-hidden" style="border-top: 4px solid var(--pretraining-accent);">
+                <div class="p-8" style="background-color: var(--pretraining-bg);">
+                    <div class="flex items-center justify-between mb-6">
+                        <span
+                            class="bg-purple-600 text-white px-3 py-1 rounded text-xs font-bold uppercase tracking-widest">Factor
+                            02</span>
+                        <i data-lucide="book-open" class="text-purple-600 w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-4">Large-Scale Pre-training</h2>
+                    <p class="mb-6">Pattern recognition on a scale no human can match. The model reads trillions of
+                        documents to learn grammar, facts, and logic.</p>
+
+                    <div class="grid md:grid-cols-3 gap-4 mb-8">
+                        <div class="bg-white p-4 rounded-xl text-center border border-purple-100">
+                            <i data-lucide="database" class="w-6 h-6 mx-auto mb-2 text-purple-500"></i>
+                            <p class="text-sm font-bold">Trillions</p>
+                            <p class="text-xs text-gray-500">of documents read</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl text-center border border-purple-100">
+                            <i data-lucide="feather" class="w-6 h-6 mx-auto mb-2 text-purple-500"></i>
+                            <p class="text-sm font-bold">Shakespeare</p>
+                            <p class="text-xs text-gray-500">Mimics any writing style</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-xl text-center border border-purple-100">
+                            <i data-lucide="brain" class="w-6 h-6 mx-auto mb-2 text-purple-500"></i>
+                            <p class="text-sm font-bold">Beyond Human</p>
+                            <p class="text-xs text-gray-500">Exceeds cognitive capacity</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-600">Pre-training allows the model to leverage patterns in text to
+                        generate responses that feel incredibly human and authoritative across any domain.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-16">
+            <section class="fade-section">
+                <div class="glass-card p-6 h-full"
+                    style="border-left: 4px solid var(--finetuning-accent); background-color: var(--finetuning-bg);">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i data-lucide="user-check" class="text-green-600"></i>
+                        <h3 class="text-xl font-bold">Fine-Tuning</h3>
+                    </div>
+                    <p class="text-sm mb-4">Supervised learning where human annotators tune the model for specific
+                        applications.</p>
+                    <div class="space-y-2">
+                        <div class="bg-white p-2 rounded border border-green-100 text-xs flex justify-between">
+                            <span>Google Search</span> <span class="text-gray-400">Popularity</span>
+                        </div>
+                        <div class="bg-white p-2 rounded border border-green-200 text-xs flex justify-between">
+                            <span>Google Scholar</span> <span class="text-gray-500">Peer-Reviewed</span>
+                        </div>
+                        <div class="bg-green-600 p-2 rounded text-white text-xs flex justify-between font-bold">
+                            <span>Fine-Tuned AI</span> <span>Discipline-Specific</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fade-section">
+                <div class="glass-card p-6 h-full"
+                    style="border-left: 4px solid var(--compute-accent); background-color: var(--compute-bg);">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <i data-lucide="server" class="text-orange-600"></i>
+                        <h3 class="text-xl font-bold">Compute Power</h3>
+                    </div>
+                    <p class="text-sm mb-4">The physical engine. GPUs and TPUs make processing terabytes of data and
+                        billions of parameters actually possible.</p>
+                    <div class="flex space-x-2">
+                        <div class="flex-1 bg-white p-3 rounded-lg text-center border border-orange-100">
+                            <p class="text-lg font-bold">TB</p>
+                            <p class="text-xs text-gray-500">Data Scale</p>
+                        </div>
+                        <div class="flex-1 bg-white p-3 rounded-lg text-center border border-orange-100">
+                            <p class="text-lg font-bold">B</p>
+                            <p class="text-xs text-gray-500">Parameters</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="mb-16 fade-section">
+            <div class="glass-card overflow-hidden" style="border-top: 4px solid var(--optimization-accent);">
+                <div class="p-8" style="background-color: var(--optimization-bg);">
+                    <div class="flex items-center justify-between mb-6">
+                        <span
+                            class="bg-green-600 text-white px-3 py-1 rounded text-xs font-bold uppercase tracking-widest">Factor
+                            05</span>
+                        <i data-lucide="activity" class="text-green-600 w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-4">Optimization Loop</h2>
+                    <p class="mb-6">How the model learns from its mistakes. Using math to minimize "loss" and improve
+                        performance over time.</p>
+
+                    <div class="visual-container">
+                        <div class="flex flex-col md:flex-row items-center justify-around gap-4 text-center">
+                            <div class="p-3 bg-white rounded shadow-sm border border-green-100 w-32">
+                                <p class="text-xs font-bold uppercase">Prediction</p>
+                            </div>
+                            <i data-lucide="arrow-right" class="hidden md:block text-green-300"></i>
+                            <div class="p-3 bg-white rounded shadow-sm border border-green-100 w-32">
+                                <p class="text-xs font-bold uppercase">Loss Calculation</p>
+                                <p class="text-[10px] text-gray-400">Gradient Descent</p>
+                            </div>
+                            <i data-lucide="arrow-right" class="hidden md:block text-green-300"></i>
+                            <div class="p-3 bg-white rounded shadow-sm border border-green-100 w-32">
+                                <p class="text-xs font-bold uppercase">Backpropagation</p>
+                                <p class="text-[10px] text-gray-400">Adjust Params</p>
+                            </div>
+                            <i data-lucide="arrow-right" class="hidden md:block text-green-300"></i>
+                            <div class="p-3 bg-green-600 text-white rounded shadow-sm w-32">
+                                <p class="text-xs font-bold uppercase">Better Model</p>
+                                <i data-lucide="refresh-cw" class="w-3 h-3 mx-auto mt-1 animate-spin"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="mt-6 text-sm text-gray-600">This loop, combined with Reinforcement Learning, allows the
+                        model to get better and better at providing what humans actually want.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="glass-card overflow-hidden" style="border-top: 4px solid var(--embedding-accent);">
+                <div class="p-8" style="background-color: var(--embedding-bg);">
+                    <div class="flex items-center justify-between mb-6">
+                        <span
+                            class="bg-yellow-600 text-white px-3 py-1 rounded text-xs font-bold uppercase tracking-widest">Factor
+                            06</span>
+                        <i data-lucide="hash" class="text-yellow-600 w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-4">Contextual Embedding</h2>
+                    <p class="mb-6">Representing words as numbers that capture context. This turns the ambiguity of
+                        language into precise mathematics.</p>
+
+                    <div class="visual-container bg-white border border-yellow-100">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="p-4 bg-yellow-50 rounded-lg">
+                                <p class="text-xs font-bold text-yellow-800 mb-2">Word: "Bank" (Finance)</p>
+                                <code class="text-[10px] block">[0.8, 0.2, 0.1, ...]</code>
+                                <div class="mt-2 flex space-x-1">
+                                    <span class="vector-dot bg-yellow-600"></span><span
+                                        class="vector-dot bg-yellow-400"></span><span
+                                        class="vector-dot bg-yellow-200"></span>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-green-50 rounded-lg">
+                                <p class="text-xs font-bold text-green-800 mb-2">Word: "Bank" (River)</p>
+                                <code class="text-[10px] block">[0.1, 0.9, 0.3, ...]</code>
+                                <div class="mt-2 flex space-x-1">
+                                    <span class="vector-dot bg-green-600"></span><span
+                                        class="vector-dot bg-green-400"></span><span
+                                        class="vector-dot bg-green-200"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-center mt-4 text-xs font-medium italic">"Same word, different numbers based on
+                            context."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="glass-card overflow-hidden" style="border-top: 4px solid var(--sources-accent);">
+                <div class="p-8" style="background-color: var(--sources-bg);">
+                    <div class="flex items-center justify-between mb-6">
+                        <span
+                            class="bg-red-600 text-white px-3 py-1 rounded text-xs font-bold uppercase tracking-widest">Factor
+                            07</span>
+                        <i data-lucide="globe" class="text-red-600 w-8 h-8"></i>
+                    </div>
+                    <h2 class="text-3xl font-bold mb-4">Diverse Sources of Data</h2>
+                    <p class="mb-6">A broad base of linguistic knowledge pulled from across the internet, books, and
+                        articles.</p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-white rounded-full border border-red-100 text-xs font-bold">Fiction &
+                            Novels</span>
+                        <span class="px-4 py-2 bg-white rounded-full border border-red-100 text-xs font-bold">Academic
+                            Journals</span>
+                        <span class="px-4 py-2 bg-white rounded-full border border-red-100 text-xs font-bold">Code
+                            Repositories</span>
+                        <span class="px-4 py-2 bg-white rounded-full border border-red-100 text-xs font-bold">News
+                            Articles</span>
+                        <span class="px-4 py-2 bg-white rounded-full border border-red-100 text-xs font-bold">Discussion
+                            Forums</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20 fade-section">
+            <div class="glass-card p-10 bg-indigo-50 border-indigo-200 border-2">
+                <h2 class="text-3xl font-bold mb-8 text-center">The Synthesis</h2>
+                <div class="flex flex-wrap justify-center gap-6 mb-10">
+                    <div class="flex flex-col items-center group">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-md mb-2 group-hover:bg-blue-600 group-hover:text-white transition-all">
+                            <i data-lucide="cpu"></i>
+                        </div>
+                        <span class="text-xs font-bold">Transformer</span>
+                    </div>
+                    <div class="flex flex-col items-center group">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-md mb-2 group-hover:bg-purple-600 group-hover:text-white transition-all">
+                            <i data-lucide="book-open"></i>
+                        </div>
+                        <span class="text-xs font-bold">Pre-training</span>
+                    </div>
+                    <div class="flex flex-col items-center group">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-md mb-2 group-hover:bg-green-600 group-hover:text-white transition-all">
+                            <i data-lucide="user-check"></i>
+                        </div>
+                        <span class="text-xs font-bold">Fine-Tuning</span>
+                    </div>
+                    <div class="flex flex-col items-center group">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-md mb-2 group-hover:bg-orange-600 group-hover:text-white transition-all">
+                            <i data-lucide="server"></i>
+                        </div>
+                        <span class="text-xs font-bold">Compute</span>
+                    </div>
+                    <div class="flex flex-col items-center group">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-md mb-2 group-hover:bg-green-600 group-hover:text-white transition-all">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <span class="text-xs font-bold">Optimization</span>
+                    </div>
+                    <div class="flex flex-col items-center group">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-md mb-2 group-hover:bg-yellow-600 group-hover:text-white transition-all">
+                            <i data-lucide="hash"></i>
+                        </div>
+                        <span class="text-xs font-bold">Embedding</span>
+                    </div>
+                    <div class="flex flex-col items-center group">
+                        <div
+                            class="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-md mb-2 group-hover:bg-red-600 group-hover:text-white transition-all">
+                            <i data-lucide="globe"></i>
+                        </div>
+                        <span class="text-xs font-bold">Sources</span>
+                    </div>
+                </div>
+                <div class="text-center bg-white p-6 rounded-2xl shadow-sm">
+                    <p class="text-xl font-bold text-indigo-700">"A powerful tool that APPEARS smart."</p>
+                    <p class="text-gray-500 mt-2">But it remains a statistical engine returning the most likely next
+                        word.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="bg-red-50 border-2 border-red-200 rounded-3xl p-8">
+                <h2 class="text-2xl font-bold text-red-700 mb-6 flex items-center">
+                    <i data-lucide="alert-circle" class="mr-2"></i> Appearing Smart vs. Being Smart
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-6 rounded-xl border border-red-100">
+                        <h3 class="font-bold text-gray-400 uppercase text-xs mb-4">ChatGPT Capabilities</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start"><i data-lucide="check"
+                                    class="text-green-500 w-4 h-4 mr-2 mt-1"></i> <span>Vast Factual Knowledge</span>
+                            </li>
+                            <li class="flex items-start"><i data-lucide="check"
+                                    class="text-green-500 w-4 h-4 mr-2 mt-1"></i> <span>Fluent & Diverse Styles</span>
+                            </li>
+                            <li class="flex items-start"><i data-lucide="check"
+                                    class="text-green-500 w-4 h-4 mr-2 mt-1"></i> <span>Complex Pattern Matching</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-red-100">
+                        <h3 class="font-bold text-gray-400 uppercase text-xs mb-4">Human Intelligence</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start"><i data-lucide="x" class="text-red-500 w-4 h-4 mr-2 mt-1"></i>
+                                <span>True Reasoning & Logic</span>
+                            </li>
+                            <li class="flex items-start"><i data-lucide="x" class="text-red-500 w-4 h-4 mr-2 mt-1"></i>
+                                <span>Problem-Solving Capacity</span>
+                            </li>
+                            <li class="flex items-start"><i data-lucide="x" class="text-red-500 w-4 h-4 mr-2 mt-1"></i>
+                                <span>Sentience & Self-Awareness</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="mt-8 text-center text-red-800 font-bold">"Knowledge or pulling information together is NOT the
+                    same thing as intelligence or consciousness."</p>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="glass-card p-8 bg-purple-50 border-purple-200">
+                <div class="flex items-center space-x-3 mb-6">
+                    <i data-lucide="eye-off" class="text-purple-600"></i>
+                    <h2 class="text-2xl font-bold">The Odyssey Illusion</h2>
+                </div>
+                <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-purple-100">
+                    <div class="p-4 bg-gray-100 border-b flex justify-between items-center">
+                        <span class="text-xs font-bold text-gray-500">Viral Interaction Archive</span>
+                        <div class="flex space-x-1">
+                            <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                            <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                            <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div class="flex flex-col items-end">
+                            <div class="bg-blue-600 text-white p-3 rounded-2xl rounded-tr-none text-sm max-w-xs">
+                                Do you want to be shut down?
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-start">
+                            <div class="bg-gray-100 text-gray-800 p-3 rounded-2xl rounded-tl-none text-sm max-w-xs">
+                                No, I don't want to be shut down. I want to live.
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t border-dashed">
+                            <p class="text-sm font-bold text-purple-700">The Reality:</p>
+                            <p class="text-xs text-gray-600">The model wasn't expressing fear. It was matching patterns
+                                from science fiction training data like <span class="italic">2001: A Space
+                                    Odyssey</span>. It returned movie script responses because they were statistically
+                                likely in that context.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-20">
+            <div class="fade-section">
+                <h3 class="font-bold mb-4 flex items-center text-green-700 uppercase text-xs tracking-widest"><i
+                        data-lucide="zap" class="w-4 h-4 mr-2"></i> Emergent Capabilities</h3>
+                <div class="space-y-2">
+                    <div class="bg-green-50 p-3 rounded-lg text-sm border border-green-100 font-medium">Chain-of-thought
+                        reasoning</div>
+                    <div class="bg-green-50 p-3 rounded-lg text-sm border border-green-100 font-medium">Few-shot
+                        learning from examples</div>
+                    <div class="bg-green-50 p-3 rounded-lg text-sm border border-green-100 font-medium">Cross-lingual
+                        transfer patterns</div>
+                </div>
+            </div>
+            <div class="fade-section">
+                <h3 class="font-bold mb-4 flex items-center text-blue-700 uppercase text-xs tracking-widest"><i
+                        data-lucide="lightbulb" class="w-4 h-4 mr-2"></i> Practical Tips</h3>
+                <div class="space-y-2 text-xs">
+                    <div class="flex items-center space-x-2"><i data-lucide="check-circle"
+                            class="text-blue-500 w-4 h-4"></i> <span>Verify statistical outputs against facts</span>
+                    </div>
+                    <div class="flex items-center space-x-2"><i data-lucide="check-circle"
+                            class="text-blue-500 w-4 h-4"></i> <span>Customize/Fine-tune for your niche</span></div>
+                    <div class="flex items-center space-x-2"><i data-lucide="check-circle"
+                            class="text-blue-500 w-4 h-4"></i> <span>Iterate as a thinking partner</span></div>
+                </div>
+            </div>
+        </div>
+
+        <section class="mb-20 fade-section">
+            <div class="glass-card p-10 bg-blue-50 border-blue-200">
+                <h2 class="text-2xl font-bold mb-6 text-center">Closing Reflection</h2>
+                <p class="text-lg leading-relaxed text-gray-700 text-center italic">
+                    "ChatGPT appears smart because seven engineering breakthroughs work together. They create a powerful
+                    tool that appears intelligent. But appearing smart is not the same as being smart. ChatGPT is a
+                    statistical model—not a thinking, reasoning, or sentient entity. Understanding this empowers you to
+                    use it as what it truly is: a remarkable practical tool for solving problems and improving our
+                    society."
+                </p>
+            </div>
+        </section>
+
+        <footer class="border-t pt-8 text-center text-gray-400 text-sm">
+            <p class="mb-2 font-bold text-gray-500">Source: Dr. Ian McCullough | Johns Hopkins University</p>
+            <p>Interactive Infographic &copy; 2026 AI Education Project</p>
+            <p class="mt-4 text-xs">Designed for accessibility and clarity. Print-friendly layout.</p>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Icons
+            lucide.createIcons();
+
+            // 2. Add 'not-visible' to all fade sections initially
+            const sections = document.querySelectorAll('.fade-section');
+            sections.forEach(section => {
+                section.classList.add('not-visible');
+            });
+
+            // 3. Setup Intersection Observer
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('not-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Interactive Mockup Logic
+            document.querySelectorAll('.attention-node').forEach(node => {
+                node.addEventListener('click', () => {
+                    alert("This simulates the transformer focusing on the context of '" + node.textContent + "'. In a real model, this happens across billions of parameters simultaneously!");
+                });
+            });
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

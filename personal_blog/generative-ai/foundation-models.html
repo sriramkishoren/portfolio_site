@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foundation Models: The Architecture of Modern AI</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Foundation Models: The Architecture of Modern AI">
+    <meta name="description"
+        content="Explore foundation model architecture including transformers, self-attention mechanisms, token prediction, vector embeddings, semantic search, and model adaptation through fine-tuning and RLHF.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Generative AI">
+    <meta name="tags"
+        content="Foundation Models, Transformers, Self-Attention, Vector Embeddings, Semantic Search, Token Prediction, Model Drift, Fine-Tuning, RLHF, RAG, Pre-Training">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary"
+        content="Deep dive into foundation model architecture covering transformer networks, self-attention mechanisms, token prediction, vector embeddings, semantic search pipelines, model drift, and adaptation methods including pre-training, fine-tuning, RLHF, and RAG.">
+    <link rel="canonical"
+        href="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/foundation-models">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Foundation Models: The Architecture of Modern AI">
+    <meta property="og:description"
+        content="Explore foundation model architecture including transformers, self-attention mechanisms, token prediction, vector embeddings, semantic search, and model adaptation through fine-tuning and RLHF.">
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/foundation-models">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2026-02-26">
+    <meta property="article:section" content="Generative AI">
+    <meta property="article:tag" content="Foundation Models">
+    <meta property="article:tag" content="Transformers">
+    <meta property="article:tag" content="Self-Attention">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Foundation Models: The Architecture of Modern AI",
+        "description": "Explore foundation model architecture including transformers, self-attention mechanisms, token prediction, vector embeddings, semantic search, and model adaptation through fine-tuning and RLHF.",
+        "datePublished": "2026-02-26",
+        "dateModified": "2026-02-26",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/foundation-models"
+        },
+        "keywords": ["Foundation Models", "Transformers", "Self-Attention", "Vector Embeddings", "Semantic Search", "Token Prediction", "Model Drift", "Fine-Tuning", "RLHF", "RAG", "Pre-Training"],
+        "articleSection": "Generative AI",
+        "about": [
+            {"@type": "Thing", "name": "Foundation Models"},
+            {"@type": "Thing", "name": "Transformers"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "Vector Embeddings"},
+            {"@type": "Thing", "name": "Semantic Search"}
+        ]
+    }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Base typography & colors */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #FAFBFC;
+            color: #475569;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-sora {
+            font-family: 'Sora', sans-serif;
+            color: #1E293B;
+        }
+
+        /* Custom color classes using Tailwind 2.2.19 safe equivalents or hexes */
+        .bg-header {
+            background-color: #F0F9FF;
+        }
+
+        .text-header-accent {
+            color: #0EA5E9;
+        }
+
+        .bg-opening {
+            background-color: #F8FAFC;
+        }
+
+        .bg-foundation {
+            background-color: #EFF6FF;
+        }
+
+        .text-foundation-accent {
+            color: #2563EB;
+        }
+
+        .bg-scale {
+            background-color: #F0FDFA;
+        }
+
+        .text-scale-accent {
+            color: #0D9488;
+        }
+
+        .bg-energy {
+            background-color: #FEF2F2;
+        }
+
+        .text-energy-accent {
+            color: #DC2626;
+        }
+
+        .bg-transformer {
+            background-color: #FDF4FF;
+        }
+
+        .text-transformer-accent {
+            color: #A855F7;
+        }
+
+        .bg-advantages {
+            background-color: #FFF7ED;
+        }
+
+        .text-advantages-accent {
+            color: #EA580C;
+        }
+
+        .bg-attention {
+            background-color: #E0E7FF;
+        }
+
+        .text-attention-accent {
+            color: #6366F1;
+        }
+
+        .bg-ball {
+            background-color: #FEF3C7;
+        }
+
+        .text-ball-accent {
+            color: #D97706;
+        }
+
+        .bg-token {
+            background-color: #F0FDF4;
+        }
+
+        .text-token-accent {
+            color: #16A34A;
+        }
+
+        .bg-vector {
+            background-color: #F0F9FF;
+        }
+
+        .bg-similarity {
+            background-color: #FDF4FF;
+        }
+
+        /* Badges */
+        .badge-transformer {
+            background-color: #FDF4FF;
+            color: #7C3AED;
+        }
+
+        .badge-attention {
+            background-color: #E0E7FF;
+            color: #4338CA;
+        }
+
+        .badge-vector {
+            background-color: #EFF6FF;
+            color: #2563EB;
+        }
+
+        .badge-energy {
+            background-color: #FEF2F2;
+            color: #DC2626;
+        }
+
+        /* Card styles */
+        .info-card {
+            background-color: #FFFFFF;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        .info-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Diagram & Structure Helpers */
+        .diagram-container {
+            border: 1.5px solid #E2E8F0;
+            background: #FFFFFF;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* Scatter Plot Simulation */
+        .scatter-plot {
+            width: 100%;
+            height: 250px;
+            background: radial-gradient(circle, #F8FAFC 20%, #E2E8F0 100%);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scatter-point {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #A855F7;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .scatter-point:hover {
+            transform: translate(-50%, -50%) scale(1.5);
+        }
+
+        .scatter-label {
+            position: absolute;
+            background: white;
+            border: 1px solid #E2E8F0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+
+        /* SVG Connecting Lines styling */
+        .flow-line {
+            stroke: #94A3B8;
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 4;
+            animation: dash 20s linear infinite;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: -100;
+            }
+        }
+
+        /* Rainbow Gradient */
+        .rainbow-top {
+            height: 6px;
+            background: linear-gradient(90deg, #3B82F6, #8B5CF6, #EC4899, #EF4444, #F59E0B, #10B981);
+            width: 100%;
+        }
+
+        /* Safe Animation Pattern */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Print Media */
+        @media print {
+            .fade-section.not-visible {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .info-card {
+                box-shadow: none !important;
+                transform: none !important;
+                border: 1px solid #CBD5E1;
+                page-break-inside: avoid;
+            }
+
+            body {
+                background: white !important;
+            }
+
+            .diagram-container,
+            .bg-header,
+            .bg-foundation,
+            .bg-attention {
+                background: white !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <div class="rainbow-top"></div>
+
+    <div class="max-w-4xl mx-auto px-4 py-8 md:px-8 space-y-16">
+
+        <header class="bg-header p-8 rounded-2xl border border-blue-100 text-center fade-section">
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-3 tracking-tight">Foundation Models</h1>
+            <h2 class="text-lg md:text-xl font-medium text-gray-600 mb-6">The Architecture of Modern AI — From Massive
+                Data and Transformers to Vector Embeddings and Beyond</h2>
+            <p class="text-sm text-gray-500 max-w-2xl mx-auto leading-relaxed">
+                Explore how foundation models are built, their underlying transformer architecture, and the vector
+                mathematics that power generative artificial intelligence.
+            </p>
+            <div
+                class="mt-6 inline-flex items-center text-xs font-semibold uppercase tracking-wider text-blue-600 bg-white px-4 py-2 rounded-full border border-blue-200">
+                Source: Dr. Ian McCullough, Johns Hopkins University
+            </div>
+        </header>
+
+        <section class="bg-opening p-8 rounded-2xl border border-gray-200 fade-section">
+            <div class="flex items-center mb-6">
+                <div class="p-3 bg-gray-200 rounded-lg text-gray-700 mr-4">
+                    <i data-lucide="brain"></i>
+                </div>
+                <h2 class="text-2xl font-bold">The Power of Foundation Models</h2>
+            </div>
+            <div class="space-y-4 text-gray-700">
+                <p class="text-lg font-medium">Massive data, enormous models, and the architecture behind modern AI.</p>
+                <p>Foundation models are essential for generative AI and for understanding how transformers operate in
+                    artificial intelligence. The basic idea is that there are a ton of different data sources that you
+                    can pull in, bundled together into a single architecture.</p>
+                <p>A foundation model is understanding a lot of things about a particular domain or application
+                    area—patterns that are common to a lot of different tasks. From that single model, we can then apply
+                    that knowledge to a variety of different tasks based on simple prompts.</p>
+
+                <div class="mt-6 p-4 bg-white rounded-xl border-l-4 border-gray-400 shadow-sm">
+                    <p class="font-semibold text-gray-800">Key Infrastructure Insights:</p>
+                    <ul class="mt-2 space-y-2 text-sm">
+                        <li class="flex items-start"><i data-lucide="check-circle"
+                                class="w-4 h-4 text-gray-500 mr-2 mt-0.5"></i> Training data sets are far larger than
+                            anything previously used to train an AI model.</li>
+                        <li class="flex items-start"><i data-lucide="check-circle"
+                                class="w-4 h-4 text-gray-500 mr-2 mt-0.5"></i> This massive scale is strictly enabled by
+                            modern cloud computing infrastructure.</li>
+                        <li class="flex items-start"><i data-lucide="check-circle"
+                                class="w-4 h-4 text-gray-500 mr-2 mt-0.5"></i> The models are enormous—the number of
+                            parameters and size can be quite large, into the billions.</li>
+                    </ul>
+                </div>
+                <div class="mt-6 text-center text-sm font-semibold text-gray-500 flex items-center justify-center">
+                    Let's explore what makes foundation models work. <i data-lucide="arrow-down"
+                        class="ml-2 w-4 h-4 animate-bounce"></i>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="flex items-center mb-6">
+                <div class="p-3 bg-blue-100 rounded-lg text-blue-600 mr-4">
+                    <i data-lucide="layers"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900">What Are Foundation Models?</h2>
+            </div>
+
+            <div class="diagram-container bg-foundation border-blue-200">
+                <div class="text-center mb-8">
+                    <p class="text-sm font-semibold text-blue-800 bg-blue-100 inline-block px-3 py-1 rounded-full">THE
+                        FOUNDATION MODEL ARCHITECTURE</p>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+
+                    <div class="w-full md:w-1/3 space-y-2">
+                        <h3 class="font-bold text-center text-gray-700 mb-4 border-b pb-2">DATA SOURCES</h3>
+                        <div class="grid grid-cols-2 gap-2 text-xs font-medium">
+                            <div
+                                class="bg-white p-2 rounded shadow-sm border border-gray-100 flex items-center justify-center text-center">
+                                Text</div>
+                            <div
+                                class="bg-white p-2 rounded shadow-sm border border-gray-100 flex items-center justify-center text-center">
+                                Images</div>
+                            <div
+                                class="bg-white p-2 rounded shadow-sm border border-gray-100 flex items-center justify-center text-center">
+                                Audio</div>
+                            <div
+                                class="bg-white p-2 rounded shadow-sm border border-gray-100 flex items-center justify-center text-center">
+                                Sensors</div>
+                            <div
+                                class="bg-white p-2 rounded shadow-sm border border-gray-100 flex items-center justify-center text-center">
+                                3D Models</div>
+                            <div
+                                class="bg-white p-2 rounded shadow-sm border border-gray-100 flex items-center justify-center text-center">
+                                Time Series</div>
+                            <div
+                                class="bg-white p-2 rounded shadow-sm border border-gray-100 col-span-2 flex items-center justify-center text-center">
+                                Relational / Graphs</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center w-full md:w-1/3 py-8">
+                        <div class="text-xs text-blue-600 font-bold mb-2">Huge Training Data ↓</div>
+                        <div
+                            class="relative bg-white border-4 border-blue-500 rounded-xl p-6 text-center shadow-lg w-full transform hover:scale-105 transition-transform duration-300">
+                            <i data-lucide="box" class="w-8 h-8 text-blue-500 mx-auto mb-2"></i>
+                            <h3 class="font-extrabold text-blue-900 text-lg">FOUNDATION MODEL</h3>
+                            <p class="text-xs text-gray-500 mt-2 font-medium">Enormous Model</p>
+                            <p class="text-xs text-gray-500">(Billions of Parameters)</p>
+                        </div>
+                    </div>
+
+                    <div class="w-full md:w-1/3 space-y-2">
+                        <h3 class="font-bold text-center text-gray-700 mb-4 border-b pb-2">DOWNSTREAM TASKS</h3>
+                        <div class="space-y-2 text-xs font-medium">
+                            <div class="bg-white p-2 rounded shadow-sm border border-gray-100 flex items-center"><i
+                                    data-lucide="help-circle" class="w-3 h-3 mr-2 text-blue-500"></i> Answer Questions
+                            </div>
+                            <div class="bg-white p-2 rounded shadow-sm border border-gray-100 flex items-center"><i
+                                    data-lucide="file-text" class="w-3 h-3 mr-2 text-blue-500"></i> Summarization</div>
+                            <div class="bg-white p-2 rounded shadow-sm border border-gray-100 flex items-center"><i
+                                    data-lucide="search" class="w-3 h-3 mr-2 text-blue-500"></i> Search</div>
+                            <div class="bg-white p-2 rounded shadow-sm border border-gray-100 flex items-center"><i
+                                    data-lucide="eye" class="w-3 h-3 mr-2 text-blue-500"></i> Object Recognition</div>
+                            <div class="bg-white p-2 rounded shadow-sm border border-gray-100 flex items-center"><i
+                                    data-lucide="image" class="w-3 h-3 mr-2 text-blue-500"></i> Image Captioning</div>
+                            <div class="bg-white p-2 rounded shadow-sm border border-gray-100 flex items-center"><i
+                                    data-lucide="play" class="w-3 h-3 mr-2 text-blue-500"></i> Task Execution</div>
+                            <div class="bg-white p-2 rounded shadow-sm border border-gray-100 flex items-center"><i
+                                    data-lucide="mic" class="w-3 h-3 mr-2 text-blue-500"></i> Speech Recognition</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-6">
+                    <p class="text-sm text-gray-700 italic border-t pt-4">"Performs a variety of tasks based on a
+                        prompt"</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 text-sm">
+                <div class="bg-white p-4 rounded-xl border">
+                    <span class="font-bold block text-gray-800">Pre-training vs. Fine-tuning</span>
+                    Models pre-train on massive general datasets, then fine-tune for specific tasks.
+                </div>
+                <div class="bg-white p-4 rounded-xl border">
+                    <span class="font-bold block text-gray-800">Multimodal Capabilities</span>
+                    Modern foundation models increasingly handle text, images, and audio simultaneously.
+                </div>
+                <div class="bg-white p-4 rounded-xl border">
+                    <span class="font-bold block text-gray-800">Emergent Abilities</span>
+                    As models scale up, they exhibit complex problem-solving abilities not explicitly trained.
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="flex items-center mb-6">
+                <div class="p-3 bg-green-50 rounded-lg text-green-700 mr-4">
+                    <i data-lucide="bar-chart-2"></i>
+                </div>
+                <h2 class="text-2xl font-bold">The Scale of Foundation Models</h2>
+            </div>
+
+            <p class="mb-6">You're benefiting from the data that anybody else in the world has or is generating. This
+                scale requires infrastructure enabled by cloud computing to process.</p>
+
+            <div class="overflow-x-auto rounded-xl border border-gray-200 bg-white">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50 border-b">
+                            <th class="p-4 font-semibold text-gray-700">Model</th>
+                            <th class="p-4 font-semibold text-gray-700">Training Data</th>
+                            <th class="p-4 font-semibold text-gray-700">Parameters</th>
+                            <th class="p-4 font-semibold text-gray-700">Energy Profile</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="p-4 font-bold text-gray-900">ChatGPT</td>
+                            <td class="p-4">Terabytes of text</td>
+                            <td class="p-4">Billions</td>
+                            <td class="p-4"><span
+                                    class="badge-energy px-2 py-1 rounded text-xs font-bold">Enormous</span></td>
+                        </tr>
+                        <tr class="border-b hover:bg-gray-50">
+                            <td class="p-4 font-bold text-gray-900">Google BERT</td>
+                            <td class="p-4">Significantly less data</td>
+                            <td class="p-4">Fewer parameters</td>
+                            <td class="p-4 text-gray-500">—</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-4 font-bold text-gray-900">Amazon Alexa</td>
+                            <td class="p-4">Unknown / Proprietary</td>
+                            <td class="p-4">Unknown (est. Billions)</td>
+                            <td class="p-4 text-gray-500">Unpublished</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-4 p-4 bg-gray-50 rounded-xl border text-sm text-gray-700 flex items-start">
+                <i data-lucide="info" class="w-5 h-5 mr-3 text-blue-500 flex-shrink-0 mt-0.5"></i>
+                <p><strong>Different behaviors:</strong> Google BERT has less data and fewer parameters than ChatGPT,
+                    but its performance is oftentimes considered more accurate on certain tasks while being less
+                    creative on others.</p>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="info-card p-6 md:p-8 bg-energy border-red-200 relative overflow-hidden">
+                <i data-lucide="zap"
+                    class="absolute -right-10 -bottom-10 w-48 h-48 text-red-100 opacity-50 pointer-events-none"></i>
+
+                <div class="relative z-10">
+                    <div class="flex items-center mb-4 text-energy-accent">
+                        <i data-lucide="alert-triangle" class="mr-3"></i>
+                        <h2 class="text-xl font-bold uppercase tracking-wider">Energy & Climate Impact</h2>
+                    </div>
+
+                    <div class="my-8 text-center bg-white p-6 rounded-xl shadow-sm border border-red-100">
+                        <p class="text-lg md:text-xl font-medium text-gray-600 mb-2">ChatGPT Data Center Power
+                            Consumption</p>
+                        <p class="text-3xl md:text-4xl font-extrabold text-red-600 mb-3">&gt; ORANGE COUNTY, FLORIDA</p>
+                        <p class="text-sm text-gray-500 italic">Includes Disney, Universal, and several hundred thousand
+                            people in many homes.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-red-900">
+                        <div class="flex items-start">
+                            <div class="w-2 h-2 rounded-full bg-red-500 mt-1.5 mr-2 flex-shrink-0"></div>
+                            <p>As we look at these models, power consumption is a tremendous concern regarding the
+                                <strong>climate crisis</strong> and <strong>energy demands on society</strong>.</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-2 h-2 rounded-full bg-red-500 mt-1.5 mr-2 flex-shrink-0"></div>
+                            <p>There certainly is not enough electricity currently being generated by natural or
+                                renewable means to support these AI infrastructures.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="flex items-center mb-6">
+                <div class="p-3 bg-purple-100 rounded-lg text-purple-700 mr-4">
+                    <i data-lucide="cpu"></i>
+                </div>
+                <h2 class="text-2xl font-bold">The Transformer Revolution</h2>
+            </div>
+
+            <div class="bg-white border rounded-2xl p-6 md:p-8 shadow-sm">
+                <div class="text-center mb-8 pb-8 border-b border-gray-100">
+                    <p class="text-sm font-semibold text-purple-600 mb-2 uppercase tracking-widest">Groundbreaking
+                        Milestone in AI</p>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-2">"Attention Is All You Need"</h3>
+                    <p class="text-gray-500">— Paper introduced by Google in 2017</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="flex items-center mb-3">
+                            <div class="p-2 badge-transformer rounded mr-3"><i data-lucide="refresh-cw"
+                                    class="w-4 h-4"></i></div>
+                            <h4 class="font-bold text-gray-800 text-lg">Transfer Learning</h4>
+                        </div>
+                        <p class="text-sm text-gray-600">Take a model trained in one domain, and then just do a little
+                            bit of extra work to help fine-tune it to a different application. You are
+                            <em>transforming</em> the model by adjusting some of the weights to do a different task.
+                            (Note: Not the cartoon robots!)</p>
+                    </div>
+
+                    <div>
+                        <div class="flex items-center mb-3">
+                            <div class="p-2 badge-transformer rounded mr-3"><i data-lucide="key" class="w-4 h-4"></i>
+                            </div>
+                            <h4 class="font-bold text-gray-800 text-lg">Attention Mechanism</h4>
+                        </div>
+                        <p class="text-sm text-gray-600">The core concept is requiring the model to <em>attend
+                                differently</em> to different words or different areas of the data so that it can
+                            perform a new task effectively based on context.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <h3 class="text-xl font-bold mb-6 text-center">Computational Advantages of Attention Models</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="info-card p-5 group cursor-pointer">
+                    <div class="flex items-center mb-3 text-orange-600">
+                        <i data-lucide="activity" class="mr-2"></i>
+                        <h4 class="font-bold">Parallelization</h4>
+                    </div>
+                    <p class="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">Split jobs into
+                        different components that can run simultaneously instead of waiting for sequential completion,
+                        significantly accelerating computational speed.</p>
+                </div>
+
+                <div class="info-card p-5 group cursor-pointer">
+                    <div class="flex items-center mb-3 text-orange-600">
+                        <i data-lucide="database" class="mr-2"></i>
+                        <h4 class="font-bold">Memory Efficiency</h4>
+                    </div>
+                    <p class="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">Focus only on the words
+                        you need instead of having to attend to all of the data. Focus strictly on what's important.</p>
+                </div>
+
+                <div class="info-card p-5 group cursor-pointer">
+                    <div class="flex items-center mb-3 text-orange-600">
+                        <i data-lucide="target" class="mr-2"></i>
+                        <h4 class="font-bold">Adaptive Focus</h4>
+                    </div>
+                    <p class="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">Dynamically adjust
+                        weighting to different parts of the input. Higher relevance words receive more attention.</p>
+                </div>
+
+                <div class="info-card p-5 group cursor-pointer">
+                    <div class="flex items-center mb-3 text-orange-600">
+                        <i data-lucide="maximize-2" class="mr-2"></i>
+                        <h4 class="font-bold">Scalable I/O Length</h4>
+                    </div>
+                    <p class="text-sm text-gray-600 group-hover:text-gray-900 transition-colors">Handle varying lengths
+                        of input and output. These advantages allow tasks impossible without narrowing scope and
+                        focusing computations.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="flex items-center mb-6">
+                <div class="p-3 bg-indigo-100 rounded-lg text-indigo-700 mr-4">
+                    <i data-lucide="type"></i>
+                </div>
+                <h2 class="text-2xl font-bold">Self-Attention In Action</h2>
+            </div>
+
+            <div class="diagram-container bg-attention border-indigo-200">
+                <div class="text-center mb-8">
+                    <p class="text-sm font-semibold text-indigo-800 bg-indigo-100 inline-block px-3 py-1 rounded-full">
+                        CONTEXTUAL UNDERSTANDING</p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-2 relative py-8 px-4 bg-white rounded-xl shadow-sm">
+                    <span
+                        class="px-4 py-2 bg-gray-50 border border-gray-200 text-gray-400 rounded-lg text-lg font-mono relative z-10">the</span>
+
+                    <span
+                        class="px-4 py-2 bg-indigo-50 border-2 border-indigo-300 text-indigo-800 rounded-lg text-lg font-bold font-mono relative z-10 transform scale-110 shadow-sm transition-transform hover:scale-125"
+                        id="att-cat">cat</span>
+
+                    <span
+                        class="px-5 py-2 bg-indigo-600 text-white rounded-lg text-xl font-bold font-mono relative z-20 shadow-md transform scale-110"
+                        id="att-sat">sat</span>
+
+                    <span
+                        class="px-4 py-2 bg-gray-50 border border-gray-200 text-gray-400 rounded-lg text-lg font-mono relative z-10">on</span>
+
+                    <span
+                        class="px-4 py-2 bg-gray-50 border border-gray-200 text-gray-400 rounded-lg text-lg font-mono relative z-10">the</span>
+
+                    <span
+                        class="px-4 py-2 bg-indigo-50 border-2 border-indigo-300 text-indigo-800 rounded-lg text-lg font-bold font-mono relative z-10 transform scale-110 shadow-sm transition-transform hover:scale-125"
+                        id="att-mat">mat</span>
+
+                    <svg class="absolute top-0 left-0 w-full h-full pointer-events-none z-0" style="min-height: 120px;">
+                        <path d="M 50% 50% Q 30% 0, 25% 50%" stroke="#4F46E5" stroke-width="3" fill="none"
+                            stroke-dasharray="4" marker-end="url(#arrowhead)"></path>
+                        <path d="M 50% 50% Q 75% 100, 85% 50%" stroke="#4F46E5" stroke-width="3" fill="none"
+                            stroke-dasharray="4" marker-end="url(#arrowhead)"></path>
+
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#4F46E5" />
+                            </marker>
+                        </defs>
+                    </svg>
+
+                    <div
+                        class="absolute -top-4 left-1/4 text-xs font-bold text-indigo-700 bg-white px-2 rounded-full border border-indigo-200 shadow-sm z-30">
+                        HIGH WEIGHT (Who?)</div>
+                    <div
+                        class="absolute -bottom-4 right-1/4 text-xs font-bold text-indigo-700 bg-white px-2 rounded-full border border-indigo-200 shadow-sm z-30">
+                        HIGH WEIGHT (Where?)</div>
+                </div>
+
+                <div class="mt-8 space-y-3 bg-white p-6 rounded-xl text-sm border border-indigo-100 shadow-sm">
+                    <p class="flex items-start"><i data-lucide="link" class="w-4 h-4 text-indigo-500 mr-2 mt-0.5"></i>
+                        <strong>Context changes meaning:</strong> The word <em>sat</em> is referring to the <em>cat</em>
+                        (it wasn't the mat sitting on the cat). Where did it sit? On the <em>mat</em>.</p>
+                    <p class="flex items-start"><i data-lucide="link" class="w-4 h-4 text-indigo-500 mr-2 mt-0.5"></i>
+                        <strong>Neighboring influence:</strong> This conceptual understanding uses other words in the
+                        sentence to help provide contextual meaning for the word you are looking at.</p>
+                    <p class="flex items-start"><i data-lucide="link" class="w-4 h-4 text-indigo-500 mr-2 mt-0.5"></i>
+                        <strong>Selective Weighting:</strong> Process all words simultaneously as separate jobs. Weight
+                        "cat", "sat", and "mat" <strong>higher</strong> (more informative) and weight "the" or "on"
+                        <strong>lower</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="flex items-center mb-6">
+                <div class="p-3 bg-yellow-100 rounded-lg text-yellow-700 mr-4">
+                    <i data-lucide="split"></i>
+                </div>
+                <h2 class="text-2xl font-bold">Context Determines Meaning</h2>
+            </div>
+
+            <div class="diagram-container bg-ball border-yellow-200">
+                <div class="text-center mb-6">
+                    <h3 class="text-xl font-extrabold text-yellow-900 tracking-wide uppercase">Same Word. Different
+                        Context. Different Meaning.</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div
+                        class="bg-white rounded-xl p-6 border-t-4 border-yellow-500 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-2 right-3 text-yellow-200 opacity-20"><i data-lucide="circle"
+                                class="w-16 h-16 fill-current"></i></div>
+                        <h4 class="font-bold text-gray-800 mb-3 uppercase text-xs tracking-wider">Definition 1:
+                            Spherical Object</h4>
+                        <p class="text-lg font-serif mb-4 leading-relaxed text-gray-700">
+                            The <span class="bg-yellow-100 px-1 font-bold rounded">dog</span> chased after the <span
+                                class="bg-yellow-400 text-yellow-900 px-2 py-0.5 rounded font-extrabold shadow-sm">ball</span>
+                            as it <span class="bg-yellow-100 px-1 font-bold rounded">rolled</span> down the hill.
+                        </p>
+                        <div class="bg-yellow-50 p-3 rounded text-sm text-gray-600 border border-yellow-100">
+                            <strong>Evidence gathered by Transformer:</strong><br>
+                            The words <span class="font-mono text-yellow-700">dog</span> and <span
+                                class="font-mono text-yellow-700">rolled</span> provide evidence that this is a
+                            spherical object you throw.
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-white rounded-xl p-6 border-t-4 border-purple-500 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-2 right-3 text-purple-200 opacity-20"><i data-lucide="music"
+                                class="w-16 h-16"></i></div>
+                        <h4 class="font-bold text-gray-800 mb-3 uppercase text-xs tracking-wider">Definition 2: Formal
+                            Dance Party</h4>
+                        <p class="text-lg font-serif mb-4 leading-relaxed text-gray-700">
+                            <span class="bg-purple-100 px-1 font-bold rounded">Cinderella</span> went to the <span
+                                class="bg-purple-400 text-purple-900 px-2 py-0.5 rounded font-extrabold shadow-sm">ball</span>
+                            in a <span class="bg-purple-100 px-1 font-bold rounded">fancy</span> glass coach.
+                        </p>
+                        <div class="bg-purple-50 p-3 rounded text-sm text-gray-600 border border-purple-100">
+                            <strong>Evidence gathered by Transformer:</strong><br>
+                            The words <span class="font-mono text-purple-700">Cinderella</span> and <span
+                                class="font-mono text-purple-700">fancy</span> provide evidence suggesting this is a
+                            formal event.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="info-card p-6 md:p-8 bg-token border-green-200">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="message-square" class="text-green-600 mr-3"></i>
+                    <h3 class="text-xl font-bold">Token Prediction & Text Generation</h3>
+                </div>
+
+                <p class="text-gray-700 mb-6">
+                    Because self-attention correctly classifies context, transformer networks can successfully predict
+                    tokens (additional words) within the context of other words. <strong>Each next word is a
+                        probabilistic expression of what is a common next word in that sentence.</strong>
+                </p>
+
+                <div
+                    class="font-mono bg-gray-900 text-gray-300 p-6 rounded-xl shadow-inner text-sm md:text-base leading-loose overflow-hidden">
+                    <div><span class="text-white">"The dog chased after the ball..."</span></div>
+                    <div
+                        class="flex text-green-400 items-center pl-4 py-1 border-l-2 border-green-600 my-1 bg-gray-800 rounded">
+                        <i data-lucide="corner-down-right" class="w-4 h-4 mr-2"></i>
+                        P(next): <span class="mx-2 bg-green-900 px-1 rounded text-white">as (35%)</span> | and (20%) |
+                        down (15%)
+                    </div>
+                    <div><span class="text-white">"The dog chased after the ball <span
+                                class="text-green-400">as</span>..."</span></div>
+                    <div
+                        class="flex text-green-400 items-center pl-4 py-1 border-l-2 border-green-600 my-1 bg-gray-800 rounded">
+                        <i data-lucide="corner-down-right" class="w-4 h-4 mr-2"></i>
+                        P(next): <span class="mx-2 bg-green-900 px-1 rounded text-white">it (45%)</span> | the (15%)
+                    </div>
+                    <div><span class="text-white">"The dog chased after the ball as <span
+                                class="text-green-400">it</span>..."</span></div>
+                </div>
+
+                <p class="mt-4 text-sm font-medium text-center text-green-800">
+                    Different contexts give a different understanding of a word, likely resulting in a completely
+                    different sequence of generated words. Self-attention + transformers = classify AND generate.
+                </p>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="flex items-center mb-6">
+                <div class="p-3 bg-blue-100 rounded-lg text-blue-700 mr-4">
+                    <i data-lucide="hash"></i>
+                </div>
+                <h2 class="text-2xl font-bold">Vector Embeddings & Semantic Search</h2>
+            </div>
+
+            <p class="text-gray-700 mb-8">
+                The mathematical foundation mapping meaning. An embedding model converts a series of objects into
+                <strong>vectors of different weights</strong>. Words become a vector space with different probabilities,
+                allowing models to generate new words that sound like how people actually write (because it's trained on
+                a lot of writings).
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="info-card p-6 border-t-4 border-purple-500">
+                    <h3 class="font-bold mb-4 flex items-center text-purple-700"><i data-lucide="search"
+                            class="w-5 h-5 mr-2"></i> Vector Similarity Space</h3>
+                    <p class="text-sm text-gray-600 mb-6">
+                        Take a sentence fragment, turn it into a vector, and represent it in dimensional space (shown
+                        here in 2D). Similar items cluster together, allowing search for contextually relevant data.
+                    </p>
+
+                    <div class="scatter-plot border border-gray-200">
+                        <div class="scatter-point" style="top: 50%; left: 50%; background-color: #3B82F6;"></div>
+                        <div class="scatter-label"
+                            style="top: 40%; left: 50%; transform: translateX(-50%); color:#1E3A8A; border-color:#BFDBFE;">
+                            the cat sat on the mat</div>
+
+                        <div class="scatter-point" style="top: 45%; left: 65%;"></div>
+                        <div class="scatter-label" style="top: 35%; left: 65%; transform: translateX(-50%);">the cat sat
+                            on the bed</div>
+
+                        <div class="scatter-point" style="top: 60%; left: 70%;"></div>
+                        <div class="scatter-label" style="top: 70%; left: 70%; transform: translateX(-50%);">the dog sat
+                            on the bed</div>
+
+                        <div class="scatter-point" style="top: 30%; left: 40%;"></div>
+                        <div class="scatter-label" style="top: 20%; left: 40%; transform: translateX(-50%);">the fat cat
+                            sat</div>
+                    </div>
+                </div>
+
+                <div class="info-card p-6 border-t-4 border-blue-500 bg-vector relative">
+                    <h3 class="font-bold mb-4 flex items-center text-blue-700"><i data-lucide="database"
+                            class="w-5 h-5 mr-2"></i> Vector Query Pipeline</h3>
+                    <p class="text-sm text-gray-600 mb-6">
+                        How queries are processed to find relevant results for Text/Image Search or Chatbot Q&A.
+                    </p>
+
+                    <div class="flex flex-col items-center w-full max-w-xs mx-auto text-sm font-semibold">
+
+                        <div class="flex justify-between w-full mb-2">
+                            <div
+                                class="bg-white border border-gray-300 py-2 px-4 rounded shadow-sm w-5/12 text-center text-gray-700">
+                                Context</div>
+                            <div
+                                class="bg-white border border-gray-300 py-2 px-4 rounded shadow-sm w-5/12 text-center text-gray-700">
+                                Request (Prompt)</div>
+                        </div>
+
+                        <div class="h-6 border-l-2 border-dashed border-gray-400 relative">
+                            <div
+                                class="absolute -left-1 top-full border-solid border-t-gray-400 border-t-8 border-x-transparent border-x-4 border-b-0 w-0 h-0">
+                            </div>
+                        </div>
+
+                        <div
+                            class="w-full bg-blue-100 border-2 border-blue-300 text-blue-800 py-3 rounded-lg text-center my-2 shadow-sm flex items-center justify-center">
+                            <i data-lucide="cpu" class="w-4 h-4 mr-2"></i> Embedding Model
+                        </div>
+
+                        <div class="h-6 border-l-2 border-dashed border-gray-400 relative">
+                            <div
+                                class="absolute -left-1 top-full border-solid border-t-gray-400 border-t-8 border-x-transparent border-x-4 border-b-0 w-0 h-0">
+                            </div>
+                        </div>
+
+                        <div
+                            class="w-3/4 bg-white border border-blue-200 text-gray-600 py-2 rounded text-center text-xs my-2">
+                            Vector Embedding
+                        </div>
+
+                        <div class="h-6 border-l-2 border-dashed border-gray-400 relative">
+                            <div
+                                class="absolute -left-1 top-full border-solid border-t-gray-400 border-t-8 border-x-transparent border-x-4 border-b-0 w-0 h-0">
+                            </div>
+                        </div>
+
+                        <div
+                            class="w-full bg-purple-100 border-2 border-purple-300 text-purple-800 py-4 rounded-xl text-center my-2 shadow-sm relative overflow-hidden">
+                            <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#A855F7_1px,transparent_1px)]"
+                                style="background-size: 8px 8px;"></div>
+                            <span class="relative flex items-center justify-center"><i data-lucide="database"
+                                    class="w-4 h-4 mr-2"></i> Vector Database</span>
+                        </div>
+
+                        <div class="h-8 border-l-2 border-gray-400 relative flex items-center justify-center -ml-24">
+                            <div
+                                class="absolute -left-1 top-full border-solid border-t-gray-400 border-t-8 border-x-transparent border-x-4 border-b-0 w-0 h-0">
+                            </div>
+                            <span class="absolute left-4 bg-white px-1 text-xs text-gray-500 whitespace-nowrap">Find
+                                most similar data</span>
+                        </div>
+
+                        <div
+                            class="w-full bg-green-50 border-2 border-green-300 text-green-800 py-3 rounded-lg text-center mt-2 shadow-sm flex justify-center items-center">
+                            <i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> Query Result
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="info-card p-6 bg-red-50 border-red-200 flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/3 mb-4 md:mb-0">
+                    <div class="flex items-center text-red-700 mb-2">
+                        <i data-lucide="alert-circle" class="mr-2"></i>
+                        <h3 class="font-bold text-lg">ML Drift (Model Drift)</h3>
+                    </div>
+                    <p class="text-sm text-gray-700">A model's performance degrades over time due to changes in the
+                        underlying data.</p>
+                </div>
+
+                <div
+                    class="md:w-2/3 flex items-center justify-center space-x-2 text-xs font-bold text-gray-600 text-center">
+                    <div class="bg-white p-2 rounded border shadow-sm w-24">Model Deployed</div>
+                    <i data-lucide="arrow-right" class="text-gray-400 w-4 h-4"></i>
+                    <div class="bg-white p-2 rounded border border-red-300 text-red-700 shadow-sm w-24">Data Changes
+                    </div>
+                    <i data-lucide="arrow-right" class="text-gray-400 w-4 h-4"></i>
+                    <div class="bg-white p-2 rounded border border-red-500 text-red-800 shadow-sm w-24">Performance
+                        Drops</div>
+                    <i data-lucide="arrow-right" class="text-gray-400 w-4 h-4"></i>
+                    <div class="bg-green-50 p-2 rounded border border-green-300 text-green-700 shadow-sm w-24">
+                        Retraining Needed</div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2 mt-2 text-xs text-center opacity-80">
+                <div class="bg-white p-2 rounded border"><strong>Data Drift:</strong><br>Input distributions shift</div>
+                <div class="bg-white p-2 rounded border"><strong>Concept Drift:</strong><br>Input-output relationships
+                    change</div>
+                <div class="bg-white p-2 rounded border"><strong>Feature Drift:</strong><br>Feature relevance changes
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t">
+            <div>
+                <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center"><i
+                        data-lucide="grid" class="w-4 h-4 mr-2"></i> Downstream Tasks</h3>
+                <p class="text-xs text-gray-400 mb-4">One model, many tasks — powered by prompts.</p>
+                <div class="grid grid-cols-2 gap-2 text-xs">
+                    <div class="bg-white p-2 rounded border flex items-center shadow-sm"><i data-lucide="help-circle"
+                            class="w-3 h-3 text-blue-500 mr-2"></i> Answer Questions</div>
+                    <div class="bg-white p-2 rounded border flex items-center shadow-sm"><i data-lucide="file-text"
+                            class="w-3 h-3 text-blue-500 mr-2"></i> Summarization</div>
+                    <div class="bg-white p-2 rounded border flex items-center shadow-sm"><i data-lucide="search"
+                            class="w-3 h-3 text-blue-500 mr-2"></i> Search (Text/Image)</div>
+                    <div class="bg-white p-2 rounded border flex items-center shadow-sm"><i data-lucide="eye"
+                            class="w-3 h-3 text-blue-500 mr-2"></i> Object Recognition</div>
+                    <div class="bg-white p-2 rounded border flex items-center shadow-sm"><i data-lucide="image"
+                            class="w-3 h-3 text-blue-500 mr-2"></i> Image Captioning</div>
+                    <div class="bg-white p-2 rounded border flex items-center shadow-sm"><i data-lucide="mic"
+                            class="w-3 h-3 text-blue-500 mr-2"></i> Speech Recognition</div>
+                    <div class="bg-white p-2 rounded border flex items-center shadow-sm"><i data-lucide="play"
+                            class="w-3 h-3 text-blue-500 mr-2"></i> Task Execution</div>
+                    <div class="bg-white p-2 rounded border flex items-center shadow-sm"><i data-lucide="message-circle"
+                            class="w-3 h-3 text-blue-500 mr-2"></i> Chatbot Q&A</div>
+                </div>
+            </div>
+
+            <div>
+                <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center"><i
+                        data-lucide="settings" class="w-4 h-4 mr-2"></i> Adaptation Methods</h3>
+                <p class="text-xs text-gray-400 mb-4">The lecture's transfer learning concept in practice.</p>
+                <div class="space-y-2 text-xs">
+                    <div class="bg-white p-2 rounded border shadow-sm flex items-start"><span
+                            class="font-bold w-32 shrink-0">Fine-Tuning:</span> Adjust weights for specific tasks</div>
+                    <div class="bg-white p-2 rounded border shadow-sm flex items-start"><span
+                            class="font-bold w-32 shrink-0">Prompt Engineering:</span> Guide behavior through prompts
+                    </div>
+                    <div class="bg-white p-2 rounded border shadow-sm flex items-start"><span
+                            class="font-bold w-32 shrink-0">RAG:</span> Connect to external knowledge via vector search
+                    </div>
+                    <div class="bg-white p-2 rounded border shadow-sm flex items-start"><span
+                            class="font-bold w-32 shrink-0">Instruction Tuning:</span> Train to follow instructions
+                    </div>
+                    <div class="bg-white p-2 rounded border shadow-sm flex items-start"><span
+                            class="font-bold w-32 shrink-0">RLHF:</span> Align with human preferences</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section bg-gray-900 text-white p-8 rounded-2xl shadow-xl mt-12 relative overflow-hidden">
+            <i data-lucide="sparkles" class="absolute top-4 right-4 text-gray-700 w-24 h-24 opacity-20"></i>
+            <h2 class="text-2xl font-bold mb-6 text-blue-300">Key Takeaways</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm mb-8 opacity-90">
+                <div class="flex items-start"><i data-lucide="check-circle"
+                        class="text-green-400 mr-2 mt-0.5 w-4 h-4 shrink-0"></i> <span><strong>Enormous Scale:</strong>
+                        Massive diverse training data, billions of parameters, and staggering energy demands requiring
+                        cloud infrastructure.</span></div>
+                <div class="flex items-start"><i data-lucide="check-circle"
+                        class="text-green-400 mr-2 mt-0.5 w-4 h-4 shrink-0"></i> <span><strong>Transformers
+                            (2017):</strong> The architecture enabling transfer learning and the revolutionary attention
+                        mechanism.</span></div>
+                <div class="flex items-start"><i data-lucide="check-circle"
+                        class="text-green-400 mr-2 mt-0.5 w-4 h-4 shrink-0"></i> <span><strong>Self-Attention:</strong>
+                        Neighboring words provide contextual meaning, disambiguating terms and powering probabilistic
+                        token prediction.</span></div>
+                <div class="flex items-start"><i data-lucide="check-circle"
+                        class="text-green-400 mr-2 mt-0.5 w-4 h-4 shrink-0"></i> <span><strong>Vector
+                            Embeddings:</strong> Objects convert to mathematical vectors, clustering similar items in
+                        space for powerful semantic search pipelines.</span></div>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                <p class="text-lg md:text-xl font-medium leading-relaxed font-serif italic text-gray-200">
+                    "Foundation models are the architecture of modern AI — vast data, enormous scale, and the
+                    transformer's attention mechanism converge to create models that understand context, generate
+                    content, and power the applications transforming every industry. Understanding how they work is the
+                    first step to harnessing their potential."
+                </p>
+            </div>
+        </section>
+
+        <footer class="text-center py-8 text-sm text-gray-400 border-t border-gray-200 fade-section">
+            <p class="font-semibold text-gray-600 mb-1">Source material based on lecture by Dr. Ian McCullough, Johns
+                Hopkins University</p>
+            <p>Topic: Foundation Models</p>
+        </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize icons
+            lucide.createIcons();
+
+            // 2. Add .not-visible safely (if JS fails, CSS default is visible)
+            const fadeElements = document.querySelectorAll('.fade-section');
+            fadeElements.forEach(el => {
+                el.classList.add('not-visible');
+            });
+
+            // 3. Observer to fade in on scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('not-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+            fadeElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

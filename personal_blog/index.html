@@ -151,6 +151,14 @@
                     icon: "fa-robot",
                     color: "red",
                     order: 8
+                },
+                {
+                    id: "generative-ai",
+                    name: "Generative AI",
+                    folder: "generative-ai",
+                    icon: "fa-magic",
+                    color: "yellow",
+                    order: 9
                 }
             ],
             posts: [
@@ -720,6 +728,79 @@
                     date: "2026-02-23",
                     file: "agentic-ai/ai-agent-fundamentals.html",
                     order: 4
+                },
+                // Generative AI
+                {
+                    id: "data-science-and-ai-landscape",
+                    title: "Data Science and AI Landscape",
+                    excerpt: "A comprehensive infographic mapping the AI landscape from symbolic AI to deep learning, covering discriminative vs generative approaches, neural networks, and transformers.",
+                    category: "generative-ai",
+                    date: "2026-02-26",
+                    file: "generative-ai/data-science-and-ai-landscape.html",
+                    order: 1
+                },
+                {
+                    id: "foundation-models",
+                    title: "Foundation Models: The Architecture of Modern AI",
+                    excerpt: "Explore foundation model architecture including transformers, self-attention, token prediction, vector embeddings, semantic search, and model adaptation through fine-tuning and RLHF.",
+                    category: "generative-ai",
+                    date: "2026-02-26",
+                    file: "generative-ai/foundation-models.html",
+                    order: 2
+                },
+                {
+                    id: "introduction-to-llms",
+                    title: "Introduction to Large Language Models",
+                    excerpt: "Explore the LLM landscape including ChatGPT, Llama, and BERT. Learn about next-word prediction, semantic search, and the training pipeline with SFT, reward modeling, and RLHF.",
+                    category: "generative-ai",
+                    date: "2026-02-28",
+                    file: "generative-ai/introduction-to-llms.html",
+                    order: 3
+                },
+                {
+                    id: "why-does-chatgpt-appear-smart",
+                    title: "Why Does ChatGPT Appear Smart?",
+                    excerpt: "Discover the 7 engineering breakthroughs behind ChatGPT's apparent intelligence: transformers, pre-training, fine-tuning, compute power, optimization, and contextual embeddings.",
+                    category: "generative-ai",
+                    date: "2026-02-28",
+                    file: "generative-ai/why-does-chatgpt-appear-smart.html",
+                    order: 4
+                },
+                {
+                    id: "specialized-llms-and-fine-tuning",
+                    title: "Specialized LLMs and Fine-Tuning",
+                    excerpt: "Learn when to use fine-tuning vs prompting for LLMs. Covers domain adaptation, transfer learning, instruction tuning, RAG, and practical strategies for customizing AI models.",
+                    category: "generative-ai",
+                    date: "2026-02-28",
+                    file: "generative-ai/specialized-llms-and-fine-tuning.html",
+                    order: 5
+                },
+                {
+                    id: "image-generation-history-and-gans",
+                    title: "Image Generation: History and GANs",
+                    excerpt: "Trace the 50-year history of AI image generation from early algorithms to GANs. Learn about generative adversarial networks, DCGAN, PixelCNN, and adversarial training.",
+                    category: "generative-ai",
+                    date: "2026-02-28",
+                    file: "generative-ai/image-generation-history-and-gans.html",
+                    order: 6
+                },
+                {
+                    id: "image-generation-vae-and-diffusion-models",
+                    title: "Image Generation: VAE and Diffusion Models",
+                    excerpt: "Explore VAEs and diffusion models for AI image generation. Learn latent space representation, forward and reverse diffusion, and denoising techniques behind DALL-E and Stable Diffusion.",
+                    category: "generative-ai",
+                    date: "2026-02-28",
+                    file: "generative-ai/image-generation-vae-and-diffusion-models.html",
+                    order: 7
+                },
+                {
+                    id: "llm-competence-and-hallucination",
+                    title: "LLM Competence and Hallucination",
+                    excerpt: "Examine LLM competence boundaries and hallucination phenomena. Covers confidence calibration, factual accuracy limits, adversarial prompting, and mitigation strategies.",
+                    category: "generative-ai",
+                    date: "2026-02-28",
+                    file: "generative-ai/llm-competence-and-hallucination.html",
+                    order: 8
                 }
             ]
         };
@@ -870,6 +951,13 @@
                     buttonActive: 'bg-pink-600 text-white border-pink-600 dark:bg-pink-600 dark:border-pink-600',
                     pill: 'bg-pink-100 text-pink-700 dark:bg-pink-900 dark:text-pink-300',
                     pillActive: 'bg-pink-600 text-white'
+                },
+                yellow: {
+                    badge: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
+                    button: 'bg-yellow-50 text-yellow-700 border-yellow-200 dark:bg-yellow-900/30 dark:text-yellow-300 dark:border-yellow-800',
+                    buttonActive: 'bg-yellow-600 text-white border-yellow-600 dark:bg-yellow-600 dark:border-yellow-600',
+                    pill: 'bg-yellow-100 text-yellow-700 dark:bg-yellow-900 dark:text-yellow-300',
+                    pillActive: 'bg-yellow-600 text-white'
                 },
                 gray: {
                     button: 'bg-gray-100 text-gray-700 border-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-600',

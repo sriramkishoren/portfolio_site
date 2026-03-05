@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specialized LLMs and Fine-Tuning</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Specialized LLMs and Fine-Tuning">
+    <meta name="description"
+        content="Learn when to use fine-tuning vs prompting for LLMs. Covers domain adaptation, transfer learning, instruction tuning, RAG, and practical strategies for customizing AI models.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Generative AI">
+    <meta name="tags"
+        content="Specialized LLMs, Fine-Tuning, Domain Adaptation, Transfer Learning, Prompt Engineering, RAG, Instruction Tuning, Model Specialization, LLM Customization, Generative AI">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary"
+        content="Guide to LLM specialization covering the evolution of language models, when to use fine-tuning vs prompting, domain adaptation strategies, transfer learning, instruction tuning, RAG pipelines, and practical implementation guidance for customizing models.">
+    <link rel="canonical"
+        href="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/specialized-llms-and-fine-tuning">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Specialized LLMs and Fine-Tuning">
+    <meta property="og:description"
+        content="Learn when to use fine-tuning vs prompting for LLMs. Covers domain adaptation, transfer learning, instruction tuning, RAG, and practical strategies for customizing AI models.">
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/specialized-llms-and-fine-tuning">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2026-02-28">
+    <meta property="article:section" content="Generative AI">
+    <meta property="article:tag" content="Specialized LLMs">
+    <meta property="article:tag" content="Fine-Tuning">
+    <meta property="article:tag" content="Domain Adaptation">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Specialized LLMs and Fine-Tuning",
+        "description": "Learn when to use fine-tuning vs prompting for LLMs. Covers domain adaptation, transfer learning, instruction tuning, RAG, and practical strategies for customizing AI models.",
+        "datePublished": "2026-02-28",
+        "dateModified": "2026-02-28",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/specialized-llms-and-fine-tuning"
+        },
+        "keywords": ["Specialized LLMs", "Fine-Tuning", "Domain Adaptation", "Transfer Learning", "Prompt Engineering", "RAG", "Instruction Tuning", "Model Specialization", "LLM Customization", "Generative AI"],
+        "articleSection": "Generative AI",
+        "about": [
+            {"@type": "Thing", "name": "Specialized LLMs"},
+            {"@type": "Thing", "name": "Fine-Tuning"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "Domain Adaptation"},
+            {"@type": "Thing", "name": "Transfer Learning"}
+        ]
+    }
+    </script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --light-blue: #F0F9FF;
+            --accent-blue: #0EA5E9;
+            --light-gray: #F8FAFC;
+            --accent-gray: #475569;
+            --evo-blue: #EFF6FF;
+            --accent-evo: #2563EB;
+            --light-purple: #FDF4FF;
+            --accent-purple: #A855F7;
+            --light-red: #FEF2F2;
+            --accent-red: #DC2626;
+            --light-teal: #F0FDFA;
+            --accent-teal: #0D9488;
+            --light-orange: #FFF7ED;
+            --accent-orange: #EA580C;
+            --light-green: #F0FDF4;
+            --accent-green: #16A34A;
+            --light-yellow: #FEF3C7;
+            --accent-yellow: #D97706;
+            --light-indigo: #E0E7FF;
+            --accent-indigo: #6366F1;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #FAFBFC;
+            color: #475569;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-sora {
+            font-family: 'Sora', sans-serif;
+            color: #1E293B;
+        }
+
+        /* Custom Colors & Backgrounds */
+        .bg-header {
+            background-color: var(--light-blue);
+        }
+
+        .text-header-accent {
+            color: var(--accent-blue);
+        }
+
+        .bg-opening {
+            background-color: var(--light-gray);
+        }
+
+        .text-opening-accent {
+            color: var(--accent-gray);
+        }
+
+        .bg-evolution {
+            background-color: var(--evo-blue);
+        }
+
+        .text-evolution-accent {
+            color: var(--accent-evo);
+        }
+
+        .border-evolution {
+            border-color: var(--accent-evo);
+        }
+
+        .bg-specialized {
+            background-color: var(--light-purple);
+        }
+
+        .text-specialized-accent {
+            color: var(--accent-purple);
+        }
+
+        .bg-when {
+            background-color: var(--light-red);
+        }
+
+        .text-when-accent {
+            color: var(--accent-red);
+        }
+
+        .bg-opensource {
+            background-color: var(--light-teal);
+        }
+
+        .text-opensource-accent {
+            color: var(--accent-teal);
+        }
+
+        .bg-analogy {
+            background-color: var(--light-orange);
+        }
+
+        .text-analogy-accent {
+            color: var(--accent-orange);
+        }
+
+        .bg-performance {
+            background-color: var(--light-green);
+        }
+
+        .text-performance-accent {
+            color: var(--accent-green);
+        }
+
+        .bg-bar-fill {
+            background-color: var(--accent-green);
+        }
+
+        .bg-step13 {
+            background-color: var(--evo-blue);
+        }
+
+        .text-step13-accent {
+            color: var(--accent-evo);
+        }
+
+        .bg-step4 {
+            background-color: var(--light-purple);
+        }
+
+        .text-step4-accent {
+            color: var(--accent-purple);
+        }
+
+        .bg-step56 {
+            background-color: var(--light-yellow);
+        }
+
+        .text-step56-accent {
+            color: var(--accent-yellow);
+        }
+
+        .bg-step79 {
+            background-color: var(--light-green);
+        }
+
+        .text-step79-accent {
+            color: var(--accent-green);
+        }
+
+        .bg-step1011 {
+            background-color: var(--light-teal);
+        }
+
+        .text-step1011-accent {
+            color: var(--accent-teal);
+        }
+
+        .bg-summary {
+            background-color: var(--light-indigo);
+        }
+
+        .text-summary-accent {
+            color: var(--accent-indigo);
+        }
+
+        /* Card and Layout Styles */
+        .infographic-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #FFFFFF;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        .rainbow-border {
+            height: 6px;
+            background: linear-gradient(90deg, #0EA5E9, #2563EB, #A855F7, #DC2626, #EA580C, #D97706, #16A34A);
+        }
+
+        .info-card {
+            background-color: #FFFFFF;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 16px;
+            padding: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        .tree-line-v {
+            width: 2px;
+            background-color: #CBD5E1;
+            margin: 0 auto;
+        }
+
+        .tree-line-h {
+            height: 2px;
+            background-color: #CBD5E1;
+            width: 100%;
+        }
+
+        .pyramid-layer {
+            border: 1.5px solid #E2E8F0;
+            border-radius: 8px;
+            text-align: center;
+            padding: 12px;
+            margin: 0 auto 8px auto;
+            background-color: white;
+            transition: transform 0.2s ease;
+        }
+
+        .pyramid-layer:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Fallback for Tailwind v3 arbitrary calc() sizes */
+        .timeline-card {
+            width: calc(100% - 4rem);
+        }
+
+        @media (min-width: 768px) {
+            .timeline-card {
+                width: calc(50% - 2.5rem);
+            }
+        }
+
+        /* Animation Safe Pattern */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: #FFFFFF;
+            }
+
+            .infographic-container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+
+            .fade-section.not-visible {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .info-card {
+                break-inside: avoid;
+                border: 1px solid #CBD5E1;
+                box-shadow: none !important;
+                transform: none !important;
+            }
+
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased py-8">
+
+    <div class="infographic-container rounded-xl overflow-hidden relative">
+        <div class="rainbow-border w-full absolute top-0 left-0"></div>
+
+        <header class="bg-header px-8 pt-16 pb-12 text-center fade-section">
+            <h1 class="text-3xl md:text-4xl font-extrabold mb-4 tracking-tight">Specialized LLMs and Fine-Tuning</h1>
+            <h2 class="text-xl md:text-2xl text-header-accent font-semibold mb-6">From General-Purpose Models to Domain
+                Experts</h2>
+            <p class="max-w-2xl mx-auto text-gray-600 text-lg mb-6">
+                The LLM landscape includes many models with different strengths, weaknesses, and purposes. Understanding
+                how to select the best base model and fine-tune it for your specialized application is a critical AI
+                skill.
+            </p>
+            <div
+                class="inline-flex items-center space-x-2 text-sm font-medium text-gray-500 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm">
+                <i data-lucide="award" class="w-4 h-4"></i>
+                <span>Based on a lecture by Dr. Ian McCullough, Johns Hopkins University</span>
+            </div>
+        </header>
+
+        <section class="p-8 md:p-12 border-b border-gray-100 fade-section">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="flex-1">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="p-2 bg-opening rounded-lg text-opening-accent">
+                            <i data-lucide="brain" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">The Fine-Tuning Bridge</h3>
+                    </div>
+                    <p class="mb-4 text-gray-600 leading-relaxed">
+                        Fine-tuning is the bridge between a general-purpose AI model and a domain-specific expert
+                        system. It involves taking a model that is the best approach for us and adapting it for a
+                        specialized application.
+                    </p>
+                    <p class="font-medium text-gray-800">
+                        Let's start with how this landscape evolved.
+                    </p>
+                </div>
+                <div class="flex-1 w-full max-w-sm">
+                    <div class="info-card bg-opening flex flex-col items-center justify-center text-center p-6">
+                        <div class="w-full bg-white border border-gray-200 rounded-lg py-3 font-semibold mb-2">
+                            General-Purpose LLM</div>
+                        <i data-lucide="arrow-down" class="w-5 h-5 text-gray-400 my-1"></i>
+                        <div class="w-4/5 bg-gray-800 text-white rounded-lg py-2 font-medium text-sm mb-2 shadow-sm">
+                            Fine-Tuning Process</div>
+                        <i data-lucide="arrow-down" class="w-5 h-5 text-gray-400 my-1"></i>
+                        <div class="w-3/5 bg-white border-2 border-gray-800 text-gray-800 rounded-lg py-3 font-bold">
+                            Specialized LLM</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-evolution border-b border-gray-100 fade-section">
+            <div class="text-center mb-10">
+                <div class="inline-flex p-2 bg-white rounded-full text-evolution-accent shadow-sm mb-4">
+                    <i data-lucide="git-branch" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">The Evolution of LLMs</h3>
+                <p class="text-gray-600">Two major branches emerging from the 2017 Transformer architecture.</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <div class="info-card border-evolution border-2 text-center max-w-xs mx-auto relative z-10 mb-0">
+                    <div class="font-bold text-gray-900">Google's Transformer Paper</div>
+                    <div class="text-sm text-gray-500">"Attention Is All You Need" (2017)</div>
+                </div>
+
+                <div class="tree-line-v h-8"></div>
+                <div class="flex justify-center">
+                    <div class="w-1/2 flex justify-end">
+                        <div class="tree-line-h rounded-l-full"></div>
+                    </div>
+                    <div class="w-1/2 flex justify-start">
+                        <div class="tree-line-h rounded-r-full"></div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between">
+                    <div class="w-1/2 flex justify-center">
+                        <div class="tree-line-v h-8"></div>
+                    </div>
+                    <div class="w-1/2 flex justify-center">
+                        <div class="tree-line-v h-8"></div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                    <div class="info-card text-center relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gray-400"></div>
+                        <h4 class="font-bold text-lg mb-1">Left Branch: Contextual</h4>
+                        <p class="text-xs text-gray-500 mb-4 uppercase tracking-wide">Understanding & Classification</p>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="bg-gray-50 border border-gray-100 rounded py-2 px-4 text-sm font-medium">
+                                Word2Vec</div>
+                            <div class="text-gray-300 text-xs">↓</div>
+                            <div class="bg-white border border-gray-200 rounded py-2 px-4 font-bold shadow-sm">ELMo
+                            </div>
+                            <div class="text-gray-300 text-xs">↓</div>
+                            <div
+                                class="bg-white border-2 border-blue-200 rounded py-2 px-4 font-bold text-blue-700 shadow-sm">
+                                BERT <span class="text-xs font-normal text-gray-500 block">(Google)</span></div>
+                            <div class="text-gray-300 text-xs">↓</div>
+                            <div class="bg-white border border-gray-200 rounded py-2 px-4 font-bold shadow-sm">RoBERTa
+                                <span class="text-xs font-normal text-gray-500 block">(Meta)</span></div>
+                        </div>
+
+                        <div class="bg-gray-100 rounded-lg p-3 text-sm italic text-gray-600">
+                            "The crazy trend where they're all named after Sesame Street characters."
+                        </div>
+                    </div>
+
+                    <div class="info-card text-center border-evolution border-2 relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-evolution"
+                            style="background-color: var(--accent-evo);"></div>
+                        <h4 class="font-bold text-lg mb-1">Right Branch: Generative</h4>
+                        <p class="text-xs text-gray-500 mb-4 uppercase tracking-wide">The GPT Approach</p>
+
+                        <div class="space-y-3 mb-6">
+                            <div class="bg-gray-50 border border-gray-100 rounded py-2 px-4 text-sm font-medium">GPT-1
+                                <span class="text-xs font-normal text-gray-500 block">(OpenAI)</span></div>
+                            <div class="text-gray-300 text-xs">↓</div>
+                            <div class="bg-white border border-gray-200 rounded py-2 px-4 font-bold shadow-sm">GPT-2
+                                <span class="text-xs font-normal text-gray-500 block">(OpenAI)</span></div>
+                            <div class="text-gray-300 text-xs">↓</div>
+                            <div class="bg-white border border-gray-200 rounded py-2 px-4 font-bold shadow-sm">XLNet
+                                <span class="text-xs font-normal text-gray-500 block">(Google)</span></div>
+                            <div class="text-gray-300 text-xs">↓</div>
+                            <div
+                                class="bg-white border-2 border-blue-400 rounded py-2 px-4 font-bold text-blue-800 shadow-sm">
+                                GPT-3 & GPT-4</div>
+                        </div>
+
+                        <div class="bg-blue-50 rounded-lg p-3 text-sm font-semibold text-evolution-accent">
+                            "The current trend — people are moving down the GPT approach."
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <span
+                    class="inline-block bg-white px-6 py-3 rounded-full shadow-sm text-sm font-bold text-gray-700 border border-gray-200">
+                    MANY MODELS, DIFFERENT PURPOSES
+                </span>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-specialized border-b border-gray-100 fade-section">
+            <div class="flex items-center space-x-3 mb-8">
+                <div class="p-2 bg-white rounded-lg text-specialized-accent shadow-sm">
+                    <i data-lucide="layers" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-2xl font-bold">General-Purpose vs. Specialized LLMs</h3>
+            </div>
+
+            <div class="flex flex-col md:flex-row gap-6 items-stretch">
+                <div class="flex-1 info-card bg-white flex flex-col">
+                    <div class="text-gray-400 mb-4"><i data-lucide="globe" class="w-8 h-8"></i></div>
+                    <h4 class="text-xl font-bold mb-4">General-Purpose LLM</h4>
+                    <ul class="space-y-3 flex-grow text-sm">
+                        <li class="flex items-start"><i data-lucide="check"
+                                class="w-4 h-4 text-gray-400 mr-2 mt-0.5"></i> Trained on broad internet data</li>
+                        <li class="flex items-start"><i data-lucide="check"
+                                class="w-4 h-4 text-gray-400 mr-2 mt-0.5"></i> Handles any topic conversationally</li>
+                        <li class="flex items-start font-medium"><i data-lucide="check"
+                                class="w-4 h-4 text-gray-400 mr-2 mt-0.5"></i> "Knows something about everything"</li>
+                        <li class="flex items-start italic text-gray-500"><i data-lucide="check"
+                                class="w-4 h-4 text-gray-400 mr-2 mt-0.5"></i> Like a general practitioner doctor</li>
+                    </ul>
+                    <div class="mt-6 pt-4 border-t border-gray-100">
+                        <div class="text-xs uppercase text-gray-500 font-bold mb-2">Examples</div>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="bg-gray-100 px-2 py-1 rounded">ChatGPT</span>
+                            <span class="bg-gray-100 px-2 py-1 rounded">Claude</span>
+                            <span class="bg-gray-100 px-2 py-1 rounded">Base Llama</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden md:flex flex-col items-center justify-center w-12 text-specialized-accent">
+                    <div class="text-xs font-bold -rotate-90 whitespace-nowrap mb-8 uppercase tracking-widest">
+                        Fine-Tuning</div>
+                    <i data-lucide="arrow-right" class="w-8 h-8"></i>
+                </div>
+                <div class="md:hidden flex items-center justify-center py-2 text-specialized-accent">
+                    <span class="text-xs font-bold mr-2 uppercase tracking-widest">Fine-Tuning</span>
+                    <i data-lucide="arrow-down" class="w-6 h-6"></i>
+                </div>
+
+                <div
+                    class="flex-1 info-card bg-white border-2 border-purple-200 shadow-md flex flex-col relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-purple-500"></div>
+                    <div class="text-specialized-accent mb-4"><i data-lucide="target" class="w-8 h-8"></i></div>
+                    <h4 class="text-xl font-bold mb-4">Specialized LLM</h4>
+                    <ul class="space-y-3 flex-grow text-sm">
+                        <li class="flex items-start"><i data-lucide="check-circle"
+                                class="w-4 h-4 text-specialized-accent mr-2 mt-0.5"></i> Fine-tuned on domain-specific
+                            data</li>
+                        <li class="flex items-start"><i data-lucide="check-circle"
+                                class="w-4 h-4 text-specialized-accent mr-2 mt-0.5"></i> Expert in a specific domain or
+                            application</li>
+                        <li class="flex items-start font-medium"><i data-lucide="check-circle"
+                                class="w-4 h-4 text-specialized-accent mr-2 mt-0.5"></i> "Knows a lot about your
+                            specific needs"</li>
+                        <li class="flex items-start italic text-gray-500"><i data-lucide="check-circle"
+                                class="w-4 h-4 text-specialized-accent mr-2 mt-0.5"></i> Like a cardiologist (deeply
+                            specialized)</li>
+                    </ul>
+                    <div class="mt-6 pt-4 border-t border-gray-100">
+                        <div class="text-xs uppercase text-specialized-accent font-bold mb-2">Examples</div>
+                        <div class="flex flex-wrap gap-2 text-xs font-medium">
+                            <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">BloombergGPT</span>
+                            <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">Med-PaLM</span>
+                            <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">CodeLlama</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <p class="text-sm font-semibold text-gray-700 italic">"Take a model that is the best approach for us and
+                    fine tune it for a specialized application."</p>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-when border-b border-gray-100 fade-section">
+            <div class="flex items-center space-x-3 mb-8">
+                <div class="p-2 bg-white rounded-lg text-when-accent shadow-sm">
+                    <i data-lucide="alert-circle" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-2xl font-bold">I have a production model... Why fine-tune?</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="info-card p-5 bg-white">
+                    <div class="font-bold mb-2 flex items-center text-sm"><i data-lucide="book-open"
+                            class="w-4 h-4 mr-2 text-when-accent"></i> 1. Domain Gap</div>
+                    <p class="text-xs text-gray-600 leading-relaxed">General answers do not equal domain expertise.
+                        Fine-tune to customize the model for your organization's specific terminology and workflows.</p>
+                </div>
+                <div class="info-card p-5 bg-white">
+                    <div class="font-bold mb-2 flex items-center text-sm"><i data-lucide="trending-up"
+                            class="w-4 h-4 mr-2 text-when-accent"></i> 2. Performance Gap</div>
+                    <p class="text-xs text-gray-600 leading-relaxed">Zero-shot yields baseline performance. Fine-tuning
+                        provides dramatic performance improvements on benchmark tasks specific to your needs.</p>
+                </div>
+                <div class="info-card p-5 bg-white">
+                    <div class="font-bold mb-2 flex items-center text-sm"><i data-lucide="shield"
+                            class="w-4 h-4 mr-2 text-when-accent"></i> 3. Data Privacy</div>
+                    <p class="text-xs text-gray-600 leading-relaxed">You "do not want proprietary information feeding
+                        into the LLM" which could help competitors. Keep data internal.</p>
+                </div>
+                <div class="info-card p-5 bg-white">
+                    <div class="font-bold mb-2 flex items-center text-sm"><i data-lucide="slash"
+                            class="w-4 h-4 mr-2 text-when-accent"></i> 4. Content Restrictions</div>
+                    <p class="text-xs text-gray-600 leading-relaxed">Proprietary terms of service often block military,
+                        political, or counter-disinformation topics ("won't play in that space").</p>
+                </div>
+                <div class="info-card p-5 bg-white">
+                    <div class="font-bold mb-2 flex items-center text-sm"><i data-lucide="zap"
+                            class="w-4 h-4 mr-2 text-when-accent"></i> 5. Cost & Latency</div>
+                    <p class="text-xs text-gray-600 leading-relaxed">A smaller, fine-tuned model can outperform a
+                        massive general model on specific tasks while being cheaper and faster to run.</p>
+                </div>
+                <div class="info-card p-5 bg-white">
+                    <div class="font-bold mb-2 flex items-center text-sm"><i data-lucide="refresh-cw"
+                            class="w-4 h-4 mr-2 text-when-accent"></i> 6. Continuous Improvement</div>
+                    <p class="text-xs text-gray-600 leading-relaxed">As your domain evolves with new regulations or
+                        products, fine-tuning allows retraining on fresh data to stay current.</p>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center">
+                <span class="text-sm font-bold text-when-accent bg-white px-4 py-2 rounded-full shadow-sm">
+                    "Fine-tune our models to make them much more relevant to our application"
+                </span>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-opensource border-b border-gray-100 fade-section">
+            <div class="text-center mb-10">
+                <div class="inline-flex p-2 bg-white rounded-full text-opensource-accent shadow-sm mb-4">
+                    <i data-lucide="key" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-2">Proprietary vs. Open-Source LLMs</h3>
+                <p class="text-gray-600">The critical choice regarding control, customization, and capabilities.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="info-card bg-white border-t-4" style="border-top-color: #94A3B8;">
+                    <div class="flex items-center mb-4 text-gray-500">
+                        <i data-lucide="lock" class="w-6 h-6 mr-2"></i>
+                        <h4 class="text-xl font-bold text-gray-800">Proprietary LLMs</h4>
+                    </div>
+
+                    <ul class="space-y-4 text-sm mb-6">
+                        <li class="flex items-start">
+                            <i data-lucide="x-circle" class="w-5 h-5 text-red-400 mr-2 shrink-0"></i>
+                            <div><strong>Restricted Fine-Tuning:</strong> Companies restrict ability to modify due to
+                                "quality, safety, ethics, compliance."</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="x-circle" class="w-5 h-5 text-red-400 mr-2 shrink-0"></i>
+                            <div><strong>API Access Only:</strong> Cannot modify the underlying model itself.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="x-circle" class="w-5 h-5 text-red-400 mr-2 shrink-0"></i>
+                            <div><strong>Content Filtered:</strong> Refuses engagement on specific topics (military,
+                                political, propaganda).</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="x-circle" class="w-5 h-5 text-red-400 mr-2 shrink-0"></i>
+                            <div><strong>Data Privacy Risk:</strong> Data goes to the provider; risk to proprietary
+                                info.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2 shrink-0"></i>
+                            <div><strong>Higher Baseline:</strong> Generally higher out-of-the-box performance.</div>
+                        </li>
+                    </ul>
+
+                    <div class="bg-gray-50 p-3 rounded text-xs text-gray-600">
+                        <strong>Examples:</strong> ChatGPT (OpenAI), GPT-4, Claude, Gemini
+                    </div>
+                </div>
+
+                <div class="info-card bg-white border-t-4 shadow-md" style="border-top-color: var(--accent-teal);">
+                    <div class="flex items-center mb-4 text-opensource-accent">
+                        <i data-lucide="unlock" class="w-6 h-6 mr-2"></i>
+                        <h4 class="text-xl font-bold text-gray-800">Open-Source LLMs</h4>
+                    </div>
+
+                    <ul class="space-y-4 text-sm mb-6">
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2 shrink-0"></i>
+                            <div><strong>Full Access:</strong> "Fine-tune them, customize them, and use them more
+                                freely."</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2 shrink-0"></i>
+                            <div><strong>Download & Modify:</strong> Complete control over model weights.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2 shrink-0"></i>
+                            <div><strong>No Restrictions:</strong> You control the boundaries. Crucial for
+                                counter-disinformation.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mr-2 shrink-0"></i>
+                            <div><strong>Data Privacy:</strong> Data stays completely within your organization.</div>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="info" class="w-5 h-5 text-blue-400 mr-2 shrink-0"></i>
+                            <div><strong>Lower Baseline:</strong> "May not be as good initially, but because you can
+                                fine-tune it, it might be more useful."</div>
+                        </li>
+                    </ul>
+
+                    <div class="bg-green-50 p-3 rounded text-xs text-gray-800 border border-green-100">
+                        <strong>Examples:</strong> Llama 2 (Meta), T5 (Google), BERT, RoBERTa, GPT-2
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 info-card bg-white flex items-center justify-center p-4 shadow-sm border-l-4"
+                style="border-left-color: var(--accent-teal);">
+                <div class="mr-4 text-opensource-accent"><i data-lucide="shield" class="w-8 h-8"></i></div>
+                <div>
+                    <h5 class="font-bold text-sm mb-1">Critical Use Cases for Open-Source:</h5>
+                    <p class="text-xs text-gray-600">National security, counter-disinformation detection, defense
+                        strategy, proprietary data protection.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-analogy border-b border-gray-100 fade-section">
+            <div class="flex items-center space-x-3 mb-8 justify-center">
+                <div class="p-2 bg-white rounded-lg text-analogy-accent shadow-sm">
+                    <i data-lucide="filter" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-center">The Fine-Tuning Analogy</h3>
+            </div>
+
+            <div class="max-w-xl mx-auto flex flex-col items-center">
+                <div class="w-full pyramid-layer bg-white shadow-sm border-gray-200">
+                    <div class="font-bold text-gray-800 text-lg">Level 1: Google Search</div>
+                    <div class="text-sm text-gray-500">"Returns what's popular"</div>
+                    <div class="text-xs mt-1 text-gray-400 uppercase tracking-wide">Broadest Scope • Like a General LLM
+                    </div>
+                </div>
+
+                <i data-lucide="arrow-down" class="w-5 h-5 text-analogy-accent my-2"></i>
+
+                <div class="w-5/6 pyramid-layer bg-yellow-50 shadow-sm border-yellow-200">
+                    <div class="font-bold text-gray-800 text-lg">Level 2: Google Scholar</div>
+                    <div class="text-sm text-gray-600">"Restricting to academic peer-reviewed papers"</div>
+                    <div class="text-xs mt-1 text-yellow-600 uppercase tracking-wide font-medium">Narrower Scope •
+                        Partially Fine-Tuned</div>
+                </div>
+
+                <i data-lucide="arrow-down" class="w-5 h-5 text-analogy-accent my-2"></i>
+
+                <div class="w-2/3 pyramid-layer shadow-md border-2"
+                    style="background-color: #FFEDD5; border-color: var(--accent-orange);">
+                    <div class="font-bold text-gray-900 text-lg">Level 3: Your Discipline</div>
+                    <div class="text-sm text-gray-800 font-medium">"My style, my body of research"</div>
+                    <div class="text-xs mt-1 text-analogy-accent uppercase tracking-wide font-bold">Narrowest Scope •
+                        Far More Relevant</div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6">
+                <p class="font-bold text-lg text-gray-800 italic">"That type of work is fine-tuning."</p>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-performance border-b border-gray-100 fade-section">
+            <div class="flex items-center space-x-3 mb-8">
+                <div class="p-2 bg-white rounded-lg text-performance-accent shadow-sm">
+                    <i data-lucide="bar-chart-2" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold">Does Fine-Tuning Improve Performance?</h3>
+                    <p class="text-sm text-gray-600">Evidence from a 2020 GPT-3 Benchmark Study</p>
+                </div>
+            </div>
+
+            <div class="info-card bg-white p-6 md:p-8 max-w-3xl mx-auto">
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="font-bold text-gray-700">Zero-Shot <span
+                                    class="font-normal text-gray-400">(Base model, no task data)</span></span>
+                            <span class="text-gray-500 font-medium">Baseline</span>
+                        </div>
+                        <div class="w-full bg-gray-100 rounded-full h-4 overflow-hidden">
+                            <div class="bg-gray-400 h-4 rounded-full" style="width: 20%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="font-bold text-gray-700">One-Shot <span class="font-normal text-gray-400">(1
+                                    example provided)</span></span>
+                            <span class="text-gray-600 font-medium">Small Gain</span>
+                        </div>
+                        <div class="w-full bg-gray-100 rounded-full h-4 overflow-hidden">
+                            <div class="bg-gray-500 h-4 rounded-full" style="width: 30%"></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="font-bold text-gray-700">Few-Shot <span class="font-normal text-gray-400">(3-10
+                                    examples provided)</span></span>
+                            <span class="text-gray-700 font-medium">Moderate Gain</span>
+                        </div>
+                        <div class="w-full bg-gray-100 rounded-full h-4 overflow-hidden">
+                            <div class="bg-gray-600 h-4 rounded-full" style="width: 45%"></div>
+                        </div>
+                    </div>
+
+                    <div class="p-3 -mx-3 bg-green-50 border border-green-100 rounded-lg">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="font-bold text-green-800 text-base">SOTA Fine-Tuning <span
+                                    class="font-normal text-green-600 text-sm">(Full domain dataset)</span></span>
+                            <span class="text-performance-accent font-extrabold uppercase tracking-wide">Dramatic</span>
+                        </div>
+                        <div
+                            class="w-full bg-white rounded-full h-5 overflow-hidden border border-green-200 shadow-inner">
+                            <div class="bg-bar-fill h-5 rounded-full relative overflow-hidden" style="width: 95%">
+                                <div class="absolute inset-0 bg-white opacity-20 transform -skew-x-12 translate-x-1/2">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-6 max-w-2xl mx-auto">
+                <p
+                    class="text-base font-medium text-gray-800 bg-white px-6 py-3 rounded-lg shadow-sm border border-gray-100">
+                    "We have <strong class="text-performance-accent">dramatic improvement</strong> if we're using
+                    state-of-the-art fine-tuning to improve and tailor against your specific task."
+                </p>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-step13 border-b border-white fade-section">
+            <div class="text-center mb-10">
+                <h3 class="text-2xl font-bold mb-2">The 11-Step Fine-Tuning Process</h3>
+                <p class="text-gray-600">A systematic methodology from task definition to evaluation.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="info-card flex flex-col">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                            1</div>
+                        <h4 class="font-bold text-gray-900">Define Task & Objectives</h4>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">Determine exactly what the model needs to accomplish.</p>
+                    <div class="bg-gray-50 p-3 rounded-lg text-xs border border-gray-100 mt-auto">
+                        <strong>Examples:</strong> Text generation, sentiment analysis, QA, image tasks.
+                    </div>
+                </div>
+
+                <div class="info-card flex flex-col">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                            2</div>
+                        <h4 class="font-bold text-gray-900">Set Performance Metrics</h4>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">Establish clear criteria for grading performance before
+                        training begins.</p>
+                    <div class="bg-gray-50 p-3 rounded-lg text-xs border border-gray-100 mt-auto">
+                        <strong>Metrics:</strong> Accuracy, F1 score, BLEU score, Perplexity.
+                    </div>
+                </div>
+
+                <div class="info-card flex flex-col">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+                            3</div>
+                        <h4 class="font-bold text-gray-900">Select Pre-Trained Model</h4>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">Choose the right base model for your task architecture.</p>
+                    <div class="bg-gray-50 p-3 rounded-lg text-xs border border-gray-100 mt-auto">
+                        <strong>Options:</strong> Llama 2 (Generation), BERT (Classification), T5 (Text-to-text), GPT-2.
+                        <br><span class="italic text-gray-500 mt-1 inline-block">"I personally like Llama 2."</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-step4 border-b border-white fade-section">
+            <div class="info-card border-2" style="border-color: var(--accent-purple);">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div
+                        class="w-10 h-10 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center font-bold text-lg">
+                        4</div>
+                    <h4 class="text-xl font-bold text-gray-900">Prepare Dataset</h4>
+                    <div class="ml-auto text-purple-400"><i data-lucide="database" class="w-6 h-6"></i></div>
+                </div>
+
+                <p class="text-gray-600 text-sm mb-6">Data quality directly determines fine-tuning quality. The dataset
+                    must be clean, preprocessed, and exceptionally well-labeled.</p>
+
+                <div
+                    class="flex flex-col md:flex-row items-center justify-center gap-4 bg-purple-50 rounded-xl p-6 border border-purple-100">
+
+                    <div
+                        class="bg-white border border-gray-200 rounded px-4 py-2 text-sm font-bold shadow-sm text-center">
+                        Raw Data</div>
+
+                    <i data-lucide="arrow-right" class="hidden md:block w-5 h-5 text-purple-400 flex-shrink-0"></i>
+                    <i data-lucide="arrow-down" class="md:hidden w-5 h-5 text-purple-400 flex-shrink-0"></i>
+
+                    <div
+                        class="bg-white border border-gray-200 rounded px-4 py-2 text-sm font-bold shadow-sm text-center">
+                        Preprocess <span class="font-normal text-xs text-gray-500">(clean)</span></div>
+
+                    <i data-lucide="arrow-right" class="hidden md:block w-5 h-5 text-purple-400 flex-shrink-0"></i>
+                    <i data-lucide="arrow-down" class="md:hidden w-5 h-5 text-purple-400 flex-shrink-0"></i>
+
+                    <div
+                        class="bg-white border border-purple-300 rounded px-4 py-2 text-sm font-bold shadow-sm relative text-center">
+                        Labeling
+                        <div class="absolute -top-3 -right-2 bg-purple-500 text-white px-1.5 py-0.5 rounded-sm shadow-sm"
+                            style="font-size: 10px;">Crucial</div>
+                    </div>
+
+                    <i data-lucide="arrow-right" class="hidden md:block w-5 h-5 text-purple-400 flex-shrink-0"></i>
+                    <i data-lucide="arrow-down" class="md:hidden w-5 h-5 text-purple-400 flex-shrink-0"></i>
+
+                    <div
+                        class="bg-white border-2 border-purple-400 rounded-lg p-3 shadow-md w-full max-w-xs text-center flex-shrink-0">
+                        <div class="text-xs font-bold text-purple-700 mb-1">Inter-Annotator Agreement</div>
+                        <div class="text-xs text-gray-600 mb-2">Multiple annotators verify same content</div>
+                        <div class="bg-purple-100 text-purple-800 text-sm font-extrabold py-1 px-2 rounded">
+                            Krippendorff's Alpha ≥ 0.8</div>
+                    </div>
+                </div>
+
+                <div class="mt-6 flex flex-col items-center">
+                    <i data-lucide="arrow-down" class="w-5 h-5 text-purple-300 mb-2"></i>
+                    <div class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Data Split</div>
+
+                    <div
+                        class="flex w-full max-w-md mx-auto rounded-lg overflow-hidden shadow-sm border border-gray-200 text-center text-sm font-medium">
+                        <div style="width: 80%;" class="bg-blue-50 py-2 border-r border-gray-200">Train (80%)</div>
+                        <div style="width: 10%;" class="bg-yellow-50 py-2 border-r border-gray-200">Val</div>
+                        <div style="width: 10%;" class="bg-green-50 py-2">Test</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-step56 border-b border-white fade-section">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="info-card">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-8 h-8 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center font-bold">
+                            5</div>
+                        <h4 class="font-bold text-gray-900">Set Up Environment</h4>
+                        <i data-lucide="server" class="w-5 h-5 ml-auto text-yellow-500"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">Ensure adequate hardware computation limits are met.</p>
+                    <ul class="text-sm text-gray-600 space-y-1">
+                        <li>• Sufficient GPUs or TPUs</li>
+                        <li>• Libraries: PyTorch, TensorFlow</li>
+                        <li>• Primarily executed in Python</li>
+                    </ul>
+                </div>
+
+                <div class="info-card border-l-4" style="border-left-color: var(--accent-yellow);">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-8 h-8 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center font-bold">
+                            6</div>
+                        <h4 class="font-bold text-gray-900">Tokenize Data</h4>
+                        <i data-lucide="code" class="w-5 h-5 ml-auto text-yellow-500"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-3">Breaking text into chunks the computer can recognize.</p>
+
+                    <div class="bg-gray-900 text-gray-300 rounded-lg p-3 font-mono text-xs overflow-x-auto">
+                        <div class="text-white mb-1">Text: "Fine-tuning improves"</div>
+                        <div class="text-yellow-400 mb-1">Tokens: ["Fine", "-", "tun", "ing", "improves"]</div>
+                        <div class="text-blue-300 mb-1">IDs: [4521, 12, 892, 278, 15236]</div>
+                        <div class="text-green-400">Attn Mask: [1, 1, 1, 1, 1]</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-step79 border-b border-white fade-section">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="info-card flex flex-col">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold">
+                            7</div>
+                        <h4 class="font-bold text-gray-900">Initialize Model</h4>
+                    </div>
+                    <p class="text-sm text-gray-600">Load pre-trained weights and adjust final layers to match the
+                        specific task output (e.g., adding a classification head).</p>
+                    <i data-lucide="sliders" class="w-6 h-6 mt-auto text-green-300"></i>
+                </div>
+
+                <div class="info-card flex flex-col">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold">
+                            8</div>
+                        <h4 class="font-bold text-gray-900">Configure Parameters</h4>
+                    </div>
+                    <ul class="text-sm text-gray-600 space-y-2 mb-4">
+                        <li><strong>Learning Rate:</strong> Step size for weight updates</li>
+                        <li><strong>Batch Size:</strong> Examples processed at once</li>
+                        <li><strong>Epochs:</strong> Full passes through training data</li>
+                    </ul>
+                    <i data-lucide="settings" class="w-6 h-6 mt-auto text-green-300"></i>
+                </div>
+
+                <div class="info-card flex flex-col">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-8 h-8 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold">
+                            9</div>
+                        <h4 class="font-bold text-gray-900">Choose Loss Function</h4>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">Usually <strong>cross-entropy loss</strong> for
+                        classification. Entropy measures chaos/randomness; loss indicates organization in data.</p>
+                    <i data-lucide="activity" class="w-6 h-6 mt-auto text-green-300"></i>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-step1011 border-b border-gray-100 fade-section">
+            <div class="flex flex-col md:flex-row gap-6">
+                <div
+                    class="flex-1 info-card bg-green-800 text-white border-none shadow-lg transform transition hover:-translate-y-1">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-600 text-white flex items-center justify-center font-bold text-xl">
+                            10</div>
+                        <h4 class="text-xl font-bold text-white">Fine-Tune the Model</h4>
+                        <i data-lucide="play-circle" class="w-6 h-6 ml-auto text-green-300"></i>
+                    </div>
+                    <p class="text-green-100">With the 9 previous steps complete, execute the training loop to update
+                        the model weights using your domain dataset.</p>
+                </div>
+
+                <div class="flex-1 info-card bg-white border-2 border-green-200">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full bg-green-100 text-green-700 flex items-center justify-center font-bold text-xl">
+                            11</div>
+                        <h4 class="text-xl font-bold text-gray-900">Evaluate the Model</h4>
+                        <i data-lucide="check-circle" class="w-6 h-6 ml-auto text-green-500"></i>
+                    </div>
+                    <p class="text-gray-600">Test the customized model against the held-out test set using the
+                        performance metrics established in Step 2.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-summary border-b border-gray-100 fade-section">
+            <div class="flex flex-col md:flex-row items-start gap-8">
+                <div class="w-full md:w-1/3 sticky top-6">
+                    <div class="p-3 bg-white rounded-lg text-summary-accent shadow-sm inline-block mb-4">
+                        <i data-lucide="list-ordered" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-3xl font-bold mb-4">The Complete 11-Step Process</h3>
+                    <p class="text-gray-600 bg-white/50 p-4 rounded-lg border border-indigo-100">
+                        "These are the 11 steps that go into fine-tuning a model for a specific use case or
+                        application."
+                    </p>
+                </div>
+
+                <div class="w-full md:w-2/3 info-card bg-white shadow-md p-6">
+                    <div
+                        class="space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-indigo-200 before:to-transparent">
+
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-indigo-100 text-indigo-700 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                1</div>
+                            <div class="bg-gray-50 p-3 rounded border border-gray-100 text-sm timeline-card"><span
+                                    class="font-bold">Define Task & Objectives</span></div>
+                        </div>
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-indigo-100 text-indigo-700 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                2</div>
+                            <div class="bg-gray-50 p-3 rounded border border-gray-100 text-sm timeline-card"><span
+                                    class="font-bold">Set Performance Metrics</span></div>
+                        </div>
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-indigo-100 text-indigo-700 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                3</div>
+                            <div class="bg-gray-50 p-3 rounded border border-gray-100 text-sm timeline-card"><span
+                                    class="font-bold">Select Pre-Trained Model</span></div>
+                        </div>
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-indigo-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                4</div>
+                            <div class="bg-indigo-50 p-3 rounded border border-indigo-100 text-sm timeline-card"><span
+                                    class="font-bold text-indigo-900">Prepare Dataset</span> (clean, label, split)</div>
+                        </div>
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-indigo-100 text-indigo-700 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                5</div>
+                            <div class="bg-gray-50 p-3 rounded border border-gray-100 text-sm timeline-card"><span
+                                    class="font-bold">Set Up Environment</span></div>
+                        </div>
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-indigo-100 text-indigo-700 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                6</div>
+                            <div class="bg-gray-50 p-3 rounded border border-gray-100 text-sm timeline-card"><span
+                                    class="font-bold">Tokenize Data</span></div>
+                        </div>
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-indigo-100 text-indigo-700 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                7</div>
+                            <div class="bg-gray-50 p-3 rounded border border-gray-100 text-sm timeline-card"><span
+                                    class="font-bold">Initialize Model</span></div>
+                        </div>
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-indigo-100 text-indigo-700 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                8</div>
+                            <div class="bg-gray-50 p-3 rounded border border-gray-100 text-sm timeline-card"><span
+                                    class="font-bold">Configure Training Params</span></div>
+                        </div>
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-indigo-100 text-indigo-700 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                9</div>
+                            <div class="bg-gray-50 p-3 rounded border border-gray-100 text-sm timeline-card"><span
+                                    class="font-bold">Choose Loss Function</span></div>
+                        </div>
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-indigo-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                10</div>
+                            <div class="bg-indigo-50 p-3 rounded border border-indigo-100 text-sm timeline-card"><span
+                                    class="font-bold text-indigo-900">Fine-Tune the Model</span></div>
+                        </div>
+                        <div
+                            class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div
+                                class="flex items-center justify-center w-10 h-10 rounded-full border-2 border-white bg-indigo-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                11</div>
+                            <div class="bg-indigo-50 p-3 rounded border border-indigo-100 text-sm timeline-card"><span
+                                    class="font-bold text-indigo-900">Evaluate the Model</span></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-gray-50 border-b border-gray-200 fade-section">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i data-lucide="wrench" class="w-5 h-5 text-gray-500"></i>
+                        <h4 class="font-bold text-gray-800 uppercase tracking-wide text-sm">Modern Fine-Tuning
+                            Techniques</h4>
+                    </div>
+                    <div class="bg-white border border-gray-200 rounded-lg p-4 shadow-sm text-xs space-y-2">
+                        <div class="flex items-start"><span class="font-bold text-gray-700 w-24 flex-shrink-0">Full
+                                Fine-Tune:</span> <span class="text-gray-600">Update all params (highest resource
+                                cost)</span></div>
+                        <div class="flex items-start"><span
+                                class="font-bold text-gray-700 w-24 flex-shrink-0">LoRA:</span> <span
+                                class="text-gray-600">Train small adapter layers only (efficient)</span></div>
+                        <div class="flex items-start"><span
+                                class="font-bold text-gray-700 w-24 flex-shrink-0">QLoRA:</span> <span
+                                class="text-gray-600">LoRA + quantization (run on consumer GPUs)</span></div>
+                        <div class="flex items-start"><span
+                                class="font-bold text-gray-700 w-24 flex-shrink-0">RLHF:</span> <span
+                                class="text-gray-600">Align with human feedback rewards</span></div>
+                        <div class="flex items-start"><span class="font-bold text-gray-700 w-24 flex-shrink-0">Instruct
+                                Tune:</span> <span class="text-gray-600">Train on instruction-response pairs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i data-lucide="alert-triangle" class="w-5 h-5 text-red-500"></i>
+                        <h4 class="font-bold text-gray-800 uppercase tracking-wide text-sm">Best Practices & Pitfalls
+                        </h4>
+                    </div>
+                    <div class="bg-red-50 border border-red-100 rounded-lg p-4 shadow-sm text-xs space-y-2">
+                        <div class="flex items-start"><i data-lucide="check"
+                                class="w-3 h-3 text-red-500 mr-2 mt-0.5 flex-shrink-0"></i> <span
+                                class="text-gray-700"><strong>Data Quality > Quantity:</strong> Small clean dataset
+                                beats a massive noisy one.</span></div>
+                        <div class="flex items-start"><i data-lucide="check"
+                                class="w-3 h-3 text-red-500 mr-2 mt-0.5 flex-shrink-0"></i> <span
+                                class="text-gray-700"><strong>Prevent Overfitting:</strong> Stop if validation loss
+                                rises while training loss drops.</span></div>
+                        <div class="flex items-start"><i data-lucide="check"
+                                class="w-3 h-3 text-red-500 mr-2 mt-0.5 flex-shrink-0"></i> <span
+                                class="text-gray-700"><strong>Tokenizer Match:</strong> Always use the pre-trained
+                                model's specific tokenizer.</span></div>
+                        <div class="flex items-start"><i data-lucide="check"
+                                class="w-3 h-3 text-red-500 mr-2 mt-0.5 flex-shrink-0"></i> <span
+                                class="text-gray-700"><strong>Iterate:</strong> Fine-tuning is rarely one-and-done;
+                                refine and retrain.</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="p-8 md:p-12 bg-header border-b border-gray-100 fade-section">
+            <div class="max-w-3xl mx-auto text-center">
+                <i data-lucide="star" class="w-8 h-8 text-header-accent mx-auto mb-4"></i>
+                <p
+                    class="text-lg md:text-xl font-medium text-gray-800 leading-relaxed italic border-l-4 border-r-4 border-blue-200 px-6 py-2">
+                    "The landscape of large language models includes many models with different strengths, weaknesses,
+                    and purposes. Understanding how to select the right pre-trained model and fine-tune it for your
+                    specific application is what transforms a general-purpose AI into a powerful domain expert. Whether
+                    you choose proprietary models with API access or open-source models with full customization, the
+                    11-step fine-tuning process — from defining your task through evaluating your results — provides a
+                    systematic path to dramatically improved performance. <strong class="text-header-accent">Fine-tuning
+                        is the bridge between what AI can do generally and what it can do specifically for
+                        you.</strong>"
+                </p>
+            </div>
+        </section>
+
+        <footer class="bg-white p-6 md:p-8 text-center text-sm text-gray-500 fade-section">
+            <p class="font-bold text-gray-700 mb-1">Based on "Specialized LLMs and Fine-Tuning"</p>
+            <p>Lecture by Dr. Ian McCullough, Johns Hopkins University</p>
+            <div class="mt-4 no-print">
+                <button onclick="window.print()"
+                    class="inline-flex items-center text-xs text-blue-600 hover:text-blue-800 transition">
+                    <i data-lucide="printer" class="w-4 h-4 mr-1"></i> Print / Save as PDF
+                </button>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Icons
+            lucide.createIcons();
+
+            // Safe Animation Pattern (Prevents blank pages if JS fails)
+            const fadeSections = document.querySelectorAll('.fade-section');
+
+            // Add not-visible class only via JS, so non-JS users still see content
+            fadeSections.forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+
+            // Set up Intersection Observer
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.remove('not-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+                fadeSections.forEach(function (el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for older browsers
+                fadeSections.forEach(function (el) {
+                    el.classList.remove('not-visible');
+                });
+            }
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

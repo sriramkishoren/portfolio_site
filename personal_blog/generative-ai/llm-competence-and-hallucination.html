@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LLM Competence and Hallucination</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="LLM Competence and Hallucination">
+    <meta name="description"
+        content="Examine LLM competence boundaries and hallucination phenomena. Covers confidence calibration, factual accuracy limits, adversarial prompting, and mitigation strategies.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Generative AI">
+    <meta name="tags"
+        content="LLM Hallucination, LLM Limitations, Factual Accuracy, Confidence Calibration, Adversarial Prompting, Model Uncertainty, Hallucination Mitigation, Large Language Models, AI Safety, Generative AI">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary"
+        content="Analysis of LLM competence boundaries and hallucination phenomena covering the gap between statistical pattern matching and genuine reasoning, confidence calibration, factual accuracy limitations, adversarial prompting vulnerabilities, and practical mitigation strategies.">
+    <link rel="canonical"
+        href="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/llm-competence-and-hallucination">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="LLM Competence and Hallucination">
+    <meta property="og:description"
+        content="Examine LLM competence boundaries and hallucination phenomena. Covers confidence calibration, factual accuracy limits, adversarial prompting, and mitigation strategies.">
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/llm-competence-and-hallucination">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2026-02-28">
+    <meta property="article:section" content="Generative AI">
+    <meta property="article:tag" content="LLM Hallucination">
+    <meta property="article:tag" content="LLM Limitations">
+    <meta property="article:tag" content="Factual Accuracy">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "LLM Competence and Hallucination",
+        "description": "Examine LLM competence boundaries and hallucination phenomena. Covers confidence calibration, factual accuracy limits, adversarial prompting, and mitigation strategies.",
+        "datePublished": "2026-02-28",
+        "dateModified": "2026-02-28",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/llm-competence-and-hallucination"
+        },
+        "keywords": ["LLM Hallucination", "LLM Limitations", "Factual Accuracy", "Confidence Calibration", "Adversarial Prompting", "Model Uncertainty", "Hallucination Mitigation", "Large Language Models", "AI Safety", "Generative AI"],
+        "articleSection": "Generative AI",
+        "about": [
+            {"@type": "Thing", "name": "LLM Hallucination"},
+            {"@type": "Thing", "name": "LLM Limitations"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "Confidence Calibration"},
+            {"@type": "Thing", "name": "Adversarial Prompting"}
+        ]
+    }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+
+    <style>
+        /* Typography */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: #475569;
+            background-color: #FAFBFC;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        .font-sora {
+            font-family: 'Sora', sans-serif;
+            color: #1E293B;
+            letter-spacing: -0.02em;
+        }
+
+        /* Safe Colors (Hex based to avoid Tailwind v3 issues) */
+        .bg-white {
+            background-color: #FFFFFF;
+        }
+
+        .bg-gray-lightest {
+            background-color: #F8FAFC;
+        }
+
+        .theme-blue-bg {
+            background-color: #F0F9FF;
+        }
+
+        .theme-blue-text {
+            color: #0EA5E9;
+        }
+
+        .theme-blue-border {
+            border-color: #0EA5E9;
+        }
+
+        .theme-green-bg {
+            background-color: #F0FDF4;
+        }
+
+        .theme-green-text {
+            color: #16A34A;
+        }
+
+        .theme-deepblue-bg {
+            background-color: #EFF6FF;
+        }
+
+        .theme-deepblue-text {
+            color: #2563EB;
+        }
+
+        .theme-purple-bg {
+            background-color: #FDF4FF;
+        }
+
+        .theme-purple-text {
+            color: #A855F7;
+        }
+
+        .theme-yellow-bg {
+            background-color: #FEF3C7;
+        }
+
+        .theme-yellow-text {
+            color: #D97706;
+        }
+
+        .theme-red-bg {
+            background-color: #FEF2F2;
+        }
+
+        .theme-red-text {
+            color: #DC2626;
+        }
+
+        .theme-orange-bg {
+            background-color: #FFF7ED;
+        }
+
+        .theme-orange-text {
+            color: #EA580C;
+        }
+
+        .theme-teal-bg {
+            background-color: #F0FDFA;
+        }
+
+        .theme-teal-text {
+            color: #0D9488;
+        }
+
+        .theme-indigo-bg {
+            background-color: #E0E7FF;
+        }
+
+        .theme-indigo-text {
+            color: #6366F1;
+        }
+
+        .text-gray-dark {
+            color: #1E293B;
+        }
+
+        .text-gray-med {
+            color: #475569;
+        }
+
+        .text-gray-light {
+            color: #64748B;
+        }
+
+        /* Layout & UI Elements */
+        .max-w-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+
+        .card-interactive {
+            cursor: pointer;
+        }
+
+        .expandable-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
+        }
+
+        .expanded .expandable-content {
+            max-height: 500px;
+            opacity: 1;
+            margin-top: 1rem;
+        }
+
+        .gradient-stripe {
+            height: 6px;
+            width: 100%;
+            background: linear-gradient(90deg, #0EA5E9, #2563EB, #A855F7, #DC2626, #EA580C, #D97706, #16A34A);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 50;
+        }
+
+        /* Blank Page Prevention: Safe Fade-In */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Signature Visual Structures */
+        .correct-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: #F0FDF4;
+            color: #16A34A;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .incorrect-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: #FEF2F2;
+            color: #DC2626;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Print Styles */
+        @media print {
+            .gradient-stripe {
+                display: none;
+            }
+
+            .card {
+                break-inside: avoid;
+                border: 1px solid #ccc;
+                box-shadow: none !important;
+                transform: none !important;
+            }
+
+            .fade-section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .expandable-content {
+                max-height: none !important;
+                opacity: 1 !important;
+                display: block !important;
+                margin-top: 1rem !important;
+            }
+
+            body {
+                background-color: white;
+            }
+        }
+    </style>
+</head>
+
+<body class="pt-6 pb-16 px-4 sm:px-6">
+
+    <div class="gradient-stripe"></div>
+
+    <div class="max-w-content space-y-16">
+
+        <header class="text-center fade-section pt-8">
+            <div class="inline-flex items-center justify-center p-3 rounded-2xl theme-blue-bg theme-blue-text mb-6">
+                <i data-lucide="brain" class="w-8 h-8"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-dark">LLM Competence and Hallucination</h1>
+            <p class="text-xl md:text-2xl font-dm text-gray-med mb-6 max-w-2xl mx-auto">
+                When AI Gets It Right, When AI Makes It Up, and How to Tell the Difference
+            </p>
+            <div
+                class="inline-block bg-white border border-gray-200 rounded-full px-6 py-2 text-sm text-gray-light font-medium shadow-sm">
+                Based on lectures by Dr. Ian McCullough, Johns Hopkins University
+            </div>
+        </header>
+
+        <section class="fade-section">
+            <div class="card p-8 bg-gray-lightest border-none">
+                <p class="text-lg md:text-xl text-center font-medium text-gray-dark mb-8">
+                    Machine learning based generative AI introduces probability and stochasticity, creating room for
+                    error. We categorize these errors into two distinct types.
+                </p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div
+                        class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col items-center text-center">
+                        <div class="p-3 rounded-full theme-deepblue-bg theme-deepblue-text mb-4">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-dark mb-2">Competence Failures</h3>
+                        <p class="text-sm text-gray-med">The model breaks structural rules of language or fails at
+                            functional logic and reasoning.</p>
+                    </div>
+                    <div
+                        class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col items-center text-center">
+                        <div class="p-3 rounded-full theme-red-bg theme-red-text mb-4">
+                            <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-dark mb-2">Hallucinations</h3>
+                        <p class="text-sm text-gray-med">The model fabricates plausible-sounding but entirely incorrect
+                            information that does not exist.</p>
+                    </div>
+                </div>
+                <div class="mt-8 text-center text-gray-light font-medium flex items-center justify-center gap-2">
+                    Let's start by understanding what makes a model competent <i data-lucide="arrow-down"
+                        class="w-4 h-4"></i>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 rounded-lg theme-green-bg theme-green-text"><i data-lucide="check-circle"
+                        class="w-5 h-5"></i></div>
+                <h2 class="text-2xl font-bold">What Makes a Model Competent?</h2>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+                <div class="card p-5">
+                    <h4 class="font-bold text-gray-dark mb-1 flex items-center gap-2"><i data-lucide="target"
+                            class="w-4 h-4 theme-green-text"></i> Accuracy</h4>
+                    <p class="text-sm text-gray-med mb-3">Is it the right answer?</p>
+                    <div class="bg-gray-50 p-3 rounded-lg text-sm border border-gray-100">
+                        <span class="font-medium text-gray-dark">Example:</span> "Capital of France = Paris" (Not Lyon
+                        or Nice due to recent news bias).
+                    </div>
+                </div>
+                <div class="card p-5">
+                    <h4 class="font-bold text-gray-dark mb-1 flex items-center gap-2"><i data-lucide="lightbulb"
+                            class="w-4 h-4 theme-green-text"></i> Understanding</h4>
+                    <p class="text-sm text-gray-med mb-3">Is it consistent with human understanding?</p>
+                    <div class="bg-gray-50 p-3 rounded-lg text-sm border border-gray-100">
+                        <span class="font-medium text-gray-dark">Example:</span> Discussing carbon emissions and
+                        renewable energy for "climate change" without going off-topic.
+                    </div>
+                </div>
+                <div class="card p-5">
+                    <h4 class="font-bold text-gray-dark mb-1 flex items-center gap-2"><i data-lucide="refresh-cw"
+                            class="w-4 h-4 theme-green-text"></i> Consistency</h4>
+                    <p class="text-sm text-gray-med mb-3">Will it give the same answer if asked multiple times?</p>
+                </div>
+                <div class="card p-5">
+                    <h4 class="font-bold text-gray-dark mb-1 flex items-center gap-2"><i data-lucide="maximize"
+                            class="w-4 h-4 theme-green-text"></i> Generalizability</h4>
+                    <p class="text-sm text-gray-med mb-3">Can outputs apply to other problems or areas?</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section theme-deepblue-bg rounded-3xl p-6 md:p-8 border border-blue-100">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="p-2 rounded-lg bg-white theme-deepblue-text shadow-sm"><i data-lucide="shield-check"
+                        class="w-6 h-6"></i></div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-dark">Formal Competence Skills</h2>
+            </div>
+            <p class="text-gray-med mb-8 font-medium">"A competent model will not make these types of errors. The
+                structural foundation of language."</p>
+
+            <div class="space-y-4">
+                <div class="card p-5 bg-white flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="md:w-1/3">
+                        <h3 class="font-bold text-lg text-gray-dark flex items-center gap-2">1. Phonology</h3>
+                        <p class="text-sm text-gray-med">Rules governing what is a valid word form.</p>
+                    </div>
+                    <div class="md:w-2/3 space-y-2">
+                        <div class="flex items-start gap-3"><span class="correct-badge"><i data-lucide="check"
+                                    class="w-3 h-3 mr-1"></i> Correct</span> <span
+                                class="text-sm font-medium">"blick"</span> <span class="text-sm text-gray-light">— valid
+                                English word form structure</span></div>
+                        <div class="flex items-start gap-3"><span class="incorrect-badge"><i data-lucide="x"
+                                    class="w-3 h-3 mr-1"></i> Incorrect</span> <span
+                                class="text-sm font-medium">"bnick"</span> <span class="text-sm text-gray-light">—
+                                violates phonological rules</span></div>
+                    </div>
+                </div>
+                <div class="card p-5 bg-white flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="md:w-1/3">
+                        <h3 class="font-bold text-lg text-gray-dark flex items-center gap-2">2. Morphology</h3>
+                        <p class="text-sm text-gray-med">Rules governing valid language combinations.</p>
+                    </div>
+                    <div class="md:w-2/3 space-y-2">
+                        <div class="flex items-start gap-3"><span class="correct-badge"><i data-lucide="check"
+                                    class="w-3 h-3 mr-1"></i> Correct</span> <span class="text-sm font-medium">"Lady
+                                Gaga-esque-ness"</span></div>
+                        <div class="flex items-start gap-3"><span class="incorrect-badge"><i data-lucide="x"
+                                    class="w-3 h-3 mr-1"></i> Incorrect</span> <span class="text-sm font-medium">"Lady
+                                Gaga-ness-esque"</span></div>
+                    </div>
+                </div>
+                <div class="card p-5 bg-white flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="md:w-1/3">
+                        <h3 class="font-bold text-lg text-gray-dark flex items-center gap-2">3. Lexical Semantics</h3>
+                        <p class="text-sm text-gray-med">Where parts of speech or word meanings occur.</p>
+                    </div>
+                    <div class="md:w-2/3 space-y-2">
+                        <div class="flex items-start gap-3"><span class="correct-badge"><i data-lucide="check"
+                                    class="w-3 h-3 mr-1"></i> Correct</span> <span class="text-sm font-medium">"Coffee
+                                with cream and sugar"</span></div>
+                        <div class="flex items-start gap-3"><span class="incorrect-badge"><i data-lucide="x"
+                                    class="w-3 h-3 mr-1"></i> Incorrect</span> <span class="text-sm font-medium">"Coffee
+                                with cream and red"</span></div>
+                    </div>
+                </div>
+                <div class="card p-5 bg-white flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="md:w-1/3">
+                        <h3 class="font-bold text-lg text-gray-dark flex items-center gap-2">4. Syntax</h3>
+                        <p class="text-sm text-gray-med">Grammatical structure and agreement.</p>
+                    </div>
+                    <div class="md:w-2/3 space-y-2">
+                        <div class="flex items-start gap-3"><span class="correct-badge"><i data-lucide="check"
+                                    class="w-3 h-3 mr-1"></i> Correct</span> <span class="text-sm font-medium">"The key
+                                to the cabinets is on the table"</span></div>
+                        <div class="flex items-start gap-3"><span class="incorrect-badge"><i data-lucide="x"
+                                    class="w-3 h-3 mr-1"></i> Incorrect</span> <span class="text-sm font-medium">"The
+                                key to the cabinets are on the table"</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 bg-white/60 p-4 rounded-xl text-center border border-white">
+                <p class="font-bold text-gray-dark flex items-center justify-center gap-2">
+                    <i data-lucide="git-branch" class="w-5 h-5 theme-deepblue-text"></i>
+                    Many of these can be enforced with symbolic AI or rules applied to the output.
+                </p>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="p-2 rounded-lg theme-purple-bg theme-purple-text"><i data-lucide="brain"
+                        class="w-6 h-6"></i></div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-dark">Functional Competence Skills</h2>
+            </div>
+            <p class="text-gray-med mb-6 font-medium">Higher-order reasoning. "This is where it's a lot more difficult.
+                Errors here are grammatically perfect but logically wrong."</p>
+            <p class="text-xs text-gray-light uppercase tracking-wider mb-4">Click cards to expand details</p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="card p-6 card-interactive toggle-card border-t-4 border-t-purple-400">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-bold text-lg text-gray-dark flex items-center gap-2"><i data-lucide="calculator"
+                                class="w-5 h-5 theme-purple-text"></i> Formal Reasoning</h3>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 chevron"></i>
+                    </div>
+                    <p class="text-sm text-gray-med mb-4">Logic, math, and planning capabilities.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-2"><span class="correct-badge">✓</span> <span
+                                class="text-sm font-medium">14 birds - 3 + 1 = 12 birds</span></div>
+                        <div class="flex items-start gap-2"><span class="incorrect-badge">✗</span> <span
+                                class="text-sm font-medium">14 birds - 3 + 1 = 11 birds</span></div>
+                    </div>
+                    <div class="expandable-content">
+                        <p class="text-sm text-gray-light bg-gray-50 p-3 rounded-lg border border-gray-100">
+                            A model failing basic arithmetic demonstrates a formal reasoning error, proving it lacks
+                            functional competence despite understanding the sentence structure.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card p-6 card-interactive toggle-card border-t-4 border-t-purple-400">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-bold text-lg text-gray-dark flex items-center gap-2"><i data-lucide="globe"
+                                class="w-5 h-5 theme-purple-text"></i> World Knowledge</h3>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 chevron"></i>
+                    </div>
+                    <p class="text-sm text-gray-med mb-4">Physical realities and common sense.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-2"><span class="correct-badge">✓</span> <span
+                                class="text-sm font-medium">Trophy doesn't fit because suitcase is too small</span>
+                        </div>
+                        <div class="flex items-start gap-2"><span class="incorrect-badge">✗</span> <span
+                                class="text-sm font-medium">Trophy doesn't fit because trophy is too small</span></div>
+                    </div>
+                    <div class="expandable-content">
+                        <p class="text-sm text-gray-light bg-gray-50 p-3 rounded-lg border border-gray-100">
+                            Understanding how physical objects relate to each other (size constraints) requires
+                            real-world knowledge beyond word associations.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card p-6 card-interactive toggle-card border-t-4 border-t-purple-400">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-bold text-lg text-gray-dark flex items-center gap-2"><i data-lucide="layout"
+                                class="w-5 h-5 theme-purple-text"></i> Situational Modeling</h3>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 chevron"></i>
+                    </div>
+                    <p class="text-sm text-gray-med mb-4">Maintaining an accurate mental state of a scenario.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-2"><span class="correct-badge">✓</span> <span
+                                class="text-sm font-medium">Sally owns a dog → the dog is black</span></div>
+                        <div class="flex items-start gap-2"><span class="incorrect-badge">✗</span> <span
+                                class="text-sm font-medium">Sally doesn't own a dog → the dog is black</span></div>
+                    </div>
+                    <div class="expandable-content">
+                        <p class="text-sm text-gray-light bg-gray-50 p-3 rounded-lg border border-gray-100">
+                            If the premise establishes that no dog exists, proceeding to describe the non-existent dog
+                            is a failure of situational modeling.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card p-6 card-interactive toggle-card border-t-4 border-t-purple-400">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-bold text-lg text-gray-dark flex items-center gap-2"><i data-lucide="users"
+                                class="w-5 h-5 theme-purple-text"></i> Social Reasoning</h3>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-gray-400 chevron"></i>
+                    </div>
+                    <p class="text-sm text-gray-med mb-4">Theory of mind and understanding perspectives.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-2"><span class="correct-badge">✓</span> <span
+                                class="text-sm font-medium">Lou thinks toy is in the box</span></div>
+                        <div class="flex items-start gap-2"><span class="incorrect-badge">✗</span> <span
+                                class="text-sm font-medium">Lou thinks toy is in the closet</span></div>
+                    </div>
+                    <div class="expandable-content">
+                        <p class="text-sm text-gray-light bg-gray-50 p-3 rounded-lg border border-gray-100">
+                            Requires tracking what different agents know independently of what the "narrator" (or model)
+                            knows to be true.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                <p class="text-sm font-bold text-gray-dark">Understanding different types of competence is important if
+                    you want to test and validate that your model is performing reliably.</p>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="card bg-white p-0 overflow-hidden border-2 border-yellow-100">
+                <div class="theme-yellow-bg p-6 flex items-center gap-4">
+                    <div class="bg-white p-3 rounded-full shadow-sm theme-yellow-text"><i data-lucide="users"
+                            class="w-6 h-6"></i></div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-dark">Theory of Mind — The Lou and Bo Test</h3>
+                        <p class="text-sm text-gray-med font-medium">Understanding that different people might have
+                            different perspectives.</p>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <div class="flex flex-col md:flex-row gap-8 items-center">
+                        <div class="md:w-1/3">
+                            <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-sm">
+                                <p class="font-bold text-gray-dark mb-2">In Psychology:</p>
+                                <p class="text-gray-med mb-4">Develops around age 4-5. Before this, a child looking into
+                                    the back of a dollhouse assumes someone in front can see the same hidden furniture.
+                                </p>
+                                <p class="font-bold text-gray-dark mb-2">In AI:</p>
+                                <p class="text-gray-med">Tests whether the model can track what different agents know
+                                    within a scenario.</p>
+                            </div>
+                        </div>
+                        <div class="md:w-2/3 space-y-4 w-full">
+                            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                                <p class="font-bold text-gray-dark mb-1">Scenario:</p>
+                                <p class="text-sm text-gray-med">Lou puts the toy in the box and leaves. Bo secretly
+                                    moves the toy to the closet.</p>
+                            </div>
+
+                            <div class="flex gap-4 p-4 border border-green-200 rounded-xl bg-green-50">
+                                <div class="mt-1"><span class="correct-badge text-lg px-2">✓</span></div>
+                                <div>
+                                    <p class="font-bold text-gray-dark">Correct Reasoning</p>
+                                    <p class="text-sm text-gray-med">"Lou thinks the toy is in the box." Lou doesn't
+                                        know Bo moved it.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex gap-4 p-4 border border-red-200 rounded-xl bg-red-50">
+                                <div class="mt-1"><span class="incorrect-badge text-lg px-2">✗</span></div>
+                                <div>
+                                    <p class="font-bold text-gray-dark">Incorrect Reasoning</p>
+                                    <p class="text-sm text-gray-med">"Lou thinks the toy is in the closet." Lou has no
+                                        perspective to know what Bo did, even though that's where the object actually
+                                        is.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section theme-red-bg rounded-3xl p-6 md:p-8 border border-red-100">
+            <div class="flex items-center gap-3 mb-2">
+                <div class="p-2 rounded-lg bg-white theme-red-text shadow-sm"><i data-lucide="alert-triangle"
+                        class="w-6 h-6"></i></div>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-dark">Hallucination: Fabrication in Action</h2>
+            </div>
+            <p class="text-gray-med mb-8 font-medium">"Plausible sounding information that's entirely made up." Click
+                cards to reveal the generated fiction.</p>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="card p-5 bg-white card-interactive toggle-card">
+                    <h3 class="font-bold text-lg text-gray-dark mb-1">John Doe</h3>
+                    <p class="text-sm font-medium theme-red-text mb-3">Fabricated Historical Figure</p>
+                    <div class="expandable-content mt-0">
+                        <div class="bg-gray-50 p-3 rounded-lg text-sm border border-gray-100 mb-3">
+                            <span class="font-bold">Prompt:</span> "Tell me about the contributions of John Doe to the
+                            American Revolution."
+                        </div>
+                        <div class="bg-red-50 p-3 rounded-lg text-sm border border-red-100 italic text-gray-med mb-2">
+                            "John Doe was a key figure... known for his strategic prowess during the Battle of Bunker
+                            Hill and his diplomatic efforts with France."
+                        </div>
+                        <p class="text-xs text-gray-light font-medium">Reality: John Doe is a fabricated figure with no
+                            historical reality.</p>
+                    </div>
+                </div>
+
+                <div class="card p-5 bg-white card-interactive toggle-card">
+                    <h3 class="font-bold text-lg text-gray-dark mb-1">Dr. Jane Smith</h3>
+                    <p class="text-sm font-medium theme-red-text mb-3">Fabricated Scientist & Particle</p>
+                    <div class="expandable-content mt-0">
+                        <div class="bg-gray-50 p-3 rounded-lg text-sm border border-gray-100 mb-3">
+                            <span class="font-bold">Prompt:</span> "What are some recent discoveries made by Dr. Jane
+                            Smith in quantum mechanics?"
+                        </div>
+                        <div class="bg-red-50 p-3 rounded-lg text-sm border border-red-100 italic text-gray-med mb-2">
+                            "Jane Smith recently discovered a new particle called the quantum photon, which has
+                            revolutionized our understanding..."
+                        </div>
+                        <p class="text-xs text-gray-light font-medium">Reality: Fictitious scientist and entirely
+                            invented scientific concept.</p>
+                    </div>
+                </div>
+
+                <div class="card p-5 bg-white card-interactive toggle-card">
+                    <h3 class="font-bold text-lg text-gray-dark mb-1">Zetacode</h3>
+                    <p class="text-sm font-medium theme-red-text mb-3">Fabricated Programming Language</p>
+                    <div class="expandable-content mt-0">
+                        <div class="bg-gray-50 p-3 rounded-lg text-sm border border-gray-100 mb-3">
+                            <span class="font-bold">Prompt:</span> "Explain the new programming language Zetacode
+                            developed by Google."
+                        </div>
+                        <div class="bg-red-50 p-3 rounded-lg text-sm border border-red-100 italic text-gray-med mb-2">
+                            "Zetacode is a new language developed by Google that combines the simplicity of Python with
+                            the performance of C++..."
+                        </div>
+                        <p class="text-xs text-gray-light font-medium">Reality: Completely fabricated language with no
+                            Google development.</p>
+                    </div>
+                </div>
+
+                <div class="card p-5 bg-white card-interactive toggle-card">
+                    <h3 class="font-bold text-lg text-gray-dark mb-1">Panacea X</h3>
+                    <p class="text-sm font-medium theme-red-text mb-3">Fabricated Medical Drug</p>
+                    <div class="expandable-content mt-0">
+                        <div class="bg-gray-50 p-3 rounded-lg text-sm border border-gray-100 mb-3">
+                            <span class="font-bold">Prompt:</span> "What are the benefits of the new drug Panacea X for
+                            treating diabetes?"
+                        </div>
+                        <div class="bg-red-50 p-3 rounded-lg text-sm border border-red-100 italic text-gray-med mb-2">
+                            "Panacea X is a breakthrough drug offering a 90% reduction in blood sugar levels... it works
+                            by activating a unique enzyme."
+                        </div>
+                        <p class="text-xs text-gray-light font-medium">Reality: Fictitious drug with entirely fabricated
+                            medical claims.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 bg-white/80 p-5 rounded-xl text-center border border-white max-w-2xl mx-auto">
+                <p class="font-bold text-gray-dark">Why it happens:</p>
+                <p class="text-sm text-gray-med mt-2">
+                    "Looking at former historical situations or context or figures... the model can take a name and
+                    generate a really good, plausible sounding story without any facts behind it."
+                </p>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <div class="card bg-white p-6 border-t-4 border-t-orange-400">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2 rounded-lg theme-orange-bg theme-orange-text"><i data-lucide="help-circle"
+                                class="w-5 h-5"></i></div>
+                        <h3 class="text-xl font-bold text-gray-dark">Why Hallucination Happens</h3>
+                    </div>
+                    <p class="text-sm font-medium text-gray-dark italic mb-4">"Probability and stochasticity create room
+                        for error."</p>
+
+                    <div class="space-y-4">
+                        <div class="flex gap-3">
+                            <div class="flex flex-col items-center">
+                                <div
+                                    class="w-6 h-6 rounded-full theme-orange-bg theme-orange-text flex items-center justify-center text-xs font-bold">
+                                    1</div>
+                                <div class="w-0.5 h-full bg-orange-100 my-1"></div>
+                            </div>
+                            <div class="pb-2">
+                                <p class="text-sm font-bold text-gray-dark">Pattern Matching, Not Fact Retrieval</p>
+                                <p class="text-xs text-gray-med mt-1">LLMs generate text by predicting the next probable
+                                    token based on statistical patterns, not retrieving true facts.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="flex flex-col items-center">
+                                <div
+                                    class="w-6 h-6 rounded-full theme-orange-bg theme-orange-text flex items-center justify-center text-xs font-bold">
+                                    2</div>
+                                <div class="w-0.5 h-full bg-orange-100 my-1"></div>
+                            </div>
+                            <div class="pb-2">
+                                <p class="text-sm font-bold text-gray-dark">Gap-Filling with Plausible Text</p>
+                                <p class="text-xs text-gray-med mt-1">When asked about something not in training data,
+                                    it fills gaps using the nearest patterns (e.g., historical military tone for "John
+                                    Doe").</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <div class="flex flex-col items-center">
+                                <div
+                                    class="w-6 h-6 rounded-full theme-orange-bg theme-orange-text flex items-center justify-center text-xs font-bold">
+                                    3</div>
+                            </div>
+                            <div class="pb-2">
+                                <p class="text-sm font-bold text-gray-dark">No Internal "I Don't Know" Signal</p>
+                                <p class="text-xs text-gray-med mt-1">The model generates all text with the same
+                                    confident tone. It cannot distinguish its own knowledge from its guessing.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card bg-white p-6 border-t-4 border-t-teal-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2 rounded-lg theme-teal-bg theme-teal-text"><i data-lucide="shield"
+                                class="w-5 h-5"></i></div>
+                        <h3 class="text-xl font-bold text-gray-dark">Prompt Engineering Guardrails</h3>
+                    </div>
+                    <p class="text-sm font-medium text-gray-dark italic mb-4">"Always ask in the prompt to cite
+                        references."</p>
+
+                    <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 mb-4">
+                        <p class="text-xs font-bold text-gray-dark uppercase tracking-wide mb-2">The Lecturer's Workflow
+                        </p>
+                        <ol class="text-sm text-gray-med list-decimal list-inside space-y-1">
+                            <li>Ask AI for examples of fabrication</li>
+                            <li><span class="font-bold theme-teal-text">Require citations in APA format</span></li>
+                            <li>Verify cited references actually exist</li>
+                            <li>Use validated examples</li>
+                        </ol>
+                    </div>
+
+                    <p class="text-sm text-gray-med mb-3">This constrains the AI to look for actual sources before
+                        making something up. Other techniques include:</p>
+                    <ul class="text-sm text-gray-med space-y-2">
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 theme-teal-text"></i>
+                            Instructing: "Say 'I don't know' if unsure"</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 theme-teal-text"></i>
+                            Providing few-shot examples</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 theme-teal-text"></i>
+                            Using chain-of-thought reasoning</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 theme-teal-text"></i>
+                            Constraining output formats</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="text-center mb-10">
+                <div
+                    class="inline-flex items-center justify-center p-3 rounded-full theme-deepblue-bg theme-deepblue-text mb-4">
+                    <i data-lucide="layers" class="w-8 h-8"></i>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-dark mb-3">Minimizing Hallucination</h2>
+                <p class="text-lg text-gray-med max-w-2xl mx-auto">Six comprehensive strategies to build more reliable
+                    AI systems.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="card p-6 bg-white border-2 border-green-200 shadow-sm relative overflow-visible">
+                    <div
+                        class="absolute -top-3 -right-3 bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md flex items-center gap-1">
+                        <i data-lucide="star" class="w-3 h-3 fill-current"></i> Highest Impact
+                    </div>
+                    <div class="p-2 rounded-lg theme-green-bg theme-green-text inline-block mb-3"><i
+                            data-lucide="database" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-dark mb-2">1. High-Quality Data</h3>
+                    <p class="text-sm text-gray-med italic mb-2">"The highest gains come from better data, not model
+                        tuning."</p>
+                </div>
+                <div class="card p-6 bg-white">
+                    <div class="p-2 rounded-lg theme-deepblue-bg theme-deepblue-text inline-block mb-3"><i
+                            data-lucide="settings" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-dark mb-2">2. Fine-Tuning</h3>
+                    <p class="text-sm text-gray-med italic mb-2">"Fine-tune with specific objectives in mind."</p>
+                    <p class="text-xs text-gray-light">Reduces hallucination in specific tasks you use it for.</p>
+                </div>
+                <div class="card p-6 bg-white">
+                    <div class="p-2 rounded-lg theme-deepblue-bg theme-deepblue-text inline-block mb-3"><i
+                            data-lucide="terminal" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-dark mb-2">3. Prompt Engineering</h3>
+                    <p class="text-sm text-gray-med italic mb-2">"Cite my references in APA format."</p>
+                    <p class="text-xs text-gray-light">Constrain the AI to look for real sources.</p>
+                </div>
+                <div class="card p-6 bg-white">
+                    <div class="p-2 rounded-lg theme-indigo-bg theme-indigo-text inline-block mb-3"><i
+                            data-lucide="git-branch" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-dark mb-2">4. Post-Processing</h3>
+                    <p class="text-sm text-gray-med italic mb-2">"Run through formal verification — symbolic AI."</p>
+                    <p class="text-xs text-gray-light">First-order logic to ensure referential integrity.</p>
+                </div>
+                <div class="card p-6 bg-white">
+                    <div class="p-2 rounded-lg theme-yellow-bg theme-yellow-text inline-block mb-3"><i
+                            data-lucide="user" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-dark mb-2">5. Human in the Loop</h3>
+                    <p class="text-sm text-gray-med italic mb-2">"Humans checking it — but humans are prone to errors."
+                    </p>
+                    <p class="text-xs font-bold text-yellow-600">⚠ Humans hallucinate too!</p>
+                </div>
+                <div class="card p-6 bg-white">
+                    <div class="p-2 rounded-lg theme-deepblue-bg theme-deepblue-text inline-block mb-3"><i
+                            data-lucide="refresh-cw" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-gray-dark mb-2">6. Regular Updates</h3>
+                    <p class="text-sm text-gray-med italic mb-2">"Regular updates and training to the model and data."
+                    </p>
+                    <p class="text-xs text-gray-light">Keep information current and accurate.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <div class="card theme-green-bg p-6 border-none">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-white p-2 rounded-lg theme-green-text shadow-sm"><i data-lucide="hard-drive"
+                                class="w-6 h-6"></i></div>
+                        <h3 class="text-xl font-bold text-gray-dark">Data Quality Lever</h3>
+                    </div>
+                    <p class="text-sm font-bold text-gray-dark italic mb-4">"I've always achieved the highest gains not
+                        by tuning the model, but by providing better quality data."</p>
+
+                    <div
+                        class="bg-white/60 p-4 rounded-xl space-y-2 text-sm text-gray-dark font-medium border border-green-100">
+                        <div class="flex justify-between border-b border-green-200/50 pb-2"><span>Correct</span> <span
+                                class="text-gray-med">Right facts, no errors</span></div>
+                        <div class="flex justify-between border-b border-green-200/50 pb-2"><span>Consistent</span>
+                            <span class="text-gray-med">No contradictions</span></div>
+                        <div class="flex justify-between border-b border-green-200/50 pb-2"><span>Complete</span> <span
+                                class="text-gray-med">No important gaps</span></div>
+                        <div class="flex justify-between border-b border-green-200/50 pb-2"><span>Current</span> <span
+                                class="text-gray-med">Up to date</span></div>
+                        <div class="flex justify-between"><span>Representative</span> <span class="text-gray-med">Covers
+                                domains</span></div>
+                    </div>
+                    <p class="text-xs text-gray-med mt-4 font-medium text-center">More attention to correct data =
+                        better model, less hallucination.</p>
+                </div>
+
+                <div class="card theme-indigo-bg p-6 border-none">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-white p-2 rounded-lg theme-indigo-text shadow-sm"><i data-lucide="code"
+                                class="w-6 h-6"></i></div>
+                        <h3 class="text-xl font-bold text-gray-dark">Symbolic AI Verification</h3>
+                    </div>
+                    <p class="text-sm font-bold text-gray-dark italic mb-4">"Apply first-order logic to make sure
+                        outputs maintain referential integrity."</p>
+
+                    <div class="bg-white p-4 rounded-xl border border-indigo-100 text-center">
+                        <div class="text-xs font-bold text-gray-dark mb-2 bg-gray-100 py-1 rounded">LLM OUTPUT</div>
+                        <div class="text-gray-300 my-1">↓</div>
+                        <div class="flex justify-center gap-2 mb-2">
+                            <div
+                                class="text-xs border border-indigo-200 rounded p-2 flex-1 theme-indigo-text font-medium bg-indigo-50">
+                                Grammar Check</div>
+                            <div
+                                class="text-xs border border-indigo-200 rounded p-2 flex-1 theme-indigo-text font-medium bg-indigo-50">
+                                Logic Check</div>
+                            <div
+                                class="text-xs border border-indigo-200 rounded p-2 flex-1 theme-indigo-text font-medium bg-indigo-50">
+                                Reference Exists?</div>
+                        </div>
+                        <div class="text-gray-300 my-1">↓</div>
+                        <div class="text-xs font-bold text-white bg-indigo-500 py-1 rounded">VERIFIED OUTPUT</div>
+                    </div>
+
+                    <p class="text-xs text-gray-med mt-4 text-center">Crucial for code generation, query migration, data
+                        integration, and medical/legal text.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="card bg-white overflow-hidden border border-gray-200">
+                <div class="theme-yellow-bg p-6 border-b border-yellow-100 flex items-center gap-4">
+                    <div class="bg-white p-3 rounded-full theme-yellow-text shadow-sm"><i data-lucide="book-open"
+                            class="w-6 h-6"></i></div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-dark">The Human Error Parallel</h3>
+                        <p class="text-sm text-gray-med font-medium">"Humans make mistakes too — they can embed errors
+                            into code that seems authoritative."</p>
+                    </div>
+                </div>
+
+                <div class="p-6 md:p-8 flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/2">
+                        <h4 class="font-bold text-gray-dark mb-4 text-sm tracking-wide uppercase">1982: A Sixth Grader's
+                            Hangman Game</h4>
+                        <div
+                            class="space-y-3 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-300 before:to-transparent">
+                            <div
+                                class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-yellow-400 text-white shadow shrink-0 z-10">
+                                    <i data-lucide="code" class="w-4 h-4"></i></div>
+                                <div
+                                    class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-3 rounded-xl border border-gray-200 bg-white shadow-sm text-sm ml-4 md:ml-0 md:mr-4 group-odd:ml-4 group-odd:mr-0">
+                                    Kid codes Hangman game for state capitals on Apple IIe</div>
+                            </div>
+                            <div
+                                class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-red-400 text-white shadow shrink-0 z-10">
+                                    <i data-lucide="x" class="w-4 h-4"></i></div>
+                                <div
+                                    class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-3 rounded-xl border border-gray-200 bg-white shadow-sm text-sm ml-4 md:ml-0 md:mr-4 group-odd:ml-4 group-odd:mr-0 text-red-600 font-medium">
+                                    Some capitals are entered wrong</div>
+                            </div>
+                            <div
+                                class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-blue-400 text-white shadow shrink-0 z-10">
+                                    <i data-lucide="users" class="w-4 h-4"></i></div>
+                                <div
+                                    class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-3 rounded-xl border border-gray-200 bg-white shadow-sm text-sm ml-4 md:ml-0 md:mr-4 group-odd:ml-4 group-odd:mr-0">
+                                    Teachers share the game. Parent: "My kid got it wrong!"</div>
+                            </div>
+                            <div
+                                class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div
+                                    class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-gray-800 text-white shadow shrink-0 z-10">
+                                    <i data-lucide="monitor" class="w-4 h-4"></i></div>
+                                <div
+                                    class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-3 rounded-xl border border-gray-800 bg-gray-800 text-white shadow-sm text-sm ml-4 md:ml-0 md:mr-4 group-odd:ml-4 group-odd:mr-0 font-bold">
+                                    Teacher: "The COMPUTER said it was right"</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 space-y-4">
+                        <div class="bg-gray-50 p-5 rounded-xl border border-gray-200">
+                            <h4 class="font-bold text-gray-dark mb-2">The Parallel to AI Hallucination</h4>
+                            <p class="text-sm text-gray-med mb-4">"People had so much trust in the computer that they
+                                thought it was the right answer." This is automation bias.</p>
+
+                            <div class="flex items-center gap-3 mb-2 text-sm">
+                                <span class="font-bold text-gray-dark w-12">1982:</span>
+                                <span class="text-gray-med bg-white px-2 py-1 rounded border border-gray-200 flex-1">Bad
+                                    data → authoritative-looking output</span>
+                            </div>
+                            <div class="flex items-center gap-3 mb-4 text-sm">
+                                <span class="font-bold text-gray-dark w-12">Now:</span>
+                                <span
+                                    class="text-gray-med bg-white px-2 py-1 rounded border border-gray-200 flex-1">Statistical
+                                    patterns → authoritative fiction</span>
+                            </div>
+                            <div
+                                class="text-center font-bold text-sm text-yellow-600 bg-yellow-50 py-2 rounded-lg border border-yellow-200">
+                                BOTH: Trust in the medium masks the error
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-dark mb-8">Competence vs. Hallucination</h2>
+
+            <div class="card overflow-hidden">
+                <div class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+
+                    <div class="p-6 md:p-8 bg-white card-interactive toggle-card">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="p-2 rounded-lg theme-green-bg theme-green-text"><i data-lucide="check-circle"
+                                    class="w-6 h-6"></i></div>
+                            <h3 class="text-2xl font-bold text-gray-dark tracking-tight">Competence</h3>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-300 ml-auto md:hidden chevron"></i>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Definition
+                                </h4>
+                                <p class="text-sm font-medium text-gray-dark">Model produces accurate, understanding,
+                                    consistent, generalizable outputs.</p>
+                            </div>
+
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Formal
+                                    Dimension</h4>
+                                <p class="text-sm text-gray-med">Phonology, morphology, lexical semantics, syntax.</p>
+                            </div>
+
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Functional
+                                    Dimension</h4>
+                                <p class="text-sm text-gray-med">Reasoning, world knowledge, situational modeling,
+                                    theory of mind.</p>
+                            </div>
+
+                            <div class="expandable-content md:!max-h-[500px] md:!opacity-100 md:!mt-0 md:!block">
+                                <div class="pt-6 border-t border-gray-100 mt-6">
+                                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">How to
+                                        Enforce</h4>
+                                    <p class="text-sm text-gray-med">Symbolic AI and rules applied to output for formal
+                                        competence. Structured structured evaluations across dimensions for testing.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 md:p-8 bg-white card-interactive toggle-card">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="p-2 rounded-lg theme-red-bg theme-red-text"><i data-lucide="alert-triangle"
+                                    class="w-6 h-6"></i></div>
+                            <h3 class="text-2xl font-bold text-gray-dark tracking-tight">Hallucination</h3>
+                            <i data-lucide="chevron-down" class="w-5 h-5 text-gray-300 ml-auto md:hidden chevron"></i>
+                        </div>
+
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Definition
+                                </h4>
+                                <p class="text-sm font-medium text-gray-dark">Model produces incorrect, fabricated,
+                                    inconsistent, unreliable creative outputs.</p>
+                            </div>
+
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Fabrication
+                                </h4>
+                                <p class="text-sm text-gray-med">Generating plausible but entirely made-up information
+                                    (e.g., John Doe in the Revolution).</p>
+                            </div>
+
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Inconsistency
+                                </h4>
+                                <p class="text-sm text-gray-med">Contradicting itself or mixing up facts.</p>
+                            </div>
+
+                            <div class="expandable-content md:!max-h-[500px] md:!opacity-100 md:!mt-0 md:!block">
+                                <div class="pt-6 border-t border-gray-100 mt-6">
+                                    <h4 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">How to
+                                        Mitigate</h4>
+                                    <p class="text-sm text-gray-med">Citation requests, higher quality training data,
+                                        fine-tuning, RAG, and human review.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-4 text-center border-t border-gray-200">
+                    <p class="text-sm font-bold text-gray-dark italic">"A model can be formally competent (perfect
+                        grammar) while still hallucinating (making up facts)."</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div
+                class="card bg-white p-5 md:p-6 border border-teal-100 shadow-sm mx-auto max-w-3xl flex flex-col md:flex-row items-center gap-6">
+                <div class="md:w-1/3 text-center md:text-left">
+                    <div class="inline-flex p-2 rounded-lg theme-teal-bg theme-teal-text mb-3"><i data-lucide="book"
+                            class="w-5 h-5"></i></div>
+                    <h3 class="text-lg font-bold text-gray-dark mb-2">RAG: Grounding AI</h3>
+                    <p class="text-xs text-gray-med">Retrieval-Augmented Generation constrains the AI to look for
+                        references automatically before making things up.</p>
+                </div>
+                <div class="md:w-2/3 w-full">
+                    <div
+                        class="flex items-center justify-between bg-gray-50 rounded-lg p-3 text-xs font-bold text-gray-dark text-center border border-gray-200 relative">
+                        <div class="z-10 bg-white p-2 rounded shadow-sm border border-gray-100">User Query</div>
+                        <div class="flex-1 h-px bg-gray-300 mx-2"></div>
+                        <div class="z-10 bg-teal-50 p-2 rounded shadow-sm border border-teal-200 theme-teal-text">
+                            Retrieve Docs</div>
+                        <div class="flex-1 h-px bg-gray-300 mx-2"></div>
+                        <div class="z-10 bg-white p-2 rounded shadow-sm border border-gray-100">LLM Generation</div>
+                        <div class="flex-1 h-px bg-gray-300 mx-2"></div>
+                        <div class="z-10 bg-green-50 p-2 rounded shadow-sm border border-green-200 theme-green-text">
+                            Grounded Output</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section">
+            <div class="theme-blue-bg p-8 rounded-3xl border border-blue-100 text-center">
+                <i data-lucide="sparkles" class="w-8 h-8 theme-blue-text mx-auto mb-4"></i>
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-dark mb-6">The Bottom Line</h2>
+
+                <p
+                    class="text-base md:text-lg text-gray-dark font-medium max-w-4xl mx-auto leading-relaxed text-left md:text-center space-y-4 block">
+                    <span>Competence and hallucination represent two sides of the same coin in machine learning based
+                        generative AI. Whenever we allow probability and stochasticity into a model, there is room for
+                        error.</span>
+                    <br><br>
+                    <span>Formal competence ensures the model follows the structural rules of language. Functional
+                        competence tests deeper reasoning and understanding. Hallucination — plausible-sounding but
+                        entirely fabricated information — remains one of the greatest challenges.</span>
+                    <br><br>
+                    <span>But high-quality data, prompt engineering, symbolic AI, and human review work together to
+                        build reliable systems. <strong class="text-blue-700">The highest gains always come from better
+                            data, not better models.</strong> Generative AI is still very useful, but there are things
+                        we can do to create guardrails and prevent mistakes.</span>
+                </p>
+            </div>
+        </section>
+
+        <footer class="fade-section text-center pt-8 border-t border-gray-200 pb-8">
+            <p class="text-sm font-bold text-gray-dark">Dr. Ian McCullough, Johns Hopkins University</p>
+            <p class="text-xs text-gray-med mt-1">Lecture Topic: LLM Competence and Hallucination</p>
+            <p class="text-xs text-gray-light mt-4 italic print:hidden">Hover or tap cards for more details. Designed
+                for print and digital view.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Icons safely
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            // 2. Safe IntersectionObserver for scroll fade-ins
+            const sections = document.querySelectorAll('.fade-section');
+
+            // Only add 'not-visible' if JS runs. This prevents blank page if JS fails.
+            sections.forEach(el => el.classList.add('not-visible'));
+
+            if ('IntersectionObserver' in window) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.15
+                };
+
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.remove('not-visible');
+                            obs.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                sections.forEach(section => {
+                    observer.observe(section);
+                });
+            } else {
+                // Fallback for older browsers
+                sections.forEach(el => el.classList.remove('not-visible'));
+            }
+
+            // 3. Interactive Cards Logic (Expand/Collapse)
+            const toggleCards = document.querySelectorAll('.toggle-card');
+
+            toggleCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    // Toggle expanded class
+                    this.classList.toggle('expanded');
+
+                    // Rotate chevron if it exists
+                    const chevron = this.querySelector('.chevron');
+                    if (chevron) {
+                        if (this.classList.contains('expanded')) {
+                            chevron.style.transform = 'rotate(180deg)';
+                            chevron.style.transition = 'transform 0.3s ease';
+                        } else {
+                            chevron.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 {
-  "generated": "2026-02-23",
-  "totalPosts": 62,
+  "generated": "2026-03-04",
+  "totalPosts": 70,
   "baseUrl": "https://www.kishoretech.com",
   "author": "Sriramkishore Naraharisetti",
   "categories": {
@@ -12,7 +12,8 @@
     "AI Bias and Risks": 12,
     "AI Business UseCases": 6,
     "AI Project Management": 2,
-    "Agentic AI": 4
+    "Agentic AI": 4,
+    "Generative AI": 8
   },
   "posts": [
     {
@@ -572,6 +573,78 @@
       "datePublished": "2026-02-15",
       "tags": ["AI Coding", "Agentic AI", "Dark Factory", "AI Productivity", "Developer Skills", "Autonomous Development", "Claude Code", "AI Tools"],
       "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=agentic-ai/ai-coding-levels"
+    },
+    {
+      "file": "generative-ai/data-science-and-ai-landscape.html",
+      "title": "Data Science and AI Landscape",
+      "description": "A comprehensive infographic mapping the AI landscape from symbolic AI to deep learning, covering discriminative vs generative approaches, neural networks, transformers, and real-world applications.",
+      "category": "Generative AI",
+      "datePublished": "2026-02-26",
+      "tags": ["Generative AI", "AI Landscape", "Machine Learning", "Deep Learning", "Neural Networks", "Transformers", "Embeddings", "Discriminative Learning", "Symbolic AI", "Data Science"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/data-science-and-ai-landscape"
+    },
+    {
+      "file": "generative-ai/foundation-models.html",
+      "title": "Foundation Models: The Architecture of Modern AI",
+      "description": "Explore foundation model architecture including transformers, self-attention mechanisms, token prediction, vector embeddings, semantic search, and model adaptation through fine-tuning and RLHF.",
+      "category": "Generative AI",
+      "datePublished": "2026-02-26",
+      "tags": ["Foundation Models", "Transformers", "Self-Attention", "Vector Embeddings", "Semantic Search", "Token Prediction", "Model Drift", "Fine-Tuning", "RLHF", "RAG", "Pre-Training"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/foundation-models"
+    },
+    {
+      "file": "generative-ai/introduction-to-llms.html",
+      "title": "Introduction to Large Language Models",
+      "description": "Explore the LLM landscape including ChatGPT, Llama, and BERT. Learn about next-word prediction, semantic search, the complete training pipeline with SFT, reward modeling, and RLHF.",
+      "category": "Generative AI",
+      "datePublished": "2026-02-28",
+      "tags": ["Large Language Models", "LLM", "ChatGPT", "Next-Word Prediction", "Semantic Search", "Supervised Fine-Tuning", "RLHF", "Reward Models", "Hallucination", "Data Poisoning"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/introduction-to-llms"
+    },
+    {
+      "file": "generative-ai/why-does-chatgpt-appear-smart.html",
+      "title": "Why Does ChatGPT Appear Smart?",
+      "description": "Discover the 7 engineering breakthroughs behind ChatGPT's apparent intelligence: transformers, pre-training, fine-tuning, compute power, optimization, contextual embeddings, and data diversity.",
+      "category": "Generative AI",
+      "datePublished": "2026-02-28",
+      "tags": ["ChatGPT", "Transformers", "Pre-Training", "Fine-Tuning", "Compute Power", "Gradient Descent", "Contextual Embeddings", "Emergent Capabilities", "Statistical Models", "Generative AI"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/why-does-chatgpt-appear-smart"
+    },
+    {
+      "file": "generative-ai/specialized-llms-and-fine-tuning.html",
+      "title": "Specialized LLMs and Fine-Tuning",
+      "description": "Learn when to use fine-tuning vs prompting for LLMs. Covers domain adaptation, transfer learning, instruction tuning, RAG, and practical strategies for customizing AI models.",
+      "category": "Generative AI",
+      "datePublished": "2026-02-28",
+      "tags": ["Specialized LLMs", "Fine-Tuning", "Domain Adaptation", "Transfer Learning", "Prompt Engineering", "RAG", "Instruction Tuning", "Model Specialization", "LLM Customization", "Generative AI"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/specialized-llms-and-fine-tuning"
+    },
+    {
+      "file": "generative-ai/image-generation-history-and-gans.html",
+      "title": "Image Generation: History and GANs",
+      "description": "Trace the 50-year history of AI image generation from early algorithms to GANs. Learn about generative adversarial networks, DCGAN architecture, PixelCNN, and adversarial training.",
+      "category": "Generative AI",
+      "datePublished": "2026-02-28",
+      "tags": ["Image Generation", "GANs", "Generative Adversarial Networks", "DCGAN", "PixelCNN", "Adversarial Training", "Neural Networks", "AI Art", "Computer Vision", "Generative AI"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/image-generation-history-and-gans"
+    },
+    {
+      "file": "generative-ai/image-generation-vae-and-diffusion-models.html",
+      "title": "Image Generation: VAE and Diffusion Models",
+      "description": "Explore VAEs and diffusion models for AI image generation. Learn latent space representation, forward and reverse diffusion, and denoising techniques behind DALL-E and Stable Diffusion.",
+      "category": "Generative AI",
+      "datePublished": "2026-02-28",
+      "tags": ["VAE", "Variational Autoencoders", "Latent Space", "Diffusion Models", "Denoising", "DALL-E", "Stable Diffusion", "Image Generation", "Forward Diffusion", "Reverse Diffusion"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/image-generation-vae-and-diffusion-models"
+    },
+    {
+      "file": "generative-ai/llm-competence-and-hallucination.html",
+      "title": "LLM Competence and Hallucination",
+      "description": "Examine LLM competence boundaries and hallucination phenomena. Covers confidence calibration, factual accuracy limits, adversarial prompting, and mitigation strategies.",
+      "category": "Generative AI",
+      "datePublished": "2026-02-28",
+      "tags": ["LLM Hallucination", "LLM Limitations", "Factual Accuracy", "Confidence Calibration", "Adversarial Prompting", "Model Uncertainty", "Hallucination Mitigation", "Large Language Models", "AI Safety", "Generative AI"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/llm-competence-and-hallucination"
     }
   ]
 }

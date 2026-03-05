@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Large Language Models</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Introduction to Large Language Models">
+    <meta name="description"
+        content="Explore the LLM landscape including ChatGPT, Llama, and BERT. Learn about next-word prediction, semantic search, the complete training pipeline with SFT, reward modeling, and RLHF.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Generative AI">
+    <meta name="tags"
+        content="Large Language Models, LLM, ChatGPT, Next-Word Prediction, Semantic Search, Supervised Fine-Tuning, RLHF, Reward Models, Hallucination, Data Poisoning">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary"
+        content="Introduction to large language models covering the LLM landscape (ChatGPT, Llama, BERT, Falcon), semantic vs keyword search, source verification, next-word prediction mechanism, and the complete training pipeline including supervised fine-tuning, reward modeling, and RLHF.">
+    <link rel="canonical"
+        href="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/introduction-to-llms">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Introduction to Large Language Models">
+    <meta property="og:description"
+        content="Explore the LLM landscape including ChatGPT, Llama, and BERT. Learn about next-word prediction, semantic search, the complete training pipeline with SFT, reward modeling, and RLHF.">
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/introduction-to-llms">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2026-02-28">
+    <meta property="article:section" content="Generative AI">
+    <meta property="article:tag" content="Large Language Models">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="ChatGPT">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Introduction to Large Language Models",
+        "description": "Explore the LLM landscape including ChatGPT, Llama, and BERT. Learn about next-word prediction, semantic search, the complete training pipeline with SFT, reward modeling, and RLHF.",
+        "datePublished": "2026-02-28",
+        "dateModified": "2026-02-28",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/introduction-to-llms"
+        },
+        "keywords": ["Large Language Models", "LLM", "ChatGPT", "Next-Word Prediction", "Semantic Search", "Supervised Fine-Tuning", "RLHF", "Reward Models", "Hallucination", "Data Poisoning"],
+        "articleSection": "Generative AI",
+        "about": [
+            {"@type": "Thing", "name": "Large Language Models"},
+            {"@type": "Thing", "name": "LLM"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "ChatGPT"},
+            {"@type": "Thing", "name": "Semantic Search"}
+        ]
+    }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Base typography */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #FAFBFC;
+            color: #475569;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-sora {
+            font-family: 'Sora', sans-serif;
+            color: #1E293B;
+            letter-spacing: -0.025em;
+        }
+
+        /* Custom Colors from Design Specs */
+        .bg-header {
+            background-color: #F0F9FF;
+        }
+
+        .text-header-accent {
+            color: #0EA5E9;
+        }
+
+        .border-header-accent {
+            border-color: #0EA5E9;
+        }
+
+        .bg-opening {
+            background-color: #F8FAFC;
+        }
+
+        .text-opening-accent {
+            color: #475569;
+        }
+
+        .bg-landscape {
+            background-color: #EFF6FF;
+        }
+
+        .text-landscape-accent {
+            color: #2563EB;
+        }
+
+        .border-landscape-accent {
+            border-color: #2563EB;
+        }
+
+        .bg-landscape-accent {
+            background-color: #2563EB;
+        }
+
+        .bg-search {
+            background-color: #F0FDFA;
+        }
+
+        .text-search-accent {
+            color: #0D9488;
+        }
+
+        .border-search-accent {
+            border-color: #0D9488;
+        }
+
+        .bg-search-accent {
+            background-color: #0D9488;
+        }
+
+        .bg-moons {
+            background-color: #FEF3C7;
+        }
+
+        .text-moons-accent {
+            color: #D97706;
+        }
+
+        .border-moons-accent {
+            border-color: #D97706;
+        }
+
+        .bg-risks {
+            background-color: #FEF2F2;
+        }
+
+        .text-risks-accent {
+            color: #DC2626;
+        }
+
+        .bg-prediction {
+            background-color: #FDF4FF;
+        }
+
+        .text-prediction-accent {
+            color: #A855F7;
+        }
+
+        .border-prediction-accent {
+            border-color: #A855F7;
+        }
+
+        .bg-prediction-accent {
+            background-color: #A855F7;
+        }
+
+        .bg-step2 {
+            background-color: #FFF7ED;
+        }
+
+        .text-step2-accent {
+            color: #EA580C;
+        }
+
+        .border-step2-accent {
+            border-color: #EA580C;
+        }
+
+        .bg-step2-accent {
+            background-color: #EA580C;
+        }
+
+        .bg-step3 {
+            background-color: #F0FDF4;
+        }
+
+        .text-step3-accent {
+            color: #16A34A;
+        }
+
+        .border-step3-accent {
+            border-color: #16A34A;
+        }
+
+        .bg-step3-accent {
+            background-color: #16A34A;
+        }
+
+        .bg-pipeline {
+            background-color: #E0E7FF;
+        }
+
+        .text-pipeline-accent {
+            color: #6366F1;
+        }
+
+        .border-pipeline-accent {
+            border-color: #6366F1;
+        }
+
+        /* Card styles */
+        .info-card {
+            background-color: #FFFFFF;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+
+        /* Rainbow gradient accent stripe */
+        .rainbow-stripe {
+            height: 6px;
+            width: 100%;
+            background: linear-gradient(90deg, #0EA5E9, #2563EB, #A855F7, #DC2626, #EA580C, #D97706, #16A34A, #0D9488);
+        }
+
+        /* Animation Classes */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: #FFFFFF;
+            }
+
+            .info-card {
+                box-shadow: none !important;
+                transform: none !important;
+                border: 1px solid #CBD5E1;
+                page-break-inside: avoid;
+            }
+
+            .fade-section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .rainbow-stripe {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <div class="rainbow-stripe fixed top-0 left-0 z-50"></div>
+
+    <div class="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8 mt-4">
+
+        <header class="text-center mb-16 fade-section">
+            <div class="inline-flex items-center justify-center p-3 bg-header rounded-full mb-4">
+                <i data-lucide="brain" class="w-8 h-8 text-header-accent"></i>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">Introduction to Large
+                Language Models</h1>
+            <h2 class="text-xl md:text-2xl font-sora text-gray-600 mb-4">How AI Understands Language, Generates Text,
+                and Learns from Human Feedback</h2>
+            <p class="text-md text-gray-500 max-w-2xl mx-auto">Explore the landscape of generative AI, how semantic
+                search eclipses traditional keywords, and the sophisticated training pipelines that make modern models
+                so capable.</p>
+            <div class="mt-6 inline-flex items-center text-sm font-medium text-gray-400">
+                <i data-lucide="user" class="w-4 h-4 mr-2"></i>
+                Based on a lecture by Dr. Ian McCullough, Johns Hopkins University
+            </div>
+        </header>
+
+        <section class="mb-16 fade-section bg-opening p-8 rounded-2xl border border-gray-200">
+            <div class="flex items-start">
+                <div class="bg-white p-2 rounded-lg shadow-sm border border-gray-100 mr-4 mt-1">
+                    <i data-lucide="sparkles" class="w-6 h-6 text-gray-600"></i>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-3">Understanding Large Language Models</h3>
+                    <p class="text-lg leading-relaxed mb-4">There are a number of large language models out
+                        there—ChatGPT, Llama 2, Falcon, Gemini, Copilot, Google BERT—each with different strengths and
+                        approaches. While some excel at creative content, others use different underlying architectures
+                        meant for document understanding. Let's explore how these models actually work.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="flex items-center mb-6">
+                <i data-lucide="grid" class="w-6 h-6 text-landscape-accent mr-3"></i>
+                <h3 class="text-2xl font-bold">The Model Landscape</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                <div class="info-card p-5 bg-landscape border-landscape-accent border-opacity-30">
+                    <div class="font-bold text-lg mb-1">ChatGPT</div>
+                    <div class="text-xs font-semibold text-landscape-accent mb-2 tracking-wider uppercase">Proprietary
+                    </div>
+                    <p class="text-sm">Created by OpenAI; probably one of the better ones for creative content.</p>
+                </div>
+
+                <div class="info-card p-5">
+                    <div class="font-bold text-lg mb-1">Llama 2</div>
+                    <div class="text-xs font-semibold text-gray-500 mb-2 tracking-wider uppercase">Open Source</div>
+                    <p class="text-sm">One of the better open source models. You can take it and customize it for your
+                        specific application.</p>
+                </div>
+
+                <div class="info-card p-5">
+                    <div class="font-bold text-lg mb-1">Google BERT</div>
+                    <div class="text-xs font-semibold text-gray-500 mb-2 tracking-wider uppercase">Different Approach
+                    </div>
+                    <p class="text-sm">Uses a different architectural approach than GPT; better at understanding
+                        documents and summarizations.</p>
+                </div>
+
+                <div class="info-card p-5">
+                    <div class="font-bold text-lg mb-1">Gemini & Copilot</div>
+                    <div class="text-xs font-semibold text-gray-500 mb-2 tracking-wider uppercase">Proprietary
+                        Ecosystems</div>
+                    <p class="text-sm">Models from Google and Microsoft that integrate deeply into their respective
+                        tools.</p>
+                </div>
+
+                <div class="info-card p-5">
+                    <div class="font-bold text-lg mb-1">Falcon</div>
+                    <div class="text-xs font-semibold text-gray-500 mb-2 tracking-wider uppercase">Open Source</div>
+                    <p class="text-sm">Another significant general purpose large language model in the broader
+                        landscape.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20 fade-section">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-extrabold text-gray-900 inline-block border-b-4 border-search-accent pb-2">
+                    Generative vs. Traditional Search</h3>
+                <p class="mt-4 text-gray-600">Why many users are replacing traditional browsers with LLMs.</p>
+            </div>
+
+            <div class="info-card overflow-hidden border-2 border-search-accent border-opacity-20 shadow-lg">
+                <div class="flex flex-col md:flex-row">
+                    <div class="flex-1 p-8 bg-gray-50 border-b md:border-b-0 md:border-r border-gray-200">
+                        <div class="flex items-center mb-4 text-gray-500">
+                            <i data-lucide="search" class="w-5 h-5 mr-2"></i>
+                            <h4 class="font-bold uppercase tracking-wide">Traditional Search (Google)</h4>
+                        </div>
+                        <div class="mb-6 bg-white p-4 rounded border border-gray-200 shadow-sm">
+                            <div class="text-xs text-gray-400 uppercase mb-1">Query</div>
+                            <div class="font-mono text-sm">"popular Polish shoe brands"</div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="font-semibold text-sm mb-1">Process:</div>
+                            <p class="text-sm bg-red-50 text-red-700 p-2 rounded">Keyword matching & optimization</p>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-sm mb-1">Result:</div>
+                            <div class="flex items-start mt-2">
+                                <i data-lucide="x-circle" class="w-5 h-5 text-red-500 mr-2 flex-shrink-0 mt-0.5"></i>
+                                <p class="text-sm font-medium">A list of <span
+                                        class="text-red-600 font-bold underline">shoe polish</span> products, not Polish
+                                    shoes.</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-gray-200">
+                            <p class="text-sm text-gray-500 italic">"It lacks contextual understanding... that's a
+                                problem with traditional search."</p>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 p-8 bg-search">
+                        <div class="flex items-center mb-4 text-search-accent">
+                            <i data-lucide="sparkles" class="w-5 h-5 mr-2"></i>
+                            <h4 class="font-bold uppercase tracking-wide">Generative Search (ChatGPT)</h4>
+                        </div>
+                        <div class="mb-6 bg-white p-4 rounded border border-search-accent border-opacity-30 shadow-sm">
+                            <div class="text-xs text-search-accent uppercase mb-1">Query</div>
+                            <div class="font-mono text-sm">"popular Polish shoe brands"</div>
+                        </div>
+                        <div class="mb-4">
+                            <div class="font-semibold text-sm mb-1">Process:</div>
+                            <p class="text-sm bg-green-50 text-green-700 p-2 rounded">Vector embedding & semantics</p>
+                        </div>
+                        <div>
+                            <div class="font-semibold text-sm mb-1">Result:</div>
+                            <div class="flex items-start mt-2">
+                                <i data-lucide="check-circle"
+                                    class="w-5 h-5 text-green-600 mr-2 flex-shrink-0 mt-0.5"></i>
+                                <p class="text-sm font-medium">Actual brands of <span
+                                        class="text-green-700 font-bold underline">shoes from Poland</span>.</p>
+                            </div>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-search-accent border-opacity-20">
+                            <p class="text-sm font-medium text-search-accent italic">"Avoids keyword-based optimization
+                                entirely by understanding context."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-800 text-white text-center py-3 text-sm font-semibold tracking-wide">
+                    Same query. Radically different understanding.
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="flex items-center mb-6">
+                <i data-lucide="shield-check" class="w-6 h-6 text-moons-accent mr-3"></i>
+                <h3 class="text-2xl font-bold">Source Verification: The Moons Investigation</h3>
+            </div>
+
+            <div class="info-card p-8 bg-moons border-moons-accent border-opacity-30">
+                <p class="text-sm mb-8 text-gray-700">Generative search provides source references, which is vital
+                    because AI can be wrong. This enables users to interrogate and verify results.</p>
+
+                <div
+                    class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-300 before:to-transparent">
+
+                    <div
+                        class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div
+                            class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-gray-200 text-gray-700 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            1</div>
+                        <div
+                            class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-200 bg-white shadow-sm">
+                            <div class="font-bold text-sm mb-1">"Which planet has the most moons?"</div>
+                            <p class="text-xs text-gray-600">Traditional search yields conflicting sources: space.com
+                                says Jupiter, Kiwi.com says Saturn. Where do you draw knowledge from?</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div
+                            class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-blue-200 text-blue-800 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            2</div>
+                        <div
+                            class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-200 bg-white shadow-sm">
+                            <div class="font-bold text-sm mb-1 text-blue-800">ChatGPT Says Jupiter</div>
+                            <p class="text-xs text-gray-600">It returns Jupiter (95 moons), explicitly citing NASA. But
+                                Kiwi.com claimed Saturn has 145. <em>"I question the information."</em></p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div
+                            class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-yellow-200 text-yellow-800 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            3</div>
+                        <div
+                            class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-gray-200 bg-white shadow-sm">
+                            <div class="font-bold text-sm mb-1 text-yellow-800">User Challenges AI</div>
+                            <p class="text-xs text-gray-600">The user interrogates the model: "Why did you say 83
+                                confirmed moons when the NASA website you referenced says 146?"</p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                        <div
+                            class="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-green-200 text-green-800 font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            4</div>
+                        <div
+                            class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-green-200 bg-green-50 shadow-sm">
+                            <div class="font-bold text-sm mb-1 text-green-800">Self-Correction</div>
+                            <p class="text-xs text-gray-600">ChatGPT admits error: "You're correct. Saturn has 146..."
+                                The sourcing allowed verification and correction.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="info-card p-6 border-l-4 border-l-green-500">
+                    <div class="flex items-center mb-3">
+                        <i data-lucide="trending-up" class="w-5 h-5 text-green-600 mr-2"></i>
+                        <h4 class="font-bold text-lg text-gray-800">The Benefit: Adaptation</h4>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start"><i data-lucide="check"
+                                class="w-4 h-4 text-green-500 mr-2 mt-0.5"></i> Search returns dynamically improve and
+                            update over time.</li>
+                        <li class="flex items-start"><i data-lucide="check"
+                                class="w-4 h-4 text-green-500 mr-2 mt-0.5"></i> Models are not permanently stuck
+                            returning outdated information.</li>
+                        <li class="flex items-start"><i data-lucide="check"
+                                class="w-4 h-4 text-green-500 mr-2 mt-0.5"></i> Provides contextual understanding and
+                            explicit references.</li>
+                    </ul>
+                </div>
+
+                <div class="info-card p-6 border-l-4 border-l-red-500 bg-risks">
+                    <div class="flex items-center mb-3">
+                        <i data-lucide="alert-triangle" class="w-5 h-5 text-risks-accent mr-2"></i>
+                        <h4 class="font-bold text-lg text-gray-800">The Risk: Data Poisoning</h4>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start"><i data-lucide="x" class="w-4 h-4 text-red-500 mr-2 mt-0.5"></i>
+                            Bad actors can "poison" search returns.</li>
+                        <li class="flex items-start"><i data-lucide="x" class="w-4 h-4 text-red-500 mr-2 mt-0.5"></i>
+                            Flooding models with misleading requests or biased content.</li>
+                        <li class="flex items-start"><i data-lucide="x" class="w-4 h-4 text-red-500 mr-2 mt-0.5"></i>
+                            Directing the model to rely on a specific, flawed body of knowledge.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20 fade-section">
+            <div class="text-center mb-8">
+                <h3 class="text-3xl font-extrabold text-gray-900 inline-block border-b-4 border-prediction-accent pb-2">
+                    The Core Mechanism: Next-Word Prediction</h3>
+                <p class="mt-4 text-gray-600">Under the hood, an LLM simply returns the statistically most likely next
+                    word.</p>
+            </div>
+
+            <div class="info-card p-6 md:p-10 bg-prediction border-prediction-accent border-opacity-20 shadow-lg">
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+
+                    <div class="flex-1 w-full">
+                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200 mb-6">
+                            <div class="text-xs font-bold text-gray-400 uppercase mb-1">Input Prompt</div>
+                            <div class="text-xl font-mono text-gray-800">"The cat sat on the <span
+                                    class="text-prediction-accent animate-pulse">___</span>"</div>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <i data-lucide="arrow-down" class="w-6 h-6 text-gray-400 mb-2"></i>
+                            <div
+                                class="bg-purple-100 border border-prediction-accent border-opacity-50 text-prediction-accent rounded px-4 py-2 text-sm font-semibold text-center w-full">
+                                Large Language Model<br>
+                                <span class="text-xs font-normal opacity-80">(Drawing from vector embedded space)</span>
+                            </div>
+                            <i data-lucide="arrow-down" class="w-6 h-6 text-gray-400 mt-2 mb-2"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 w-full bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                        <div class="text-xs font-bold text-gray-400 uppercase mb-4">Probability Distribution</div>
+
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between text-sm mb-1">
+                                    <span class="font-bold text-prediction-accent">mat</span>
+                                    <span class="font-bold text-prediction-accent">35% ← SELECTED</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-4">
+                                    <div class="bg-prediction-accent h-4 rounded-full" style="width: 35%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-sm mb-1 text-gray-500">
+                                    <span>couch</span><span>20%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-4">
+                                    <div class="bg-purple-300 h-4 rounded-full" style="width: 20%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-sm mb-1 text-gray-500">
+                                    <span>floor</span><span>15%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-4">
+                                    <div class="bg-purple-200 h-4 rounded-full" style="width: 15%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-sm mb-1 text-gray-400">
+                                    <span>bed</span><span>12%</span>
+                                </div>
+                                <div class="w-full bg-gray-100 rounded-full h-4">
+                                    <div class="bg-gray-300 h-4 rounded-full" style="width: 12%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-gray-100">
+                            <div class="text-xs font-bold text-gray-400 uppercase mb-1">Final Output</div>
+                            <div class="font-mono text-gray-800">"The cat sat on the <strong>mat</strong>"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20 fade-section">
+            <div class="text-center mb-10">
+                <h3 class="text-3xl font-extrabold text-gray-900 inline-block border-b-4 border-pipeline-accent pb-2">
+                    The Complete Training Pipeline</h3>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">A raw pre-trained LLM is rarely helpful on its own. It
+                    requires a three-step process driven by human intervention to generate high-quality outputs.</p>
+            </div>
+
+            <div class="relative max-w-3xl mx-auto">
+
+                <div class="mb-8 relative z-10 text-center">
+                    <div
+                        class="inline-block bg-white px-6 py-3 rounded-full shadow border border-gray-200 font-bold text-gray-700">
+                        Pre-Trained Large Language Model
+                    </div>
+                    <div class="h-8 w-px bg-gray-300 mx-auto"></div>
+                </div>
+
+                <div class="info-card p-6 mb-8 bg-landscape border-landscape-accent border-opacity-30 relative z-10">
+                    <div
+                        class="absolute -top-4 -left-4 w-10 h-10 bg-landscape-accent text-white rounded-full flex items-center justify-center font-bold text-lg shadow-md">
+                        1</div>
+                    <div class="ml-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-xl text-landscape-accent">Supervised Fine-Tuning (SFT)</h4>
+                            <i data-lucide="user-check" class="w-6 h-6 text-landscape-accent"></i>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-3">Prompts are sampled from a dataset, and <strong>human
+                                labelers</strong> demonstrate what the desired output behavior should look like.</p>
+                        <div
+                            class="bg-white bg-opacity-60 rounded p-3 text-sm font-mono flex items-center shadow-inner">
+                            <span class="text-landscape-accent font-bold mr-2">Action:</span> Fine-tune the base model
+                            with supervised learning based on these high-quality human demonstrations.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="h-8 w-px bg-gray-300 mx-auto -mt-8 mb-0 relative z-0"></div>
+
+                <div class="info-card p-6 mb-8 bg-step2 border-step2-accent border-opacity-30 relative z-10">
+                    <div
+                        class="absolute -top-4 -left-4 w-10 h-10 bg-step2-accent text-white rounded-full flex items-center justify-center font-bold text-lg shadow-md">
+                        2</div>
+                    <div class="ml-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-xl text-step2-accent">Reward Model Training</h4>
+                            <i data-lucide="bar-chart-2" class="w-6 h-6 text-step2-accent"></i>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-3">The model generates multiple different responses (A, B, C,
+                            D) for a prompt. <strong>Human rankers</strong> evaluate and rank them from best to worst.
+                        </p>
+                        <div
+                            class="bg-white bg-opacity-60 rounded p-3 text-sm font-mono flex items-center shadow-inner">
+                            <span class="text-step2-accent font-bold mr-2">Action:</span> Train a reward model to score
+                            outputs, teaching the AI what humans consider a "better" response.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="h-8 w-px bg-gray-300 mx-auto -mt-8 mb-0 relative z-0"></div>
+
+                <div class="info-card p-6 mb-8 bg-step3 border-step3-accent border-opacity-30 relative z-10">
+                    <div
+                        class="absolute -top-4 -left-4 w-10 h-10 bg-step3-accent text-white rounded-full flex items-center justify-center font-bold text-lg shadow-md">
+                        3</div>
+                    <div class="ml-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-xl text-step3-accent">PPO Reinforcement Learning</h4>
+                            <i data-lucide="refresh-cw" class="w-6 h-6 text-step3-accent"></i>
+                        </div>
+                        <p class="text-sm text-gray-700 mb-3">Using Proximal Policy Optimization (PPO), the system
+                            generates an output, the reward model calculates a score, and the policy updates.</p>
+                        <div
+                            class="bg-white bg-opacity-60 rounded p-3 text-sm font-mono flex items-center shadow-inner">
+                            <span class="text-step3-accent font-bold mr-2">Action:</span> Optimize the model iteratively
+                            using reinforcement learning to maximize output quality.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="h-8 w-px bg-gray-300 mx-auto -mt-8 mb-0 relative z-0"></div>
+
+                <div class="relative z-10 text-center">
+                    <div
+                        class="inline-flex items-center bg-pipeline text-pipeline-accent px-8 py-4 rounded-full shadow-lg border-2 border-pipeline-accent font-bold text-lg">
+                        <i data-lucide="check-circle" class="w-6 h-6 mr-2"></i> High-Quality AI Output
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section bg-white p-8 rounded-2xl border border-gray-200 shadow-sm text-center">
+            <i data-lucide="users" class="w-10 h-10 text-prediction-accent mx-auto mb-4"></i>
+            <h3 class="text-2xl font-bold mb-4">The Crucial "Human-in-the-Loop"</h3>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-6">"There's a lot that is being done by people in that process
+                to get to a high quality output." Models don't just grow randomly; they are meticulously guided.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <div class="font-bold text-gray-800 mb-2">Demonstrators</div>
+                    <p class="text-sm text-gray-500">Provide high-quality examples of desired behaviors to set the
+                        standard.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <div class="font-bold text-gray-800 mb-2">Rankers</div>
+                    <p class="text-sm text-gray-500">Employees or users who judge responses from best to worst to train
+                        the reward model.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <div class="font-bold text-gray-800 mb-2">Users</div>
+                    <p class="text-sm text-gray-500">Interact, verify, challenge, and organically improve the system
+                        over time.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center text-search-accent">
+                        <i data-lucide="star" class="w-5 h-5 mr-2"></i> Key Advantages
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="info-card p-4 flex items-start">
+                            <i data-lucide="brain" class="w-5 h-5 text-search-accent mt-0.5 mr-3 shrink-0"></i>
+                            <div>
+                                <div class="font-bold text-sm text-gray-800">Contextual Understanding</div>
+                                <div class="text-xs text-gray-500">Grasps user intent via vectors, ignoring pure keyword
+                                    limitations.</div>
+                            </div>
+                        </div>
+                        <div class="info-card p-4 flex items-start">
+                            <i data-lucide="link" class="w-5 h-5 text-search-accent mt-0.5 mr-3 shrink-0"></i>
+                            <div>
+                                <div class="font-bold text-sm text-gray-800">Source Attribution</div>
+                                <div class="text-xs text-gray-500">Links directly to knowledge sources (like NASA)
+                                    allowing verification.</div>
+                            </div>
+                        </div>
+                        <div class="info-card p-4 flex items-start">
+                            <i data-lucide="message-circle" class="w-5 h-5 text-search-accent mt-0.5 mr-3 shrink-0"></i>
+                            <div>
+                                <div class="font-bold text-sm text-gray-800">Interrogation</div>
+                                <div class="text-xs text-gray-500">Users can challenge discrepancies and demand
+                                    clarification naturally.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center text-risks-accent">
+                        <i data-lucide="alert-circle" class="w-5 h-5 mr-2"></i> Risks & Limits
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="info-card p-4 flex items-start">
+                            <i data-lucide="x-octagon" class="w-5 h-5 text-risks-accent mt-0.5 mr-3 shrink-0"></i>
+                            <div>
+                                <div class="font-bold text-sm text-gray-800">Inherent Inaccuracy</div>
+                                <div class="text-xs text-gray-500">"Any search is not perfect... there's always room for
+                                    error." Hallucination is real.</div>
+                            </div>
+                        </div>
+                        <div class="info-card p-4 flex items-start">
+                            <i data-lucide="shield-alert" class="w-5 h-5 text-risks-accent mt-0.5 mr-3 shrink-0"></i>
+                            <div>
+                                <div class="font-bold text-sm text-gray-800">Data Poisoning</div>
+                                <div class="text-xs text-gray-500">Malicious floods of requests can bias or poison the
+                                    learning model.</div>
+                            </div>
+                        </div>
+                        <div class="info-card p-4 flex items-start">
+                            <i data-lucide="database" class="w-5 h-5 text-risks-accent mt-0.5 mr-3 shrink-0"></i>
+                            <div>
+                                <div class="font-bold text-sm text-gray-800">Data & Privacy Concerns</div>
+                                <div class="text-xs text-gray-500">Unclear disparities in terms of service regarding
+                                    search returns and user data handling.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-gray-50 p-5 rounded-xl border border-gray-200">
+                <h4 class="font-bold text-sm uppercase tracking-wide text-gray-500 mb-3"><i data-lucide="settings"
+                        class="w-4 h-4 inline mr-1"></i> Under the Hood</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span
+                        class="px-2 py-1 bg-white border border-gray-200 rounded text-xs text-gray-600 shadow-sm">Tokenization</span>
+                    <span
+                        class="px-2 py-1 bg-white border border-gray-200 rounded text-xs text-gray-600 shadow-sm">Transformers</span>
+                    <span
+                        class="px-2 py-1 bg-white border border-gray-200 rounded text-xs text-gray-600 shadow-sm">Context
+                        Windows</span>
+                    <span
+                        class="px-2 py-1 bg-white border border-gray-200 rounded text-xs text-gray-600 shadow-sm">Vector
+                        Embedding</span>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-5 rounded-xl border border-gray-200">
+                <h4 class="font-bold text-sm uppercase tracking-wide text-gray-500 mb-3"><i data-lucide="lightbulb"
+                        class="w-4 h-4 inline mr-1"></i> Pro-Tips</h4>
+                <div class="flex flex-wrap gap-2">
+                    <span
+                        class="px-2 py-1 bg-white border border-gray-200 rounded text-xs text-gray-600 shadow-sm">Verify
+                        References</span>
+                    <span
+                        class="px-2 py-1 bg-white border border-gray-200 rounded text-xs text-gray-600 shadow-sm">Interrogate
+                        Errors</span>
+                    <span
+                        class="px-2 py-1 bg-white border border-gray-200 rounded text-xs text-gray-600 shadow-sm">Iterate
+                        Prompts</span>
+                    <span
+                        class="px-2 py-1 bg-white border border-gray-200 rounded text-xs text-gray-600 shadow-sm">Maintain
+                        Skepticism</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12 fade-section">
+            <div class="bg-header border border-header-accent border-opacity-30 rounded-2xl p-8 shadow-md text-center">
+                <p class="text-lg md:text-xl font-medium text-gray-800 leading-relaxed max-w-3xl mx-auto">
+                    "Large language models represent a fundamental shift in how we search for, generate, and interact
+                    with information. Behind every response is a sophisticated pipeline — from next-word prediction
+                    through vector embedding, refined by supervised fine-tuning, reward modeling, and reinforcement
+                    learning with human feedback. Understanding how LLMs work empowers you to use them more effectively,
+                    question their outputs critically, and appreciate the essential human effort that makes them
+                    possible."
+                </p>
+            </div>
+        </section>
+
+        <footer class="text-center text-sm text-gray-400 mt-12 pb-8 border-t border-gray-200 pt-8 fade-section">
+            <div class="flex items-center justify-center space-x-2 mb-2">
+                <i data-lucide="book-open" class="w-4 h-4"></i>
+                <span class="font-semibold text-gray-500">Introduction to Large Language Models</span>
+            </div>
+            <p>Source Material: Lecture by Dr. Ian McCullough, Johns Hopkins University.</p>
+            <p class="mt-2 text-xs">Print-friendly format: Background styling and animations are automatically disabled
+                for clean document printing.</p>
+        </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Icons
+            lucide.createIcons();
+
+            // 2. Setup scroll animations safely
+            const fadeSections = document.querySelectorAll('.fade-section');
+
+            // Add 'not-visible' only via JS so if JS fails, everything is visible by default
+            fadeSections.forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+
+            // Intersection Observer to trigger fade-in
+            if ('IntersectionObserver' in window) {
+                const observerOptions = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1
+                };
+
+                const observer = new IntersectionObserver(function (entries, observer) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.remove('not-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, observerOptions);
+
+                fadeSections.forEach(function (el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for older browsers
+                fadeSections.forEach(function (el) {
+                    el.classList.remove('not-visible');
+                });
+            }
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

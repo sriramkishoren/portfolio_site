@@ -1,6 +1,6 @@
 {
-  "generated": "2026-02-23",
-  "totalTags": 339,
+  "generated": "2026-03-04",
+  "totalTags": 396,
   "tags": {
     "Machine Learning": [
       "ai-introduction/introduction-to-ai.html",
@@ -20,7 +20,8 @@
       "data-optimization-for-ml/data-labeling-for-ml.html",
       "data-optimization-for-ml/data-labeling-challenges.html",
       "data-optimization-for-ml/inter-annotator-agreement.html",
-      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html"
+      "data-optimization-for-ml/size-consistency-quality-tradeoffs.html",
+      "generative-ai/data-science-and-ai-landscape.html"
     ],
     "AI": [
       "ml-fundamentals/what-is-machine-learning.html",
@@ -63,7 +64,8 @@
     "Data Science": [
       "ai-introduction/introduction-to-ai.html",
       "ml-fundamentals/what-is-machine-learning.html",
-      "ml-algorithms/ml-algorithm-selection-guide.html"
+      "ml-algorithms/ml-algorithm-selection-guide.html",
+      "generative-ai/data-science-and-ai-landscape.html"
     ],
     "Supervised Learning": [
       "ml-fundamentals/what-is-machine-learning.html",
@@ -172,14 +174,20 @@
     ],
     "Computer Vision": [
       "ai-business-usecases/modern-ai-landscape.html",
-      "data-optimization-for-ml/project-maven-data-quality-case-study.html"
+      "data-optimization-for-ml/project-maven-data-quality-case-study.html",
+      "generative-ai/image-generation-history-and-gans.html"
     ],
     "NLP": [
       "ai-business-usecases/modern-ai-landscape.html"
     ],
     "Generative AI": [
       "ai-introduction/history-of-ai.html",
-      "ai-business-usecases/modern-ai-landscape.html"
+      "ai-business-usecases/modern-ai-landscape.html",
+      "generative-ai/data-science-and-ai-landscape.html",
+      "generative-ai/why-does-chatgpt-appear-smart.html",
+      "generative-ai/specialized-llms-and-fine-tuning.html",
+      "generative-ai/image-generation-history-and-gans.html",
+      "generative-ai/llm-competence-and-hallucination.html"
     ],
     "AI Applications": [
       "ai-business-usecases/modern-ai-landscape.html"
@@ -352,13 +360,16 @@
       "ml-algorithms/neural-networks.html",
       "ml-algorithms/algorithm-paradigm-mapping.html",
       "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html",
-      "ml-algorithms/ai-algorithm-selection-case-studies.html"
+      "ml-algorithms/ai-algorithm-selection-case-studies.html",
+      "generative-ai/data-science-and-ai-landscape.html",
+      "generative-ai/image-generation-history-and-gans.html"
     ],
     "Deep Learning": [
       "ai-introduction/introduction-to-ai.html",
       "ai-introduction/history-of-ai.html",
       "ml-algorithms/neural-networks.html",
-      "ai-bias-and-risks/transparency-and-explainability-solutions.html"
+      "ai-bias-and-risks/transparency-and-explainability-solutions.html",
+      "generative-ai/data-science-and-ai-landscape.html"
     ],
     "CNN": [
       "ml-algorithms/neural-networks.html",
@@ -372,10 +383,14 @@
     "Transformers": [
       "ml-algorithms/neural-networks.html",
       "optimizing-ai-resources/memory-in-ai-systems.html",
-      "optimizing-ai-resources/quick-summary.html"
+      "optimizing-ai-resources/quick-summary.html",
+      "generative-ai/data-science-and-ai-landscape.html",
+      "generative-ai/foundation-models.html",
+      "generative-ai/why-does-chatgpt-appear-smart.html"
     ],
     "GANs": [
-      "ml-algorithms/neural-networks.html"
+      "ml-algorithms/neural-networks.html",
+      "generative-ai/image-generation-history-and-gans.html"
     ],
     "Backpropagation": [
       "ml-algorithms/neural-networks.html"
@@ -507,7 +522,8 @@
       "data-optimization-for-ml/data-labeling-challenges.html"
     ],
     "Transfer Learning": [
-      "data-optimization-for-ml/data-labeling-challenges.html"
+      "data-optimization-for-ml/data-labeling-challenges.html",
+      "generative-ai/specialized-llms-and-fine-tuning.html"
     ],
     "Scalability": [
       "data-optimization-for-ml/data-labeling-challenges.html",
@@ -682,7 +698,8 @@
       "optimizing-ai-resources/introduction-to-ai-resources.html"
     ],
     "Compute Power": [
-      "optimizing-ai-resources/introduction-to-ai-resources.html"
+      "optimizing-ai-resources/introduction-to-ai-resources.html",
+      "generative-ai/why-does-chatgpt-appear-smart.html"
     ],
     "Query Expressiveness": [
       "optimizing-ai-resources/introduction-to-ai-resources.html",
@@ -708,7 +725,8 @@
       "optimizing-ai-resources/quick-summary.html"
     ],
     "Self-Attention": [
-      "optimizing-ai-resources/memory-in-ai-systems.html"
+      "optimizing-ai-resources/memory-in-ai-systems.html",
+      "generative-ai/foundation-models.html"
     ],
     "Working Memory": [
       "data-optimization-for-ml/cognitive-limits-terms-of-reference.html",
@@ -735,7 +753,8 @@
     ],
     "Data Poisoning": [
       "optimizing-ai-resources/memory-management-strategies.html",
-      "optimizing-ai-resources/memory-applications-and-challenges.html"
+      "optimizing-ai-resources/memory-applications-and-challenges.html",
+      "generative-ai/introduction-to-llms.html"
     ],
     "Catastrophic Forgetting": [
       "optimizing-ai-resources/memory-management-strategies.html",
@@ -1163,7 +1182,8 @@
       "agentic-ai/ai-agent-fundamentals.html"
     ],
     "LLM": [
-      "agentic-ai/ai-agent-fundamentals.html"
+      "agentic-ai/ai-agent-fundamentals.html",
+      "generative-ai/introduction-to-llms.html"
     ],
     "Model Context Protocol": [
       "agentic-ai/ai-agent-fundamentals.html"
@@ -1172,7 +1192,9 @@
       "agentic-ai/ai-agent-fundamentals.html"
     ],
     "RAG": [
-      "agentic-ai/ai-agent-fundamentals.html"
+      "agentic-ai/ai-agent-fundamentals.html",
+      "generative-ai/foundation-models.html",
+      "generative-ai/specialized-llms-and-fine-tuning.html"
     ],
     "Retrieval-Augmented Generation": [
       "agentic-ai/ai-agent-fundamentals.html"
@@ -1185,6 +1207,167 @@
     ],
     "Tool Calling": [
       "agentic-ai/ai-agent-fundamentals.html"
+    ],
+    "AI Landscape": [
+      "generative-ai/data-science-and-ai-landscape.html"
+    ],
+    "Embeddings": [
+      "generative-ai/data-science-and-ai-landscape.html"
+    ],
+    "Discriminative Learning": [
+      "generative-ai/data-science-and-ai-landscape.html"
+    ],
+    "Symbolic AI": [
+      "generative-ai/data-science-and-ai-landscape.html"
+    ],
+    "Foundation Models": [
+      "generative-ai/foundation-models.html"
+    ],
+    "Vector Embeddings": [
+      "generative-ai/foundation-models.html"
+    ],
+    "Semantic Search": [
+      "generative-ai/foundation-models.html",
+      "generative-ai/introduction-to-llms.html"
+    ],
+    "Token Prediction": [
+      "generative-ai/foundation-models.html"
+    ],
+    "Model Drift": [
+      "generative-ai/foundation-models.html"
+    ],
+    "Fine-Tuning": [
+      "generative-ai/foundation-models.html",
+      "generative-ai/why-does-chatgpt-appear-smart.html",
+      "generative-ai/specialized-llms-and-fine-tuning.html"
+    ],
+    "RLHF": [
+      "generative-ai/foundation-models.html",
+      "generative-ai/introduction-to-llms.html"
+    ],
+    "Pre-Training": [
+      "generative-ai/foundation-models.html",
+      "generative-ai/why-does-chatgpt-appear-smart.html"
+    ],
+    "Large Language Models": [
+      "generative-ai/introduction-to-llms.html",
+      "generative-ai/llm-competence-and-hallucination.html"
+    ],
+    "ChatGPT": [
+      "generative-ai/introduction-to-llms.html",
+      "generative-ai/why-does-chatgpt-appear-smart.html"
+    ],
+    "Next-Word Prediction": [
+      "generative-ai/introduction-to-llms.html"
+    ],
+    "Supervised Fine-Tuning": [
+      "generative-ai/introduction-to-llms.html"
+    ],
+    "Reward Models": [
+      "generative-ai/introduction-to-llms.html"
+    ],
+    "Hallucination": [
+      "generative-ai/introduction-to-llms.html"
+    ],
+    "Gradient Descent": [
+      "generative-ai/why-does-chatgpt-appear-smart.html"
+    ],
+    "Contextual Embeddings": [
+      "generative-ai/why-does-chatgpt-appear-smart.html"
+    ],
+    "Emergent Capabilities": [
+      "generative-ai/why-does-chatgpt-appear-smart.html"
+    ],
+    "Statistical Models": [
+      "generative-ai/why-does-chatgpt-appear-smart.html"
+    ],
+    "Specialized LLMs": [
+      "generative-ai/specialized-llms-and-fine-tuning.html"
+    ],
+    "Domain Adaptation": [
+      "generative-ai/specialized-llms-and-fine-tuning.html"
+    ],
+    "Prompt Engineering": [
+      "generative-ai/specialized-llms-and-fine-tuning.html"
+    ],
+    "Instruction Tuning": [
+      "generative-ai/specialized-llms-and-fine-tuning.html"
+    ],
+    "Model Specialization": [
+      "generative-ai/specialized-llms-and-fine-tuning.html"
+    ],
+    "LLM Customization": [
+      "generative-ai/specialized-llms-and-fine-tuning.html"
+    ],
+    "Image Generation": [
+      "generative-ai/image-generation-history-and-gans.html",
+      "generative-ai/image-generation-vae-and-diffusion-models.html"
+    ],
+    "Generative Adversarial Networks": [
+      "generative-ai/image-generation-history-and-gans.html"
+    ],
+    "DCGAN": [
+      "generative-ai/image-generation-history-and-gans.html"
+    ],
+    "PixelCNN": [
+      "generative-ai/image-generation-history-and-gans.html"
+    ],
+    "Adversarial Training": [
+      "generative-ai/image-generation-history-and-gans.html"
+    ],
+    "AI Art": [
+      "generative-ai/image-generation-history-and-gans.html"
+    ],
+    "VAE": [
+      "generative-ai/image-generation-vae-and-diffusion-models.html"
+    ],
+    "Variational Autoencoders": [
+      "generative-ai/image-generation-vae-and-diffusion-models.html"
+    ],
+    "Latent Space": [
+      "generative-ai/image-generation-vae-and-diffusion-models.html"
+    ],
+    "Diffusion Models": [
+      "generative-ai/image-generation-vae-and-diffusion-models.html"
+    ],
+    "Denoising": [
+      "generative-ai/image-generation-vae-and-diffusion-models.html"
+    ],
+    "DALL-E": [
+      "generative-ai/image-generation-vae-and-diffusion-models.html"
+    ],
+    "Stable Diffusion": [
+      "generative-ai/image-generation-vae-and-diffusion-models.html"
+    ],
+    "Forward Diffusion": [
+      "generative-ai/image-generation-vae-and-diffusion-models.html"
+    ],
+    "Reverse Diffusion": [
+      "generative-ai/image-generation-vae-and-diffusion-models.html"
+    ],
+    "LLM Hallucination": [
+      "generative-ai/llm-competence-and-hallucination.html"
+    ],
+    "LLM Limitations": [
+      "generative-ai/llm-competence-and-hallucination.html"
+    ],
+    "Factual Accuracy": [
+      "generative-ai/llm-competence-and-hallucination.html"
+    ],
+    "Confidence Calibration": [
+      "generative-ai/llm-competence-and-hallucination.html"
+    ],
+    "Adversarial Prompting": [
+      "generative-ai/llm-competence-and-hallucination.html"
+    ],
+    "Model Uncertainty": [
+      "generative-ai/llm-competence-and-hallucination.html"
+    ],
+    "Hallucination Mitigation": [
+      "generative-ai/llm-competence-and-hallucination.html"
+    ],
+    "AI Safety": [
+      "generative-ai/llm-competence-and-hallucination.html"
     ]
   }
 }

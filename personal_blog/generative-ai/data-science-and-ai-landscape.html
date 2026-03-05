@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science and AI Landscape</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Data Science and AI Landscape">
+    <meta name="description"
+        content="A comprehensive infographic mapping the AI landscape from symbolic AI to deep learning, covering discriminative vs generative approaches, neural networks, transformers, and real-world applications.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Generative AI">
+    <meta name="tags"
+        content="Generative AI, AI Landscape, Machine Learning, Deep Learning, Neural Networks, Transformers, Embeddings, Discriminative Learning, Symbolic AI, Data Science">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary"
+        content="Comprehensive visual mapping of the AI universe covering the hierarchy from AI to ML to deep learning, discriminative vs generative approaches, neural network architectures, transformer models, vector embeddings, and practical business applications of modern AI.">
+    <link rel="canonical"
+        href="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/data-science-and-ai-landscape">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Data Science and AI Landscape">
+    <meta property="og:description"
+        content="A comprehensive infographic mapping the AI landscape from symbolic AI to deep learning, covering discriminative vs generative approaches, neural networks, transformers, and real-world applications.">
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/data-science-and-ai-landscape">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2026-02-26">
+    <meta property="article:section" content="Generative AI">
+    <meta property="article:tag" content="Generative AI">
+    <meta property="article:tag" content="AI Landscape">
+    <meta property="article:tag" content="Machine Learning">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Data Science and AI Landscape",
+        "description": "A comprehensive infographic mapping the AI landscape from symbolic AI to deep learning, covering discriminative vs generative approaches, neural networks, transformers, and real-world applications.",
+        "datePublished": "2026-02-26",
+        "dateModified": "2026-02-26",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/data-science-and-ai-landscape"
+        },
+        "keywords": ["Generative AI", "AI Landscape", "Machine Learning", "Deep Learning", "Neural Networks", "Transformers", "Embeddings", "Discriminative Learning", "Symbolic AI", "Data Science"],
+        "articleSection": "Generative AI",
+        "about": [
+            {"@type": "Thing", "name": "Generative AI"},
+            {"@type": "Thing", "name": "AI Landscape"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "Deep Learning"},
+            {"@type": "Thing", "name": "Symbolic AI"}
+        ]
+    }
+    </script>
+
+    <!-- Tailwind CSS (Production v2.2.19) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons (Specific Version via jsDelivr for better reliability) -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+
+    <style>
+        /* Base Variables & Theme */
+        :root {
+            --text-main: #1E293B;
+            --text-muted: #475569;
+            --text-light: #64748B;
+
+            --border-light: #E2E8F0;
+
+            /* Custom Colors (Tailwind v3+ equivalents for v2.2.19 safety) */
+            --bg-gray-light: #F8FAFC;
+            --bg-blue-light: #EFF6FF;
+            --bg-teal-light: #F0FDFA;
+            --bg-purple-light: #FDF4FF;
+            --bg-orange-light: #FFF7ED;
+            --bg-indigo-light: #E0E7FF;
+            --bg-red-light: #FEF2F2;
+            --bg-green-light: #F0FDF4;
+            --bg-yellow-light: #FEF3C7;
+
+            --accent-blue: #2563EB;
+            --accent-teal: #0D9488;
+            --accent-purple: #A855F7;
+            --accent-orange: #EA580C;
+            --accent-indigo: #6366F1;
+            --accent-red: #DC2626;
+            --accent-green: #16A34A;
+            --accent-yellow: #D97706;
+        }
+
+        /* Typography */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-main);
+            background-color: #FAFBFC;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-heading {
+            font-family: 'Sora', sans-serif;
+            letter-spacing: -0.025em;
+        }
+
+        /* Layout & Utilities */
+        .max-w-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .infographic-card {
+            background-color: #FFFFFF;
+            border: 1.5px solid var(--border-light);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .infographic-card:hover {
+            transform: scale(1.01);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+
+        /* Custom Color Classes */
+        .section-header {
+            background-color: #F0F9FF;
+        }
+
+        .section-opening {
+            background-color: var(--bg-gray-light);
+        }
+
+        .section-universe {
+            background-color: var(--bg-blue-light);
+        }
+
+        .section-ml {
+            background-color: var(--bg-teal-light);
+        }
+
+        .section-gen-discrim {
+            background-color: var(--bg-purple-light);
+        }
+
+        .section-network {
+            background-color: var(--bg-orange-light);
+        }
+
+        .section-discrim-ex {
+            background-color: var(--bg-indigo-light);
+        }
+
+        .section-gen-ex {
+            background-color: var(--bg-red-light);
+        }
+
+        .section-symbolic {
+            background-color: var(--bg-green-light);
+        }
+
+        .section-parse {
+            background-color: var(--bg-yellow-light);
+        }
+
+        .section-guardrails {
+            background-color: #F0F9FF;
+        }
+
+        .section-apps {
+            background-color: #D1FAE5;
+        }
+
+        .section-road {
+            background-color: var(--bg-purple-light);
+        }
+
+        .section-cases {
+            background-color: var(--bg-yellow-light);
+        }
+
+        .section-framework {
+            background-color: var(--bg-blue-light);
+        }
+
+        .section-takeaways {
+            background-color: var(--bg-green-light);
+        }
+
+        .text-accent-blue {
+            color: var(--accent-blue);
+        }
+
+        .text-accent-teal {
+            color: var(--accent-teal);
+        }
+
+        .text-accent-purple {
+            color: var(--accent-purple);
+        }
+
+        .text-accent-orange {
+            color: var(--accent-orange);
+        }
+
+        .text-accent-indigo {
+            color: var(--accent-indigo);
+        }
+
+        .text-accent-red {
+            color: var(--accent-red);
+        }
+
+        .text-accent-green {
+            color: var(--accent-green);
+        }
+
+        .text-accent-yellow {
+            color: var(--accent-yellow);
+        }
+
+        .border-accent-blue {
+            border-color: var(--accent-blue);
+        }
+
+        .border-accent-purple {
+            border-color: var(--accent-purple);
+        }
+
+        .border-accent-green {
+            border-color: var(--accent-green);
+        }
+
+        .bg-gen-gradient {
+            background: linear-gradient(to right, var(--bg-purple-light), var(--bg-green-light));
+        }
+
+        .gradient-stripe {
+            height: 6px;
+            background: linear-gradient(90deg, #2563EB, #A855F7, #DC2626, #F59E0B, #10B981);
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Diagrams & Signature Visuals */
+        .ai-universe-box {
+            border: 2px dashed #CBD5E1;
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .ai-universe-box.solid {
+            border-style: solid;
+        }
+
+        .scatter-plot {
+            width: 100%;
+            height: 180px;
+            border-left: 2px solid var(--text-main);
+            border-bottom: 2px solid var(--text-main);
+            position: relative;
+            background-color: #F8FAFC;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .scatter-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .dot-red {
+            background-color: var(--accent-red);
+        }
+
+        .dot-blue {
+            background-color: var(--accent-blue);
+        }
+
+        .decision-boundary {
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 120%;
+            height: 2px;
+            background-color: var(--text-main);
+            transform: rotate(35deg);
+            transform-origin: 0 0;
+        }
+
+        .distribution-x {
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            width: 80%;
+            height: 30px;
+            background: linear-gradient(to top, rgba(220, 38, 38, 0.2) 0%, transparent 100%);
+            border-top: 1px dashed var(--accent-red);
+            border-radius: 50% 50% 0 0;
+        }
+
+        .distribution-y {
+            position: absolute;
+            left: 0;
+            bottom: 10%;
+            width: 30px;
+            height: 80%;
+            background: linear-gradient(to right, rgba(37, 99, 235, 0.2) 0%, transparent 100%);
+            border-right: 1px dashed var(--accent-blue);
+            border-radius: 0 50% 50% 0;
+        }
+
+        .nn-node {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: white;
+            border: 2px solid var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .nn-connection {
+            height: 2px;
+            background-color: #CBD5E1;
+            width: 30px;
+            position: relative;
+        }
+
+        .nn-connection.active-forward {
+            background-color: var(--accent-indigo);
+        }
+
+        .nn-connection.active-backward {
+            background-color: var(--accent-red);
+        }
+
+        .parse-bracket {
+            border-bottom: 2px solid;
+            border-left: 2px solid;
+            border-right: 2px solid;
+            height: 8px;
+            margin-top: 4px;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+
+        /* Safe Animation Classes (Prevents Blank Page) */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .infographic-card {
+                border: 1px solid #000;
+                box-shadow: none !important;
+                transform: none !important;
+                page-break-inside: avoid;
+            }
+
+            .fade-section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .section-header,
+            .section-opening,
+            .section-universe,
+            .section-ml,
+            .section-gen-discrim,
+            .section-network,
+            .section-discrim-ex,
+            .section-gen-ex,
+            .section-symbolic,
+            .section-parse,
+            .section-guardrails,
+            .section-apps,
+            .section-road,
+            .section-cases,
+            .section-framework,
+            .section-takeaways {
+                background-color: transparent !important;
+                border-bottom: 2px solid #EEE;
+            }
+        }
+    </style>
+</head>
+
+<body class="relative pb-20">
+
+    <div class="gradient-stripe"></div>
+
+    <main class="max-w-container px-4 sm:px-8 pt-12">
+
+        <!-- SECTION A: HEADER -->
+        <header class="fade-section text-center mb-12">
+            <div class="inline-flex items-center justify-center p-3 section-header rounded-2xl mb-6">
+                <i data-lucide="brain" class="w-8 h-8 text-accent-blue"></i>
+            </div>
+            <h1 class="font-heading text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+                Data Science and AI Landscape
+            </h1>
+            <p class="text-xl sm:text-2xl text-gray-600 font-heading mb-6 max-w-2xl mx-auto">
+                Mapping the Universe of AI — From Machine Learning and Deep Learning to Generative AI and Beyond
+            </p>
+            <div class="text-sm text-gray-500 bg-gray-50 inline-block px-4 py-2 rounded-full border border-gray-200">
+                Dr. Ian McCullough, Johns Hopkins University
+            </div>
+        </header>
+
+        <!-- SECTION B: OPENING FRAMING -->
+        <section class="fade-section infographic-card p-6 sm:p-8 section-opening mb-12">
+            <div class="flex items-start gap-4">
+                <div class="p-3 bg-white rounded-xl shadow-sm hidden sm:block">
+                    <i data-lucide="sparkles" class="w-6 h-6 text-gray-700"></i>
+                </div>
+                <div>
+                    <h2 class="font-heading text-2xl font-bold mb-3 text-gray-900">What Makes AI Generative?</h2>
+                    <p class="text-gray-700 mb-4 font-medium text-lg">
+                        "It's the total buzz all over the internet, all across industry, generative AI."
+                    </p>
+                    <p class="text-gray-600 mb-4">
+                        Understanding where generative AI fits — and how it works — is essential for making informed
+                        adoption decisions. This overview aims to demystify generative AI. We will explore what a large
+                        language model is, how transformer models serve as the foundation of modern generative AI, and
+                        trace an evolution of image generation that goes back 50 years.
+                    </p>
+                    <div class="bg-white border border-gray-200 p-4 rounded-lg flex items-center gap-3">
+                        <i data-lucide="lightbulb" class="w-5 h-5 text-accent-yellow"></i>
+                        <p class="text-sm text-gray-700">
+                            <strong>The Goal:</strong> Equip you to discuss these technologies intelligently with
+                            colleagues and make better decisions about adopting generative AI solutions in your
+                            organization.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION C: THE UNIVERSE OF ARTIFICIAL INTELLIGENCE -->
+        <section class="fade-section infographic-card p-6 sm:p-10 section-universe mb-12">
+            <div class="text-center mb-10">
+                <div class="inline-block p-2 bg-white rounded-lg shadow-sm mb-3">
+                    <i data-lucide="layers" class="w-6 h-6 text-accent-blue"></i>
+                </div>
+                <h2 class="font-heading text-2xl font-bold text-gray-900">The Universe of Artificial Intelligence</h2>
+                <p class="text-gray-700">Mapping how disciplines relate within the broader field.</p>
+            </div>
+
+            <!-- AI Universe Outer Boundary -->
+            <div class="border-2 border-accent-blue bg-white rounded-2xl p-5 sm:p-8 pt-16 relative mt-16 shadow-sm">
+
+                <!-- Center AI Label -->
+                <div
+                    class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white px-6 py-1.5 font-heading font-bold text-accent-blue uppercase text-sm tracking-widest border-2 border-accent-blue rounded-full whitespace-nowrap z-20 shadow-sm">
+                    Artificial Intelligence
+                </div>
+
+                <!-- Data Science (Overlapping top boundary) -->
+                <div class="absolute -top-12 left-4 sm:left-8 w-[15rem] sm:w-64 bg-white rounded-xl shadow-lg z-30 transition-transform hover:-translate-y-1"
+                    style="border: 2px dashed #94A3B8;">
+                    <div class="bg-gray-100 p-2 rounded-t-xl border-b border-gray-200 text-center">
+                        <span
+                            class="text-[10px] font-bold text-gray-600 uppercase tracking-wider flex items-center justify-center gap-1"><i
+                                data-lucide="external-link" class="w-3 h-3"></i> Extends beyond AI</span>
+                    </div>
+                    <div class="p-4 rounded-b-xl bg-white">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i data-lucide="database" class="w-5 h-5 text-accent-blue"></i>
+                            <h4 class="font-bold text-gray-900 text-base">Data Science</h4>
+                        </div>
+                        <p class="text-xs text-gray-600">ML + other math beyond AI</p>
+                    </div>
+                </div>
+
+                <!-- 2-Column Grid -->
+                <!-- pt-12 to clear the Data Science box overlapping inwards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10 pt-16 md:pt-12">
+
+                    <!-- 1. ML Pillar -->
+                    <div
+                        class="bg-blue-50 p-5 rounded-xl border border-blue-100 flex flex-col shadow-sm relative h-full">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="activity" class="w-5 h-5 text-accent-blue"></i>
+                            <h3 class="font-heading font-bold text-gray-900 text-lg">Machine Learning</h3>
+                        </div>
+                        <p class="text-xs text-gray-600 mb-4">Stochastic / Probabilistic. Uses statistical probabilities
+                            to learn patterns.</p>
+
+                        <!-- Deep Learning Container -->
+                        <!-- pb-36 to make guaranteed space for the Bridge inside -->
+                        <div
+                            class="bg-white p-4 pb-36 rounded-lg border-2 border-blue-200 shadow-inner flex-grow relative flex flex-col">
+                            <h4 class="font-bold text-gray-800 text-md">Deep Learning</h4>
+                            <p class="text-xs text-gray-500 mb-2">Neural networks + large data</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. Symbolic Pillar -->
+                    <div
+                        class="bg-green-50 p-5 rounded-xl border border-green-100 flex flex-col shadow-sm relative h-full mt-8 md:mt-0">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="book-open" class="w-5 h-5 text-accent-green"></i>
+                            <h3 class="font-heading font-bold text-gray-900 text-lg">Symbolic AI</h3>
+                        </div>
+                        <p class="text-xs text-gray-600 mb-4">Deterministic. Rules, formal logic, and discrete logic.
+                        </p>
+
+                        <!-- Symbolic Logic Container -->
+                        <!-- pb-36 matches Deep Learning for perfect bridge alignment -->
+                        <div
+                            class="bg-white p-4 pb-36 rounded-lg border-2 border-green-200 shadow-inner flex-grow flex flex-col">
+                            <h4 class="font-bold text-gray-800 text-md">Rules & Formal Logic</h4>
+                            <p class="text-xs text-gray-500 mb-2">Deterministic execution</p>
+                        </div>
+                    </div>
+
+                    <!-- THE BRIDGE (Generative AI) -->
+                    <!-- Absolute positioning inside the grid, resting safely in the pb-36 bottom gap of the two columns -->
+                    <div
+                        class="absolute bottom-6 left-5 right-5 md:left-9 md:right-9 z-20 flex flex-col md:flex-row shadow-lg rounded-xl border-2 border-purple-300 bg-white overflow-hidden hover:shadow-xl transition-shadow">
+
+                        <!-- Gen AI (Nested in DL) -->
+                        <div
+                            class="w-full md:w-1/2 p-5 bg-purple-50 border-b md:border-b-0 md:border-r-2 border-dashed border-purple-300 relative flex flex-col justify-center">
+                            <div
+                                class="absolute -top-3 left-4 bg-white border border-purple-200 shadow-sm text-[10px] font-bold px-2 py-0.5 rounded-full text-purple-700 flex items-center gap-1">
+                                <i data-lucide="layers" class="w-3 h-3"></i> Nested in Deep Learning
+                            </div>
+                            <div class="flex items-center gap-2 mb-1 mt-2">
+                                <i data-lucide="sparkles" class="w-5 h-5 text-accent-purple"></i>
+                                <h4 class="font-bold text-accent-purple text-base">Generative AI</h4>
+                            </div>
+                            <p class="text-xs text-gray-700 font-medium">Extensions of ML, going backwards through
+                                models.</p>
+                        </div>
+
+                        <!-- Sym Gen AI (Bridges to Symbolic) -->
+                        <div class="w-full md:w-1/2 p-5 bg-gen-gradient relative flex flex-col justify-center">
+                            <!-- Bridge Connector Label -->
+                            <div
+                                class="absolute -top-3 left-1/2 transform -translate-x-1/2 md:top-1/2 md:-left-4 md:-translate-y-1/2 bg-white border border-gray-200 shadow-sm px-3 py-1 rounded-full text-[10px] font-bold text-gray-600 z-30 whitespace-nowrap flex items-center gap-1">
+                                BRIDGES TO <i data-lucide="arrow-right"
+                                    class="w-3 h-3 hidden md:inline text-purple-500"></i><i data-lucide="arrow-down"
+                                    class="w-3 h-3 md:hidden text-purple-500"></i>
+                            </div>
+
+                            <h4 class="font-bold text-accent-green text-sm ml-0 md:ml-6 mt-3 md:mt-0">Symbolic
+                                Generative AI</h4>
+                            <p class="text-xs text-gray-600 ml-0 md:ml-6">Rules-based generation & validation</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Bottom Note -->
+                <div class="text-center mt-10 relative z-10">
+                    <span
+                        class="inline-flex items-center gap-2 bg-purple-50 border border-purple-200 rounded-full px-4 py-2 text-xs font-bold text-purple-700 shadow-sm">
+                        <i data-lucide="git-merge" class="w-4 h-4"></i> Generative AI spans both probabilistic and
+                        rules-based approaches
+                    </span>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION D: MACHINE LEARNING FUNDAMENTALS -->
+        <section class="fade-section infographic-card p-6 sm:p-8 section-ml mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 bg-white rounded-lg">
+                    <i data-lucide="trending-up" class="w-5 h-5 text-accent-teal"></i>
+                </div>
+                <h2 class="font-heading text-2xl font-bold text-gray-900">Machine Learning Fundamentals</h2>
+            </div>
+
+            <p class="text-lg text-gray-800 mb-6 font-medium border-l-4 border-accent-teal pl-4">
+                "An automated system that's going to get better with more and more data... we say it learns."
+            </p>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 rounded-xl border border-gray-200">
+                    <div class="text-accent-teal font-bold mb-2">The Engine</div>
+                    <p class="text-sm text-gray-600">Uses statistical probabilities, stochastic processes, and
+                        randomness to identify patterns.</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-gray-200">
+                    <div class="text-accent-teal font-bold mb-2">Deep Learning Subdiscipline</div>
+                    <p class="text-sm text-gray-600">Operates in much the same way but uses neural networks for
+                        incredible performance with large data.</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-gray-200">
+                    <div class="text-accent-teal font-bold mb-2">Two Core Types</div>
+                    <p class="text-sm text-gray-600">Fundamentally divided into <strong>Discriminative</strong>
+                        (classifying) and <strong>Generative</strong> (creating new content).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION E: GENERATIVE VS. DISCRIMINATIVE ML -->
+        <section class="fade-section infographic-card p-6 sm:p-10 section-gen-discrim mb-8">
+            <div class="text-center mb-8">
+                <div class="inline-block p-2 bg-white rounded-lg shadow-sm mb-3">
+                    <i data-lucide="git-merge" class="w-6 h-6 text-accent-purple"></i>
+                </div>
+                <h2 class="font-heading text-2xl font-bold text-gray-900">Discriminative vs. Generative</h2>
+                <p class="text-gray-700">The core conceptual distinction that defines Generative AI.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Discriminative Plot -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col h-full">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span
+                            class="bg-indigo-100 text-indigo-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Discriminative</span>
+                        <h3 class="font-bold text-gray-900">Classify New Data</h3>
+                    </div>
+
+                    <div class="scatter-plot mb-4 mt-auto">
+                        <!-- Dots -->
+                        <div class="scatter-dot dot-red" style="top: 20%; left: 30%;"></div>
+                        <div class="scatter-dot dot-red" style="top: 35%; left: 20%;"></div>
+                        <div class="scatter-dot dot-red" style="top: 40%; left: 45%;"></div>
+                        <div class="scatter-dot dot-red" style="top: 15%; left: 60%;"></div>
+
+                        <div class="scatter-dot dot-blue" style="top: 60%; left: 70%;"></div>
+                        <div class="scatter-dot dot-blue" style="top: 75%; left: 85%;"></div>
+                        <div class="scatter-dot dot-blue" style="top: 80%; left: 55%;"></div>
+                        <div class="scatter-dot dot-blue" style="top: 65%; left: 35%;"></div>
+
+                        <!-- Decision Boundary -->
+                        <div class="decision-boundary"></div>
+
+                        <!-- New Data Point -->
+                        <div class="scatter-dot bg-yellow-400 border-2 border-white w-4 h-4"
+                            style="top: 25%; left: 25%; z-index: 10; margin-left: -4px; margin-top: -4px;"></div>
+                        <div class="absolute text-xs font-bold text-gray-800 bg-white px-1 rounded shadow-sm"
+                            style="top: 10%; left: 15%;">"It's Red"</div>
+                    </div>
+
+                    <p class="text-sm text-gray-600 border-t border-gray-100 pt-3">
+                        Draw a line that separates data classes (red and blue). When a new point emerges, classify it
+                        based on which side of the line it falls on.
+                    </p>
+                </div>
+
+                <!-- Generative Plot -->
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col h-full">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span
+                            class="bg-purple-100 text-purple-800 text-xs font-bold px-2 py-1 rounded uppercase tracking-wide">Generative</span>
+                        <h3 class="font-bold text-gray-900">Generate New Data</h3>
+                    </div>
+
+                    <div class="scatter-plot mb-4 mt-auto">
+                        <!-- Distributions -->
+                        <div class="distribution-x"></div>
+                        <div class="distribution-y"></div>
+
+                        <!-- Scattered faded dots representing distribution -->
+                        <div class="scatter-dot dot-red opacity-30" style="top: 20%; left: 30%;"></div>
+                        <div class="scatter-dot dot-red opacity-30" style="top: 35%; left: 20%;"></div>
+                        <div class="scatter-dot dot-red opacity-30" style="top: 40%; left: 45%;"></div>
+
+                        <!-- New Generated Point -->
+                        <div class="scatter-dot bg-yellow-400 border-2 border-white w-4 h-4 shadow-md"
+                            style="top: 30%; left: 35%; z-index: 10; margin-left: -4px; margin-top: -4px;"></div>
+
+                        <!-- Arrows indicating generation -->
+                        <div class="absolute border-l-2 border-dashed border-gray-400 h-10"
+                            style="top: 30%; left: 35%;"></div>
+                        <div class="absolute border-t-2 border-dashed border-gray-400 w-10"
+                            style="top: 30%; left: 20%;"></div>
+                    </div>
+
+                    <p class="text-sm text-gray-600 border-t border-gray-100 pt-3">
+                        Use probabilities to go backwards to the same model. Sample from the distributions to plot where
+                        X would end up, generating a new example.
+                    </p>
+                </div>
+            </div>
+
+            <div
+                class="mt-6 text-center bg-white p-4 rounded-xl border border-purple-100 font-bold text-accent-purple shadow-sm">
+                Generative AI goes backwards through the same model to generate new data using probabilities.
+            </div>
+        </section>
+
+        <!-- SECTION F: NEURAL NETWORK: FORWARD VS. BACKWARD -->
+        <section class="fade-section infographic-card p-6 sm:p-10 section-network mb-8">
+            <div class="text-center mb-8">
+                <div class="inline-block p-2 bg-white rounded-lg shadow-sm mb-3">
+                    <i data-lucide="repeat" class="w-6 h-6 text-accent-orange"></i>
+                </div>
+                <h2 class="font-heading text-2xl font-bold text-gray-900">The Inverse Problem: Forward vs. Backward</h2>
+                <p class="text-gray-700">How the same architecture operates in opposite directions.</p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200">
+
+                <!-- Forward (Discriminative) -->
+                <div class="mb-10">
+                    <h3 class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2">
+                        <span>Forward Direction (Discriminative)</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </h3>
+                    <div
+                        class="flex items-center justify-between flex-wrap sm:flex-nowrap gap-2 sm:gap-4 bg-gray-50 p-4 rounded-xl">
+                        <div class="text-center w-24">
+                            <div class="bg-white p-2 border border-gray-300 rounded shadow-sm mb-2"><i
+                                    data-lucide="image" class="w-6 h-6 mx-auto text-gray-500"></i></div>
+                            <span class="text-xs font-medium">Input Image</span>
+                        </div>
+
+                        <div class="flex-1 flex items-center justify-center min-w-[150px]">
+                            <div class="nn-node">
+                                <div class="w-2 h-2 bg-indigo-400 rounded-full"></div>
+                            </div>
+                            <div class="nn-connection active-forward"></div>
+                            <div class="nn-node">
+                                <div class="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                            </div>
+                            <div class="nn-connection active-forward"></div>
+                            <div class="nn-node">
+                                <div class="w-2 h-2 bg-indigo-600 rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <div class="text-center w-24">
+                            <div
+                                class="bg-indigo-100 text-indigo-800 font-bold py-1 px-2 rounded shadow-sm mb-2 text-sm border border-indigo-200">
+                                Class A</div>
+                            <span class="text-xs font-medium">Output Dist.</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-center text-gray-500 mt-2">Propagate node through neural network to determine
+                        an output distribution of a given class.</p>
+                </div>
+
+                <!-- Backward (Generative) -->
+                <div>
+                    <h3
+                        class="text-sm font-bold text-gray-500 uppercase tracking-wider mb-4 flex items-center gap-2 justify-end sm:justify-start">
+                        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                        <span>Backward Direction (Generative)</span>
+                    </h3>
+                    <div
+                        class="flex items-center justify-between flex-wrap sm:flex-nowrap gap-2 sm:gap-4 bg-gray-50 p-4 rounded-xl flex-row-reverse sm:flex-row">
+                        <div class="text-center w-24">
+                            <div class="bg-gray-200 p-2 border border-gray-300 rounded shadow-sm mb-2"><i
+                                    data-lucide="shuffle" class="w-6 h-6 mx-auto text-gray-500"></i></div>
+                            <span class="text-xs font-medium">Random Input</span>
+                        </div>
+
+                        <div class="flex-1 flex items-center justify-center min-w-[150px]">
+                            <div class="nn-node">
+                                <div class="w-2 h-2 bg-red-600 rounded-full"></div>
+                            </div>
+                            <div class="nn-connection active-backward hidden sm:block"></div>
+                            <div class="nn-node hidden sm:flex">
+                                <div class="w-2 h-2 bg-red-500 rounded-full"></div>
+                            </div>
+                            <div class="nn-connection active-backward"></div>
+                            <div class="nn-node">
+                                <div class="w-2 h-2 bg-red-400 rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <div class="text-center w-24">
+                            <div class="bg-white p-2 border border-red-300 rounded shadow-sm mb-2"><i
+                                    data-lucide="image" class="w-6 h-6 mx-auto text-accent-red"></i></div>
+                            <span class="text-xs font-medium text-accent-red">Generated</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-center text-gray-500 mt-2">Take random input, go backwards through the same
+                        hidden layers, and create a generative example.</p>
+                </div>
+
+            </div>
+
+            <div
+                class="mt-6 text-center text-lg font-medium text-gray-800 bg-white p-4 rounded-xl shadow-sm border border-orange-100">
+                "Generative AI is simply taking these amazing deep learning models and going the opposite way through
+                the model to do the inverse problem."
+            </div>
+        </section>
+
+        <!-- SECTION G & H: EXAMPLES IN ACTION -->
+        <div class="grid md:grid-cols-2 gap-6 mb-12">
+
+            <!-- SECTION G: DISCRIMINATIVE EXAMPLE -->
+            <section class="fade-section infographic-card p-6 section-discrim-ex">
+                <div class="flex items-center gap-2 mb-4 text-accent-indigo">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                    <h3 class="font-heading font-bold text-lg">Discriminative Example</h3>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-white p-3 rounded-lg flex items-center gap-3 shadow-sm border border-gray-100">
+                        <div class="bg-gray-100 p-2 rounded"><i data-lucide="image" class="w-5 h-5"></i></div>
+                        <div class="text-sm font-medium">1. Image of a cute dog</div>
+                    </div>
+                    <div class="flex justify-center"><i data-lucide="arrow-down" class="w-4 h-4 text-gray-400"></i>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-lg flex items-center gap-3 shadow-sm border border-gray-100">
+                        <div class="bg-indigo-50 p-2 rounded"><i data-lucide="cpu" class="w-5 h-5 text-indigo-500"></i>
+                        </div>
+                        <div class="text-sm font-medium">2. Neural Network Model</div>
+                    </div>
+                    <div class="flex justify-center"><i data-lucide="arrow-down" class="w-4 h-4 text-gray-400"></i>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+                        <div class="text-xs text-gray-500 mb-1">3. Probabilities & Semantic Labels</div>
+                        <div class="flex gap-2 text-xs">
+                            <span class="bg-green-100 text-green-800 px-1 py-0.5 rounded">Dog: 92%</span>
+                            <span class="bg-gray-100 text-gray-600 px-1 py-0.5 rounded">Cat: 5%</span>
+                            <span class="bg-gray-100 text-gray-600 px-1 py-0.5 rounded">Rabbit: 2%</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-center"><i data-lucide="arrow-down" class="w-4 h-4 text-gray-400"></i>
+                    </div>
+
+                    <div
+                        class="bg-indigo-600 text-white p-3 rounded-lg flex items-center justify-center gap-2 font-bold shadow-md">
+                        <i data-lucide="tag" class="w-5 h-5"></i>
+                        Classification: "DOG"
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION H: GENERATIVE EXAMPLE -->
+            <section class="fade-section infographic-card p-6 section-gen-ex">
+                <div class="flex items-center gap-2 mb-4 text-accent-red">
+                    <i data-lucide="wand" class="w-5 h-5"></i>
+                    <h3 class="font-heading font-bold text-lg">Generative Example</h3>
+                </div>
+
+                <div class="space-y-4">
+                    <div
+                        class="bg-gray-800 text-white p-3 rounded-lg flex items-center justify-center gap-2 font-bold shadow-md">
+                        <i data-lucide="tag" class="w-5 h-5"></i>
+                        Label given: "DOG"
+                    </div>
+                    <div class="flex justify-center"><i data-lucide="arrow-down" class="w-4 h-4 text-gray-400"></i>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-lg flex items-center gap-3 shadow-sm border border-gray-100">
+                        <div class="bg-red-50 p-2 rounded"><i data-lucide="cpu" class="w-5 h-5 text-red-500"></i></div>
+                        <div class="text-sm font-medium">2. Model (Going Backwards)</div>
+                    </div>
+                    <div class="flex justify-center"><i data-lucide="arrow-down" class="w-4 h-4 text-gray-400"></i>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-lg shadow-sm border border-gray-100">
+                        <div class="text-xs text-gray-500 mb-2">3. Based on what it has seen...</div>
+                        <div class="flex justify-center gap-2">
+                            <div
+                                class="w-12 h-12 bg-red-100 rounded border border-red-200 flex items-center justify-center">
+                                <i data-lucide="image" class="w-4 h-4 text-red-400"></i></div>
+                            <div
+                                class="w-12 h-12 bg-red-100 rounded border border-red-200 flex items-center justify-center">
+                                <i data-lucide="image" class="w-4 h-4 text-red-400"></i></div>
+                            <div
+                                class="w-12 h-12 bg-red-100 rounded border border-red-200 flex items-center justify-center">
+                                <i data-lucide="image" class="w-4 h-4 text-red-400"></i></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-center"><i data-lucide="arrow-down" class="w-4 h-4 text-gray-400"></i>
+                    </div>
+
+                    <div
+                        class="bg-white p-3 rounded-lg flex items-center justify-center text-sm font-bold border border-red-200 text-accent-red">
+                        Generated Several Dog Images
+                    </div>
+                </div>
+
+                <p class="text-xs text-center mt-3 text-gray-600">Solving the reverse problem of ML classification in
+                    its simplest form.</p>
+            </section>
+
+        </div>
+
+        <!-- SECTION I: SYMBOLIC AI -->
+        <section class="fade-section infographic-card p-6 sm:p-10 section-symbolic mb-8">
+            <div class="flex items-start gap-4 mb-6">
+                <div class="p-3 bg-white rounded-xl shadow-sm">
+                    <i data-lucide="book-open" class="w-6 h-6 text-accent-green"></i>
+                </div>
+                <div>
+                    <h2 class="font-heading text-2xl font-bold text-gray-900">Symbolic AI: Rules, Logic & Formalism</h2>
+                    <p class="text-gray-700">Unlike machine learning's probabilistic approach, Symbolic AI relies on
+                        deterministic rules.</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl border border-green-100">
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    <div class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-accent-green"></i> <span class="text-sm font-medium">Deterministic
+                            Rules</span></div>
+                    <div class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-accent-green"></i> <span class="text-sm font-medium">Mathematical
+                            Proofs</span></div>
+                    <div class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-accent-green"></i> <span class="text-sm font-medium">If-Then
+                            Statements</span></div>
+                    <div class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-accent-green"></i> <span class="text-sm font-medium">Lookup
+                            Tables</span></div>
+                    <div class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-accent-green"></i> <span class="text-sm font-medium">Search
+                            Algorithms</span></div>
+                    <div class="flex items-center gap-2"><i data-lucide="check-circle"
+                            class="w-4 h-4 text-accent-green"></i> <span class="text-sm font-medium">Ontologies (Data
+                            Structuring)</span></div>
+                </div>
+                <div
+                    class="mt-4 p-3 bg-green-50 rounded-lg border border-green-100 text-sm text-gray-700 font-medium text-center">
+                    "There is an area of generative AI that touches into symbolic AI."
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION J: THE SENTENCE PARSING EXAMPLE -->
+        <section class="fade-section infographic-card p-6 sm:p-10 section-parse mb-8">
+            <div class="text-center mb-8">
+                <div class="inline-block p-2 bg-white rounded-lg shadow-sm mb-3">
+                    <i data-lucide="type" class="w-6 h-6 text-accent-yellow"></i>
+                </div>
+                <h2 class="font-heading text-2xl font-bold text-gray-900">Symbolic AI Meets NLP</h2>
+                <p class="text-gray-700">Demonstrating how rules extract structural features to aid machine learning.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 border border-yellow-200 overflow-x-auto">
+                <div class="min-w-[600px]">
+                    <div
+                        class="text-lg font-medium text-center mb-2 px-4 py-2 bg-gray-50 rounded border border-gray-200">
+                        "Dr. McCullough speaks about industry application of artificial intelligence"
+                    </div>
+
+                    <div class="flex justify-between text-center px-4 mb-6">
+                        <!-- Chunks -->
+                        <div class="w-1/4">
+                            <div class="parse-bracket border-blue-400"></div>
+                            <div class="text-xs font-bold text-blue-600 mt-2 uppercase">Noun Phrase</div>
+                            <div class="text-xs text-gray-500">Dr. McCullough</div>
+                        </div>
+                        <div class="w-1/4">
+                            <div class="parse-bracket border-red-400"></div>
+                            <div class="text-xs font-bold text-red-600 mt-2 uppercase">Verb Phrase</div>
+                            <div class="text-xs text-gray-500">speaks about</div>
+                        </div>
+                        <div class="w-1/4">
+                            <div class="parse-bracket border-green-400"></div>
+                            <div class="text-xs font-bold text-green-600 mt-2 uppercase">Object</div>
+                            <div class="text-xs text-gray-500">industry application</div>
+                        </div>
+                        <div class="w-1/4">
+                            <div class="parse-bracket border-purple-400"></div>
+                            <div class="text-xs font-bold text-purple-600 mt-2 uppercase">Prep. Phrase</div>
+                            <div class="text-xs text-gray-500">of artificial intelligence</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center">
+                        <i data-lucide="arrow-down" class="w-5 h-5 text-gray-400 mb-2"></i>
+                        <div
+                            class="bg-yellow-50 text-yellow-800 px-6 py-3 rounded-lg border border-yellow-200 font-medium text-sm text-center">
+                            We use rules (Symbolic AI) to apply parts of speech.<br>
+                            These extracted features help Machine Learning predict the next word or classify
+                            understanding.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION K: SYMBOLIC AI AS GUARDRAILS -->
+        <section class="fade-section infographic-card p-6 sm:p-8 section-guardrails mb-8">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 bg-white rounded-lg">
+                    <i data-lucide="shield" class="w-5 h-5 text-blue-600"></i>
+                </div>
+                <h2 class="font-heading text-xl font-bold text-gray-900">The Synergy Concept: Rules as Guardrails</h2>
+            </div>
+
+            <div
+                class="flex flex-col md:flex-row items-center justify-center gap-4 bg-white p-6 rounded-xl border border-blue-100">
+                <div class="text-center p-4 bg-green-50 rounded-lg border border-green-100 flex-1">
+                    <div class="font-bold text-green-800">Symbolic AI</div>
+                    <div class="text-xs text-green-600">(Rules, Structure, Logic)</div>
+                </div>
+                <i data-lucide="plus" class="w-6 h-6 text-gray-400"></i>
+                <div class="text-center p-4 bg-blue-50 rounded-lg border border-blue-100 flex-1">
+                    <div class="font-bold text-blue-800">Machine Learning</div>
+                    <div class="text-xs text-blue-600">(Probabilities, Patterns)</div>
+                </div>
+                <i data-lucide="arrow-right" class="w-6 h-6 text-gray-400 hidden md:block"></i>
+                <i data-lucide="arrow-down" class="w-6 h-6 text-gray-400 md:hidden block mt-2 mb-2"></i>
+                <div class="text-center p-4 bg-indigo-600 text-white rounded-lg shadow-md flex-1">
+                    <div class="font-bold">Improved Performance</div>
+                </div>
+            </div>
+
+            <p class="text-center mt-4 text-sm text-gray-700">
+                "Instead of asking the thing to classify without structure, adding rules applies additional information
+                that improves results. Symbolic AI provides guardrails against probabilistic approaches."
+            </p>
+        </section>
+
+        <!-- SECTION L: SYMBOLIC AI APPLICATIONS IN GENERATIVE AI -->
+        <section class="fade-section infographic-card p-6 sm:p-8 section-apps mb-12">
+            <h2 class="font-heading text-xl font-bold text-gray-900 mb-6 text-center">Practical Symbolic Applications
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 rounded-xl border border-green-200">
+                    <i data-lucide="code" class="w-6 h-6 text-accent-green mb-3"></i>
+                    <h3 class="font-bold text-sm mb-2">Code Generation Verification</h3>
+                    <p class="text-xs text-gray-600 mb-2">Prove that generated code or translations actually function
+                        correctly.</p>
+                    <span class="text-[10px] uppercase bg-gray-100 px-2 py-1 rounded text-gray-600 font-bold">Scope:
+                        Code Snippets</span>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-green-200">
+                    <i data-lucide="database" class="w-6 h-6 text-accent-green mb-3"></i>
+                    <h3 class="font-bold text-sm mb-2">Data Integration & Migration</h3>
+                    <p class="text-xs text-gray-600 mb-2">Creating new queries for data and executing structural data
+                        migration efforts.</p>
+                    <span class="text-[10px] uppercase bg-gray-100 px-2 py-1 rounded text-gray-600 font-bold">Scope:
+                        Structured Data</span>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-green-200">
+                    <i data-lucide="git-branch" class="w-6 h-6 text-accent-green mb-3"></i>
+                    <h3 class="font-bold text-sm mb-2">Underappreciated Impact</h3>
+                    <p class="text-xs text-gray-600">"These other applications don't get as much attention as
+                        probabilistic ML, but they touch into generative AI powerfully."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION M: THE ROAD AHEAD -->
+        <section class="fade-section infographic-card p-6 sm:p-10 section-road mb-8 border-purple-200 border-2">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="p-2 bg-white rounded-lg">
+                    <i data-lucide="compass" class="w-6 h-6 text-accent-purple"></i>
+                </div>
+                <h2 class="font-heading text-2xl font-bold text-gray-900">The Road Ahead</h2>
+            </div>
+
+            <p class="text-gray-700 mb-6 font-medium">Upcoming themes built on these foundational concepts:</p>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="bg-white p-5 rounded-xl shadow-sm">
+                    <div
+                        class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold mb-3">
+                        1</div>
+                    <h3 class="font-bold mb-2">Large Language Models</h3>
+                    <p class="text-sm text-gray-600">Exploring what LLMs are and how they scale the neural network
+                        concepts discussed.</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl shadow-sm">
+                    <div
+                        class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold mb-3">
+                        2</div>
+                    <h3 class="font-bold mb-2">The Transformer Model</h3>
+                    <p class="text-sm text-gray-600">Fine-tuning neural networks — "the foundation, the basis of how
+                        modern generative AI works."</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl shadow-sm">
+                    <div
+                        class="w-8 h-8 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold mb-3">
+                        3</div>
+                    <h3 class="font-bold mb-2">Image Gen Evolution</h3>
+                    <p class="text-sm text-gray-600">Tracing the 50-year history of generative AI and its evolution into
+                        visual content creation.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION N & O: ENRICHMENT (USE CASES & FRAMEWORK) -->
+        <div class="grid md:grid-cols-2 gap-6 mb-12">
+
+            <!-- SECTION N: EMERGING USE CASES -->
+            <section class="fade-section infographic-card p-6 section-cases">
+                <h3 class="font-heading font-bold text-lg mb-4 flex items-center gap-2">
+                    <i data-lucide="briefcase" class="w-5 h-5 text-accent-yellow"></i>
+                    Emerging Use Cases Map
+                </h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-white p-3 rounded border border-gray-100">
+                        <div class="text-xs font-bold">Content Gen</div>
+                        <div class="text-[10px] text-gray-500 mt-1">Applies: Gen AI (Reverse)</div>
+                    </div>
+                    <div class="bg-white p-3 rounded border border-gray-100">
+                        <div class="text-xs font-bold">Smart Classification</div>
+                        <div class="text-[10px] text-gray-500 mt-1">Applies: Discriminative ML</div>
+                    </div>
+                    <div class="bg-white p-3 rounded border border-gray-100">
+                        <div class="text-xs font-bold">Process Automation</div>
+                        <div class="text-[10px] text-gray-500 mt-1">Applies: Symbolic + ML</div>
+                    </div>
+                    <div class="bg-white p-3 rounded border border-gray-100">
+                        <div class="text-xs font-bold">Conversational AI</div>
+                        <div class="text-[10px] text-gray-500 mt-1">Applies: LLMs / Transformers</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION O: DECISION FRAMEWORK -->
+            <section class="fade-section infographic-card p-6 section-framework">
+                <h3 class="font-heading font-bold text-lg mb-4 flex items-center gap-2">
+                    <i data-lucide="map" class="w-5 h-5 text-accent-blue"></i>
+                    AI Adoption Decision Flow
+                </h3>
+                <div class="space-y-2">
+                    <div class="bg-white p-2 rounded text-sm flex gap-3 items-center">
+                        <span
+                            class="bg-blue-100 text-blue-800 w-6 h-6 flex items-center justify-center rounded text-xs font-bold">1</span>
+                        <span>Identify: Classify vs. Generate vs. Rules?</span>
+                    </div>
+                    <div class="bg-white p-2 rounded text-sm flex gap-3 items-center">
+                        <span
+                            class="bg-blue-100 text-blue-800 w-6 h-6 flex items-center justify-center rounded text-xs font-bold">2</span>
+                        <span>Select Approach: Probabilistic vs. Deterministic</span>
+                    </div>
+                    <div class="bg-white p-2 rounded text-sm flex gap-3 items-center">
+                        <span
+                            class="bg-blue-100 text-blue-800 w-6 h-6 flex items-center justify-center rounded text-xs font-bold">3</span>
+                        <span>Map to AI Universe Landscape Position</span>
+                    </div>
+                    <div class="bg-white p-2 rounded text-sm flex gap-3 items-center">
+                        <span
+                            class="bg-blue-100 text-blue-800 w-6 h-6 flex items-center justify-center rounded text-xs font-bold">4</span>
+                        <span>Adopt & Evaluate with Colleagues</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- SECTION P: KEY TAKEAWAYS & CLOSING REFLECTION -->
+        <section class="fade-section infographic-card p-8 sm:p-12 section-takeaways mb-12 text-center">
+            <i data-lucide="star" class="w-10 h-10 text-accent-green mx-auto mb-4"></i>
+            <h2 class="font-heading text-2xl font-bold text-gray-900 mb-6">The Bottom Line</h2>
+
+            <p class="text-xl sm:text-2xl font-heading text-gray-800 leading-snug max-w-2xl mx-auto mb-8">
+                "Generative AI is not magic — it's the same powerful deep learning models we already have, running in
+                reverse. Understanding this landscape is the first step to harnessing its potential."
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-left">
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-green-100">
+                    <strong class="block text-green-800 mb-1">AI Universe</strong>
+                    <span class="text-gray-600">ML (probability) meets Symbolic (rules).</span>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-green-100">
+                    <strong class="block text-green-800 mb-1">Discriminative</strong>
+                    <span class="text-gray-600">Draw a boundary to classify.</span>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-green-100">
+                    <strong class="block text-green-800 mb-1">Generative</strong>
+                    <span class="text-gray-600">Sample backward to create.</span>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm border border-green-100">
+                    <strong class="block text-green-800 mb-1">Guardrails</strong>
+                    <span class="text-gray-600">Rules add structure to ML.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION Q: FOOTER -->
+        <footer class="text-center pb-12 text-gray-500 text-sm">
+            <p class="font-bold text-gray-700 mb-2">Content from: Data Science and AI Landscape</p>
+            <p>Lecture by Dr. Ian McCullough, Johns Hopkins University</p>
+            <p class="mt-4 text-xs">Best viewed on screen. Print-friendly layout enabled.</p>
+        </footer>
+
+    </main>
+
+    <!-- Script: Initialize Icons and Intersection Observer safely -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Lucide icons securely
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            } else {
+                console.warn('Lucide icons library failed to load.');
+            }
+
+            // 2. Setup Intersection Observer for fade-in animations
+            // First, add the hidden class so CSS opacity drops to 0 ONLY if JS runs
+            var sections = document.querySelectorAll('.fade-section');
+            sections.forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+
+            // Then, remove it when scrolled into view
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('not-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            sections.forEach(function (el) {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

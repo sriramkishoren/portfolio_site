@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generation - VAE and Diffusion Models</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Image Generation: VAE and Diffusion Models">
+    <meta name="description"
+        content="Explore VAEs and diffusion models for AI image generation. Learn latent space representation, forward and reverse diffusion, and denoising techniques behind DALL-E and Stable Diffusion.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="Generative AI">
+    <meta name="tags"
+        content="VAE, Variational Autoencoders, Latent Space, Diffusion Models, Denoising, DALL-E, Stable Diffusion, Image Generation, Forward Diffusion, Reverse Diffusion">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary"
+        content="Deep dive into modern AI image generation covering Variational Autoencoders (VAE), latent space representation, diffusion models with forward and reverse processes, denoising techniques, and the architectures powering DALL-E and Stable Diffusion.">
+    <link rel="canonical"
+        href="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/image-generation-vae-and-diffusion-models">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Image Generation: VAE and Diffusion Models">
+    <meta property="og:description"
+        content="Explore VAEs and diffusion models for AI image generation. Learn latent space representation, forward and reverse diffusion, and denoising techniques behind DALL-E and Stable Diffusion.">
+    <meta property="og:type" content="article">
+    <meta property="og:url"
+        content="https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/image-generation-vae-and-diffusion-models">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2026-02-28">
+    <meta property="article:section" content="Generative AI">
+    <meta property="article:tag" content="VAE">
+    <meta property="article:tag" content="Diffusion Models">
+    <meta property="article:tag" content="Latent Space">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Image Generation: VAE and Diffusion Models",
+        "description": "Explore VAEs and diffusion models for AI image generation. Learn latent space representation, forward and reverse diffusion, and denoising techniques behind DALL-E and Stable Diffusion.",
+        "datePublished": "2026-02-28",
+        "dateModified": "2026-02-28",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=generative-ai/image-generation-vae-and-diffusion-models"
+        },
+        "keywords": ["VAE", "Variational Autoencoders", "Latent Space", "Diffusion Models", "Denoising", "DALL-E", "Stable Diffusion", "Image Generation", "Forward Diffusion", "Reverse Diffusion"],
+        "articleSection": "Generative AI",
+        "about": [
+            {"@type": "Thing", "name": "VAE"},
+            {"@type": "Thing", "name": "Diffusion Models"}
+        ],
+        "mentions": [
+            {"@type": "Thing", "name": "DALL-E"},
+            {"@type": "Thing", "name": "Stable Diffusion"}
+        ]
+    }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+
+    <style>
+        /* CSS Color Palette & Custom Styles (Safe for Tailwind 2.2.19 compatibility) */
+        :root {
+            --bg-page: #FAFBFC;
+            --text-dark: #1E293B;
+            --text-body: #475569;
+            --text-muted: #64748B;
+            --border-light: #E2E8F0;
+
+            /* Section Colors */
+            --bg-header: #F0F9FF;
+            --accent-header: #0EA5E9;
+
+            --bg-opening: #F8FAFC;
+            --accent-opening: #475569;
+
+            --bg-vae: #EFF6FF;
+            --accent-vae: #2563EB;
+
+            --bg-latent: #FDF4FF;
+            --accent-latent: #A855F7;
+
+            --bg-rep: #FEF3C7;
+            --accent-rep: #D97706;
+
+            --bg-vaegen: #F0FDF4;
+            --accent-vaegen: #16A34A;
+
+            --bg-diff: #F0FDFA;
+            --accent-diff: #0D9488;
+
+            --bg-fwdrev: #FFF7ED;
+            --accent-fwdrev: #EA580C;
+
+            --bg-journey: #E0E7FF;
+            --accent-journey: #6366F1;
+
+            --bg-superres: #FEF2F2;
+            --accent-superres: #DC2626;
+
+            --bg-comp: #EFF6FF;
+            --accent-comp: #2563EB;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-body);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-sora {
+            font-family: 'Sora', sans-serif;
+            color: var(--text-dark);
+            letter-spacing: -0.025em;
+        }
+
+        /* Top Rainbow Gradient Accent */
+        .top-gradient-bar {
+            height: 6px;
+            background: linear-gradient(90deg, #0EA5E9, #A855F7, #EC4899, #F59E0B);
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* Card and Section Styling */
+        .info-card {
+            background-color: #FFFFFF;
+            border: 1.5px solid var(--border-light);
+            border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-spacer {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Safe Animation Pattern (Prevents Blank Pages) */
+        .fade-section {
+            opacity: 1;
+            /* Default visible if JS fails */
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Custom Color Utility Classes */
+        .text-dark {
+            color: var(--text-dark);
+        }
+
+        .text-body {
+            color: var(--text-body);
+        }
+
+        .text-muted {
+            color: var(--text-muted);
+        }
+
+        .bg-header-light {
+            background-color: var(--bg-header);
+        }
+
+        .text-header-accent {
+            color: var(--accent-header);
+        }
+
+        .bg-opening-light {
+            background-color: var(--bg-opening);
+        }
+
+        .text-opening-accent {
+            color: var(--accent-opening);
+        }
+
+        .bg-vae-light {
+            background-color: var(--bg-vae);
+        }
+
+        .text-vae-accent {
+            color: var(--accent-vae);
+        }
+
+        .bg-latent-light {
+            background-color: var(--bg-latent);
+        }
+
+        .text-latent-accent {
+            color: var(--accent-latent);
+        }
+
+        .bg-rep-light {
+            background-color: var(--bg-rep);
+        }
+
+        .text-rep-accent {
+            color: var(--accent-rep);
+        }
+
+        .bg-vaegen-light {
+            background-color: var(--bg-vaegen);
+        }
+
+        .text-vaegen-accent {
+            color: var(--accent-vaegen);
+        }
+
+        .bg-diff-light {
+            background-color: var(--bg-diff);
+        }
+
+        .text-diff-accent {
+            color: var(--accent-diff);
+        }
+
+        .bg-fwdrev-light {
+            background-color: var(--bg-fwdrev);
+        }
+
+        .text-fwdrev-accent {
+            color: var(--accent-fwdrev);
+        }
+
+        .bg-journey-light {
+            background-color: var(--bg-journey);
+        }
+
+        .text-journey-accent {
+            color: var(--accent-journey);
+        }
+
+        .bg-superres-light {
+            background-color: var(--bg-superres);
+        }
+
+        .text-superres-accent {
+            color: var(--accent-superres);
+        }
+
+        .bg-comp-light {
+            background-color: var(--bg-comp);
+        }
+
+        .text-comp-accent {
+            color: var(--accent-comp);
+        }
+
+        /* Structural Elements for Diagrams */
+        .diagram-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            margin: 0.5rem 0;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .flow-box {
+            border: 1.5px solid var(--border-light);
+            border-radius: 8px;
+            padding: 1rem;
+            background: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .info-card {
+                border: 1px solid #ccc;
+                box-shadow: none !important;
+                transform: none !important;
+                break-inside: avoid;
+            }
+
+            .fade-section {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+
+            .top-gradient-bar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="relative max-w-4xl mx-auto px-4 py-12 md:px-8">
+
+    <div class="top-gradient-bar"></div>
+
+    <header class="text-center mb-16 fade-section">
+        <h1 class="text-3xl md:text-5xl font-extrabold mb-4">Image Generation - VAE and Diffusion Models</h1>
+        <h2 class="text-xl md:text-2xl text-header-accent font-semibold mb-6">From Latent Spaces to Denoising: Two
+            Pillars of Modern Image Generation</h2>
+        <p class="max-w-2xl mx-auto text-lg text-body">
+            Having explored GANs, we now turn to the other two major model families. Variational Autoencoders learn
+            compressed representations in latent space and generate by sampling from them. Diffusion Models learn to
+            reverse a gradual noise-adding process, producing state-of-the-art image quality. Understanding both is
+            essential to mastering image generation.
+        </p>
+    </header>
+
+    <section class="section-spacer fade-section">
+        <div class="info-card p-6 md:p-8 bg-opening-light">
+            <div class="flex items-center mb-6">
+                <i data-lucide="image" class="w-8 h-8 text-opening-accent mr-3"></i>
+                <h3 class="text-2xl font-bold">The Two Major Approaches</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-gray-200">
+                    <h4 class="font-bold text-lg mb-2">Variational Autoencoders</h4>
+                    <p class="text-sm">"We're going to talk about another type of image generation, the variational
+                        autoencoder. It uses an encoder, a continuous latent space, and a decoder."</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200">
+                    <h4 class="font-bold text-lg mb-2">Diffusion Models</h4>
+                    <p class="text-sm">"The state of the art is diffusion models. We might take random noise and move
+                        through a model that is adding noise and then removing noise."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-spacer fade-section">
+        <div class="info-card p-6 md:p-10 border-l-4 border-l-blue-500">
+            <div class="flex items-center mb-8 justify-between">
+                <div class="flex items-center">
+                    <i data-lucide="layers" class="w-8 h-8 text-vae-accent mr-3"></i>
+                    <h3 class="text-2xl font-bold">How a Variational Autoencoder Works</h3>
+                </div>
+            </div>
+
+            <div class="bg-vae-light rounded-xl p-6 md:p-8">
+                <div class="flex flex-col items-center">
+
+                    <div class="flow-box w-full max-w-sm font-bold text-dark">
+                        TRAINING DATA<br>
+                        <span class="text-xs font-normal text-muted">(Real Images)</span>
+                    </div>
+
+                    <div class="diagram-arrow"><i data-lucide="arrow-down" class="w-5 h-5"></i></div>
+
+                    <div class="flow-box w-full bg-white shadow-sm border-blue-200 border-2">
+                        <div class="font-bold text-lg mb-1">E N C O D E R</div>
+                        <p class="text-sm text-muted mb-4">Analyzes images and outputs distribution vectors</p>
+                        <div class="grid grid-cols-3 gap-2">
+                            <div class="bg-blue-50 rounded p-2 text-xs border border-blue-100 font-semibold">
+                                MEAN<br>Vector</div>
+                            <div class="bg-blue-50 rounded p-2 text-xs border border-blue-100 font-semibold">
+                                VARIANCE<br>Vector</div>
+                            <div class="bg-blue-50 rounded p-2 text-xs border border-blue-100 font-semibold">
+                                ERROR<br>Vector</div>
+                        </div>
+                    </div>
+
+                    <div class="diagram-arrow"><i data-lucide="arrow-down" class="w-5 h-5"></i></div>
+
+                    <div class="flow-box w-full bg-purple-50 shadow-sm border-purple-200 border-2 relative">
+                        <div class="font-bold text-lg mb-2 text-purple-800">L A T E N T &nbsp; S P A C E</div>
+                        <div class="text-xs text-purple-700 mb-3">(Multi-Dimensional Space)</div>
+                        <ul
+                            class="text-sm text-left inline-block space-y-1 bg-white p-3 rounded border border-purple-100">
+                            <li><strong>Mean</strong> = "center" position</li>
+                            <li><strong>Variance</strong> = "spread" around it</li>
+                            <li><strong>Error</strong> = random sampling</li>
+                        </ul>
+                    </div>
+
+                    <div class="diagram-arrow"><i data-lucide="arrow-down" class="w-5 h-5"></i></div>
+
+                    <div class="flow-box w-full bg-white shadow-sm border-green-200 border-2">
+                        <div class="font-bold text-lg mb-1">D E C O D E R</div>
+                        <p class="text-sm text-muted">Reconstructs image from latent representation</p>
+                    </div>
+
+                    <div class="diagram-arrow"><i data-lucide="arrow-down" class="w-5 h-5"></i></div>
+
+                    <div class="flow-box w-full max-w-sm font-bold text-dark mb-4">
+                        RECONSTRUCTED IMAGE
+                    </div>
+
+                    <div class="w-full border-t-2 border-dashed border-gray-300 pt-4 mt-2">
+                        <div class="flow-box w-full bg-gray-50 text-sm">
+                            <strong class="text-base text-dark block mb-2">LOSS FUNCTION</strong>
+                            Compare against original training data → minimize loss → tune the model.<br>
+                            <span class="text-xs text-muted mt-2 block">Reconstruction Loss + KL Divergence
+                                (regularization)</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="mt-6 text-center font-medium italic text-body">
+                "This is the basics of how a variational autoencoder works — encoding into mean, variance, and error,
+                projecting into latent space, decoding to reconstruct, and minimizing the loss function."
+            </p>
+        </div>
+    </section>
+
+    <section class="section-spacer fade-section">
+        <div class="info-card p-6 md:p-8 bg-latent-light border-l-4 border-l-purple-500">
+            <div class="flex items-center mb-6">
+                <i data-lucide="map" class="w-8 h-8 text-latent-accent mr-3"></i>
+                <div>
+                    <h3 class="text-2xl font-bold">Understanding Latent Space</h3>
+                    <p class="text-sm text-muted mt-1">"A mathematical construct where you can measure the similarity or
+                        closeness between many different features"</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl border border-purple-100 p-6 md:p-10 relative shadow-inner mb-8">
+                <div class="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,0.6))] opacity-20"
+                    style="background-size: 20px 20px; background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px);">
+                </div>
+
+                <div class="relative z-10 flex flex-col items-center justify-center space-y-8">
+
+                    <div class="flex items-center justify-between w-full max-w-md relative">
+                        <div class="text-center relative">
+                            <div class="w-6 h-6 bg-purple-500 rounded-full mx-auto shadow shadow-purple-200"></div>
+                            <div class="text-xs font-bold mt-2">Image A</div>
+                        </div>
+
+                        <div class="flex-1 flex flex-col items-center justify-center px-4 relative">
+                            <div class="w-full border-t-2 border-dashed border-purple-300"></div>
+                            <div class="absolute w-4 h-4 bg-white border-2 border-purple-500 rounded-full z-10"></div>
+                            <div class="text-center mt-4">
+                                <div class="text-xs font-semibold bg-purple-50 px-2 py-1 rounded">Interpolation</div>
+                                <div class="text-xs text-muted mt-1 max-w-[150px]">"What would I do if I was in the
+                                    middle?"</div>
+                            </div>
+                        </div>
+
+                        <div class="text-center relative">
+                            <div class="w-6 h-6 bg-purple-500 rounded-full mx-auto shadow shadow-purple-200"></div>
+                            <div class="text-xs font-bold mt-2">Image B</div>
+                        </div>
+                    </div>
+
+                    <div class="w-full flex justify-end mt-8">
+                        <div class="text-center">
+                            <div class="w-5 h-5 bg-red-500 transform rotate-45 mx-auto"></div>
+                            <div class="text-xs font-bold mt-2 text-red-600">Anomaly</div>
+                            <div class="text-xs text-muted">(Far from cluster)</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="text-center mb-6 font-medium text-sm">
+                DISCRETE DATA POINTS build the model → INTERPOLATION fills the gaps between observations
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white p-4 rounded-lg border border-purple-100 text-center">
+                    <div class="font-bold text-sm mb-1">INTERPOLATION</div>
+                    <div class="text-xs text-muted">Generate "in-between" images</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-purple-100 text-center">
+                    <div class="font-bold text-sm mb-1">REGULARIZATION</div>
+                    <div class="text-xs text-muted">Smooth out image features</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-purple-100 text-center">
+                    <div class="font-bold text-sm mb-1">ANOMALY DETECTION</div>
+                    <div class="text-xs text-muted">Find unusual images</div>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-purple-100 text-center">
+                    <div class="font-bold text-sm mb-1">IMPUTATION</div>
+                    <div class="text-xs text-muted">Fill in missing data</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 section-spacer fade-section">
+
+        <div class="info-card p-6 border-t-4 border-t-yellow-500 bg-rep-light">
+            <div class="flex items-center mb-4">
+                <i data-lucide="search" class="w-6 h-6 text-rep-accent mr-2"></i>
+                <h3 class="text-xl font-bold">Representational Learning</h3>
+            </div>
+            <p class="text-sm italic mb-4">"I like this dress online — what would it look like on different models or
+                contexts?"</p>
+
+            <div class="bg-white rounded border border-yellow-200 p-4 mb-4 text-center">
+                <div class="font-semibold text-sm mb-2">YOUR DRESS → ENCODE → LATENT SPACE</div>
+                <div class="diagram-arrow"><i data-lucide="arrow-down" class="w-4 h-4"></i></div>
+                <div class="text-xs text-muted mb-2">Search for nearby points</div>
+                <div class="diagram-arrow"><i data-lucide="arrow-down" class="w-4 h-4"></i></div>
+                <div class="flex justify-between text-xs font-medium">
+                    <div class="bg-yellow-50 p-2 rounded">Similar dress</div>
+                    <div class="bg-yellow-50 p-2 rounded mx-2">Same style, diff color</div>
+                    <div class="bg-yellow-50 p-2 rounded">Diff context</div>
+                </div>
+            </div>
+            <p class="text-xs text-muted">Find other examples in a search application that would be similar to it.</p>
+        </div>
+
+        <div class="info-card p-6 border-t-4 border-t-green-500 bg-vaegen-light">
+            <div class="flex items-center mb-4">
+                <i data-lucide="sparkles" class="w-6 h-6 text-vaegen-accent mr-2"></i>
+                <h3 class="text-xl font-bold">Generation Through Sampling</h3>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white p-3 rounded border border-green-200">
+                    <div class="text-xs font-bold text-gray-500 mb-1">TRAINING MODE:</div>
+                    <div class="text-sm font-medium">Image → Encoder → Latent → Decoder → Compare</div>
+                </div>
+
+                <div class="bg-green-100 p-3 rounded border border-green-300 shadow-sm">
+                    <div class="text-xs font-bold text-green-700 mb-1">GENERATION MODE:</div>
+                    <div class="text-sm font-medium text-green-900">Random Sample from Latent Space → Decoder → NEW
+                        IMAGE</div>
+                </div>
+            </div>
+
+            <p class="text-xs mt-4">
+                <strong>Why it works:</strong> The continuous latent space means any point can be decoded into a
+                meaningful image — there are no dead zones.
+            </p>
+        </div>
+    </div>
+
+    <section class="section-spacer fade-section">
+        <div class="info-card p-6 md:p-10 border-l-4 border-l-teal-600 bg-diff-light">
+            <div class="flex items-center mb-4">
+                <i data-lucide="wand" class="w-8 h-8 text-diff-accent mr-3"></i>
+                <div>
+                    <h3 class="text-2xl font-bold">How Diffusion Models Work</h3>
+                    <p class="text-sm text-muted mt-1">"The state of the art is diffusion models"</p>
+                </div>
+            </div>
+
+            <div class="mt-8 space-y-6">
+                <div class="bg-white rounded-xl p-5 border border-teal-100 shadow-sm">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-teal-800">STEP 1: The Forward Process (Training Phase)</h4>
+                        <span class="pill bg-gray-100 text-gray-600 text-[10px]">Adding Noise</span>
+                    </div>
+                    <div class="flex items-center justify-between text-center px-2">
+                        <div class="w-1/4">
+                            <div class="text-xs font-bold">CLEAN IMAGE<br><span class="font-normal text-muted">(cute
+                                    dog)</span></div>
+                        </div>
+                        <div class="flex-1 border-t-2 border-dashed border-gray-300 relative">
+                            <div
+                                class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[10px] bg-white px-2">
+                                Slightly noisy → More noisy</div>
+                        </div>
+                        <div class="w-1/4">
+                            <div class="text-xs font-bold">PURE NOISE<br><span class="font-normal text-muted">(TV
+                                    static)</span></div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-muted mt-3 text-center">Each step adds a small amount of random noise until
+                        the original image is completely destroyed. (Fixed schedule, no learning required).</p>
+                </div>
+
+                <div class="bg-white rounded-xl p-5 border border-teal-100 shadow-sm">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-teal-800">STEP 2: The Reverse Process (What it Learns)</h4>
+                        <span class="pill bg-teal-50 text-teal-700 border border-teal-200 text-[10px]">Removing
+                            Noise</span>
+                    </div>
+                    <div class="flex items-center justify-between text-center px-2">
+                        <div class="w-1/4">
+                            <div class="text-xs font-bold">PURE NOISE</div>
+                        </div>
+                        <div class="flex-1 border-t-2 border-teal-300 relative">
+                            <div
+                                class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[10px] bg-white px-2 font-semibold text-teal-700">
+                                ← Denoise step by step ←</div>
+                        </div>
+                        <div class="w-1/4">
+                            <div class="text-xs font-bold">CLEAN IMAGE<br><span
+                                    class="font-normal text-muted">(reconstructed)</span></div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-muted mt-3 text-center">The model learns to predict what the image looked
+                        like ONE STEP LESS NOISY. Trained on millions of examples at every noise level.</p>
+                </div>
+
+                <div
+                    class="bg-gradient-to-r from-teal-50 to-emerald-50 rounded-xl p-5 border border-teal-200 shadow-md">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-teal-900">STEP 3: Generation (The Magic)</h4>
+                        <span class="pill bg-teal-500 text-white text-[10px] tracking-wider">GENERATE</span>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                        <div class="text-center">
+                            <div
+                                class="text-xs font-bold bg-white px-3 py-2 rounded shadow-sm border border-gray-200 mb-2 inline-block">
+                                Start: PURE RANDOM NOISE</div>
+                            <div class="text-[10px] text-muted">(Never seen before)</div>
+                        </div>
+
+                        <div class="flex flex-col items-center">
+                            <div class="text-[10px] bg-white border border-teal-200 rounded px-2 py-1 mb-1">Text Prompt
+                            </div>
+                            <i data-lucide="arrow-right" class="w-5 h-5 text-teal-500 hidden md:block"></i>
+                            <i data-lucide="arrow-down" class="w-5 h-5 text-teal-500 block md:hidden my-2"></i>
+                            <div class="text-[10px] text-center max-w-[100px] mt-1">Conditions every denoising step
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <div
+                                class="text-xs font-bold bg-white px-3 py-2 rounded shadow-sm border border-teal-400 mb-2 inline-block shadow-[0_0_15px_rgba(20,184,166,0.3)]">
+                                Result: BRAND NEW IMAGE</div>
+                            <div class="text-[10px] text-teal-700 font-semibold">"Coherent, realistic images"</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 section-spacer fade-section">
+
+        <div class="info-card p-6 border-t-4 border-t-orange-500 bg-fwdrev-light flex flex-col justify-center">
+            <h3 class="text-xl font-bold mb-2">Forward vs. Reverse Diffusion</h3>
+            <p class="text-sm italic mb-6">"Adding noise and then removing noise — going back and forth"</p>
+
+            <div class="space-y-4">
+                <div>
+                    <div class="text-xs font-bold text-gray-500 flex items-center"><i data-lucide="arrow-right"
+                            class="w-3 h-3 mr-1"></i> THE FORWARD PROCESS (Destruction)</div>
+                    <div class="bg-white rounded p-2 text-xs border border-orange-100 mt-1">
+                        Clean → Noisy → Noisier → Pure Noise<br>
+                        <span class="text-muted">(Fixed schedule — no learning needed)</span>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="text-xs font-bold text-orange-600 flex items-center"><i data-lucide="arrow-left"
+                            class="w-3 h-3 mr-1"></i> THE REVERSE PROCESS (Reconstruction)</div>
+                    <div class="bg-orange-50 rounded p-2 text-xs border border-orange-200 mt-1 font-medium">
+                        Pure Noise → Cleaner → Cleaner → Clean<br>
+                        <span class="text-muted">(Learned by neural network — the hard part)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card p-6 bg-journey-light border border-indigo-100">
+            <h3 class="text-lg font-bold mb-1 flex items-center"><i data-lucide="layers"
+                    class="w-5 h-5 text-journey-accent mr-2"></i> The Noise-to-Image Journey</h3>
+            <p class="text-xs text-muted mb-4">How pure random noise becomes a realistic image.</p>
+
+            <div class="space-y-2">
+                <div class="flex bg-white rounded p-2 border border-indigo-50 items-center text-xs">
+                    <div class="w-16 font-bold text-gray-400">Step 1</div>
+                    <div class="flex-1 ml-2"><strong>Pure Noise.</strong> Random static.</div>
+                </div>
+                <div class="flex bg-white rounded p-2 border border-indigo-50 items-center text-xs">
+                    <div class="w-16 font-bold text-indigo-300">Step 100</div>
+                    <div class="flex-1 ml-2"><strong>Rough Structure.</strong> Big shapes, dominant colors emerge.</div>
+                </div>
+                <div class="flex bg-white rounded p-2 border border-indigo-100 items-center text-xs">
+                    <div class="w-16 font-bold text-indigo-500">Step 300</div>
+                    <div class="flex-1 ml-2"><strong>Objects Take Form.</strong> Recognizable subjects, faces appear.
+                    </div>
+                </div>
+                <div class="flex bg-white rounded p-2 border border-indigo-200 items-center text-xs shadow-sm">
+                    <div class="w-16 font-bold text-indigo-700">Step 1000</div>
+                    <div class="flex-1 ml-2"><strong>Final Refinement.</strong> Photorealistic details, lighting, sharp
+                        edges.</div>
+                </div>
+            </div>
+            <p class="text-[10px] text-muted italic mt-3 text-center leading-tight">Like a sculptor chipping away stone,
+                the model only removes a tiny bit of noise per step. It never makes a massive creative leap.</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 section-spacer fade-section">
+
+        <div class="info-card p-6 border-l-4 border-l-red-500 bg-superres-light">
+            <div class="flex items-center mb-4">
+                <i data-lucide="maximize" class="w-6 h-6 text-superres-accent mr-2"></i>
+                <h3 class="text-xl font-bold">Diffusion for Super Resolution</h3>
+            </div>
+
+            <div class="flex items-center justify-between bg-white rounded p-4 border border-red-100 mb-4">
+                <div class="text-center w-5/12">
+                    <div class="text-xs font-bold text-gray-400">LOW RES</div>
+                    <div class="text-[10px] text-muted leading-tight mt-1">Blurry, few details</div>
+                </div>
+                <div class="w-2/12 text-center text-red-400"><i data-lucide="arrow-right" class="w-5 h-5 mx-auto"></i>
+                </div>
+                <div class="text-center w-5/12">
+                    <div class="text-xs font-bold text-red-600">HIGH RES</div>
+                    <div class="text-[10px] text-muted leading-tight mt-1">Sharp, detailed features</div>
+                </div>
+            </div>
+
+            <div class="text-sm font-medium mb-2">Why resolution matters for AI:</div>
+            <p class="text-xs text-muted">"Better resolution → better features → improve classification tasks of
+                models." It is heavily used to improve object detection by enhancing photo clarity.</p>
+        </div>
+
+        <div class="info-card p-6 border-l-4 border-l-teal-500">
+            <div class="flex items-center mb-4">
+                <i data-lucide="compass" class="w-6 h-6 text-teal-600 mr-2"></i>
+                <h3 class="text-xl font-bold">ControlNet: Controlled Generation</h3>
+            </div>
+            <p class="text-xs text-muted mb-4">"Diffusion models give you a lot more control over the images you're
+                creating."</p>
+
+            <div class="bg-gray-50 p-3 rounded border border-gray-200 mb-4 flex items-center text-xs">
+                <div class="flex-1">
+                    <span class="font-bold">Text Prompt</span><br>
+                    <span class="font-bold text-teal-600">+ Control Input</span>
+                </div>
+                <i data-lucide="arrow-right" class="w-4 h-4 mx-2"></i>
+                <div class="bg-white p-2 rounded border border-gray-300 font-bold">Output matches BOTH</div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-2 text-[10px]">
+                <div class="bg-white p-2 rounded border border-gray-100"><strong>Pose:</strong> Define a stable human
+                    pose, generate different people in it.</div>
+                <div class="bg-white p-2 rounded border border-gray-100"><strong>Edge Map:</strong> Deer structure
+                    remains identical across different formats/colors.</div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section-spacer fade-section">
+        <div class="info-card border-t-4 border-blue-500 overflow-hidden">
+            <div class="bg-comp-light p-6 text-center border-b border-blue-100">
+                <h3 class="text-2xl font-bold flex items-center justify-center">
+                    <i data-lucide="columns" class="w-6 h-6 text-comp-accent mr-3"></i>
+                    VAE vs. Diffusion Models
+                </h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+                <div class="p-6 md:p-8 bg-white">
+                    <h4 class="text-xl font-bold text-center mb-6 text-blue-800">Variational Autoencoder</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex"><strong class="w-28 flex-shrink-0 text-gray-500">How it works:</strong> <span
+                                class="flex-1">Encoder → Latent Space → Decoder</span></li>
+                        <li class="flex"><strong class="w-28 flex-shrink-0 text-gray-500">Generates by:</strong> <span
+                                class="flex-1">Sampling from continuous latent space → decode</span></li>
+                        <li class="flex"><strong class="w-28 flex-shrink-0 text-gray-500">Speed:</strong> <span
+                                class="flex-1 font-medium text-green-600">Fast (single decoder pass)</span></li>
+                        <li class="flex"><strong class="w-28 flex-shrink-0 text-gray-500">Quality:</strong> <span
+                                class="flex-1">Can be blurrier (averaging effect of loss function)</span></li>
+                        <li class="flex"><strong class="w-28 flex-shrink-0 text-gray-500">Best For:</strong> <span
+                                class="flex-1">Search, interpolation, representational learning</span></li>
+                    </ul>
+                </div>
+
+                <div class="p-6 md:p-8 bg-white">
+                    <h4 class="text-xl font-bold text-center mb-6 text-teal-800">Diffusion Model</h4>
+                    <ul class="space-y-4 text-sm">
+                        <li class="flex"><strong class="w-28 flex-shrink-0 text-gray-500">How it works:</strong> <span
+                                class="flex-1">Add noise step by step → learn to reverse it</span></li>
+                        <li class="flex"><strong class="w-28 flex-shrink-0 text-gray-500">Generates by:</strong> <span
+                                class="flex-1">Starting from pure noise and denoising step by step</span></li>
+                        <li class="flex"><strong class="w-28 flex-shrink-0 text-gray-500">Speed:</strong> <span
+                                class="flex-1">Slower (requires many denoising steps)</span></li>
+                        <li class="flex"><strong class="w-28 flex-shrink-0 text-gray-500">Quality:</strong> <span
+                                class="flex-1 font-medium text-green-600">"Coherent, realistic" — State of the
+                                art</span></li>
+                        <li class="flex"><strong class="w-28 flex-shrink-0 text-gray-500">Best For:</strong> <span
+                                class="flex-1">Text-to-image, super resolution, object detection</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-gray-50 p-4 border-t border-gray-200 text-center">
+                <div class="inline-block bg-white px-4 py-2 rounded-lg border border-gray-300 shadow-sm text-sm">
+                    <span class="font-bold">MODERN BEST OF BOTH WORLDS: Latent Diffusion</span><br>
+                    <span class="text-muted text-xs">Systems like Stable Diffusion use a VAE to compress images, then
+                        run the diffusion process in the compressed latent space.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-spacer fade-section">
+        <div class="mb-6 text-center">
+            <h3 class="text-2xl font-bold flex items-center justify-center">
+                <i data-lucide="grid" class="w-6 h-6 text-purple-600 mr-2"></i>
+                Applications Landscape
+            </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="space-y-3">
+                <h4 class="font-bold text-purple-800 uppercase text-sm tracking-wider mb-4 border-b pb-2">VAE
+                    Applications</h4>
+
+                <div class="bg-white p-4 rounded-lg border border-purple-100 shadow-sm flex items-start">
+                    <div class="bg-purple-50 p-2 rounded mr-3"><i data-lucide="image"
+                            class="w-4 h-4 text-purple-600"></i></div>
+                    <div>
+                        <div class="font-bold text-sm">Image Generation</div>
+                        <div class="text-xs text-muted">"Very helpful for image generation"</div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-purple-100 shadow-sm flex items-start">
+                    <div class="bg-purple-50 p-2 rounded mr-3"><i data-lucide="search"
+                            class="w-4 h-4 text-purple-600"></i></div>
+                    <div>
+                        <div class="font-bold text-sm">Representational Learning</div>
+                        <div class="text-xs text-muted">"Find similar dresses in a search application"</div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-purple-100 shadow-sm flex items-start">
+                    <div class="bg-purple-50 p-2 rounded mr-3"><i data-lucide="move-horizontal"
+                            class="w-4 h-4 text-purple-600"></i></div>
+                    <div>
+                        <div class="font-bold text-sm">Interpolation & Imputation</div>
+                        <div class="text-xs text-muted">"Generate in-between images and impute missing data"</div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-purple-100 shadow-sm flex items-start">
+                    <div class="bg-purple-50 p-2 rounded mr-3"><i data-lucide="alert-circle"
+                            class="w-4 h-4 text-purple-600"></i></div>
+                    <div>
+                        <div class="font-bold text-sm">Anomaly Detection</div>
+                        <div class="text-xs text-muted">"Good for anomaly detection"</div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-purple-100 shadow-sm flex items-start">
+                    <div class="bg-purple-50 p-2 rounded mr-3"><i data-lucide="activity"
+                            class="w-4 h-4 text-purple-600"></i></div>
+                    <div>
+                        <div class="font-bold text-sm">Image Regularization</div>
+                        <div class="text-xs text-muted">"Allows us to regularize images"</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="font-bold text-teal-800 uppercase text-sm tracking-wider mb-4 border-b pb-2">Diffusion
+                    Applications</h4>
+
+                <div class="bg-white p-4 rounded-lg border border-teal-100 shadow-sm flex items-start">
+                    <div class="bg-teal-50 p-2 rounded mr-3"><i data-lucide="type" class="w-4 h-4 text-teal-600"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-sm">Text-to-Image Generation</div>
+                        <div class="text-xs text-muted">"Generate new images based on a text prompt"</div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-teal-100 shadow-sm flex items-start">
+                    <div class="bg-teal-50 p-2 rounded mr-3"><i data-lucide="maximize"
+                            class="w-4 h-4 text-teal-600"></i></div>
+                    <div>
+                        <div class="font-bold text-sm">Super Resolution</div>
+                        <div class="text-xs text-muted">"Improving resolution, detail, and making very coherent,
+                            realistic images"</div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-teal-100 shadow-sm flex items-start">
+                    <div class="bg-teal-50 p-2 rounded mr-3"><i data-lucide="focus" class="w-4 h-4 text-teal-600"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-sm">Object Detection Improvement</div>
+                        <div class="text-xs text-muted">"Better resolution → better features → improve classification
+                            tasks"</div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-teal-100 shadow-sm flex items-start">
+                    <div class="bg-teal-50 p-2 rounded mr-3"><i data-lucide="sliders" class="w-4 h-4 text-teal-600"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-sm">Image Processing</div>
+                        <div class="text-xs text-muted">"Not just image generation, but image processing"</div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border border-teal-100 shadow-sm flex items-start">
+                    <div class="bg-teal-50 p-2 rounded mr-3"><i data-lucide="compass" class="w-4 h-4 text-teal-600"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-sm">Controlled Generation</div>
+                        <div class="text-xs text-muted">"Pose characters, different formats, colors, settings via
+                            ControlNet"</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-6 section-spacer fade-section">
+
+        <div class="info-card p-6 border-l-4 border-l-green-500 bg-vaegen-light md:col-span-3">
+            <h3 class="text-xl font-bold mb-2 flex items-center"><i data-lucide="sliders" class="w-5 h-5 mr-2"></i> The
+                Noise-to-Quality Spectrum</h3>
+            <p class="text-xs text-muted mb-6">"Our ability to kind of move continuously along this paradigm allows us
+                to have a lot of power..."</p>
+
+            <div class="relative pt-6 pb-2">
+                <div class="h-2 bg-gradient-to-r from-gray-300 via-gray-400 to-green-500 rounded-full w-full"></div>
+
+                <div class="absolute top-0 left-0 text-[10px] font-bold text-gray-500 bg-white px-1 rounded border">PURE
+                    NOISE</div>
+                <div
+                    class="absolute top-0 right-0 text-[10px] font-bold text-green-700 bg-white px-1 rounded border border-green-200">
+                    CLEAN IMAGE</div>
+
+                <div class="absolute top-10 left-0 w-1/3 border-l-2 border-gray-400 pl-2 text-[10px]">
+                    <strong>GENERATION</strong><br><span class="text-muted">Start full noise</span>
+                </div>
+                <div class="absolute top-10 left-1/3 w-1/3 border-l-2 border-gray-400 pl-2 text-[10px]">
+                    <strong>EDITING</strong><br><span class="text-muted">Add noise, then denoise</span>
+                </div>
+                <div class="absolute top-10 right-0 w-1/3 border-r-2 border-green-500 pr-2 text-right text-[10px]">
+                    <strong>ENHANCEMENT</strong><br><span class="text-muted">Start partial noise</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card p-6 bg-fwdrev-light border border-orange-100 md:col-span-2">
+            <h3 class="text-lg font-bold mb-2 flex items-center"><i data-lucide="cpu"
+                    class="w-5 h-5 mr-2 text-orange-500"></i> Efficiency</h3>
+            <p class="text-xs mb-3">"Diffusion models have a lower relative cost computationally than some of these
+                other models."</p>
+            <ul class="text-[10px] space-y-2 text-muted">
+                <li><strong class="text-gray-700">GANs:</strong> Unstable, two networks competing.</li>
+                <li><strong class="text-gray-700">VAEs:</strong> Tension between reconstruction & regularization.</li>
+                <li><strong class="text-green-600">Diffusion:</strong> Simple training objective (remove noise), stable
+                    convergence.</li>
+                <li><strong class="text-blue-600">Latent Diffusion:</strong> Runs in compressed space, usable on
+                    consumer GPUs.</li>
+            </ul>
+        </div>
+    </div>
+
+    <section class="section-spacer fade-section">
+        <div class="info-card p-8 bg-header-light border-blue-200 border text-center">
+            <i data-lucide="star" class="w-10 h-10 text-header-accent mx-auto mb-4"></i>
+            <h3 class="text-2xl font-bold mb-6">The Modern Image Generation Landscape</h3>
+
+            <p
+                class="text-sm md:text-base text-gray-700 leading-relaxed max-w-3xl mx-auto text-left md:text-center space-y-4">
+                Image generation is an incredibly interesting and rapidly growing field. <strong>Variational
+                    Autoencoders</strong> give us a powerful framework for understanding images through latent space —
+                enabling interpolation, search, anomaly detection, and generation by learning compressed representations
+                of visual data.
+                <br><br>
+                <strong>Diffusion Models</strong> represent the current state of the art, producing the most coherent
+                and realistic images by learning to reverse a gradual noise-adding process — one tiny denoising step at
+                a time, sculpting images from pure random noise.
+                <br><br>
+                Together, these two model families — often combined in systems like Stable Diffusion — power modern
+                image generation, super resolution, object detection, and controlled generation through tools like
+                ControlNet. The ability to move continuously along the noise-to-quality spectrum gives us remarkable
+                power in not just image generation, but image processing and AI vision.
+            </p>
+        </div>
+    </section>
+
+    <footer class="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-muted pb-12 fade-section">
+        <p class="font-bold text-dark mb-1">Image Generation - VAE and Diffusion Models</p>
+        <p>Based on lecture materials by Dr. Ian McCullough, Johns Hopkins University.</p>
+        <div
+            class="mt-6 inline-flex items-center justify-center space-x-2 text-xs bg-gray-100 px-3 py-1 rounded-full print:hidden">
+            <i data-lucide="printer" class="w-3 h-3"></i>
+            <span>Print-friendly layout (A4 / Letter optimized)</span>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons & Safe Animation Pattern
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Create Icons
+            lucide.createIcons();
+
+            // 2. Add 'not-visible' class to all fade sections
+            const fadeSections = document.querySelectorAll('.fade-section');
+            fadeSections.forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+
+            // 3. Set up IntersectionObserver to remove 'not-visible' on scroll
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('not-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+            // 4. Observe elements
+            fadeSections.forEach(function (el) {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

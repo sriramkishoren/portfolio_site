@@ -28,6 +28,7 @@ This is a static personal portfolio website for Sriramkishore Naraharisetti. The
   - `ai-business-usecases/` - 6 posts about AI applications in business
   - `ai-project-management/` - 2 posts about managing AI/ML projects
   - `agentic-ai/` - 4 posts about agentic AI coding workflows, security, AI coding maturity levels, and agent fundamentals
+  - `generative-ai/` - 8 posts about generative AI landscape, foundation models, LLMs, fine-tuning, image generation, and hallucination
 - **Styling**: Tailwind CSS loaded via CDN (with forms, typography, aspect-ratio, line-clamp plugins)
 - **Icons**: Font Awesome 5.15.3 via CDN
 - **Dark mode**: Implemented using Tailwind's `dark:` class variants with manual toggle (adds/removes `dark` class on `<html>`)
@@ -66,8 +67,10 @@ portfolio_site/
 │   │   └── [post].html     # Business-focused AI posts
 │   ├── ai-project-management/
 │   │   └── [post].html     # AI/ML project lifecycle posts
-│   └── agentic-ai/
-│       └── [post].html     # Agentic AI coding & security posts
+│   ├── agentic-ai/
+│   │   └── [post].html     # Agentic AI coding & security posts
+│   └── generative-ai/
+│       └── [post].html     # Generative AI, LLMs, & image generation posts
 └── specs/                  # Feature specifications
 ```
 
@@ -119,6 +122,7 @@ To add a new blog post:
 - `ai-business` - AI Business UseCases
 - `ai-pm` - AI Project Management
 - `agentic-ai` - Agentic AI
+- `generative-ai` - Generative AI
 
 ## SEO & GEO Metadata
 
