@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(brew upgrade:*)",
+      "Bash(for f:*)",
+      "Bash(do echo:*)",
+      "Bash(do)",
+      "Bash(echo \"=== $f ===\")",
+      "Read(//Users/kishore/Documents/IT/Personal_Projects/portfolio_site/personal_blog/ai-project-management/**)",
+      "Bash(done)"
+    ]
+  }
+}
