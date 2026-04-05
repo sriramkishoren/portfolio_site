@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Assessment Interactive Infographic</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Skill Assessment — AI-Driven Personalized Learning for AI Teams">
+    <meta name="description" content="Compare traditional blanket training vs. AI-driven personalized skill assessment. Case study: only 34% of 624 training hours produced new skills (75 of 218). Learn skill-person-project matching for targeted workforce development.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Project Management">
+    <meta name="tags" content="Skill Assessment, AI Training, Personalized Learning, Workforce Development, AI Teams, Learning Optimization, Skills Gap Analysis, Training Effectiveness">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Traditional blanket training fails because organizations have unknown skill profiles. AI-driven case study: 624 hours of training yielded only 75 of 218 new skills (34%). Skill-person-project matching matrix enables personalized learning paths — different optimal paths for each team member based on current skills and project needs.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/skill-assessment">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Skill Assessment — AI-Driven Personalized Learning for AI Teams">
+    <meta property="og:description" content="Compare traditional blanket training vs. AI-driven personalized skill assessment. Case study: only 34% of 624 training hours produced new skills (75 of 218). Learn skill-person-project matching for targeted workforce development.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/skill-assessment">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-04-06">
+    <meta property="article:section" content="AI Project Management">
+    <meta property="article:tag" content="Skill Assessment">
+    <meta property="article:tag" content="Personalized Learning">
+    <meta property="article:tag" content="Skills Gap Analysis">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Skill Assessment — AI-Driven Personalized Learning for AI Teams",
+        "description": "Compare traditional blanket training vs. AI-driven personalized skill assessment. Case study: only 34% of 624 training hours produced new skills (75 of 218). Learn skill-person-project matching for targeted workforce development.",
+        "datePublished": "2025-04-06",
+        "dateModified": "2025-04-06",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/skill-assessment"
+        },
+        "keywords": ["Skill Assessment", "AI Training", "Personalized Learning", "Workforce Development", "AI Teams", "Learning Optimization", "Skills Gap Analysis", "Training Effectiveness"],
+        "articleSection": "AI Project Management"
+    }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* Fonts */
+        .font-sora {
+            font-family: 'Sora', sans-serif;
+        }
+
+        .font-dm {
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* Base Body */
+        body {
+            background-color: #FAFBFC;
+            color: #475569;
+        }
+
+        /* Safe Fade-In Animation Pattern */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Card Interactive Behaviors */
+        .info-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+
+        /* Custom Section Colors (Tailwind 2.2.19 safe hex mapping) */
+        .bg-header {
+            background-color: #F0F9FF;
+            border-bottom: 4px solid #0EA5E9;
+        }
+
+        .text-accent-blue {
+            color: #0EA5E9;
+        }
+
+        .bg-opening {
+            background-color: #F8FAFC;
+        }
+
+        .text-accent-slate {
+            color: #475569;
+        }
+
+        .bg-traditional {
+            background-color: #FEF2F2;
+        }
+
+        .text-accent-red {
+            color: #DC2626;
+        }
+
+        .bg-ai {
+            background-color: #F0FDF4;
+        }
+
+        .text-accent-green {
+            color: #16A34A;
+        }
+
+        .bg-satisfaction {
+            background-color: #EFF6FF;
+        }
+
+        .text-accent-royal {
+            color: #2563EB;
+        }
+
+        .bg-scores {
+            background-color: #FDF4FF;
+        }
+
+        .text-accent-purple {
+            color: #A855F7;
+        }
+
+        .bg-attrition {
+            background-color: #FFF7ED;
+        }
+
+        .text-accent-orange {
+            color: #EA580C;
+        }
+
+        .bg-culture {
+            background-color: #FEF3C7;
+        }
+
+        .text-accent-yellow {
+            color: #D97706;
+        }
+
+        .bg-fulfillment {
+            background-color: #E0E7FF;
+        }
+
+        .text-accent-indigo {
+            color: #6366F1;
+        }
+
+        .bg-fairness {
+            background-color: #F0FDFA;
+        }
+
+        .text-accent-teal {
+            color: #0D9488;
+        }
+
+        .stat-badge {
+            background-color: #D1FAE5;
+            color: #065F46;
+        }
+
+        /* Layout Utilities */
+        .max-w-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .rainbow-bar {
+            height: 6px;
+            background: linear-gradient(90deg, #0EA5E9, #16A34A, #D97706, #DC2626, #A855F7);
+        }
+
+        /* Matrix & Tree Specific CSS */
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: 100px 1fr 1fr;
+            grid-template-rows: 40px 1fr 1fr;
+            gap: 8px;
+        }
+
+        .tree-line-vert {
+            width: 2px;
+            height: 30px;
+            background-color: #CBD5E1;
+            margin: 0 auto;
+        }
+
+        .tree-line-horiz {
+            border-top: 2px solid #CBD5E1;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: #FFFFFF;
+            }
+
+            .info-card {
+                box-shadow: none;
+                border: 1px solid #94A3B8;
+                page-break-inside: avoid;
+            }
+
+            .fade-section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .rainbow-bar {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="font-dm text-sm md:text-base">
+    <div class="rainbow-bar w-full"></div>
+
+    <div class="max-w-content px-4 py-8 md:px-8">
+
+        <header class="bg-header p-8 rounded-2xl mb-12 text-center info-card fade-section">
+            <h1 class="font-sora text-3xl md:text-5xl font-bold text-gray-900 mb-4">Skill Assessment</h1>
+            <p class="font-sora text-lg md:text-xl text-accent-blue font-semibold mb-6">How AI-Driven Assessment
+                Transforms Training Efficiency, Talent Retention, and Data-Driven Workforce Management</p>
+            <p class="max-w-2xl mx-auto text-gray-600 mb-8">Discover how organizations can systematically assess, track,
+                and leverage employee skills to optimize training investment and make objective talent management
+                decisions.</p>
+
+            <div class="flex flex-wrap justify-center gap-3">
+                <span class="stat-badge px-4 py-2 rounded-full font-semibold text-sm">150-Person Threshold</span>
+                <span class="stat-badge px-4 py-2 rounded-full font-semibold text-sm">75/218 Skills Gained</span>
+                <span class="stat-badge px-4 py-2 rounded-full font-semibold text-sm">624 Training Hours</span>
+                <span class="stat-badge px-4 py-2 rounded-full font-semibold text-sm">24% Attrition Rate</span>
+            </div>
+        </header>
+
+        <section class="mb-16 fade-section">
+            <div class="flex items-center mb-6">
+                <div class="p-3 bg-opening rounded-lg mr-4 border border-gray-200">
+                    <i data-lucide="users" class="text-accent-slate w-6 h-6"></i>
+                </div>
+                <h2 class="font-sora text-2xl font-bold text-gray-900">The Skill Assessment Challenge</h2>
+            </div>
+
+            <div class="info-card bg-opening p-6 md:p-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
+                    <i data-lucide="users" class="w-48 h-48"></i>
+                </div>
+                <h3 class="font-sora text-xl font-semibold mb-4 text-gray-800">Beyond 150 People, You Cannot Know What
+                    Your People Know</h3>
+                <p class="mb-6 leading-relaxed">When an organization exceeds about 150 people, it becomes very difficult
+                    to manually assess what skills and capabilities individuals possess. This threshold marks the point
+                    where personal knowledge of everyone's capabilities breaks down.</p>
+
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-white p-4 rounded-xl border border-red-100 shadow-sm border-l-4 border-l-red-500">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="alert-triangle" class="text-red-500 w-5 h-5 mt-1 shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-gray-900">High-Skill Person + Medium Project</p>
+                                <p class="text-red-600 font-semibold mt-1">Outcome: Likely to Quit</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-red-100 shadow-sm border-l-4 border-l-red-500">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="alert-circle" class="text-red-500 w-5 h-5 mt-1 shrink-0"></i>
+                            <div>
+                                <p class="font-bold text-gray-900">Medium-Skill Person + Advanced Project</p>
+                                <p class="text-red-600 font-semibold mt-1">Outcome: Likely to Fail</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-900 text-white p-4 rounded-xl text-center font-medium">
+                    <p>Accurate skill assessment is the critical difference between retaining your best people and
+                        watching them walk out the door. Let's examine why traditional approaches fail and how AI
+                        changes the equation.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="flex items-center mb-6">
+                <div class="p-3 bg-traditional rounded-lg mr-4 border border-red-100">
+                    <i data-lucide="book-open" class="text-accent-red w-6 h-6"></i>
+                </div>
+                <h2 class="font-sora text-2xl font-bold text-gray-900">The Traditional Approach: Blanket Training</h2>
+            </div>
+
+            <div class="grid md:grid-cols-5 gap-6">
+                <div class="md:col-span-2 info-card bg-traditional p-6 border-red-100 flex flex-col justify-center">
+                    <h3 class="font-sora text-lg font-bold text-gray-900 mb-3">The Process Flaw</h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-3"><span
+                                class="bg-red-200 text-red-800 rounded-full w-6 h-6 flex items-center justify-center shrink-0 font-bold text-xs">1</span>
+                            <span class="text-gray-700">Organization has <strong>unknown skill profiles</strong>.</span>
+                        </li>
+                        <li class="flex gap-3"><span
+                                class="bg-red-200 text-red-800 rounded-full w-6 h-6 flex items-center justify-center shrink-0 font-bold text-xs">2</span>
+                            <span class="text-gray-700">Sends everyone through a <strong>standard training
+                                    program</strong>.</span></li>
+                        <li class="flex gap-3"><span
+                                class="bg-red-200 text-red-800 rounded-full w-6 h-6 flex items-center justify-center shrink-0 font-bold text-xs">3</span>
+                            <span class="text-gray-700"><strong>Problem:</strong> People already know much of the
+                                content they are being trained on.</span></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-3 info-card p-6 border-red-200 relative overflow-hidden">
+                    <h3 class="font-sora text-lg font-bold text-gray-900 mb-4 text-center">The Hidden Cost of Redundancy
+                    </h3>
+
+                    <div class="flex flex-col md:flex-row gap-4 items-center justify-center mb-6">
+                        <div class="text-center p-4 bg-gray-50 rounded-xl w-full border border-gray-200">
+                            <p class="text-3xl font-sora font-bold text-gray-900">75 / 218</p>
+                            <p class="text-sm font-medium text-gray-500 uppercase tracking-wide mt-1">Skills Gained</p>
+                            <p class="text-xs text-accent-red font-bold mt-2 bg-red-50 py-1 rounded-md">Only 34% New
+                                Learning</p>
+                        </div>
+                        <div class="text-center p-4 bg-gray-50 rounded-xl w-full border border-gray-200">
+                            <p class="text-3xl font-sora font-bold text-gray-900">624</p>
+                            <p class="text-sm font-medium text-gray-500 uppercase tracking-wide mt-1">Total Hours Spent
+                            </p>
+                            <p class="text-xs text-accent-red font-bold mt-2 bg-red-50 py-1 rounded-md">Paying for
+                                Redundancy</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-red-50 border border-red-200 p-4 rounded-xl text-center">
+                        <p class="font-semibold text-gray-800 mb-1">"What if they already know most of it?"</p>
+                        <p class="text-sm text-gray-600">The organization is paying for hundreds of training hours where
+                            employees are not learning new skills.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="flex items-center mb-6">
+                <div class="p-3 bg-ai rounded-lg mr-4 border border-green-200">
+                    <i data-lucide="cpu" class="text-accent-green w-6 h-6"></i>
+                </div>
+                <h2 class="font-sora text-2xl font-bold text-gray-900">The AI-Driven Customized Approach</h2>
+            </div>
+
+            <div class="info-card border-green-200 p-1 mb-6">
+                <div class="bg-gradient-to-r from-gray-50 to-green-50 rounded-xl p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row gap-8 items-center justify-between mb-10">
+                        <div class="flex-1 w-full p-6 bg-white border border-red-200 rounded-xl shadow-sm opacity-80">
+                            <h4
+                                class="font-sora text-center text-red-600 font-bold mb-4 uppercase text-sm tracking-wider">
+                                Traditional Path</h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                                    <span class="text-gray-500">Skills Gained</span>
+                                    <span class="font-bold text-gray-900">75 / 218</span>
+                                </div>
+                                <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                                    <span class="text-gray-500">Hours Spent</span>
+                                    <span class="font-bold text-gray-900">624</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-500">Method</span>
+                                    <span class="font-bold text-gray-900">Same for everyone</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hidden md:flex flex-col items-center shrink-0">
+                            <i data-lucide="arrow-right" class="text-green-500 w-8 h-8"></i>
+                            <span class="text-xs font-bold text-green-600 mt-2 uppercase">Transformation</span>
+                        </div>
+
+                        <div
+                            class="flex-1 w-full p-6 bg-white border-2 border-green-400 rounded-xl shadow-md transform md:scale-105 relative">
+                            <div
+                                class="absolute -top-3 -right-3 bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-sm">
+                                <i data-lucide="check" class="w-4 h-4"></i>
+                            </div>
+                            <h4
+                                class="font-sora text-center text-green-600 font-bold mb-4 uppercase text-sm tracking-wider">
+                                AI-Driven Path</h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                                    <span class="text-gray-500">Skills Gained</span>
+                                    <span class="font-bold text-gray-900">Far More</span>
+                                </div>
+                                <div class="flex justify-between items-center pb-2 border-b border-gray-100">
+                                    <span class="text-gray-500">Hours Spent</span>
+                                    <span class="font-bold text-gray-900">Far Fewer</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-500">Method</span>
+                                    <span class="font-bold text-gray-900">Personalized</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="text-center font-bold text-gray-800 mb-4 text-sm uppercase tracking-widest">Personalized
+                        Recommendations Output</h4>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                            <p class="font-bold text-gray-900 border-b border-gray-100 pb-2 mb-2">Bob <span
+                                    class="text-xs font-normal text-gray-500 ml-2">(Moderate Gap)</span></p>
+                            <p class="text-sm text-gray-700">"You need to take these 3 courses on Coursera."</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                            <p class="font-bold text-gray-900 border-b border-gray-100 pb-2 mb-2">Jane <span
+                                    class="text-xs font-normal text-gray-500 ml-2">(Small Gap)</span></p>
+                            <p class="text-sm text-gray-700">"You need to take this 1 specialization and you'll be
+                                good."</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-gray-200 shadow-sm">
+                            <p class="font-bold text-gray-900 border-b border-gray-100 pb-2 mb-2">Pat <span
+                                    class="text-xs font-normal text-gray-500 ml-2">(Large Gap)</span></p>
+                            <p class="text-sm text-gray-700">"You need a lot of help." (Requires extensive path)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-green-800 text-white rounded-xl p-4 text-center font-medium shadow-sm info-card">
+                Set a standard for the role → Assess the gap → Customize the path → Gain more skills with less time and
+                cost.
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="info-card bg-satisfaction p-8 border-blue-100">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="bg-white p-2 rounded-full shadow-sm text-accent-royal">
+                            <i data-lucide="compass" class="w-6 h-6"></i>
+                        </div>
+                        <h2 class="font-sora text-xl font-bold text-gray-900">Clear Development Paths</h2>
+                    </div>
+
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded-lg border border-blue-100 shadow-sm">
+                            <p class="text-sm text-gray-500 mb-1">Employee Asks:</p>
+                            <p class="font-medium text-gray-900 italic">"What do I need to do to be a great data
+                                scientist or a master at AI?"</p>
+                        </div>
+
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm">
+                            <p class="text-sm text-gray-500 mb-1">Manager Dilemma (Without Data):</p>
+                            <p class="font-medium text-gray-700 italic">"I don't know what you know. I can't work with
+                                1,200 people to understand individual unique giftings and limitations."</p>
+                        </div>
+
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 shadow-sm">
+                            <p class="text-sm text-blue-600 font-bold mb-1">Automated Assessment Solution:</p>
+                            <p class="font-medium text-gray-900">Now employees get clear answers and a defined path for
+                                improvement. Consistent assessment generates transparency.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center md:text-left px-4">
+                    <h3 class="font-sora text-2xl font-bold text-gray-900 mb-4">Assessment Drives Satisfaction</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">When people know exactly where they stand and what
+                        specific steps they need to take to advance, the anxiety of uncertainty is removed. Employees
+                        tend to be happier because they have transparency and a consistent standard applied across the
+                        workforce.</p>
+                    <div
+                        class="inline-flex items-center gap-2 bg-white px-4 py-2 border border-gray-200 rounded-full shadow-sm">
+                        <i data-lucide="smile" class="text-yellow-500 w-5 h-5"></i>
+                        <span class="font-medium text-gray-800">Clear Path = Higher Satisfaction</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="flex items-center justify-center mb-8">
+                <div class="p-3 bg-scores rounded-lg mr-4 border border-purple-100">
+                    <i data-lucide="target" class="text-accent-purple w-6 h-6"></i>
+                </div>
+                <h2 class="font-sora text-2xl md:text-3xl font-bold text-gray-900 text-center">Skill-Role Alignment
+                    Matrix</h2>
+            </div>
+
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">On the back end, managers can use skill
+                assessment scores to view who has the capabilities for advanced versus medium projects. Proper matching
+                directly reduces attrition.</p>
+
+            <div class="max-w-3xl mx-auto info-card p-6 md:p-8 border-purple-100 mb-8 bg-white overflow-x-auto">
+                <div class="matrix-grid min-w-[500px]">
+                    <div></div>
+                    <div class="flex items-end justify-center pb-2">
+                        <h4 class="font-bold text-gray-700 text-center leading-tight">Medium Complexity<br><span
+                                class="text-xs font-normal text-gray-500">Project Requirement</span></h4>
+                    </div>
+                    <div class="flex items-end justify-center pb-2">
+                        <h4 class="font-bold text-gray-700 text-center leading-tight">Advanced Complexity<br><span
+                                class="text-xs font-normal text-gray-500">Project Requirement</span></h4>
+                    </div>
+
+                    <div class="flex items-center justify-end pr-4 border-r border-gray-200">
+                        <h4 class="font-bold text-gray-700 text-right leading-tight">High<br>Skill</h4>
+                    </div>
+                    <div
+                        class="bg-red-50 border-2 border-red-200 rounded-xl p-4 relative flex flex-col items-center justify-center text-center group transition duration-300 hover:bg-red-100">
+                        <i data-lucide="alert-triangle"
+                            class="text-red-400 w-8 h-8 mb-2 absolute top-2 right-2 opacity-20 group-hover:opacity-100 transition"></i>
+                        <p class="font-sora font-bold text-red-700 text-lg mb-1">QUIT RISK</p>
+                        <p class="text-xs text-red-600 uppercase font-bold tracking-wider mb-2">Bored / Unchallenged</p>
+                        <p class="text-xs text-gray-600">Likely to seek more fulfilling work elsewhere.</p>
+                    </div>
+                    <div
+                        class="bg-green-50 border-2 border-green-400 rounded-xl p-4 relative flex flex-col items-center justify-center text-center shadow-md group transition duration-300 hover:bg-green-100">
+                        <div
+                            class="absolute -top-3 -right-3 bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center shadow-sm">
+                            <i data-lucide="star" class="w-3 h-3"></i>
+                        </div>
+                        <p class="font-sora font-bold text-green-700 text-lg mb-1">SUCCESS</p>
+                        <p class="text-xs text-green-600 uppercase font-bold tracking-wider mb-2">Engaged & Growing</p>
+                        <p class="text-xs text-gray-600">Perfect alignment of capability and challenge.</p>
+                    </div>
+
+                    <div class="flex items-center justify-end pr-4 border-r border-gray-200">
+                        <h4 class="font-bold text-gray-700 text-right leading-tight">Medium<br>Skill</h4>
+                    </div>
+                    <div
+                        class="bg-blue-50 border-2 border-blue-300 rounded-xl p-4 relative flex flex-col items-center justify-center text-center group transition duration-300 hover:bg-blue-100">
+                        <p class="font-sora font-bold text-blue-700 text-lg mb-1">STABLE</p>
+                        <p class="text-xs text-blue-600 uppercase font-bold tracking-wider mb-2">Appropriately Matched
+                        </p>
+                        <p class="text-xs text-gray-600">Capable of delivering steady, reliable work.</p>
+                    </div>
+                    <div
+                        class="bg-red-50 border-2 border-red-200 rounded-xl p-4 relative flex flex-col items-center justify-center text-center group transition duration-300 hover:bg-red-100">
+                        <i data-lucide="x-circle"
+                            class="text-red-400 w-8 h-8 mb-2 absolute top-2 right-2 opacity-20 group-hover:opacity-100 transition"></i>
+                        <p class="font-sora font-bold text-red-700 text-lg mb-1">FAIL RISK</p>
+                        <p class="text-xs text-red-600 uppercase font-bold tracking-wider mb-2">Overwhelmed</p>
+                        <p class="text-xs text-gray-600">Project is beyond current capabilities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="max-w-3xl mx-auto bg-purple-800 text-white rounded-xl p-4 text-center font-medium shadow-sm info-card">
+                "Align skill, role, and impact in a way where people can feel successful to increase retention."
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="info-card bg-attrition p-8 border-orange-100 relative overflow-hidden">
+                <i data-lucide="trending-down"
+                    class="absolute -right-4 -bottom-4 w-64 h-64 text-orange-500 opacity-5 pointer-events-none"></i>
+
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="w-full md:w-1/3 text-center">
+                        <p class="text-6xl font-sora font-black text-accent-orange mb-2">24%</p>
+                        <p class="font-bold text-gray-900 uppercase tracking-wide">Annualized Attrition</p>
+                        <div class="h-1 w-16 bg-orange-300 mx-auto my-3"></div>
+                        <p class="text-sm text-gray-600">Losing ~1/4 of workforce yearly. Very common across big tech
+                            companies.</p>
+                    </div>
+
+                    <div class="w-full md:w-2/3 space-y-4">
+                        <h3 class="font-sora text-xl font-bold text-gray-900">Why are people really leaving?</h3>
+
+                        <div class="bg-white p-4 rounded-lg border border-gray-200">
+                            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1">Common Wisdom</p>
+                            <p class="font-medium text-gray-800">"People don't quit jobs, they quit managers."</p>
+                        </div>
+
+                        <div class="bg-orange-50 p-4 rounded-lg border border-orange-200">
+                            <p class="text-xs font-bold text-orange-500 uppercase tracking-widest mb-1">The Deeper
+                                Reality</p>
+                            <p class="font-medium text-gray-900 mb-2">It's more complicated than managers alone. It's
+                                about alignment.</p>
+                            <p class="text-sm text-gray-700">Employees actively evaluate: <em>"Is my role impactful? Is
+                                    it challenging? Is it interesting? Is it helping me grow?"</em> Aligning skill and
+                                role reduces this friction significantly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="flex items-center justify-center mb-8">
+                <div class="p-3 bg-ai rounded-lg mr-4 border border-green-200">
+                    <i data-lucide="shield" class="text-accent-green w-6 h-6"></i>
+                </div>
+                <h2 class="font-sora text-2xl md:text-3xl font-bold text-gray-900 text-center">The Counter-Offer
+                    Decision Framework</h2>
+            </div>
+
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-10">During high talent demand, competitor offers
+                escalate rapidly. Using two unpublished metrics—Skill Assessment Score and Team Feedback Score—removes
+                emotion from the retention decision.</p>
+
+            <div class="info-card p-6 md:p-10 bg-gray-50 border-gray-200 mb-8 max-w-4xl mx-auto">
+                <div
+                    class="mx-auto bg-white border border-gray-300 rounded-xl p-4 w-64 text-center shadow-sm relative z-10">
+                    <div
+                        class="bg-gray-800 text-white text-xs font-bold uppercase py-1 px-3 rounded-t-lg absolute -top-6 left-1/2 transform -translate-x-1/2 whitespace-nowrap">
+                        The Trigger</div>
+                    <p class="font-bold text-gray-900 mt-1">Employee presents offer</p>
+                    <p class="text-sm text-gray-600">"Competitor offers $30K more"</p>
+                </div>
+
+                <div class="tree-line-vert"></div>
+                <div class="tree-line-horiz flex justify-between relative">
+                    <div class="absolute -top-3 -left-3 bg-white px-2 text-xs font-bold text-gray-400">Path A</div>
+                    <div class="absolute -top-3 -right-3 bg-white px-2 text-xs font-bold text-gray-400">Path B</div>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-4 md:gap-8 justify-between mt-0">
+                    <div class="flex-1">
+                        <div class="tree-line-vert mx-auto"></div>
+                        <div
+                            class="bg-white border-2 border-gray-200 rounded-xl p-5 shadow-sm hover:border-red-300 transition duration-300">
+                            <div class="bg-gray-100 rounded-lg p-3 mb-4 text-center border border-gray-200">
+                                <p class="text-xs uppercase font-bold tracking-wider text-gray-500 mb-1">Assessment Data
+                                </p>
+                                <p class="font-bold text-gray-800">Low / Medium Scores</p>
+                                <p class="text-xs text-gray-600 mt-1">Skill: Med/Low • Team: Med/Low</p>
+                            </div>
+
+                            <h4
+                                class="font-sora font-bold text-gray-900 text-center mb-3 text-lg border-b border-gray-100 pb-2">
+                                The Response</h4>
+                            <ul class="space-y-3 text-sm text-gray-700">
+                                <li class="flex items-start gap-2"><i data-lucide="check"
+                                        class="text-gray-400 w-4 h-4 mt-1 shrink-0"></i> "Wish you the best of luck"
+                                </li>
+                                <li class="flex items-start gap-2"><i data-lucide="check"
+                                        class="text-gray-400 w-4 h-4 mt-1 shrink-0"></i> "Drop your computer off"</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check"
+                                        class="text-gray-400 w-4 h-4 mt-1 shrink-0"></i> Provide two weeks severance
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 mt-6 md:mt-0">
+                        <div class="tree-line-vert mx-auto hidden md:block"></div>
+                        <div
+                            class="bg-white border-2 border-green-400 rounded-xl p-5 shadow-md hover:border-green-500 transition duration-300 relative">
+                            <div
+                                class="absolute -top-3 -right-3 bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center shadow-sm">
+                                <i data-lucide="star" class="w-4 h-4"></i>
+                            </div>
+                            <div class="bg-green-50 rounded-lg p-3 mb-4 text-center border border-green-200">
+                                <p class="text-xs uppercase font-bold tracking-wider text-green-600 mb-1">Assessment
+                                    Data</p>
+                                <p class="font-bold text-gray-900">High Value Talent</p>
+                                <p class="text-xs text-green-700 mt-1">Skill Score: High • Team Rating: High</p>
+                            </div>
+
+                            <h4
+                                class="font-sora font-bold text-gray-900 text-center mb-3 text-lg border-b border-gray-100 pb-2">
+                                The Response</h4>
+                            <ul class="space-y-3 text-sm text-gray-700">
+                                <li class="flex items-start gap-2"><i data-lucide="check"
+                                        class="text-green-500 w-4 h-4 mt-1 shrink-0"></i> Offer $30,000 retention
+                                    bonus/raise</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check"
+                                        class="text-green-500 w-4 h-4 mt-1 shrink-0"></i> Require a 2-year clawback
+                                    agreement</li>
+                                <li class="flex items-start gap-2"><i data-lucide="check"
+                                        class="text-green-500 w-4 h-4 mt-1 shrink-0"></i> Give ~4 hours to make the
+                                    decision</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div
+                class="max-w-4xl mx-auto bg-gray-900 text-white rounded-xl p-5 flex items-start gap-4 shadow-sm info-card">
+                <i data-lucide="alert-triangle" class="text-yellow-400 w-6 h-6 shrink-0 mt-1"></i>
+                <div>
+                    <p class="font-bold text-lg mb-1">Never Engage in Open Bidding Wars</p>
+                    <p class="text-sm text-gray-300">"If you entertain one counter-offer, everyone will ask. Your book
+                        of business quickly becomes unprofitable in the attempt to recruit and maintain talent. Do not
+                        be held hostage."</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section grid md:grid-cols-2 gap-8">
+            <div class="info-card bg-traditional p-6 border-red-100 flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="alert-triangle" class="text-accent-red w-5 h-5 mr-3"></i>
+                    <h3 class="font-sora text-xl font-bold text-gray-900">The Cascading Problem</h3>
+                </div>
+                <p class="text-gray-700 mb-6 flex-grow">"If you entertain one $30K demand, guess what happens? Everyone
+                    else in the company, especially if you've established pay equity, will ask for $30,000 more."</p>
+
+                <div class="bg-white p-4 rounded-lg border border-red-200">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-3 h-3 rounded-full bg-red-400"></span>
+                        <p class="text-sm font-semibold">One accommodation</p>
+                    </div>
+                    <div class="w-1 h-4 border-l-2 border-dashed border-gray-300 ml-1 mb-1"></div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-3 h-3 rounded-full bg-red-500"></span>
+                        <p class="text-sm font-semibold">Pay equity destroyed</p>
+                    </div>
+                    <div class="w-1 h-4 border-l-2 border-dashed border-gray-300 ml-1 mb-1"></div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-3 h-3 rounded-full bg-red-600"></span>
+                        <p class="text-sm font-bold text-red-600">Business unprofitable</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card bg-culture p-6 border-yellow-200 flex flex-col h-full">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="scale" class="text-accent-yellow w-5 h-5 mr-3"></i>
+                    <h3 class="font-sora text-xl font-bold text-gray-900">The Squeaky Wheel Bias</h3>
+                </div>
+                <p class="text-gray-700 mb-6">Without objective skill data, you cannot tell the difference between these
+                    two distinct personalities in your workforce.</p>
+
+                <div class="grid grid-cols-2 gap-3 flex-grow">
+                    <div class="bg-white p-3 rounded-lg border border-gray-200 text-center">
+                        <i data-lucide="volume-2" class="mx-auto text-yellow-500 w-5 h-5 mb-2"></i>
+                        <p class="text-xs font-bold mb-1 uppercase">Vocal Advocate</p>
+                        <p class="text-xs text-gray-600">Asks for raises frequently. Empirically, whoever gets a raise
+                            asks again next year.</p>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg border border-gray-200 text-center">
+                        <i data-lucide="user" class="mx-auto text-gray-400 w-5 h-5 mb-2"></i>
+                        <p class="text-xs font-bold mb-1 uppercase">Quiet Performer</p>
+                        <p class="text-xs text-gray-600">Does excellent work but rarely self-advocates. May quietly
+                            leave if undervalued.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section grid md:grid-cols-2 gap-8">
+            <div class="info-card bg-fulfillment p-6 border-indigo-100">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="heart" class="text-accent-indigo w-5 h-5 mr-3"></i>
+                    <h3 class="font-sora text-xl font-bold text-gray-900">The Fulfillment Factor</h3>
+                </div>
+                <p class="text-gray-700 mb-6 text-sm">A person can love their boss and love the company, but if they
+                    don't believe in the task or it's uninteresting and not helping them grow, they will seek a job that
+                    allows them to be fulfilled.</p>
+
+                <div class="flex justify-center items-center py-4 relative h-32">
+                    <div class="absolute inset-0 flex items-center justify-center opacity-10">
+                        <i data-lucide="target" class="w-24 h-24"></i>
+                    </div>
+                    <div class="flex flex-col items-center z-10">
+                        <div
+                            class="bg-white px-3 py-1 rounded-full text-xs font-bold border border-indigo-200 shadow-sm mb-2">
+                            Role (What I do)</div>
+                        <div class="flex gap-16">
+                            <div
+                                class="bg-white px-3 py-1 rounded-full text-xs font-bold border border-indigo-200 shadow-sm">
+                                Skill (What I can do)</div>
+                            <div
+                                class="bg-white px-3 py-1 rounded-full text-xs font-bold border border-indigo-200 shadow-sm">
+                                Impact (Does it matter?)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card bg-fairness p-6 border-teal-100 flex flex-col justify-center">
+                <div class="flex items-center mb-4">
+                    <i data-lucide="check-circle" class="text-accent-teal w-5 h-5 mr-3"></i>
+                    <h3 class="font-sora text-xl font-bold text-gray-900">Core Management Principles</h3>
+                </div>
+                <p class="text-gray-700 mb-6 text-sm">Setting the right culture is as important as technical skill
+                    assessment. Avoid exploitation without falling into capitulation.</p>
+
+                <ul class="space-y-3">
+                    <li class="flex items-center p-3 bg-white rounded-lg border border-teal-100 shadow-sm">
+                        <div class="w-8 h-8 rounded-full bg-teal-50 flex items-center justify-center mr-3 shrink-0"><i
+                                data-lucide="scale" class="w-4 h-4 text-teal-600"></i></div>
+                        <span class="font-semibold text-gray-800 text-sm">Be Fair.</span> <span
+                            class="text-gray-600 text-sm ml-1">Anchor decisions to objective data.</span>
+                    </li>
+                    <li class="flex items-center p-3 bg-white rounded-lg border border-teal-100 shadow-sm">
+                        <div class="w-8 h-8 rounded-full bg-teal-50 flex items-center justify-center mr-3 shrink-0"><i
+                                data-lucide="eye" class="w-4 h-4 text-teal-600"></i></div>
+                        <span class="font-semibold text-gray-800 text-sm">Be Transparent.</span> <span
+                            class="text-gray-600 text-sm ml-1">Let employees see their clear path.</span>
+                    </li>
+                    <li class="flex items-center p-3 bg-white rounded-lg border border-teal-100 shadow-sm">
+                        <div class="w-8 h-8 rounded-full bg-teal-50 flex items-center justify-center mr-3 shrink-0"><i
+                                data-lucide="lock" class="w-4 h-4 text-teal-600"></i></div>
+                        <span class="font-semibold text-gray-800 text-sm">Be Consistent.</span> <span
+                            class="text-gray-600 text-sm ml-1">Apply standards equally to all.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <h2 class="font-sora text-2xl font-bold text-gray-900 mb-6 flex items-center">
+                <i data-lucide="bar-chart" class="w-6 h-6 mr-3 text-blue-600"></i> Training Efficiency Comparison
+            </h2>
+
+            <div class="info-card bg-satisfaction p-6 border-blue-100">
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <h3 class="font-bold text-gray-800 mb-4 border-b border-blue-200 pb-2">The Mathematical Reality
+                        </h3>
+                        <p class="text-sm text-gray-700 mb-4">When applying the traditional approach to three people,
+                            the math reveals massive inefficiency. You are paying for all of this time.</p>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex justify-between items-center"><span class="text-gray-500">Skills
+                                    Gained</span> <span class="font-bold text-gray-900">75 out of 218</span></li>
+                            <li class="flex justify-between items-center"><span class="text-gray-500">Total Hours
+                                    Spent</span> <span class="font-bold text-gray-900">624</span></li>
+                            <li class="flex justify-between items-center"><span class="text-gray-500">New Learning
+                                    Rate</span> <span class="font-bold text-gray-900 text-red-600">~34%</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl border border-blue-200 shadow-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-blue-50 rounded-full text-blue-600">
+                                <i data-lucide="calculator" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">The AI-Driven Advantage</h4>
+                                <p class="text-sm text-gray-600 mt-1">Automating training and assessment ensures far
+                                    more skills are gained with far fewer hours spent, vastly upgrading quality at lower
+                                    cost.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-16 fade-section">
+
+            <section>
+                <h3 class="font-sora text-lg font-bold text-gray-900 mb-4 flex items-center">
+                    <i data-lucide="plus-circle" class="w-5 h-5 mr-2 text-green-600"></i> Modern Extensions
+                </h3>
+                <div class="grid grid-cols-2 gap-3">
+                    <div
+                        class="bg-white border border-gray-200 p-3 rounded-lg shadow-sm hover:border-green-300 transition">
+                        <p class="text-xs font-bold text-gray-800 mb-1">Adaptive Testing</p>
+                        <p class="text-xs text-gray-500 leading-tight">AI adjusts difficulty in real-time.</p>
+                    </div>
+                    <div
+                        class="bg-white border border-gray-200 p-3 rounded-lg shadow-sm hover:border-green-300 transition">
+                        <p class="text-xs font-bold text-gray-800 mb-1">Skills Graph</p>
+                        <p class="text-xs text-gray-500 leading-tight">Maps capability adjacencies.</p>
+                    </div>
+                    <div
+                        class="bg-white border border-gray-200 p-3 rounded-lg shadow-sm hover:border-green-300 transition">
+                        <p class="text-xs font-bold text-gray-800 mb-1">Peer Validation</p>
+                        <p class="text-xs text-gray-500 leading-tight">Project-based competency proofs.</p>
+                    </div>
+                    <div
+                        class="bg-white border border-gray-200 p-3 rounded-lg shadow-sm hover:border-green-300 transition">
+                        <p class="text-xs font-bold text-gray-800 mb-1">Continuous Assess</p>
+                        <p class="text-xs text-gray-500 leading-tight">Tracking development over time.</p>
+                    </div>
+                    <div
+                        class="bg-white border border-gray-200 p-3 rounded-lg shadow-sm hover:border-green-300 transition">
+                        <p class="text-xs font-bold text-gray-800 mb-1">Simulation</p>
+                        <p class="text-xs text-gray-500 leading-tight">Scenario-based evaluation.</p>
+                    </div>
+                    <div
+                        class="bg-white border border-gray-200 p-3 rounded-lg shadow-sm hover:border-green-300 transition">
+                        <p class="text-xs font-bold text-gray-800 mb-1">Skills Ontology</p>
+                        <p class="text-xs text-gray-500 leading-tight">Standardized organizational taxonomy.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3 class="font-sora text-lg font-bold text-gray-900 mb-4 flex items-center">
+                    <i data-lucide="bar-chart-2" class="w-5 h-5 mr-2 text-indigo-600"></i> Metrics Dashboard
+                </h3>
+                <div class="grid grid-cols-1 gap-3">
+                    <div
+                        class="bg-white border border-gray-200 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-gray-800">Training Efficiency Ratio</p>
+                            <p class="text-xs text-gray-500">New skills gained per hour spent.</p>
+                        </div>
+                        <i data-lucide="activity" class="w-4 h-4 text-indigo-400"></i>
+                    </div>
+                    <div
+                        class="bg-white border border-gray-200 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-gray-800">Time-to-Competency</p>
+                            <p class="text-xs text-gray-500">Speed of readiness for new roles.</p>
+                        </div>
+                        <i data-lucide="clock" class="w-4 h-4 text-indigo-400"></i>
+                    </div>
+                    <div
+                        class="bg-white border border-gray-200 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-gray-800">Gap Closure Rate</p>
+                            <p class="text-xs text-gray-500">% of identified gaps addressed per quarter.</p>
+                        </div>
+                        <i data-lucide="trending-up" class="w-4 h-4 text-indigo-400"></i>
+                    </div>
+                    <div
+                        class="bg-white border border-gray-200 p-3 rounded-lg shadow-sm flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-gray-800">Assessment Coverage</p>
+                            <p class="text-xs text-gray-500">% of workforce with current profiles.</p>
+                        </div>
+                        <i data-lucide="gauge" class="w-4 h-4 text-indigo-400"></i>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="mb-12 fade-section">
+            <div class="info-card bg-ai p-8 border-green-200 text-center relative overflow-hidden">
+                <div class="absolute inset-0 border-t-4 border-green-500 rounded-t-xl"></div>
+                <h2 class="font-sora text-2xl font-bold text-gray-900 mb-6">Strategic Clarity</h2>
+
+                <p class="text-gray-800 font-medium text-lg leading-relaxed max-w-4xl mx-auto italic">
+                    "Skill assessment transforms organizational guesswork into strategic clarity. When you don't know
+                    what your people know, you train redundantly, staff blindly, and lose your best talent to
+                    misalignment. AI-driven assessment creates personalized training paths that deliver more skills in
+                    fewer hours, clear development roadmaps that employees can see and follow, and objective skill
+                    scores that enable data-driven decisions on project assignment, retention investment, and
+                    counter-offer response. Beyond 150 people, you cannot personally assess everyone. But you can build
+                    a system that assesses consistently, trains efficiently, and retains strategically. Be fair. Be
+                    transparent. Be consistent. Don't let personality drive compensation — let skill and merit drive it.
+                    When your people have clear answers about where they stand and where they're going, attrition drops,
+                    satisfaction rises, and your organization becomes a place where talented people choose to stay."
+                </p>
+            </div>
+        </section>
+
+        <footer class="text-center text-gray-500 text-sm py-8 border-t border-gray-200 fade-section">
+            <p class="font-semibold text-gray-700">Dr. Ian McCullough, Johns Hopkins University</p>
+            <p class="mt-1">Topic: Skill Assessment & Workforce Management</p>
+            <p class="mt-4 text-xs italic text-gray-400">Optimized for standard print output. Background graphics
+                disabled on print.</p>
+        </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Icons
+            lucide.createIcons();
+
+            // 2. Add hidden class initially (Safe Pattern to avoid blank page if JS breaks)
+            const fadeElements = document.querySelectorAll('.fade-section');
+            fadeElements.forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+
+            // 3. Set up Intersection Observer
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.remove('not-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+                fadeElements.forEach(function (el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for older browsers
+                fadeElements.forEach(function (el) {
+                    el.classList.remove('not-visible');
+                });
+            }
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remote Work Trends — Interactive Infographic</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Remote Work Trends in AI — Offshore, Onshore, and Blended Team Models">
+    <meta name="description" content="Analyze remote work trends for AI teams: compare onshore, offshore, and blended cost models. Covers proximity requirements for AI ethics, innovation dynamics, client interactions, and how organizations optimize global AI workforce distribution.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Project Management">
+    <meta name="tags" content="Remote Work, AI Teams, Offshore Development, Blended Teams, Work Models, Cost Optimization, AI Ethics, Innovation, Global Workforce">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Remote work in AI organizations involves tradeoffs between onshore, offshore, and blended models with distinct cost profiles. Proximity requirements apply differentially: AI ethics and innovation work benefits from co-location, while routine development tasks suit offshore models. Client-facing and junior roles have distinct location considerations.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/remote-work-trends">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Remote Work Trends in AI — Offshore, Onshore, and Blended Team Models">
+    <meta property="og:description" content="Analyze remote work trends for AI teams: compare onshore, offshore, and blended cost models. Covers proximity requirements for AI ethics, innovation dynamics, client interactions, and how organizations optimize global AI workforce distribution.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/remote-work-trends">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-04-10">
+    <meta property="article:section" content="AI Project Management">
+    <meta property="article:tag" content="Remote Work">
+    <meta property="article:tag" content="Offshore Development">
+    <meta property="article:tag" content="Global Workforce">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Remote Work Trends in AI — Offshore, Onshore, and Blended Team Models",
+        "description": "Analyze remote work trends for AI teams: compare onshore, offshore, and blended cost models. Covers proximity requirements for AI ethics, innovation dynamics, client interactions, and how organizations optimize global AI workforce distribution.",
+        "datePublished": "2025-04-10",
+        "dateModified": "2025-04-10",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/remote-work-trends"
+        },
+        "keywords": ["Remote Work", "AI Teams", "Offshore Development", "Blended Teams", "Work Models", "Cost Optimization", "AI Ethics", "Innovation", "Global Workforce"],
+        "articleSection": "AI Project Management"
+    }
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.1/dist/umd/lucide.min.js"
+        onerror="var s=document.createElement('script');s.src='https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js';document.head.appendChild(s);"></script>
+    <style>
+        /* === GLOBAL STYLES === */
+        :root {
+            --heading-font: 'Sora', sans-serif;
+            --body-font: 'DM Sans', sans-serif;
+            --bg-page: #FAFBFC;
+            --text-heading: #1E293B;
+            --text-body: #475569;
+            --text-secondary: #64748B;
+            --border-light: #E2E8F0;
+            --card-bg: #FFFFFF;
+            --stat-bg: #D1FAE5;
+            --stat-text: #065F46;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--body-font);
+            background: var(--bg-page);
+            color: var(--text-body);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: var(--heading-font);
+            color: var(--text-heading);
+            letter-spacing: -0.02em;
+        }
+
+        .container-main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        @media (max-width: 640px) {
+            .container-main {
+                padding: 0 16px;
+            }
+        }
+
+        /* === RAINBOW STRIPE === */
+        .rainbow-stripe {
+            height: 5px;
+            background: linear-gradient(90deg, #F472B6, #A855F7, #6366F1, #0EA5E9, #10B981, #F59E0B, #EF4444);
+        }
+
+        /* === SECTION BACKGROUNDS === */
+        .sec-header {
+            background-color: #F0F9FF;
+        }
+
+        .sec-opening {
+            background-color: #F8FAFC;
+        }
+
+        .sec-efficiency {
+            background-color: #FDF4FF;
+        }
+
+        .sec-proximity {
+            background-color: #FFF7ED;
+        }
+
+        .sec-junior {
+            background-color: #FEF2F2;
+        }
+
+        .sec-normative {
+            background-color: #EFF6FF;
+        }
+
+        .sec-client {
+            background-color: #F0FDF4;
+        }
+
+        .sec-innovation {
+            background-color: #FEF3C7;
+        }
+
+        .sec-ethics {
+            background-color: #FEF2F2;
+        }
+
+        .sec-regulation {
+            background-color: #E0E7FF;
+        }
+
+        .sec-offshore {
+            background-color: #F0FDF4;
+        }
+
+        .sec-techtalent {
+            background-color: #FFF7ED;
+        }
+
+        .sec-impact {
+            background-color: #FDF4FF;
+        }
+
+        .sec-approaches {
+            background-color: #D1FAE5;
+        }
+
+        .sec-metrics {
+            background-color: #E0E7FF;
+        }
+
+        .sec-takeaways {
+            background-color: #F0FDF4;
+        }
+
+        .sec-footer {
+            background-color: #F8FAFC;
+        }
+
+        /* === ACCENT COLORS === */
+        .accent-header {
+            color: #0EA5E9;
+        }
+
+        .accent-opening {
+            color: #475569;
+        }
+
+        .accent-efficiency {
+            color: #A855F7;
+        }
+
+        .accent-proximity {
+            color: #EA580C;
+        }
+
+        .accent-junior {
+            color: #DC2626;
+        }
+
+        .accent-normative {
+            color: #2563EB;
+        }
+
+        .accent-client {
+            color: #16A34A;
+        }
+
+        .accent-innovation {
+            color: #D97706;
+        }
+
+        .accent-ethics {
+            color: #DC2626;
+        }
+
+        .accent-regulation {
+            color: #6366F1;
+        }
+
+        .accent-offshore {
+            color: #16A34A;
+        }
+
+        .accent-techtalent {
+            color: #EA580C;
+        }
+
+        .accent-impact {
+            color: #A855F7;
+        }
+
+        .accent-approaches {
+            color: #10B981;
+        }
+
+        .accent-metrics {
+            color: #6366F1;
+        }
+
+        .accent-takeaways {
+            color: #22C55E;
+        }
+
+        /* === BORDER ACCENT HELPERS === */
+        .bl-header {
+            border-left: 4px solid #0EA5E9;
+        }
+
+        .bl-efficiency {
+            border-left: 4px solid #A855F7;
+        }
+
+        .bl-proximity {
+            border-left: 4px solid #EA580C;
+        }
+
+        .bl-junior {
+            border-left: 4px solid #DC2626;
+        }
+
+        .bl-normative {
+            border-left: 4px solid #2563EB;
+        }
+
+        .bl-client {
+            border-left: 4px solid #16A34A;
+        }
+
+        .bl-innovation {
+            border-left: 4px solid #D97706;
+        }
+
+        .bl-ethics {
+            border-left: 4px solid #DC2626;
+        }
+
+        .bl-regulation {
+            border-left: 4px solid #6366F1;
+        }
+
+        .bl-offshore {
+            border-left: 4px solid #16A34A;
+        }
+
+        .bl-techtalent {
+            border-left: 4px solid #EA580C;
+        }
+
+        .bl-impact {
+            border-left: 4px solid #A855F7;
+        }
+
+        .bl-takeaways {
+            border-left: 4px solid #22C55E;
+        }
+
+        /* === SECTION SPACING === */
+        .section-block {
+            padding: 48px 0;
+        }
+
+        @media (max-width: 640px) {
+            .section-block {
+                padding: 32px 0;
+            }
+        }
+
+        /* === CARDS === */
+        .info-card {
+            background: var(--card-bg);
+            border: 1.5px solid var(--border-light);
+            border-radius: 14px;
+            padding: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        /* === STAT BADGES === */
+        .stat-badge {
+            display: inline-block;
+            background: var(--stat-bg);
+            color: var(--stat-text);
+            font-family: var(--heading-font);
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        /* === SECTION NUMBER BADGES === */
+        .sec-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 7px;
+            background: var(--text-heading);
+            color: #fff;
+            font-family: var(--heading-font);
+            font-weight: 700;
+            font-size: 13px;
+            flex-shrink: 0;
+        }
+
+        /* === SIGNATURE VISUAL PANELS === */
+        .sig-panel {
+            background: var(--card-bg);
+            border: 1.5px solid var(--border-light);
+            border-radius: 16px;
+            padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sig-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .sig-eff::before {
+            background: linear-gradient(90deg, #A855F7, #6366F1);
+        }
+
+        .sig-junior::before {
+            background: linear-gradient(90deg, #DC2626, #F97316);
+        }
+
+        .sig-ethics::before {
+            background: linear-gradient(90deg, #DC2626, #EC4899);
+        }
+
+        .sig-offshore::before {
+            background: linear-gradient(90deg, #16A34A, #0EA5E9);
+        }
+
+        /* === DUAL PANEL (Efficiency vs Innovation) === */
+        .dual-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 640px) {
+            .dual-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dual-side {
+            border-radius: 12px;
+            padding: 20px;
+            border: 1.5px solid var(--border-light);
+        }
+
+        .dual-left {
+            background: #F5F3FF;
+        }
+
+        .dual-right {
+            background: #FFFBEB;
+        }
+
+        .dual-center {
+            background: #F8FAFC;
+            border-radius: 12px;
+            padding: 16px 20px;
+            border: 1.5px solid var(--border-light);
+            text-align: center;
+        }
+
+        /* === FLOW STEPS (Junior Workforce) === */
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            background: #FFF5F5;
+            border-radius: 10px;
+            border-left: 3px solid #DC2626;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            color: #DC2626;
+            font-size: 18px;
+            font-weight: 700;
+            padding: 2px 0;
+        }
+
+        /* === COMPARISON COLUMNS (Ethics) === */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 640px) {
+            .compare-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .compare-col {
+            border-radius: 12px;
+            padding: 20px;
+            border: 1.5px solid var(--border-light);
+        }
+
+        .compare-ai {
+            background: #FFF5F5;
+        }
+
+        .compare-human {
+            background: #F0FDF4;
+        }
+
+        /* === BAR CHART (Offshore) === */
+        .cost-bar-container {
+            position: relative;
+            height: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #F1F5F9;
+            margin-bottom: 8px;
+        }
+
+        .cost-bar {
+            height: 100%;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            padding-left: 14px;
+            font-weight: 600;
+            font-size: 13px;
+            color: #fff;
+            transition: width 0.8s ease;
+        }
+
+        .bar-onshore {
+            background: linear-gradient(90deg, #16A34A, #22C55E);
+        }
+
+        .bar-offshore {
+            background: linear-gradient(90deg, #0EA5E9, #38BDF8);
+        }
+
+        .bar-blended {
+            background: linear-gradient(90deg, #6366F1, #818CF8);
+        }
+
+        /* === RESPONSIVE GRIDS === */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width: 640px) {
+
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* === QUOTE BLOCK === */
+        .quote-block {
+            font-family: var(--heading-font);
+            font-style: italic;
+            font-size: 15px;
+            color: var(--text-heading);
+            padding: 16px 20px;
+            border-radius: 12px;
+            background: #F8FAFC;
+            border-left: 4px solid #A855F7;
+            line-height: 1.7;
+        }
+
+        /* === FADE-IN ANIMATIONS (SAFE PATTERN) === */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        /* === PRINT STYLES === */
+        @media print {
+            .rainbow-stripe {
+                height: 3px !important;
+            }
+
+            .info-card,
+            .sig-panel {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+            }
+
+            .info-card:hover {
+                transform: none !important;
+            }
+
+            .fade-section.not-visible {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            body {
+                background: #fff !important;
+            }
+
+            .section-block {
+                page-break-inside: avoid;
+            }
+
+            .sec-header,
+            .sec-takeaways {
+                page-break-after: always;
+            }
+        }
+
+        /* === ICON HELPER === */
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .ib-header {
+            background: #DBEAFE;
+            color: #0EA5E9;
+        }
+
+        .ib-opening {
+            background: #F1F5F9;
+            color: #475569;
+        }
+
+        .ib-efficiency {
+            background: #F3E8FF;
+            color: #A855F7;
+        }
+
+        .ib-proximity {
+            background: #FFEDD5;
+            color: #EA580C;
+        }
+
+        .ib-junior {
+            background: #FEE2E2;
+            color: #DC2626;
+        }
+
+        .ib-normative {
+            background: #DBEAFE;
+            color: #2563EB;
+        }
+
+        .ib-client {
+            background: #DCFCE7;
+            color: #16A34A;
+        }
+
+        .ib-innovation {
+            background: #FEF3C7;
+            color: #D97706;
+        }
+
+        .ib-ethics {
+            background: #FEE2E2;
+            color: #DC2626;
+        }
+
+        .ib-regulation {
+            background: #E0E7FF;
+            color: #6366F1;
+        }
+
+        .ib-offshore {
+            background: #DCFCE7;
+            color: #16A34A;
+        }
+
+        .ib-techtalent {
+            background: #FFEDD5;
+            color: #EA580C;
+        }
+
+        .ib-impact {
+            background: #F3E8FF;
+            color: #A855F7;
+        }
+
+        .ib-approaches {
+            background: #D1FAE5;
+            color: #10B981;
+        }
+
+        .ib-metrics {
+            background: #E0E7FF;
+            color: #6366F1;
+        }
+
+        .ib-takeaways {
+            background: #DCFCE7;
+            color: #22C55E;
+        }
+
+        /* Composition bar segments */
+        .comp-bar {
+            display: flex;
+            height: 48px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .comp-seg {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 12px;
+            font-family: var(--heading-font);
+        }
+
+        .comp-onshore {
+            background: #16A34A;
+        }
+
+        .comp-offshore {
+            background: #0EA5E9;
+        }
+
+        .comp-exec {
+            background: #6366F1;
+        }
+
+        /* Normative chain */
+        .chain-step {
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .chain-arrow {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        /* Key stat strip */
+        .stat-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        /* Small tag */
+        .challenge-tag {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 6px;
+            background: #F1F5F9;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================================================ -->
+    <!-- SECTION A — RAINBOW STRIPE + HEADER                          -->
+    <!-- ============================================================ -->
+    <div class="rainbow-stripe"></div>
+    <section class="sec-header section-block fade-section">
+        <div class="container-main">
+            <div style="text-align:center; padding: 20px 0 10px;">
+                <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:16px;">
+                    <div class="icon-box ib-header"><i data-lucide="monitor" style="width:22px;height:22px;"></i></div>
+                    <span
+                        style="font-family:var(--heading-font);font-size:13px;font-weight:600;color:#0EA5E9;text-transform:uppercase;letter-spacing:0.08em;">Interactive
+                        Infographic</span>
+                </div>
+                <h1 style="font-size:36px;font-weight:800;line-height:1.15;margin:0 0 14px;">Remote Work Trends</h1>
+                <p style="font-size:16px;color:var(--text-body);max-width:720px;margin:0 auto 20px;line-height:1.6;">How
+                    COVID Transformed the Workplace — The Hidden Costs to Innovation, Culture, Knowledge Transfer, and
+                    the Global Reshaping of AI Labor Markets</p>
+                <p style="font-size:14px;color:var(--text-secondary);margin-bottom:20px;">Source: Dr. Ian McCullough,
+                    Johns Hopkins University</p>
+                <div class="stat-strip">
+                    <span class="stat-badge">Productivity ↑ Short-Term</span>
+                    <span class="stat-badge">3,000 Lives Saved by AI</span>
+                    <span class="stat-badge">$200/hr → $166/hr Blended</span>
+                    <span class="stat-badge">75% Offshore</span>
+                    <span class="stat-badge">21% Client-Facing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION B — OPENING FRAMING: THE COVID CATALYST              -->
+    <!-- ============================================================ -->
+    <section class="sec-opening section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">B</span>
+                <div class="icon-box ib-opening"><i data-lucide="trending-up" style="width:20px;height:20px;"></i></div>
+                <h2 style="font-size:22px;font-weight:700;margin:0;" class="accent-opening">The COVID Catalyst</h2>
+            </div>
+            <div class="info-card">
+                <p style="font-size:15px;line-height:1.7;margin:0 0 14px;">During the COVID pandemic, there was a
+                    significant rise in remote work. Part of this was the need for AI and IT to enable distributed
+                    teams. Initially, organizations observed a <strong>short-term increase in productivity</strong>.
+                    However, there was an <strong>adverse impact on education and training</strong> — the assumption
+                    that people would use newfound free time for learning does not bear out empirically.</p>
+                <p style="font-size:14px;line-height:1.7;margin:0 0 14px;color:var(--text-secondary);">The pandemic
+                    compressed years of remote work adoption into weeks, forcing organizations to implement distributed
+                    infrastructure without the cultural adaptation that normally accompanies such transitions. The
+                    initial productivity gains masked emerging problems in collaboration, mentorship, and innovation
+                    that would surface over the following years.</p>
+                <div class="grid-2" style="margin-top:16px;">
+                    <div style="background:#DCFCE7;border-radius:10px;padding:14px;text-align:center;">
+                        <div style="font-size:13px;font-weight:600;color:#16A34A;margin-bottom:4px;">SHORT-TERM GAIN
+                        </div>
+                        <div style="font-size:15px;font-weight:700;color:#065F46;">Productivity ↑</div>
+                    </div>
+                    <div style="background:#FEE2E2;border-radius:10px;padding:14px;text-align:center;">
+                        <div style="font-size:13px;font-weight:600;color:#DC2626;margin-bottom:4px;">LONG-TERM COST
+                        </div>
+                        <div style="font-size:15px;font-weight:700;color:#7F1D1D;">Education & Training ↓</div>
+                    </div>
+                </div>
+                <p style="font-size:14px;color:var(--text-secondary);margin-top:16px;font-style:italic;">To understand
+                    why, we need to examine the fundamental tension between efficiency and innovation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION C — EFFICIENCY VS. INNOVATION (SIGNATURE VISUAL 1)   -->
+    <!-- ============================================================ -->
+    <section class="sec-efficiency section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">C</span>
+                <div class="icon-box ib-efficiency"><i data-lucide="layers" style="width:20px;height:20px;"></i></div>
+                <h2 style="font-size:22px;font-weight:700;margin:0;" class="accent-efficiency">Efficiency vs. Innovation
+                </h2>
+            </div>
+            <div class="sig-panel sig-eff">
+                <p
+                    style="font-size:14px;color:var(--text-secondary);margin:8px 0 20px;text-align:center;font-weight:500;">
+                    SIGNATURE FRAMEWORK — They Optimize Different Things</p>
+                <div class="dual-grid">
+                    <!-- Efficiency Side -->
+                    <div class="dual-side dual-left">
+                        <h4 style="font-size:17px;font-weight:700;color:#7C3AED;margin:0 0 12px;"><i
+                                data-lucide="settings"
+                                style="width:16px;height:16px;display:inline;vertical-align:-2px;"></i> EFFICIENCY</h4>
+                        <p style="font-size:14px;margin:0 0 12px;line-height:1.6;">How do you achieve a well-defined
+                            task consistently, quickly, at a cost-efficient point?</p>
+                        <div style="font-size:13px;font-weight:600;color:#7C3AED;margin-bottom:6px;">Requires: FORMAL
+                            LEADERSHIP</div>
+                        <ul style="font-size:13px;margin:0;padding-left:16px;line-height:1.8;color:var(--text-body);">
+                            <li>Management and supervision</li>
+                            <li>Well-documented standards</li>
+                            <li>Standards enforced by leaders with authority and resources</li>
+                            <li>Ensuring people do what they are supposed to do</li>
+                        </ul>
+                    </div>
+                    <!-- Innovation Side -->
+                    <div class="dual-side dual-right">
+                        <h4 style="font-size:17px;font-weight:700;color:#B45309;margin:0 0 12px;"><i
+                                data-lucide="lightbulb"
+                                style="width:16px;height:16px;display:inline;vertical-align:-2px;"></i> INNOVATION</h4>
+                        <p style="font-size:14px;margin:0 0 12px;line-height:1.6;">How do you come up with new ways?
+                            Think outside the box? Novel solutions to novel problems?</p>
+                        <div style="font-size:13px;font-weight:600;color:#B45309;margin-bottom:6px;">Requires: INFORMAL
+                            LEADERSHIP</div>
+                        <ul style="font-size:13px;margin:0;padding-left:16px;line-height:1.8;color:var(--text-body);">
+                            <li>Not formally tasked or assigned</li>
+                            <li>Know where resources are across the organization</li>
+                            <li>Social capital from relationships with many people</li>
+                            <li>Step in and solve problems when needed</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Center Balance -->
+                <div class="dual-center" style="margin-top:20px;">
+                    <div style="font-size:15px;font-weight:700;color:var(--text-heading);margin-bottom:8px;">The Balance
+                    </div>
+                    <p style="font-size:14px;margin:0 0 6px;"><strong>Not opposites</strong> — they optimize different
+                        things.</p>
+                    <p style="font-size:13px;margin:0;color:var(--text-secondary);">Strong formal leader → restricts
+                        informal leader's influence. Weak or absent formal leader → informal leader steps in and solves
+                        problems.</p>
+                </div>
+                <div
+                    style="margin-top:16px;padding:12px 16px;background:#FDF4FF;border-radius:10px;border:1px solid #E9D5FF;text-align:center;">
+                    <p style="font-size:14px;font-weight:600;color:#7C3AED;margin:0;">Remote work strengthens formal
+                        leadership structures but weakens the informal networks that drive innovation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION D — PROXIMITY: THE IRREPLACEABLE SOCIAL FORCE        -->
+    <!-- ============================================================ -->
+    <section class="sec-proximity section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">D</span>
+                <div class="icon-box ib-proximity"><i data-lucide="coffee" style="width:20px;height:20px;"></i></div>
+                <h2 style="font-size:22px;font-weight:700;margin:0;" class="accent-proximity">Proximity — The
+                    Irreplaceable Social Force</h2>
+            </div>
+            <div class="info-card bl-proximity">
+                <p style="font-size:15px;line-height:1.7;margin:0 0 16px;">Proximity is one of the social forces that
+                    can promote both efficiency and innovation. When you bump into somebody at the coffee pot, have
+                    unprogrammed chats, or attend happy hours and social events, you talk about things that are
+                    <strong>not task-specific</strong>. That is where you learn about things that may not be important
+                    today but might help you be an informal leader further down the road.</p>
+                <div class="grid-2" style="margin-bottom:16px;">
+                    <div style="padding:14px;background:#FFF7ED;border-radius:10px;">
+                        <div style="font-size:13px;font-weight:600;color:#EA580C;margin-bottom:6px;">WHAT PROXIMITY
+                            PROVIDES</div>
+                        <ul style="font-size:13px;margin:0;padding-left:16px;line-height:1.8;">
+                            <li>Coffee pot conversations — unprogrammed, task-free</li>
+                            <li>Happy hours and social events — relationship building</li>
+                            <li>Hallway encounters — chance contact with new information</li>
+                            <li>Shared physical space — familiarity and intimacy</li>
+                        </ul>
+                    </div>
+                    <div style="padding:14px;background:#FEF2F2;border-radius:10px;">
+                        <div style="font-size:13px;font-weight:600;color:#DC2626;margin-bottom:6px;">WHAT REMOTE WORK
+                            LOSES</div>
+                        <ul style="font-size:13px;margin:0;padding-left:16px;line-height:1.8;">
+                            <li>Lack of proximity → degraded informal leadership</li>
+                            <li>Lack of intimacy → weakened organizational relationships</li>
+                            <li>Non-task conversations disappear → social capital erodes</li>
+                            <li>Virtual substitutes struggle to reproduce spontaneity</li>
+                        </ul>
+                    </div>
+                </div>
+                <div
+                    style="background:#FFFBEB;border-radius:10px;padding:12px 16px;font-size:14px;color:#92400E;font-weight:500;text-align:center;">
+                    Learn things not important today → Become an informal leader tomorrow
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION E — JUNIOR WORKFORCE PROBLEM (SIGNATURE VISUAL 2)    -->
+    <!-- ============================================================ -->
+    <section class="sec-junior section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">E</span>
+                <div class="icon-box ib-junior"><i data-lucide="help-circle" style="width:20px;height:20px;"></i></div>
+                <h2 style="font-size:22px;font-weight:700;margin:0;" class="accent-junior">The Junior Workforce Problem
+                </h2>
+            </div>
+            <div class="sig-panel sig-junior">
+                <p
+                    style="font-size:14px;color:var(--text-secondary);margin:8px 0 20px;text-align:center;font-weight:500;">
+                    SIGNATURE INSIGHT — A Culture of Self-Reliance</p>
+                <div class="grid-2">
+                    <!-- Flow Column -->
+                    <div>
+                        <div style="font-size:13px;font-weight:600;color:#DC2626;margin-bottom:10px;">THE PATTERN</div>
+                        <div class="flow-step"><i data-lucide="alert-triangle"
+                                style="width:16px;height:16px;flex-shrink:0;color:#DC2626;"></i> Junior employee
+                            encounters a problem</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step"><i data-lucide="search"
+                                style="width:16px;height:16px;flex-shrink:0;color:#DC2626;"></i> Goes to Google / Stack
+                            Overflow</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step"><i data-lucide="clock"
+                                style="width:16px;height:16px;flex-shrink:0;color:#DC2626;"></i> Spends hours or days
+                            self-solving</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step"><i data-lucide="user-x"
+                                style="width:16px;height:16px;flex-shrink:0;color:#DC2626;"></i> Does NOT seek
+                            organizational experts</div>
+                        <div class="flow-arrow">↓</div>
+                        <div class="flow-step"><i data-lucide="users"
+                                style="width:16px;height:16px;flex-shrink:0;color:#DC2626;"></i> Teamwork degrades</div>
+                    </div>
+                    <!-- Insight Column -->
+                    <div>
+                        <div style="font-size:13px;font-weight:600;color:#DC2626;margin-bottom:10px;">THE MINDSET</div>
+                        <div style="background:#FFF5F5;border-radius:10px;padding:14px;margin-bottom:12px;">
+                            <p style="font-size:14px;margin:0 0 6px;font-weight:600;color:#991B1B;">University Culture
+                            </p>
+                            <p style="font-size:13px;margin:0;line-height:1.6;">Do your own homework assignment. Do not
+                                partner with other people. Figure it out yourself or you are not valuable.</p>
+                        </div>
+                        <div style="font-size:13px;font-weight:600;color:#DC2626;margin-bottom:10px;">THE COST</div>
+                        <div style="background:#FFF5F5;border-radius:10px;padding:14px;margin-bottom:12px;">
+                            <p style="font-size:13px;margin:0 0 4px;"><strong>Senior person</strong> at higher price
+                                point coding = Inefficient</p>
+                            <p style="font-size:13px;margin:0;"><strong>Junior person</strong> spending hours online to
+                                avoid looking stupid = Inefficient</p>
+                        </div>
+                        <div style="font-size:13px;font-weight:600;color:#DC2626;margin-bottom:10px;">THE GAP</div>
+                        <div style="background:#FFF5F5;border-radius:10px;padding:14px;">
+                            <p style="font-size:13px;margin:0;line-height:1.6;">Senior leaders have knowledge and
+                                experience. Junior workers have energy and technical currency. But they <strong>lack the
+                                    relationships</strong> to connect in hybrid remote teams.</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    style="margin-top:16px;padding:12px 16px;background:#FEF2F2;border-radius:10px;border:1px solid #FECACA;text-align:center;">
+                    <p style="font-size:14px;font-weight:700;color:#991B1B;margin:0;">"Nobody has really solved this
+                        problem yet."</p>
+                    <p style="font-size:13px;color:#B91C1C;margin:4px 0 0;">We need to right-size the way we actually
+                        create intimacy and familiarity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION F — REDUCED NORMATIVE INFLUENCE                      -->
+    <!-- ============================================================ -->
+    <section class="sec-normative section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">F</span>
+                <div class="icon-box ib-normative"><i data-lucide="volume-x" style="width:20px;height:20px;"></i></div>
+                <h2 style="font-size:22px;font-weight:700;margin:0;" class="accent-normative">Reduced Normative
+                    Influence</h2>
+            </div>
+            <div class="info-card bl-normative">
+                <p style="font-size:15px;line-height:1.7;margin:0 0 16px;">Organizations set goals and values. People
+                    committed to the company and doing a great job get praised and rewarded. This creates a
+                    <strong>normative effect</strong> where other people want to be like that too — a company culture
+                    where people are motivated to making the organization better. When people are remote, that influence
+                    diminishes.</p>
+                <div class="grid-2" style="margin-bottom:16px;">
+                    <div style="padding:14px;background:#DCFCE7;border-radius:10px;">
+                        <div style="font-size:13px;font-weight:600;color:#16A34A;margin-bottom:8px;">IN-OFFICE CHAIN
+                        </div>
+                        <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+                            <span class="chain-step" style="background:#D1FAE5;color:#065F46;">Goals Set</span>
+                            <span class="chain-arrow" style="color:#16A34A;">→</span>
+                            <span class="chain-step" style="background:#D1FAE5;color:#065F46;">Great Work Praised</span>
+                            <span class="chain-arrow" style="color:#16A34A;">→</span>
+                            <span class="chain-step" style="background:#D1FAE5;color:#065F46;">Others Motivated</span>
+                            <span class="chain-arrow" style="color:#16A34A;">→</span>
+                            <span class="chain-step" style="background:#D1FAE5;color:#065F46;">Strong Culture</span>
+                        </div>
+                    </div>
+                    <div style="padding:14px;background:#FEE2E2;border-radius:10px;">
+                        <div style="font-size:13px;font-weight:600;color:#DC2626;margin-bottom:8px;">REMOTE CHAIN</div>
+                        <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;">
+                            <span class="chain-step" style="background:#FECACA;color:#991B1B;">Praise Less
+                                Visible</span>
+                            <span class="chain-arrow" style="color:#DC2626;">→</span>
+                            <span class="chain-step" style="background:#FECACA;color:#991B1B;">Reduced Commitment</span>
+                            <span class="chain-arrow" style="color:#DC2626;">→</span>
+                            <span class="chain-step" style="background:#FECACA;color:#991B1B;">Quiet Quitting</span>
+                            <span class="chain-arrow" style="color:#DC2626;">→</span>
+                            <span class="chain-step" style="background:#FECACA;color:#991B1B;">Eroding
+                                Performance</span>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size:13px;color:var(--text-secondary);margin:0;line-height:1.6;">The quiet quitting
+                    phenomenon reflects the absence of social reinforcement mechanisms that connect individual effort to
+                    organizational purpose and peer recognition — not laziness, but a loss of ambient cultural signals.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION G — CLIENT RELATIONSHIPS AND RETENTION               -->
+    <!-- ============================================================ -->
+    <section class="sec-client section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">G</span>
+                <div class="icon-box ib-client"><i data-lucide="heart" style="width:20px;height:20px;"></i></div>
+                <h2 style="font-size:22px;font-weight:700;margin:0;" class="accent-client">Client Relationships &
+                    Retention</h2>
+            </div>
+            <div class="info-card bl-client">
+                <p style="font-size:15px;line-height:1.7;margin:0 0 16px;">Client retention depends on relationships.
+                    People, especially non-technical clients, <strong>are not necessarily connoisseurs of the best
+                        AI</strong> — but they know who their friends are. They are more likely to buy from people they
+                    have relationships with that they are confident will get the job done.</p>
+                <div style="background:#F0FDF4;border-radius:10px;padding:16px;margin-bottom:14px;">
+                    <div style="font-size:14px;font-weight:600;color:#16A34A;margin-bottom:8px;">THE FINE LINE</div>
+                    <div style="display:flex;align-items:center;gap:16px;justify-content:center;flex-wrap:wrap;">
+                        <span style="font-size:15px;font-weight:700;color:#991B1B;">Nepotism</span>
+                        <span style="font-size:20px;color:var(--text-secondary);">←→</span>
+                        <span style="font-size:15px;font-weight:700;color:#065F46;">Trust</span>
+                    </div>
+                </div>
+                <p style="font-size:14px;line-height:1.7;margin:0 0 8px;">Without on-site, in-person relationships, that
+                    <strong>client team trust degrades</strong> and makes it more difficult to retain work. This is
+                    important for retaining jobs for people and reducing turbulence in the job market.</p>
+                <p style="font-size:13px;color:var(--text-secondary);margin:0;">Effective client relationships are built
+                    on demonstrated competence reinforced by personal rapport — not personal rapport alone. Remote
+                    engagement requires more deliberate relationship-building effort.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION H — INNOVATION REQUIRES PROXIMITY                    -->
+    <!-- ============================================================ -->
+    <section class="sec-innovation section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">H</span>
+                <div class="icon-box ib-innovation"><i data-lucide="lightbulb" style="width:20px;height:20px;"></i>
+                </div>
+                <h2 style="font-size:22px;font-weight:700;margin:0;" class="accent-innovation">Innovation Requires
+                    Proximity</h2>
+            </div>
+            <div class="info-card bl-innovation">
+                <p style="font-size:15px;line-height:1.7;margin:0 0 16px;">Innovation requires four essential elements —
+                    and remote work undermines the most critical one.</p>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;">
+                    <div style="text-align:center;padding:14px 8px;background:#FEF3C7;border-radius:10px;">
+                        <i data-lucide="users" style="width:20px;height:20px;color:#D97706;"></i>
+                        <div style="font-size:12px;font-weight:600;color:#92400E;margin-top:6px;">Cognitive Diversity
+                        </div>
+                    </div>
+                    <div style="text-align:center;padding:14px 8px;background:#FEF3C7;border-radius:10px;">
+                        <i data-lucide="shield" style="width:20px;height:20px;color:#D97706;"></i>
+                        <div style="font-size:12px;font-weight:600;color:#92400E;margin-top:6px;">Inclusion</div>
+                    </div>
+                    <div style="text-align:center;padding:14px 8px;background:#FEF3C7;border-radius:10px;">
+                        <i data-lucide="target" style="width:20px;height:20px;color:#D97706;"></i>
+                        <div style="font-size:12px;font-weight:600;color:#92400E;margin-top:6px;">A Problem</div>
+                    </div>
+                    <div
+                        style="text-align:center;padding:14px 8px;background:#FEE2E2;border-radius:10px;border:2px solid #FECACA;">
+                        <i data-lucide="clock" style="width:20px;height:20px;color:#DC2626;"></i>
+                        <div style="font-size:12px;font-weight:600;color:#991B1B;margin-top:6px;">Time + Chance Contact
+                            ⚠️</div>
+                    </div>
+                </div>
+                <p style="font-size:14px;line-height:1.7;margin:0 0 8px;">The time for people to just be together and
+                    chat about what is going on in a problem — and the <strong>chance contact</strong> — is essential
+                    for innovation to occur. With remote work trends, we have seen a <strong>degradation in that type of
+                        innovation</strong>.</p>
+                <p style="font-size:13px;color:var(--text-secondary);margin:0;">Remote work primarily attacks element
+                    four — the time and chance contact. Efficiency improvements can mask innovation decline until the
+                    organization faces a novel challenge its weakened informal networks cannot address.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION I — HUMAN BASELINE ETHICS (SIGNATURE VISUAL 3)       -->
+    <!-- ============================================================ -->
+    <section class="sec-ethics section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">I</span>
+                <div class="icon-box ib-ethics"><i data-lucide="heart" style="width:20px;height:20px;"></i></div>
+                <h2 style="font-size:22px;font-weight:700;margin:0;" class="accent-ethics">The Human Baseline Ethics
+                    Framework</h2>
+            </div>
+            <div class="sig-panel sig-ethics">
+                <p
+                    style="font-size:14px;color:var(--text-secondary);margin:8px 0 6px;text-align:center;font-weight:500;">
+                    SIGNATURE FRAMEWORK — AI vs. Human Error</p>
+                <div class="quote-block" style="margin-bottom:20px;text-align:center;border-left-color:#DC2626;">
+                    "Ignorance is the architect of stagnation."
+                </div>
+                <p style="font-size:14px;line-height:1.7;margin:0 0 16px;text-align:center;">Fear-driven policies are
+                    overly focused on risk and overlook the human baseline. For any task in business, there is a human
+                    way and an AI way — but many look only at potential AI problems, completely ignoring that human
+                    processes are flawed themselves.</p>
+                <div class="compare-grid" style="margin-bottom:20px;">
+                    <div class="compare-col compare-ai">
+                        <div style="font-size:14px;font-weight:700;color:#991B1B;margin-bottom:10px;"><i
+                                data-lucide="x-circle"
+                                style="width:16px;height:16px;display:inline;vertical-align:-2px;"></i> THE AI-ONLY VIEW
+                        </div>
+                        <p style="font-size:13px;color:#991B1B;margin:0 0 4px;">Common but Incomplete</p>
+                        <ul style="font-size:13px;margin:8px 0 0;padding-left:16px;line-height:1.8;">
+                            <li>"Can the AI make mistakes?"</li>
+                            <li>"Can the AI be unfair?"</li>
+                            <li>"Are there disadvantaged populations?"</li>
+                            <li>"Let's not use AI."</li>
+                        </ul>
+                    </div>
+                    <div class="compare-col compare-human">
+                        <div style="font-size:14px;font-weight:700;color:#065F46;margin-bottom:10px;"><i
+                                data-lucide="check-circle"
+                                style="width:16px;height:16px;display:inline;vertical-align:-2px;"></i> THE HUMAN
+                            BASELINE VIEW</div>
+                        <p style="font-size:13px;color:#065F46;margin:0 0 4px;">Comparative — The Right Question</p>
+                        <ul style="font-size:13px;margin:8px 0 0;padding-left:16px;line-height:1.8;">
+                            <li>Humans <strong>ARE</strong> biased — documented for centuries</li>
+                            <li>Humans <strong>DO</strong> disclose private data</li>
+                            <li>Humans are <strong>NOT</strong> transparent</li>
+                            <li>Humans <strong>CANNOT</strong> explain their own decisions</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Case Study -->
+                <div style="background:#FFF5F5;border-radius:12px;padding:20px;border:1.5px solid #FECACA;">
+                    <div style="font-size:14px;font-weight:700;color:#991B1B;margin-bottom:12px;text-align:center;">CASE
+                        STUDY — Organ Donation in the United States</div>
+                    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:14px;">
+                        <div style="text-align:center;background:#FEE2E2;border-radius:10px;padding:14px;">
+                            <div style="font-size:24px;font-weight:800;color:#991B1B;font-family:var(--heading-font);">
+                                27%</div>
+                            <div style="font-size:12px;color:#B91C1C;">of viable organs thrown away (2022)</div>
+                        </div>
+                        <div style="text-align:center;background:#FEE2E2;border-radius:10px;padding:14px;">
+                            <div style="font-size:24px;font-weight:800;color:#991B1B;font-family:var(--heading-font);">
+                                5,000+</div>
+                            <div style="font-size:12px;color:#B91C1C;">people died on the wait list</div>
+                        </div>
+                    </div>
+                    <div style="text-align:center;font-size:14px;color:var(--text-body);margin-bottom:12px;">Human
+                        decision-making bias resulted in fewer accepted organs than there should have been.</div>
+                    <div style="text-align:center;background:#DCFCE7;border-radius:10px;padding:16px;">
+                        <div style="font-size:13px;font-weight:600;color:#16A34A;margin-bottom:4px;">AI INTRODUCED →
+                            REDUCED BIAS</div>
+                        <div style="font-size:28px;font-weight:800;color:#065F46;font-family:var(--heading-font);">3,000
+                        </div>
+                        <div style="font-size:13px;color:#065F46;">additional transplants in 2023</div>
+                    </div>
+                    <p style="font-size:14px;font-weight:600;color:#991B1B;text-align:center;margin:14px 0 0;">Without
+                        AI, 3,000 people would NOT have received transplants.</p>
+                </div>
+                <div
+                    style="margin-top:16px;text-align:center;font-size:14px;font-weight:600;color:var(--text-heading);">
+                    Ethics is not about AI problems in isolation — it is comparing AI problems against manual human
+                    error.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION J — PRIVACY, TRANSPARENCY, REGULATION                -->
+    <!-- ============================================================ -->
+    <section class="sec-regulation section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">J</span>
+                <div class="icon-box ib-regulation"><i data-lucide="shield" style="width:20px;height:20px;"></i></div>
+                <h2 style="font-size:22px;font-weight:700;margin:0;" class="accent-regulation">Privacy, Transparency &
+                    Regulation</h2>
+            </div>
+            <div class="info-card bl-regulation">
+                <p style="font-size:14px;line-height:1.7;margin:0 0 16px;">All the language we discuss about AI bias and
+                    ethical considerations is actually derived from centuries of well-documented evidence that human
+                    processes are flawed. We need a <strong>human baseline approach</strong> instead of looking at AI in
+                    isolation.</p>
+                <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;">
+                    <div style="text-align:center;padding:14px 8px;background:#E0E7FF;border-radius:10px;">
+                        <i data-lucide="lock" style="width:20px;height:20px;color:#6366F1;"></i>
+                        <div style="font-size:12px;font-weight:600;color:#4338CA;margin-top:6px;">Privacy</div>
+                        <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">Not disclosing data
+                            unnecessarily</div>
+                    </div>
+                    <div style="text-align:center;padding:14px 8px;background:#E0E7FF;border-radius:10px;">
+                        <i data-lucide="eye" style="width:20px;height:20px;color:#6366F1;"></i>
+                        <div style="font-size:12px;font-weight:600;color:#4338CA;margin-top:6px;">Transparency</div>
+                        <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">Why is AI making this
+                            decision?</div>
+                    </div>
+                    <div style="text-align:center;padding:14px 8px;background:#E0E7FF;border-radius:10px;">
+                        <i data-lucide="message-circle" style="width:20px;height:20px;color:#6366F1;"></i>
+                        <div style="font-size:12px;font-weight:600;color:#4338CA;margin-top:6px;">Explainability</div>
+                        <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">Can we explain to
+                            non-PhDs?</div>
+                    </div>
+                    <div style="text-align:center;padding:14px 8px;background:#E0E7FF;border-radius:10px;">
+                        <i data-lucide="file-text" style="width:20px;height:20px;color:#6366F1;"></i>
+                        <div style="font-size:12px;font-weight:600;color:#4338CA;margin-top:6px;">Regulation</div>
+                        <div style="font-size:11px;color:var(--text-secondary);margin-top:2px;">Frameworks and
+                            guidelines</div>
+                    </div>
+                </div>
+                <div style="background:#FEF2F2;border-radius:10px;padding:14px;border:1px solid #FECACA;">
+                    <div style="font-size:13px;font-weight:600;color:#DC2626;margin-bottom:6px;">THE REGULATORY
+                        ASYMMETRY WARNING</div>
+                    <p style="font-size:13px;line-height:1.7;margin:0;">We absolutely know that humans are biased,
+                        disclose privacy issues, are not transparent, and many times cannot explain their own decisions.
+                        Regulatory frameworks must <strong>not be so overly restrictive on AI and underly restrictive on
+                            manual processes</strong> that we allow people to have life-threatening issues because we
+                        have failed to adopt AI when we should have.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION K — OFFSHORE LABOR ECONOMICS (SIGNATURE VISUAL 4)    -->
+    <!-- ============================================================ -->
+    <section class="sec-offshore section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">K</span>
+                <div class="icon-box ib-offshore"><i data-lucide="globe" style="width:20px;height:20px;"></i></div>
+                <h2 style="font-size:22px;font-weight:700;margin:0;" class="accent-offshore">Offshore & Nearshore Labor
+                    Economics</h2>
+            </div>
+            <div class="sig-panel sig-offshore">
+                <p
+                    style="font-size:14px;color:var(--text-secondary);margin:8px 0 20px;text-align:center;font-weight:500;">
+                    SIGNATURE DATA — The Cost Structure of Global Delivery</p>
+                <p style="font-size:14px;line-height:1.7;margin:0 0 16px;">Organizations are increasingly relying on
+                    offshore and nearshore labor markets to deliver projects. A typical project composition reveals the
+                    economic logic driving this shift.</p>
+                <!-- Composition Bar -->
+                <div style="margin-bottom:8px;font-size:13px;font-weight:600;color:var(--text-heading);">PROJECT ROLE
+                    COMPOSITION</div>
+                <div class="comp-bar" style="margin-bottom:6px;">
+                    <div class="comp-seg comp-onshore" style="width:21%;">21%</div>
+                    <div class="comp-seg comp-offshore" style="width:75%;">75%</div>
+                    <div class="comp-seg comp-exec" style="width:4%;">4%</div>
+                </div>
+                <div
+                    style="display:flex;justify-content:space-between;font-size:11px;color:var(--text-secondary);margin-bottom:20px;">
+                    <span>Client-Facing (Onshore)</span>
+                    <span>Delivery & Technical (Offshore)</span>
+                    <span>Exec</span>
+                </div>
+                <!-- Cost Bars -->
+                <div style="font-size:13px;font-weight:600;color:var(--text-heading);margin-bottom:10px;">COST
+                    COMPARISON</div>
+                <div style="margin-bottom:6px;">
+                    <div
+                        style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary);margin-bottom:3px;">
+                        <span>Onshore</span><span style="font-weight:600;color:var(--text-heading);">~$200/hour</span>
+                    </div>
+                    <div class="cost-bar-container">
+                        <div class="cost-bar bar-onshore" style="width:100%;">$200</div>
+                    </div>
+                </div>
+                <div style="margin-bottom:6px;">
+                    <div
+                        style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary);margin-bottom:3px;">
+                        <span>Offshore Blended</span><span
+                            style="font-weight:600;color:var(--text-heading);">~$32/hour</span>
+                    </div>
+                    <div class="cost-bar-container">
+                        <div class="cost-bar bar-offshore" style="width:16%;">$32</div>
+                    </div>
+                </div>
+                <div style="margin-bottom:16px;">
+                    <div
+                        style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-secondary);margin-bottom:3px;">
+                        <span>Overall Blended</span><span
+                            style="font-weight:600;color:var(--text-heading);">~$166/hour</span>
+                    </div>
+                    <div class="cost-bar-container">
+                        <div class="cost-bar bar-blended" style="width:83%;">$166</div>
+                    </div>
+                </div>
+                <div style="background:#F0FDF4;border-radius:10px;padding:14px;text-align:center;">
+                    <p style="font-size:14px;font-weight:600;color:#065F46;margin:0 0 4px;">More management, technical
+                        leadership, and delivery outsourced from North America.</p>
+                    <p style="font-size:13px;color:#16A34A;margin:0;">What remains: client-facing people who help
+                        solution and win new work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION L — TECHNICAL TALENT IN NORTH AMERICA                -->
+    <!-- ============================================================ -->
+    <section class="sec-techtalent section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">L</span>
+                <div class="icon-box ib-techtalent"><i data-lucide="briefcase" style="width:20px;height:20px;"></i>
+                </div>
+                <h2 style="font-size:22px;font-weight:700;margin:0;" class="accent-techtalent">Technical Talent in North
+                    America</h2>
+            </div>
+            <div class="info-card bl-techtalent">
+                <p style="font-size:15px;line-height:1.7;margin:0 0 16px;">This does not mean there is no role for
+                    technical talent in North America. What motivates a client to buy? Sure, it could be personal
+                    relationships — golf, dinner, sports — but that is risky and hit-or-miss. <strong>A more sure
+                        bet:</strong> the client wants to talk to a technical leader who understands the key steps in
+                    delivering an AI project.</p>
+                <div class="grid-2" style="margin-bottom:14px;">
+                    <div style="padding:14px;background:#FFF7ED;border-radius:10px;">
+                        <div style="font-size:13px;font-weight:600;color:#EA580C;margin-bottom:6px;">WHAT CLIENTS WANT
+                        </div>
+                        <ul style="font-size:13px;margin:0;padding-left:16px;line-height:1.8;">
+                            <li>Someone who knows what they are talking about</li>
+                            <li>Understands key steps in AI project delivery</li>
+                            <li>Knows the risks</li>
+                            <li>Can articulate the resources needed</li>
+                            <li>Provides a sound strategy</li>
+                        </ul>
+                    </div>
+                    <div style="padding:14px;background:#FFF7ED;border-radius:10px;">
+                        <div style="font-size:13px;font-weight:600;color:#EA580C;margin-bottom:6px;">THE EMERGING MIX
+                        </div>
+                        <ul style="font-size:13px;margin:0;padding-left:16px;line-height:1.8;">
+                            <li><strong>Onshore:</strong> Client-facing technical + domain expertise</li>
+                            <li><strong>Offshore:</strong> Technical execution + delivery</li>
+                            <li>Industry soft skills less in demand for offshore</li>
+                            <li>Technical skills in demand everywhere</li>
+                            <li>Both must work together to deliver solutions</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="font-size:14px;color:var(--text-secondary);font-style:italic;text-align:center;">Technical
+                    credibility is a more sure bet than personal rapport alone.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION M — REMOTE WORK IMPACT CHAIN (Enrichment — Compact)  -->
+    <!-- ============================================================ -->
+    <section class="sec-impact section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">M</span>
+                <div class="icon-box ib-impact"><i data-lucide="git-merge" style="width:20px;height:20px;"></i></div>
+                <h2 style="font-size:20px;font-weight:700;margin:0;" class="accent-impact">The Remote Work Impact Chain
+                </h2>
+                <span class="challenge-tag">Enrichment</span>
+            </div>
+            <div class="info-card bl-impact" style="padding:20px;">
+                <div style="display:grid;grid-template-columns:1fr;gap:8px;">
+                    <div
+                        style="display:flex;align-items:center;gap:8px;font-size:13px;padding:8px 12px;background:#F5F3FF;border-radius:8px;">
+                        <i data-lucide="arrow-right" style="width:14px;height:14px;color:#A855F7;flex-shrink:0;"></i>
+                        <span>Loss of proximity → Degraded informal leadership → Reduced innovation capacity</span>
+                    </div>
+                    <div
+                        style="display:flex;align-items:center;gap:8px;font-size:13px;padding:8px 12px;background:#F5F3FF;border-radius:8px;">
+                        <i data-lucide="arrow-right" style="width:14px;height:14px;color:#A855F7;flex-shrink:0;"></i>
+                        <span>Normative loss → Weakened culture → Quiet quitting → Eroding performance</span>
+                    </div>
+                    <div
+                        style="display:flex;align-items:center;gap:8px;font-size:13px;padding:8px 12px;background:#F5F3FF;border-radius:8px;">
+                        <i data-lucide="arrow-right" style="width:14px;height:14px;color:#A855F7;flex-shrink:0;"></i>
+                        <span>Junior isolation → No mentoring → No social capital → Generational knowledge gap</span>
+                    </div>
+                    <div
+                        style="display:flex;align-items:center;gap:8px;font-size:13px;padding:8px 12px;background:#EDE9FE;border-radius:8px;font-weight:600;color:#5B21B6;">
+                        <i data-lucide="alert-triangle" style="width:14px;height:14px;color:#7C3AED;flex-shrink:0;"></i>
+                        <span>All three chains → Weakened client delivery → Retention risk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION N — EMERGING APPROACHES (Enrichment — Compact)       -->
+    <!-- ============================================================ -->
+    <section class="sec-approaches section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">N</span>
+                <div class="icon-box ib-approaches"><i data-lucide="plus-circle" style="width:20px;height:20px;"></i>
+                </div>
+                <h2 style="font-size:20px;font-weight:700;margin:0;" class="accent-approaches">Emerging Approaches to
+                    Hybrid Work</h2>
+                <span class="challenge-tag">Enrichment</span>
+            </div>
+            <div class="grid-3">
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="home" style="width:18px;height:18px;color:#10B981;"></i>
+                    <div style="font-size:14px;font-weight:600;color:var(--text-heading);margin:6px 0 4px;">Intentional
+                        Proximity Design</div>
+                    <div style="font-size:12px;line-height:1.6;">Structure in-office days around collaboration, not
+                        independent work. Maximize unstructured interaction.</div>
+                    <div class="challenge-tag" style="margin-top:8px;">Addresses: Proximity Loss</div>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="refresh-cw" style="width:18px;height:18px;color:#10B981;"></i>
+                    <div style="font-size:14px;font-weight:600;color:var(--text-heading);margin:6px 0 4px;">Reverse
+                        Mentoring Programs</div>
+                    <div style="font-size:12px;line-height:1.6;">Pair junior and senior employees to address the "not
+                        asking for help" pattern while sharing perspectives.</div>
+                    <div class="challenge-tag" style="margin-top:8px;">Addresses: Junior Workforce Gap</div>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="message-circle" style="width:18px;height:18px;color:#10B981;"></i>
+                    <div style="font-size:14px;font-weight:600;color:var(--text-heading);margin:6px 0 4px;">Digital
+                        Social Capital Tools</div>
+                    <div style="font-size:12px;line-height:1.6;">Random pairing for virtual coffee, cross-team exposure,
+                        knowledge-sharing forums that simulate chance encounters.</div>
+                    <div class="challenge-tag" style="margin-top:8px;">Addresses: Social Capital Erosion</div>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="award" style="width:18px;height:18px;color:#10B981;"></i>
+                    <div style="font-size:14px;font-weight:600;color:var(--text-heading);margin:6px 0 4px;">Hybrid
+                        Normative Reinforcement</div>
+                    <div style="font-size:12px;line-height:1.6;">Public recognition systems, transparent performance
+                        sharing, and virtual ceremonies that restore cultural signals.</div>
+                    <div class="challenge-tag" style="margin-top:8px;">Addresses: Quiet Quitting</div>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="calendar" style="width:18px;height:18px;color:#10B981;"></i>
+                    <div style="font-size:14px;font-weight:600;color:var(--text-heading);margin:6px 0 4px;">Client
+                        Relationship Cadences</div>
+                    <div style="font-size:12px;line-height:1.6;">Structured in-person touchpoint schedules that maximize
+                        relationship-building value of limited face-to-face time.</div>
+                    <div class="challenge-tag" style="margin-top:8px;">Addresses: Client Trust Erosion</div>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="globe" style="width:18px;height:18px;color:#10B981;"></i>
+                    <div style="font-size:14px;font-weight:600;color:var(--text-heading);margin:6px 0 4px;">
+                        Onshore-Offshore Integration</div>
+                    <div style="font-size:12px;line-height:1.6;">Communication protocols, overlapping hours, shared
+                        documentation, and regular summits for global team delivery.</div>
+                    <div class="challenge-tag" style="margin-top:8px;">Addresses: Offshore Coordination</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION O — METRICS DASHBOARD (Enrichment — Compact)         -->
+    <!-- ============================================================ -->
+    <section class="sec-metrics section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">O</span>
+                <div class="icon-box ib-metrics"><i data-lucide="bar-chart-2" style="width:20px;height:20px;"></i></div>
+                <h2 style="font-size:20px;font-weight:700;margin:0;" class="accent-metrics">Remote Work Effectiveness
+                    Metrics</h2>
+                <span class="challenge-tag">Enrichment</span>
+            </div>
+            <div class="info-card" style="padding:20px;">
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px;">
+                    <div style="padding:10px 14px;background:#EEF2FF;border-radius:8px;">
+                        <div style="font-size:12px;font-weight:600;color:#6366F1;">Proximity & Social Capital</div>
+                        <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Informal network
+                            density, unstructured interaction frequency</div>
+                    </div>
+                    <div style="padding:10px 14px;background:#EEF2FF;border-radius:8px;">
+                        <div style="font-size:12px;font-weight:600;color:#6366F1;">Knowledge Transfer</div>
+                        <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Mentoring coverage,
+                            cross-generational collaboration index</div>
+                    </div>
+                    <div style="padding:10px 14px;background:#EEF2FF;border-radius:8px;">
+                        <div style="font-size:12px;font-weight:600;color:#6366F1;">Culture & Commitment</div>
+                        <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Normative influence
+                            indicators, culture survey scores</div>
+                    </div>
+                    <div style="padding:10px 14px;background:#EEF2FF;border-radius:8px;">
+                        <div style="font-size:12px;font-weight:600;color:#6366F1;">Client Relationships</div>
+                        <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Client health scores,
+                            Net Promoter, renewal rates</div>
+                    </div>
+                    <div style="padding:10px 14px;background:#EEF2FF;border-radius:8px;">
+                        <div style="font-size:12px;font-weight:600;color:#6366F1;">Innovation</div>
+                        <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Innovation pipeline
+                            metrics, time-to-resolution for junior problems</div>
+                    </div>
+                    <div style="padding:10px 14px;background:#EEF2FF;border-radius:8px;">
+                        <div style="font-size:12px;font-weight:600;color:#6366F1;">Cost Efficiency</div>
+                        <div style="font-size:12px;color:var(--text-secondary);margin-top:2px;">Onshore/offshore cost
+                            ratios, blended rate optimization</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION P — KEY TAKEAWAYS & CLOSING REFLECTION               -->
+    <!-- ============================================================ -->
+    <section class="sec-takeaways section-block fade-section">
+        <div class="container-main">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+                <span class="sec-num">P</span>
+                <div class="icon-box ib-takeaways"><i data-lucide="star" style="width:20px;height:20px;"></i></div>
+                <h2 style="font-size:22px;font-weight:700;margin:0;" class="accent-takeaways">Key Takeaways & Closing
+                    Reflection</h2>
+            </div>
+            <!-- Summary Cards -->
+            <div class="grid-2" style="margin-bottom:20px;">
+                <div class="info-card bl-takeaways" style="padding:18px;">
+                    <div style="font-size:13px;font-weight:700;color:#16A34A;margin-bottom:8px;">REMOTE WORK IMPACT
+                    </div>
+                    <p style="font-size:13px;line-height:1.7;margin:0;">COVID → Productivity ↑ but Proximity ↓ →
+                        Informal leadership ↓ → Innovation ↓ → Culture ↓ → Client trust ↓ → Junior workforce isolated →
+                        Normative influence lost → Quiet quitting → Eroding performance</p>
+                </div>
+                <div class="info-card bl-takeaways" style="padding:18px;">
+                    <div style="font-size:13px;font-weight:700;color:#16A34A;margin-bottom:8px;">EFFICIENCY-INNOVATION
+                        BALANCE</div>
+                    <p style="font-size:13px;line-height:1.7;margin:0;">Efficiency (formal leadership) and innovation
+                        (informal leadership) optimize different things. Remote work strengthens formal structures but
+                        weakens the informal networks that drive innovation.</p>
+                </div>
+                <div class="info-card bl-takeaways" style="padding:18px;">
+                    <div style="font-size:13px;font-weight:700;color:#16A34A;margin-bottom:8px;">HUMAN BASELINE ETHICS
+                    </div>
+                    <p style="font-size:13px;line-height:1.7;margin:0;">Compare AI against human baseline, not in
+                        isolation. Organ donation: 3,000 additional transplants through AI. Do not let regulatory
+                        asymmetry restrict AI while leaving flawed human processes unchecked.</p>
+                </div>
+                <div class="info-card bl-takeaways" style="padding:18px;">
+                    <div style="font-size:13px;font-weight:700;color:#16A34A;margin-bottom:8px;">OFFSHORE LABOR
+                        ECONOMICS</div>
+                    <p style="font-size:13px;line-height:1.7;margin:0;">21% client-facing / 75% offshore / 4% executive.
+                        $200/hr onshore → $166/hr blended. Technical credibility retains client-facing value in North
+                        America. Mix of onshore + offshore teams must collaborate.</p>
+                </div>
+            </div>
+            <!-- Key Stats Strip -->
+            <div class="stat-strip" style="margin-bottom:24px;">
+                <span class="stat-badge">Productivity ↑ Short-Term</span>
+                <span class="stat-badge">Education ↓</span>
+                <span class="stat-badge">$200/hr → $166/hr</span>
+                <span class="stat-badge">3,000 Lives Saved</span>
+                <span class="stat-badge">75% Offshore</span>
+                <span class="stat-badge">21% Client-Facing</span>
+            </div>
+            <!-- Closing Statement -->
+            <div class="quote-block"
+                style="border-left-color:#22C55E;font-style:normal;font-size:14px;line-height:1.8;">
+                <p style="margin:0 0 12px;">Remote work promised freedom and flexibility. It delivered both — but at a
+                    cost we are still measuring. The short-term productivity gains masked a deeper erosion: the loss of
+                    proximity that builds informal leadership, the degradation of normative influence that sustains
+                    organizational culture, the isolation of a junior workforce that does not know how to ask for help,
+                    and the weakening of client relationships that depend on trust built face-to-face.</p>
+                <p style="margin:0 0 12px;">Meanwhile, the same infrastructure that enabled domestic remote work opened
+                    the door to global labor arbitrage — shifting 75% of project delivery offshore and compressing
+                    blended rates from $200 to $166 an hour. The efficiency gains are real. The innovation losses are
+                    real too.</p>
+                <p style="margin:0 0 12px;">And in the ethical domain, we learned that the biggest risk is not AI
+                    imperfection — it is the refusal to adopt AI because we forgot that human processes are flawed
+                    themselves. 3,000 people received organ transplants because someone compared AI against the human
+                    baseline instead of examining AI in isolation.</p>
+                <p style="margin:0 0 12px;">Organizations that thrive in the remote work era will be those that
+                    deliberately reconstruct what proximity provided: the unprogrammed conversations, the
+                    cross-generational mentoring, the normative cultural signals, and the chance contacts that drive
+                    innovation.</p>
+                <p style="margin:0;font-weight:700;color:var(--text-heading);">Efficiency can be managed remotely.
+                    Innovation cannot — not yet. The organizations that solve the proximity problem will win. The ones
+                    that pretend it does not exist will wonder why they stopped innovating.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- SECTION Q — FOOTER                                           -->
+    <!-- ============================================================ -->
+    <section class="sec-footer" style="padding:32px 0;">
+        <div class="container-main" style="text-align:center;">
+            <div style="font-size:14px;font-weight:600;color:var(--text-heading);margin-bottom:4px;">Remote Work Trends
+            </div>
+            <div style="font-size:13px;color:var(--text-secondary);margin-bottom:8px;">Source: Dr. Ian McCullough, Johns
+                Hopkins University</div>
+            <div style="font-size:12px;color:var(--text-secondary);margin-bottom:4px;">This infographic synthesizes
+                lecture content on remote work impacts, ethical AI adoption, and offshore labor economics.</div>
+            <div style="font-size:12px;color:var(--text-secondary);">Optimized for print (Ctrl/Cmd + P) and responsive
+                viewing across devices.</div>
+        </div>
+    </section>
+    <div class="rainbow-stripe"></div>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS — Lucide Icons + Scroll Fade (SAFE PATTERN)          -->
+    <!-- ============================================================ -->
+    <script>
+        // Fade-in animations - run as soon as DOM is ready
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add .not-visible to all fade sections (safe: default is opacity 1)
+            document.querySelectorAll('.fade-section').forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+            // IntersectionObserver removes .not-visible on scroll
+            var observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('not-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+            document.querySelectorAll('.fade-section').forEach(function (el) {
+                observer.observe(el);
+            });
+        });
+
+        // Lucide icons - retry until loaded (handles CDN fallback timing)
+        function initLucide() {
+            if (typeof lucide !== 'undefined') {
+                try { lucide.createIcons(); } catch (e) { console.warn('Lucide error:', e); }
+            } else {
+                setTimeout(initLucide, 200);
+            }
+        }
+        // Try on load, and also retry
+        window.addEventListener('load', initLucide);
+        setTimeout(initLucide, 500);
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

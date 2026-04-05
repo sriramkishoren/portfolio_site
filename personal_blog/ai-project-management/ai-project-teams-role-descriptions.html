@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Roles in AI Project Teams — Role Descriptions</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Common Roles in AI Project Teams — Detailed Role Descriptions">
+    <meta name="description" content="Detailed descriptions of five specialized AI team roles: Data Engineer, Data Scientist, AI Architect, Domain Expert, and Requirements Analyst. Learn the Flash Team Model for rapid AI team assembly and labor specialization.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Project Management">
+    <meta name="tags" content="AI Roles, Flash Team Model, Data Scientist, AI Architect, Domain Expert, AI Team Structure, Labor Specialization, AI Project Teams">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Five specialized roles form the nucleus of AI capability delivery using the Flash Team Model: Data Engineer, Data Scientist, AI Architect, Domain Expert, and Requirements Analyst. Each role has distinct responsibilities enabling rapid team assembly for specific AI projects.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-project-teams-role-descriptions">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Common Roles in AI Project Teams — Detailed Role Descriptions">
+    <meta property="og:description" content="Detailed descriptions of five specialized AI team roles: Data Engineer, Data Scientist, AI Architect, Domain Expert, and Requirements Analyst. Learn the Flash Team Model for rapid AI team assembly and labor specialization.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-project-teams-role-descriptions">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-04-03">
+    <meta property="article:section" content="AI Project Management">
+    <meta property="article:tag" content="AI Roles">
+    <meta property="article:tag" content="Flash Team Model">
+    <meta property="article:tag" content="Labor Specialization">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Common Roles in AI Project Teams — Detailed Role Descriptions",
+        "description": "Detailed descriptions of five specialized AI team roles: Data Engineer, Data Scientist, AI Architect, Domain Expert, and Requirements Analyst. Learn the Flash Team Model for rapid AI team assembly and labor specialization.",
+        "datePublished": "2025-04-03",
+        "dateModified": "2025-04-03",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-project-teams-role-descriptions"
+        },
+        "keywords": ["AI Roles", "Flash Team Model", "Data Scientist", "AI Architect", "Domain Expert", "AI Team Structure", "Labor Specialization", "AI Project Teams"],
+        "articleSection": "AI Project Management"
+    }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+
+    <style>
+        /* Base Styles & Typography */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #FAFBFC;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-heading {
+            font-family: 'Sora', sans-serif;
+            color: #1E293B;
+            letter-spacing: -0.02em;
+        }
+
+        .text-slate {
+            color: #64748B;
+        }
+
+        /* Rainbow Gradient Accent Stripe */
+        .rainbow-stripe {
+            height: 6px;
+            background: linear-gradient(90deg, #0EA5E9, #2563EB, #A855F7, #EA580C, #D97706, #16A34A);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 50;
+        }
+
+        /* Custom Color Palette (Bypassing Tailwind v3 limitations) */
+        .bg-header {
+            background-color: #F0F9FF;
+        }
+
+        .text-accent-header {
+            color: #0EA5E9;
+        }
+
+        .bg-opening {
+            background-color: #F8FAFC;
+        }
+
+        .text-accent-opening {
+            color: #475569;
+        }
+
+        .bg-flash-team {
+            background-color: #EFF6FF;
+        }
+
+        .text-accent-flash {
+            color: #2563EB;
+        }
+
+        .bg-data-sci {
+            background-color: #FDF4FF;
+        }
+
+        .text-accent-data-sci {
+            color: #A855F7;
+        }
+
+        .bg-data-eng {
+            background-color: #F0FDFA;
+        }
+
+        .text-accent-data-eng {
+            color: #0D9488;
+        }
+
+        .bg-domain-exp {
+            background-color: #FFF7ED;
+        }
+
+        .text-accent-domain-exp {
+            color: #EA580C;
+        }
+
+        .bg-data-viz {
+            background-color: #E0E7FF;
+        }
+
+        .text-accent-data-viz {
+            color: #6366F1;
+        }
+
+        .bg-junior-ana {
+            background-color: #FEF3C7;
+        }
+
+        .text-accent-junior-ana {
+            color: #D97706;
+        }
+
+        .bg-division {
+            background-color: #F0FDF4;
+        }
+
+        .text-accent-division {
+            color: #16A34A;
+        }
+
+        .bg-economics {
+            background-color: #FEF2F2;
+        }
+
+        .text-accent-economics {
+            color: #DC2626;
+        }
+
+        .bg-covid {
+            background-color: #F0F9FF;
+        }
+
+        .text-accent-covid {
+            color: #0EA5E9;
+        }
+
+        .bg-interaction {
+            background-color: #EFF6FF;
+        }
+
+        .text-accent-interaction {
+            color: #0284C7;
+        }
+
+        .bg-maturity {
+            background-color: #FDF4FF;
+        }
+
+        .text-accent-maturity {
+            color: #A855F7;
+        }
+
+        .bg-modern {
+            background-color: #D1FAE5;
+        }
+
+        .text-accent-modern {
+            color: #10B981;
+        }
+
+        .bg-takeaways {
+            background-color: #F0FDF4;
+        }
+
+        .text-accent-takeaways {
+            color: #22C55E;
+        }
+
+        /* Card Styles */
+        .info-card {
+            background-color: #FFFFFF;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        .info-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        .compact-card {
+            background-color: #FFFFFF;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            padding: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .compact-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Stats & Badges */
+        .stat-badge {
+            background-color: #D1FAE5;
+            color: #065F46;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .role-badge {
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Network & Diagrams */
+        .diagram-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 2rem;
+        }
+
+        .hub-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        .connector-line {
+            position: absolute;
+            background-color: #CBD5E1;
+            z-index: 1;
+        }
+
+        /* Safe Animation Pattern */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Utility */
+        .section-spacing {
+            margin-bottom: 64px;
+        }
+
+        .max-w-custom {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .divider {
+            height: 1.5px;
+            background-color: #E2E8F0;
+            width: 100%;
+            margin: 1.5rem 0;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .rainbow-stripe {
+                display: none;
+            }
+
+            .fade-section.not-visible {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .info-card,
+            .compact-card {
+                box-shadow: none !important;
+                transform: none !important;
+                break-inside: avoid;
+            }
+
+            .section-spacing {
+                margin-bottom: 32px;
+            }
+
+            * {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="pt-8 pb-16 px-4 sm:px-6 md:px-8">
+
+    <div class="rainbow-stripe"></div>
+
+    <div class="max-w-custom">
+
+        <header class="bg-header info-card p-8 mb-12 text-center fade-section">
+            <h1 class="text-3xl sm:text-4xl font-bold mb-4">Common Roles in AI Project Teams</h1>
+            <p class="text-lg sm:text-xl text-accent-header font-semibold mb-4">How Five Specialized Roles Form the
+                Nucleus of Effective AI Capability Delivery</p>
+            <p class="max-w-2xl mx-auto mb-6">Discover the foundational delivery structure for building AI teams,
+                exploring specialized role responsibilities, critical team interactions, and the realities of modern AI
+                labor economics.</p>
+            <div
+                class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full border border-gray-200 shadow-sm text-sm font-medium">
+                <i data-lucide="book-open" class="w-4 h-4 text-accent-header"></i>
+                Based on lectures by Dr. Ian McCullough, Johns Hopkins University
+            </div>
+        </header>
+
+        <section class="section-spacing fade-section">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-lg bg-opening flex items-center justify-center border border-gray-200">
+                    <i data-lucide="users" class="w-5 h-5 text-accent-opening"></i>
+                </div>
+                <h2 class="text-2xl font-bold">AI Requires Labor Specialization</h2>
+            </div>
+
+            <div class="info-card p-6 sm:p-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-opening rounded-bl-full -z-10 opacity-50"></div>
+                <h3 class="text-xl font-bold mb-4">The Flash Team Model</h3>
+                <p class="mb-4">As artificial intelligence has grown in maturity at an accelerating rate, it demands
+                    labor specialization. This represents the common delivery team used to build the Accenture Federal
+                    AI practice — providing the foundational delivery structure for AI project teams.</p>
+
+                <div class="bg-opening p-4 rounded-xl border border-gray-200 mb-4 border-l-4"
+                    style="border-left-color: #475569;">
+                    <p class="font-medium text-gray-800">"It is not realistic for you to think that I'm going to hire an
+                        'AI guy' and I'm going to deliver AI capability that makes sense."</p>
+                </div>
+
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="alert-circle" class="w-5 h-5 text-accent-opening mt-0.5 flex-shrink-0"></i>
+                        <span>Attempting to use a generalist approach may result in wasteful labor.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="target" class="w-5 h-5 text-accent-opening mt-0.5 flex-shrink-0"></i>
+                        <span>Top talent doing AI and machine learning is eager to specialize in developing or applying
+                            algorithms, not managing all aspects of a project.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="git-merge" class="w-5 h-5 text-accent-opening mt-0.5 flex-shrink-0"></i>
+                        <span>Teaming algorithm specialists with data-familiar staff creates a vastly more productive
+                            partnership. Let's examine each role and how they interact.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section-spacing fade-section">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-lg bg-flash-team flex items-center justify-center border border-gray-200">
+                    <i data-lucide="layers" class="w-5 h-5 text-accent-flash"></i>
+                </div>
+                <h2 class="text-2xl font-bold">The Flash Team Model: Five Core Roles</h2>
+            </div>
+
+            <div class="info-card p-6 sm:p-10 bg-flash-team bg-opacity-30">
+                <div class="text-center mb-8">
+                    <p class="text-lg font-semibold text-accent-flash">One of the best models of team deployment for
+                        developing new AI capabilities.</p>
+                    <p class="text-sm mt-2">These roles can be scaled as a software engineering effort supporting
+                        execution.</p>
+                </div>
+
+                <div class="relative w-full max-w-2xl mx-auto hidden sm:block" style="height: 500px;">
+                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white rounded-full border-4 shadow-lg flex flex-col items-center justify-center z-20"
+                        style="border-color: #2563EB;">
+                        <i data-lucide="cpu" class="w-8 h-8 text-accent-flash mb-1"></i>
+                        <span class="font-bold text-sm">AI/ML TEAM</span>
+                    </div>
+
+                    <div class="absolute top-1/4 left-1/2 w-0.5 h-1/4 bg-gray-300 z-10 transform -translate-x-1/2">
+                    </div>
+                    <div class="absolute top-1/2 left-3/4 w-1/4 h-0.5 bg-gray-300 z-10 transform -translate-y-1/2">
+                    </div>
+                    <div
+                        class="absolute top-3/4 left-1/2 w-0.5 h-1/4 bg-gray-300 z-10 transform -translate-x-1/2 -translate-y-full">
+                    </div>
+                    <div
+                        class="absolute top-1/2 left-1/4 w-1/4 h-0.5 bg-gray-300 z-10 transform -translate-y-1/2 -translate-x-full">
+                    </div>
+                    <svg class="absolute top-0 left-0 w-full h-full z-10 pointer-events-none">
+                        <path d="M 50% 15% Q 75% 25% 80% 40%" fill="none" stroke="#0D9488" stroke-width="4"
+                            stroke-dasharray="6,6" />
+                        <path d="M 20% 50% Q 30% 25% 45% 15%" fill="none" stroke="#EA580C" stroke-width="2" />
+                        <path d="M 45% 15% Q 25% 30% 25% 75%" fill="none" stroke="#6366F1" stroke-width="2" />
+                    </svg>
+
+                    <div
+                        class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-4 bg-white p-3 rounded-xl shadow-md border border-purple-200 text-center w-48 z-20 cursor-pointer hover:scale-105 transition-transform">
+                        <div class="flex justify-center mb-1"><i data-lucide="brain"
+                                class="w-5 h-5 text-purple-500"></i></div>
+                        <div class="font-bold text-sm">Data Scientist</div>
+                        <div class="text-xs text-gray-500">Senior Analytical Leader</div>
+                    </div>
+
+                    <div
+                        class="absolute top-1/2 right-0 transform translate-x-4 -translate-y-1/2 bg-white p-3 rounded-xl shadow-md border border-teal-200 text-center w-48 z-20 cursor-pointer hover:scale-105 transition-transform">
+                        <div class="flex justify-center mb-1"><i data-lucide="database"
+                                class="w-5 h-5 text-teal-600"></i></div>
+                        <div class="font-bold text-sm">Data Engineer</div>
+                        <div class="text-xs text-gray-500">Data Management</div>
+                    </div>
+
+                    <div
+                        class="absolute bottom-0 right-1/4 transform translate-y-4 bg-white p-3 rounded-xl shadow-md border border-yellow-200 text-center w-48 z-20 cursor-pointer hover:scale-105 transition-transform">
+                        <div class="flex justify-center mb-1"><i data-lucide="user-plus"
+                                class="w-5 h-5 text-yellow-600"></i></div>
+                        <div class="font-bold text-sm">Junior Analyst</div>
+                        <div class="text-xs text-gray-500">Scaling & Support</div>
+                    </div>
+
+                    <div
+                        class="absolute bottom-0 left-1/4 transform translate-y-4 bg-white p-3 rounded-xl shadow-md border border-indigo-200 text-center w-48 z-20 cursor-pointer hover:scale-105 transition-transform">
+                        <div class="flex justify-center mb-1"><i data-lucide="bar-chart-2"
+                                class="w-5 h-5 text-indigo-500"></i></div>
+                        <div class="font-bold text-sm">Data Viz Expert</div>
+                        <div class="text-xs text-gray-500">Output Packaging</div>
+                    </div>
+
+                    <div
+                        class="absolute top-1/2 left-0 transform -translate-x-4 -translate-y-1/2 bg-white p-3 rounded-xl shadow-md border border-orange-200 text-center w-48 z-20 cursor-pointer hover:scale-105 transition-transform">
+                        <div class="flex justify-center mb-1"><i data-lucide="target"
+                                class="w-5 h-5 text-orange-600"></i></div>
+                        <div class="font-bold text-sm">Domain Expert</div>
+                        <div class="text-xs text-gray-500">Business Value</div>
+                    </div>
+                </div>
+
+                <div class="sm:hidden space-y-4">
+                    <div class="bg-white p-4 rounded-xl border border-purple-200 flex items-center gap-4 shadow-sm">
+                        <i data-lucide="brain" class="w-8 h-8 text-purple-500"></i>
+                        <div>
+                            <div class="font-bold">Data Scientist</div>
+                            <div class="text-sm">Senior, analytical leader focused on algorithms</div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-teal-200 flex items-center gap-4 shadow-sm">
+                        <i data-lucide="database" class="w-8 h-8 text-teal-600"></i>
+                        <div>
+                            <div class="font-bold">Data Engineer</div>
+                            <div class="text-sm">Manages data to support modeling</div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-orange-200 flex items-center gap-4 shadow-sm">
+                        <i data-lucide="target" class="w-8 h-8 text-orange-600"></i>
+                        <div>
+                            <div class="font-bold">Domain Expert</div>
+                            <div class="text-sm">Ensures business value and context</div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-indigo-200 flex items-center gap-4 shadow-sm">
+                        <i data-lucide="bar-chart-2" class="w-8 h-8 text-indigo-500"></i>
+                        <div>
+                            <div class="font-bold">Data Viz Expert</div>
+                            <div class="text-sm">Packages findings for decision makers</div>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl border border-yellow-200 flex items-center gap-4 shadow-sm">
+                        <i data-lucide="user-plus" class="w-8 h-8 text-yellow-600"></i>
+                        <div>
+                            <div class="font-bold">Junior Analyst</div>
+                            <div class="text-sm">Scales the team and provides cross-role support</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+
+            <section class="fade-section h-full">
+                <div class="info-card p-6 sm:p-8 h-full flex flex-col border-t-4" style="border-top-color: #A855F7;">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-data-sci flex items-center justify-center">
+                            <i data-lucide="brain" class="w-5 h-5 text-accent-data-sci"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Data Scientist</h2>
+                    </div>
+                    <h3 class="text-sm font-semibold text-accent-data-sci uppercase tracking-wider mb-4">Senior
+                        Analytical Leader</h3>
+
+                    <p class="mb-4 text-sm flex-grow">Typically the senior person on the team. They hold the widest
+                        knowledge of different analytical techniques that can be brought to bear to solve a problem.
+                        Their primary focus is on building algorithms, not managing data.</p>
+
+                    <div class="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-100">
+                        <h4 class="font-bold text-sm mb-2 text-gray-700">Specialization Domains:</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="role-badge bg-white border border-gray-200 text-gray-700 text-xs">Computer
+                                Vision</span>
+                            <span class="role-badge bg-white border border-gray-200 text-gray-700 text-xs">NLP</span>
+                            <span class="role-badge bg-white border border-gray-200 text-gray-700 text-xs">Generative
+                                AI</span>
+                            <span
+                                class="role-badge bg-white border border-gray-200 text-gray-700 text-xs">Forecasting</span>
+                            <span class="role-badge bg-white border border-gray-200 text-gray-700 text-xs">Graph
+                                Analytics</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start gap-2">
+                            <i data-lucide="trending-up" class="w-4 h-4 text-accent-data-sci mt-0.5"></i>
+                            <p><strong>Scale Insight:</strong> Specialization depends on scale and volume. Small budgets
+                                require generalists; sufficient volume enables specialized efficiency.</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <i data-lucide="graduation-cap" class="w-4 h-4 text-accent-data-sci mt-0.5"></i>
+                            <p><strong>Education:</strong> Usually requires a Master's degree in data science, AI, CS,
+                                or similar. Highly difficult to train outside a graduate program.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fade-section h-full">
+                <div class="info-card p-6 sm:p-8 h-full flex flex-col border-t-4" style="border-top-color: #0D9488;">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-data-eng flex items-center justify-center">
+                            <i data-lucide="database" class="w-5 h-5 text-accent-data-eng"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Data Engineer</h2>
+                    </div>
+                    <h3 class="text-sm font-semibold text-accent-data-eng uppercase tracking-wider mb-4">The Critical
+                        Foundation</h3>
+
+                    <p class="mb-4 text-sm flex-grow">Equipped with strong SQL and cloud engineering skills, they manage
+                        data so data scientists can focus purely on algorithms. This forms the most critical division of
+                        labor across all staffing models.</p>
+
+                    <div class="bg-data-eng bg-opacity-50 rounded-lg p-4 mb-4 border border-teal-100">
+                        <h4 class="font-bold text-sm mb-2 text-teal-800">Labor Economics:</h4>
+                        <ul class="text-xs space-y-1 text-teal-900">
+                            <li>• Most commoditized and routine role</li>
+                            <li>• Often the largest cost center</li>
+                            <li>• Least creative, leading to job fit challenges and inflated salaries</li>
+                            <li>• Salary inflation expected to slow due to new automation</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start gap-2">
+                            <i data-lucide="zap" class="w-4 h-4 text-accent-data-eng mt-0.5"></i>
+                            <p><strong>Automation Impact:</strong> Symbolic generative AI is automating tasks without
+                                human error, achieving greater speed and accuracy.</p>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <i data-lucide="refresh-cw" class="w-4 h-4 text-accent-data-eng mt-0.5"></i>
+                            <p><strong>Reskilling:</strong> Organizations may already have people doing database
+                                management tasks who are easily reskilled.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fade-section h-full">
+                <div class="info-card p-6 sm:p-8 h-full flex flex-col border-t-4" style="border-top-color: #EA580C;">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-domain-exp flex items-center justify-center">
+                            <i data-lucide="target" class="w-5 h-5 text-accent-domain-exp"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Domain Expert</h2>
+                    </div>
+                    <h3 class="text-sm font-semibold text-accent-domain-exp uppercase tracking-wider mb-4">Business
+                        Value Guardian</h3>
+
+                    <p class="mb-4 text-sm flex-grow">Sits with the team to guarantee an understanding of business
+                        value. They ensure the team is solving problems that make sense and interpreting
+                        industry-specific, proprietary data correctly.</p>
+
+                    <div class="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-100">
+                        <h4 class="font-bold text-sm mb-2 text-gray-700">Key Questions They Answer:</h4>
+                        <ul class="text-sm space-y-2 text-gray-600">
+                            <li>"Is the team focused on business problems that make sense?"</li>
+                            <li>"Can they explain the data?"</li>
+                            <li>"What is going to be useful at the end of the day?"</li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start gap-2">
+                            <i data-lucide="clock" class="w-4 h-4 text-accent-domain-exp mt-0.5"></i>
+                            <p><strong>Engagement:</strong> May not be full-time. Often works within the business
+                                full-time and serves the AI project on-call, depending on project magnitude.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fade-section h-full">
+                <div class="info-card p-6 sm:p-8 h-full flex flex-col border-t-4" style="border-top-color: #6366F1;">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-data-viz flex items-center justify-center">
+                            <i data-lucide="bar-chart-2" class="w-5 h-5 text-accent-data-viz"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Data Viz Expert</h2>
+                    </div>
+                    <h3 class="text-sm font-semibold text-accent-data-viz uppercase tracking-wider mb-4">Packaging For
+                        Impact</h3>
+
+                    <p class="mb-4 text-sm flex-grow">Responsible for decision support via tools like Tableau, Power BI,
+                        or Qlik Sense. They are not building the model; they package findings so people can consume and
+                        understand them.</p>
+
+                    <div class="bg-gray-50 rounded-lg p-4 mb-4 border border-gray-100">
+                        <div class="flex items-start gap-2">
+                            <i data-lucide="check-circle" class="w-4 h-4 text-accent-data-viz mt-0.5"></i>
+                            <p class="text-sm font-medium"><strong>Easiest role to train:</strong> Under proper
+                                supervision, a smart college grad with good communication skills can be trained in just
+                                a few months. Easiest role to hire and scale.</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 text-sm">
+                        <div class="flex items-start gap-2">
+                            <i data-lucide="code" class="w-4 h-4 text-accent-data-viz mt-0.5"></i>
+                            <p><strong>Substitution Note:</strong> Sometimes substituted with a software engineer if the
+                                team is developing an application rather than a dashboard.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <section class="section-spacing fade-section">
+            <div class="info-card p-6 sm:p-8 border-l-4" style="border-left-color: #D97706;">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-1/3">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-lg bg-junior-ana flex items-center justify-center">
+                                <i data-lucide="user-plus" class="w-5 h-5 text-accent-junior-ana"></i>
+                            </div>
+                            <h2 class="text-xl font-bold">Junior Analyst</h2>
+                        </div>
+                        <h3 class="text-sm font-semibold text-accent-junior-ana uppercase tracking-wider mb-4">Scaling
+                            Engine & Career Launchpad</h3>
+                        <p class="text-sm mb-4">Exists to scale the team and lower the price point. They are not
+                            generalists—they possess technical foundations but rotate to support all roles.</p>
+
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200 mb-4">
+                            <h4 class="font-bold text-sm mb-2">Minimum Skills:</h4>
+                            <p class="text-xs text-gray-600">Strong programming, calculus, math skills, and basic
+                                statistics.</p>
+                            <div class="mt-3 text-xs font-semibold text-accent-junior-ana">
+                                "Look at skills, not the degree."
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="md:w-2/3">
+                        <h4 class="font-bold mb-4 text-gray-800">Four Interaction Paths (Career Discovery)</h4>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm">
+                                <div class="text-xs font-bold text-orange-600 mb-1">Works with Domain Expert:</div>
+                                <div class="text-sm">Helps define initial project requirements.</div>
+                            </div>
+                            <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm">
+                                <div class="text-xs font-bold text-teal-600 mb-1">Works with Data Engineer:</div>
+                                <div class="text-sm">Figures out how to operationalize data.</div>
+                            </div>
+                            <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm">
+                                <div class="text-xs font-bold text-purple-600 mb-1">Supports Data Scientist:</div>
+                                <div class="text-sm">Executes algorithms and checks model performance.</div>
+                            </div>
+                            <div class="p-3 bg-white border border-gray-100 rounded-lg shadow-sm">
+                                <div class="text-xs font-bold text-indigo-600 mb-1">Supports Data Viz Expert:</div>
+                                <div class="text-sm">Assists during deliverable packaging.</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 bg-junior-ana bg-opacity-30 p-4 rounded-lg border border-yellow-200">
+                            <p class="text-sm"><strong>Social Sciences Pipeline:</strong> Organizations are often
+                                surprised to find social science graduates with calculus and Python skills making great
+                                problem solvers here. As they work across these roles, they begin to learn what area
+                                they like best, often pursuing graduate education later.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-spacing fade-section">
+            <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold mb-3">The Most Important Division of Labor</h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">This structural split is common across all staffing
+                    models, completely decoupling model development from data preparation.</p>
+            </div>
+
+            <div class="relative max-w-4xl mx-auto">
+                <div
+                    class="hidden md:block absolute top-0 bottom-0 left-1/2 w-0.5 bg-gray-200 transform -translate-x-1/2 z-0">
+                </div>
+                <div
+                    class="hidden md:flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-4 py-2 border-2 border-gray-200 rounded-full shadow-sm z-10 items-center gap-2">
+                    <i data-lucide="git-merge" class="w-5 h-5 text-gray-400"></i>
+                    <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Division of Labor</span>
+                </div>
+
+                <div class="flex flex-col md:flex-row gap-6 md:gap-12 relative z-0">
+                    <div class="md:w-1/2 info-card p-6 sm:p-8 bg-gradient-to-br from-white to-purple-50">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div
+                                class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center text-purple-600">
+                                <i data-lucide="brain" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Data Scientist</h3>
+                        </div>
+                        <ul class="space-y-4 text-sm">
+                            <li class="flex gap-3"><span class="font-bold text-purple-400">Focus:</span> Algorithms,
+                                problem-solving, and developing use cases.</li>
+                            <li class="flex gap-3"><span class="font-bold text-purple-400">Skills:</span> Deep knowledge
+                                of varied analytical techniques and feature engineering.</li>
+                            <li class="flex gap-3"><span class="font-bold text-purple-400">Value:</span> Applying
+                                specialized AI techniques to organizational problems.</li>
+                        </ul>
+                    </div>
+
+                    <div
+                        class="md:w-1/2 info-card p-6 sm:p-8 bg-gradient-to-br from-white to-teal-50 mt-4 md:mt-0 md:pt-16">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div
+                                class="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center text-teal-600">
+                                <i data-lucide="database" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold">Data Engineer</h3>
+                        </div>
+                        <ul class="space-y-4 text-sm">
+                            <li class="flex gap-3"><span class="font-bold text-teal-400">Focus:</span> Moving, managing,
+                                cleaning, and preparing data.</li>
+                            <li class="flex gap-3"><span class="font-bold text-teal-400">Skills:</span> Strong SQL,
+                                cloud engineering, and database management.</li>
+                            <li class="flex gap-3"><span class="font-bold text-teal-400">Value:</span> Enables the data
+                                scientist to focus strictly on algorithms.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div
+                    class="mt-8 text-center info-card bg-gray-50 p-4 inline-block relative left-1/2 transform -translate-x-1/2">
+                    <p class="text-sm font-medium text-gray-700 flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 h-4 text-green-500"></i>
+                        Team them up — creating a more productive partnership.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-spacing fade-section">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-lg bg-economics flex items-center justify-center border border-red-100">
+                    <i data-lucide="trending-up" class="w-5 h-5 text-accent-economics"></i>
+                </div>
+                <h2 class="text-2xl font-bold">Labor Economics & Trends</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="info-card p-6 border-t-4" style="border-top-color: #DC2626;">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-bold">Data Engineering Commoditization</h3>
+                        <i data-lucide="dollar-sign" class="text-red-400"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">The largest cost center and most routine role. Salaries are
+                        currently inflated, but new automation with symbolic GenAI puts downward pressure on future
+                        salary inflation.</p>
+                </div>
+
+                <div class="info-card p-6 border-t-4" style="border-top-color: #F59E0B;">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-bold">Trainability Spectrum</h3>
+                        <i data-lucide="bar-chart" class="text-yellow-500"></i>
+                    </div>
+                    <div class="space-y-2 text-sm text-gray-600">
+                        <div class="flex justify-between border-b border-gray-100 pb-1"><span>Data Viz</span> <span
+                                class="text-green-600 font-bold">Easiest (Months)</span></div>
+                        <div class="flex justify-between border-b border-gray-100 pb-1"><span>Junior Analyst</span>
+                            <span class="text-yellow-600 font-bold">Moderate (Skills)</span></div>
+                        <div class="flex justify-between"><span>Data Science</span> <span
+                                class="text-red-600 font-bold">Hard (Master's)</span></div>
+                    </div>
+                </div>
+
+                <div class="info-card p-6 border-t-4" style="border-top-color: #8B5CF6;">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="font-bold">Specialization at Scale</h3>
+                        <i data-lucide="layers" class="text-purple-500"></i>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">Scale and volume considerations dictate team design. Small
+                        budget equals generalists; sufficient volume allows for specializations, resulting in greater
+                        efficiency.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-spacing fade-section">
+            <div class="info-card p-6 sm:p-10 bg-covid">
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="md:w-1/3">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i data-lucide="activity" class="w-8 h-8 text-accent-covid"></i>
+                            <h2 class="text-2xl font-bold">COVID Modeling Case Study</h2>
+                        </div>
+                        <p class="text-gray-700 mb-4">This end-to-end example highlights how the flash team maintains
+                            strict separation of concerns to deliver actionable decision support.</p>
+                        <div class="bg-white p-4 rounded-xl border border-blue-200">
+                            <p class="text-sm font-medium text-blue-900 italic">"They're not building the model —
+                                they're packaging it so people can consume and understand."</p>
+                        </div>
+                    </div>
+
+                    <div class="md:w-2/3">
+                        <div class="relative">
+                            <div class="absolute top-0 bottom-0 left-6 w-0.5 bg-blue-200"></div>
+
+                            <div class="space-y-6 relative z-10">
+                                <div class="flex gap-4 items-start">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-purple-100 border-2 border-white flex justify-center items-center flex-shrink-0 text-purple-600 shadow-sm">
+                                        <i data-lucide="brain" class="w-5 h-5"></i></div>
+                                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex-grow">
+                                        <h4 class="font-bold text-sm text-purple-700 mb-1">1. Data Scientist</h4>
+                                        <p class="text-sm text-gray-600">Builds a highly accurate 21-day COVID case
+                                            count forecast model.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4 items-start">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-indigo-100 border-2 border-white flex justify-center items-center flex-shrink-0 text-indigo-600 shadow-sm">
+                                        <i data-lucide="monitor" class="w-5 h-5"></i></div>
+                                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex-grow">
+                                        <h4 class="font-bold text-sm text-indigo-700 mb-1">2. Data Viz Expert
+                                            (Dashboard)</h4>
+                                        <p class="text-sm text-gray-600">Transforms the model output into a
+                                            web-deployable dashboard.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4 items-start">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-indigo-100 border-2 border-white flex justify-center items-center flex-shrink-0 text-indigo-600 shadow-sm">
+                                        <i data-lucide="send" class="w-5 h-5"></i></div>
+                                    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm flex-grow">
+                                        <h4 class="font-bold text-sm text-indigo-700 mb-1">3. Data Viz Expert (Alerts)
+                                        </h4>
+                                        <p class="text-sm text-gray-600">Adds SMS messaging tied to zip codes to track
+                                            trending case increases.</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-4 items-start">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-green-100 border-2 border-white flex justify-center items-center flex-shrink-0 text-green-600 shadow-sm">
+                                        <i data-lucide="calendar" class="w-5 h-5"></i></div>
+                                    <div class="bg-white p-4 rounded-xl border border-green-200 shadow-sm flex-grow">
+                                        <h4 class="font-bold text-sm text-green-700 mb-1">4. End Users</h4>
+                                        <p class="text-sm text-gray-600 font-medium">Receive localized alerts based on
+                                            3-week forecasts, enabling them to "plan early".</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-spacing fade-section">
+            <div class="flex items-center gap-3 mb-6">
+                <div
+                    class="w-10 h-10 rounded-lg bg-interaction flex items-center justify-center border border-blue-200">
+                    <i data-lucide="share-2" class="w-5 h-5 text-accent-interaction"></i>
+                </div>
+                <h2 class="text-2xl font-bold">Role Interaction Map</h2>
+            </div>
+
+            <div class="info-card p-6 sm:p-10 relative overflow-hidden bg-white">
+                <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">The Junior Analyst functions as the
+                    connective tissue of the team, working dynamically across all specialized roles.</p>
+
+                <div
+                    class="hidden md:grid grid-cols-3 grid-rows-3 gap-4 h-96 relative place-items-center max-w-3xl mx-auto">
+
+                    <svg class="absolute top-0 left-0 w-full h-full z-0 pointer-events-none">
+                        <line x1="50%" y1="50%" x2="16%" y2="16%" stroke="#CBD5E1" stroke-width="2"
+                            stroke-dasharray="4,4" />
+                        <line x1="50%" y1="50%" x2="84%" y2="16%" stroke="#CBD5E1" stroke-width="2"
+                            stroke-dasharray="4,4" />
+                        <line x1="50%" y1="50%" x2="16%" y2="84%" stroke="#CBD5E1" stroke-width="2"
+                            stroke-dasharray="4,4" />
+                        <line x1="50%" y1="50%" x2="84%" y2="84%" stroke="#CBD5E1" stroke-width="2"
+                            stroke-dasharray="4,4" />
+
+                        <path d="M 16% 16% Q 16% 84% 84% 84%" fill="none" stroke="#EA580C" stroke-width="1.5"
+                            stroke-dasharray="2,2" opacity="0.5" />
+                        <line x1="84%" y1="84%" x2="16%" y2="84%" stroke="#6366F1" stroke-width="1.5" opacity="0.5" />
+                    </svg>
+
+                    <div
+                        class="col-start-1 row-start-1 bg-white border border-orange-200 rounded-xl p-4 text-center z-10 w-40 shadow-sm">
+                        <i data-lucide="target" class="w-6 h-6 text-orange-600 mx-auto mb-2"></i>
+                        <h4 class="font-bold text-sm">Domain Expert</h4>
+                        <div class="text-[10px] text-gray-500 mt-1">Requirements & Context</div>
+                    </div>
+
+                    <div
+                        class="col-start-3 row-start-1 bg-white border border-teal-200 rounded-xl p-4 text-center z-10 w-40 shadow-sm">
+                        <i data-lucide="database" class="w-6 h-6 text-teal-600 mx-auto mb-2"></i>
+                        <h4 class="font-bold text-sm">Data Engineer</h4>
+                        <div class="text-[10px] text-gray-500 mt-1">Operationalize Data</div>
+                    </div>
+
+                    <div
+                        class="col-start-2 row-start-2 bg-yellow-50 border-2 border-yellow-400 rounded-full p-4 flex flex-col justify-center items-center z-10 w-32 h-32 shadow-md">
+                        <i data-lucide="user-plus" class="w-8 h-8 text-yellow-600 mb-1"></i>
+                        <h4 class="font-bold text-sm text-center">Junior Analyst</h4>
+                    </div>
+
+                    <div
+                        class="col-start-1 row-start-3 bg-white border border-indigo-200 rounded-xl p-4 text-center z-10 w-40 shadow-sm">
+                        <i data-lucide="bar-chart-2" class="w-6 h-6 text-indigo-500 mx-auto mb-2"></i>
+                        <h4 class="font-bold text-sm">Data Viz Expert</h4>
+                        <div class="text-[10px] text-gray-500 mt-1">Package Deliverables</div>
+                    </div>
+
+                    <div
+                        class="col-start-3 row-start-3 bg-white border border-purple-200 rounded-xl p-4 text-center z-10 w-40 shadow-sm">
+                        <i data-lucide="brain" class="w-6 h-6 text-purple-500 mx-auto mb-2"></i>
+                        <h4 class="font-bold text-sm">Data Scientist</h4>
+                        <div class="text-[10px] text-gray-500 mt-1">Check Performance</div>
+                    </div>
+
+                </div>
+
+                <div class="md:hidden space-y-4 text-sm bg-gray-50 p-4 rounded-lg border border-gray-200">
+                    <p class="font-bold">Junior Analyst Interactions:</p>
+                    <ul class="list-disc pl-5 space-y-2 text-gray-600">
+                        <li><strong>↔ Domain Expert:</strong> Define initial requirements together.</li>
+                        <li><strong>↔ Data Engineer:</strong> Operationalize and check data flow.</li>
+                        <li><strong>↔ Data Scientist:</strong> Execute algorithms and check model performance.</li>
+                        <li><strong>↔ Data Viz Expert:</strong> Support deliverable packaging.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16">
+
+            <div class="fade-section lg:col-span-1">
+                <div class="info-card p-6 h-full border-t-4" style="border-top-color: #A855F7;">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i data-lucide="trending-up" class="w-5 h-5 text-purple-600"></i>
+                        <h3 class="font-bold text-lg">AI Maturity</h3>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4">AI maturity drives specialization. Organizations cannot treat
+                        every project with a generic data scientist. Top talent wants to specialize in distinct domains.
+                    </p>
+                    <div class="bg-gray-50 rounded p-3 text-xs border border-gray-200">
+                        <strong class="block mb-1">Scale / Volume Rule:</strong>
+                        Generalists ← Small Budgets<br>
+                        Specialists ← Sufficient Volume (Efficiency)
+                    </div>
+                </div>
+            </div>
+
+            <div class="fade-section lg:col-span-1">
+                <div class="info-card p-6 h-full border-t-4" style="border-top-color: #10B981;">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i data-lucide="plus-circle" class="w-5 h-5 text-green-600"></i>
+                        <h3 class="font-bold text-lg">Modern Extensions</h3>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-3">Emerging roles extending the flash team model.</p>
+                    <ul class="text-xs space-y-2">
+                        <li><strong>MLOps Eng:</strong> Bridges modeling & deployment.</li>
+                        <li><strong>AI Product Mgr:</strong> Extends domain expert with product discipline.</li>
+                        <li><strong>Prompt Eng:</strong> New GenAI data science sub-specialty.</li>
+                        <li><strong>Responsible AI:</strong> Addresses ethical governance & bias.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="fade-section lg:col-span-1">
+                <div class="info-card p-6 h-full border-t-4" style="border-top-color: #D97706;">
+                    <div class="flex items-center gap-2 mb-3">
+                        <i data-lucide="map" class="w-5 h-5 text-yellow-600"></i>
+                        <h3 class="font-bold text-lg">Career Pathway</h3>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-3">Branching from Junior Analyst to specialist paths.</p>
+                    <ul class="text-xs space-y-2">
+                        <li><i data-lucide="arrow-right" class="inline w-3 h-3 text-gray-400"></i> <strong>Data
+                                Science:</strong> Requires grad education.</li>
+                        <li><i data-lucide="arrow-right" class="inline w-3 h-3 text-gray-400"></i> <strong>Data
+                                Engineering:</strong> Build on SQL/cloud.</li>
+                        <li><i data-lucide="arrow-right" class="inline w-3 h-3 text-gray-400"></i> <strong>Data
+                                Viz:</strong> Deepen dashboard/BI skills.</li>
+                        <li><i data-lucide="arrow-right" class="inline w-3 h-3 text-gray-400"></i>
+                            <strong>Domain/PM:</strong> Leverage industry knowledge.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <section class="section-spacing fade-section">
+            <div
+                class="info-card bg-takeaways p-8 sm:p-12 text-center border border-green-200 relative overflow-hidden">
+                <i data-lucide="lightbulb"
+                    class="absolute top-0 right-0 w-48 h-48 text-green-100 opacity-50 transform translate-x-1/4 -translate-y-1/4 -z-10 pointer-events-none"></i>
+
+                <h2 class="text-2xl font-bold mb-6 text-green-900">Effective AI teams require five specialized roles
+                    working in concert — not a single "AI guy."</h2>
+
+                <p class="text-lg text-green-800 mb-6 font-medium max-w-3xl mx-auto leading-relaxed">
+                    The data scientist and data engineer form the most critical partnership. Junior analysts scale the
+                    team while discovering their career path. Domain experts keep AI focused on business value. And data
+                    visualization experts package findings so decisions can be made.
+                </p>
+
+                <div
+                    class="inline-block bg-white px-6 py-3 rounded-xl shadow-sm text-green-700 font-bold border border-green-100 uppercase tracking-widest text-sm">
+                    Build teams that specialize, hire for skills over degrees, and invest in the most important division
+                    of labor.
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-16 pt-8 border-t border-gray-200 text-center text-sm text-gray-500 pb-8 fade-section">
+            <p class="font-bold text-gray-700 mb-1">Source Information</p>
+            <p>Dr. Ian McCullough, Johns Hopkins University</p>
+            <p class="mt-1 text-xs">Topic: Common Roles in AI Project Teams — Role Descriptions</p>
+            <div class="mt-6 text-xs bg-gray-100 inline-block px-4 py-2 rounded-lg print:hidden">
+                <i data-lucide="printer" class="inline w-3 h-3 mr-1 align-text-top"></i>
+                Optimized for standard A4 / Letter printing. Use "Save as PDF" to distribute.
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Lucide Icons
+            lucide.createIcons();
+
+            // 2. Safe Animation Pattern setup
+            const fadeSections = document.querySelectorAll('.fade-section');
+
+            // Add hidden class via JS
+            fadeSections.forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+
+            // 3. Set up IntersectionObserver
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('not-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            fadeSections.forEach(function (el) {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

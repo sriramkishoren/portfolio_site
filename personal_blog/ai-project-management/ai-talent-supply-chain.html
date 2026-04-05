@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Talent Supply Chain</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="AI Talent Supply Chain — Strategic Talent Management for AI Practice Building">
+    <meta name="description" content="Discover how to build a scalable AI talent supply chain. From reactive hiring to structured growth: case study from 0 to 1,200 people in 3 years, $1.5B annual revenue. Covers 7 variance costs and the supply chain model.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Project Management">
+    <meta name="tags" content="AI Talent, Talent Management, AI Staffing, Workforce Planning, AI Teams, Hiring Strategy, Talent Supply Chain, AI Practice Building">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Treating talent as a supply chain transforms AI practice building. Case study: 0 to 1,200 people in ~3 years generating $1.5B revenue. 7 variance costs without structure: inconsistent solutioning, slow staffing, high bench costs, pay inequity, suboptimal training, proposal delays, and constrained growth.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-talent-supply-chain">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="AI Talent Supply Chain — Strategic Talent Management for AI Practice Building">
+    <meta property="og:description" content="Discover how to build a scalable AI talent supply chain. From reactive hiring to structured growth: case study from 0 to 1,200 people in 3 years, $1.5B annual revenue. Covers 7 variance costs and the supply chain model.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-talent-supply-chain">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-04-01">
+    <meta property="article:section" content="AI Project Management">
+    <meta property="article:tag" content="AI Talent">
+    <meta property="article:tag" content="Talent Supply Chain">
+    <meta property="article:tag" content="AI Practice Building">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "AI Talent Supply Chain — Strategic Talent Management for AI Practice Building",
+        "description": "Discover how to build a scalable AI talent supply chain. From reactive hiring to structured growth: case study from 0 to 1,200 people in 3 years, $1.5B annual revenue. Covers 7 variance costs and the supply chain model.",
+        "datePublished": "2025-04-01",
+        "dateModified": "2025-04-01",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-talent-supply-chain"
+        },
+        "keywords": ["AI Talent", "Talent Management", "AI Staffing", "Workforce Planning", "AI Teams", "Hiring Strategy", "Talent Supply Chain", "AI Practice Building"],
+        "articleSection": "AI Project Management"
+    }
+    </script>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        /* Base typography */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #FAFBFC;
+            color: #475569;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Sora', sans-serif;
+            color: #1E293B;
+            letter-spacing: -0.02em;
+        }
+
+        /* Rainbow gradient accent stripe */
+        .gradient-stripe {
+            height: 6px;
+            width: 100%;
+            background: linear-gradient(90deg, #0EA5E9, #2563EB, #A855F7, #EC4899, #F43F5E, #EA580C, #EAB308, #10B981);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-zIndex: 50;
+        }
+
+        /* Custom Color Palette (Tailwind v3+ replacements) */
+        .bg-lightest-blue {
+            background-color: #F0F9FF;
+        }
+
+        .text-accent-blue {
+            color: #0EA5E9;
+        }
+
+        .bg-lightest-gray {
+            background-color: #F8FAFC;
+        }
+
+        .text-accent-gray {
+            color: #475569;
+        }
+
+        .bg-light-red {
+            background-color: #FEF2F2;
+        }
+
+        .text-accent-red {
+            color: #DC2626;
+        }
+
+        .bg-light-blue {
+            background-color: #EFF6FF;
+        }
+
+        .text-accent-blue-dark {
+            color: #2563EB;
+        }
+
+        .bg-light-green {
+            background-color: #F0FDF4;
+        }
+
+        .text-accent-green {
+            color: #16A34A;
+        }
+
+        .text-accent-green-bright {
+            color: #22C55E;
+        }
+
+        .bg-light-purple {
+            background-color: #FDF4FF;
+        }
+
+        .text-accent-purple {
+            color: #A855F7;
+        }
+
+        .bg-light-orange {
+            background-color: #FFF7ED;
+        }
+
+        .text-accent-orange {
+            color: #EA580C;
+        }
+
+        .bg-light-indigo {
+            background-color: #E0E7FF;
+        }
+
+        .text-accent-indigo {
+            color: #6366F1;
+        }
+
+        .bg-light-yellow {
+            background-color: #FEF3C7;
+        }
+
+        .text-accent-yellow {
+            color: #D97706;
+        }
+
+        .bg-light-teal {
+            background-color: #F0FDFA;
+        }
+
+        .text-accent-teal {
+            color: #0D9488;
+        }
+
+        .bg-light-emerald {
+            background-color: #D1FAE5;
+        }
+
+        .text-accent-emerald {
+            color: #10B981;
+        }
+
+        /* Component Styles */
+        .info-card {
+            background-color: #FFFFFF;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+        }
+
+        .stat-badge {
+            background-color: #D1FAE5;
+            color: #065F46;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 14px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .section-marker {
+            width: 24px;
+            height: 24px;
+            background-color: #1E293B;
+            color: white;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        /* Safe Animation Pattern */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Flow Diagram styling */
+        .flow-stage {
+            flex: 1;
+            min-width: 140px;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Print Media Queries */
+        @media print {
+            body {
+                background: white;
+                color: black;
+            }
+
+            .info-card {
+                box-shadow: none !important;
+                transform: none !important;
+                break-inside: avoid;
+            }
+
+            .fade-section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .gradient-stripe {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="pt-6 pb-20">
+    <div class="gradient-stripe"></div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-8">
+
+        <header class="fade-section mb-16 text-center pt-8">
+            <div class="inline-flex items-center justify-center p-3 bg-lightest-blue rounded-full mb-6">
+                <i data-lucide="layers" class="w-8 h-8 text-accent-blue"></i>
+            </div>
+            <h1 class="text-4xl sm:text-5xl font-extrabold mb-4 text-gray-900 leading-tight">AI Talent Supply Chain</h1>
+            <p class="text-xl sm:text-2xl text-gray-600 mb-6 font-medium max-w-2xl mx-auto">How Strategic Talent
+                Management Transforms AI Practice Building from Reactive Hiring to Scalable Growth</p>
+            <div class="flex flex-wrap justify-center gap-4 items-center">
+                <span class="stat-badge">
+                    <i data-lucide="users" class="w-4 h-4 mr-2"></i> 0 to 1,200 people in ~3 years
+                </span>
+                <span class="stat-badge">
+                    <i data-lucide="dollar-sign" class="w-4 h-4 mr-2"></i> $1.5B annual revenue
+                </span>
+            </div>
+            <p class="text-sm text-gray-400 mt-6 uppercase tracking-wider font-semibold">Insights from Dr. Ian
+                McCullough, Johns Hopkins University</p>
+        </header>
+
+        <section class="fade-section mb-16 info-card bg-lightest-gray p-8">
+            <div class="flex items-center mb-6">
+                <div class="section-marker">B</div>
+                <h2 class="text-2xl font-bold flex items-center"><i data-lucide="link"
+                        class="w-6 h-6 mr-3 text-accent-gray"></i> Talent Is a Supply Chain</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <p class="text-lg mb-4 text-gray-700">We can look at talent as a supply chain where management can
+                        make a strategic difference at every stage — from how we recruit and hire, to how we deploy and
+                        deliver talent to clients.</p>
+                    <p class="text-gray-600">The basic systems integrator business model is to hire talented people and
+                        rent them to clients. Therefore, everything depends on how you bring in talent, maintain skill
+                        proficiency, and execute effectively.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center">
+                    <i data-lucide="building" class="w-10 h-10 mx-auto mb-3 text-gray-400"></i>
+                    <p class="font-semibold text-gray-800">The Core Mandate</p>
+                    <p class="text-sm text-gray-500 mt-2">Whether building an AI practice inside a large enterprise or
+                        scaling a consulting firm, standardizing the talent pipeline is the prerequisite for growth.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section mb-16">
+            <div class="flex items-center mb-6">
+                <div class="section-marker bg-red-600">C</div>
+                <h2 class="text-2xl font-bold flex items-center"><i data-lucide="alert-triangle"
+                        class="w-6 h-6 mr-3 text-accent-red"></i> The Cost of Variance</h2>
+            </div>
+            <p class="text-lg mb-8 text-gray-600">Problems that arise when organizations lack a structured talent supply
+                chain. If you do not know what goes into delivering success, how do you price it? How do you manage it?
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="info-card bg-light-red p-5 border-red-100">
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">1. Inconsistent Solutioning</h3>
+                    <p class="text-sm text-gray-600">Ambiguous structures create huge delivery risk and unintended
+                        consequences.</p>
+                </div>
+                <div class="info-card bg-light-red p-5 border-red-100">
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">2. Slow Staffing</h3>
+                    <p class="text-sm text-gray-600">Response times drag when you are unsure how or where to get good
+                        talent.</p>
+                </div>
+                <div class="info-card bg-light-red p-5 border-red-100">
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">3. High Bench Costs</h3>
+                    <p class="text-sm text-gray-600">Low utilization of unassigned talent drains profitability while
+                        they wait.</p>
+                </div>
+                <div class="info-card bg-light-red p-5 border-red-100">
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">4. Pay Inequity</h3>
+                    <p class="text-sm text-gray-600">Misaligned roles cause massive salary disparities and drive costly
+                        turnover.</p>
+                </div>
+                <div class="info-card bg-light-red p-5 border-red-100">
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">5. Suboptimal Training</h3>
+                    <p class="text-sm text-gray-600">Without accurate role definitions, career growth and training
+                        cannot be managed.</p>
+                </div>
+                <div class="info-card bg-light-red p-5 border-red-100">
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">6. Proposal Delays</h3>
+                    <p class="text-sm text-gray-600">Every proposal becomes a one-off effort lacking defined role
+                        expectations.</p>
+                </div>
+                <div class="info-card bg-light-red p-5 border-red-100 sm:col-span-2 lg:col-span-3 text-center">
+                    <h3 class="font-bold text-gray-900 text-lg mb-2">7. Constrained Growth</h3>
+                    <p class="text-sm text-gray-600">Overwhelmed management halts hiring due to skill mismatches and
+                        poorly defined solutions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="fade-section mb-16 info-card p-8 border-2 border-blue-200 bg-white">
+            <div class="flex items-center mb-6">
+                <div class="section-marker bg-blue-600">D</div>
+                <h2 class="text-2xl font-bold flex items-center"><i data-lucide="git-merge"
+                        class="w-6 h-6 mr-3 text-accent-blue-dark"></i> The Talent Supply Chain Model</h2>
+            </div>
+            <p class="mb-8 text-gray-600">The end-to-end framework for building, scaling, and optimizing an AI practice.
+            </p>
+
+            <div class="relative bg-light-blue p-6 rounded-xl border border-blue-100 overflow-x-auto">
+                <div class="flex justify-center gap-2 mb-6 flex-wrap text-xs font-semibold text-blue-800">
+                    <span class="bg-white px-3 py-1 rounded-full border border-blue-200">University</span>
+                    <span class="bg-white px-3 py-1 rounded-full border border-blue-200">Social Media</span>
+                    <span class="bg-white px-3 py-1 rounded-full border border-blue-200">Competitors</span>
+                    <span class="bg-white px-3 py-1 rounded-full border border-blue-200">Referrals</span>
+                    <span class="bg-white px-3 py-1 rounded-full border border-blue-200">Conferences</span>
+                    <span class="bg-white px-3 py-1 rounded-full border border-blue-200">Government</span>
+                </div>
+
+                <div class="text-center text-blue-400 mb-2"><i data-lucide="arrow-down" class="w-5 h-5 mx-auto"></i>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between gap-2 text-center relative z-10">
+                    <div
+                        class="flow-stage bg-white p-3 rounded-lg border border-blue-200 shadow-sm font-bold text-gray-800 text-sm">
+                        Recruiting</div>
+                    <i data-lucide="arrow-right" class="hidden md:block w-4 h-4 text-blue-400"></i>
+                    <i data-lucide="arrow-down" class="md:hidden w-4 h-4 text-blue-400 my-1"></i>
+
+                    <div
+                        class="flow-stage bg-white p-3 rounded-lg border border-blue-200 shadow-sm font-bold text-gray-800 text-sm">
+                        Forecast Demand</div>
+                    <i data-lucide="arrow-right" class="hidden md:block w-4 h-4 text-blue-400"></i>
+                    <i data-lucide="arrow-down" class="md:hidden w-4 h-4 text-blue-400 my-1"></i>
+
+                    <div
+                        class="flow-stage bg-white p-3 rounded-lg border border-blue-200 shadow-sm font-bold text-gray-800 text-sm">
+                        Role Families</div>
+                    <i data-lucide="arrow-right" class="hidden md:block w-4 h-4 text-blue-400"></i>
+                    <i data-lucide="arrow-down" class="md:hidden w-4 h-4 text-blue-400 my-1"></i>
+
+                    <div
+                        class="flow-stage bg-white p-3 rounded-lg border border-blue-200 shadow-sm font-bold text-gray-800 text-sm">
+                        Talent Matching</div>
+                    <i data-lucide="arrow-right" class="hidden md:block w-4 h-4 text-blue-400"></i>
+                    <i data-lucide="arrow-down" class="md:hidden w-4 h-4 text-blue-400 my-1"></i>
+
+                    <div
+                        class="flow-stage bg-white p-3 rounded-lg border border-blue-200 shadow-sm font-bold text-gray-800 text-sm">
+                        Delivery Templates</div>
+                    <i data-lucide="arrow-right" class="hidden md:block w-4 h-4 text-blue-400"></i>
+                    <i data-lucide="arrow-down" class="md:hidden w-4 h-4 text-blue-400 my-1"></i>
+
+                    <div
+                        class="flow-stage bg-white p-3 rounded-lg border border-blue-200 shadow-sm font-bold text-gray-800 text-sm">
+                        Sales Growth</div>
+                    <i data-lucide="arrow-right" class="hidden md:block w-4 h-4 text-blue-400"></i>
+                    <i data-lucide="arrow-down" class="md:hidden w-4 h-4 text-blue-400 my-1"></i>
+
+                    <div class="flow-stage bg-blue-600 text-white p-3 rounded-lg shadow-md font-bold text-sm">Assess
+                        Delivery</div>
+                </div>
+
+                <div class="text-center text-blue-400 mt-4 mb-2"><i data-lucide="arrow-down"
+                        class="w-5 h-5 mx-auto"></i></div>
+
+                <div class="flex justify-center gap-4 flex-wrap text-sm font-semibold text-white">
+                    <span class="bg-gray-800 px-4 py-1.5 rounded-md">Profitability</span>
+                    <span class="bg-gray-800 px-4 py-1.5 rounded-md">Quality</span>
+                    <span class="bg-gray-800 px-4 py-1.5 rounded-md">Impact</span>
+                    <span class="bg-gray-800 px-4 py-1.5 rounded-md">Security</span>
+                </div>
+            </div>
+
+            <div class="mt-6 bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                <p class="font-bold text-blue-900 text-lg">Core Principle: "Get talented people when they are available,
+                    not when you are desperate!"</p>
+                <p class="text-blue-800 text-sm mt-1">Price them and solution them correctly to deliver in a consistent,
+                    profitable way.</p>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <section class="fade-section info-card p-6 bg-light-green border-green-100">
+                <div class="flex items-center mb-4">
+                    <div class="section-marker bg-green-600">E</div>
+                    <h2 class="text-xl font-bold flex items-center"><i data-lucide="search"
+                            class="w-5 h-5 mr-2 text-accent-green"></i> Recruiting</h2>
+                </div>
+                <p class="text-gray-700 mb-4 text-sm">The supply chain entry point. Your ability to know who, how,
+                    where, and when to recruit depends entirely on forecasting demand.</p>
+                <div class="bg-white p-4 rounded-lg border border-green-200 shadow-sm">
+                    <p class="font-bold text-red-600 flex items-start text-sm mb-3">
+                        <i data-lucide="x-circle" class="w-4 h-4 mr-1 mt-0.5 shrink-0"></i>
+                        If you win a project and need 100 people in 90 days, you cannot hire 100 quality people that
+                        fast.
+                    </p>
+                    <p class="font-bold text-green-700 flex items-start text-sm">
+                        <i data-lucide="check-circle" class="w-4 h-4 mr-1 mt-0.5 shrink-0"></i>
+                        Patient recruiting yields highly talented individuals seeking to be valued, leading to upsell
+                        and wedge growth.
+                    </p>
+                </div>
+            </section>
+
+            <section class="fade-section info-card p-6 bg-light-purple border-purple-100">
+                <div class="flex items-center mb-4">
+                    <div class="section-marker bg-purple-600">F</div>
+                    <h2 class="text-xl font-bold flex items-center"><i data-lucide="bar-chart"
+                            class="w-5 h-5 mr-2 text-accent-purple"></i> Demand Forecasting</h2>
+                </div>
+                <p class="text-gray-700 mb-4 text-sm">The intelligence layer. Forecasting requires defined role families
+                    and delivery templates.</p>
+                <div class="bg-white p-4 rounded-lg border border-purple-200 shadow-sm text-sm">
+                    <p class="font-bold text-gray-800 mb-2">Example: Data Scientist Profile</p>
+                    <ul class="space-y-1 text-gray-600">
+                        <li class="flex items-center"><i data-lucide="target" class="w-3 h-3 mr-2 text-purple-500"></i>
+                            Statistics & ML knowledge</li>
+                        <li class="flex items-center"><i data-lucide="target" class="w-3 h-3 mr-2 text-purple-500"></i>
+                            Specific experience levels</li>
+                        <li class="flex items-center"><i data-lucide="target" class="w-3 h-3 mr-2 text-purple-500"></i>
+                            Educational requirements</li>
+                        <li class="flex items-center"><i data-lucide="target" class="w-3 h-3 mr-2 text-purple-500"></i>
+                            Standardized testing</li>
+                    </ul>
+                    <p class="mt-3 font-medium text-purple-700">"If you have that clear definition, you know exactly
+                        where to look."</p>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <section class="fade-section info-card p-6 bg-light-orange border-orange-100">
+                <div class="flex items-center mb-4">
+                    <div class="section-marker bg-orange-600">G</div>
+                    <h2 class="text-xl font-bold flex items-center"><i data-lucide="users"
+                            class="w-5 h-5 mr-2 text-accent-orange"></i> Role Families</h2>
+                </div>
+                <p class="text-gray-700 mb-4 text-sm">The organizational foundation. Defines what skill sets go with
+                    each role and how they collaborate.</p>
+                <div class="space-y-2 text-sm">
+                    <div class="bg-white p-3 rounded border border-orange-200 flex items-center">
+                        <i data-lucide="shield" class="w-4 h-4 mr-2 text-orange-500"></i> Enables pay equity & objective
+                        value assessment
+                    </div>
+                    <div class="bg-white p-3 rounded border border-orange-200 flex items-center">
+                        <i data-lucide="shield" class="w-4 h-4 mr-2 text-orange-500"></i> Drives talent retention &
+                        market pricing
+                    </div>
+                    <div
+                        class="bg-white p-3 rounded border border-orange-200 flex items-center border-l-4 border-l-red-500">
+                        <i data-lucide="alert-circle" class="w-4 h-4 mr-2 text-red-500"></i> HR alignment: roles must
+                        match project reality
+                    </div>
+                </div>
+            </section>
+
+            <section class="fade-section info-card p-6 bg-light-indigo border-indigo-100">
+                <div class="flex items-center mb-4">
+                    <div class="section-marker bg-indigo-600">H</div>
+                    <h2 class="text-xl font-bold flex items-center"><i data-lucide="layout"
+                            class="w-5 h-5 mr-2 text-accent-indigo"></i> Delivery Templates</h2>
+                </div>
+                <p class="text-gray-700 mb-4 text-sm">Standardized team structures to deliver what you sold. Created
+                    based on client needs + recruitable talent.</p>
+                <div class="grid grid-cols-2 gap-3 text-sm">
+                    <div class="bg-white p-3 rounded-lg border border-indigo-200">
+                        <p class="font-bold text-indigo-900 border-b border-indigo-100 pb-1 mb-2">True AI Projects</p>
+                        <p class="text-gray-600 text-xs">High value, advanced applications (Deep Learning, GenAI).</p>
+                    </div>
+                    <div class="bg-white p-3 rounded-lg border border-indigo-200">
+                        <p class="font-bold text-gray-700 border-b border-gray-100 pb-1 mb-2">Traditional Analytics</p>
+                        <p class="text-gray-600 text-xs">Invoicing, readiness, maintenance, budget forecasting.</p>
+                    </div>
+                </div>
+                <p class="text-xs text-center mt-3 font-medium text-indigo-800 italic">"People aren't very good at
+                    distinguishing data accounting from advanced AI."</p>
+            </section>
+        </div>
+
+        <section class="fade-section mb-16 info-card p-8 bg-light-yellow border-yellow-200">
+            <div class="flex items-center mb-6">
+                <div class="section-marker bg-yellow-600">I</div>
+                <h2 class="text-2xl font-bold flex items-center"><i data-lucide="shuffle"
+                        class="w-6 h-6 mr-3 text-accent-yellow"></i> Talent Matching: The Hardest Challenge</h2>
+            </div>
+
+            <p class="text-center font-bold text-lg text-gray-800 mb-6 max-w-2xl mx-auto">"Probably one of the most
+                difficult things that I had to deal with... critical to match role families with delivery templates."
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white rounded-xl p-5 border-t-4 border-red-500 shadow-sm text-center">
+                    <div class="bg-red-50 text-red-600 p-2 rounded-full inline-block mb-3">
+                        <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">AI Talent + Commoditized Task</h3>
+                    <p class="text-sm text-gray-600 mb-3">Putting deep learning experts on basic Excel accounting data.
+                    </p>
+                    <div class="bg-red-100 text-red-800 font-bold py-1 px-3 rounded text-sm">Result: Bored & Quit Soon
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-xl p-5 border-t-4 border-green-500 shadow-md text-center transform md:-translate-y-2 relative z-10">
+                    <div class="bg-green-50 text-green-600 p-2 rounded-full inline-block mb-3">
+                        <i data-lucide="check-circle" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Right Person + Right Role</h3>
+                    <p class="text-sm text-gray-600 mb-3">Matching defined role families to defined delivery templates.
+                    </p>
+                    <div class="bg-green-100 text-green-800 font-bold py-1 px-3 rounded text-sm">Result: Delivery
+                        Success</div>
+                </div>
+
+                <div class="bg-white rounded-xl p-5 border-t-4 border-red-500 shadow-sm text-center">
+                    <div class="bg-red-50 text-red-600 p-2 rounded-full inline-block mb-3">
+                        <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Accounting Talent + Advanced AI</h3>
+                    <p class="text-sm text-gray-600 mb-3">Putting traditional data analysts on complex machine learning.
+                    </p>
+                    <div class="bg-red-100 text-red-800 font-bold py-1 px-3 rounded text-sm">Result: Project Failure
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <section class="fade-section info-card p-6 bg-light-green border-green-100">
+                <div class="flex items-center mb-4">
+                    <div class="section-marker bg-green-600">J</div>
+                    <h2 class="text-xl font-bold flex items-center"><i data-lucide="trending-up"
+                            class="w-5 h-5 mr-2 text-accent-green"></i> Sales Growth</h2>
+                </div>
+                <p class="text-gray-700 mb-4 text-sm font-medium">"Once you have that foundation, sales growth becomes
+                    easy."</p>
+                <ul class="space-y-3 text-sm text-gray-700">
+                    <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500 mt-0.5"></i>
+                        Clear template and model of what you are selling</li>
+                    <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500 mt-0.5"></i>
+                        Clear, communicable offerings</li>
+                    <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500 mt-0.5"></i>
+                        Write proposals much more quickly</li>
+                    <li class="flex items-start"><i data-lucide="check" class="w-4 h-4 mr-2 text-green-500 mt-0.5"></i>
+                        Understand risks precisely so you can price to win</li>
+                </ul>
+            </section>
+
+            <section class="fade-section info-card p-6 bg-light-teal border-teal-100">
+                <div class="flex items-center mb-4">
+                    <div class="section-marker bg-teal-600">K</div>
+                    <h2 class="text-xl font-bold flex items-center"><i data-lucide="check-circle"
+                            class="w-5 h-5 mr-2 text-accent-teal"></i> Delivery Assessment</h2>
+                </div>
+                <p class="text-gray-700 mb-4 text-sm">Closing the loop. Assessments tell you whether you need to revise
+                    or add delivery templates.</p>
+                <div class="grid grid-cols-2 gap-3 text-sm">
+                    <div class="bg-white p-2 rounded border border-teal-200 text-center shadow-sm">
+                        <p class="font-bold text-teal-800">Profitability</p>
+                        <p class="text-xs text-gray-500 mt-1">Hitting targets?</p>
+                    </div>
+                    <div class="bg-white p-2 rounded border border-teal-200 text-center shadow-sm">
+                        <p class="font-bold text-teal-800">Quality</p>
+                        <p class="text-xs text-gray-500 mt-1">Consistent output?</p>
+                    </div>
+                    <div class="bg-white p-2 rounded border border-teal-200 text-center shadow-sm">
+                        <p class="font-bold text-teal-800">Impact</p>
+                        <p class="text-xs text-gray-500 mt-1">Desired outcome?</p>
+                    </div>
+                    <div class="bg-white p-2 rounded border border-teal-200 text-center shadow-sm">
+                        <p class="font-bold text-teal-800">Security</p>
+                        <p class="text-xs text-gray-500 mt-1">Safely delivered?</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <section class="fade-section mb-16 info-card p-8 bg-light-blue border-blue-200">
+            <div class="flex items-center mb-6">
+                <div class="section-marker bg-blue-600">L</div>
+                <h2 class="text-2xl font-bold flex items-center"><i data-lucide="refresh-cw"
+                        class="w-6 h-6 mr-3 text-accent-blue-dark"></i> Continuous Improvement Feedback Loops</h2>
+            </div>
+            <p class="text-gray-700 mb-6">Delivery assessment is useless without pathways to feed data back into the
+                supply chain. These four loops create a self-improving system.</p>
+
+            <div class="space-y-4">
+                <div
+                    class="bg-white rounded-lg p-4 border border-blue-100 shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <div class="bg-blue-100 text-blue-700 p-3 rounded-full shrink-0">
+                        <i data-lucide="corner-down-left" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-blue-500">Loop 1: To
+                                Recruiting</span>
+                        </div>
+                        <p class="text-gray-800 font-medium">Use KPI & time-to-staff to assess source/strategy,
+                            interviewer quality, resume screening, and leveling.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-lg p-4 border border-blue-100 shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <div class="bg-blue-100 text-blue-700 p-3 rounded-full shrink-0">
+                        <i data-lucide="corner-down-left" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-blue-500">Loop 2: To Demand
+                                Forecasting</span>
+                        </div>
+                        <p class="text-gray-800 font-medium">Forecast high-density roles to hire ahead of demand
+                            (targeting single-digit gaps).</p>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-lg p-4 border border-blue-100 shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <div class="bg-blue-100 text-blue-700 p-3 rounded-full shrink-0">
+                        <i data-lucide="corner-down-left" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-blue-500">Loop 3: To Role
+                                Families</span>
+                        </div>
+                        <p class="text-gray-800 font-medium">Align operational realities with HR for pay equity,
+                            retention strategy, and accurate market pricing.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white rounded-lg p-4 border border-blue-100 shadow-sm flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                    <div class="bg-blue-100 text-blue-700 p-3 rounded-full shrink-0">
+                        <i data-lucide="corner-down-left" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="text-xs font-bold uppercase tracking-wider text-blue-500">Loop 4: To Delivery
+                                Templates</span>
+                        </div>
+                        <p class="text-gray-800 font-medium">Revise existing or add new delivery templates based on
+                            profitability and quality assessments.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            <section class="fade-section info-card p-6 bg-light-red border-red-200">
+                <div class="flex items-center mb-4">
+                    <div class="section-marker bg-red-600">M</div>
+                    <h2 class="text-xl font-bold flex items-center"><i data-lucide="alert-circle"
+                            class="w-5 h-5 mr-2 text-accent-red"></i> Case Study: HR Misalignment</h2>
+                </div>
+                <div class="bg-white p-5 rounded-lg border border-red-100 shadow-sm relative">
+                    <div class="absolute top-0 left-6 bottom-0 w-0.5 bg-red-200 z-0"></div>
+
+                    <div class="relative z-10 flex items-start mb-4">
+                        <div class="w-4 h-4 rounded-full bg-red-500 mt-1 mr-4 shrink-0 shadow ring-4 ring-white"></div>
+                        <p class="text-sm text-gray-700">Two employees: same project, same grad school, hired same time.
+                        </p>
+                    </div>
+                    <div class="relative z-10 flex items-start mb-4">
+                        <div class="w-4 h-4 rounded-full bg-red-500 mt-1 mr-4 shrink-0 shadow ring-4 ring-white"></div>
+                        <p class="text-sm font-bold text-gray-900">$25,000/year pay disparity discovered.</p>
+                    </div>
+                    <div class="relative z-10 flex items-start mb-4">
+                        <div class="w-4 h-4 rounded-full bg-red-500 mt-1 mr-4 shrink-0 shadow ring-4 ring-white"></div>
+                        <p class="text-sm text-gray-700">Employee requests raise. HR offers only $6,000, stating: <span
+                                class="italic">"You're in a different role."</span></p>
+                    </div>
+                    <div class="relative z-10 flex items-start mb-4">
+                        <div class="w-4 h-4 rounded-full bg-red-500 mt-1 mr-4 shrink-0 shadow ring-4 ring-white"></div>
+                        <p class="text-sm font-bold text-red-700">Root Cause: HR roles were not aligned to actual
+                            project roles.</p>
+                    </div>
+                    <div class="relative z-10 flex items-start">
+                        <div class="w-4 h-4 rounded-full bg-gray-800 mt-1 mr-4 shrink-0 shadow ring-4 ring-white"></div>
+                        <p class="text-sm font-bold text-gray-900">Result: Employee left for a competitor.</p>
+                    </div>
+                </div>
+                <p class="text-sm mt-4 font-semibold text-red-800 text-center">Solution: Accurate, Well-Defined Role
+                    Families</p>
+            </section>
+
+            <section class="fade-section info-card p-6 bg-light-green border-green-200">
+                <div class="flex items-center mb-4">
+                    <div class="section-marker bg-green-600">N</div>
+                    <h2 class="text-xl font-bold flex items-center"><i data-lucide="clock"
+                            class="w-5 h-5 mr-2 text-accent-green-bright"></i> The Core Recruiting Principle</h2>
+                </div>
+                <p class="text-center font-bold text-gray-800 mb-6">"Get talented people when they are available, not
+                    when you are desperate!"</p>
+
+                <div class="space-y-4">
+                    <div class="bg-white rounded-lg p-4 border-l-4 border-green-500 shadow-sm">
+                        <h3 class="font-bold text-green-700 mb-1 flex items-center"><i data-lucide="check"
+                                class="w-4 h-4 mr-1"></i> Proactive Path (Success)</h3>
+                        <p class="text-xs text-gray-600">Forecast Demand → Patient Recruiting → Highly Talented
+                            Individuals → Great Delivery → Upsell & Wedge Growth</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-4 border-l-4 border-red-500 shadow-sm">
+                        <h3 class="font-bold text-red-700 mb-1 flex items-center"><i data-lucide="x"
+                                class="w-4 h-4 mr-1"></i> Reactive Path (Failure)</h3>
+                        <p class="text-xs text-gray-600">Win Project → Desperate Hiring (100 people in 90 days) →
+                            Quality Shortfall → Ambiguous Solutions → Delivery Risk</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+            <section class="fade-section info-card p-5 bg-light-red border-red-100">
+                <div class="flex items-center mb-3">
+                    <div class="section-marker bg-red-600">O</div>
+                    <h2 class="text-sm font-bold uppercase tracking-wide text-red-800">Why Models Fail</h2>
+                </div>
+                <p class="text-xs text-gray-600 mb-3">Most delivery models fail to address the modern breadth of data
+                    services.</p>
+                <ul class="text-sm font-medium space-y-1 text-gray-800">
+                    <li class="flex items-center"><i data-lucide="cloud" class="w-3 h-3 mr-2 text-red-500"></i>
+                        Generative AI shifts</li>
+                    <li class="flex items-center"><i data-lucide="cloud" class="w-3 h-3 mr-2 text-red-500"></i> Cloud &
+                        query evolution</li>
+                    <li class="flex items-center"><i data-lucide="cloud" class="w-3 h-3 mr-2 text-red-500"></i>
+                        Remote/hybrid workforce</li>
+                </ul>
+                <p class="text-xs font-bold mt-3 text-red-700 pt-3 border-t border-red-200">Creates profitability &
+                    outcome risk.</p>
+            </section>
+
+            <section class="fade-section info-card p-5 bg-light-purple border-purple-100">
+                <div class="flex items-center mb-3">
+                    <div class="section-marker bg-purple-600">P</div>
+                    <h2 class="text-sm font-bold uppercase tracking-wide text-purple-800">Source Alignment</h2>
+                </div>
+                <p class="text-xs text-gray-600 mb-3">"Do we have the right source for the right strategy?" Match
+                    channel to level.</p>
+                <div class="bg-white rounded border border-purple-200 p-2 text-xs space-y-2">
+                    <div class="flex justify-between border-b border-purple-50 pb-1">
+                        <span class="font-bold text-gray-700">Junior</span>
+                        <span class="text-purple-600">Campus</span>
+                    </div>
+                    <div class="flex justify-between border-b border-purple-50 pb-1">
+                        <span class="font-bold text-gray-700">Mid</span>
+                        <span class="text-purple-600">Social / Referrals</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="font-bold text-gray-700">Senior</span>
+                        <span class="text-purple-600">Gov / Competitors</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="fade-section info-card p-5 bg-light-orange border-orange-100">
+                <div class="flex items-center mb-3">
+                    <div class="section-marker bg-orange-600">Q</div>
+                    <h2 class="text-sm font-bold uppercase tracking-wide text-orange-800">Time-Slicing</h2>
+                </div>
+                <p class="text-xs text-gray-600 mb-3">Advanced deployment strategies based on high-density vs.
+                    low-density role volume.</p>
+                <div class="space-y-2 text-xs">
+                    <div class="bg-white p-2 rounded border border-orange-200">
+                        <p class="font-bold text-gray-800">High-Density Roles:</p>
+                        <p class="text-gray-500">Bulk recruiting & training</p>
+                    </div>
+                    <div class="bg-white p-2 rounded border border-orange-200">
+                        <p class="font-bold text-orange-700">Low-Density Experts:</p>
+                        <p class="text-gray-600">Time-slice percentages of their time across multiple projects.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="mb-16 border-t-2 border-dashed border-gray-200 pt-12 relative">
+            <div
+                class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gray-100 text-gray-500 px-4 text-xs font-bold tracking-widest uppercase rounded-full">
+                Enrichment Concepts</div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <section class="fade-section">
+                    <div class="flex items-center mb-4">
+                        <div class="section-marker bg-green-600">R</div>
+                        <h2 class="text-lg font-bold flex items-center">Modern Supply Chain Optimization</h2>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-4">Modern strategies extending the foundational talent supply
+                        chain model.</p>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm">
+                            <i data-lucide="cpu" class="w-4 h-4 text-emerald-500 mb-1"></i>
+                            <h3 class="font-bold text-xs text-gray-800">AI-Powered Recruiting</h3>
+                            <p class="text-[10px] text-gray-500 mt-1">Enhances: Recruiting</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm">
+                            <i data-lucide="star" class="w-4 h-4 text-emerald-500 mb-1"></i>
+                            <h3 class="font-bold text-xs text-gray-800">Skills-Based Hiring</h3>
+                            <p class="text-[10px] text-gray-500 mt-1">Enhances: Role Families</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm">
+                            <i data-lucide="refresh-cw" class="w-4 h-4 text-emerald-500 mb-1"></i>
+                            <h3 class="font-bold text-xs text-gray-800">Internal Mobility</h3>
+                            <p class="text-[10px] text-gray-500 mt-1">Enhances: Sourcing</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm">
+                            <i data-lucide="users" class="w-4 h-4 text-emerald-500 mb-1"></i>
+                            <h3 class="font-bold text-xs text-gray-800">Talent Communities</h3>
+                            <p class="text-[10px] text-gray-500 mt-1">Enhances: Demand Forecast</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="fade-section">
+                    <div class="flex items-center mb-4">
+                        <div class="section-marker bg-indigo-600">S</div>
+                        <h2 class="text-lg font-bold flex items-center">Talent Metrics Dashboard</h2>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-4">Actionable KPIs extending the assessment framework.</p>
+
+                    <div class="bg-light-indigo rounded-xl p-4 border border-indigo-100">
+                        <div class="grid grid-cols-2 gap-y-3 gap-x-4 text-sm">
+                            <div class="flex flex-col border-b border-indigo-200 pb-2">
+                                <span class="text-xs text-indigo-500 uppercase font-bold">Time to Staff</span>
+                                <span class="font-medium text-gray-800">Measures: Recruiting Velocity</span>
+                            </div>
+                            <div class="flex flex-col border-b border-indigo-200 pb-2">
+                                <span class="text-xs text-indigo-500 uppercase font-bold">Bench Utilization</span>
+                                <span class="font-medium text-gray-800">Measures: Demand Forecast</span>
+                            </div>
+                            <div class="flex flex-col border-b border-indigo-200 pb-2">
+                                <span class="text-xs text-indigo-500 uppercase font-bold">Pay Equity Ratios</span>
+                                <span class="font-medium text-gray-800">Measures: Role Alignment</span>
+                            </div>
+                            <div class="flex flex-col border-b border-indigo-200 pb-2">
+                                <span class="text-xs text-indigo-500 uppercase font-bold">Proposal Win Rate</span>
+                                <span class="font-medium text-gray-800">Measures: Template Maturity</span>
+                            </div>
+                            <div class="flex flex-col col-span-2">
+                                <span class="text-xs text-indigo-500 uppercase font-bold">Skill-to-Role Match
+                                    Score</span>
+                                <span class="font-medium text-gray-800">Measures: Talent Matching Success</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <section
+            class="fade-section mb-12 bg-gray-900 text-white rounded-2xl p-8 sm:p-10 shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 opacity-10">
+                <i data-lucide="award" class="w-32 h-32"></i>
+            </div>
+
+            <div class="relative z-10">
+                <div class="flex items-center mb-6">
+                    <div
+                        class="w-8 h-8 bg-green-500 text-white rounded flex items-center justify-center font-bold mr-3">
+                        T</div>
+                    <h2 class="text-2xl font-bold text-white">Strategic Synthesis</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-green-400 font-bold uppercase tracking-wide text-xs mb-3">The Model Framework
+                        </h3>
+                        <p class="text-gray-300 text-sm mb-4">A 7-stage flow from Recruiting to Delivery Assessment,
+                            powered by 4 continuous improvement feedback loops. Solves 7 key variance problems including
+                            high bench costs and inconsistent solutions.</p>
+
+                        <h3 class="text-green-400 font-bold uppercase tracking-wide text-xs mb-3">The Hardest Management
+                            Challenge</h3>
+                        <p class="text-gray-300 text-sm">Talent matching. Misaligning advanced AI talent with
+                            commoditized tasks causes turnover; misaligning accounting talent with advanced AI causes
+                            failure.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-green-400 font-bold uppercase tracking-wide text-xs mb-3">The Core Distinction
+                        </h3>
+                        <p class="text-white font-medium text-sm mb-4 border-l-2 border-green-500 pl-3">Get talented
+                            people when they are available, not when you are desperate. Patient forecasting drives
+                            growth.</p>
+
+                        <h3 class="text-green-400 font-bold uppercase tracking-wide text-xs mb-3">Management Levers</h3>
+                        <ul class="text-gray-300 text-sm space-y-1">
+                            <li>• Role families ensure pay equity</li>
+                            <li>• Delivery templates accelerate sales</li>
+                            <li>• Time-slicing maximizes scarce talent</li>
+                            <li>• Assessment drives self-improvement</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                    <p class="text-lg leading-relaxed text-gray-100 font-medium italic">
+                        "The AI talent supply chain transforms reactive hiring into strategic workforce management.
+                        Define your roles clearly. Build delivery templates that distinguish true AI from traditional
+                        analytics. Match talent to projects with precision — the most difficult but most critical
+                        management challenge. Forecast demand so you recruit when talent is available, not when you are
+                        desperate. Assess delivery across profitability, quality, impact, and security. And close the
+                        loop — let every engagement make the next one better. Organizations that master the talent
+                        supply chain do not just build AI teams. They build AI practices that scale from nothing to
+                        billions in revenue."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="fade-section text-center text-sm text-gray-500 pt-8 pb-12 border-t border-gray-200">
+            <p class="font-bold text-gray-700 mb-1">Topic: AI Talent Supply Chain</p>
+            <p>Source Attribution: Dr. Ian McCullough, Johns Hopkins University</p>
+            <div class="flex items-center justify-center gap-4 mt-4 text-xs">
+                <span class="flex items-center"><i data-lucide="book-open" class="w-3 h-3 mr-1"></i> End-to-End
+                    Framework</span>
+                <span class="flex items-center"><i data-lucide="printer" class="w-3 h-3 mr-1"></i> Print-Friendly
+                    Format</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Icons
+            lucide.createIcons();
+
+            // 2. Add 'not-visible' strictly via JS (Blank Page Prevention Fallback)
+            const fadeSections = document.querySelectorAll('.fade-section');
+            fadeSections.forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+
+            // 3. Intersection Observer for scroll animations
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('not-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            fadeSections.forEach(function (el) {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

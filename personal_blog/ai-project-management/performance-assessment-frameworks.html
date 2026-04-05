@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Assessment Frameworks — AI Industry Infographic</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Performance Assessment Frameworks — AI Industry Reference Guide">
+    <meta name="description" content="Comprehensive reference guide covering AI industry performance assessment frameworks: KPI structures, OKR methodologies, reward systems, performance matrices, and retention-linked strategies for AI professionals and organizations.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Project Management">
+    <meta name="tags" content="Performance Frameworks, KPIs, OKRs, Performance Management, AI Teams, Reward Systems, Retention Strategy, AI Organizations, Performance Matrix">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="AI industry performance assessment frameworks include KPI structures, OKR methodologies, reward and recognition systems, performance matrices, and retention-linked strategies. This reference covers the full performance management lifecycle from goal-setting through recognition and retention for AI organizations.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/performance-assessment-frameworks">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Performance Assessment Frameworks — AI Industry Reference Guide">
+    <meta property="og:description" content="Comprehensive reference guide covering AI industry performance assessment frameworks: KPI structures, OKR methodologies, reward systems, performance matrices, and retention-linked strategies for AI professionals and organizations.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/performance-assessment-frameworks">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-04-08">
+    <meta property="article:section" content="AI Project Management">
+    <meta property="article:tag" content="Performance Frameworks">
+    <meta property="article:tag" content="KPIs">
+    <meta property="article:tag" content="OKRs">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Performance Assessment Frameworks — AI Industry Reference Guide",
+        "description": "Comprehensive reference guide covering AI industry performance assessment frameworks: KPI structures, OKR methodologies, reward systems, performance matrices, and retention-linked strategies for AI professionals and organizations.",
+        "datePublished": "2025-04-08",
+        "dateModified": "2025-04-08",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/performance-assessment-frameworks"
+        },
+        "keywords": ["Performance Frameworks", "KPIs", "OKRs", "Performance Management", "AI Teams", "Reward Systems", "Retention Strategy", "AI Organizations", "Performance Matrix"],
+        "articleSection": "AI Project Management"
+    }
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons loaded at end of body for reliability -->
+    <style>
+        /* ========== GLOBAL STYLES ========== */
+        :root {
+            --heading-font: 'Sora', sans-serif;
+            --body-font: 'DM Sans', sans-serif;
+            --charcoal: #1E293B;
+            --body-text: #475569;
+            --secondary: #64748B;
+            --border: #E2E8F0;
+            --page-bg: #FAFBFC;
+            --card-bg: #FFFFFF;
+            --stat-bg: #D1FAE5;
+            --stat-text: #065F46;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--body-font);
+            background: var(--page-bg);
+            color: var(--body-text);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: var(--heading-font);
+            color: var(--charcoal);
+            letter-spacing: -0.02em;
+        }
+
+        .container-main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        @media (min-width: 640px) {
+            .container-main {
+                padding: 0 32px;
+            }
+        }
+
+        /* ========== RAINBOW STRIPE ========== */
+        .rainbow-stripe {
+            height: 5px;
+            background: linear-gradient(90deg, #F472B6, #FB923C, #FACC15, #4ADE80, #38BDF8, #818CF8, #C084FC);
+        }
+
+        /* ========== SECTION BACKGROUNDS (hex-safe) ========== */
+        .sec-header {
+            background-color: #F0F9FF;
+        }
+
+        .sec-opening {
+            background-color: #F8FAFC;
+        }
+
+        .sec-frameworks {
+            background-color: #FDF4FF;
+        }
+
+        .sec-reward {
+            background-color: #EFF6FF;
+        }
+
+        .sec-kpi {
+            background-color: #FFF7ED;
+        }
+
+        .sec-okr {
+            background-color: #F0FDF4;
+        }
+
+        .sec-matrix {
+            background-color: #FEF3C7;
+        }
+
+        .sec-retention-link {
+            background-color: #F8FAFC;
+        }
+
+        .sec-drivers {
+            background-color: #FDF4FF;
+        }
+
+        .sec-recognition {
+            background-color: #FEF2F2;
+        }
+
+        .sec-comp-intro {
+            background-color: #FFF7ED;
+        }
+
+        .sec-diminish {
+            background-color: #FEF2F2;
+        }
+
+        .sec-intrinsic {
+            background-color: #EFF6FF;
+        }
+
+        .sec-comp-fail {
+            background-color: #E0E7FF;
+        }
+
+        .sec-selection {
+            background-color: #D1FAE5;
+        }
+
+        .sec-ai-metrics {
+            background-color: #E0E7FF;
+        }
+
+        .sec-effectiveness {
+            background-color: #EFF6FF;
+        }
+
+        .sec-takeaways {
+            background-color: #F0FDF4;
+        }
+
+        .sec-footer {
+            background-color: #F8FAFC;
+        }
+
+        /* ========== ACCENT COLORS ========== */
+        .accent-header {
+            color: #0EA5E9;
+        }
+
+        .accent-frameworks {
+            color: #A855F7;
+        }
+
+        .accent-reward {
+            color: #2563EB;
+        }
+
+        .accent-kpi {
+            color: #EA580C;
+        }
+
+        .accent-okr {
+            color: #16A34A;
+        }
+
+        .accent-matrix {
+            color: #D97706;
+        }
+
+        .accent-drivers {
+            color: #A855F7;
+        }
+
+        .accent-recognition {
+            color: #DC2626;
+        }
+
+        .accent-comp {
+            color: #EA580C;
+        }
+
+        .accent-diminish {
+            color: #DC2626;
+        }
+
+        .accent-intrinsic {
+            color: #2563EB;
+        }
+
+        .accent-fail {
+            color: #6366F1;
+        }
+
+        .accent-selection {
+            color: #10B981;
+        }
+
+        .accent-ai {
+            color: #6366F1;
+        }
+
+        .accent-effect {
+            color: #2563EB;
+        }
+
+        .accent-takeaways {
+            color: #22C55E;
+        }
+
+        .border-accent-header {
+            border-color: #0EA5E9;
+        }
+
+        .border-accent-frameworks {
+            border-color: #A855F7;
+        }
+
+        .border-accent-reward {
+            border-color: #2563EB;
+        }
+
+        .border-accent-kpi {
+            border-color: #EA580C;
+        }
+
+        .border-accent-okr {
+            border-color: #16A34A;
+        }
+
+        .border-accent-matrix {
+            border-color: #D97706;
+        }
+
+        .border-accent-drivers {
+            border-color: #A855F7;
+        }
+
+        .border-accent-recognition {
+            border-color: #DC2626;
+        }
+
+        .border-accent-comp {
+            border-color: #EA580C;
+        }
+
+        .border-accent-diminish {
+            border-color: #DC2626;
+        }
+
+        .border-accent-intrinsic {
+            border-color: #2563EB;
+        }
+
+        .border-accent-fail {
+            border-color: #6366F1;
+        }
+
+        .border-accent-selection {
+            border-color: #10B981;
+        }
+
+        .border-accent-ai {
+            border-color: #6366F1;
+        }
+
+        .border-accent-takeaways {
+            border-color: #22C55E;
+        }
+
+        .bg-accent-header {
+            background-color: #0EA5E9;
+        }
+
+        .bg-accent-frameworks {
+            background-color: #A855F7;
+        }
+
+        .bg-accent-reward {
+            background-color: #2563EB;
+        }
+
+        .bg-accent-kpi {
+            background-color: #EA580C;
+        }
+
+        .bg-accent-okr {
+            background-color: #16A34A;
+        }
+
+        .bg-accent-matrix {
+            background-color: #D97706;
+        }
+
+        .bg-accent-drivers {
+            background-color: #A855F7;
+        }
+
+        .bg-accent-recognition {
+            background-color: #DC2626;
+        }
+
+        .bg-accent-comp {
+            background-color: #EA580C;
+        }
+
+        .bg-accent-diminish {
+            background-color: #DC2626;
+        }
+
+        .bg-accent-intrinsic {
+            background-color: #2563EB;
+        }
+
+        .bg-accent-fail {
+            background-color: #6366F1;
+        }
+
+        .bg-accent-selection {
+            background-color: #10B981;
+        }
+
+        .bg-accent-takeaways {
+            background-color: #22C55E;
+        }
+
+        /* ========== CARDS ========== */
+        .info-card {
+            background: var(--card-bg);
+            border: 1.5px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        .compact-card {
+            background: var(--card-bg);
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .compact-card:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        /* ========== STAT BADGE ========== */
+        .stat-badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--stat-bg);
+            color: var(--stat-text);
+            font-weight: 600;
+            font-size: 13px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-family: var(--heading-font);
+        }
+
+        /* ========== SECTION NUMBER BADGE ========== */
+        .sec-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            font-family: var(--heading-font);
+            font-weight: 700;
+            font-size: 13px;
+            color: #fff;
+            flex-shrink: 0;
+        }
+
+        /* ========== SECTION SPACING ========== */
+        .section-block {
+            padding: 48px 0;
+        }
+
+        @media (min-width: 640px) {
+            .section-block {
+                padding: 64px 0;
+            }
+        }
+
+        /* ========== GRID HELPERS ========== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        @media (min-width: 640px) {
+            .grid-2 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+
+        /* ========== SIGNATURE VISUAL HELPERS ========== */
+        .sig-flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 20px;
+            padding: 8px 0;
+        }
+
+        .versus-divider {
+            width: 3px;
+            background: var(--border);
+            border-radius: 2px;
+            margin: 0 12px;
+            flex-shrink: 0;
+        }
+
+        .callout-box {
+            background: #FFFBEB;
+            border-left: 4px solid #D97706;
+            border-radius: 0 10px 10px 0;
+            padding: 16px 20px;
+            font-size: 14px;
+            color: var(--charcoal);
+        }
+
+        .warning-box {
+            background: #FEF2F2;
+            border-left: 4px solid #DC2626;
+            border-radius: 0 10px 10px 0;
+            padding: 16px 20px;
+            font-size: 14px;
+            color: var(--charcoal);
+        }
+
+        .quote-box {
+            background: #EFF6FF;
+            border-left: 4px solid #2563EB;
+            border-radius: 0 12px 12px 0;
+            padding: 20px 24px;
+            font-style: italic;
+            font-size: 15px;
+            color: var(--charcoal);
+            line-height: 1.7;
+        }
+
+        /* ========== SPECTRUM BAR ========== */
+        .spectrum-bar {
+            height: 8px;
+            border-radius: 4px;
+            background: linear-gradient(90deg, #EA580C, #D97706, #16A34A, #2563EB);
+        }
+
+        /* ========== FADE ANIMATIONS (SAFE PATTERN) ========== */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* ========== PRINT STYLES ========== */
+        @media print {
+            body {
+                background: #fff !important;
+            }
+
+            .rainbow-stripe {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .info-card,
+            .compact-card {
+                box-shadow: none !important;
+                transform: none !important;
+                border: 1px solid #ccc !important;
+            }
+
+            .fade-section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .section-block {
+                page-break-inside: avoid;
+                padding: 24px 0;
+            }
+
+            .callout-box,
+            .warning-box,
+            .quote-box {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============================== -->
+    <!-- RAINBOW ACCENT STRIPE          -->
+    <!-- ============================== -->
+    <div class="rainbow-stripe"></div>
+
+    <!-- ============================== -->
+    <!-- SECTION A — HEADER             -->
+    <!-- ============================== -->
+    <section class="sec-header section-block fade-section">
+        <div class="container-main">
+            <div class="text-center" style="max-width:780px; margin:0 auto;">
+                <div class="flex items-center justify-center gap-2 mb-4">
+                    <span class="sec-num bg-accent-header">A</span>
+                    <span
+                        style="font-size:12px; font-family:var(--heading-font); color:#0EA5E9; font-weight:600; text-transform:uppercase; letter-spacing:0.08em;">Dr.
+                        Ian McCullough &middot; Johns Hopkins University</span>
+                </div>
+                <h1 style="font-size:clamp(28px,4vw,36px); font-weight:800; line-height:1.15; margin-bottom:12px;">
+                    Performance Assessment Frameworks</h1>
+                <p
+                    style="font-size:clamp(14px,1.8vw,17px); color:var(--secondary); line-height:1.6; margin-bottom:24px;">
+                    Choosing the Right System for AI Teams &mdash; From Top-Down Benchmarks to Bottom-Up Objectives,
+                    Force-Distributed Judgment, and the Retention Ecosystem That Determines Whether Your Best People
+                    Stay or Walk Out the Door</p>
+                <p style="font-size:14px; color:var(--body-text); line-height:1.6; margin-bottom:24px;">This infographic
+                    explores seven performance assessment frameworks, the structural tension between KPIs and OKRs, the
+                    six key retention drivers every AI leader must understand, and why compensation is the last resort
+                    &mdash; not the first tool &mdash; for retaining talent.</p>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="stat-badge">7 Frameworks</span>
+                    <span class="stat-badge">94% Career Vested</span>
+                    <span class="stat-badge">59% Engagement</span>
+                    <span class="stat-badge">44% Recognition</span>
+                    <span class="stat-badge">56% Culture</span>
+                    <span class="stat-badge">89% Flexibility</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION B — OPENING FRAMING    -->
+    <!-- ============================== -->
+    <section class="sec-opening section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num" style="background:#475569;">B</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">The Performance Assessment Landscape</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="clipboard"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Opening Framing</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <p style="font-size:15px; line-height:1.7; margin-bottom:16px;">There are a number of performance
+                    assessment frameworks in the AI industry, each with different strengths, weaknesses, and
+                    preferences. They are all important to consider in how they actually impact performance,
+                    specifically for an AI team.</p>
+                <div class="flex flex-wrap gap-2 mb-16px" style="margin-bottom:16px;">
+                    <span
+                        style="background:#F3E8FF;color:#7C3AED;padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;">KPIs</span>
+                    <span
+                        style="background:#DCFCE7;color:#16A34A;padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;">OKRs</span>
+                    <span
+                        style="background:#DBEAFE;color:#2563EB;padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;">360-Degree</span>
+                    <span
+                        style="background:#FEF3C7;color:#D97706;padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;">Balanced
+                        Scorecards</span>
+                    <span
+                        style="background:#FEE2E2;color:#DC2626;padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;">SMART
+                        Goals</span>
+                    <span
+                        style="background:#E0E7FF;color:#6366F1;padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;">Agile</span>
+                    <span
+                        style="background:#FCE7F3;color:#DB2777;padding:4px 12px;border-radius:8px;font-size:13px;font-weight:600;">Reward
+                        Indicator</span>
+                </div>
+                <p style="font-size:14px; color:var(--secondary); line-height:1.6;">The choice of framework signals what
+                    the organization values, how contributions will be measured, and whether the system acknowledges the
+                    unique nature of AI work. No single framework works for every AI organization &mdash; the optimal
+                    choice depends on whether the organization prioritizes efficiency or innovation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION C — SEVEN FRAMEWORKS   -->
+    <!-- ============================== -->
+    <section class="sec-frameworks section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-frameworks">C</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">The Seven Frameworks Landscape</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="grid"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Signature Visual 1
+                    </p>
+                </div>
+            </div>
+
+            <!-- Spectrum bar -->
+            <div style="margin-bottom:8px;">
+                <div class="flex justify-between"
+                    style="font-size:11px; font-family:var(--heading-font); color:var(--secondary); font-weight:600; text-transform:uppercase; letter-spacing:0.06em;">
+                    <span><i data-lucide="lock" style="width:12px;height:12px;display:inline;vertical-align:-2px;"></i>
+                        Top-Down / Rigid</span>
+                    <span>Bottom-Up / Flexible <i data-lucide="unlock"
+                            style="width:12px;height:12px;display:inline;vertical-align:-2px;"></i></span>
+                </div>
+            </div>
+            <div class="spectrum-bar" style="margin-bottom:24px;"></div>
+
+            <div class="grid-3" style="grid-template-columns:repeat(auto-fill,minmax(250px,1fr));">
+                <!-- KPI -->
+                <div class="info-card" style="border-top:3px solid #EA580C;">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="bar-chart" style="width:18px;height:18px;color:#EA580C;"></i>
+                        <h4 style="font-size:16px;font-weight:700;margin:0;">KPIs</h4>
+                    </div>
+                    <p style="font-size:12px;color:#EA580C;font-weight:600;margin-bottom:8px;">TOP-DOWN &middot;
+                        MEASUREMENT</p>
+                    <p style="font-size:13px;line-height:1.6;">Business performance metrics. Leader defines benchmarks.
+                        Rigid for employees but consistent over time. Best for <strong>efficient organizations</strong>.
+                    </p>
+                </div>
+                <!-- OKR -->
+                <div class="info-card" style="border-top:3px solid #16A34A;">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="target" style="width:18px;height:18px;color:#16A34A;"></i>
+                        <h4 style="font-size:16px;font-weight:700;margin:0;">OKRs</h4>
+                    </div>
+                    <p style="font-size:12px;color:#16A34A;font-weight:600;margin-bottom:8px;">BOTTOM-UP &middot;
+                        GOAL-SETTING</p>
+                    <p style="font-size:13px;line-height:1.6;">Employees define objectives. Self-selected, flexible,
+                        tailored to roles. Collective alignment. Best for <strong>innovative organizations</strong>.</p>
+                </div>
+                <!-- 360 -->
+                <div class="info-card" style="border-top:3px solid #2563EB;">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="users" style="width:18px;height:18px;color:#2563EB;"></i>
+                        <h4 style="font-size:16px;font-weight:700;margin:0;">360-Degree Feedback</h4>
+                    </div>
+                    <p style="font-size:12px;color:#2563EB;font-weight:600;margin-bottom:8px;">MULTI-DIRECTIONAL
+                        &middot; FEEDBACK</p>
+                    <p style="font-size:13px;line-height:1.6;">Asking subordinates, peers, and seniors to provide
+                        feedback on you. Multi-directional input for holistic view.</p>
+                </div>
+                <!-- BSC -->
+                <div class="info-card" style="border-top:3px solid #D97706;">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="layers" style="width:18px;height:18px;color:#D97706;"></i>
+                        <h4 style="font-size:16px;font-weight:700;margin:0;">Balanced Scorecards</h4>
+                    </div>
+                    <p style="font-size:12px;color:#D97706;font-weight:600;margin-bottom:8px;">MULTI-DIMENSIONAL
+                        &middot; MEASUREMENT</p>
+                    <p style="font-size:13px;line-height:1.6;">Decompose success into common dimensions: financials,
+                        customer feedback, growth of the account. Holistic performance view.</p>
+                </div>
+                <!-- SMART -->
+                <div class="info-card" style="border-top:3px solid #DC2626;">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="check-circle" style="width:18px;height:18px;color:#DC2626;"></i>
+                        <h4 style="font-size:16px;font-weight:700;margin:0;">SMART Goals</h4>
+                    </div>
+                    <p style="font-size:12px;color:#DC2626;font-weight:600;margin-bottom:8px;">STRUCTURED &middot;
+                        GOAL-SETTING</p>
+                    <p style="font-size:13px;line-height:1.6;">Specific, Measurable, Achievable, Relevant, Time-bound.
+                        Making goals very clear, fair, and transparent to people.</p>
+                </div>
+                <!-- Agile -->
+                <div class="info-card" style="border-top:3px solid #6366F1;">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="refresh-cw" style="width:18px;height:18px;color:#6366F1;"></i>
+                        <h4 style="font-size:16px;font-weight:700;margin:0;">Agile Methodologies</h4>
+                    </div>
+                    <p style="font-size:12px;color:#6366F1;font-weight:600;margin-bottom:8px;">ADAPTIVE &middot;
+                        ITERATIVE</p>
+                    <p style="font-size:13px;line-height:1.6;">Assessing performance with flexibility. Iterative,
+                        adaptive approach suited to evolving project scopes and rapid delivery cycles.</p>
+                </div>
+                <!-- Reward Indicator -->
+                <div class="info-card" style="border-top:3px solid #DB2777; grid-column: 1 / -1;">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i data-lucide="award" style="width:18px;height:18px;color:#DB2777;"></i>
+                        <h4 style="font-size:16px;font-weight:700;margin:0;">Reward Indicator (Force Distribution)</h4>
+                        <span
+                            style="background:#FCE7F3;color:#DB2777;padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;">Dr.
+                            McCullough&rsquo;s Preferred</span>
+                    </div>
+                    <p style="font-size:12px;color:#DB2777;font-weight:600;margin-bottom:8px;">CALIBRATION &middot;
+                        CROSS-MANAGER &middot; OVERLAYS ANY FRAMEWORK</p>
+                    <p style="font-size:13px;line-height:1.6;">Force-distributed points system. More subjective but
+                        unlocks aggregated judgment. Multiple managers and people have a conversation about ratings to
+                        achieve a very diverse and fair assessment. Can be layered on top of either KPI or OKR systems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION D — REWARD INDICATOR   -->
+    <!-- ============================== -->
+    <section class="sec-reward section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-reward">D</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">The Reward Indicator System</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="users"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Force-Distributed
+                        Judgment</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <div style="text-align:center; margin-bottom:20px;">
+                    <div style="font-family:var(--heading-font); font-size:28px; font-weight:800; color:#2563EB;">50
+                        People &times; 5 Points = 250 Total</div>
+                </div>
+                <div class="grid-3" style="margin-bottom:20px;">
+                    <div style="text-align:center; padding:16px; background:#EFF6FF; border-radius:10px;">
+                        <div
+                            style="font-family:var(--heading-font); font-weight:700; font-size:14px; color:#2563EB; margin-bottom:4px;">
+                            EQUAL</div>
+                        <p style="font-size:13px; margin:0;">Everyone gets 5 &mdash; no differentiation</p>
+                    </div>
+                    <div style="text-align:center; padding:16px; background:#FEF2F2; border-radius:10px;">
+                        <div
+                            style="font-family:var(--heading-font); font-weight:700; font-size:14px; color:#DC2626; margin-bottom:4px;">
+                            EXTREME</div>
+                        <p style="font-size:13px; margin:0;">One person gets 250, everyone else zero</p>
+                    </div>
+                    <div style="text-align:center; padding:16px; background:#F0FDF4; border-radius:10px;">
+                        <div
+                            style="font-family:var(--heading-font); font-weight:700; font-size:14px; color:#16A34A; margin-bottom:4px;">
+                            REALITY</div>
+                        <p style="font-size:13px; margin:0;">Give a 6? Someone gets a 4. Give a 7? More get 4s.</p>
+                    </div>
+                </div>
+                <p style="font-size:14px; line-height:1.7; margin-bottom:12px;">You do not want to give somebody a three
+                    because you feel bad &mdash; so you spread it out. Multiple managers and multiple people all have a
+                    conversation or discussion about the ratings, unlocking that aggregated judgment.</p>
+                <div class="callout-box">
+                    <strong>Result:</strong> A very diverse and fair assessment of what the ratings are &mdash;
+                    calibrated by collective dialogue rather than individual manager opinion. This addresses grade
+                    inflation and forces articulation of why someone deserves more or fewer points.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION E — KPIs               -->
+    <!-- ============================== -->
+    <section class="sec-kpi section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-kpi">E</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">KPIs: The Top-Down Assessment System</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="bar-chart"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Signature Visual 2
+                    </p>
+                </div>
+            </div>
+            <div class="info-card" style="border-top:3px solid #EA580C;">
+                <div style="text-align:center; margin-bottom:16px;">
+                    <span
+                        style="background:#FFF7ED;color:#EA580C;padding:6px 16px;border-radius:8px;font-family:var(--heading-font);font-weight:700;font-size:14px;">TOP-DOWN:
+                        Leader Defines What Matters</span>
+                </div>
+                <div class="grid-2" style="margin-bottom:20px;">
+                    <div>
+                        <h4 style="font-size:15px;font-weight:700;color:#EA580C;margin-bottom:8px;"><i
+                                data-lucide="trending-up"
+                                style="width:16px;height:16px;display:inline;vertical-align:-2px;"></i> Strengths</h4>
+                        <ul style="font-size:13px;line-height:1.8;padding-left:16px;margin:0;">
+                            <li>Business performance metrics compared against benchmarks</li>
+                            <li>Really good at measuring progress over time &mdash; same measure every quarter or year
+                            </li>
+                            <li>Ensures clearly articulated vision, goals, and priorities</li>
+                            <li>Ensures efficiency and doing things the way they are supposed to</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="font-size:15px;font-weight:700;color:#EA580C;margin-bottom:8px;"><i
+                                data-lucide="alert-triangle"
+                                style="width:16px;height:16px;display:inline;vertical-align:-2px;"></i> The Tension</h4>
+                        <ul style="font-size:13px;line-height:1.8;padding-left:16px;margin:0;">
+                            <li>Somewhat rigid and inflexible for employees</li>
+                            <li><strong>Technical staff tends to feel they are unfairly benchmarked against project
+                                    leaders</strong></li>
+                            <li>Technical staff feels their contributions are not as valued</li>
+                            <li>Project leaders tend to think it is more fair</li>
+                            <li>Project leaders are open to concessions for technical benchmarks</li>
+                            <li>Technical staff will <em>still</em> feel unfairly benchmarked</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="background:#FFF7ED;border-radius:10px;padding:16px;text-align:center;">
+                    <p
+                        style="font-family:var(--heading-font);font-weight:700;font-size:14px;color:#EA580C;margin:0 0 4px;">
+                        BEST FIT: Efficient Organizations</p>
+                    <p style="font-size:13px;margin:0;color:var(--body-text);">Formality &middot; Clear defined task and
+                        purpose &middot; Standards and procedures</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION F — OKRs               -->
+    <!-- ============================== -->
+    <section class="sec-okr section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-okr">F</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">OKRs: The Bottom-Up Assessment System</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="target"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Signature Visual 3
+                    </p>
+                </div>
+            </div>
+            <div class="info-card" style="border-top:3px solid #16A34A;">
+                <div style="text-align:center; margin-bottom:16px;">
+                    <span
+                        style="background:#F0FDF4;color:#16A34A;padding:6px 16px;border-radius:8px;font-family:var(--heading-font);font-weight:700;font-size:14px;">BOTTOM-UP:
+                        Employees Define What Matters</span>
+                </div>
+                <!-- Alignment process -->
+                <div style="background:#F0FDF4;border-radius:12px;padding:20px;margin-bottom:20px;">
+                    <p
+                        style="font-family:var(--heading-font);font-weight:700;font-size:14px;color:#16A34A;margin:0 0 12px;">
+                        THE ALIGNMENT PROCESS</p>
+                    <div style="font-size:13px;line-height:1.8;">
+                        <p style="margin:0 0 4px;"><strong style="color:#16A34A;">Objective:</strong> Deliver this AI
+                            system that does X, Y, and Z</p>
+                        <p style="margin:0 0 4px;"><strong>Employee A:</strong> &ldquo;I can take task X and achieve A,
+                            B, and C&rdquo;</p>
+                        <p style="margin:0 0 4px;"><strong>Employee B:</strong> &ldquo;I can do Y&rdquo;</p>
+                        <p style="margin:0 0 4px;"><strong>Employee C:</strong> &ldquo;I can do X too, and help by doing
+                            D, E, and F&rdquo;</p>
+                        <p style="margin:0;color:#16A34A;font-weight:600;">Collectively deciding how to achieve success
+                            together as a team</p>
+                    </div>
+                </div>
+                <div class="grid-2" style="margin-bottom:20px;">
+                    <div>
+                        <h4 style="font-size:15px;font-weight:700;color:#16A34A;margin-bottom:8px;">Strengths</h4>
+                        <ul style="font-size:13px;line-height:1.8;padding-left:16px;margin:0;">
+                            <li>Open and flexible standards tailored to roles</li>
+                            <li>Everybody self-selects what they are going to do</li>
+                            <li>Share OKRs with each other to get more creative and interested</li>
+                            <li>No expectation to do what someone in another role does &mdash; own unique roles</li>
+                            <li>Everyone comes to agreement on objectives and alignment</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="font-size:15px;font-weight:700;color:#16A34A;margin-bottom:8px;">The Tension</h4>
+                        <ul style="font-size:13px;line-height:1.8;padding-left:16px;margin:0;">
+                            <li><strong>Staff feels the assessment is not fair or consistent</strong> because different
+                                people have different tasks</li>
+                            <li>The mirror image of the KPI problem: KPIs feel unfairly rigid; OKRs feel unfairly
+                                flexible</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="background:#F0FDF4;border-radius:10px;padding:16px;text-align:center;">
+                    <p
+                        style="font-family:var(--heading-font);font-weight:700;font-size:14px;color:#16A34A;margin:0 0 4px;">
+                        BEST FIT: Innovative Organizations</p>
+                    <p style="font-size:13px;margin:0;color:var(--body-text);">Diverse roles and functions &middot;
+                        Unique custom problem solving &middot; Creative collaboration</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION G — KPI vs OKR MATRIX  -->
+    <!-- ============================== -->
+    <section class="sec-matrix section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-matrix">G</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">KPI vs. OKR: The Organizational Fit Matrix
+                    </h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="scale"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Signature Visual 4
+                    </p>
+                </div>
+            </div>
+            <div class="info-card" style="border-top:3px solid #D97706;">
+                <div class="grid-2" style="gap:0;">
+                    <!-- KPI side -->
+                    <div style="padding:20px; border-right:2px solid var(--border);">
+                        <div style="text-align:center;margin-bottom:12px;">
+                            <span
+                                style="background:#FFF7ED;color:#EA580C;padding:4px 12px;border-radius:8px;font-family:var(--heading-font);font-weight:700;font-size:13px;">EFFICIENT
+                                ORGANIZATIONS</span>
+                        </div>
+                        <ul style="font-size:13px;line-height:1.8;padding-left:16px;margin:0 0 12px;">
+                            <li>Clear defined tasks</li>
+                            <li>Standards and procedures</li>
+                            <li>Formality</li>
+                            <li>Doing things the way they should be done</li>
+                        </ul>
+                        <div class="sig-flow-arrow">&darr;</div>
+                        <div
+                            style="text-align:center;background:#FFF7ED;border-radius:8px;padding:10px;margin-bottom:12px;">
+                            <span
+                                style="font-family:var(--heading-font);font-weight:700;color:#EA580C;font-size:16px;">KPI
+                                System</span><br>
+                            <span style="font-size:12px;color:var(--body-text);">Top-down &middot; Benchmark-based
+                                &middot; Consistent</span>
+                        </div>
+                        <div
+                            style="background:#FEF2F2;border-radius:8px;padding:10px;font-size:12px;text-align:center;">
+                            <strong style="color:#DC2626;">Tension:</strong> Technical staff feels unfairly benchmarked
+                            against project leaders
+                        </div>
+                    </div>
+                    <!-- OKR side -->
+                    <div style="padding:20px;">
+                        <div style="text-align:center;margin-bottom:12px;">
+                            <span
+                                style="background:#F0FDF4;color:#16A34A;padding:4px 12px;border-radius:8px;font-family:var(--heading-font);font-weight:700;font-size:13px;">INNOVATIVE
+                                ORGANIZATIONS</span>
+                        </div>
+                        <ul style="font-size:13px;line-height:1.8;padding-left:16px;margin:0 0 12px;">
+                            <li>Diverse roles and functions</li>
+                            <li>Unique custom problem solving</li>
+                            <li>Flexibility</li>
+                            <li>Creative collaboration</li>
+                        </ul>
+                        <div class="sig-flow-arrow">&darr;</div>
+                        <div
+                            style="text-align:center;background:#F0FDF4;border-radius:8px;padding:10px;margin-bottom:12px;">
+                            <span
+                                style="font-family:var(--heading-font);font-weight:700;color:#16A34A;font-size:16px;">OKR
+                                System</span><br>
+                            <span style="font-size:12px;color:var(--body-text);">Bottom-up &middot; Employee-defined
+                                &middot; Role-tailored</span>
+                        </div>
+                        <div
+                            style="background:#FEF2F2;border-radius:8px;padding:10px;font-size:12px;text-align:center;">
+                            <strong style="color:#DC2626;">Tension:</strong> Staff feels assessment is not consistent
+                            &mdash; different tasks
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align:center;padding:16px 0 0;border-top:1.5px solid var(--border);margin-top:16px;">
+                    <p style="font-family:var(--heading-font);font-weight:700;font-size:15px;color:#D97706;margin:0;">
+                        The choice determines how people are measured, what contributions are valued, and who feels the
+                        system is fair.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION H — RETENTION LINK     -->
+    <!-- ============================== -->
+    <section class="sec-retention-link section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num" style="background:#475569;">H</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">Assessment Tied to Recruiting &amp; Retention
+                    </h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="link"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> The Critical
+                        Connection</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <p style="font-size:15px;line-height:1.7;margin-bottom:12px;">Performance assessment is highly tied to
+                    recruiting and retention. It is not just the performance appraisal system that we need to pay
+                    attention to &mdash; we also need to look at what other things we can do as leaders to recruit and
+                    retain high quality people to deliver the best product for our clients.</p>
+                <p style="font-size:14px;line-height:1.7;color:var(--secondary);">The performance assessment system
+                    communicates career commitment and the career development process. It creates a path where people
+                    can see that there is success at the company for them if they stay. The system is the primary
+                    communication mechanism about what success looks like and whether the employee&rsquo;s future is
+                    valued.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION I — SIX RETENTION DRIVERS -->
+    <!-- ============================== -->
+    <section class="sec-drivers section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-drivers">I</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">The Six Key Retention Drivers</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="heart"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Signature Visual 5
+                    </p>
+                </div>
+            </div>
+            <div class="grid-2">
+                <!-- Driver 1 -->
+                <div class="info-card" style="border-left:4px solid #16A34A;">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 style="font-size:15px;font-weight:700;margin:0;"><i data-lucide="trending-up"
+                                style="width:16px;height:16px;display:inline;vertical-align:-2px;color:#16A34A;"></i>
+                            Career Development &amp; Growth</h4>
+                        <span class="stat-badge">94%</span>
+                    </div>
+                    <p style="font-size:13px;line-height:1.6;margin:0;">94% of employees say they will stay longer at a
+                        business if they are career vested. The assessment system communicates career commitment and
+                        creates a path where people see success if they stay.</p>
+                </div>
+                <!-- Driver 2 -->
+                <div class="info-card" style="border-left:4px solid #2563EB;">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 style="font-size:15px;font-weight:700;margin:0;"><i data-lucide="star"
+                                style="width:16px;height:16px;display:inline;vertical-align:-2px;color:#2563EB;"></i>
+                            Challenging Projects</h4>
+                        <span class="stat-badge">59%</span>
+                    </div>
+                    <p style="font-size:13px;line-height:1.6;margin:0;">Engaged employees committed to client delivery
+                        are 59% less likely to seek new opportunities. Project engagement is a powerful retention force.
+                    </p>
+                </div>
+                <!-- Driver 3 -->
+                <div class="info-card" style="border-left:4px solid #DC2626;">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 style="font-size:15px;font-weight:700;margin:0;"><i data-lucide="eye"
+                                style="width:16px;height:16px;display:inline;vertical-align:-2px;color:#DC2626;"></i>
+                            Recognition &amp; Reward</h4>
+                        <span class="stat-badge">44%</span>
+                    </div>
+                    <p style="font-size:13px;line-height:1.6;margin:0;">44% cite lack of recognition as a key reason to
+                        leave. Ambiguous criteria means you hear about the right-hand man, not who makes the best
+                        impact. Best employees become invisible &mdash; filtered by middle management.</p>
+                </div>
+                <!-- Driver 4 -->
+                <div class="info-card" style="border-left:4px solid #6366F1;">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 style="font-size:15px;font-weight:700;margin:0;"><i data-lucide="cpu"
+                                style="width:16px;height:16px;display:inline;vertical-align:-2px;color:#6366F1;"></i>
+                            Advanced Tech Stack &amp; Tools</h4>
+                    </div>
+                    <p style="font-size:13px;line-height:1.6;margin:0;">Some employees are really motivated by access to
+                        advanced tech stack and tools. Creating opportunities for innovation is not just IRAD investment
+                        &mdash; it is also retention of high value employees. If you make them excited about innovation,
+                        and that growth converts to differentiated value-added sales for clients, that is a win-win.</p>
+                </div>
+                <!-- Driver 5 -->
+                <div class="info-card" style="border-left:4px solid #A855F7;">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 style="font-size:15px;font-weight:700;margin:0;"><i data-lucide="smile"
+                                style="width:16px;height:16px;display:inline;vertical-align:-2px;color:#A855F7;"></i>
+                            Positive Work Environment</h4>
+                        <span class="stat-badge">56%</span>
+                    </div>
+                    <p style="font-size:13px;line-height:1.6;margin:0;">56% cite positive culture as a reason they stay.
+                        A positive culture includes teamwork, fairness, opportunity to grow, being challenged, and
+                        liking the people they work with.</p>
+                </div>
+                <!-- Driver 6 -->
+                <div class="info-card" style="border-left:4px solid #D97706;">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 style="font-size:15px;font-weight:700;margin:0;"><i data-lucide="clock"
+                                style="width:16px;height:16px;display:inline;vertical-align:-2px;color:#D97706;"></i>
+                            Flexible Work Arrangements</h4>
+                        <span class="stat-badge">89%</span>
+                    </div>
+                    <p style="font-size:13px;line-height:1.6;margin:0;">89% of HR professionals agree flexible work
+                        improves retention. Work-life balance is culturally defined &mdash; it is also about hiring the
+                        right people that are a right fit for your clients.</p>
+                </div>
+            </div>
+            <div class="warning-box" style="margin-top:20px;">
+                <strong>The Invisible Employee Warning:</strong> Ambiguous assessment criteria makes the best impact
+                employees invisible &mdash; they are always filtered by middle management. You hear about the right-hand
+                man, not who is making the best impact. Employees know who does better or worse. Recognize your own
+                limitations in your ability to know who they are in your organization.
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION J — RECOGNITION PROBLEM -->
+    <!-- ============================== -->
+    <section class="sec-recognition section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-recognition">J</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">The Recognition &amp; Visibility Problem</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="eye-off"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> The Invisible
+                        Employee</p>
+                </div>
+            </div>
+            <div class="info-card" style="border-top:3px solid #DC2626;">
+                <!-- Flow -->
+                <div
+                    style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin-bottom:20px;text-align:center;">
+                    <span
+                        style="background:#FEF2F2;color:#DC2626;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:600;">Ambiguous
+                        Criteria</span>
+                    <span style="color:var(--secondary);font-size:18px;">&rarr;</span>
+                    <span
+                        style="background:#FEF2F2;color:#DC2626;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:600;">Middle
+                        Management Filters</span>
+                    <span style="color:var(--secondary);font-size:18px;">&rarr;</span>
+                    <span
+                        style="background:#FEF2F2;color:#DC2626;padding:8px 14px;border-radius:10px;font-size:13px;font-weight:600;">Best
+                        Impact Employees Invisible</span>
+                </div>
+                <p style="font-size:14px;line-height:1.7;margin-bottom:12px;">What you hear about are the employees that
+                    are the right-hand man of somebody working for you &mdash; not necessarily who is making the best
+                    impact in the organization. The best contributors are invisible because they are always filtered by
+                    middle management.</p>
+                <p style="font-size:14px;line-height:1.7;margin-bottom:12px;">You need solid ways to be objective and
+                    clear, to actually recognize and reward all employees. Employees know who does better or worse on a
+                    project &mdash; they have an idea about it. Recognize and reward in a transparent, fair way.</p>
+                <p style="font-size:14px;line-height:1.7;font-weight:600;color:var(--charcoal);margin:0;">Recognize your
+                    own limitations and your ability to know who they are in your organization.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION K — COMPENSATION INTRO -->
+    <!-- ============================== -->
+    <section class="sec-comp-intro section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-comp">K</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">Compensation: The Last Resort</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="alert-triangle"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Problems with
+                        Compensation</p>
+                </div>
+            </div>
+            <div class="info-card" style="text-align:center;">
+                <div
+                    style="font-family:var(--heading-font);font-size:24px;font-weight:800;color:#EA580C;margin-bottom:12px;">
+                    &ldquo;Compensation is probably the last resort in recruiting and retention.&rdquo;</div>
+                <p style="font-size:14px;color:var(--secondary);margin:0;">Most organizations default to compensation as
+                    the first tool for retention. The lecture argues this is exactly backwards. Here are five reasons
+                    why compensation-first strategies fail.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION L — DIMINISHING RETURNS -->
+    <!-- ============================== -->
+    <section class="sec-diminish section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-diminish">L</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">Diminishing Returns: French &amp; Raven</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="trending-down"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Bases of Power
+                        Research</p>
+                </div>
+            </div>
+            <div class="info-card" style="border-top:3px solid #DC2626;">
+                <div class="grid-2">
+                    <div>
+                        <p style="font-size:14px;line-height:1.7;margin-bottom:12px;">French and Raven &mdash; brilliant
+                            researchers on organizational incentives &mdash; found five (now six) bases of power, or
+                            ways you can leverage influence over people working for you.</p>
+                        <p style="font-size:14px;line-height:1.7;margin-bottom:12px;">They found that <strong>punishment
+                                and reward are both characterized by diminishing returns</strong>. You have to keep
+                            increasing the reward or punishment to achieve the same level of behavior.</p>
+                        <p style="font-size:14px;line-height:1.7;font-weight:600;color:#DC2626;margin:0;">It is not
+                            scalable. If compensation is your primary tool for organizational commitment, it cannot
+                            scale &mdash; or you will have exploding labor costs.</p>
+                    </div>
+                    <div style="display:flex;align-items:center;justify-content:center;">
+                        <!-- Diminishing returns visual -->
+                        <div style="width:100%;max-width:280px;">
+                            <svg viewBox="0 0 280 160" style="width:100%;height:auto;">
+                                <defs>
+                                    <linearGradient id="rewardGrad" x1="0" y1="0" x2="1" y2="0">
+                                        <stop offset="0%" stop-color="#DC2626" stop-opacity="0.2" />
+                                        <stop offset="100%" stop-color="#DC2626" stop-opacity="0.6" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Axes -->
+                                <line x1="40" y1="10" x2="40" y2="130" stroke="#E2E8F0" stroke-width="1.5" />
+                                <line x1="40" y1="130" x2="270" y2="130" stroke="#E2E8F0" stroke-width="1.5" />
+                                <!-- Reward input line (steep) -->
+                                <path d="M40,120 L270,20" stroke="#DC2626" stroke-width="2" fill="none" />
+                                <!-- Response curve (flattening) -->
+                                <path d="M40,120 Q120,40 270,70" stroke="#16A34A" stroke-width="2.5" fill="none"
+                                    stroke-dasharray="6,3" />
+                                <!-- Fill area -->
+                                <path d="M40,120 Q120,40 270,70 L270,130 L40,130 Z" fill="url(#rewardGrad)"
+                                    opacity="0.3" />
+                                <!-- Labels -->
+                                <text x="272" y="18" font-size="9" fill="#DC2626" font-family="Sora,sans-serif"
+                                    font-weight="600">Reward</text>
+                                <text x="272" y="68" font-size="9" fill="#16A34A" font-family="Sora,sans-serif"
+                                    font-weight="600">Response</text>
+                                <text x="140" y="152" font-size="9" fill="#64748B" font-family="DM Sans,sans-serif"
+                                    text-anchor="middle">Time &rarr;</text>
+                                <text x="12" y="70" font-size="8" fill="#64748B" font-family="DM Sans,sans-serif"
+                                    transform="rotate(-90,12,70)">Level</text>
+                            </svg>
+                            <p style="text-align:center;font-size:11px;color:var(--secondary);margin-top:4px;">Reward
+                                must increase while behavioral response flattens</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION M — INTRINSIC MOTIVATION -->
+    <!-- ============================== -->
+    <section class="sec-intrinsic section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-intrinsic">M</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">Intrinsic Motivation: The Federal AI Vision
+                    </h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="heart"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Purpose Over
+                        Paycheck</p>
+                </div>
+            </div>
+            <div class="info-card" style="border-top:3px solid #2563EB;">
+                <p style="font-size:14px;line-height:1.7;margin-bottom:16px;">Compensation is a short-term solution that
+                    does not address any underlying issues with job satisfaction. It ignores intrinsic motivation
+                    &mdash; are they doing the work because they care about it, care about the client, care about the
+                    difference it makes in people&rsquo;s lives, or are they doing it because of the money?</p>
+                <div class="quote-box" style="margin-bottom:16px;">
+                    &ldquo;Americans deserve an AI-powered government. We should not have to wait for benefits. Our
+                    military and law enforcement should not go in harm&rsquo;s way without the best insights. We should
+                    not tolerate bias and discrimination for manual processes. Americans deserve AI.&rdquo;
+                </div>
+                <p style="font-size:14px;line-height:1.7;margin:0;">The people who worked for me were focused on giving
+                    American government the best AI they could because it is making their country and their society
+                    better. <strong>Their main motivation is not the financial paycheck at the end of the day.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION N — COMPENSATION FAILURE -->
+    <!-- ============================== -->
+    <section class="sec-comp-fail section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-fail">N</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">Inequity, Unsustainability &amp; Market
+                        Vulnerability</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="alert-circle"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Three Pillars of
+                        Compensation Failure</p>
+                </div>
+            </div>
+            <div class="grid-3">
+                <!-- Pillar 1 -->
+                <div class="info-card" style="border-top:3px solid #DC2626;">
+                    <div style="text-align:center;margin-bottom:12px;">
+                        <i data-lucide="frown" style="width:28px;height:28px;color:#DC2626;"></i>
+                    </div>
+                    <h4 style="font-size:15px;font-weight:700;text-align:center;margin-bottom:8px;color:#DC2626;">
+                        Inequity &amp; Resentment</h4>
+                    <ul style="font-size:13px;line-height:1.7;padding-left:16px;margin:0;">
+                        <li>Very difficult to pay everybody the same</li>
+                        <li>Different experience, skill sets, distractors, efforts</li>
+                        <li>Not a perfect science</li>
+                        <li>Inevitably leads to inequity and resentment</li>
+                        <li>If compensation is the main measure of value, hard feelings affect retention</li>
+                    </ul>
+                </div>
+                <!-- Pillar 2 -->
+                <div class="info-card" style="border-top:3px solid #D97706;">
+                    <div style="text-align:center;margin-bottom:12px;">
+                        <i data-lucide="dollar-sign" style="width:28px;height:28px;color:#D97706;"></i>
+                    </div>
+                    <h4 style="font-size:15px;font-weight:700;text-align:center;margin-bottom:8px;color:#D97706;">
+                        Financial Unsustainability</h4>
+                    <ul style="font-size:13px;line-height:1.7;padding-left:16px;margin:0;">
+                        <li>Leads to budget strain and a culture of escalating salary</li>
+                        <li>Attractive costs of offshore and nearshore markets result in fewer local jobs</li>
+                        <li>Always a place people can go for lower cost labor</li>
+                        <li>As more people enter the workforce, this continues to change</li>
+                        <li>Financial stability of compensation-first incentives is flawed</li>
+                    </ul>
+                </div>
+                <!-- Pillar 3 -->
+                <div class="info-card" style="border-top:3px solid #6366F1;">
+                    <div style="text-align:center;margin-bottom:12px;">
+                        <i data-lucide="globe" style="width:28px;height:28px;color:#6366F1;"></i>
+                    </div>
+                    <h4 style="font-size:15px;font-weight:700;text-align:center;margin-bottom:8px;color:#6366F1;">Market
+                        Vulnerability</h4>
+                    <ul style="font-size:13px;line-height:1.7;padding-left:16px;margin:0;">
+                        <li>Market fluctuations in trends impact pay</li>
+                        <li>You do not want a bloated compensation bubble</li>
+                        <li>Cannot win additional work at that price point and salaries have to come down</li>
+                        <li>A real concern and real fear</li>
+                        <li><strong>In 2023, many companies saw this as the labor market adjusted in this space</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION O — FRAMEWORK SELECTION -->
+    <!-- ============================== -->
+    <section class="sec-selection section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-selection">O</span>
+                <div>
+                    <h2 style="font-size:20px; font-weight:700; margin:0;">Framework Selection Guide</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="compass"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Enrichment &mdash;
+                        Selection principles for choosing and combining frameworks</p>
+                </div>
+            </div>
+            <div class="grid-3">
+                <div class="compact-card">
+                    <h5 style="font-size:13px;font-weight:700;margin:0 0 4px;"><i data-lucide="target"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;color:#10B981;"></i> Match
+                        to Maturity</h5>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--secondary);">Early-stage AI teams
+                        benefit from OKR flexibility; mature production teams benefit from KPI consistency.</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:13px;font-weight:700;margin:0 0 4px;"><i data-lucide="award"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;color:#10B981;"></i> Layer
+                        Reward Indicator</h5>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--secondary);">Force-distribution
+                        calibration can overlay KPI or OKR systems to reduce grade inflation.</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:13px;font-weight:700;margin:0 0 4px;"><i data-lucide="users"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;color:#10B981;"></i> Deploy
+                        360 for Visibility</h5>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--secondary);">Use 360-degree feedback
+                        to solve the invisible employee problem and surface hidden contributors.</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:13px;font-weight:700;margin:0 0 4px;"><i data-lucide="check-circle"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;color:#10B981;"></i> Apply
+                        SMART to OKRs</h5>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--secondary);">Make OKR objectives more
+                        concrete without sacrificing bottom-up flexibility.</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:13px;font-weight:700;margin:0 0 4px;"><i data-lucide="layers"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;color:#10B981;"></i> Use
+                        Balanced Scorecards</h5>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--secondary);">Capture multiple
+                        dimensions: delivery execution, technical growth, team contribution, client impact.</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:13px;font-weight:700;margin:0 0 4px;"><i data-lucide="trending-up"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;color:#10B981;"></i> Build
+                        Career Paths</h5>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--secondary);">Integrate career
+                        development into the framework to leverage the 94% retention driver.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION P — AI-SPECIFIC METRICS -->
+    <!-- ============================== -->
+    <section class="sec-ai-metrics section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-ai">P</span>
+                <div>
+                    <h2 style="font-size:20px; font-weight:700; margin:0;">AI-Specific Metrics &amp; Calibration</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="activity"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Enrichment &mdash;
+                        Metrics that complement the core frameworks</p>
+                </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;">
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#6366F1;"><i data-lucide="cpu"
+                            style="width:13px;height:13px;display:inline;vertical-align:-2px;"></i> Model Performance
+                    </h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">Accuracy, precision, recall, F1,
+                        inference latency, drift monitoring</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#6366F1;"><i data-lucide="database"
+                            style="width:13px;height:13px;display:inline;vertical-align:-2px;"></i> Data Quality</h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">Pipeline reliability, labeling accuracy,
+                        feature engineering impact</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#6366F1;"><i data-lucide="code"
+                            style="width:13px;height:13px;display:inline;vertical-align:-2px;"></i> Technical Debt</h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">Code quality, documentation, architecture
+                        modernization</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#6366F1;"><i data-lucide="shield"
+                            style="width:13px;height:13px;display:inline;vertical-align:-2px;"></i> Responsible AI</h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">Bias testing, explainability, privacy
+                        safeguards, ethical review</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#6366F1;"><i data-lucide="share-2"
+                            style="width:13px;height:13px;display:inline;vertical-align:-2px;"></i> Knowledge Sharing
+                    </h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">Cross-team contributions, mentoring,
+                        reusable components</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#6366F1;"><i data-lucide="zap"
+                            style="width:13px;height:13px;display:inline;vertical-align:-2px;"></i> Innovation Pipeline
+                    </h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">POC projects, patents, research
+                        publications, novel approaches</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#6366F1;"><i data-lucide="sliders"
+                            style="width:13px;height:13px;display:inline;vertical-align:-2px;"></i> Calibration Sessions
+                    </h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">Cross-manager calibration to complement
+                        the reward indicator model</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#6366F1;"><i data-lucide="activity"
+                            style="width:13px;height:13px;display:inline;vertical-align:-2px;"></i> Retention Risk</h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">Engagement signals, satisfaction scores,
+                        flight risk indicators</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION Q — EFFECTIVENESS       -->
+    <!-- ============================== -->
+    <section class="sec-effectiveness section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-effect">Q</span>
+                <div>
+                    <h2 style="font-size:20px; font-weight:700; margin:0;">Assessment Effectiveness Metrics</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="bar-chart-2"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Enrichment &mdash;
+                        Measuring whether the assessment system itself is working</p>
+                </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;">
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#2563EB;">Framework-Role Alignment
+                    </h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">% of employees who feel the framework
+                        fits their role type</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#2563EB;">Judgment Convergence</h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">Reward indicator calibration consistency
+                        across managers</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#2563EB;">Recognition Reach Index
+                    </h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">% of high-impact contributors recognized
+                        above middle management</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#2563EB;">Career Vesting Score</h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">Employee perception of career path
+                        clarity and commitment</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#2563EB;">Intrinsic Motivation Index
+                    </h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">% citing purpose over compensation as
+                        primary driver</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#2563EB;">Assessment-Driven Retention
+                    </h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">% of retained employees citing fair
+                        assessment as a factor</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#2563EB;">Compensation Dependency
+                    </h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">Reliance on pay vs. other retention
+                        drivers</p>
+                </div>
+                <div class="compact-card">
+                    <h5 style="font-size:12px;font-weight:700;margin:0 0 2px;color:#2563EB;">Adaptation Frequency</h5>
+                    <p style="font-size:11px;margin:0;color:var(--secondary);">How often assessment criteria are updated
+                        to match changes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION R — KEY TAKEAWAYS      -->
+    <!-- ============================== -->
+    <section class="sec-takeaways section-block fade-section">
+        <div class="container-main">
+            <div class="flex items-start gap-3 mb-6">
+                <span class="sec-num bg-accent-takeaways">R</span>
+                <div>
+                    <h2 style="font-size:22px; font-weight:700; margin:0;">Key Takeaways &amp; Closing Reflection</h2>
+                    <p style="font-size:13px; color:var(--secondary); margin-top:2px;"><i data-lucide="star"
+                            style="width:14px;height:14px;display:inline;vertical-align:-2px;"></i> Synthesis</p>
+                </div>
+            </div>
+
+            <!-- Recap cards -->
+            <div class="grid-3" style="margin-bottom:24px;">
+                <div class="info-card" style="border-top:3px solid #A855F7;">
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 8px;color:#A855F7;">Seven Frameworks</h4>
+                    <p style="font-size:13px;line-height:1.6;margin:0;">KPIs, OKRs, 360-Degree Feedback, Balanced
+                        Scorecards, SMART Goals, Agile Methodologies, and the Reward Indicator &mdash; all with
+                        different strengths, weaknesses, and preferences for AI team performance.</p>
+                </div>
+                <div class="info-card" style="border-top:3px solid #D97706;">
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 8px;color:#D97706;">KPI vs. OKR</h4>
+                    <p style="font-size:13px;line-height:1.6;margin:0;">Efficient organizations &rarr; KPIs (top-down,
+                        consistent, technical staff tension). Innovative organizations &rarr; OKRs (bottom-up, flexible,
+                        consistency perception). The choice determines what is valued.</p>
+                </div>
+                <div class="info-card" style="border-top:3px solid #DB2777;">
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 8px;color:#DB2777;">Reward Indicator</h4>
+                    <p style="font-size:13px;line-height:1.6;margin:0;">Force-distributed points across 250-point pools.
+                        Multiple managers discuss ratings. Unlocks aggregated judgment for diverse, fair assessment.</p>
+                </div>
+            </div>
+
+            <!-- Retention stats -->
+            <div class="flex flex-wrap justify-center gap-3" style="margin-bottom:24px;">
+                <span class="stat-badge" style="font-size:14px;padding:6px 16px;">94% Career Vested</span>
+                <span class="stat-badge" style="font-size:14px;padding:6px 16px;">59% Engagement</span>
+                <span class="stat-badge" style="font-size:14px;padding:6px 16px;">44% Recognition</span>
+                <span class="stat-badge" style="font-size:14px;padding:6px 16px;">56% Culture</span>
+                <span class="stat-badge" style="font-size:14px;padding:6px 16px;">89% Flexibility</span>
+                <span
+                    style="background:#FEF2F2;color:#DC2626;padding:6px 16px;border-radius:20px;font-size:14px;font-weight:600;font-family:var(--heading-font);">2023
+                    Bubble</span>
+            </div>
+
+            <!-- Closing reflection -->
+            <div class="info-card"
+                style="border:2px solid #22C55E; background:linear-gradient(135deg, #F0FDF4 0%, #FAFBFC 100%);">
+                <p style="font-size:15px;line-height:1.8;color:var(--charcoal);margin:0;">
+                    Performance assessment frameworks are not interchangeable tools &mdash; they are strategic choices
+                    that communicate what the organization values, shape how AI talent perceives its contributions, and
+                    directly drive retention or attrition. Key Performance Indicators serve efficient organizations by
+                    providing consistent benchmarks, but technical staff will feel unfairly measured against project
+                    leaders. Objectives and Key Results serve innovative organizations by empowering employee agency,
+                    but the flexibility creates perceptions of inconsistency. The Reward Indicator system, with its
+                    force-distributed points and cross-manager dialogue, offers a powerful calibration mechanism that
+                    unlocks aggregated judgment and achieves diverse, fair assessment.
+                </p>
+                <p style="font-size:15px;line-height:1.8;color:var(--charcoal);margin:16px 0;">
+                    But frameworks alone are not enough. Ninety-four percent of employees stay longer when career vested
+                    &mdash; the assessment system must communicate that investment. Forty-four percent leave over lack
+                    of recognition &mdash; ambiguous criteria makes the best people invisible, filtered by middle
+                    management. And compensation, the tool most organizations reach for first, is actually the last
+                    resort. French and Raven&rsquo;s research demonstrates that reward suffers diminishing marginal
+                    returns &mdash; it is not scalable, it ignores intrinsic motivation, it leads to inequity, and it
+                    creates compensation bubbles that the 2023 labor market painfully deflated.
+                </p>
+                <p style="font-size:15px;line-height:1.8;color:var(--charcoal);margin:16px 0 0;">
+                    The organizations that choose frameworks aligned to their organizational character, that build
+                    career paths people can see, that surface the contributions middle management filters out, that
+                    invest in innovation and culture alongside fair assessment, and that lead with purpose rather than
+                    compensation &mdash; those organizations will retain the AI talent that makes the difference.
+                    <strong>The ones that treat assessment as a form to fill out and compensation as the answer to every
+                        retention question will watch their best people walk out the door.</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================== -->
+    <!-- SECTION S — FOOTER             -->
+    <!-- ============================== -->
+    <section class="sec-footer" style="padding:32px 0 48px;">
+        <div class="container-main" style="text-align:center;">
+            <div style="margin-bottom:16px;">
+                <p
+                    style="font-family:var(--heading-font);font-size:14px;font-weight:700;color:var(--charcoal);margin:0;">
+                    Performance Assessment Frameworks</p>
+                <p style="font-size:13px;color:var(--secondary);margin:4px 0 0;">Source: Dr. Ian McCullough, Johns
+                    Hopkins University</p>
+            </div>
+            <div style="font-size:12px;color:var(--secondary);line-height:1.6;">
+                <p style="margin:0 0 4px;">For further reading, explore the full JHU AI/ML certificate program lecture
+                    series on organizational leadership in AI.</p>
+                <p style="margin:0;">This infographic is optimized for print &mdash; use your browser&rsquo;s print
+                    function for a clean A4/Letter output.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RAINBOW BOTTOM STRIPE -->
+    <div class="rainbow-stripe"></div>
+
+    <!-- ============================== -->
+    <!-- SCRIPTS                        -->
+    <!-- ============================== -->
+    <!-- Lucide Icons: primary CDN with fallback -->
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <script>
+        // Fallback: if unpkg failed, try cdnjs
+        if (typeof lucide === 'undefined') {
+            var s = document.createElement('script');
+            s.src = 'https://cdn.jsdelivr.net/npm/lucide@0.263.1/dist/umd/lucide.min.js';
+            s.onload = function () { initPage(); };
+            s.onerror = function () { initPage(); }; // still run page even without icons
+            document.body.appendChild(s);
+        } else {
+            // Primary CDN loaded fine — wait for DOM then init
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initPage);
+            } else {
+                initPage();
+            }
+        }
+
+        function initPage() {
+            // 1. Initialize Lucide icons (guarded)
+            try {
+                if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                    lucide.createIcons();
+                }
+            } catch (e) {
+                console.warn('Lucide icons could not be initialized:', e);
+            }
+
+            // 2. Add .not-visible to fade sections
+            document.querySelectorAll('.fade-section').forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+
+            // 3. Set up IntersectionObserver
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.remove('not-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.08 });
+
+                document.querySelectorAll('.fade-section').forEach(function (el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback: show everything immediately
+                document.querySelectorAll('.fade-section').forEach(function (el) {
+                    el.classList.remove('not-visible');
+                });
+            }
+        }
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+
+</body>
+
+</html>

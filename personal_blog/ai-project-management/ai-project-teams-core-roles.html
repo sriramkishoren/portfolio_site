@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Roles in AI Project Teams — Core Roles</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Common Roles in AI Project Teams — Core Roles Framework">
+    <meta name="description" content="Learn the four core roles essential to AI project success: Data Engineer, Data Scientist, AI Architect, and Requirements Analyst. Understand how these roles form a pipeline from data foundations to production deployment.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Project Management">
+    <meta name="tags" content="AI Project Teams, AI Roles, Data Engineer, Data Scientist, AI Architect, AI Team Structure, AI Project Management, Requirements Analysis">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Effective AI teams require four core roles working in a pipeline: Data Engineer (data foundations), Data Scientist (model development), AI Architect (system design), and Requirements Analyst (business alignment). There is no single 'AI Guy' — all four roles are essential for successful AI delivery.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-project-teams-core-roles">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Common Roles in AI Project Teams — Core Roles Framework">
+    <meta property="og:description" content="Learn the four core roles essential to AI project success: Data Engineer, Data Scientist, AI Architect, and Requirements Analyst. Understand how these roles form a pipeline from data foundations to production deployment.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-project-teams-core-roles">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-04-02">
+    <meta property="article:section" content="AI Project Management">
+    <meta property="article:tag" content="AI Project Teams">
+    <meta property="article:tag" content="AI Roles">
+    <meta property="article:tag" content="AI Team Structure">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Common Roles in AI Project Teams — Core Roles Framework",
+        "description": "Learn the four core roles essential to AI project success: Data Engineer, Data Scientist, AI Architect, and Requirements Analyst. Understand how these roles form a pipeline from data foundations to production deployment.",
+        "datePublished": "2025-04-02",
+        "dateModified": "2025-04-02",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-project-teams-core-roles"
+        },
+        "keywords": ["AI Project Teams", "AI Roles", "Data Engineer", "Data Scientist", "AI Architect", "AI Team Structure", "AI Project Management", "Requirements Analysis"],
+        "articleSection": "AI Project Management"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <style>
+        /* Base Typography */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: #FAFBFC;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-sora {
+            font-family: 'Sora', sans-serif;
+            color: #1E293B;
+            letter-spacing: -0.025em;
+        }
+
+        /* Custom Hex Colors for Safe Compatibility */
+        .bg-header {
+            background-color: #F0F9FF;
+        }
+
+        .text-header {
+            color: #0EA5E9;
+        }
+
+        .bg-opening {
+            background-color: #F8FAFC;
+        }
+
+        .text-opening {
+            color: #475569;
+        }
+
+        .bg-core {
+            background-color: #EFF6FF;
+        }
+
+        .text-core {
+            color: #2563EB;
+        }
+
+        .bg-data-eng {
+            background-color: #F0FDFA;
+        }
+
+        .border-data-eng {
+            border-left-color: #0D9488;
+        }
+
+        .text-data-eng {
+            color: #0D9488;
+        }
+
+        .bg-badge-data-eng {
+            background-color: #CCFBF1;
+            color: #115E59;
+        }
+
+        .bg-data-sci {
+            background-color: #FDF4FF;
+        }
+
+        .border-data-sci {
+            border-left-color: #A855F7;
+        }
+
+        .text-data-sci {
+            color: #A855F7;
+        }
+
+        .bg-badge-data-sci {
+            background-color: #FAE8FF;
+            color: #701A75;
+        }
+
+        .bg-ai-arch {
+            background-color: #FFF7ED;
+        }
+
+        .border-ai-arch {
+            border-left-color: #EA580C;
+        }
+
+        .text-ai-arch {
+            color: #EA580C;
+        }
+
+        .bg-badge-ai-arch {
+            background-color: #FFEDD5;
+            color: #9A3412;
+        }
+
+        .bg-ml-eng {
+            background-color: #E0E7FF;
+        }
+
+        .border-ml-eng {
+            border-left-color: #6366F1;
+        }
+
+        .text-ml-eng {
+            color: #6366F1;
+        }
+
+        .bg-badge-ml-eng {
+            background-color: #E0E7FF;
+            color: #3730A3;
+        }
+
+        .bg-nine {
+            background-color: #F0FDF4;
+        }
+
+        .text-nine {
+            color: #16A34A;
+        }
+
+        .bg-linkedin {
+            background-color: #EFF6FF;
+        }
+
+        .text-linkedin {
+            color: #0284C7;
+        }
+
+        .bg-top5 {
+            background-color: #FEF2F2;
+        }
+
+        .text-top5 {
+            color: #DC2626;
+        }
+
+        .bg-geo {
+            background-color: #FEF3C7;
+        }
+
+        .text-geo {
+            color: #D97706;
+        }
+
+        .bg-comp {
+            background-color: #D1FAE5;
+        }
+
+        .text-comp {
+            color: #10B981;
+        }
+
+        /* Layout & Utilities */
+        .max-w-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .card-shadow {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #E2E8F0;
+        }
+
+        .rainbow-gradient {
+            background: linear-gradient(90deg, #0EA5E9, #2563EB, #A855F7, #EA580C, #10B981);
+            height: 6px;
+            width: 100%;
+        }
+
+        /* Interactive Elements */
+        .interactive-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            z-index: 10;
+        }
+
+        /* Safe Fade-In Animation Pattern */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        /* Pipeline Connecting Lines */
+        .pipeline-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94A3B8;
+        }
+
+        @media print {
+            .interactive-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+
+            .fade-section {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            body {
+                background-color: white;
+            }
+
+            .card-shadow {
+                box-shadow: none;
+                border: 2px solid #E2E8F0;
+            }
+
+            .page-break {
+                page-break-before: always;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <div class="rainbow-gradient"></div>
+
+    <div class="max-w-container px-4 py-8 md:px-8 md:py-12">
+
+        <header class="text-center mb-16 fade-section">
+            <div class="inline-flex items-center justify-center p-3 bg-header rounded-full mb-6">
+                <i data-lucide="network" class="w-8 h-8 text-header"></i>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">Common Roles in AI <br /><span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Project
+                    Teams</span></h1>
+            <p class="text-lg md:text-xl text-gray-500 font-medium max-w-2xl mx-auto mb-6">Understanding the Diverse
+                Skill Sets That Drive AI Project Success</p>
+            <div class="inline-block bg-white px-4 py-2 rounded-full card-shadow text-sm font-semibold text-gray-600">
+                Dr. Ian McCullough <span class="text-gray-300 mx-2">|</span> Johns Hopkins University
+            </div>
+        </header>
+
+        <section class="bg-white rounded-2xl p-6 md:p-10 mb-12 card-shadow relative overflow-hidden fade-section">
+            <div class="absolute top-0 left-0 w-2 h-full bg-gray-800"></div>
+            <div class="flex flex-col md:flex-row items-start md:items-center gap-6">
+                <div class="bg-gray-100 p-4 rounded-xl flex-shrink-0">
+                    <i data-lucide="users" class="w-10 h-10 text-gray-700"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-3">There Is No Single "AI Guy"</h2>
+                    <p class="text-gray-600 mb-4 text-lg">AI project success requires bringing together diverse,
+                        specialized skill sets. Different competencies must come together intelligently to deliver AI
+                        success.</p>
+                    <div class="bg-opening p-4 rounded-lg border border-gray-200">
+                        <p class="text-sm text-gray-700"><strong>The Challenge:</strong> No industry standard exists for
+                            AI team roles. If you search for common AI titles, you will find a wide variety of terms.
+                            This infographic explores four distinct frameworks to help organize and understand these
+                            essential project teams.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl font-bold mb-2">The Four Core Roles Framework</h2>
+                <p class="text-gray-500">A pipeline representing the journey from data foundations to production
+                    deployment.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-stretch gap-4 md:gap-2">
+                <div
+                    class="bg-white p-4 rounded-xl card-shadow flex-1 w-full text-center interactive-card border-t-4 border-data-eng">
+                    <i data-lucide="database" class="w-6 h-6 mx-auto mb-2 text-data-eng"></i>
+                    <h3 class="font-bold text-sm mb-1">Data Engineer</h3>
+                    <p class="text-xs text-gray-500">Foundation</p>
+                </div>
+
+                <div class="pipeline-arrow transform rotate-90 md:rotate-0"><i data-lucide="arrow-right"></i></div>
+
+                <div
+                    class="bg-white p-4 rounded-xl card-shadow flex-1 w-full text-center interactive-card border-t-4 border-data-sci">
+                    <i data-lucide="brain" class="w-6 h-6 mx-auto mb-2 text-data-sci"></i>
+                    <h3 class="font-bold text-sm mb-1">Data Scientist</h3>
+                    <p class="text-xs text-gray-500">Algorithms</p>
+                </div>
+
+                <div class="pipeline-arrow transform rotate-90 md:rotate-0"><i data-lucide="arrow-right"></i></div>
+
+                <div
+                    class="bg-white p-4 rounded-xl card-shadow flex-1 w-full text-center interactive-card border-t-4 border-ai-arch">
+                    <i data-lucide="git-merge" class="w-6 h-6 mx-auto mb-2 text-ai-arch"></i>
+                    <h3 class="font-bold text-sm mb-1">AI Architect</h3>
+                    <p class="text-xs text-gray-500">Governance</p>
+                </div>
+
+                <div class="pipeline-arrow transform rotate-90 md:rotate-0"><i data-lucide="arrow-right"></i></div>
+
+                <div
+                    class="bg-white p-4 rounded-xl card-shadow flex-1 w-full text-center interactive-card border-t-4 border-ml-eng">
+                    <i data-lucide="rocket" class="w-6 h-6 mx-auto mb-2 text-ml-eng"></i>
+                    <h3 class="font-bold text-sm mb-1">ML Engineer</h3>
+                    <p class="text-xs text-gray-500">Deployment</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div
+                class="bg-white rounded-2xl p-6 card-shadow interactive-card border-l-4 border-data-eng fade-section relative">
+                <div class="absolute top-4 right-4 bg-badge-data-eng text-xs font-bold px-3 py-1 rounded-full">
+                    ESTABLISHED</div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-data-eng p-3 rounded-lg"><i data-lucide="database" class="w-6 h-6 text-data-eng"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">Data Engineer</h3>
+                </div>
+                <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">The Foundation Builder</p>
+                <p class="text-gray-600 mb-4 text-sm">Creates the vital data foundation. They move data around, ensure
+                    data correctness, and model databases for easy retrieval.</p>
+
+                <div class="bg-gray-50 rounded-xl p-4 mb-4">
+                    <h4 class="font-bold text-sm mb-2 text-gray-700">Key Realities:</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                                class="w-4 h-4 text-data-eng mt-0.5"></i> Up to <strong>80% of any IT project</strong>
+                            involves data engineers managing queries and data structure.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="check-circle"
+                                class="w-4 h-4 text-data-eng mt-0.5"></i> <strong>80% of a data scientist's
+                                time</strong> is typically spent doing data cleaning—tasks a data engineer could do more
+                            readily.</li>
+                    </ul>
+                </div>
+
+                <p class="text-sm text-gray-600 font-medium"><strong>Responsibilities:</strong> Data integration,
+                    modeling, optimization, quality, self-service. The largest role in industry regardless of AI use.
+                </p>
+            </div>
+
+            <div
+                class="bg-white rounded-2xl p-6 card-shadow interactive-card border-l-4 border-data-sci fade-section relative">
+                <div class="absolute top-4 right-4 bg-badge-data-sci text-xs font-bold px-3 py-1 rounded-full">CORE ROLE
+                </div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-data-sci p-3 rounded-lg"><i data-lucide="brain" class="w-6 h-6 text-data-sci"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">Data Scientist</h3>
+                </div>
+                <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">The Algorithm Expert</p>
+                <p class="text-gray-600 mb-4 text-sm">Focuses on algorithms, deep learning, and math. They look at the
+                    use case to determine the right datasets, algorithms, and features.</p>
+
+                <div class="bg-gray-50 rounded-xl p-4 mb-4">
+                    <h4 class="font-bold text-sm mb-2 text-gray-700">Core Capabilities:</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2"><i data-lucide="cpu"
+                                class="w-4 h-4 text-data-sci mt-0.5"></i> Can build, test, and tune AI models.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="code"
+                                class="w-4 h-4 text-data-sci mt-0.5"></i> Makes end-to-end small use cases work
+                            successfully.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="bar-chart"
+                                class="w-4 h-4 text-data-sci mt-0.5"></i> The role most commonly tied to AI in labor
+                            trends.</li>
+                    </ul>
+                </div>
+
+                <p class="text-sm text-gray-600 font-medium"><strong>Responsibilities:</strong> Identifies use cases,
+                    determines appropriate datasets and algorithms, experiments, and builds AI models.</p>
+            </div>
+
+            <div
+                class="bg-white rounded-2xl p-6 card-shadow interactive-card border-l-4 border-ai-arch fade-section relative">
+                <div class="absolute top-4 right-4 bg-badge-ai-arch text-xs font-bold px-3 py-1 rounded-full">EMERGING
+                </div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-ai-arch p-3 rounded-lg"><i data-lucide="git-merge" class="w-6 h-6 text-ai-arch"></i>
+                    </div>
+                    <h3 class="text-xl font-bold">AI Architect</h3>
+                </div>
+                <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">The Glue Role</p>
+                <p class="text-gray-600 mb-4 text-sm">Acts as the bridge between data scientists, data engineers,
+                    developers, operations, and business unit leaders to govern and scale AI.</p>
+
+                <div class="bg-gray-50 rounded-xl p-4 mb-4">
+                    <h4 class="font-bold text-sm mb-2 text-gray-700">Skill Convergence:</h4>
+                    <div class="flex flex-wrap gap-2 text-xs font-semibold">
+                        <span class="bg-white px-2 py-1 rounded border border-gray-200">Enterprise Architecture</span>
+                        <span class="bg-white px-2 py-1 rounded border border-gray-200">Cloud Engineering</span>
+                        <span class="bg-white px-2 py-1 rounded border border-gray-200">Operations Research</span>
+                        <span class="bg-white px-2 py-1 rounded border border-gray-200">AI Skills</span>
+                    </div>
+                </div>
+
+                <p class="text-sm text-gray-600 font-medium"><strong>Industry Context:</strong> Relatively new role.
+                    Very few at-scale AI projects are deployed yet, but demand is rapidly increasing as models move to
+                    cloud.</p>
+            </div>
+
+            <div
+                class="bg-white rounded-2xl p-6 card-shadow interactive-card border-l-4 border-ml-eng fade-section relative">
+                <div class="absolute top-4 right-4 bg-badge-ml-eng text-xs font-bold px-3 py-1 rounded-full">EMERGING
+                </div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-ml-eng p-3 rounded-lg"><i data-lucide="rocket" class="w-6 h-6 text-ml-eng"></i></div>
+                    <h3 class="text-xl font-bold">ML Engineer</h3>
+                </div>
+                <p class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">The Deployment Specialist
+                </p>
+                <p class="text-gray-600 mb-4 text-sm">Specializes in optimizing AI deployment across the enterprise,
+                    taking validated models and ensuring production readiness at scale.</p>
+
+                <div class="bg-gray-50 rounded-xl p-4 mb-4">
+                    <h4 class="font-bold text-sm mb-2 text-gray-700">Key Focus Areas:</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-start gap-2"><i data-lucide="settings"
+                                class="w-4 h-4 text-ml-eng mt-0.5"></i> Effective scaling of AI models.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="monitor"
+                                class="w-4 h-4 text-ml-eng mt-0.5"></i> Ensuring a continuous feedback loop.</li>
+                        <li class="flex items-start gap-2"><i data-lucide="zap" class="w-4 h-4 text-ml-eng mt-0.5"></i>
+                            Optimizing enterprise integration.</li>
+                    </ul>
+                </div>
+
+                <p class="text-sm text-gray-600 font-medium"><strong>Industry Context:</strong> Paired with the AI
+                    Architect as a relatively new discipline. Growth will surge as organizations transition beyond the
+                    proof-of-concept phase.</p>
+            </div>
+        </div>
+
+        <section class="mb-16 fade-section">
+            <div class="bg-white rounded-2xl p-6 md:p-10 card-shadow border-t-8 border-nine overflow-hidden">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center justify-center p-3 bg-nine rounded-full mb-4">
+                        <i data-lucide="layout" class="w-6 h-6 text-nine"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold mb-2">The Nine Critical Roles Framework</h2>
+                    <p class="text-gray-500 max-w-2xl mx-auto">Three functional areas organizing nine roles that must
+                        interact to effectively translate algorithms into valuable business software.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-50 rounded-xl p-5 border border-gray-100 interactive-card">
+                        <h3 class="font-bold text-center text-purple-700 mb-4 border-b border-gray-200 pb-2">DATA
+                            SCIENCE</h3>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded shadow-sm">
+                                <h4 class="font-semibold text-sm">Data Analysis</h4>
+                                <p class="text-xs text-gray-500 mt-1">Aligns closely with the traditional data science
+                                    role.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm">
+                                <h4 class="font-semibold text-sm">Machine Learning Modeling</h4>
+                                <p class="text-xs text-gray-500 mt-1">Blends data science, data engineering, and ML
+                                    engineering skills.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm">
+                                <h4 class="font-semibold text-sm">User Interface Design</h4>
+                                <p class="text-xs text-gray-500 mt-1">Crafting the front-end experience for interaction.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-xl p-5 border border-gray-100 interactive-card">
+                        <h3 class="font-bold text-center text-blue-700 mb-4 border-b border-gray-200 pb-2">DEVELOPMENT
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded shadow-sm">
+                                <h4 class="font-semibold text-sm">Solution Architecture</h4>
+                                <p class="text-xs text-gray-500 mt-1">Designing software systems for algorithm
+                                    integration.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm">
+                                <h4 class="font-semibold text-sm">Database/SW Development</h4>
+                                <p class="text-xs text-gray-500 mt-1">Building functional, robust software applications.
+                                </p>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm">
+                                <h4 class="font-semibold text-sm">ML Operations</h4>
+                                <p class="text-xs text-gray-500 mt-1">Maintaining and supporting models in production
+                                    environments.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-xl p-5 border border-gray-100 interactive-card">
+                        <h3 class="font-bold text-center text-green-700 mb-4 border-b border-gray-200 pb-2">BUSINESS
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded shadow-sm">
+                                <h4 class="font-semibold text-sm">Industry Knowledge</h4>
+                                <p class="text-xs text-gray-500 mt-1">Applying domain expertise to ensure practical
+                                    business value.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm">
+                                <h4 class="font-semibold text-sm">Project Management</h4>
+                                <p class="text-xs text-gray-500 mt-1">Guiding complex execution logic unique to AI.</p>
+                            </div>
+                            <div class="bg-white p-3 rounded shadow-sm">
+                                <h4 class="font-semibold text-sm">Change Management</h4>
+                                <p class="text-xs text-gray-500 mt-1">Driving user adoption and shifting business
+                                    workflows.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="page-break"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+            <div class="bg-white rounded-2xl p-6 card-shadow border-t-4 border-blue-500 fade-section">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="bg-linkedin p-2 rounded"><i data-lucide="trending-up" class="w-5 h-5 text-linkedin"></i>
+                    </div>
+                    <h2 class="text-xl font-bold">Labor Market Rankings</h2>
+                </div>
+                <p class="text-sm text-gray-500 mb-6">Based on LinkedIn data analyzing the most critical roles on AI
+                    project teams.</p>
+
+                <div class="space-y-4">
+                    <div class="flex items-start gap-4 p-3 rounded-lg bg-gray-50 border border-gray-100">
+                        <div
+                            class="bg-blue-600 text-white font-bold w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
+                            1</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Project Manager</h4>
+                            <p class="text-xs text-gray-600 mt-1">Requires specialized AI knowledge due to the
+                                counterintuitive nature of machine learning projects.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-3 rounded-lg bg-gray-50 border border-gray-100">
+                        <div
+                            class="bg-purple-600 text-white font-bold w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0">
+                            2</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Data Scientist</h4>
+                            <p class="text-xs text-gray-600 mt-1">Dr. McCullough notes this role could arguably rank
+                                number one given its central impact.</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4 p-3 rounded-lg bg-gray-50 border border-gray-100">
+                        <div class="bg-teal-600 text-white font-bold w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                            style="background-color: #0D9488;">3</div>
+                        <div>
+                            <h4 class="font-bold text-gray-800">Data Engineer</h4>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-2">
+                        <div class="text-center p-2 bg-gray-50 rounded border border-gray-100">
+                            <span class="text-gray-400 text-xs font-bold block mb-1">#4</span>
+                            <span class="text-sm font-semibold">AI Engineer</span>
+                        </div>
+                        <div class="text-center p-2 bg-gray-50 rounded border border-gray-100">
+                            <span class="text-gray-400 text-xs font-bold block mb-1">#5</span>
+                            <span class="text-sm font-semibold">Domain Expert <br><span
+                                    class="font-normal text-xs text-gray-500">(Often ambiguous)</span></span>
+                        </div>
+                        <div class="text-center p-2 bg-gray-50 rounded border border-gray-100">
+                            <span class="text-gray-400 text-xs font-bold block mb-1">#6</span>
+                            <span class="text-sm font-semibold">UI Designer <br><span
+                                    class="font-normal text-xs text-gray-500">(Front end exp.)</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-6">
+                <div class="bg-white rounded-2xl p-6 card-shadow border-t-4 border-red-500 fade-section">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-top5 p-2 rounded"><i data-lucide="users" class="w-5 h-5 text-top5"></i></div>
+                        <h2 class="text-xl font-bold">Top 5 Roles Framework</h2>
+                    </div>
+
+                    <div class="relative pt-6 pb-2">
+                        <div class="absolute top-1 left-0 right-0 border-t-2 border-dashed border-gray-300"></div>
+                        <div
+                            class="absolute top-0 left-0 bg-white px-2 text-xs font-bold text-gray-500 transform -translate-y-1/2">
+                            RESEARCH</div>
+                        <div
+                            class="absolute top-0 right-0 bg-white px-2 text-xs font-bold text-gray-500 transform -translate-y-1/2">
+                            ENGINEERING</div>
+
+                        <div class="flex flex-wrap justify-between text-sm font-medium gap-y-3">
+                            <span class="bg-red-50 text-red-700 px-2 py-1 rounded">AI Research Scientist</span>
+                            <span class="bg-blue-50 text-blue-700 px-2 py-1 rounded">AI Software Engineer</span>
+                            <span class="bg-indigo-50 text-indigo-700 px-2 py-1 rounded">ML Engineer</span>
+                        </div>
+                        <div class="flex justify-center gap-4 mt-4 text-sm font-medium">
+                            <span class="bg-teal-50 px-2 py-1 rounded" style="color: #0D9488;">Data Engineer</span>
+                            <span class="bg-purple-50 text-purple-700 px-2 py-1 rounded">Data Scientist</span>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 text-center mt-4">Smaller teams wear multiple hats; larger teams
+                        assign specialized roles based on project complexity.</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 card-shadow border-t-4 border-yellow-500 fade-section flex-1">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-geo p-2 rounded"><i data-lucide="map-pin" class="w-5 h-5 text-geo"></i></div>
+                        <h2 class="text-xl font-bold">AI Labor Market Geography</h2>
+                    </div>
+
+                    <ul class="space-y-3 text-sm text-gray-700 mb-4">
+                        <li class="flex items-center gap-2 font-bold"><span
+                                class="w-6 h-6 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center text-xs">1</span>
+                            Silicon Valley</li>
+                        <li class="flex items-center gap-2 font-bold"><span
+                                class="w-6 h-6 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center text-xs">2</span>
+                            D.C. Metro Area (D.C., MD, VA)</li>
+                        <li class="flex items-center gap-2 font-bold"><span
+                                class="w-6 h-6 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center text-xs">3</span>
+                            Bangalore, India (Trending Growth)</li>
+                    </ul>
+                    <div class="bg-gray-50 p-3 rounded border border-gray-100 text-xs text-gray-600">
+                        <strong>Federal Influence:</strong> The U.S. federal market (especially Defense) is the largest
+                        AI customer, driving the D.C. metro ranking. Public sector jobs often lead private industry
+                        trends. <em>(Note: Does not account for remote/hybrid shifts).</em>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="mb-16 fade-section">
+            <div class="bg-white rounded-2xl p-6 md:p-10 card-shadow border-t-4 border-blue-400">
+                <div class="flex flex-col md:flex-row gap-8 items-center">
+                    <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="bg-blue-50 p-2 rounded"><i data-lucide="target"
+                                    class="w-6 h-6 text-blue-500"></i></div>
+                            <h2 class="text-2xl font-bold">Industry Maturity Context</h2>
+                        </div>
+                        <p class="text-gray-600 mb-4">Most of the industry remains focused on proof-of-concept testing
+                            with light-touch data science. Very few at-scale AI projects are fully deployed.</p>
+                        <p class="text-sm text-gray-500">As organizations mature, demand shifts from data scientists who
+                            build pilots, toward ML Engineers and AI Architects who productionize and scale systems.</p>
+                    </div>
+
+                    <div class="flex-1 w-full bg-gray-50 rounded-xl p-6 border border-gray-100">
+                        <div
+                            class="flex justify-between text-xs font-bold text-gray-400 mb-2 border-b border-gray-200 pb-2">
+                            <span class="text-blue-600">PROOF OF CONCEPT</span>
+                            <span>PILOT</span>
+                            <span>PRODUCTION</span>
+                            <span>SCALE</span>
+                        </div>
+                        <div class="space-y-4 mt-4">
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="font-semibold text-gray-700">Data Engineer</span>
+                                    <span class="text-green-600">High across all phases</span>
+                                </div>
+                                <div class="h-2 bg-gray-200 rounded-full overflow-hidden">
+                                    <div class="h-full bg-teal-500 w-full" style="background-color: #0D9488;"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="font-semibold text-gray-700">Data Scientist</span>
+                                    <span class="text-purple-600">Peak at PoC/Pilot</span>
+                                </div>
+                                <div class="h-2 bg-gray-200 rounded-full overflow-hidden flex">
+                                    <div class="h-full bg-purple-500 w-3/4"></div>
+                                    <div class="h-full bg-purple-200 w-1/4"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between text-xs mb-1">
+                                    <span class="font-semibold text-gray-700">AI Architect & ML Eng</span>
+                                    <span class="text-orange-600">Emerging & Growing</span>
+                                </div>
+                                <div class="h-2 bg-gray-200 rounded-full overflow-hidden flex">
+                                    <div class="h-full bg-orange-100 w-1/3"></div>
+                                    <div class="h-full bg-orange-500 w-2/3"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-16 fade-section">
+
+            <div class="lg:col-span-1 bg-white p-6 rounded-2xl card-shadow border-t-4 border-green-500">
+                <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                    <i data-lucide="plus-circle" class="w-5 h-5 text-green-500"></i> Additional Dynamics
+                </h3>
+                <div class="space-y-3">
+                    <div class="bg-gray-50 p-2.5 rounded border border-gray-100">
+                        <h4 class="text-xs font-bold text-gray-800">T-Shaped Skills</h4>
+                        <p class="text-[11px] text-gray-500 leading-tight mt-1">Deep specialized expertise paired with
+                            broad pipeline understanding aids team collaboration.</p>
+                    </div>
+                    <div class="bg-gray-50 p-2.5 rounded border border-gray-100">
+                        <h4 class="text-xs font-bold text-gray-800">Responsible AI Roles</h4>
+                        <p class="text-[11px] text-gray-500 leading-tight mt-1">Ethics officers and fairness auditors
+                            extend the Business domain in the nine-role matrix.</p>
+                    </div>
+                    <div class="bg-gray-50 p-2.5 rounded border border-gray-100">
+                        <h4 class="text-xs font-bold text-gray-800">Cross-Functional Comm.</h4>
+                        <p class="text-[11px] text-gray-500 leading-tight mt-1">Communication between technical and
+                            business functions is often the biggest hurdle.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 bg-white p-6 rounded-2xl card-shadow border-t-4 border-yellow-500">
+                <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                    <i data-lucide="map" class="w-5 h-5 text-yellow-500"></i> Capability Pathway
+                </h3>
+                <p class="text-xs text-gray-500 mb-4">Start with data foundations, add science, then scale to
+                    architecture and deployment.</p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-100 text-center">
+                        <div class="font-bold text-xs text-yellow-800 mb-1">1. ASSESS</div>
+                        <p class="text-[10px] text-gray-600 leading-tight">Map current team capabilities and gauge
+                            organization maturity.</p>
+                    </div>
+                    <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-100 text-center">
+                        <div class="font-bold text-xs text-yellow-800 mb-1">2. PRIORITIZE</div>
+                        <p class="text-[10px] text-gray-600 leading-tight">Build Data Engineering foundations, then add
+                            Data Science for PoCs.</p>
+                    </div>
+                    <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-100 text-center">
+                        <div class="font-bold text-xs text-yellow-800 mb-1">3. CROSS-FUNCTION</div>
+                        <p class="text-[10px] text-gray-600 leading-tight">Ensure specialized PM knowledge and solid
+                            domain expertise exist.</p>
+                    </div>
+                    <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-100 text-center">
+                        <div class="font-bold text-xs text-yellow-800 mb-1">4. SCALE</div>
+                        <p class="text-[10px] text-gray-600 leading-tight">Move from multi-hat roles to specialized
+                            Architects and ML Engineers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section
+            class="bg-gray-900 rounded-2xl p-8 md:p-12 text-white text-center fade-section relative overflow-hidden card-shadow">
+            <div
+                class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMSI+PC9yZWN0Pgo8L3N2Zz4=')]">
+            </div>
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <i data-lucide="lightbulb" class="w-10 h-10 text-yellow-400 mx-auto mb-6"></i>
+                <h2 class="text-2xl md:text-3xl font-bold mb-6 font-sora">The Core Principle</h2>
+                <p class="text-xl md:text-2xl font-light leading-relaxed mb-8">
+                    "AI success requires bringing together diverse, specialized skill sets — <strong
+                        class="text-white font-bold">there is no single AI role that does everything</strong>.
+                    Understanding these roles is the first step to building effective AI teams."
+                </p>
+                <div
+                    class="flex flex-wrap justify-center gap-4 text-xs font-semibold uppercase tracking-wider text-gray-300">
+                    <span class="bg-gray-800 px-3 py-1 rounded-full border border-gray-700">Four Core Roles</span>
+                    <span class="bg-gray-800 px-3 py-1 rounded-full border border-gray-700">Nine Critical
+                        Functions</span>
+                    <span class="bg-gray-800 px-3 py-1 rounded-full border border-gray-700">Specialized PMs</span>
+                </div>
+            </div>
+        </section>
+
+        <footer class="mt-12 text-center text-sm text-gray-400 fade-section">
+            <p class="font-medium text-gray-500">Topic: Common Roles in AI Project Teams — Core Roles</p>
+            <p class="mt-1">Based on lecture material by Dr. Ian McCullough, Johns Hopkins University</p>
+            <p class="mt-4 text-xs border-t border-gray-200 pt-4 inline-block">Best viewed on modern browsers. Optimized
+                for print (A4/Letter).</p>
+        </footer>
+
+    </div>
+
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Lucide Icons
+            lucide.createIcons();
+
+            // 2. Safe Intersection Observer for Fade-Ins
+            const fadeSections = document.querySelectorAll('.fade-section');
+
+            // Add not-visible class via JS so if JS fails, content remains visible natively
+            fadeSections.forEach(function (section) {
+                section.classList.add('not-visible');
+            });
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('not-visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            fadeSections.forEach(function (section) {
+                observer.observe(section);
+            });
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

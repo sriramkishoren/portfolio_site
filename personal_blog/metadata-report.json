@@ -1,6 +1,6 @@
 {
-  "generated": "2026-03-04",
-  "totalPosts": 70,
+  "generated": "2026-04-05",
+  "totalPosts": 81,
   "baseUrl": "https://www.kishoretech.com",
   "author": "Sriramkishore Naraharisetti",
   "categories": {
@@ -11,7 +11,7 @@
     "Optimizing AI Resources": 10,
     "AI Bias and Risks": 12,
     "AI Business UseCases": 6,
-    "AI Project Management": 2,
+    "AI Project Management": 13,
     "Agentic AI": 4,
     "Generative AI": 8
   },
@@ -168,6 +168,105 @@
       "datePublished": "2025-01-24",
       "tags": ["AI Lifecycle", "ML Pipeline", "ROAD Framework", "Model Building", "Model Deployment", "MLOps"],
       "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-ml-project-lifecycle"
+    },
+    {
+      "file": "ai-project-management/ai-talent-supply-chain.html",
+      "title": "AI Talent Supply Chain — Strategic Talent Management for AI Practice Building",
+      "description": "Discover how to build a scalable AI talent supply chain. From reactive hiring to structured growth: case study from 0 to 1,200 people in 3 years, $1.5B annual revenue. Covers 7 variance costs and the supply chain model.",
+      "category": "AI Project Management",
+      "datePublished": "2025-04-01",
+      "tags": ["AI Talent", "Talent Management", "AI Staffing", "Workforce Planning", "AI Teams", "Hiring Strategy", "Talent Supply Chain", "AI Practice Building"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-talent-supply-chain"
+    },
+    {
+      "file": "ai-project-management/ai-project-teams-core-roles.html",
+      "title": "Common Roles in AI Project Teams — Core Roles Framework",
+      "description": "Learn the four core roles essential to AI project success: Data Engineer, Data Scientist, AI Architect, and Requirements Analyst. Understand how these roles form a pipeline from data foundations to production deployment.",
+      "category": "AI Project Management",
+      "datePublished": "2025-04-02",
+      "tags": ["AI Project Teams", "AI Roles", "Data Engineer", "Data Scientist", "AI Architect", "AI Team Structure", "AI Project Management", "Requirements Analysis"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-project-teams-core-roles"
+    },
+    {
+      "file": "ai-project-management/ai-project-teams-role-descriptions.html",
+      "title": "Common Roles in AI Project Teams — Detailed Role Descriptions",
+      "description": "Detailed descriptions of five specialized AI team roles: Data Engineer, Data Scientist, AI Architect, Domain Expert, and Requirements Analyst. Learn the Flash Team Model for rapid AI team assembly and labor specialization.",
+      "category": "AI Project Management",
+      "datePublished": "2025-04-03",
+      "tags": ["AI Roles", "Flash Team Model", "Data Scientist", "AI Architect", "Domain Expert", "AI Team Structure", "Labor Specialization", "AI Project Teams"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-project-teams-role-descriptions"
+    },
+    {
+      "file": "ai-project-management/ai-project-teams-staffing.html",
+      "title": "Common Roles in AI Project Teams — Staffing Strategy",
+      "description": "How development and production environments shape AI team staffing. Learn the Huddleston Model separating dev and production roles. Covers three key bottlenecks: education gaps, product owner compatibility, and vendor lock-in.",
+      "category": "AI Project Management",
+      "datePublished": "2025-04-04",
+      "tags": ["AI Staffing", "Huddleston Model", "AI Team Structure", "Development Environment", "Production Environment", "AI Project Management", "MLOps", "Vendor Lock-in"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-project-teams-staffing"
+    },
+    {
+      "file": "ai-project-management/talent-position-matching.html",
+      "title": "Talent-Position Matching — Solving AI Workforce Fragmentation",
+      "description": "Explore five key talent-position matching problems in AI organizations: availability tracking, quality inconsistency, pay expectations variance, pricing ambiguity, and pay equity manipulation. Learn how role fragmentation creates staffing challenges.",
+      "category": "AI Project Management",
+      "datePublished": "2025-04-05",
+      "tags": ["Talent Matching", "Pay Equity", "AI Workforce", "Job Family", "AI Roles", "HR Strategy", "AI Staffing", "Compensation Strategy", "Workforce Fragmentation"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/talent-position-matching"
+    },
+    {
+      "file": "ai-project-management/skill-assessment.html",
+      "title": "Skill Assessment — AI-Driven Personalized Learning for AI Teams",
+      "description": "Compare traditional blanket training vs. AI-driven personalized skill assessment. Case study: only 34% of 624 training hours produced new skills (75 of 218). Learn skill-person-project matching for targeted workforce development.",
+      "category": "AI Project Management",
+      "datePublished": "2025-04-06",
+      "tags": ["Skill Assessment", "AI Training", "Personalized Learning", "Workforce Development", "AI Teams", "Learning Optimization", "Skills Gap Analysis", "Training Effectiveness"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/skill-assessment"
+    },
+    {
+      "file": "ai-project-management/performance_assessment.html",
+      "title": "Performance Assessment in the AI Industry — Navigating Misaligned Goals",
+      "description": "Navigate performance assessment challenges in AI organizations. Explore 5 sources of structural conflict: portfolio vs. overhead, project vs. technical roles, and values vs. profitability. Includes $75M IRS Deal case study.",
+      "category": "AI Project Management",
+      "datePublished": "2025-04-07",
+      "tags": ["Performance Assessment", "AI Organizations", "Structural Conflict", "KPIs", "Strategic Alignment", "Portfolio Management", "AI Industry", "Misaligned Goals"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/performance_assessment"
+    },
+    {
+      "file": "ai-project-management/performance-assessment-frameworks.html",
+      "title": "Performance Assessment Frameworks — AI Industry Reference Guide",
+      "description": "Comprehensive reference guide covering AI industry performance assessment frameworks: KPI structures, OKR methodologies, reward systems, performance matrices, and retention-linked strategies for AI professionals and organizations.",
+      "category": "AI Project Management",
+      "datePublished": "2025-04-08",
+      "tags": ["Performance Frameworks", "KPIs", "OKRs", "Performance Management", "AI Teams", "Reward Systems", "Retention Strategy", "AI Organizations", "Performance Matrix"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/performance-assessment-frameworks"
+    },
+    {
+      "file": "ai-project-management/current-and-emerging-labor-trends.html",
+      "title": "Current and Emerging Labor Trends — How AI Is Reshaping the Workforce",
+      "description": "Explore how AI is reshaping the workforce through automation, augmentation, and new labor models. Covers four key AI use cases in business and emerging labor trends driven by widespread AI adoption across industries.",
+      "category": "AI Project Management",
+      "datePublished": "2025-04-09",
+      "tags": ["Labor Trends", "AI Workforce", "Automation", "Augmentation", "AI Jobs", "Future of Work", "AI Labor Market", "Workforce Transformation", "AI Adoption"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/current-and-emerging-labor-trends"
+    },
+    {
+      "file": "ai-project-management/remote-work-trends.html",
+      "title": "Remote Work Trends in AI — Offshore, Onshore, and Blended Team Models",
+      "description": "Analyze remote work trends for AI teams: compare onshore, offshore, and blended cost models. Covers proximity requirements for AI ethics, innovation dynamics, client interactions, and how organizations optimize global AI workforce distribution.",
+      "category": "AI Project Management",
+      "datePublished": "2025-04-10",
+      "tags": ["Remote Work", "AI Teams", "Offshore Development", "Blended Teams", "Work Models", "Cost Optimization", "AI Ethics", "Innovation", "Global Workforce"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/remote-work-trends"
+    },
+    {
+      "file": "ai-project-management/ai-labor-bubble-and-diversity-challenges.html",
+      "title": "AI Labor Bubble and Diversity Challenges — Talent Scarcity and Inclusion",
+      "description": "Understand the AI labor bubble: COVID-driven demand surge, VC investment, government funding, and corporate AI adoption creating talent scarcity. Covers diversity challenges including 20% women in STEM, 45% executive layoff rates, and +20% performance benefit of diverse teams.",
+      "category": "AI Project Management",
+      "datePublished": "2025-04-11",
+      "tags": ["AI Labor Market", "Diversity in AI", "Women in STEM", "AI Talent Scarcity", "AI Workforce", "Inclusion", "DEI", "AI Industry Trends", "Workforce Diversity"],
+      "canonicalUrl": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/ai-labor-bubble-and-diversity-challenges"
     },
     {
       "file": "ml-algorithms/ml-algorithm-selection-guide.html",

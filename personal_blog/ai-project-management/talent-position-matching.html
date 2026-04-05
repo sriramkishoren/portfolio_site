@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talent-Position Matching Infographic</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Talent-Position Matching — Solving AI Workforce Fragmentation">
+    <meta name="description" content="Explore five key talent-position matching problems in AI organizations: availability tracking, quality inconsistency, pay expectations variance, pricing ambiguity, and pay equity manipulation. Learn how role fragmentation creates staffing challenges.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Project Management">
+    <meta name="tags" content="Talent Matching, Pay Equity, AI Workforce, Job Family, AI Roles, HR Strategy, AI Staffing, Compensation Strategy, Workforce Fragmentation">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Five talent-position matching problems in AI: no single source of truth for availability, quality inconsistency across sub-orgs, different pay expectations for same skills, pricing ambiguity between specializations, and pay equity manipulation. Role fragmentation spans organizational names, HR partners, job families (~6 career steps), and project roles.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/talent-position-matching">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Talent-Position Matching — Solving AI Workforce Fragmentation">
+    <meta property="og:description" content="Explore five key talent-position matching problems in AI organizations: availability tracking, quality inconsistency, pay expectations variance, pricing ambiguity, and pay equity manipulation. Learn how role fragmentation creates staffing challenges.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/talent-position-matching">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-04-05">
+    <meta property="article:section" content="AI Project Management">
+    <meta property="article:tag" content="Talent Matching">
+    <meta property="article:tag" content="Pay Equity">
+    <meta property="article:tag" content="Workforce Fragmentation">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Talent-Position Matching — Solving AI Workforce Fragmentation",
+        "description": "Explore five key talent-position matching problems in AI organizations: availability tracking, quality inconsistency, pay expectations variance, pricing ambiguity, and pay equity manipulation. Learn how role fragmentation creates staffing challenges.",
+        "datePublished": "2025-04-05",
+        "dateModified": "2025-04-05",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/talent-position-matching"
+        },
+        "keywords": ["Talent Matching", "Pay Equity", "AI Workforce", "Job Family", "AI Roles", "HR Strategy", "AI Staffing", "Compensation Strategy", "Workforce Fragmentation"],
+        "articleSection": "AI Project Management"
+    }
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+
+    <style>
+        /* Base Typography */
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: #475569;
+            background-color: #FAFBFC;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .font-sora {
+            font-family: 'Sora', sans-serif;
+            color: #1E293B;
+            letter-spacing: -0.025em;
+        }
+
+        /* Custom Colors (Bypassing Tailwind v2 limitations) */
+        .bg-sec-header {
+            background-color: #F0F9FF;
+        }
+
+        .text-sec-header {
+            color: #0EA5E9;
+        }
+
+        .bg-sec-framing {
+            background-color: #F8FAFC;
+        }
+
+        .text-sec-framing {
+            color: #475569;
+        }
+
+        .bg-sec-problems {
+            background-color: #FEF2F2;
+        }
+
+        .text-sec-problems {
+            color: #DC2626;
+        }
+
+        .border-sec-problems {
+            border-color: #FCA5A5;
+        }
+
+        .bg-sec-anatomy {
+            background-color: #EFF6FF;
+        }
+
+        .text-sec-anatomy {
+            color: #2563EB;
+        }
+
+        .bg-sec-cluster {
+            background-color: #FDF4FF;
+        }
+
+        .text-sec-cluster {
+            color: #A855F7;
+        }
+
+        .bg-sec-decisions {
+            background-color: #FFF7ED;
+        }
+
+        .text-sec-decisions {
+            color: #EA580C;
+        }
+
+        .bg-sec-cluster1 {
+            background-color: #F0FDF4;
+        }
+
+        .text-sec-cluster1 {
+            color: #16A34A;
+        }
+
+        .bg-sec-cluster2 {
+            background-color: #E0E7FF;
+        }
+
+        .text-sec-cluster2 {
+            color: #6366F1;
+        }
+
+        .bg-sec-cluster3 {
+            background-color: #FEF3C7;
+        }
+
+        .text-sec-cluster3 {
+            color: #D97706;
+        }
+
+        .bg-sec-delivery {
+            background-color: #F0FDFA;
+        }
+
+        .text-sec-delivery {
+            color: #0D9488;
+        }
+
+        .border-sec-delivery {
+            border-color: #99F6E4;
+        }
+
+        .bg-sec-connection {
+            background-color: #EFF6FF;
+        }
+
+        .text-sec-connection {
+            color: #0284C7;
+        }
+
+        .bg-sec-modern {
+            background-color: #D1FAE5;
+        }
+
+        .text-sec-modern {
+            color: #10B981;
+        }
+
+        .stat-badge {
+            background-color: #D1FAE5;
+            color: #065F46;
+        }
+
+        /* Layout Utilities */
+        .max-w-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #FFFFFF;
+            border: 1.5px solid #E2E8F0;
+            border-radius: 16px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+
+        .gradient-stripe {
+            height: 6px;
+            background: linear-gradient(90deg, #0EA5E9, #2563EB, #A855F7, #EA580C, #16A34A);
+            width: 100%;
+        }
+
+        /* Diagrams */
+        .node-branch {
+            position: relative;
+        }
+
+        .node-branch::after {
+            content: '';
+            position: absolute;
+            background-color: #CBD5E1;
+            z-index: 0;
+        }
+
+        .node-branch-top::after {
+            width: 2px;
+            height: 24px;
+            top: -24px;
+            left: 50%;
+        }
+
+        .node-branch-bottom::after {
+            width: 2px;
+            height: 24px;
+            bottom: -24px;
+            left: 50%;
+        }
+
+        .node-branch-left::after {
+            width: 24px;
+            height: 2px;
+            left: -24px;
+            top: 50%;
+        }
+
+        .node-branch-right::after {
+            width: 24px;
+            height: 2px;
+            right: -24px;
+            top: 50%;
+        }
+
+        .histogram-bar {
+            background-color: #E2E8F0;
+            border-radius: 4px;
+            border: 1px solid #CBD5E1;
+        }
+
+        .rationalized-block {
+            background-color: #DCFCE7;
+            border: 1.5px solid #86EFAC;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        /* Safe Animation Pattern */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background-color: #FFFFFF;
+            }
+
+            .card {
+                border: 1px solid #CBD5E1;
+                box-shadow: none !important;
+                transform: none !important;
+                break-inside: avoid;
+            }
+
+            .fade-section.not-visible {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+
+    <div class="gradient-stripe fixed top-0 z-50"></div>
+
+    <main class="max-w-content px-4 py-12 md:px-8 mt-4">
+
+        <header class="text-center mb-16 fade-section">
+            <div class="inline-flex items-center justify-center p-3 bg-sec-header rounded-full mb-6">
+                <i data-lucide="layers" class="w-8 h-8 text-sec-header"></i>
+            </div>
+            <h1 class="text-3xl md:text-5xl font-bold mb-4 leading-tight">Talent-Position Matching</h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
+                How Skill Clustering and Role Rationalization Transform Organizational Fragmentation into Consistent
+                Talent Deployment
+            </p>
+            <div class="flex flex-wrap justify-center gap-3 text-sm font-semibold">
+                <span class="stat-badge px-3 py-1 rounded-full">17 Role Families</span>
+                <span class="stat-badge px-3 py-1 rounded-full">1,300+ Skills</span>
+                <span class="stat-badge px-3 py-1 rounded-full">3 Clusters Discovered</span>
+            </div>
+        </header>
+
+        <section class="mb-16 fade-section">
+            <div class="card p-8 bg-sec-framing border-none relative overflow-hidden">
+                <div class="flex flex-col md:flex-row gap-8 items-center relative z-10">
+                    <div class="bg-white p-4 rounded-full shadow-sm">
+                        <i data-lucide="search" class="w-10 h-10 text-gray-500"></i>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold mb-3">The Talent-Position Matching Challenge</h2>
+                        <p class="text-gray-700">
+                            When an AI tool tries to match requested skills to available people for staffing a new
+                            project, a fundamental problem emerges. Searching for a common skill like Tableau returns
+                            results spanning multiple organizational names, different job families (each with various
+                            career steps), different project roles, and multiple HR partners. With no common manager or
+                            consistent career experience, finding the right person and pricing deals accurately becomes
+                            nearly impossible. Let's examine why this happens and how to fix it.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="flex items-center gap-3 mb-8">
+                <i data-lucide="alert-triangle" class="w-6 h-6 text-sec-problems"></i>
+                <h2 class="text-2xl font-bold">The Five Matching Problems</h2>
+            </div>
+            <p class="mb-6 text-gray-600">Why fragmentation breaks everything when attempting to staff and price talent.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div class="card p-6 bg-sec-problems border-sec-problems">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span
+                            class="bg-white text-sec-problems font-bold w-6 h-6 rounded-full flex items-center justify-center text-sm shadow-sm">1</span>
+                        <h3 class="font-bold text-gray-900 text-lg">Finding Available People</h3>
+                    </div>
+                    <p class="text-sm text-gray-700 italic border-l-2 border-red-300 pl-3">"No single source of truth"
+                    </p>
+                </div>
+                <div class="card p-6 bg-sec-problems border-sec-problems">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span
+                            class="bg-white text-sec-problems font-bold w-6 h-6 rounded-full flex items-center justify-center text-sm shadow-sm">2</span>
+                        <h3 class="font-bold text-gray-900 text-lg">Inconsistent Quality</h3>
+                    </div>
+                    <p class="text-sm text-gray-700 italic border-l-2 border-red-300 pl-3">"Different training,
+                        different proficiency by sub-org"</p>
+                </div>
+                <div class="card p-6 bg-sec-problems border-sec-problems">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span
+                            class="bg-white text-sec-problems font-bold w-6 h-6 rounded-full flex items-center justify-center text-sm shadow-sm">3</span>
+                        <h3 class="font-bold text-gray-900 text-lg">Different Pay Expectations</h3>
+                    </div>
+                    <p class="text-sm text-gray-700 italic border-l-2 border-red-300 pl-3">"Same skill, different
+                        compensation"</p>
+                </div>
+                <div class="card p-6 bg-sec-problems border-sec-problems">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span
+                            class="bg-white text-sec-problems font-bold w-6 h-6 rounded-full flex items-center justify-center text-sm shadow-sm">4</span>
+                        <h3 class="font-bold text-gray-900 text-lg">Pricing Ambiguity</h3>
+                    </div>
+                    <p class="text-sm text-gray-700 italic border-l-2 border-red-300 pl-3">"Data scientist rate vs.
+                        Tableau rate"</p>
+                </div>
+                <div class="card p-6 bg-sec-problems border-sec-problems md:col-span-2 lg:col-span-1">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span
+                            class="bg-white text-sec-problems font-bold w-6 h-6 rounded-full flex items-center justify-center text-sm shadow-sm">5</span>
+                        <h3 class="font-bold text-gray-900 text-lg">Pay Equity Manipulation</h3>
+                    </div>
+                    <p class="text-sm text-gray-700 italic border-l-2 border-red-300 pl-3">"Manipulating roles to win
+                        deals"</p>
+                </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl border border-red-200 flex gap-4 items-start shadow-sm">
+                <i data-lucide="x-circle" class="w-6 h-6 text-red-500 flex-shrink-0 mt-1"></i>
+                <p class="text-gray-800 font-medium">
+                    <strong class="text-red-600 block mb-1">Organizational Consequence</strong>
+                    Those games restrict your ability to win consistently, to maintain high profitability, and to create
+                    a fair and equitable workplace.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-20 fade-section">
+            <div class="text-center mb-10">
+                <div class="inline-flex items-center justify-center p-2 bg-sec-anatomy rounded-full mb-3">
+                    <i data-lucide="git-merge" class="w-6 h-6 text-sec-anatomy"></i>
+                </div>
+                <h2 class="text-2xl font-bold">The Fragmentation Anatomy</h2>
+                <p class="text-gray-600">One Skill, Many Structures</p>
+            </div>
+
+            <div class="card p-8 bg-white border border-blue-100 shadow-sm relative">
+                <div class="flex flex-col items-center justify-center py-10 relative max-w-2xl mx-auto mb-10">
+
+                    <div class="mb-8 z-10 text-center">
+                        <div
+                            class="bg-blue-50 text-blue-800 font-semibold px-4 py-2 rounded-lg border border-blue-200 shadow-sm text-sm">
+                            Organizational Names
+                            <span class="block text-xs text-blue-600 font-normal mt-1">Multiple org units, no common
+                                manager</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-center w-full relative z-10 gap-4 md:gap-12">
+                        <div class="flex-1 flex justify-end">
+                            <div
+                                class="bg-blue-50 text-blue-800 font-semibold px-4 py-2 rounded-lg border border-blue-200 shadow-sm text-sm text-right">
+                                HR Partners
+                                <span class="block text-xs text-blue-600 font-normal mt-1">Multiple partners managing
+                                    people</span>
+                            </div>
+                        </div>
+
+                        <div class="relative">
+                            <svg class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] -z-10 text-gray-300 md:block hidden"
+                                viewBox="0 0 100 100">
+                                <line x1="50" y1="50" x2="50" y2="10" stroke="currentColor" stroke-width="1.5"
+                                    stroke-dasharray="4" />
+                                <line x1="50" y1="50" x2="50" y2="90" stroke="currentColor" stroke-width="1.5"
+                                    stroke-dasharray="4" />
+                                <line x1="50" y1="50" x2="10" y2="50" stroke="currentColor" stroke-width="1.5"
+                                    stroke-dasharray="4" />
+                                <line x1="50" y1="50" x2="90" y2="50" stroke="currentColor" stroke-width="1.5"
+                                    stroke-dasharray="4" />
+                            </svg>
+                            <div
+                                class="bg-blue-600 text-white font-bold px-6 py-4 rounded-xl shadow-md border-2 border-blue-800 text-lg z-20 relative">
+                                Tableau Skill
+                            </div>
+                        </div>
+
+                        <div class="flex-1 flex justify-start">
+                            <div
+                                class="bg-blue-50 text-blue-800 font-semibold px-4 py-2 rounded-lg border border-blue-200 shadow-sm text-sm">
+                                Job Families
+                                <span class="block text-xs text-blue-600 font-normal mt-1">Larger set, ~6 career steps
+                                    each</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 z-10 text-center">
+                        <div
+                            class="bg-blue-50 text-blue-800 font-semibold px-4 py-2 rounded-lg border border-blue-200 shadow-sm text-sm">
+                            Project Roles
+                            <span class="block text-xs text-blue-600 font-normal mt-1">Different role names on
+                                accounts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-200 pt-8 mt-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-5 rounded-xl border border-gray-200 text-center">
+                            <i data-lucide="user-x" class="w-8 h-8 mx-auto text-red-500 mb-2"></i>
+                            <h4 class="font-bold text-gray-900 mb-1">Data Scientist + Tableau</h4>
+                            <p class="text-sm text-gray-600 text-red-600 font-medium">Higher cost, less competitive
+                                pricing</p>
+                            <p class="text-xs text-gray-500 mt-2">Less profitable for Tableau-specific delivery work.
+                            </p>
+                        </div>
+                        <div class="bg-gray-50 p-5 rounded-xl border border-gray-200 text-center">
+                            <i data-lucide="check-circle" class="w-8 h-8 mx-auto text-green-500 mb-2"></i>
+                            <h4 class="font-bold text-gray-900 mb-1">Data Engineer + Tableau</h4>
+                            <p class="text-sm text-gray-600 text-green-600 font-medium">Appropriate cost, profitable
+                                delivery</p>
+                            <p class="text-xs text-gray-500 mt-2">Priced correctly for the actual skill required.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 text-center bg-blue-50 py-3 rounded-lg text-blue-800 font-medium text-sm">
+                    "Same skill search returns fundamentally different talent profiles at different price points."
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="flex items-center gap-3 mb-6">
+                <i data-lucide="layers" class="w-6 h-6 text-sec-cluster"></i>
+                <h2 class="text-2xl font-bold">Hierarchical Skill Clustering</h2>
+            </div>
+            <p class="mb-8 text-gray-600">The analytical approach: using unsupervised learning on real HR data to
+                discover natural skill groupings.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                <div class="card p-5 text-center bg-white">
+                    <span class="block text-3xl font-bold text-gray-900 mb-1">17</span>
+                    <span class="text-sm text-gray-600">Role Families</span>
+                </div>
+                <div class="card p-5 text-center bg-white flex items-center justify-center">
+                    <i data-lucide="arrow-right" class="w-6 h-6 text-gray-300"></i>
+                </div>
+                <div class="card p-5 text-center bg-white">
+                    <span class="block text-3xl font-bold text-gray-900 mb-1">1,300+</span>
+                    <span class="text-sm text-gray-600">HR Database Skills</span>
+                </div>
+                <div class="card p-5 text-center bg-white border-purple-200">
+                    <span class="block text-3xl font-bold text-sec-cluster mb-1">87</span>
+                    <span class="text-sm text-gray-600">Skills held by 20+ people</span>
+                </div>
+            </div>
+
+            <div
+                class="bg-sec-cluster p-6 rounded-xl border border-purple-100 flex flex-col md:flex-row gap-6 items-center">
+                <div class="bg-white p-4 rounded-full shadow-sm shrink-0">
+                    <i data-lucide="network" class="w-8 h-8 text-sec-cluster"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-gray-900 mb-2">The Methodology</h3>
+                    <p class="text-sm text-gray-700">A skill is connected to another skill if 20 or more people share
+                        both skills. This filters out the long tail of obscure/niche skills and reveals what groups
+                        exist naturally. This approach discovered <strong>three general clusters</strong>.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-20 fade-section">
+            <div class="flex items-center gap-3 mb-6">
+                <i data-lucide="compass" class="w-6 h-6 text-sec-decisions"></i>
+                <h2 class="text-2xl font-bold">Key Decisions Surfaced by Clustering</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="card p-5 bg-white border-t-4 border-t-orange-400">
+                    <h4 class="font-bold text-gray-900 mb-2 text-sm">Low-Code / No-Code Alignment</h4>
+                    <p class="text-xs text-gray-600">Where do people go who use tools like Palantir or Tableau but don't
+                        code ML models from scratch?</p>
+                </div>
+                <div class="card p-5 bg-white border-t-4 border-t-orange-400">
+                    <h4 class="font-bold text-gray-900 mb-2 text-sm">Market Skill Availability</h4>
+                    <p class="text-xs text-gray-600">Understanding exactly what skill sets you will actually find and
+                        can hire in the market.</p>
+                </div>
+                <div class="card p-5 bg-white border-t-4 border-t-orange-400">
+                    <h4 class="font-bold text-gray-900 mb-2 text-sm">Commodity Delivery Oversight</h4>
+                    <p class="text-xs text-gray-600">Managing highly skilled platform experts (e.g., SAP, Salesforce)
+                        delivering across many areas.</p>
+                </div>
+                <div class="card p-5 bg-white border-t-4 border-t-orange-400">
+                    <h4 class="font-bold text-gray-900 mb-2 text-sm">ML Ops vs. IT Division</h4>
+                    <p class="text-xs text-gray-600">Deciding where to draw the line between scaling AI operations and
+                        typical IT software engineering.</p>
+                </div>
+                <div class="card p-5 bg-white border-t-4 border-t-orange-400">
+                    <h4 class="font-bold text-gray-900 mb-2 text-sm">High-Value Niche Compensation</h4>
+                    <p class="text-xs text-gray-600">Ensuring fair rewards and compensation for rare, high-value
+                        resources not mainstream in the org.</p>
+                </div>
+                <div class="card p-5 bg-white border-t-4 border-t-orange-400">
+                    <h4 class="font-bold text-gray-900 mb-2 text-sm">Role Family Simplification</h4>
+                    <p class="text-xs text-gray-600">Rationalizing role families into a smaller, more effective subset
+                        to manage consistently.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div class="bg-sec-cluster1 p-8 rounded-2xl border border-green-200">
+                <div class="text-center mb-10">
+                    <span
+                        class="uppercase tracking-wider text-xs font-bold text-sec-cluster1 bg-white px-3 py-1 rounded-full border border-green-200">Cluster
+                        1</span>
+                    <h2 class="text-2xl font-bold text-gray-900 mt-4 mb-2">Data & Platform Engineering</h2>
+                    <p class="text-green-800">Rationalizing 11 Fragmented Role Families into 5 Distinct Roles</p>
+                </div>
+
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-8 mb-8">
+
+                    <div class="flex-1 w-full bg-white p-5 rounded-xl shadow-sm border border-gray-100">
+                        <h3 class="text-sm font-bold text-gray-500 mb-4 uppercase text-center border-b pb-2">Before: 11
+                            Families</h3>
+                        <div class="flex flex-col gap-1.5 h-64 overflow-y-auto">
+                            <div class="histogram-bar p-1.5 text-xs text-gray-600 truncate w-full">Data Engineering
+                            </div>
+                            <div class="histogram-bar p-1.5 text-xs text-gray-600 truncate w-11/12">Software & Platform
+                                Eng.</div>
+                            <div class="histogram-bar p-1.5 text-xs text-gray-600 truncate w-10/12">Custom Software Eng.
+                            </div>
+                            <div class="histogram-bar p-1.5 text-xs text-gray-600 truncate w-8/12">Data Architect</div>
+                            <div class="histogram-bar p-1.5 text-xs text-gray-600 truncate w-1/2">Database Admin</div>
+                            <div class="histogram-bar p-1.5 text-xs text-gray-600 truncate w-1/3">Tech Architecture
+                            </div>
+                            <div class="histogram-bar p-1.5 text-xs text-gray-600 truncate w-1/4">Business Architecture
+                            </div>
+                            <div class="histogram-bar p-1.5 text-xs text-gray-600 truncate w-1/4">Quality Engineer</div>
+                            <div class="histogram-bar p-1.5 text-xs text-gray-600 truncate w-1/5">Tech Solution
+                                Architect</div>
+                            <div class="histogram-bar p-1.5 text-xs text-gray-600 truncate w-1/6">Tech Arc</div>
+                            <div class="text-center text-xs text-gray-400 mt-2 italic">Many with only 1-2 people</div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col items-center justify-center py-4 shrink-0">
+                        <div
+                            class="bg-green-100 text-green-800 text-xs font-bold px-3 py-1 rounded-full mb-2 border border-green-200 whitespace-nowrap">
+                            ~400 Resources</div>
+                        <i data-lucide="arrow-right" class="w-8 h-8 text-green-500 hidden lg:block"></i>
+                        <i data-lucide="arrow-down" class="w-8 h-8 text-green-500 block lg:hidden"></i>
+                        <div class="text-[10px] text-green-600 uppercase tracking-widest mt-2 font-bold text-center">
+                            Hierarchical<br>Clustering</div>
+                    </div>
+
+                    <div class="flex-1 w-full bg-white p-5 rounded-xl shadow-sm border border-green-100">
+                        <h3
+                            class="text-sm font-bold text-green-600 mb-4 uppercase text-center border-b border-green-100 pb-2">
+                            After: 5 Rationalized Roles</h3>
+                        <div class="flex flex-col gap-3 h-64 justify-center">
+                            <div class="rationalized-block p-2.5 text-sm text-green-900 text-center shadow-sm">Cloud
+                                Platform Engineering</div>
+                            <div class="rationalized-block p-2.5 text-sm text-green-900 text-center shadow-sm">Data
+                                Architects <span class="block text-[10px] font-normal opacity-80 mt-0.5">Process &
+                                    Pipeline Design</span></div>
+                            <div class="rationalized-block p-2.5 text-sm text-green-900 text-center shadow-sm">Data
+                                Engineers <span class="block text-[10px] font-normal opacity-80 mt-0.5">Python, Spark,
+                                    SQL, ETL</span></div>
+                            <div class="rationalized-block p-2.5 text-sm text-green-900 text-center shadow-sm">Database
+                                / Data Management</div>
+                            <div class="rationalized-block p-2.5 text-sm text-green-900 text-center shadow-sm">Data
+                                Modeling</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="bg-white/80 rounded-xl p-4 text-center border border-green-100 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-1 h-full bg-green-500"></div>
+                    <p class="text-sm text-gray-800 font-medium">
+                        <strong>Benefits:</strong> Consistent leadership, quality control, delivery templates, and
+                        career progression management.
+                    </p>
+                    <p class="text-sm text-green-700 font-bold mt-2">
+                        "Ensures pay equity based on skill set and merit, not based on how well they negotiated a niche
+                        role."
+                    </p>
+                </div>
+
+                <div
+                    class="mt-4 flex items-start gap-3 text-xs text-gray-600 bg-white/50 p-3 rounded-lg border border-red-100">
+                    <i data-lucide="alert-triangle" class="w-4 h-4 text-red-500 shrink-0 mt-0.5"></i>
+                    <p><strong>The Manipulation Problem:</strong> Organizations often create pay equity across pay
+                        bands. But when desperate to staff, managers find underutilized niche titles to bypass pay bands
+                        for good negotiators—contributing to retention and systemic equity problems.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 fade-section">
+
+            <div class="card p-6 bg-sec-cluster2 border-indigo-100 flex flex-col h-full">
+                <span
+                    class="uppercase tracking-wider text-[10px] font-bold text-sec-cluster2 bg-white px-2 py-1 rounded w-max mb-3 border border-indigo-100">Cluster
+                    2</span>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Analytics and AI</h3>
+                <p class="text-sm text-indigo-800 mb-4 pb-4 border-b border-indigo-200">New and emerging area (~200
+                    resources). Original 5 families had unclear "innovation" roles.</p>
+
+                <h4 class="text-xs font-bold text-gray-500 uppercase mb-3">Rationalized into 4 Areas:</h4>
+                <ul class="space-y-3 flex-grow">
+                    <li class="bg-white p-3 rounded-lg text-sm border border-indigo-50 shadow-sm">
+                        <strong class="text-gray-900 block">1. AI / Computer Vision</strong>
+                        <span class="text-gray-600 text-xs">Growing volume warranted a separate, high-value skill
+                            area.</span>
+                    </li>
+                    <li class="bg-white p-3 rounded-lg text-sm border border-indigo-50 shadow-sm">
+                        <strong class="text-gray-900 block">2. Visualization</strong>
+                        <span class="text-gray-600 text-xs">Commodity skill. Prevents inflating salaries for lower-value
+                            work.</span>
+                    </li>
+                    <li class="bg-white p-3 rounded-lg text-sm border border-indigo-50 shadow-sm">
+                        <strong class="text-gray-900 block">3. Statistics & Modeling</strong>
+                        <span class="text-gray-600 text-xs">A large, distinct chunk of the organization's work.</span>
+                    </li>
+                    <li class="bg-white p-3 rounded-lg text-sm border border-indigo-50 shadow-sm">
+                        <strong class="text-gray-900 block">4. General Analytics</strong>
+                    </li>
+                </ul>
+                <div
+                    class="mt-4 pt-3 border-t border-indigo-200 text-xs text-indigo-900 font-medium flex items-center gap-2">
+                    <i data-lucide="check" class="w-4 h-4"></i> Making recruiting easier by matching actual candidate
+                    pipelines.
+                </div>
+            </div>
+
+            <div class="card p-6 bg-sec-cluster3 border-yellow-100 flex flex-col h-full">
+                <span
+                    class="uppercase tracking-wider text-[10px] font-bold text-sec-cluster3 bg-white px-2 py-1 rounded w-max mb-3 border border-yellow-100">Cluster
+                    3</span>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Data & ML Operations</h3>
+                <p class="text-sm text-yellow-800 mb-4 pb-4 border-b border-yellow-200">Discovering the gap: There was
+                    previously no formal concept of this in the organization.</p>
+
+                <h4 class="text-xs font-bold text-gray-500 uppercase mb-3">Clustering Revealed 2 Sub-Groups:</h4>
+                <ul class="space-y-4 flex-grow">
+                    <li class="bg-white p-4 rounded-lg text-sm border border-yellow-50 shadow-sm">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i data-lucide="code" class="w-4 h-4 text-yellow-600"></i>
+                            <strong class="text-gray-900">Application Development</strong>
+                        </div>
+                        <span class="text-gray-600 text-xs block pl-6">People skilled in agile software development,
+                            Jira, testing, requirements. Good software engineering skills existed but lacked formal
+                            categorization.</span>
+                    </li>
+                    <li class="bg-white p-4 rounded-lg text-sm border border-yellow-50 shadow-sm">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i data-lucide="clipboard" class="w-4 h-4 text-yellow-600"></i>
+                            <strong class="text-gray-900">Project Management</strong>
+                        </div>
+                        <span class="text-gray-600 text-xs block pl-6">Less technical, project management skill
+                            set.</span>
+                    </li>
+                </ul>
+                <div class="mt-4 bg-white/60 p-3 rounded-lg border border-yellow-200 text-xs text-yellow-900">
+                    <strong class="block mb-1 text-yellow-800">The Decision Point:</strong>
+                    Do you break these into separate roles, or integrate them into the larger organization?
+                </div>
+            </div>
+
+        </div>
+
+        <section class="mb-20 fade-section">
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center p-2 bg-sec-delivery rounded-full mb-3">
+                    <i data-lucide="layout" class="w-6 h-6 text-sec-delivery"></i>
+                </div>
+                <h2 class="text-2xl font-bold">The Delivery Model Template</h2>
+                <p class="text-gray-600">Connecting Rationalized Roles to Execution and Consistent Pricing</p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden">
+
+                    <div class="bg-sec-delivery p-5 border-b border-sec-delivery">
+                        <h3 class="text-xl font-bold text-teal-900 text-center uppercase tracking-wide">Data Engineering
+                            Delivery Model</h3>
+                    </div>
+
+                    <div class="p-6 md:p-8">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                            <div class="space-y-6">
+                                <div>
+                                    <h4
+                                        class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+                                        <i data-lucide="target" class="w-3 h-3"></i> Scope</h4>
+                                    <p class="text-sm text-gray-700 bg-gray-50 p-3 rounded border border-gray-100">
+                                        Design and implement cloud migration infrastructure, develop data pipelines
+                                        using cloud-native tools, develop queries, data governance, and policy outlines.
+                                    </p>
+                                </div>
+                                <div>
+                                    <h4
+                                        class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+                                        <i data-lucide="clock" class="w-3 h-3"></i> Scale</h4>
+                                    <div class="flex gap-4">
+                                        <span
+                                            class="bg-teal-50 text-teal-800 text-sm font-semibold px-3 py-1.5 rounded-md border border-teal-100">~1
+                                            Year Effort</span>
+                                        <span
+                                            class="bg-teal-50 text-teal-800 text-sm font-semibold px-3 py-1.5 rounded-md border border-teal-100">$2.0M
+                                            - $2.5M</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4
+                                    class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+                                    <i data-lucide="users" class="w-3 h-3"></i> Team Structure</h4>
+                                <ul class="space-y-2 text-sm">
+                                    <li class="flex justify-between items-center py-1 border-b border-gray-100">
+                                        <span class="font-semibold text-gray-800">Program Manager</span>
+                                        <span class="text-xs text-gray-500">Manager</span>
+                                    </li>
+                                    <li class="flex justify-between items-center py-1 border-b border-gray-100">
+                                        <span class="font-semibold text-gray-800">Data Architect</span>
+                                        <span class="text-xs text-gray-500">Mgr / Asst Mgr</span>
+                                    </li>
+                                    <li class="flex justify-between items-center py-1 border-b border-gray-100">
+                                        <span class="font-semibold text-gray-800">Data Engineer</span>
+                                        <span class="text-xs text-gray-500">Consultant</span>
+                                    </li>
+                                    <li class="flex justify-between items-center py-1 border-b border-gray-100">
+                                        <span class="font-semibold text-gray-800">Industry Domain</span>
+                                        <span class="text-xs text-gray-500">Consultant</span>
+                                    </li>
+                                    <li class="flex justify-between items-center py-1">
+                                        <span class="font-semibold text-gray-800">Cloud Platform</span>
+                                        <span class="text-xs text-gray-500">Entry/Consultant</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r mt-4 mb-6">
+                            <p class="text-sm text-blue-900 font-medium">
+                                "About 80% of the work is simply managing and moving data. People don't understand that
+                                AI is really a set of skills on top of that."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        class="bg-gray-50 p-5 border-t border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Modification
+                            Flexibility</span>
+                        <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                            <div
+                                class="flex items-center gap-2 bg-white px-3 py-2 rounded shadow-sm text-xs text-gray-700 border border-gray-200">
+                                <i data-lucide="arrow-down-circle" class="w-4 h-4 text-orange-500"></i> Client budget
+                                &lt; $2M <i data-lucide="arrow-right" class="w-3 h-3 text-gray-300"></i> Adjust Scope
+                            </div>
+                            <div
+                                class="flex items-center gap-2 bg-white px-3 py-2 rounded shadow-sm text-xs text-gray-700 border border-gray-200">
+                                <i data-lucide="plus-circle" class="w-4 h-4 text-green-500"></i> Client wants more <i
+                                    data-lucide="arrow-right" class="w-3 h-3 text-gray-300"></i> Combine Models
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16 fade-section">
+            <div
+                class="bg-sec-connection rounded-xl p-8 text-center border border-blue-100 shadow-sm max-w-4xl mx-auto">
+                <i data-lucide="link" class="w-8 h-8 mx-auto text-sec-connection mb-4"></i>
+                <h2 class="text-xl font-bold text-gray-900 mb-6">The Core Connection</h2>
+
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">
+                    <div
+                        class="bg-white px-6 py-3 rounded-lg border border-blue-200 font-semibold text-blue-800 shadow-sm w-full md:w-auto">
+                        Role Rationalization</div>
+                    <i data-lucide="refresh-cw" class="w-6 h-6 text-blue-400 shrink-0"></i>
+                    <div
+                        class="bg-white px-6 py-3 rounded-lg border border-blue-200 font-semibold text-blue-800 shadow-sm w-full md:w-auto">
+                        Delivery Models</div>
+                </div>
+
+                <p class="text-lg text-blue-900 font-medium italic max-w-2xl mx-auto">
+                    "The delivery model and the role rationalization must have a mapping that makes sense, in order for
+                    you to deliver and develop effective teams that you can recruit, retain, and everybody can be happy
+                    at the other end."
+                </p>
+            </div>
+        </section>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16 fade-section">
+
+            <div class="card p-6 bg-white border-red-100 overflow-hidden relative">
+                <div class="absolute top-0 left-0 w-1 h-full bg-red-400"></div>
+                <div class="flex items-center gap-2 mb-4">
+                    <i data-lucide="shield" class="w-5 h-5 text-red-500"></i>
+                    <h3 class="font-bold text-gray-900">Pay Equity & Retention</h3>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-100">
+                        <h4 class="text-sm font-bold text-red-800 mb-2 uppercase">The Manipulation Cycle</h4>
+                        <p class="text-xs text-red-900 flex items-center gap-1.5 flex-wrap">
+                            Desperate staffing <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            Find underutilized title <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            Bypass pay band <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            Selective HR relationship <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            <span class="font-bold">Inequity & Retention Loss</span>
+                        </p>
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-100">
+                        <h4 class="text-sm font-bold text-green-800 mb-2 uppercase">The Rationalization Benefit</h4>
+                        <p class="text-xs text-green-900 flex items-center gap-1.5 flex-wrap">
+                            Skill-based roles <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            Merit-based pay <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            Career progression <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            Fair workplace <i data-lucide="arrow-right" class="w-3 h-3"></i>
+                            <span class="font-bold">Consistent Profitability</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card p-6 bg-white border-orange-100 overflow-hidden relative">
+                <div class="absolute top-0 left-0 w-1 h-full bg-orange-400"></div>
+                <div class="flex items-center gap-2 mb-4">
+                    <i data-lucide="dollar-sign" class="w-5 h-5 text-orange-500"></i>
+                    <h3 class="font-bold text-gray-900">The Pricing Problem</h3>
+                </div>
+
+                <p class="text-sm text-gray-600 mb-4">When a single functional skill comes attached to different
+                    compensation levels.</p>
+
+                <div class="bg-orange-50 rounded-lg p-4 border border-orange-100">
+                    <p class="text-xs text-orange-800 font-bold mb-3 border-b border-orange-200 pb-2">"Huge range of
+                        potential compensation"</p>
+                    <ul class="space-y-3 text-sm text-gray-700">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 shrink-0"></i>
+                            <span>Pricing based on the higher title (Data Scientist) means you are <strong>way higher,
+                                    less competitive, and won't win the deal.</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="x" class="w-4 h-4 text-red-500 mt-0.5 shrink-0"></i>
+                            <span>Staffing the higher title at the skill rate means you <strong>won't be
+                                    profitable.</strong></span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check" class="w-4 h-4 text-green-500 mt-0.5 shrink-0"></i>
+                            <span><strong>Solution:</strong> Separate rationalized roles for the specific skill. Price
+                                at skill value, deliver at that price point.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <section class="mb-20 fade-section">
+            <div class="card p-6 border border-purple-100 text-center relative overflow-hidden">
+                <div
+                    class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-gray-300 via-purple-400 to-indigo-600">
+                </div>
+                <h3 class="font-bold text-gray-900 mb-6 text-lg">Organizational Skill Classification</h3>
+
+                <div class="flex items-center justify-between relative max-w-2xl mx-auto mb-6 px-4">
+                    <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -z-10 rounded"></div>
+
+                    <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm w-40">
+                        <span class="block text-xs font-bold text-gray-500 uppercase mb-1">Commodity</span>
+                        <span class="text-sm font-semibold text-gray-800">Visualization, Data Mgmt</span>
+                        <div class="text-[10px] text-gray-500 mt-1">Lower Comp Band</div>
+                    </div>
+
+                    <div class="bg-white p-3 rounded-lg border border-purple-200 shadow-sm w-40">
+                        <span class="block text-xs font-bold text-purple-500 uppercase mb-1">High-Value</span>
+                        <span class="text-sm font-semibold text-gray-800">AI / Computer Vision</span>
+                        <div class="text-[10px] text-gray-500 mt-1">Higher Comp Band</div>
+                    </div>
+                </div>
+
+                <p class="text-sm text-gray-600 italic">"Important for making sure we are not inflating salaries for a
+                    lower value employee, and not paying enough for a higher skill set."</p>
+            </div>
+        </section>
+
+        <div class="mb-16 fade-section opacity-90 border-t border-gray-200 pt-10">
+            <h3 class="text-sm font-bold text-gray-400 uppercase tracking-widest text-center mb-8">Ecosystem
+                Enhancements</h3>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <div class="lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i data-lucide="plus-circle" class="w-4 h-4 text-sec-modern"></i>
+                        <h4 class="font-bold text-gray-800 text-sm">Modern Matching Techniques</h4>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                        <div
+                            class="bg-sec-modern bg-opacity-30 p-3 rounded flex items-start gap-2 border border-green-100">
+                            <i data-lucide="cpu" class="w-4 h-4 text-green-700 mt-0.5 shrink-0"></i>
+                            <div>
+                                <strong class="text-xs text-gray-900 block">AI-Powered Taxonomies</strong>
+                                <span class="text-[10px] text-gray-600">NLP to automatically classify skills</span>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-sec-modern bg-opacity-30 p-3 rounded flex items-start gap-2 border border-green-100">
+                            <i data-lucide="network" class="w-4 h-4 text-green-700 mt-0.5 shrink-0"></i>
+                            <div>
+                                <strong class="text-xs text-gray-900 block">Graph-Based Matching</strong>
+                                <span class="text-[10px] text-gray-600">Multi-dimensional talent mapping</span>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-sec-modern bg-opacity-30 p-3 rounded flex items-start gap-2 border border-green-100">
+                            <i data-lucide="star" class="w-4 h-4 text-green-700 mt-0.5 shrink-0"></i>
+                            <div>
+                                <strong class="text-xs text-gray-900 block">Competency Assessment</strong>
+                                <span class="text-[10px] text-gray-600">Beyond binary skill listings</span>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-sec-modern bg-opacity-30 p-3 rounded flex items-start gap-2 border border-green-100">
+                            <i data-lucide="users" class="w-4 h-4 text-green-700 mt-0.5 shrink-0"></i>
+                            <div>
+                                <strong class="text-xs text-gray-900 block">Internal Talent Markets</strong>
+                                <span class="text-[10px] text-gray-600">Dynamic supply signaling</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-1 border-l border-gray-200 pl-0 lg:pl-6 pt-6 lg:pt-0 mt-6 lg:mt-0">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i data-lucide="bar-chart-2" class="w-4 h-4 text-indigo-500"></i>
+                        <h4 class="font-bold text-gray-800 text-sm">Metrics Dashboard</h4>
+                    </div>
+                    <ul class="space-y-2 text-xs text-gray-700">
+                        <li class="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>Role Family Count</span> <span class="font-bold text-gray-900">11 <i
+                                    data-lucide="arrow-right" class="w-3 h-3 inline"></i> 5</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>Pay Band Variance</span> <span class="font-bold text-green-600">Reduced</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>Pricing Consistency</span> <span class="font-bold text-green-600">High</span>
+                        </li>
+                        <li class="flex justify-between items-center bg-gray-50 p-2 rounded">
+                            <span>Match Accuracy</span> <span class="font-bold text-indigo-600">Improved</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <section
+            class="mb-12 fade-section bg-gray-900 text-white p-8 md:p-12 rounded-2xl shadow-xl relative overflow-hidden">
+            <div
+                class="absolute top-0 right-0 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-20 transform translate-x-1/2 -translate-y-1/2">
+            </div>
+
+            <i data-lucide="lightbulb" class="w-8 h-8 text-yellow-400 mb-6"></i>
+            <h2 class="text-2xl font-bold mb-6 text-white">Transforming Chaos into Clarity</h2>
+
+            <p class="text-lg text-gray-300 leading-relaxed font-light mb-6">
+                Talent-position matching transforms organizational chaos into operational clarity. When a single skill
+                search returns people from different org units with different titles, different pay, and different
+                managers, you cannot price deals consistently, staff projects optimally, or maintain pay equity.
+            </p>
+            <p class="text-lg text-gray-300 leading-relaxed font-light mb-6">
+                Hierarchical skill clustering reveals how skills actually group in your workforce — not how HR
+                categorized them. Rationalize your role families: 11 to 5, fragmented to focused. Build delivery models
+                that connect rationalized roles to client-facing team structures with realistic scope, pricing, and
+                staffing.
+            </p>
+            <p class="text-xl text-white font-medium leading-relaxed border-l-4 border-blue-400 pl-4 py-1">
+                Ensure pay equity is based on skill and merit, not on how well someone negotiated a niche title. When
+                role rationalization and delivery models have a mapping that makes sense, you can recruit, retain, and
+                deliver with consistency — and everybody can be happy at the other end.
+            </p>
+        </section>
+
+        <footer class="text-center pt-8 border-t border-gray-200 pb-12 text-sm text-gray-500 fade-section">
+            <p class="font-bold text-gray-700">Dr. Ian McCullough, Johns Hopkins University</p>
+            <p>Topic: Talent-Position Matching</p>
+            <p class="mt-4 no-print flex items-center justify-center gap-1">
+                <i data-lucide="printer" class="w-4 h-4"></i> Designed for print and digital viewing.
+            </p>
+        </footer>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Lucide icons
+            lucide.createIcons();
+
+            // 2. Add .not-visible to sections for safe fade-in
+            document.querySelectorAll('.fade-section').forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+
+            // 3. Set up IntersectionObserver
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.remove('not-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+                document.querySelectorAll('.fade-section').forEach(function (el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback for browsers without IntersectionObserver
+                document.querySelectorAll('.fade-section').forEach(function (el) {
+                    el.classList.remove('not-visible');
+                });
+            }
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 {
-  "generated": "2026-03-04",
-  "totalTags": 396,
+  "generated": "2026-04-05",
+  "totalTags": 467,
   "tags": {
     "Machine Learning": [
       "ai-introduction/introduction-to-ai.html",
@@ -267,6 +267,7 @@
     "MLOps": [
       "ai-project-management/road-framework-guide.html",
       "ai-project-management/ai-ml-project-lifecycle.html",
+      "ai-project-management/ai-project-teams-staffing.html",
       "ml-algorithms/applying-ml-algorithms-to-real-world-applications.html"
     ],
     "AI Lifecycle": [
@@ -929,7 +930,8 @@
       "ai-bias-and-risks/managing-ai-bias.html",
       "ai-bias-and-risks/responsible-ai-systems.html",
       "ai-bias-and-risks/nudging-human-bias.html",
-      "ai-bias-and-risks/transparency-and-explainability.html"
+      "ai-bias-and-risks/transparency-and-explainability.html",
+      "ai-project-management/remote-work-trends.html"
     ],
     "Human Bias": [
       "ai-bias-and-risks/introduction-to-bias-in-humans-an-machines.html"
@@ -1368,6 +1370,246 @@
     ],
     "AI Safety": [
       "generative-ai/llm-competence-and-hallucination.html"
+    ],
+    "AI Talent": [
+      "ai-project-management/ai-talent-supply-chain.html",
+      "ai-project-management/ai-labor-bubble-and-diversity-challenges.html"
+    ],
+    "Talent Management": [
+      "ai-project-management/ai-talent-supply-chain.html"
+    ],
+    "AI Staffing": [
+      "ai-project-management/ai-talent-supply-chain.html",
+      "ai-project-management/ai-project-teams-staffing.html",
+      "ai-project-management/talent-position-matching.html"
+    ],
+    "Workforce Planning": [
+      "ai-project-management/ai-talent-supply-chain.html"
+    ],
+    "AI Teams": [
+      "ai-project-management/ai-talent-supply-chain.html",
+      "ai-project-management/ai-project-teams-core-roles.html",
+      "ai-project-management/ai-project-teams-role-descriptions.html",
+      "ai-project-management/ai-project-teams-staffing.html",
+      "ai-project-management/skill-assessment.html",
+      "ai-project-management/performance-assessment-frameworks.html",
+      "ai-project-management/remote-work-trends.html"
+    ],
+    "Hiring Strategy": [
+      "ai-project-management/ai-talent-supply-chain.html"
+    ],
+    "Talent Supply Chain": [
+      "ai-project-management/ai-talent-supply-chain.html"
+    ],
+    "AI Practice Building": [
+      "ai-project-management/ai-talent-supply-chain.html"
+    ],
+    "AI Project Teams": [
+      "ai-project-management/ai-project-teams-core-roles.html",
+      "ai-project-management/ai-project-teams-role-descriptions.html"
+    ],
+    "AI Roles": [
+      "ai-project-management/ai-project-teams-core-roles.html",
+      "ai-project-management/ai-project-teams-role-descriptions.html",
+      "ai-project-management/talent-position-matching.html"
+    ],
+    "Data Engineer": [
+      "ai-project-management/ai-project-teams-core-roles.html",
+      "ai-project-management/ai-project-teams-role-descriptions.html"
+    ],
+    "Data Scientist": [
+      "ai-project-management/ai-project-teams-core-roles.html",
+      "ai-project-management/ai-project-teams-role-descriptions.html"
+    ],
+    "AI Architect": [
+      "ai-project-management/ai-project-teams-core-roles.html",
+      "ai-project-management/ai-project-teams-role-descriptions.html"
+    ],
+    "AI Team Structure": [
+      "ai-project-management/ai-project-teams-core-roles.html",
+      "ai-project-management/ai-project-teams-role-descriptions.html",
+      "ai-project-management/ai-project-teams-staffing.html"
+    ],
+    "Requirements Analysis": [
+      "ai-project-management/ai-project-teams-core-roles.html"
+    ],
+    "Flash Team Model": [
+      "ai-project-management/ai-project-teams-role-descriptions.html"
+    ],
+    "Domain Expert": [
+      "ai-project-management/ai-project-teams-role-descriptions.html"
+    ],
+    "Labor Specialization": [
+      "ai-project-management/ai-project-teams-role-descriptions.html"
+    ],
+    "Huddleston Model": [
+      "ai-project-management/ai-project-teams-staffing.html"
+    ],
+    "Development Environment": [
+      "ai-project-management/ai-project-teams-staffing.html"
+    ],
+    "Production Environment": [
+      "ai-project-management/ai-project-teams-staffing.html"
+    ],
+    "Vendor Lock-in": [
+      "ai-project-management/ai-project-teams-staffing.html"
+    ],
+    "Talent Matching": [
+      "ai-project-management/talent-position-matching.html"
+    ],
+    "Pay Equity": [
+      "ai-project-management/talent-position-matching.html"
+    ],
+    "AI Workforce": [
+      "ai-project-management/talent-position-matching.html",
+      "ai-project-management/current-and-emerging-labor-trends.html",
+      "ai-project-management/ai-labor-bubble-and-diversity-challenges.html"
+    ],
+    "Job Family": [
+      "ai-project-management/talent-position-matching.html"
+    ],
+    "HR Strategy": [
+      "ai-project-management/talent-position-matching.html"
+    ],
+    "Compensation Strategy": [
+      "ai-project-management/talent-position-matching.html"
+    ],
+    "Workforce Fragmentation": [
+      "ai-project-management/talent-position-matching.html"
+    ],
+    "Skill Assessment": [
+      "ai-project-management/skill-assessment.html"
+    ],
+    "AI Training": [
+      "ai-project-management/skill-assessment.html"
+    ],
+    "Personalized Learning": [
+      "ai-project-management/skill-assessment.html"
+    ],
+    "Workforce Development": [
+      "ai-project-management/skill-assessment.html"
+    ],
+    "Learning Optimization": [
+      "ai-project-management/skill-assessment.html"
+    ],
+    "Skills Gap Analysis": [
+      "ai-project-management/skill-assessment.html"
+    ],
+    "Training Effectiveness": [
+      "ai-project-management/skill-assessment.html"
+    ],
+    "Performance Assessment": [
+      "ai-project-management/performance_assessment.html",
+      "ai-project-management/performance-assessment-frameworks.html"
+    ],
+    "AI Organizations": [
+      "ai-project-management/performance_assessment.html",
+      "ai-project-management/performance-assessment-frameworks.html"
+    ],
+    "Structural Conflict": [
+      "ai-project-management/performance_assessment.html"
+    ],
+    "KPIs": [
+      "ai-project-management/performance_assessment.html",
+      "ai-project-management/performance-assessment-frameworks.html"
+    ],
+    "Strategic Alignment": [
+      "ai-project-management/performance_assessment.html"
+    ],
+    "Portfolio Management": [
+      "ai-project-management/performance_assessment.html"
+    ],
+    "AI Industry": [
+      "ai-project-management/performance_assessment.html",
+      "ai-project-management/performance-assessment-frameworks.html"
+    ],
+    "Misaligned Goals": [
+      "ai-project-management/performance_assessment.html"
+    ],
+    "Performance Frameworks": [
+      "ai-project-management/performance-assessment-frameworks.html"
+    ],
+    "OKRs": [
+      "ai-project-management/performance-assessment-frameworks.html"
+    ],
+    "Performance Management": [
+      "ai-project-management/performance-assessment-frameworks.html"
+    ],
+    "Reward Systems": [
+      "ai-project-management/performance-assessment-frameworks.html"
+    ],
+    "Retention Strategy": [
+      "ai-project-management/performance-assessment-frameworks.html"
+    ],
+    "Performance Matrix": [
+      "ai-project-management/performance-assessment-frameworks.html"
+    ],
+    "Labor Trends": [
+      "ai-project-management/current-and-emerging-labor-trends.html"
+    ],
+    "Automation": [
+      "ai-project-management/current-and-emerging-labor-trends.html"
+    ],
+    "Augmentation": [
+      "ai-project-management/current-and-emerging-labor-trends.html"
+    ],
+    "AI Jobs": [
+      "ai-project-management/current-and-emerging-labor-trends.html"
+    ],
+    "Future of Work": [
+      "ai-project-management/current-and-emerging-labor-trends.html"
+    ],
+    "AI Labor Market": [
+      "ai-project-management/current-and-emerging-labor-trends.html",
+      "ai-project-management/ai-labor-bubble-and-diversity-challenges.html"
+    ],
+    "Workforce Transformation": [
+      "ai-project-management/current-and-emerging-labor-trends.html"
+    ],
+    "AI Adoption": [
+      "ai-project-management/current-and-emerging-labor-trends.html"
+    ],
+    "Remote Work": [
+      "ai-project-management/remote-work-trends.html"
+    ],
+    "Offshore Development": [
+      "ai-project-management/remote-work-trends.html"
+    ],
+    "Blended Teams": [
+      "ai-project-management/remote-work-trends.html"
+    ],
+    "Work Models": [
+      "ai-project-management/remote-work-trends.html"
+    ],
+    "Cost Optimization": [
+      "ai-project-management/remote-work-trends.html"
+    ],
+    "Innovation": [
+      "ai-project-management/remote-work-trends.html"
+    ],
+    "Global Workforce": [
+      "ai-project-management/remote-work-trends.html"
+    ],
+    "Diversity in AI": [
+      "ai-project-management/ai-labor-bubble-and-diversity-challenges.html"
+    ],
+    "Women in STEM": [
+      "ai-project-management/ai-labor-bubble-and-diversity-challenges.html"
+    ],
+    "AI Talent Scarcity": [
+      "ai-project-management/ai-labor-bubble-and-diversity-challenges.html"
+    ],
+    "Inclusion": [
+      "ai-project-management/ai-labor-bubble-and-diversity-challenges.html"
+    ],
+    "DEI": [
+      "ai-project-management/ai-labor-bubble-and-diversity-challenges.html"
+    ],
+    "AI Industry Trends": [
+      "ai-project-management/ai-labor-bubble-and-diversity-challenges.html"
+    ],
+    "Workforce Diversity": [
+      "ai-project-management/ai-labor-bubble-and-diversity-challenges.html"
     ]
   }
 }

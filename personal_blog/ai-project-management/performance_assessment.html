@@ -1,0 +1,1667 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Assessment — Interactive Infographic</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="title" content="Performance Assessment in the AI Industry — Navigating Misaligned Goals">
+    <meta name="description" content="Navigate performance assessment challenges in AI organizations. Explore 5 sources of structural conflict: portfolio vs. overhead, project vs. technical roles, and values vs. profitability. Includes $75M IRS Deal case study on misaligned performance metrics.">
+    <meta name="author" content="Sriramkishore Naraharisetti">
+    <meta name="category" content="AI Project Management">
+    <meta name="tags" content="Performance Assessment, AI Organizations, Structural Conflict, KPIs, Strategic Alignment, Portfolio Management, AI Industry, Misaligned Goals">
+    <meta name="robots" content="index, follow">
+    <meta name="ai-summary" content="Performance assessment in AI organizations navigates misaligned goals, structural conflicts, and strategic alignment challenges. Five conflict sources: portfolio vs. overhead evaluation, project vs. technical role metrics, values vs. profitability tensions. The $75M IRS Deal case study demonstrates how misaligned performance metrics impact AI delivery outcomes.">
+    <link rel="canonical" href="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/performance_assessment">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Performance Assessment in the AI Industry — Navigating Misaligned Goals">
+    <meta property="og:description" content="Navigate performance assessment challenges in AI organizations. Explore 5 sources of structural conflict: portfolio vs. overhead, project vs. technical roles, and values vs. profitability. Includes $75M IRS Deal case study on misaligned performance metrics.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/performance_assessment">
+    <meta property="og:site_name" content="Kishore's Blog">
+    <meta property="article:author" content="Sriramkishore Naraharisetti">
+    <meta property="article:published_time" content="2025-04-07">
+    <meta property="article:section" content="AI Project Management">
+    <meta property="article:tag" content="Performance Assessment">
+    <meta property="article:tag" content="Strategic Alignment">
+    <meta property="article:tag" content="AI Organizations">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Performance Assessment in the AI Industry — Navigating Misaligned Goals",
+        "description": "Navigate performance assessment challenges in AI organizations. Explore 5 sources of structural conflict: portfolio vs. overhead, project vs. technical roles, and values vs. profitability. Includes $75M IRS Deal case study on misaligned performance metrics.",
+        "datePublished": "2025-04-07",
+        "dateModified": "2025-04-07",
+        "author": {
+            "@type": "Person",
+            "name": "Sriramkishore Naraharisetti",
+            "url": "https://www.kishoretech.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "kishoretech.com",
+            "url": "https://www.kishoretech.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.kishoretech.com/personal_blog/post.html?article=ai-project-management/performance_assessment"
+        },
+        "keywords": ["Performance Assessment", "AI Organizations", "Structural Conflict", "KPIs", "Strategic Alignment", "Portfolio Management", "AI Industry", "Misaligned Goals"],
+        "articleSection": "AI Project Management"
+    }
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.1/dist/umd/lucide.min.js"></script>
+    <script>
+        // Fallback: if lucide failed to load, create a no-op so the page doesn't break
+        if (typeof lucide === 'undefined') {
+            window.lucide = {
+                createIcons: function () {
+                    document.querySelectorAll('[data-lucide]').forEach(function (el) {
+                        el.style.display = 'inline-block';
+                        el.style.width = el.style.width || '20px';
+                        el.style.height = el.style.height || '20px';
+                    });
+                }
+            };
+        }
+    </script>
+    <style>
+        :root {
+            --color-heading: #1E293B;
+            --color-body: #475569;
+            --color-secondary: #64748B;
+            --color-border: #E2E8F0;
+            --color-bg: #FAFBFC;
+            --color-card: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--color-body);
+            background: var(--color-bg);
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5 {
+            font-family: 'Sora', sans-serif;
+            color: var(--color-heading);
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        /* Rainbow accent stripe */
+        .rainbow-stripe {
+            height: 5px;
+            background: linear-gradient(90deg, #DC2626, #EA580C, #D97706, #16A34A, #2563EB, #6366F1, #A855F7);
+        }
+
+        /* Section backgrounds */
+        .sec-header {
+            background-color: #F0F9FF;
+        }
+
+        .sec-opening {
+            background-color: #F8FAFC;
+        }
+
+        .sec-strategy {
+            background-color: #FDF4FF;
+        }
+
+        .sec-portfolio {
+            background-color: #FFF7ED;
+        }
+
+        .sec-overhead {
+            background-color: #EFF6FF;
+        }
+
+        .sec-five-conflicts {
+            background-color: #FEF2F2;
+        }
+
+        .sec-account-comp {
+            background-color: #FDF4FF;
+        }
+
+        .sec-75m {
+            background-color: #F0FDF4;
+        }
+
+        .sec-intuition {
+            background-color: #FEF3C7;
+        }
+
+        .sec-proj-tech {
+            background-color: #FEF2F2;
+        }
+
+        .sec-values {
+            background-color: #E0E7FF;
+        }
+
+        .sec-undervaluation {
+            background-color: #FFF7ED;
+        }
+
+        .sec-principles {
+            background-color: #D1FAE5;
+        }
+
+        .sec-methods {
+            background-color: #E0E7FF;
+        }
+
+        .sec-metrics {
+            background-color: #EFF6FF;
+        }
+
+        .sec-takeaways {
+            background-color: #F0FDF4;
+        }
+
+        /* Accent colors */
+        .accent-header {
+            color: #0EA5E9;
+        }
+
+        .accent-opening {
+            color: #475569;
+        }
+
+        .accent-strategy {
+            color: #A855F7;
+        }
+
+        .accent-portfolio {
+            color: #EA580C;
+        }
+
+        .accent-overhead {
+            color: #2563EB;
+        }
+
+        .accent-conflicts {
+            color: #DC2626;
+        }
+
+        .accent-account {
+            color: #A855F7;
+        }
+
+        .accent-75m {
+            color: #16A34A;
+        }
+
+        .accent-intuition {
+            color: #D97706;
+        }
+
+        .accent-projtech {
+            color: #DC2626;
+        }
+
+        .accent-values {
+            color: #6366F1;
+        }
+
+        .accent-underval {
+            color: #EA580C;
+        }
+
+        .accent-principles {
+            color: #10B981;
+        }
+
+        .accent-methods {
+            color: #6366F1;
+        }
+
+        .accent-metrics {
+            color: #2563EB;
+        }
+
+        .accent-takeaways {
+            color: #22C55E;
+        }
+
+        .border-accent-header {
+            border-color: #0EA5E9;
+        }
+
+        .border-accent-strategy {
+            border-color: #A855F7;
+        }
+
+        .border-accent-portfolio {
+            border-color: #EA580C;
+        }
+
+        .border-accent-overhead {
+            border-color: #2563EB;
+        }
+
+        .border-accent-conflicts {
+            border-color: #DC2626;
+        }
+
+        .border-accent-75m {
+            border-color: #16A34A;
+        }
+
+        .border-accent-intuition {
+            border-color: #D97706;
+        }
+
+        .border-accent-projtech {
+            border-color: #DC2626;
+        }
+
+        .border-accent-values {
+            border-color: #6366F1;
+        }
+
+        .border-accent-underval {
+            border-color: #EA580C;
+        }
+
+        .border-accent-principles {
+            border-color: #10B981;
+        }
+
+        .bg-accent-header {
+            background-color: #0EA5E9;
+        }
+
+        .bg-accent-strategy {
+            background-color: #A855F7;
+        }
+
+        .bg-accent-portfolio {
+            background-color: #EA580C;
+        }
+
+        .bg-accent-overhead {
+            background-color: #2563EB;
+        }
+
+        .bg-accent-conflicts {
+            background-color: #DC2626;
+        }
+
+        .bg-accent-75m {
+            background-color: #16A34A;
+        }
+
+        .bg-accent-intuition {
+            background-color: #D97706;
+        }
+
+        .bg-accent-projtech {
+            background-color: #DC2626;
+        }
+
+        .bg-accent-values {
+            background-color: #6366F1;
+        }
+
+        .bg-accent-underval {
+            background-color: #EA580C;
+        }
+
+        /* Card styles */
+        .info-card {
+            background: var(--color-card);
+            border: 1.5px solid var(--color-border);
+            border-radius: 14px;
+            padding: 24px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px) scale(1.01);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        }
+
+        .section-spacing {
+            padding: 48px 0;
+        }
+
+        @media (max-width: 640px) {
+            .section-spacing {
+                padding: 32px 0;
+            }
+        }
+
+        /* Badge */
+        .sec-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Sora', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 4px 12px;
+            border-radius: 6px;
+        }
+
+        .stat-badge {
+            display: inline-block;
+            background-color: #D1FAE5;
+            color: #065F46;
+            font-family: 'Sora', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 8px;
+        }
+
+        /* Signature visual panels */
+        .dual-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 640px) {
+            .dual-panel {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel-card {
+            background: var(--color-card);
+            border: 1.5px solid var(--color-border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .panel-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Flow arrow */
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--color-secondary);
+            padding: 8px 0;
+        }
+
+        /* Grid layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        @media (max-width: 640px) {
+
+            .grid-2,
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cascade visual */
+        .cascade-node {
+            background: var(--color-card);
+            border: 2px solid #A855F7;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cascade-node:hover {
+            transform: scale(1.03);
+            box-shadow: 0 6px 20px rgba(168, 85, 247, 0.15);
+        }
+
+        .cascade-input {
+            background: #FDF4FF;
+            border: 1.5px dashed #A855F7;
+            border-radius: 10px;
+            padding: 14px;
+        }
+
+        /* Conflict numbered list */
+        .conflict-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background-color: #DC2626;
+            color: #fff;
+            font-family: 'Sora', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Scenario box */
+        .scenario-box {
+            background: #FEF2F2;
+            border: 1.5px solid #FECACA;
+            border-radius: 10px;
+            padding: 16px;
+        }
+
+        /* Fade animation - SAFE PATTERN */
+        .fade-section {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-section.not-visible {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: #fff !important;
+            }
+
+            .info-card,
+            .panel-card,
+            .cascade-node {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+            }
+
+            .info-card:hover,
+            .panel-card:hover,
+            .cascade-node:hover {
+                transform: none !important;
+                box-shadow: none !important;
+            }
+
+            .fade-section.not-visible {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .rainbow-stripe {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+
+            .section-spacing {
+                page-break-inside: avoid;
+            }
+
+            .sec-header,
+            .sec-opening,
+            .sec-strategy,
+            .sec-portfolio,
+            .sec-overhead,
+            .sec-five-conflicts,
+            .sec-account-comp,
+            .sec-75m,
+            .sec-intuition,
+            .sec-proj-tech,
+            .sec-values,
+            .sec-undervaluation,
+            .sec-principles,
+            .sec-methods,
+            .sec-metrics,
+            .sec-takeaways {
+                print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ============ SECTION A — HEADER ============ -->
+    <div class="rainbow-stripe"></div>
+    <section class="sec-header section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-4">
+                <i data-lucide="target" style="width:20px;height:20px;color:#0EA5E9;"></i>
+                <span class="sec-badge" style="background:#E0F2FE;color:#0369A1;">Dr. Ian McCullough &bull; Johns
+                    Hopkins University</span>
+            </div>
+            <h1 style="font-size:36px;font-weight:800;line-height:1.15;margin-bottom:12px;">Performance Assessment</h1>
+            <p style="font-size:18px;color:var(--color-body);line-height:1.6;max-width:780px;margin-bottom:20px;">
+                Navigating Misaligned Goals, Structural Conflicts, and the Strategic Alignment That Determines Who Gets
+                Rated, Recognized, and Retained in AI Organizations
+            </p>
+            <p style="font-size:14px;color:var(--color-secondary);line-height:1.6;max-width:780px;margin-bottom:24px;">
+                Explore how organizational strategy — from vision through operating concepts — shapes performance
+                assessment systems, why five distinct sources of conflict make evaluation a structural challenge, and
+                what happens when organizations get it wrong.
+            </p>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                <span class="stat-badge">$75M IRS Deal</span>
+                <span class="stat-badge">5 Sources of Conflict</span>
+                <span class="stat-badge">Portfolio vs. Overhead</span>
+                <span class="stat-badge">Project vs. Technical</span>
+                <span class="stat-badge">Values vs. Profitability</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION B — OPENING FRAMING ============ -->
+    <section class="sec-opening section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#F1F5F9;color:#334155;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#334155;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">B</span>
+                    Opening Framing</span>
+            </div>
+            <div class="info-card" style="border-left:4px solid #475569;">
+                <div class="flex items-start gap-3 mb-4">
+                    <i data-lucide="alert-triangle"
+                        style="width:24px;height:24px;color:#475569;flex-shrink:0;margin-top:2px;"></i>
+                    <h2 style="font-size:22px;font-weight:700;margin:0;">Misaligned Goals — The Root of Conflict</h2>
+                </div>
+                <p style="font-size:15px;line-height:1.7;margin-bottom:14px;">
+                    Most organizational conflict is the result of misaligned goals, priorities, and incentives. People
+                    compete against different priorities — one person wants to upsell the client and generate more
+                    revenue, while another wants to deliver good quality and ensure the client feels well taken care of.
+                    Neither side is wrong. They have a difference of opinion on what is most important and what should
+                    garner the most resources, the attention of the boss, and the better praise on an assessment.
+                </p>
+                <p style="font-size:15px;line-height:1.7;margin-bottom:14px;">
+                    This leads to conflict — competing for resources, for time, for a limited pool of bonus money. One
+                    manager wants bonuses for their people, another manager wants them for theirs. It is not about the
+                    employee as much as it is about the tasks the employees were asked to do and which one the
+                    organization values more. Whenever you have misaligned goals, priorities, and incentives, you will
+                    find organizational conflict exists.
+                </p>
+                <p style="font-size:14px;line-height:1.6;color:var(--color-secondary);margin-bottom:14px;">
+                    This insight reframes performance assessment as a strategic alignment challenge rather than merely a
+                    measurement exercise — the system itself becomes a mechanism for communicating and reinforcing what
+                    the organization truly values. When assessment criteria do not reflect organizational strategy, they
+                    create a gap between what leadership says it wants and what the incentive structure actually
+                    rewards.
+                </p>
+                <div style="background:#F1F5F9;border-radius:10px;padding:14px 18px;margin-top:16px;">
+                    <p style="font-size:14px;font-weight:600;color:var(--color-heading);margin:0;">
+                        <i data-lucide="arrow-right"
+                            style="width:14px;height:14px;display:inline;vertical-align:middle;margin-right:4px;"></i>
+                        To design an effective assessment system, we must first understand how strategy drives
+                        organizational structure.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION C — STRATEGIC ALIGNMENT CASCADE (SIGNATURE 1) ============ -->
+    <section class="sec-strategy section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#F3E8FF;color:#7C3AED;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#7C3AED;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">C</span>
+                    Signature Visual</span>
+            </div>
+            <div class="flex items-start gap-3 mb-5">
+                <i data-lucide="target" style="width:26px;height:26px;color:#A855F7;flex-shrink:0;margin-top:2px;"></i>
+                <h2 style="font-size:24px;font-weight:700;">The Strategic Alignment Cascade</h2>
+            </div>
+            <p style="font-size:15px;line-height:1.7;margin-bottom:24px;max-width:780px;">
+                Strategy has several components. How an organization structures its strategy directly determines how it
+                designs its performance assessment system — who rates whom, what gets measured, and what gets rewarded.
+            </p>
+
+            <!-- Cascade Visual -->
+            <div style="max-width:700px;margin:0 auto;">
+                <!-- Inputs row -->
+                <div class="grid-2" style="margin-bottom:16px;">
+                    <div class="cascade-input">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="compass" style="width:16px;height:16px;color:#A855F7;"></i>
+                            <h4 style="font-size:14px;font-weight:700;margin:0;color:#7C3AED;">Strategic Guidance</h4>
+                        </div>
+                        <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">Parent company
+                            direction, board stakeholders, market trends, whether the organization is more innovative or
+                            more established</p>
+                    </div>
+                    <div class="cascade-input">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i data-lucide="globe" style="width:16px;height:16px;color:#A855F7;"></i>
+                            <h4 style="font-size:14px;font-weight:700;margin:0;color:#7C3AED;">Strategic Environment
+                            </h4>
+                        </div>
+                        <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">External
+                            collaboration, competition, partnerships, internal competition for capabilities</p>
+                    </div>
+                </div>
+                <div class="flow-arrow">↓ Feeds Into ↓</div>
+
+                <!-- Vision -->
+                <div class="cascade-node" style="margin-bottom:4px;">
+                    <h3 style="font-size:18px;font-weight:800;margin:0 0 6px 0;color:#7C3AED;">VISION</h3>
+                    <p style="font-size:14px;margin:0;color:var(--color-body);">What are we about? What is our mission?
+                        What are the imperatives — what to do and not do? This is the strategic approach.</p>
+                </div>
+                <div class="flow-arrow">↓</div>
+
+                <!-- Campaign Plan + Operating Concept -->
+                <div class="grid-2" style="margin-bottom:4px;">
+                    <div class="cascade-node">
+                        <h3 style="font-size:16px;font-weight:700;margin:0 0 6px 0;color:#7C3AED;">CAMPAIGN PLAN</h3>
+                        <p style="font-size:13px;margin:0;color:var(--color-body);">How do we attack the vision of the
+                            market? What clients do we pursue? What work do we take or not take? How do we prioritize
+                            business development and offerings?</p>
+                    </div>
+                    <div class="cascade-node">
+                        <h3 style="font-size:16px;font-weight:700;margin:0 0 6px 0;color:#7C3AED;">OPERATING CONCEPT
+                        </h3>
+                        <p style="font-size:13px;margin:0;color:var(--color-body);">How do we posture the organization
+                            to achieve the vision? What roles? What organizational structure? Who is going to be in
+                            charge?</p>
+                    </div>
+                </div>
+                <div class="flow-arrow">↓</div>
+
+                <!-- Bottom row: Horizontal/Overhead + Portfolio Campaigns -->
+                <div class="grid-2" style="margin-bottom:4px;">
+                    <div class="cascade-node" style="border-color:#2563EB;">
+                        <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;color:#2563EB;">Horizontal / Overhead
+                        </h4>
+                        <p style="font-size:12px;margin:0;color:var(--color-secondary);">Common capabilities, core
+                            offerings, internal investment, asset development and management</p>
+                    </div>
+                    <div class="cascade-node" style="border-color:#EA580C;">
+                        <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;color:#EA580C;">Portfolio Campaigns
+                        </h4>
+                        <p style="font-size:12px;margin:0;color:var(--color-secondary);">Prioritized P&amp;L accounts,
+                            business development, risk, wedge deals vs. net new</p>
+                    </div>
+                </div>
+                <div class="flow-arrow">↓</div>
+
+                <!-- Execution -->
+                <div class="cascade-node" style="border-color:#475569;background:#F8FAFC;">
+                    <h3 style="font-size:16px;font-weight:700;margin:0 0 6px 0;color:#334155;">EXECUTION</h3>
+                    <p style="font-size:13px;margin:0;color:var(--color-body);">As you execute, you assess the strategy
+                        and reevaluate. This determines the performance assessment approach.</p>
+                </div>
+                <div class="flow-arrow">↓</div>
+
+                <!-- Assessment & Strategy Evaluation -->
+                <div class="cascade-node" style="border-color:#A855F7;background:#F3E8FF;">
+                    <h3 style="font-size:16px;font-weight:700;margin:0 0 6px 0;color:#7C3AED;">ASSESSMENT &amp; STRATEGY
+                        EVALUATION</h3>
+                    <p style="font-size:13px;margin:0;color:var(--color-body);">Re-prioritize and re-allocate. Who rates
+                        whom? What is measured? What gets rewarded?</p>
+                </div>
+
+                <!-- Feedback loop indicator -->
+                <div style="text-align:center;padding:16px 0 0;">
+                    <span
+                        style="display:inline-block;background:#F3E8FF;color:#7C3AED;font-family:'Sora',sans-serif;font-size:12px;font-weight:700;padding:6px 16px;border-radius:20px;">
+                        ↻ Execute → Assess → Reevaluate → Repeat
+                    </span>
+                </div>
+            </div>
+
+            <p
+                style="font-size:14px;line-height:1.6;color:var(--color-secondary);margin-top:20px;max-width:700px;margin-left:auto;margin-right:auto;text-align:center;">
+                Performance criteria should be traceable back to the organization's vision. Organizations that change
+                strategy without updating assessment systems create the most acute form of misalignment.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============ SECTION D — PORTFOLIO-HEAVY ORGANIZATIONS ============ -->
+    <section class="sec-portfolio section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#FFEDD5;color:#C2410C;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#C2410C;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">D</span>
+                    Organizational Model</span>
+            </div>
+            <div class="info-card" style="border-left:4px solid #EA580C;">
+                <div class="flex items-start gap-3 mb-4">
+                    <i data-lucide="briefcase"
+                        style="width:24px;height:24px;color:#EA580C;flex-shrink:0;margin-top:2px;"></i>
+                    <h2 style="font-size:22px;font-weight:700;">Portfolio-Heavy Organizations — Account-Led Assessment
+                    </h2>
+                </div>
+                <p style="font-size:15px;line-height:1.7;margin-bottom:14px;">
+                    Some organizations are portfolio heavy. People manage portfolio campaigns, and the performance cycle
+                    is based on that portfolio — the account lead. The account lead is responsible for the profit and
+                    loss. They do the business development. They assess risk. They go after either wedge deals — sales
+                    growth on an existing client — or net new business.
+                </p>
+                <p style="font-size:15px;line-height:1.7;margin-bottom:14px;">
+                    They are primarily rating the people that are working on those accounts. People might be aligned to
+                    the AI practice or the IT practice, but their main role is client-facing, client-accounted,
+                    supporting that campaign.
+                </p>
+                <div class="grid-2" style="margin-top:16px;">
+                    <div style="background:#FFF7ED;border-radius:10px;padding:14px;">
+                        <h4 style="font-size:14px;font-weight:700;color:#C2410C;margin:0 0 8px 0;">Account Lead
+                            Responsibilities</h4>
+                        <p style="font-size:13px;line-height:1.6;margin:0;color:var(--color-body);">Profit &amp; Loss
+                            ownership, business development, risk assessment, wedge deals, net new business acquisition
+                        </p>
+                    </div>
+                    <div style="background:#FFF7ED;border-radius:10px;padding:14px;">
+                        <h4 style="font-size:14px;font-weight:700;color:#C2410C;margin:0 0 8px 0;">Assessment Emphasis
+                        </h4>
+                        <p style="font-size:13px;line-height:1.6;margin:0;color:var(--color-body);">Revenue generation,
+                            client satisfaction, delivery execution — the metrics that directly impact the account
+                            P&amp;L</p>
+                    </div>
+                </div>
+                <p style="font-size:14px;line-height:1.6;color:var(--color-secondary);margin-top:14px;">
+                    The risk is that technical depth, capability development, and cross-account knowledge sharing are
+                    undervalued because they do not directly appear in any single account's P&amp;L.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION E — HORIZONTAL OVERHEAD ORGANIZATIONS ============ -->
+    <section class="sec-overhead section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#DBEAFE;color:#1D4ED8;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#1D4ED8;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">E</span>
+                    Organizational Model</span>
+            </div>
+            <div class="info-card" style="border-left:4px solid #2563EB;">
+                <div class="flex items-start gap-3 mb-4">
+                    <i data-lucide="layers"
+                        style="width:24px;height:24px;color:#2563EB;flex-shrink:0;margin-top:2px;"></i>
+                    <h2 style="font-size:22px;font-weight:700;">Horizontal Overhead — Capability-Led Assessment</h2>
+                </div>
+                <p style="font-size:15px;line-height:1.7;margin-bottom:14px;">
+                    Other organizations prioritize the horizontal overhead — common capabilities and core offerings.
+                    There might be capability groups focused on a particular skill set or type of offering. For example,
+                    an AI organization that is deep in computer vision and deep learning providing those services across
+                    20 different client accounts.
+                </p>
+                <div
+                    style="background:#EFF6FF;border:1.5px solid #BFDBFE;border-radius:12px;padding:18px;margin-bottom:14px;text-align:center;">
+                    <h4 style="font-size:16px;font-weight:700;color:#1D4ED8;margin:0 0 8px 0;">The Fundamental Question
+                    </h4>
+                    <p style="font-size:15px;font-weight:600;color:var(--color-heading);margin:0;">
+                        If you are the AI person, who is your primary boss?
+                    </p>
+                    <div class="grid-2" style="margin-top:14px;">
+                        <div style="background:#fff;border-radius:8px;padding:12px;">
+                            <p style="font-size:14px;font-weight:600;color:#2563EB;margin:0 0 4px 0;">AI Practice Lead
+                            </p>
+                            <p style="font-size:13px;color:var(--color-secondary);margin:0;">Horizontal overhead</p>
+                        </div>
+                        <div style="background:#fff;border-radius:8px;padding:12px;">
+                            <p style="font-size:14px;font-weight:600;color:#EA580C;margin:0 0 4px 0;">Account Lead</p>
+                            <p style="font-size:13px;color:var(--color-secondary);margin:0;">Portfolio</p>
+                        </div>
+                    </div>
+                </div>
+                <p style="font-size:14px;line-height:1.6;color:var(--color-secondary);">
+                    These are decisions organizations must decide as part of their operating concept. It determines how
+                    they assess what is happening. Whoever rates you shapes what you prioritize — dual-reporting
+                    structures create competing expectations employees must navigate.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION F — FIVE SOURCES OF CONFLICT (SIGNATURE 2) ============ -->
+    <section class="sec-five-conflicts section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#FEE2E2;color:#B91C1C;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#B91C1C;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">F</span>
+                    Signature Visual</span>
+            </div>
+            <div class="flex items-start gap-3 mb-5">
+                <i data-lucide="alert-circle"
+                    style="width:26px;height:26px;color:#DC2626;flex-shrink:0;margin-top:2px;"></i>
+                <h2 style="font-size:24px;font-weight:700;">Five Sources of Organizational Conflict</h2>
+            </div>
+            <p style="font-size:15px;line-height:1.7;margin-bottom:24px;">
+                Performance assessment systems must account for these five distinct sources of conflict — each
+                representing a different way misaligned incentives manifest in AI organizations. These conflicts are not
+                failures; they are structural features of complex organizations.
+            </p>
+
+            <div style="display:flex;flex-direction:column;gap:14px;">
+                <!-- Conflict 1 -->
+                <div class="info-card" style="border-left:4px solid #A855F7;padding:18px 20px;">
+                    <div class="flex items-start gap-3">
+                        <span class="conflict-num">1</span>
+                        <div>
+                            <h4 style="font-size:16px;font-weight:700;margin:0 0 6px 0;">Account Portfolio Competition
+                            </h4>
+                            <p style="font-size:14px;line-height:1.6;margin:0;color:var(--color-body);">Resources that
+                                help a fellow portfolio create competition. Two computer vision people sharing code
+                                between accounts — now portfolio leads compete for biggest revenue or growth. Your boss
+                                asks: why are you helping another account instead of mine?</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Conflict 2 -->
+                <div class="info-card" style="border-left:4px solid #16A34A;padding:18px 20px;">
+                    <div class="flex items-start gap-3">
+                        <span class="conflict-num" style="background:#16A34A;">2</span>
+                        <div>
+                            <h4 style="font-size:16px;font-weight:700;margin:0 0 6px 0;">Overhead vs. Portfolio P&amp;L
+                                Competition</h4>
+                            <p style="font-size:14px;line-height:1.6;margin:0;color:var(--color-body);">The $75 million
+                                IRS AI deal — who gets credit for the P&amp;L? The account lead with decades of
+                                relationships, or the AI specialist who brought the technical solution? A fundamental
+                                attribution challenge.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Conflict 3 -->
+                <div class="info-card" style="border-left:4px solid #D97706;padding:18px 20px;">
+                    <div class="flex items-start gap-3">
+                        <span class="conflict-num" style="background:#D97706;">3</span>
+                        <div>
+                            <h4 style="font-size:16px;font-weight:700;margin:0 0 6px 0;">Intuition vs. Data-Driven
+                                Decisions</h4>
+                            <p style="font-size:14px;line-height:1.6;margin:0;color:var(--color-body);">Malcolm
+                                Gladwell's "Blink" argues intuitive judgment is not necessarily inferior — it is a
+                                different way of making decisions. Sometimes data-driven organizations are better, other
+                                times intuition-driven organizations are better. No clear right answer.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Conflict 4 -->
+                <div class="info-card" style="border-left:4px solid #DC2626;padding:18px 20px;">
+                    <div class="flex items-start gap-3">
+                        <span class="conflict-num">4</span>
+                        <div>
+                            <h4 style="font-size:16px;font-weight:700;margin:0 0 6px 0;">Project vs. Technical
+                                Leadership</h4>
+                            <p style="font-size:14px;line-height:1.6;margin:0;color:var(--color-body);">Schedule and
+                                milestones vs. solution quality. Should we delay a week to fix a major problem? Running
+                                over budget — where do we cut? Who gets to make that decision? This inevitably causes
+                                conflict.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Conflict 5 -->
+                <div class="info-card" style="border-left:4px solid #6366F1;padding:18px 20px;">
+                    <div class="flex items-start gap-3">
+                        <span class="conflict-num" style="background:#6366F1;">5</span>
+                        <div>
+                            <h4 style="font-size:16px;font-weight:700;margin:0 0 6px 0;">Corporate Values vs.
+                                Profitability</h4>
+                            <p style="font-size:14px;line-height:1.6;margin:0;color:var(--color-body);">There are issues
+                                between corporate values and profitability of an account. A ton of differences exist
+                                across the organization. When values require investment that reduces short-term
+                                profitability, which one does the assessment reward?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Warning box -->
+            <div
+                style="background:#FEF2F2;border:2px solid #DC2626;border-radius:12px;padding:20px;margin-top:24px;text-align:center;">
+                <i data-lucide="alert-triangle"
+                    style="width:24px;height:24px;color:#DC2626;margin:0 auto 10px;display:block;"></i>
+                <p style="font-size:16px;font-weight:700;color:#991B1B;margin:0;line-height:1.6;">
+                    "If you do not get performance assessment right, you are going to leave people feeling undervalued,
+                    and they are going to quit. And they might be the people that you need the most."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION G — ACCOUNT PORTFOLIO COMPETITION ============ -->
+    <section class="sec-account-comp section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#F3E8FF;color:#7C3AED;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#7C3AED;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">G</span>
+                    Conflict Deep Dive</span>
+            </div>
+            <div class="info-card" style="border-left:4px solid #A855F7;">
+                <div class="flex items-start gap-3 mb-4">
+                    <i data-lucide="git-merge"
+                        style="width:24px;height:24px;color:#A855F7;flex-shrink:0;margin-top:2px;"></i>
+                    <h2 style="font-size:22px;font-weight:700;">Account Portfolio Competition — Resource Rivalry</h2>
+                </div>
+                <p style="font-size:15px;line-height:1.7;margin-bottom:14px;">
+                    If you lean heavily on portfolio leadership, then sharing resources creates competition. Two
+                    computer vision people share code between accounts. The other portfolio lead is in competition with
+                    your portfolio lead for who has the biggest revenue or the biggest growth. Your boss may ask: why
+                    are you spending time helping out another account? Why don't you help my account or the people that
+                    work for me?
+                </p>
+                <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px;">
+                    <div
+                        style="display:flex;align-items:center;gap:10px;background:#F3E8FF;border-radius:8px;padding:12px;">
+                        <i data-lucide="share-2" style="width:18px;height:18px;color:#A855F7;flex-shrink:0;"></i>
+                        <p style="font-size:14px;margin:0;"><strong>Employee shares code/expertise across
+                                accounts</strong> — creates organizational value</p>
+                    </div>
+                    <div
+                        style="display:flex;align-items:center;gap:10px;background:#FEF2F2;border-radius:8px;padding:12px;">
+                        <i data-lucide="x-circle" style="width:18px;height:18px;color:#DC2626;flex-shrink:0;"></i>
+                        <p style="font-size:14px;margin:0;"><strong>But portfolio lead sees:</strong> time diverted from
+                            MY account — penalized for helping others</p>
+                    </div>
+                </div>
+                <p style="font-size:14px;line-height:1.6;color:var(--color-secondary);margin-top:14px;">
+                    Performance assessment systems that do not account for cross-portfolio contribution create a
+                    rational incentive to hoard knowledge — the exact opposite of what AI organizations need.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION H — THE $75M P&L ATTRIBUTION (SIGNATURE 3) ============ -->
+    <section class="sec-75m section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#DCFCE7;color:#15803D;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#15803D;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">H</span>
+                    Signature Visual</span>
+            </div>
+            <div class="flex items-start gap-3 mb-5">
+                <i data-lucide="dollar-sign"
+                    style="width:26px;height:26px;color:#16A34A;flex-shrink:0;margin-top:2px;"></i>
+                <h2 style="font-size:24px;font-weight:700;">The $75M P&amp;L Attribution Question</h2>
+            </div>
+            <p style="font-size:15px;line-height:1.7;margin-bottom:24px;">
+                The IRS revenue return program was a fairly large AI deal — a $75 million five-year project. It was
+                already built and existing, but they were re-competing it. The IRS account was doing a lot of IT
+                services and was not necessarily incentivized to pursue AI work. After winning: who gets the credit?
+            </p>
+
+            <!-- Dual panel -->
+            <div class="dual-panel" style="margin-bottom:16px;">
+                <div class="panel-card" style="border-top:4px solid #EA580C;">
+                    <h3
+                        style="font-size:16px;font-weight:700;color:#EA580C;margin:0 0 12px 0;display:flex;align-items:center;gap:6px;">
+                        <i data-lucide="user-check" style="width:18px;height:18px;"></i> The Account Lead
+                    </h3>
+                    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+                        <li style="font-size:14px;line-height:1.5;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#EA580C;font-weight:700;">›</span> Relationships built over years, for
+                            decades</li>
+                        <li style="font-size:14px;line-height:1.5;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#EA580C;font-weight:700;">›</span> Good reputation in the IRS account</li>
+                        <li style="font-size:14px;line-height:1.5;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#EA580C;font-weight:700;">›</span> Delivered IT services for years</li>
+                        <li style="font-size:14px;line-height:1.5;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#EA580C;font-weight:700;">›</span> Claim: "My account, my relationships, my
+                            P&amp;L"</li>
+                    </ul>
+                </div>
+                <div class="panel-card" style="border-top:4px solid #16A34A;">
+                    <h3
+                        style="font-size:16px;font-weight:700;color:#16A34A;margin:0 0 12px 0;display:flex;align-items:center;gap:6px;">
+                        <i data-lucide="cpu" style="width:18px;height:18px;"></i> The AI Specialist
+                    </h3>
+                    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+                        <li style="font-size:14px;line-height:1.5;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#16A34A;font-weight:700;">›</span> Brought the AI idea and technical
+                            solution</li>
+                        <li style="font-size:14px;line-height:1.5;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#16A34A;font-weight:700;">›</span> Revenue return program — an AI task</li>
+                        <li style="font-size:14px;line-height:1.5;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#16A34A;font-weight:700;">›</span> Came in with the capability</li>
+                        <li style="font-size:14px;line-height:1.5;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#16A34A;font-weight:700;">›</span> Claim: "My innovation, my expertise, my
+                            win"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Center attribution question -->
+            <div
+                style="background:#065F46;color:#fff;border-radius:12px;padding:24px;text-align:center;margin-bottom:16px;">
+                <p style="font-size:28px;font-weight:800;font-family:'Sora',sans-serif;margin:0 0 6px 0;">$75 Million —
+                    5-Year Project</p>
+                <p style="font-size:18px;font-weight:600;margin:0;opacity:0.9;">Who Gets the Credit?</p>
+            </div>
+
+            <div
+                style="background:#F0FDF4;border:1.5px solid #BBF7D0;border-radius:10px;padding:16px;text-align:center;">
+                <p style="font-size:15px;font-style:italic;color:var(--color-heading);margin:0;line-height:1.6;">
+                    "The only way you would know is if you really ask the people that made the selection — and they
+                    might not even be the clients that you're actually supporting or delivering with when you actually
+                    get on the ground."
+                </p>
+            </div>
+
+            <p style="font-size:14px;line-height:1.6;color:var(--color-secondary);margin-top:14px;">
+                Large wins are almost always the result of combined contributions — relationships, technical
+                differentiation, timing, and pricing — but assessment systems typically assign credit to a single owner.
+                This creates a perverse incentive where AI talent sees their contributions attributed to others.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============ SECTION I — INTUITION vs DATA-DRIVEN ============ -->
+    <section class="sec-intuition section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#FEF3C7;color:#92400E;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#92400E;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">I</span>
+                    Conflict Deep Dive</span>
+            </div>
+            <div class="info-card" style="border-left:4px solid #D97706;">
+                <div class="flex items-start gap-3 mb-4">
+                    <i data-lucide="scale"
+                        style="width:24px;height:24px;color:#D97706;flex-shrink:0;margin-top:2px;"></i>
+                    <h2 style="font-size:22px;font-weight:700;">Intuition vs. Data-Driven Decision Making</h2>
+                </div>
+                <div class="dual-panel" style="margin-bottom:14px;">
+                    <div style="background:#FEF3C7;border-radius:10px;padding:16px;">
+                        <h4 style="font-size:15px;font-weight:700;color:#92400E;margin:0 0 8px 0;">Intuition-Driven</h4>
+                        <p style="font-size:14px;line-height:1.6;margin:0;">Gut feeling and pattern recognition.
+                            Judgment based on experience. Some people across the organization are used to making
+                            decisions this way. If you are an intuitive person, you can be very threatened by the data
+                            organization.</p>
+                    </div>
+                    <div style="background:#FEF3C7;border-radius:10px;padding:16px;">
+                        <h4 style="font-size:15px;font-weight:700;color:#92400E;margin:0 0 8px 0;">Data-Driven</h4>
+                        <p style="font-size:14px;line-height:1.6;margin:0;">Metrics, analysis, and evidence. Decisions
+                            based on measurable outcomes. Data-driven leaders want quantifiable performance metrics like
+                            revenue generated, tickets closed, and delivery numbers.</p>
+                    </div>
+                </div>
+                <div
+                    style="background:#FFFBEB;border:1.5px solid #FDE68A;border-radius:10px;padding:14px;text-align:center;">
+                    <p style="font-size:14px;font-weight:600;color:var(--color-heading);margin:0;">
+                        Malcolm Gladwell's "Blink" makes a strong argument that intuitive judgment is not necessarily
+                        inferior to data-driven judgment — it is a different way of making decisions that might actually
+                        be better. No clear right answer — this naturally leads to competition.
+                    </p>
+                </div>
+                <p style="font-size:14px;line-height:1.6;color:var(--color-secondary);margin-top:12px;">
+                    In AI organizations, this tension is ironic: teams building data-driven systems may themselves be
+                    assessed by leaders who rely on intuition to evaluate their contributions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION J — PROJECT vs TECHNICAL LEADERSHIP (SIGNATURE 4) ============ -->
+    <section class="sec-proj-tech section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#FEE2E2;color:#B91C1C;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#B91C1C;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">J</span>
+                    Signature Visual</span>
+            </div>
+            <div class="flex items-start gap-3 mb-5">
+                <i data-lucide="git-branch"
+                    style="width:26px;height:26px;color:#DC2626;flex-shrink:0;margin-top:2px;"></i>
+                <h2 style="font-size:24px;font-weight:700;">Project vs. Technical Leadership — The Authority Question
+                </h2>
+            </div>
+            <p style="font-size:15px;line-height:1.7;margin-bottom:24px;">
+                There is a huge difference between project and technical leaders. In any project, there is going to be
+                somebody maintaining the schedule and milestones, and then there is someone who really understands the
+                core technology solution being developed. Who is in charge when they disagree?
+            </p>
+
+            <div class="dual-panel" style="margin-bottom:20px;">
+                <div class="panel-card" style="border-top:4px solid #2563EB;">
+                    <h3
+                        style="font-size:16px;font-weight:700;color:#2563EB;margin:0 0 14px 0;display:flex;align-items:center;gap:6px;">
+                        <i data-lucide="clock" style="width:18px;height:18px;"></i> Project Leader
+                    </h3>
+                    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+                        <li style="font-size:14px;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#2563EB;font-weight:700;">›</span> Maintaining the schedule and milestones
+                        </li>
+                        <li style="font-size:14px;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#2563EB;font-weight:700;">›</span> Looking at the contract</li>
+                        <li style="font-size:14px;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#2563EB;font-weight:700;">›</span> Ensuring all deliverables are hit</li>
+                        <li style="font-size:14px;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#2563EB;font-weight:700;">›</span> Talking to the client, ensuring
+                            satisfaction</li>
+                        <li style="font-size:14px;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#2563EB;font-weight:700;">›</span> People showing up and meeting daily
+                            goals</li>
+                    </ul>
+                </div>
+                <div class="panel-card" style="border-top:4px solid #DC2626;">
+                    <h3
+                        style="font-size:16px;font-weight:700;color:#DC2626;margin:0 0 14px 0;display:flex;align-items:center;gap:6px;">
+                        <i data-lucide="settings" style="width:18px;height:18px;"></i> Technical Leader
+                    </h3>
+                    <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:8px;">
+                        <li style="font-size:14px;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#DC2626;font-weight:700;">›</span> Understands the core technology solution
+                        </li>
+                        <li style="font-size:14px;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#DC2626;font-weight:700;">›</span> Helps resolve or fix technical problems
+                        </li>
+                        <li style="font-size:14px;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#DC2626;font-weight:700;">›</span> Responsible on the technical side</li>
+                        <li style="font-size:14px;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#DC2626;font-weight:700;">›</span> Technical quality and solution
+                            architecture</li>
+                        <li style="font-size:14px;display:flex;align-items:start;gap:8px;"><span
+                                style="color:#DC2626;font-weight:700;">›</span> Technical integrity of the deliverable
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conflict Scenarios -->
+            <div
+                style="background:#FEF2F2;border:2px solid #FECACA;border-radius:12px;padding:20px;margin-bottom:16px;">
+                <h4 style="font-size:16px;font-weight:700;color:#991B1B;margin:0 0 16px 0;text-align:center;">
+                    <i data-lucide="alert-circle"
+                        style="width:18px;height:18px;display:inline;vertical-align:middle;margin-right:4px;"></i>
+                    When They Disagree
+                </h4>
+                <div class="grid-2">
+                    <div class="scenario-box">
+                        <h5 style="font-size:14px;font-weight:700;color:#991B1B;margin:0 0 8px 0;">Scenario 1 — Quality
+                            vs. Schedule</h5>
+                        <p style="font-size:14px;line-height:1.6;margin:0;">Should we delay a week in delivering our
+                            deliverable to fix a major problem? Or do we keep to our schedule and make sure we hit the
+                            delivery milestones we are supposed to?</p>
+                    </div>
+                    <div class="scenario-box">
+                        <h5 style="font-size:14px;font-weight:700;color:#991B1B;margin:0 0 8px 0;">Scenario 2 — Budget
+                            Overrun</h5>
+                        <p style="font-size:14px;line-height:1.6;margin:0;">Running over budget — more time and more
+                            labor costs than expected. Where do we make cuts? Do we cut program leadership? Quality
+                            control? Do we just cut corners?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align:center;background:#991B1B;color:#fff;border-radius:10px;padding:16px;">
+                <p style="font-size:16px;font-weight:700;margin:0;">
+                    "Who gets to make that decision? This inevitably causes conflict."
+                </p>
+            </div>
+
+            <p style="font-size:14px;line-height:1.6;color:var(--color-secondary);margin-top:14px;">
+                In AI projects, this conflict is amplified because technical uncertainty is inherent — models may not
+                converge, data quality issues emerge mid-project, and the path to a working solution is rarely linear,
+                making rigid schedule adherence potentially counterproductive.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============ SECTION K — CORPORATE VALUES vs PROFITABILITY ============ -->
+    <section class="sec-values section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#E0E7FF;color:#4338CA;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#4338CA;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">K</span>
+                    Conflict Deep Dive</span>
+            </div>
+            <div class="info-card" style="border-left:4px solid #6366F1;">
+                <div class="flex items-start gap-3 mb-4">
+                    <i data-lucide="shield"
+                        style="width:24px;height:24px;color:#6366F1;flex-shrink:0;margin-top:2px;"></i>
+                    <h2 style="font-size:22px;font-weight:700;">Corporate Values vs. Account Profitability</h2>
+                </div>
+                <p style="font-size:15px;line-height:1.7;margin-bottom:14px;">
+                    There are issues between corporate values and profitability of an account. A ton of differences
+                    exist in this organization. Corporate values — diversity, quality, innovation, ethical AI — often
+                    require investment that reduces short-term account profitability.
+                </p>
+                <div
+                    style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin:16px 0;">
+                    <div style="background:#E0E7FF;border-radius:10px;padding:14px 20px;text-align:center;">
+                        <p style="font-size:15px;font-weight:700;color:#4338CA;margin:0;">Corporate Values</p>
+                        <p style="font-size:12px;color:var(--color-secondary);margin:4px 0 0;">Diversity, quality,
+                            innovation, ethical AI</p>
+                    </div>
+                    <span style="font-size:24px;color:#6366F1;font-weight:700;">⟷</span>
+                    <div style="background:#E0E7FF;border-radius:10px;padding:14px 20px;text-align:center;">
+                        <p style="font-size:15px;font-weight:700;color:#4338CA;margin:0;">Account Profitability</p>
+                        <p style="font-size:12px;color:var(--color-secondary);margin:4px 0 0;">Margins, utilization,
+                            revenue targets</p>
+                    </div>
+                </div>
+                <p style="font-size:14px;line-height:1.6;color:var(--color-secondary);">
+                    Performance assessment systems that weight profitability above values send an implicit message that
+                    values are aspirational rather than operational. In AI specifically, responsible AI practices add
+                    cost and time that directly impact account-level P&amp;L.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION L — THE UNDERVALUATION RISK ============ -->
+    <section class="sec-undervaluation section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#FFEDD5;color:#C2410C;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#C2410C;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">L</span>
+                    Critical Warning</span>
+            </div>
+            <div class="info-card" style="border:2px solid #EA580C;">
+                <div class="flex items-start gap-3 mb-4">
+                    <i data-lucide="user-minus"
+                        style="width:24px;height:24px;color:#EA580C;flex-shrink:0;margin-top:2px;"></i>
+                    <h2 style="font-size:22px;font-weight:700;">The Undervaluation Risk — Retention and Loss</h2>
+                </div>
+                <p style="font-size:15px;line-height:1.7;margin-bottom:16px;">
+                    Evaluating those diverse functions and contributions is a huge challenge. But if you do not get it
+                    right, you are going to leave people feeling undervalued, and they are going to quit. And they might
+                    be the people that you need the most.
+                </p>
+
+                <!-- Cascade flow -->
+                <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+                    <div
+                        style="background:#FFF7ED;border:1.5px solid #FED7AA;border-radius:10px;padding:12px 24px;text-align:center;width:100%;max-width:500px;">
+                        <p style="font-size:14px;font-weight:600;margin:0;color:var(--color-heading);">Diverse functions
+                            &amp; contributions</p>
+                        <p style="font-size:13px;color:var(--color-secondary);margin:2px 0 0;">A huge challenge to
+                            evaluate</p>
+                    </div>
+                    <div class="flow-arrow" style="padding:4px 0;">↓</div>
+                    <div
+                        style="background:#FEF2F2;border:1.5px solid #FECACA;border-radius:10px;padding:12px 24px;text-align:center;width:100%;max-width:500px;">
+                        <p style="font-size:14px;font-weight:600;margin:0;color:#991B1B;">Get it wrong → People feel
+                            undervalued</p>
+                    </div>
+                    <div class="flow-arrow" style="padding:4px 0;">↓</div>
+                    <div
+                        style="background:#FEE2E2;border:1.5px solid #FCA5A5;border-radius:10px;padding:12px 24px;text-align:center;width:100%;max-width:500px;">
+                        <p style="font-size:14px;font-weight:600;margin:0;color:#991B1B;">Feel undervalued → They quit
+                        </p>
+                    </div>
+                    <div class="flow-arrow" style="padding:4px 0;">↓</div>
+                    <div
+                        style="background:#DC2626;border-radius:10px;padding:14px 24px;text-align:center;width:100%;max-width:500px;">
+                        <p style="font-size:15px;font-weight:700;margin:0;color:#fff;">They might be the people you need
+                            the most.</p>
+                    </div>
+                </div>
+
+                <p style="font-size:14px;line-height:1.6;color:var(--color-secondary);margin-top:16px;">
+                    The undervaluation risk is asymmetric: the people most likely to feel undervalued and leave are high
+                    performers with market alternatives — precisely the talent hardest and most expensive to replace,
+                    especially in AI where demand for skilled practitioners far exceeds supply.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION M — DESIGN PRINCIPLES (Enrichment) ============ -->
+    <section class="sec-principles section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#D1FAE5;color:#065F46;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#065F46;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">M</span>
+                    Enrichment</span>
+            </div>
+            <div class="flex items-start gap-3 mb-2">
+                <i data-lucide="compass" style="width:22px;height:22px;color:#10B981;flex-shrink:0;margin-top:2px;"></i>
+                <h2 style="font-size:20px;font-weight:700;">Performance Assessment Design Principles</h2>
+            </div>
+            <p style="font-size:14px;color:var(--color-secondary);margin-bottom:16px;">Design principles for assessment
+                systems that account for the conflicts AI organizations face.</p>
+            <div class="grid-3">
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="target" style="width:18px;height:18px;color:#10B981;margin-bottom:8px;"></i>
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;">Align to Strategy</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">Trace every metric
+                        back to vision, campaign plan, and operating concept.</p>
+                    <span style="font-size:11px;color:#10B981;font-weight:600;margin-top:6px;display:block;">Addresses:
+                        Misaligned Goals</span>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="users" style="width:18px;height:18px;color:#10B981;margin-bottom:8px;"></i>
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;">Matrix Complexity</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">Use multi-rater
+                        assessment capturing both portfolio and capability dimensions.</p>
+                    <span style="font-size:11px;color:#10B981;font-weight:600;margin-top:6px;display:block;">Addresses:
+                        Portfolio vs. Overhead</span>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="share-2" style="width:18px;height:18px;color:#10B981;margin-bottom:8px;"></i>
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;">Cross-Portfolio Credit</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">Explicitly measure
+                        and reward knowledge sharing and expertise lending across accounts.</p>
+                    <span style="font-size:11px;color:#10B981;font-weight:600;margin-top:6px;display:block;">Addresses:
+                        Account Competition</span>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="scale" style="width:18px;height:18px;color:#10B981;margin-bottom:8px;"></i>
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;">Separate P&amp;L from Performance</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">Do not conflate
+                        revenue credit with individual contribution assessment.</p>
+                    <span style="font-size:11px;color:#10B981;font-weight:600;margin-top:6px;display:block;">Addresses:
+                        $75M Attribution</span>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="eye" style="width:18px;height:18px;color:#10B981;margin-bottom:8px;"></i>
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;">Both Cognitive Styles</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">Include
+                        quantitative metrics and qualitative judgment with transparency about how each informs
+                        evaluation.</p>
+                    <span style="font-size:11px;color:#10B981;font-weight:600;margin-top:6px;display:block;">Addresses:
+                        Intuition vs. Data</span>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="git-branch" style="width:18px;height:18px;color:#10B981;margin-bottom:8px;"></i>
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;">Define Decision Authority</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">Establish clear
+                        escalation paths so performance is not assessed against ambiguous expectations.</p>
+                    <span style="font-size:11px;color:#10B981;font-weight:600;margin-top:6px;display:block;">Addresses:
+                        Project vs. Technical</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION N — ASSESSMENT METHODS (Enrichment) ============ -->
+    <section class="sec-methods section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#E0E7FF;color:#4338CA;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#4338CA;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">N</span>
+                    Enrichment</span>
+            </div>
+            <div class="flex items-start gap-3 mb-2">
+                <i data-lucide="sliders" style="width:22px;height:22px;color:#6366F1;flex-shrink:0;margin-top:2px;"></i>
+                <h2 style="font-size:20px;font-weight:700;">Assessment Methods &amp; Calibration</h2>
+            </div>
+            <p style="font-size:14px;color:var(--color-secondary);margin-bottom:16px;">Methods and calibration
+                approaches for navigating assessment conflicts.</p>
+            <div class="grid-3">
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="target" style="width:18px;height:18px;color:#6366F1;margin-bottom:8px;"></i>
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;">Goal Cascade / OKR</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">Objectives flowing
+                        from strategy through team-level goals to individual metrics.</p>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="users" style="width:18px;height:18px;color:#6366F1;margin-bottom:8px;"></i>
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;">Calibration Sessions</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">Cross-manager
+                        calibration to reduce individual rater bias and ensure consistency.</p>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="repeat" style="width:18px;height:18px;color:#6366F1;margin-bottom:8px;"></i>
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;">360° Multi-Rater</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">Input from account
+                        leads, practice leads, peers, and direct reports.</p>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="cpu" style="width:18px;height:18px;color:#6366F1;margin-bottom:8px;"></i>
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;">AI-Specific Metrics</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">Model performance,
+                        data quality, technical debt reduction, responsible AI compliance.</p>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="award" style="width:18px;height:18px;color:#6366F1;margin-bottom:8px;"></i>
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;">Contribution vs. Attribution</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">Separating
+                        individual contribution from P&amp;L credit allocation.</p>
+                </div>
+                <div class="info-card" style="padding:16px;">
+                    <i data-lucide="activity" style="width:18px;height:18px;color:#6366F1;margin-bottom:8px;"></i>
+                    <h4 style="font-size:14px;font-weight:700;margin:0 0 4px 0;">Retention Risk Dashboards</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;color:var(--color-secondary);">Monitoring
+                        engagement signals and flight risk indicators to catch undervaluation early.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION O — EFFECTIVENESS METRICS (Enrichment) ============ -->
+    <section class="sec-metrics section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#DBEAFE;color:#1D4ED8;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#1D4ED8;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">O</span>
+                    Enrichment</span>
+            </div>
+            <div class="flex items-start gap-3 mb-2">
+                <i data-lucide="bar-chart-2"
+                    style="width:22px;height:22px;color:#2563EB;flex-shrink:0;margin-top:2px;"></i>
+                <h2 style="font-size:20px;font-weight:700;">Assessment Effectiveness Metrics</h2>
+            </div>
+            <p style="font-size:14px;color:var(--color-secondary);margin-bottom:16px;">Measuring whether the assessment
+                system itself is working.</p>
+            <div class="grid-2">
+                <div class="info-card" style="padding:14px;">
+                    <h4 style="font-size:13px;font-weight:700;margin:0 0 4px 0;color:#1D4ED8;">Strategic Alignment</h4>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--color-secondary);">Strategy-assessment
+                        alignment score — % of criteria traceable to strategic objectives</p>
+                </div>
+                <div class="info-card" style="padding:14px;">
+                    <h4 style="font-size:13px;font-weight:700;margin:0 0 4px 0;color:#1D4ED8;">Matrix Fairness</h4>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--color-secondary);">Multi-rater
+                        agreement index — consistency across portfolio and capability raters</p>
+                </div>
+                <div class="info-card" style="padding:14px;">
+                    <h4 style="font-size:13px;font-weight:700;margin:0 0 4px 0;color:#1D4ED8;">Cross-Account Recognition
+                    </h4>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--color-secondary);">% of employees
+                        receiving credit for cross-portfolio work contributions</p>
+                </div>
+                <div class="info-card" style="padding:14px;">
+                    <h4 style="font-size:13px;font-weight:700;margin:0 0 4px 0;color:#1D4ED8;">P&amp;L Dispute Rate</h4>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--color-secondary);">How often revenue
+                        credit is contested between portfolio and overhead</p>
+                </div>
+                <div class="info-card" style="padding:14px;">
+                    <h4 style="font-size:13px;font-weight:700;margin:0 0 4px 0;color:#1D4ED8;">Decision Authority
+                        Clarity</h4>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--color-secondary);">% of
+                        project/technical conflicts with pre-defined escalation paths</p>
+                </div>
+                <div class="info-card" style="padding:14px;">
+                    <h4 style="font-size:13px;font-weight:700;margin:0 0 4px 0;color:#1D4ED8;">Role Satisfaction</h4>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--color-secondary);">Assessment
+                        satisfaction by role type — project, technical, account, capability leads</p>
+                </div>
+                <div class="info-card" style="padding:14px;">
+                    <h4 style="font-size:13px;font-weight:700;margin:0 0 4px 0;color:#1D4ED8;">Retention Impact</h4>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--color-secondary);">High-performer
+                        retention rate post-assessment cycle</p>
+                </div>
+                <div class="info-card" style="padding:14px;">
+                    <h4 style="font-size:13px;font-weight:700;margin:0 0 4px 0;color:#1D4ED8;">Values Balance</h4>
+                    <p style="font-size:12px;line-height:1.5;margin:0;color:var(--color-secondary);">Correlation between
+                        values-aligned behavior and positive assessment outcomes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION P — KEY TAKEAWAYS & CLOSING ============ -->
+    <section class="sec-takeaways section-spacing fade-section">
+        <div class="container">
+            <div class="flex items-center gap-2 mb-3">
+                <span class="sec-badge" style="background:#DCFCE7;color:#15803D;"><span
+                        style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;background:#15803D;color:#fff;border-radius:5px;font-size:11px;margin-right:4px;">P</span>
+                    Key Takeaways</span>
+            </div>
+            <div class="flex items-start gap-3 mb-5">
+                <i data-lucide="star" style="width:26px;height:26px;color:#22C55E;flex-shrink:0;margin-top:2px;"></i>
+                <h2 style="font-size:24px;font-weight:700;">Key Takeaways &amp; Closing Reflection</h2>
+            </div>
+
+            <!-- Summary cards -->
+            <div class="grid-3" style="margin-bottom:24px;">
+                <div class="info-card" style="padding:16px;border-top:3px solid #A855F7;">
+                    <h4 style="font-size:14px;font-weight:700;color:#7C3AED;margin:0 0 8px 0;">Strategic Foundation</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;">Vision → Campaign Plan → Operating Concept →
+                        Assessment Design. Strategy must drive who rates whom and what gets measured.</p>
+                </div>
+                <div class="info-card" style="padding:16px;border-top:3px solid #DC2626;">
+                    <h4 style="font-size:14px;font-weight:700;color:#B91C1C;margin:0 0 8px 0;">Five Conflicts</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;">Portfolio competition, P&amp;L attribution
+                        ($75M), intuition vs. data, project vs. technical, values vs. profitability.</p>
+                </div>
+                <div class="info-card" style="padding:16px;border-top:3px solid #EA580C;">
+                    <h4 style="font-size:14px;font-weight:700;color:#C2410C;margin:0 0 8px 0;">The Warning</h4>
+                    <p style="font-size:13px;line-height:1.5;margin:0;">Get it wrong and people feel undervalued. They
+                        quit. They might be the people you need the most.</p>
+                </div>
+            </div>
+
+            <!-- Key stats -->
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;justify-content:center;">
+                <span class="stat-badge">$75M IRS Deal</span>
+                <span class="stat-badge">5 Sources of Conflict</span>
+                <span class="stat-badge">Portfolio vs. Overhead</span>
+                <span class="stat-badge">Project vs. Technical</span>
+                <span class="stat-badge">Values vs. Profitability</span>
+                <span class="stat-badge">20 Client Accounts</span>
+            </div>
+
+            <!-- Closing statement -->
+            <div
+                style="background:linear-gradient(135deg,#1E293B 0%,#334155 100%);color:#fff;border-radius:16px;padding:32px;line-height:1.8;">
+                <p style="font-size:15px;margin:0 0 16px 0;">
+                    Performance assessment is not merely an HR exercise — it is the mechanism through which an
+                    organization communicates what it truly values. When goals, priorities, and incentives are
+                    misaligned, the assessment system becomes the battlefield where competing visions of organizational
+                    success collide.
+                </p>
+                <p style="font-size:15px;margin:0 0 16px 0;">
+                    Account leads compete for revenue credit. Capability practices compete for recognition of technical
+                    value. The question of who gets credit for a $75 million deal — the account relationship or the AI
+                    innovation — reveals the deep structural tensions that no simple rating form can resolve.
+                </p>
+                <p style="font-size:15px;margin:0 0 16px 0;">
+                    Intuitive leaders and data-driven leaders evaluate performance through different cognitive lenses,
+                    each valid in different contexts but incompatible when forced into a single framework. Project
+                    leaders and technical leaders disagree about whether to delay delivery to fix a problem or cut
+                    corners to hit a milestone — and the assessment system implicitly answers that question by what it
+                    rewards.
+                </p>
+                <p style="font-size:15px;margin:0 0 16px 0;">
+                    Corporate values and account profitability pull in opposite directions, and the assessment tells
+                    people which one actually matters. Get it right, and you align the organization. Get it wrong, and
+                    people feel undervalued. They quit. And they might be the people you need the most.
+                </p>
+                <p style="font-size:15px;margin:0;">
+                    The organizations that build assessment systems aligned to their strategy, that account for the
+                    structural conflicts inherent in matrix operations, that recognize both portfolio delivery and
+                    capability development, and that make people feel their diverse contributions are seen and valued —
+                    those organizations will retain the talent that makes the difference. The ones that treat assessment
+                    as a compliance exercise will watch their best people walk out the door.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ SECTION Q — FOOTER ============ -->
+    <footer style="background:#F8FAFC;border-top:1.5px solid #E2E8F0;padding:32px 0;">
+        <div class="container" style="text-align:center;">
+            <p style="font-size:14px;font-weight:600;color:var(--color-heading);margin:0 0 6px 0;">
+                Dr. Ian McCullough — Johns Hopkins University
+            </p>
+            <p style="font-size:13px;color:var(--color-secondary);margin:0 0 4px 0;">
+                Performance Assessment in the Artificial Intelligence Industry
+            </p>
+            <p style="font-size:12px;color:var(--color-secondary);margin:0 0 4px 0;">
+                For further reading on organizational performance and AI talent management, explore the Johns Hopkins
+                Engineering for Professionals program.
+            </p>
+            <p style="font-size:12px;color:var(--color-secondary);margin:0;">
+                This page is optimized for print — use your browser's print function for a clean A4/Letter output.
+            </p>
+        </div>
+    </footer>
+    <div class="rainbow-stripe"></div>
+
+    <!-- Initialize Lucide Icons and animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Initialize Lucide icons
+            try { lucide.createIcons(); } catch (e) { console.warn('Lucide icons not available:', e); }
+
+            // 2. SAFE fade-in: add .not-visible AFTER DOM is ready
+            var fadeSections = document.querySelectorAll('.fade-section');
+            fadeSections.forEach(function (el) {
+                el.classList.add('not-visible');
+            });
+
+            // 3. IntersectionObserver removes .not-visible on scroll
+            if ('IntersectionObserver' in window) {
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.remove('not-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.08 });
+                fadeSections.forEach(function (el) {
+                    observer.observe(el);
+                });
+            } else {
+                // Fallback: just show everything
+                fadeSections.forEach(function (el) {
+                    el.classList.remove('not-visible');
+                });
+            }
+        });
+    </script>
+
+    <!-- GoatCounter Analytics -->
+    <script data-goatcounter="https://kishoretech.goatcounter.com/count"
+            async src="//gc.zgo.at/count.js"></script>
+
+</body>
+
+</html>
