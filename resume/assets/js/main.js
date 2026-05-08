@@ -14,8 +14,21 @@ document.addEventListener('DOMContentLoaded', () => {
     ui.renderCapabilities(data.capabilities);
     ui.renderSkills(data.skills);
 
-    // Wake up Render backend (free tier sleeps after 15min inactivity)
-    fetch('https://kishore-resume-api.onrender.com/api/health').catch(() => {});
+    // Wake up Render backend (free tier sleeps ~15min; cold start ~30-60s).
+    // Track the promise so AI actions can await it instead of racing it.
+    const API_BASE = 'https://kishore-resume-api.onrender.com';
+    let isBackendWarm = false;
+    const warmupPromise = fetch(API_BASE + '/api/health', {
+        signal: AbortSignal.timeout(90000)
+    })
+        .then(res => { if (res.ok) isBackendWarm = true; })
+        .catch(() => {});
+
+    async function awaitWarmup(onCold) {
+        if (isBackendWarm) return;
+        if (onCold) onCold();
+        await warmupPromise;
+    }
 
     // 2. Setup Intersection Observer for scroll animations
     setupScrollAnimations();
@@ -54,12 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const loadingId = 'loading-' + Date.now();
         showLoading(loadingId);
 
+        await awaitWarmup(() => updateLoadingMessage(loadingId,
+            '<i class="fas fa-circle-notch fa-spin"></i> Waking AI service, this may take ~30 seconds...'));
+        updateLoadingMessage(loadingId, '<i class="fas fa-circle-notch fa-spin"></i> Thinking...');
+
         // API Call
         try {
-            const res = await fetch('https://kishore-resume-api.onrender.com/api/ask', {
+            const res = await fetch(API_BASE + '/api/ask', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ question: text })
+                body: JSON.stringify({ question: text }),
+                signal: AbortSignal.timeout(90000)
             });
             removeLoading(loadingId);
             if (!res.ok) {
@@ -85,14 +103,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const btn = document.querySelector('button[onclick="analyzeJobFit()"]');
         const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
         btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+
+        await awaitWarmup(() => {
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Waking AI (~30s)...';
+        });
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
 
         try {
-            const res = await fetch('https://kishore-resume-api.onrender.com/api/job-fit', {
+            const res = await fetch(API_BASE + '/api/job-fit', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ jd: text })
+                body: JSON.stringify({ jd: text }),
+                signal: AbortSignal.timeout(90000)
             });
             btn.innerHTML = originalText;
             btn.disabled = false;
@@ -131,6 +155,13 @@ function showLoading(id) {
 function removeLoading(id) {
     const el = document.getElementById(id);
     if (el) el.remove();
+}
+
+function updateLoadingMessage(id, html) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const bubble = el.querySelector('div.bg-gray-700');
+    if (bubble) bubble.innerHTML = html;
 }
 
 function setupScrollAnimations() {
