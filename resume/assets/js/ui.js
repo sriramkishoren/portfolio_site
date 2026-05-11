@@ -101,20 +101,120 @@ window.UI = {
 
     renderSkills(skills) {
         const container = document.getElementById('skills-container');
-        const allSkills = [
-            ...skills.ai.map(s => ({ name: s, type: 'ai' })),
-            ...skills.cloud.map(s => ({ name: s, type: 'cloud' })),
-            ...skills.languages.map(s => ({ name: s, type: 'lang' })),
-            ...skills.platforms.map(s => ({ name: s, type: 'plat' }))
+
+        const sqlDbs = skills.databases && skills.databases.sql ? skills.databases.sql : [];
+        const nosqlDbs = skills.databases && skills.databases.nosql ? skills.databases.nosql : [];
+
+        const groups = [
+            { label: "AI", items: skills.ai || [], type: 'ai' },
+            { label: "Cloud", items: skills.cloud || [], type: 'cloud' },
+            { label: "Languages", items: skills.languages || [], type: 'lang' },
+            { label: "Frameworks & Libraries", items: skills.frameworks || [], type: 'framework' },
+            { label: "Data Engineering & SQL", items: skills.data_engineering || [], type: 'data' },
+            { label: "Databases (SQL)", items: sqlDbs, type: 'db-sql' },
+            { label: "Databases (NoSQL)", items: nosqlDbs, type: 'db-nosql' },
+            { label: "Platforms", items: skills.platforms || [], type: 'plat' },
+            { label: "Operational Excellence", items: skills.observability || [], type: 'ops' },
+            { label: "Soft Skills", items: skills.soft || [], type: 'soft' }
         ];
 
-        container.innerHTML = allSkills.map(s => {
-            let classes = "bg-gray-100 text-gray-700 border-gray-200";
-            if (s.type === 'ai') classes = "bg-purple-50 text-purple-700 border-purple-200";
-            if (s.type === 'cloud') classes = "bg-blue-50 text-blue-700 border-blue-200";
+        const typeClasses = {
+            ai: "bg-purple-50 text-purple-700 border-purple-200",
+            cloud: "bg-blue-50 text-blue-700 border-blue-200",
+            lang: "bg-emerald-50 text-emerald-700 border-emerald-200",
+            framework: "bg-teal-50 text-teal-700 border-teal-200",
+            data: "bg-amber-50 text-amber-800 border-amber-200",
+            'db-sql': "bg-indigo-50 text-indigo-700 border-indigo-200",
+            'db-nosql': "bg-sky-50 text-sky-700 border-sky-200",
+            plat: "bg-rose-50 text-rose-700 border-rose-200",
+            ops: "bg-orange-50 text-orange-700 border-orange-200",
+            soft: "bg-gray-100 text-gray-700 border-gray-200"
+        };
 
-            return `<span class="px-4 py-2 rounded-lg border text-sm font-semibold ${classes} transition hover:scale-105 cursor-default">${s.name}</span>`;
-        }).join('');
+        container.innerHTML = `
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-5 w-full">
+                ${groups.filter(g => g.items.length).map(g => `
+                    <div>
+                        <h4 class="text-[11px] font-semibold uppercase tracking-wider text-gray-500 mb-2">${g.label}</h4>
+                        <div class="flex flex-wrap gap-1.5">
+                            ${g.items.map(item => `<span class="px-2.5 py-1 rounded-md border text-xs font-medium ${typeClasses[g.type]} cursor-default">${item}</span>`).join('')}
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    },
+
+    renderAiMlData(items) {
+        const container = document.getElementById('ai-ml-data-container');
+        if (!container || !Array.isArray(items)) return;
+
+        container.innerHTML = items.map((item, i) => `
+            <div class="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow opacity-0 monitor-viewport" style="transition-delay: ${i * 120}ms">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-between mb-3 gap-2">
+                    <div>
+                        <h3 class="text-lg md:text-xl font-bold text-gray-900">${item.name}</h3>
+                        <p class="text-sm text-gray-500 mt-1">${item.context || ''}</p>
+                    </div>
+                    <span class="text-xs font-mono text-blue-600 bg-blue-50 px-3 py-1 rounded-full whitespace-nowrap self-start">${item.period}</span>
+                </div>
+                <ul class="space-y-2 mt-4">
+                    ${(item.highlights || []).map(h => `
+                        <li class="flex items-start text-sm text-gray-700 leading-relaxed">
+                            <i class="fas fa-bolt text-yellow-500 mt-1 mr-3 flex-shrink-0 text-xs"></i>
+                            <span>${h}</span>
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+        `).join('');
+    },
+
+    renderCertifications(certs) {
+        const container = document.getElementById('certifications-container');
+        if (!container || !Array.isArray(certs)) return;
+
+        container.innerHTML = certs.map((c, i) => `
+            <div class="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm hover:shadow-lg transition-shadow opacity-0 monitor-viewport" style="transition-delay: ${i * 120}ms">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-graduation-cap text-purple-600 text-lg"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-1">
+                            <h3 class="text-lg font-bold text-gray-900">${c.name}</h3>
+                            <span class="text-xs font-mono text-blue-600 bg-blue-50 px-2 py-1 rounded whitespace-nowrap self-start md:self-auto">${c.year}</span>
+                        </div>
+                        <p class="text-sm font-semibold text-gray-700">${c.issuer}</p>
+                        ${c.school ? `<p class="text-xs text-gray-500 mb-3">${c.school}</p>` : ''}
+                        ${c.description ? `<p class="text-sm text-gray-600 leading-relaxed mt-2">${c.description}</p>` : ''}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    },
+
+    renderEducation(edu) {
+        const container = document.getElementById('education-container');
+        if (!container || !edu) return;
+
+        container.innerHTML = `
+            <div class="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm opacity-0 monitor-viewport">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-university text-blue-600 text-lg"></i>
+                    </div>
+                    <div class="flex-1">
+                        <div class="flex flex-col md:flex-row md:items-baseline md:justify-between gap-1 mb-1">
+                            <h3 class="text-lg font-bold text-gray-900">${edu.degree}</h3>
+                            <span class="text-xs font-mono text-blue-600 bg-blue-50 px-2 py-1 rounded whitespace-nowrap self-start md:self-auto">${edu.period}</span>
+                        </div>
+                        <p class="text-sm font-semibold text-gray-700">${edu.school}</p>
+                        ${edu.location ? `<p class="text-xs text-gray-500">${edu.location}</p>` : ''}
+                    </div>
+                </div>
+            </div>
+        `;
     },
 
     appendChatMessage(text, sender) {

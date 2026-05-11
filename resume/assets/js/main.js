@@ -10,8 +10,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     ui.renderHero(data.personal);
+    if (data.ai_ml_data_experience) ui.renderAiMlData(data.ai_ml_data_experience);
     ui.renderExperience(data.work);
     ui.renderCapabilities(data.capabilities);
+    if (data.certifications) ui.renderCertifications(data.certifications);
+    if (data.education) ui.renderEducation(data.education);
     ui.renderSkills(data.skills);
 
     // Wake up Render backend (free tier sleeps ~15min; cold start ~30-60s).
