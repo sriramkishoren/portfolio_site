@@ -9,7 +9,7 @@ A modern, single-page interactive work summary for "Kishore".
 ## Architecture
 - `resume/work-summary.html`: Main container.
 - `resume/assets/js/`:
-    - `data.js`: Content from `kishore-gpt-resume-content.txt`.
+    - `resume-data.js`: Resume content (source-of-truth, manually maintained).
     - `api-mock.js`: Simulation of AI endpoints.
     - `ui.js`: DOM manipulation & rendering.
     - `main.js`: Initialization.
@@ -77,7 +77,7 @@ A modern, single-page interactive work summary for "Kishore".
 ## Acceptance Criteria
 - [ ] Page loads without FOUC (Flash of Unstyled Content).
 - [ ] Dark text on white background (Light mode).
-- [ ] All resume content from `.txt` is present.
+- [ ] All resume content from `resume-data.js` is present.
 - [ ] "Chat" answers at least 3 distinct questions correctly.
 - [ ] "Job Fit" returns a result card after analysis.
 - [ ] Responsive on Mobile (stack columns) and Desktop.
