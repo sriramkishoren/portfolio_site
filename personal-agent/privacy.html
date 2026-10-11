@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>personal-agent privacy policy</title>
+<meta name="description" content="How personal-agent uses Gmail data: read-only, for its developer's own morning summary.">
+<style>
+  :root { --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --link: #0969da; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0d1117; --fg: #e6edf3; --muted: #9198a1; --link: #4493f8; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  main { max-width: 680px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1 { font-size: 28px; margin: 0 0 4px; }
+  h2 { font-size: 19px; margin: 28px 0 6px; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  a { color: var(--link); }
+  li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Privacy policy</h1>
+  <p class="sub">personal-agent · effective October 11, 2026</p>
+
+  <p>personal-agent is a private tool that its developer, Sriramkishore Naraharisetti, runs on his own computer for his own email. It is not offered to anyone else, and the only Google account it connects to is his own. This policy describes what it does with that account's data.</p>
+
+  <h2>What it reads</h2>
+  <ul>
+    <li>Through the read-only Gmail scope (<code>gmail.readonly</code>), it reads new inbox messages: the sender, subject, date, Gmail labels such as the inbox tab or "important", and Gmail's short preview of the message.</li>
+    <li>For the few messages it judges important, when the preview is too short to understand, it also reads the message text, with quoted replies and signatures removed and limited to 4,000 characters.</li>
+    <li>It never sends, deletes, moves, labels or otherwise changes mail.</li>
+  </ul>
+
+  <h2>How it uses the data</h2>
+  <ul>
+    <li>The only use is a private summary email sent each weekday morning to the developer's own address: messages that need attention, tasks and deadlines, and suggested replies he can choose to send himself.</li>
+    <li>To write the summary, the data above is sent to Anthropic's Claude API. Under Anthropic's commercial terms, data sent through the API isn't used to train its models. It isn't sent to any other service.</li>
+    <li>It is not sold, not used for advertising, and not read by anyone other than the developer.</li>
+  </ul>
+
+  <h2>What it stores</h2>
+  <ul>
+    <li>Everything stays on the developer's own Mac, in files readable only by his user account.</li>
+    <li>It keeps the IDs of messages already summarized, so it doesn't summarize them twice (deleted after 90 days), short task descriptions such as "pay the water bill by Oct 15", and logs of when it ran and how much it cost.</li>
+    <li>When the developer runs it by hand in test mode, it saves that one summary as a file instead of emailing it.</li>
+    <li>It does not store full email text.</li>
+    <li>The Google sign-in token is kept in a file readable only by the developer. Passwords and API keys are kept in the macOS Keychain.</li>
+  </ul>
+
+  <h2>Google API Services User Data Policy</h2>
+  <p>personal-agent's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+  <h2>Removing access</h2>
+  <p>Access can be removed at any time from <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>. Deleting the tool's data folder on the Mac removes everything it stored.</p>
+
+  <h2>Contact</h2>
+  <p>Questions: <a href="mailto:sriramkishoren@gmail.com">sriramkishoren@gmail.com</a></p>
+</main>
+</body>
+</html>

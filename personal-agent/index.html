@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>personal-agent</title>
+<meta name="description" content="A private, read-only email and market summary tool used only by its developer.">
+<style>
+  :root { --bg: #ffffff; --fg: #1f2328; --muted: #59636e; --link: #0969da; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0d1117; --fg: #e6edf3; --muted: #9198a1; --link: #4493f8; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  main { max-width: 680px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1 { font-size: 28px; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 28px; }
+  a { color: var(--link); }
+  li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1>personal-agent</h1>
+  <p class="sub">A private tool by Sriramkishore Naraharisetti</p>
+
+  <p>personal-agent is a small program that runs on its developer's own Mac. Each weekday morning it reads his own Gmail and Outlook.com inboxes, read-only, and emails him a single summary: messages that need attention, tasks and deadlines, and a few public market and technology updates.</p>
+
+  <p>It is not offered to anyone else. The only Google account it connects to is the developer's own.</p>
+
+  <ul>
+    <li>Gmail access is read-only (<code>gmail.readonly</code>). The tool can't send, delete, move or change mail.</li>
+    <li>It sends its summary only to the developer's own address.</li>
+    <li>Email is summarized with Anthropic's Claude API and isn't shared with anyone else.</li>
+  </ul>
+
+  <p>Details are in the <a href="privacy.html">privacy policy</a>.</p>
+</main>
+</body>
+</html>
